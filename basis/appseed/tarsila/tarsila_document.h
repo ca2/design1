@@ -11,6 +11,9 @@ namespace tarsila
    public:
 
 
+      
+
+
       document(::aura::application * papp);
       virtual ~document();
 
@@ -21,7 +24,13 @@ namespace tarsila
    #endif
 
       virtual bool on_new_document();
+      virtual bool on_open_document(var varFile);
 
+      DECL_GEN_SIGNAL(_001OnFileSaveAs);
+      DECL_GEN_SIGNAL(_001OnFileSave);
+
+
+      void write(::file::output_stream & ostream);
 
    };
 

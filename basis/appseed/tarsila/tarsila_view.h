@@ -23,8 +23,6 @@ namespace tarsila
 
 
       e_state                                         m_estate;
-      drawing                                         m_drawing;
-      point_array                                     m_pointa;
       //visual::dib_sp                                  m_spdib;
       string                                          m_strServer;
       bool                                            m_bMouseDown;

@@ -43,10 +43,18 @@ namespace tarsila
 #include "tarsila_polygon_array.h"
 #include "tarsila_drawing.h"
 
+#include "tarsila_data.h"
+
 
 #include "tarsila_document.h"
 #include "tarsila_frame.h"
 #include "tarsila_view.h"
+
+
+#include "tarsila_main_document.h"
+#include "tarsila_main_frame.h"
+#include "tarsila_pane_view.h"
+#include "tarsila_pane_view_update_hint.h"
 
 
 #include "tarsila_application.h"

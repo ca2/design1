@@ -34,13 +34,20 @@ namespace tarsila
       System.factory().creatable_small < view >();
       System.factory().creatable_small < polygon >();
 
+      System.factory().cloneable_small < main_document >();
+      System.factory().cloneable_small < main_frame >();
+      System.factory().creatable_small < pane_view >();
+
+
+
+
       if(!::tesseract::application::initialize_instance())
          return false;
 
       SetRegistryKey("ca2core");
 
-      ::user::single_document_template* pDocTemplate;
-      pDocTemplate = new ::user::single_document_template(
+      ::user::multiple_document_template* pDocTemplate;
+      pDocTemplate = new ::user::multiple_document_template(
          this,
          "system/form",
          System.type_info < document > (),
@@ -49,6 +56,15 @@ namespace tarsila
       add_document_template(pDocTemplate);
       m_pdoctemplate = pDocTemplate;
 
+      ::user::single_document_template* pDocTemplateMain;
+      pDocTemplateMain = new ::user::single_document_template(
+         this,
+         "system/form",
+         System.type_info < main_document >(),
+         System.type_info < main_frame >(),       // main SDI frame ::user::interaction_impl
+         System.type_info < pane_view >());
+      add_document_template(pDocTemplateMain);
+      m_pdoctemplateMain = pDocTemplateMain;
 
       return TRUE;
    }
@@ -77,8 +93,59 @@ namespace tarsila
 
    void application::on_request(sp(::create) spcreatecontext)
    {
-      
-      m_pdoctemplate->open_document_file(spcreatecontext->m_spCommandLine->m_varFile);
+
+      if(m_pdoctemplateMain->get_document_count() <= 0)
+      {
+
+         m_pdoctemplateMain->open_document_file(NULL, true);
+
+      }
+
+      if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_application_start)
+      {
+
+         stringa stra;
+         m_ppaneview->get_begins_ci_eat_id(stra,"tarsila://");
+         if( stra.get_count() <= 0)
+         {
+
+            string strPath;
+            string strFormatTime;
+            strFormatTime = System.datetime().international().get_gmt_date_time();
+            strFormatTime.replace(":","-");
+            strPath = System.dir().path(Platform.filemanager_get_initial_browse_path(),strFormatTime + ".tarsila");
+            if(!Application.file().exists(strPath))
+            {
+               Application.file().put_contents(strPath,"");
+            }
+            string strId = "tarsila://" + strPath;
+            m_ppaneview->set_cur_tab_by_id(strId);
+
+         }
+
+      }
+      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_new)
+      {
+
+         string strPath;
+         string strFormatTime;
+         strFormatTime = System.datetime().international().get_gmt_date_time();
+         strFormatTime.replace(":","-");
+         strPath = System.dir().path(Platform.filemanager_get_initial_browse_path(),strFormatTime + ".tarsila");
+         if(!Application.file().exists(strPath))
+         {
+            Application.file().put_contents(strPath,"");
+         }
+         string strId = "tarsila://" + strPath;
+         m_ppaneview->set_cur_tab_by_id(strId);
+
+      }
+      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
+      {
+         
+         m_ppaneview->set_cur_tab_by_id("tarsila://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+
+      }
 
 
    }
