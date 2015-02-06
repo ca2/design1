@@ -1,0 +1,4 @@
+LIBRARY      "design_devedge"
+
+EXPORTS
+design_devedge_get_new_library

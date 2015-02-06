@@ -1,0 +1,4 @@
+<toolbar>
+	<button id="selection_tool">Ferramenta Seleção</button>
+	<button id="polygon_tool">Ferramenta Polígono</button>
+</toolbar>

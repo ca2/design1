@@ -252,7 +252,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_devedge.def">
+    <None Include="design_devedge.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
