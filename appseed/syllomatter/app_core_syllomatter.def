@@ -1,0 +1,4 @@
+LIBRARY      "app_core_syllomatter"
+
+EXPORTS
+app_core_syllomatter_get_new_library
