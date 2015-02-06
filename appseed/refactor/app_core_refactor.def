@@ -1,0 +1,8 @@
+; app_hellomultiverse.def
+
+LIBRARY  "app_core_refactor"
+; For Win32 DLLs, only EXPORTs really required.
+
+EXPORTS
+app_core_refactor_get_new_library
+
