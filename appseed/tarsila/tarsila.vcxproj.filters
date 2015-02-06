@@ -84,7 +84,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_tarsila.def">
+    <None Include="design_tarsila.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

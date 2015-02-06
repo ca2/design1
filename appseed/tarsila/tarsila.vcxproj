@@ -54,7 +54,7 @@
     <ProjectGuid>{56749E96-56B2-4FD1-B72C-C5B4D3A051A1}</ProjectGuid>
     <RootNamespace>tarsila</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>app_core_tarsila</ProjectName>
+    <ProjectName>design_tarsila</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'" Label="Configuration">
@@ -1579,9 +1579,12 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClInclude Include="tarsila_view.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_tarsila.def" />
+    <None Include="design_tarsila.def" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\app-core\appseed\tesseract\tesseract.vcxproj">
+      <Project>{437699ad-7464-4e5f-acf3-7167487a9e3d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\app\appseed\aura\aura.vcxproj">
       <Project>{03e5b8e7-9e3b-44dd-9ede-e0a74d52c1c5}</Project>
     </ProjectReference>
@@ -1593,9 +1596,6 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     </ProjectReference>
     <ProjectReference Include="..\..\..\app\appseed\core\core.vcxproj">
       <Project>{e000ffaf-392f-4e32-bf51-fd7ed638991f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\tesseract\tesseract.vcxproj">
-      <Project>{437699ad-7464-4e5f-acf3-7167487a9e3d}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
