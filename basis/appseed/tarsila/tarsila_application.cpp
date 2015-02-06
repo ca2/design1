@@ -105,7 +105,7 @@ extern "C"
 ::aura::library * design_tarsila_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::tarsila::application >(papp, "app-core");
+   return new ::aura::single_application_library < ::tarsila::application >(papp, "design");
 
 }
 

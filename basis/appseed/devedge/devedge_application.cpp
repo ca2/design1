@@ -200,7 +200,7 @@ extern "C"
 ::aura::library * design_devedge_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::devedge::application >(papp,"app-core");
+   return new ::aura::single_application_library < ::devedge::application >(papp,"design");
 
 }
 
