@@ -1,0 +1,4 @@
+LIBRARY      "app_core_tarsila"
+
+EXPORTS
+get_new_library
