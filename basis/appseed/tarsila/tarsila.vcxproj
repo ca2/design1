@@ -717,24 +717,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>copy "$(SolutionDir)..\..\..\thirdparty\binary\libapr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libapriconv-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libaprutil-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libeay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsasl.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_client-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_delta-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_diff-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_fs-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_ra-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_repos-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_subr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_wc-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\list.txt" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\ssleay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\svn.exe" $(OutDir)</Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -824,24 +809,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>copy "$(SolutionDir)..\..\..\thirdparty\binary\libapr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libapriconv-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libaprutil-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libeay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsasl.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_client-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_delta-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_diff-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_fs-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_ra-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_repos-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_subr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_wc-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\list.txt" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\ssleay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\svn.exe" $(OutDir)</Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -941,24 +911,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>copy "$(SolutionDir)..\..\..\thirdparty\binary\libapr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libapriconv-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libaprutil-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libeay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsasl.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_client-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_delta-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_diff-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_fs-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_ra-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_repos-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_subr-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\libsvn_wc-1.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\list.txt" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\ssleay32.dll" $(OutDir)
-copy "$(SolutionDir)..\..\..\thirdparty\binary\svn.exe" $(OutDir)</Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -1330,10 +1285,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>
-      </Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -1420,10 +1374,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>
-      </Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -1513,10 +1466,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>
-      </Command>
-      <Outputs>
-      </Outputs>
+      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Outputs>$(OutDir)$(TargetName).exe</Outputs>
+      <Inputs>$(OutDir)app.exe;$(OutDir)$(TargetName)$(TargetExt)</Inputs>
     </CustomBuildStep>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -1584,6 +1536,9 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
   <ItemGroup>
     <ProjectReference Include="..\..\..\app-core\appseed\tesseract\tesseract.vcxproj">
       <Project>{437699ad-7464-4e5f-acf3-7167487a9e3d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\app\appseed\aqua\aqua.vcxproj">
+      <Project>{51778453-c0aa-419d-a87f-4338c9dde3fa}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\app\appseed\aura\aura.vcxproj">
       <Project>{03e5b8e7-9e3b-44dd-9ede-e0a74d52c1c5}</Project>

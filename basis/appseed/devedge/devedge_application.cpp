@@ -197,7 +197,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
 
 
 extern "C"
-::aura::library * app_core_devedge_get_new_library(::aura::application * papp)
+::aura::library * design_devedge_get_new_library(::aura::application * papp)
 {
 
    return new ::aura::single_application_library < ::devedge::application >(papp,"app-core");

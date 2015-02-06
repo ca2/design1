@@ -101,10 +101,8 @@ namespace tarsila
 
 
 
-#ifdef CUBE
-
 extern "C"
-::aura::library * app_core_tarsila_get_new_library(::aura::application * papp)
+::aura::library * design_tarsila_get_new_library(::aura::application * papp)
 {
 
    return new ::aura::single_application_library < ::tarsila::application >(papp, "app-core");
@@ -112,17 +110,4 @@ extern "C"
 }
 
 
-#else
 
-
-
-extern "C"
-::aura::library * get_new_library(::aura::application * papp)
-{
-
-   return new ::aura::single_application_library < ::tarsila::application >(papp, "app-core");
-
-}
-
-
-#endif
