@@ -1,0 +1,4 @@
+LIBRARY      "app_core_devedge"
+
+EXPORTS
+app_core_devedge_get_new_library
