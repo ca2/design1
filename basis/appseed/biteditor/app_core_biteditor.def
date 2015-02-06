@@ -1,0 +1,4 @@
+LIBRARY      "app_core_biteditor"
+
+EXPORTS
+get_new_library
