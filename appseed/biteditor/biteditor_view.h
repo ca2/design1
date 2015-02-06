@@ -1,0 +1,110 @@
+#pragma once
+
+
+namespace biteditor
+{
+
+   class document;
+
+
+   class CLASS_DECL_CA2_BITEDITOR view : 
+      virtual public ::user::scroll_view
+   {
+   public:
+
+
+      mutex                         m_mutexData;
+
+      file_position                 m_iSelStart;
+      file_position                 m_iSelEnd;
+      file_position                 m_iViewOffset;
+      file_position                 m_iViewSize;
+      index                         m_iColumn;
+
+
+      biteditor::ascii_box *        m_pasciibox;
+      biteditor::hex_box *          m_phexbox;
+      ::count m_iLineSize;
+      int32_t                       m_iLineHeight;
+
+
+      view(::aura::application * papp);
+      virtual ~view();
+
+
+#ifdef DEBUG
+      virtual void assert_valid() const;
+      virtual void dump(dump_context & dumpcontext) const;
+#endif
+
+      //   virtual void _001OnDraw(::draw2d::graphics * pdc);
+
+      int64_t CalcLineCount();
+
+      int32_t UpdateScrollSizes();
+
+
+      uint32_t m_dwLastKeyWparam;
+      uint32_t m_dwLastKeyLparam;
+
+      DECL_GEN_SIGNAL(_001OnLButtonDown);
+         DECL_GEN_SIGNAL(_001OnLButtonUp);
+         DECL_GEN_SIGNAL(_001OnMouseMove);
+         DECL_GEN_SIGNAL(_001OnKeyDown);
+         DECL_GEN_SIGNAL(_001OnKeyUp);
+         DECL_GEN_SIGNAL(_001OnTimer);
+         DECL_GEN_SIGNAL(_001OnHScroll);
+
+         DECL_GEN_SIGNAL(_001OnRButtonUp);
+
+         DECL_GEN_SIGNAL(_001OnChar);
+         DECL_GEN_SIGNAL(_001OnSysChar);
+
+         void on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint);
+
+      void key_to_char(WPARAM wparam, LPARAM lparam);
+
+      sp(::biteditor::document) get_document() const;
+
+      virtual void pre_translate_message(::signal_details * pobj);
+      virtual void install_message_handling(::message::dispatch * pinterface);
+      virtual bool pre_create_window(::user::create_struct& cs);
+
+      DECL_GEN_SIGNAL(_001OnInitialUpdate);
+
+         DECL_GEN_SIGNAL(_001OnDestroy);
+         DECL_GEN_SIGNAL(_001OnSize);
+         DECL_GEN_SIGNAL(_001OnPaint);
+         DECL_GEN_SIGNAL(_001OnCreate);
+         DECL_GEN_SIGNAL(_001OnContextMenu);
+         DECL_GEN_SIGNAL(_001OnSetCursor);
+         DECL_GEN_SIGNAL(_001OnUpdateViewEncoding);
+         DECL_GEN_SIGNAL(_001OnViewEncoding);
+         DECL_GEN_SIGNAL(_001OnWavePlayerEvent);
+
+
+         void get_view_lines(stringa & stra);
+
+
+      virtual void _001GetSelText(string & str);
+
+
+      virtual int32_t get_wheel_scroll_delta();
+
+
+      index SelToColumn(file_position iSel);
+      index SelToLine(file_position iSel);
+      file_position LineColumnToSel(index iLine, index iColumn);
+
+      void OneLineUp();
+
+
+
+
+   };
+
+
+} // namespace biteditor
+
+
+
