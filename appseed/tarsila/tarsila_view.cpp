@@ -6,11 +6,10 @@ namespace tarsila
 
 
    view::view(::aura::application * papp) :
-      element(papp),
-      m_drawing(papp)
+      element(papp)
    {
 
-      m_drawing.m_emode = drawing::mode_selection;
+      
 
       connect_command("selection_tool", &view::_001OnSelectionTool);
       connect_update_cmd_ui("selection_tool", &view::_001OnUpdateSelectionTool);
@@ -120,15 +119,22 @@ namespace tarsila
    void view:: _001OnDraw(::draw2d::graphics * pdc)
    {
 
+      
+
       rect rectClient;
 
       GetClientRect(rectClient);
 
       pdc->FillSolidRect(rectClient,ARGB(184 - 66,184,184,177));
 
+      data * pdata = get_document()->get_typed_data < data>();
+
+      if(pdata == NULL)
+         return;
+
       point_array pta;
 
-      pta = m_pointa;
+      pta = pdata->m_pointa;
 
       if (m_estate == state_polygon_tool_dots)
       {
@@ -159,7 +165,7 @@ namespace tarsila
 
       br->create_solid(ARGB(184,255,255,255));
 
-      m_drawing._001OnDraw(pdc);
+      pdata->m_drawing._001OnDraw(pdc);
 
    }
 
@@ -222,23 +228,25 @@ namespace tarsila
    {
       
       SCAST_PTR(::message::mouse, pmouse, pobj)
+
+      data * pdata = get_document()->get_typed_data < data>();
       
       point pt = pmouse->m_pt;
       
       ScreenToClient(&pt);
 
-      if(m_drawing.m_emode == drawing::mode_selection)
+      if(pdata->m_drawing.m_emode == drawing::mode_selection)
       {
 
-         if(m_bMouseDown && (m_drawing.m_bMoving || m_drawing.m_bMovingPoint))
+         if(m_bMouseDown && (pdata->m_drawing.m_bMoving || pdata->m_drawing.m_bMovingPoint))
          {
 
-            m_drawing.m_ptMove = pt;
+            pdata->m_drawing.m_ptMove = pt;
 
          }
          
       }
-      else if(m_drawing.m_emode == drawing::mode_polygon_tool)
+      else if(pdata->m_drawing.m_emode == drawing::mode_polygon_tool)
       {
 
          if (m_estate == state_polygon_tool_initial)
@@ -264,14 +272,16 @@ namespace tarsila
 
       SCAST_PTR(::message::mouse, pmouse, pobj)
 
+         data * pdata = get_document()->get_typed_data < data>();
+
       point pt = pmouse->m_pt;
 
       ScreenToClient(&pt);
 
-      if(m_drawing.m_emode == drawing::mode_selection)
+      if(pdata->m_drawing.m_emode == drawing::mode_selection)
       {
 
-         ::tarsila::element * pelement = m_drawing.hit_test(pt);
+         ::tarsila::element * pelement = pdata->m_drawing.hit_test(pt);
 
          
 
@@ -279,7 +289,7 @@ namespace tarsila
          if(pelement != NULL)
          {
 
-            if(m_drawing.m_elementptraSelected.contains(pelement))
+            if(pdata->m_drawing.m_elementptraSelected.contains(pelement))
             {
 
 
@@ -294,7 +304,7 @@ namespace tarsila
                      if(!Session.is_key_pressed(::user::key_control))
                      {
 
-                        m_drawing.m_elementptraSelected.sel_point_clear();
+                        pdata->m_drawing.m_elementptraSelected.sel_point_clear();
 
                      }
 
@@ -302,23 +312,23 @@ namespace tarsila
 
                   }
 
-                  m_drawing.m_bMovingPoint = true;
+                  pdata->m_drawing.m_bMovingPoint = true;
 
                }
                else
                {
 
-                  m_drawing.m_elementptraSelected.sel_point_clear();
+                  pdata->m_drawing.m_elementptraSelected.sel_point_clear();
 
-                  m_drawing.m_bMoving = true;
+                  pdata->m_drawing.m_bMoving = true;
 
                }
 
                SetCapture();
 
-               m_drawing.m_ptStart = pt;
+               pdata->m_drawing.m_ptStart = pt;
 
-               m_drawing.m_ptMove = pt;
+               pdata->m_drawing.m_ptMove = pt;
 
 
                m_bMouseDown = true;
@@ -330,11 +340,11 @@ namespace tarsila
                if(!Session.is_key_pressed(::user::key_control))
                {
 
-                  m_drawing.m_elementptraSelected.remove_all();
+                  pdata->m_drawing.m_elementptraSelected.remove_all();
 
                }
 
-               m_drawing.m_elementptraSelected.add(pelement);
+               pdata->m_drawing.m_elementptraSelected.add(pelement);
 
             }
 
@@ -344,14 +354,14 @@ namespace tarsila
             if(!Session.is_key_pressed(::user::key_control))
             {
 
-               m_drawing.m_elementptraSelected.remove_all();
+               pdata->m_drawing.m_elementptraSelected.remove_all();
 
             }
 
          }
 
       }
-      else if(m_drawing.m_emode == drawing::mode_polygon_tool)
+      else if(pdata->m_drawing.m_emode == drawing::mode_polygon_tool)
       {
 
          if(m_estate == state_polygon_tool_initial)
@@ -359,13 +369,13 @@ namespace tarsila
 
             m_estate = state_polygon_tool_dots;
 
-            m_pointa.add(pt);
+            pdata->m_pointa.add(pt);
 
          }
          else if(m_estate == state_polygon_tool_dots)
          {
 
-            m_pointa.add(pt);
+            pdata->m_pointa.add(pt);
 
          }
 
@@ -381,23 +391,23 @@ namespace tarsila
          point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
-
+      data * pdata = get_document()->get_typed_data < data>();
       if (m_estate == state_polygon_tool_dots)
       {
          
          m_estate = state_polygon_tool_initial;
          
-         m_pointa.add(pt);
+         pdata->m_pointa.add(pt);
 
          sp(polygon) sppolygon(canew(polygon(get_app())));
 
-         sppolygon->m_pointa = m_pointa;
+         sppolygon->m_pointa =pdata->m_pointa;
          
-         m_drawing.m_polygona.add(sppolygon);
+         pdata->m_drawing.m_polygona.add(sppolygon);
 
-         m_drawing.m_elementptra.add(sppolygon);
+         pdata->m_drawing.m_elementptra.add(sppolygon);
 
-         m_pointa.remove_all();
+         pdata->m_pointa.remove_all();
 
       }
 
@@ -411,24 +421,24 @@ namespace tarsila
       SCAST_PTR(::message::mouse, pmouse, pobj)
       point pt = pmouse->m_pt;
       ScreenToClient(&pt);
-
-      if(m_drawing.m_emode == drawing::mode_selection)
+      data * pdata = get_document()->get_typed_data < data>();
+      if(pdata->m_drawing.m_emode == drawing::mode_selection)
       {
 
-         if(m_drawing.m_bMoving)
+         if(pdata->m_drawing.m_bMoving)
          {
 
-            m_drawing.m_bMoving = false;
+            pdata->m_drawing.m_bMoving = false;
 
-            m_drawing.m_elementptraSelected.translate(m_drawing.m_ptMove - m_drawing.m_ptStart);
+            pdata->m_drawing.m_elementptraSelected.translate(pdata->m_drawing.m_ptMove - pdata->m_drawing.m_ptStart);
 
          }
-         else if(m_drawing.m_bMovingPoint)
+         else if(pdata->m_drawing.m_bMovingPoint)
          {
 
-            m_drawing.m_bMovingPoint = false;
+            pdata->m_drawing.m_bMovingPoint = false;
 
-            m_drawing.m_elementptraSelected.move_to_sel_points(&m_drawing);
+            pdata->m_drawing.m_elementptraSelected.move_to_sel_points(&pdata->m_drawing);
 
 
          }
@@ -442,7 +452,8 @@ namespace tarsila
 
    void view::_001OnSelectionTool(signal_details * pobj)
    {
-      m_drawing.m_emode = drawing::mode_selection;
+      data * pdata = get_document()->get_typed_data < data>();
+      pdata->m_drawing.m_emode = drawing::mode_selection;
       pobj->m_bRet = true;
    }
 
@@ -455,8 +466,9 @@ namespace tarsila
 
    void view::_001OnPolygonTool(signal_details * pobj)
    {
-      m_drawing.m_emode = drawing::mode_polygon_tool;
-      m_pointa.remove_all();
+      data * pdata = get_document()->get_typed_data < data>();
+      pdata->m_drawing.m_emode = drawing::mode_polygon_tool;
+      pdata->m_pointa.remove_all();
       m_estate = state_polygon_tool_initial;
 
       pobj->m_bRet = true;

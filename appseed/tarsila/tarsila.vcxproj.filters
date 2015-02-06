@@ -41,6 +41,21 @@
     <ClCompile Include="tarsila_element_array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tarsila_main_document.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tarsila_main_frame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tarsila_pane_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tarsila_pane_view_update_hint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tarsila_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -80,6 +95,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tarsila_element_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarsila_main_document.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarsila_main_frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarsila_pane_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarsila_pane_view_update_hint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tarsila_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

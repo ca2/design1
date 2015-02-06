@@ -13,8 +13,10 @@ namespace tarsila
 
       sp(::xml::tree_schema) m_pxmlschemaDrawing;
 
+      sp(::user::single_document_template)   m_pdoctemplateMain;
+      sp(::user::multiple_document_template)    m_pdoctemplate;
 
-      sp(::user::single_document_template) m_pdoctemplate;
+      pane_view *    m_ppaneview;
 
 
       application();
