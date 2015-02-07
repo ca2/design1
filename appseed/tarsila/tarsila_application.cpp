@@ -147,7 +147,7 @@ namespace tarsila
 
       }
 
-      System.post_thread_message(WM_QUIT);
+      //System.post_thread_message(WM_QUIT);
 
 
    }
