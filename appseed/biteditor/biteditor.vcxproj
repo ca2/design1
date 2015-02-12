@@ -44,9 +44,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BB08FC74-F5E0-4753-BCB9-942B73DB8BC7}</ProjectGuid>
-    <RootNamespace>app_core_biteditor</RootNamespace>
+    <RootNamespace>design_biteditor</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>app_core_biteditor</ProjectName>
+    <ProjectName>design_biteditor</ProjectName>
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and $(VisualStudioVersion) == ''">$(VCTargetsPath11)</VCTargetsPath>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

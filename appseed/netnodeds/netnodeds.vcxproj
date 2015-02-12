@@ -35,10 +35,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A2758412-B6A6-48B1-B7F5-AD4AEE7FF2CF}</ProjectGuid>
-    <RootNamespace>app_core_devedge</RootNamespace>
+    <ProjectGuid>{37D4D3C0-09E3-4644-BAE9-DAF884B46988}</ProjectGuid>
+    <RootNamespace>design_netnodeds</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>app_core_devedge</ProjectName>
+    <ProjectName>design_netnodeds</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'" Label="Configuration">
