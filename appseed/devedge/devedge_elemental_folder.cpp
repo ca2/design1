@@ -6,7 +6,7 @@ namespace devedge
 
 
    folder::folder(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       spa(file)(papp)
    {
    }

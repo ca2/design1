@@ -4,7 +4,7 @@ namespace syllomatter
 {
 
    frame::frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_child_frame(papp),
       form_child_frame(papp),
       m_imagelist(papp)

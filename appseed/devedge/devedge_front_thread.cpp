@@ -6,7 +6,7 @@ namespace devedge
 
 
    front_thread::front_thread(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       thread(papp),
       m_evInitialized(papp)
    {

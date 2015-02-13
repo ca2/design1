@@ -6,7 +6,7 @@ namespace devedge
 
 
    solution_tree_data::solution_tree_data(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data(papp),
       ::data::tree(papp)
    {

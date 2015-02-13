@@ -6,7 +6,7 @@ namespace biteditor
 
 
    hex_box::hex_box(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       m_spfont(allocer())
    {
 

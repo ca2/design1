@@ -6,7 +6,7 @@ namespace tarsila
 
 
    data::data(::aura::application * papp):
-      element(papp),
+      ::object(papp),
       ::data::data(papp),
       m_drawing(papp)
    {

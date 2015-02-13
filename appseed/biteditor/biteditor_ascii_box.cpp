@@ -6,7 +6,7 @@ namespace biteditor
 
 
    ascii_box::ascii_box(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       m_spfont(allocer())
    {
 

@@ -6,7 +6,7 @@ namespace devedge
 
 
    child_frame::child_frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_child_frame(papp)
    {
       

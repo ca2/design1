@@ -6,7 +6,7 @@ namespace biteditor
 
 
    front_document::front_document(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
       m_memfile(papp),

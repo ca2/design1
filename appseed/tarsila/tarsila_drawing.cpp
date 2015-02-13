@@ -5,7 +5,7 @@ namespace tarsila
 
 
    drawing::drawing(::aura::application * papp) :
-      element(papp)
+      ::object(papp)
    {
 
       m_bMoving = false;
