@@ -6,7 +6,7 @@ namespace devedge
 
 
    html_edit_view::html_edit_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::interaction(papp),
       ::user::scroll_view(papp),
       ::user::form_interface(papp),

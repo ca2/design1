@@ -22,7 +22,7 @@ namespace refactor
 {
 
    view::view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       
       ::data::listener(papp),
       ::user::edit_plain_text(papp),

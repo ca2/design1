@@ -6,7 +6,7 @@ namespace syllomatter
 
 
    list_view::list_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::interaction(papp),
       ::user::form_interface(papp),
       ::user::form(papp),
@@ -374,7 +374,7 @@ namespace syllomatter
    }
 
    list_view::commit_thread::commit_thread(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       thread(papp),
       simple_thread(papp)
    {
@@ -655,7 +655,7 @@ namespace syllomatter
 
 
    list_view::update_thread::update_thread(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       thread(papp),
       simple_thread(papp)
    {

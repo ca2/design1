@@ -7,7 +7,7 @@ namespace syllomatter
 
 
    filemanager_frame::filemanager_frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_frame_window(papp),
       ::filemanager::frame (papp)
    {

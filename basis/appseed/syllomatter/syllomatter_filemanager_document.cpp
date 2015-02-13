@@ -6,7 +6,7 @@ namespace syllomatter
 
 
    filemanager_document::filemanager_document(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
       ::userfs::document(papp),

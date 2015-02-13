@@ -6,7 +6,7 @@ namespace devedge
 
 
    solution_view::solution_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       
       ::user::scroll_view(papp),
       ::user::tree(papp)

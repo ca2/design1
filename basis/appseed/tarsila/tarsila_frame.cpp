@@ -6,7 +6,7 @@ namespace tarsila
 
 
    frame::frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_frame_window(papp)
    {
       m_iFrameData = 10;

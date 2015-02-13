@@ -4,7 +4,7 @@ namespace devedge
 {
 
    file::file(::aura::application * papp) : 
-      element(papp)
+      ::object(papp)
    {   
       m_pdocument = NULL;
    }

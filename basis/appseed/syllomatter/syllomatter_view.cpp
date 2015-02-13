@@ -6,14 +6,14 @@ namespace syllomatter
 
 
    view::extract::extract(::aura::application * papp) :
-      element(papp)
+      ::object(papp)
    {
 
    }
 
 
    view::view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::interaction(papp),
       ::user::scroll_view(papp),
       ::user::form_interface(papp),

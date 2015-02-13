@@ -6,7 +6,7 @@ namespace devedge
 
 
    html_edit_document::html_edit_document(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
       m_memfile(papp), 
