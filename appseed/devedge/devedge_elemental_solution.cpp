@@ -8,7 +8,7 @@ namespace devedge
 
 
    solution::solution(sp(solution_document) pdoc) :
-      element(pdoc->get_app()),
+      ::object(pdoc->get_app()),
       m_pdoc(pdoc),
       m_xmldoc(pdoc->get_app())
    {

@@ -6,8 +6,8 @@ namespace tarsila
 
 
    polygon::polygon(::aura::application * papp) :
-      ::::object(papp),
-      ::object(papp)
+      ::object(papp),
+      element(papp)
    {
 
    }
