@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE solution_tree_data :
+   class CLASS_DECL_DESIGN_NETNODEDS solution_tree_data :
       virtual public ::data::tree
    {
    public:

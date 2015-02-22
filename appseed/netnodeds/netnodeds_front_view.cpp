@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -156,11 +156,11 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonDown);
+      &::netnodeds::Element2D::_001OnLButtonDown);
       IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonUp);
+      &::netnodeds::Element2D::_001OnLButtonUp);
       }*/
 
    }
@@ -223,7 +223,7 @@ namespace devedge
       return  (::aura::impact::get_document());
    }
 
-   //::devedge::Element2D * front_view::hit_test(int32_t x, int32_t y)
+   //::netnodeds::Element2D * front_view::hit_test(int32_t x, int32_t y)
    //{
    //   sp(::aura::document) pdoc = get_document();
    //   return NULL;
@@ -337,4 +337,4 @@ namespace devedge
    }
 
 
-} // namespace devedge
+} // namespace netnodeds

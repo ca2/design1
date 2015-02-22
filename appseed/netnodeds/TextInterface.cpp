@@ -1,11 +1,11 @@
 #include "StdAfx.h"
 #include "TextInterface.h"
 
-namespace devedge
+namespace netnodeds
 {
 
 void TextInterface::_001GetSelText(string & str)
 {
 }
 
-} // namespace devedge
+} // namespace netnodeds

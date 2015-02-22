@@ -1,12 +1,12 @@
 #include "StdAfx.h"
 #include "PlainTextBox.h"
-#include "devedgeView.h"
-#include "devedgeDoc.h"
+#include "netnodedsView.h"
+#include "netnodedsDoc.h"
 
 
 
 
-namespace devedge
+namespace netnodeds
 {
 
 	PlainTextBox::PlainTextBox()
@@ -54,7 +54,7 @@ namespace devedge
 		}
 	}
 
-void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnDraw(netnodedsView * pview, CDC * pdc)
 {
    if(pview->m_pkeyboardfocus == (KeyboardFocus *) this)
    {
@@ -204,7 +204,7 @@ void PlainTextBox::_001GetSelText(string & str)
 	str.ReleaseBuffer();
 }
 
-void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
 	m_bMouseDown = true;
@@ -216,7 +216,7 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * p
 	pview->m_pelementMouseDown = this;
 	
 }
-void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
 	CDC * pdc = pview->GetDC();
@@ -228,7 +228,7 @@ void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pob
 	//AfxMessageBox(m_strText);
 }
 
-void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnCalcLayoutProc(netnodedsView * pview, CDC * pdc)
 {
    if(m_pfont != NULL)
 	{
@@ -253,7 +253,7 @@ void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pdc)
       m_size);
 }
 
-void PlainTextBox::_001OnCalcLayout(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnCalcLayout(netnodedsView * pview, CDC * pdc)
 {
 if(m_pfont != NULL)
 	{
@@ -287,7 +287,7 @@ if(m_pfont != NULL)
 	m_size.cy = y;
 }
 
-int PlainTextBox::SelToLine(devedgeView * pview, int iSel)
+int PlainTextBox::SelToLine(netnodedsView * pview, int iSel)
 {
    iSel -= m_iViewOffset;
 	string str;
@@ -308,7 +308,7 @@ int PlainTextBox::SelToLine(devedgeView * pview, int iSel)
    return -1;
 }
 
-int PlainTextBox::LineColumnToSel(devedgeView * pview, int iLine, int iColumn)
+int PlainTextBox::LineColumnToSel(netnodedsView * pview, int iLine, int iColumn)
 {
    int i1;
    int i2 = 0;
@@ -354,7 +354,7 @@ int PlainTextBox::LineColumnToSel(devedgeView * pview, int iLine, int iColumn)
 }
 
 
-int PlainTextBox::SelToColumn(devedgeView * pview, int iSel)
+int PlainTextBox::SelToColumn(netnodedsView * pview, int iSel)
 {
    iSel -= m_iViewOffset;
 	string str;
@@ -375,7 +375,7 @@ int PlainTextBox::SelToColumn(devedgeView * pview, int iSel)
    return -1;
 }
 
-int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
+int PlainTextBox::char_hit_test(netnodedsView * pview, CDC * pdc, int px, int py)
 {
    if(m_pfont != NULL)
 	{
@@ -442,7 +442,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
 	return iOffset + strLine.GetLength() + m_iViewOffset;
 }
 
-void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
       ::SetCursor(::LoadCursor(NULL, IDC_IBEAM));
@@ -458,7 +458,7 @@ void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::signal_object * pob
 
 }
 
-void PlainTextBox::_001OnGetText(devedgeView * pview)
+void PlainTextBox::_001OnGetText(netnodedsView * pview)
 {
    //if(m_bGetTextNeedUpdate)
    {
@@ -510,7 +510,7 @@ void PlainTextBox::_001OnGetText(devedgeView * pview)
 }
 
 
-void PlainTextBox::_001GetViewText(devedgeView * pview, string & str)
+void PlainTextBox::_001GetViewText(netnodedsView * pview, string & str)
 {
    _001OnGetText(pview);
    //int iSize = min(m_editfile.GetLength() - m_iViewOffset, m_iViewSize);
@@ -615,7 +615,7 @@ void PlainTextBox::CreateLineIndex()
    }
 }
 
-void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnChar(netnodedsView * pview, gen::signal_object * pobj)
 {
    SCAST_PTR(igui::win::message::key, pkey, pobj)
    bool bShift = ::GetKeyState(VK_SHIFT) & 0x80000000;
@@ -626,8 +626,8 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
       int i2 = m_iSelEnd;
       if(i1 != i2)
       {
-         devedgeDoc * pdoc = pview->GetDocument();
-         devedgeDoc::SetSelCommand * psetsel = new devedgeDoc::SetSelCommand;
+         netnodedsDoc * pdoc = pview->GetDocument();
+         netnodedsDoc::SetSelCommand * psetsel = new netnodedsDoc::SetSelCommand;
          psetsel->m_iPreviousSelStart = m_iSelStart;
          psetsel->m_iPreviousSelEnd = m_iSelEnd;
          Sort(i1, i2);
@@ -640,14 +640,14 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
          psetsel->m_iSelEnd = m_iSelEnd;
          pdoc->MacroBegin();
          pdoc->MacroRecord(psetsel);
-         pdoc->MacroRecord(new devedgeDoc::FileCommand());
+         pdoc->MacroRecord(new netnodedsDoc::FileCommand());
          pdoc->MacroEnd();
          OnUpdate();
       }
       else if(m_iSelEnd >= 0 && m_editfile.GetLength() > 0)
       {
-         devedgeDoc * pdoc = pview->GetDocument();
-         devedgeDoc::SetSelCommand * psetsel = new devedgeDoc::SetSelCommand;
+         netnodedsDoc * pdoc = pview->GetDocument();
+         netnodedsDoc::SetSelCommand * psetsel = new netnodedsDoc::SetSelCommand;
          psetsel->m_iPreviousSelStart = m_iSelStart;
          psetsel->m_iPreviousSelEnd = m_iSelEnd;
          m_iSelEnd--;
@@ -659,7 +659,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
          psetsel->m_iSelEnd = m_iSelEnd;
          pdoc->MacroBegin();
          pdoc->MacroRecord(psetsel);
-         pdoc->MacroRecord(new devedgeDoc::FileCommand());
+         pdoc->MacroRecord(new netnodedsDoc::FileCommand());
          pdoc->MacroEnd();
          OnUpdate();
       }
@@ -784,8 +784,8 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
          // Kill Focus => Kill Key Repeat Timer
          //AfxMessageBox("VK_RETURN reached PlainTextBox");
       }
-      devedgeDoc * pdoc = pview->GetDocument();
-      devedgeDoc::SetSelCommand * psetsel = new devedgeDoc::SetSelCommand;
+      netnodedsDoc * pdoc = pview->GetDocument();
+      netnodedsDoc::SetSelCommand * psetsel = new netnodedsDoc::SetSelCommand;
       psetsel->m_iPreviousSelStart = m_iSelStart;
       psetsel->m_iPreviousSelEnd = m_iSelEnd;
       m_editfile.MacroBegin();
@@ -819,7 +819,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
       psetsel->m_iSelEnd = m_iSelEnd;
       pdoc->MacroBegin();
       pdoc->MacroRecord(psetsel);
-      pdoc->MacroRecord(new devedgeDoc::FileCommand());
+      pdoc->MacroRecord(new netnodedsDoc::FileCommand());
       pdoc->MacroEnd();
       OnUpdate();
    }
@@ -833,7 +833,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
    pview->_001RedrawWindow();
 }
 
-void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnSysChar(netnodedsView * pview, gen::signal_object * pobj)
 {
    SCAST_PTR(igui::win::message::key, pkey, pobj)
    if(pkey->m_nChar == VK_DELETE)
@@ -858,7 +858,7 @@ void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::signal_object * pobj)
 }
 
 
-void PlainTextBox::_001OnKeyboardFocusTimer(devedgeView * pview, int iTimer)
+void PlainTextBox::_001OnKeyboardFocusTimer(netnodedsView * pview, int iTimer)
 {
    if(iTimer == 0)
    {
@@ -871,7 +871,7 @@ void PlainTextBox::_001OnKeyboardFocusTimer(devedgeView * pview, int iTimer)
    }
 }
 
-void PlainTextBox::OneLineUp(devedgeView * pview)
+void PlainTextBox::OneLineUp(netnodedsView * pview)
 {
    pview->m_ptScroll.y -= m_iLineHeight;
    if(pview->m_ptScroll.y < 0)
@@ -964,4 +964,4 @@ void PlainTextBox::OnUpdate()
    m_y = -1;
 }
 
-} // namespace devedge
+} // namespace netnodeds

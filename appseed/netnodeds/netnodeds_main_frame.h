@@ -1,9 +1,9 @@
 #pragma once
 
-namespace devedge
+namespace netnodeds
 {
 
-   class CLASS_DECL_DEVEDGE main_frame : public simple_frame_window
+   class CLASS_DECL_DESIGN_NETNODEDS main_frame : public simple_frame_window
    {
    public:
       
@@ -36,4 +36,4 @@ namespace devedge
       void OnTimer(uint32_t nIDEvent);
    };
 
-} // namespace devedge
+} // namespace netnodeds

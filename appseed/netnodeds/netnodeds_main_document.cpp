@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -44,10 +44,10 @@ namespace devedge
    bool main_document::on_open_document(var varFile)
    {
 
-      ::devedge::devedge & devedge = Application.devedge();
+      ::netnodeds::netnodeds & netnodeds = Application.netnodeds();
       sp(::create) cc(get_app());
       cc->m_spCommandLine->m_varFile = varFile;
-      return devedge.m_ptemplate_devedge->open_document_file(cc) != NULL;
+      return netnodeds.m_ptemplate_netnodeds->open_document_file(cc) != NULL;
 
    }
 
@@ -61,6 +61,6 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

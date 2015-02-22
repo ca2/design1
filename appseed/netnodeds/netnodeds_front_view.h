@@ -1,13 +1,13 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
    class document;
 
 
-   class CLASS_DECL_DEVEDGE front_view : public html_view
+   class CLASS_DECL_DESIGN_NETNODEDS front_view : public html_view
    {
    public:
       front_view(::aura::application * papp);
@@ -67,7 +67,7 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -117,7 +117,7 @@ namespace devedge
       string strModuleFolder;
       strModuleFolder = System.get_module_folder();
 
-      if(!spfile->open(System.dir().path(strModuleFolder, "devedge_contextmenu.xml"), ::file::type_text | ::file::mode_read))
+      if(!spfile->open(System.dir().path(strModuleFolder, "netnodeds_contextmenu.xml"), ::file::type_text | ::file::mode_read))
          return;
 
       string str;
@@ -136,7 +136,7 @@ namespace devedge
 
    }
 
-   sp(::devedge::document) view::get_document() const
+   sp(::netnodeds::document) view::get_document() const
    {
       return  (::user::edit_plain_text_view::get_document());
    }
@@ -205,6 +205,6 @@ namespace devedge
    }
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

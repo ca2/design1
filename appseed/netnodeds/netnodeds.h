@@ -15,76 +15,76 @@
 
 
 
-#ifdef _DEVEDGE_LIBRARY
-#define CLASS_DECL_DEVEDGE  CLASS_DECL_EXPORT
+#ifdef _DESIGN_NENOTDEDS_LIBRARY
+#define CLASS_DECL_DESIGN_NETNODEDS  CLASS_DECL_EXPORT
 #else
-#define CLASS_DECL_DEVEDGE  CLASS_DECL_IMPORT
+#define CLASS_DECL_DESIGN_NETNODEDS  CLASS_DECL_IMPORT
 #endif
 
 
 
 
-namespace devedge
+namespace netnodeds
 {
 
    class application;
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 
 
 #undef App
-#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::devedge::application > ())
+#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::netnodeds::application > ())
 
 
 
-#include "devedge_document.h"
-#include "devedge_main_frame.h"
-#include "devedge_child_frame.h"
-#include "devedge_view.h"
+#include "netnodeds_document.h"
+#include "netnodeds_main_frame.h"
+#include "netnodeds_child_frame.h"
+#include "netnodeds_view.h"
 
-#include "devedge_elemental.h"
+#include "netnodeds_elemental.h"
 
-#include "devedge_elemental_file.h"
-#include "devedge_elemental_folder.h"
-#include "devedge_elemental_headers.h"
-#include "devedge_elemental_source.h"
-#include "devedge_elemental_project.h"
-#include "devedge_elemental_solution.h"
+#include "netnodeds_elemental_file.h"
+#include "netnodeds_elemental_folder.h"
+#include "netnodeds_elemental_headers.h"
+#include "netnodeds_elemental_source.h"
+#include "netnodeds_elemental_project.h"
+#include "netnodeds_elemental_solution.h"
 
-#include "devedge_solution_tree_data.h"
-
-
-#include "devedge_solution_document.h"
-#include "devedge_solution_view.h"
+#include "netnodeds_solution_tree_data.h"
 
 
-#include "devedge_main_document.h"
-#include "devedge_pane_view.h"
-#include "devedge_pane_view_update_hint.h"
+#include "netnodeds_solution_document.h"
+#include "netnodeds_solution_view.h"
 
 
-
-
-#include "devedge_front_thread.h"
-
-#include "devedge_front_document.h"
-#include "devedge_front_child_frame.h"
-#include "devedge_front_view.h"
+#include "netnodeds_main_document.h"
+#include "netnodeds_pane_view.h"
+#include "netnodeds_pane_view_update_hint.h"
 
 
 
-#include "devedge_html_edit_document.h"
-#include "devedge_html_edit_child_frame.h"
-#include "devedge_html_edit_view.h"
+
+#include "netnodeds_front_thread.h"
+
+#include "netnodeds_front_document.h"
+#include "netnodeds_front_child_frame.h"
+#include "netnodeds_front_view.h"
 
 
-#include "devedge_html_stage_document.h"
-#include "devedge_html_stage_child_frame.h"
-#include "devedge_html_stage_view.h"
+
+#include "netnodeds_html_edit_document.h"
+#include "netnodeds_html_edit_child_frame.h"
+#include "netnodeds_html_edit_view.h"
 
 
-#include "devedge_devedge.h"
-#include "devedge_application.h"
+#include "netnodeds_html_stage_document.h"
+#include "netnodeds_html_stage_child_frame.h"
+#include "netnodeds_html_stage_view.h"
+
+
+#include "netnodeds_netnodeds.h"
+#include "netnodeds_application.h"

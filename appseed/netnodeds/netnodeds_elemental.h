@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE elemental :
+   class CLASS_DECL_DESIGN_NETNODEDS elemental :
       virtual public ::data::tree_item,
       virtual public ::object
    {
@@ -49,6 +49,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

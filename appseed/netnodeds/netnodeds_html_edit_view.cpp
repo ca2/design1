@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -124,9 +124,9 @@ namespace devedge
       }
       else if(puh->is_type_of(main_document::TypeOnBeforeShowView))
       {
-      ::devedge::application_interface * papp = dynamic_cast < ::devedge::application_interface * > (get_app());
-      POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      ::netnodeds::application_interface * papp = dynamic_cast < ::netnodeds::application_interface * > (get_app());
+      POSITION posDoc = papp->m_ptemplate_netnodeds->get_document_count();
+      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_netnodeds->get_document(posDoc);
       if(m_str == pdoc->get_path_name())
       {
       //               transform_back();
@@ -196,11 +196,11 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonDown);
+      &::netnodeds::Element2D::_001OnLButtonDown);
       IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonUp);
+      &::netnodeds::Element2D::_001OnLButtonUp);
       }*/
 
    }
@@ -378,9 +378,9 @@ namespace devedge
    void html_edit_view::transform()
    {
       /* xxx
-      devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
-      POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      netnodedsApp * papp = dynamic_cast < netnodedsApp * > (( (GetParentFrame()))->m_papp);
+      POSITION posDoc = papp->m_ptemplate_netnodeds->get_document_count();
+      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_netnodeds->get_document(posDoc);
 
       string strSourcePath = pdoc->get_path_name();
       string strDestPath = System.dir().time("html.html");
@@ -444,9 +444,9 @@ namespace devedge
       string strImgNns = Application.dir().matter("html_edit_nns.png");
 
       /* xxx
-      devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
-      POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      netnodedsApp * papp = dynamic_cast < netnodedsApp * > (( (GetParentFrame()))->m_papp);
+      POSITION posDoc = papp->m_ptemplate_netnodeds->get_document_count();
+      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_netnodeds->get_document(posDoc);
       string strDestPath = pdoc->get_path_name();
 
       string str;
@@ -468,6 +468,6 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

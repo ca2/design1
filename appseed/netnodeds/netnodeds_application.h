@@ -1,7 +1,7 @@
 #pragma once
 
 
-void CLASS_DECL_DEVEDGE KickDevEdgeFront(::aura::application * papp);
+void CLASS_DECL_DESIGN_NETNODEDS KickDevEdgeFront(::aura::application * papp);
 
 
 namespace netnode
@@ -17,14 +17,14 @@ namespace netnode
 class netnodeScriptManager;
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
    class pane_view;
 
 
-   class CLASS_DECL_DEVEDGE application :
+   class CLASS_DECL_DESIGN_NETNODEDS application :
       virtual public ::tesseract::application
    {
    public:
@@ -32,7 +32,7 @@ namespace devedge
 
       map < int32_t, int32_t, netnode::bergedge_document *, netnode::bergedge_document * > m_mapEdge;
       sp(pane_view)                   m_ppaneview;
-      ::devedge::devedge          * m_pdevedge;
+      ::netnodeds::netnodeds          * m_pnetnodeds;
 
 
       application();
@@ -54,12 +54,12 @@ namespace devedge
       virtual bool on_install();
 
 
-      inline ::devedge::devedge & devedge() { return *m_pdevedge; }
+      inline ::netnodeds::netnodeds & netnodeds() { return *m_pnetnodeds; }
 
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

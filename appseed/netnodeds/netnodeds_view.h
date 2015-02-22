@@ -1,11 +1,11 @@
 #pragma once
 
-namespace devedge
+namespace netnodeds
 {
 
    class document;
 
-   class CLASS_DECL_DEVEDGE view : 
+   class CLASS_DECL_DESIGN_NETNODEDS view : 
       public ::user::edit_plain_text_view
    {
    public:
@@ -20,7 +20,7 @@ namespace devedge
       virtual void _001OnAfterChangeText();
 
 
-      sp(::devedge::document) get_document() const;
+      sp(::netnodeds::document) get_document() const;
       
       DECL_GEN_SIGNAL(_001OnContextMenu);
       DECL_GEN_SIGNAL(_001OnUpdateEditUndo);
@@ -36,4 +36,4 @@ namespace devedge
 
    };
 
-} // namespace devedge
+} // namespace netnodeds

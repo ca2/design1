@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE front_thread : 
+   class CLASS_DECL_DESIGN_NETNODEDS front_thread : 
       public ::thread
    {
    public:
@@ -34,7 +34,7 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

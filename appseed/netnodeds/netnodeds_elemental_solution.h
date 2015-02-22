@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -9,14 +9,14 @@ namespace devedge
    class solution_view;
 
 
-   class CLASS_DECL_DEVEDGE solution :
-      virtual public ::devedge::elemental
+   class CLASS_DECL_DESIGN_NETNODEDS solution :
+      virtual public ::netnodeds::elemental
    {
    public:
       
       
       xml::document                                               m_xmldoc;
-      comparable_array < ::devedge::project * >                     m_projectptra;
+      comparable_array < ::netnodeds::project * >                     m_projectptra;
       sp(solution_document)                                         m_pdoc;
       solution_view *                                             m_pview;
       string                                                      m_strSolutionPath;
@@ -37,6 +37,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

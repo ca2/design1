@@ -2,30 +2,30 @@
 #include "Element2D.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
-void Element2D::_001OnDraw(devedgeView * pview, CDC * pdc)
+void Element2D::_001OnDraw(netnodedsView * pview, CDC * pdc)
 {
 	
 }
 
-void Element2D::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
-/*	devedgeApp * papp = (devedgeApp *) AfxGetApp();
+/*	netnodedsApp * papp = (netnodedsApp *) AfxGetApp();
 	BaseView * pviewGeneric = papp->GetView(this);
-	devedgeView * pview = dynamic_cast < devedgeView * > (pviewGeneric);
+	netnodedsView * pview = dynamic_cast < netnodedsView * > (pviewGeneric);
 	if(pview != NULL)
 	{
 	}*/
 }
-void Element2D::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
 }
 
-void Element2D::_001OnMouseMove(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
 }
@@ -41,4 +41,4 @@ void Element2D::_001OnCalcLayout(CDC * pdc)
 }
 
 
-} // namespace devedge
+} // namespace netnodeds

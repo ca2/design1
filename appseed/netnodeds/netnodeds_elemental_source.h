@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE source :
+   class CLASS_DECL_DESIGN_NETNODEDS source :
       virtual public folder
    {
    public:
@@ -26,6 +26,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

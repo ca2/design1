@@ -1,6 +1,6 @@
 #include "framework.h"
 
-namespace devedge
+namespace netnodeds
 {
 
    file::file(::aura::application * papp) : 
@@ -20,11 +20,11 @@ namespace devedge
    void file::open(sp(::user::interaction) puieParent)
    {
 
-      ::devedge::devedge & devedge = Application.devedge();
+      ::netnodeds::netnodeds & netnodeds = Application.netnodeds();
       sp(::create) cc(get_app());
       cc->m_spCommandLine->m_varFile = m_strPath;
       cc->m_puiParent = puieParent;
-      m_pdocument =  (devedge.m_ptemplate_devedge->open_document_file(cc));
+      m_pdocument =  (netnodeds.m_ptemplate_netnodeds->open_document_file(cc));
 
    }
 
@@ -42,4 +42,4 @@ namespace devedge
       return solution_type_file;
    }
 
-} // namespace devedge
+} // namespace netnodeds

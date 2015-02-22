@@ -1,11 +1,11 @@
 #pragma once
 
-namespace devedge
+namespace netnodeds
 {
 
    class view;
 
-   class CLASS_DECL_DEVEDGE document :
+   class CLASS_DECL_DESIGN_NETNODEDS document :
       public ::aura::document
    {
    public:
@@ -60,4 +60,4 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds

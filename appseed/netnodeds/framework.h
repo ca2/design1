@@ -3,6 +3,6 @@
 #endif
 
 
-#include "devedge.h"
+#include "netnodeds.h"
 
 

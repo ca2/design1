@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE child_frame :
+   class CLASS_DECL_DESIGN_NETNODEDS child_frame :
       public simple_child_frame
    {
    public:
@@ -30,7 +30,7 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

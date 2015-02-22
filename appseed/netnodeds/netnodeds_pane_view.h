@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge 
+namespace netnodeds 
 {
 
 
-   class CLASS_DECL_DEVEDGE pane_view : 
+   class CLASS_DECL_DESIGN_NETNODEDS pane_view : 
       public ::userex::pane_tab_view
    {
    public:
@@ -39,6 +39,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

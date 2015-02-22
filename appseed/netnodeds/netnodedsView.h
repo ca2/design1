@@ -10,24 +10,24 @@
 #endif // _MSC_VER > 1000
 
 
-class devedgeDoc;
+class netnodedsDoc;
 
-namespace devedge
+namespace netnodeds
 {
 	class KeyboardFocus;
 	class Element2D;
-} // namespace devedge
+} // namespace netnodeds
 
 
-class CLASS_DECL_CA2_DEVEDGE devedgeView : public base_edit_plain_text_view
+class CLASS_DECL_CA2_DEVEDGE netnodedsView : public base_edit_plain_text_view
 {
 public:
-	devedgeView(::ca::application * papp);           // protected constructor used by dynamic creation
-	// DECLARE_DYNCREATE(devedgeView)
+	netnodedsView(::ca::application * papp);           // protected constructor used by dynamic creation
+	// DECLARE_DYNCREATE(netnodedsView)
 
 
 protected:
-	virtual ~devedgeView();
+	virtual ~netnodedsView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
@@ -40,7 +40,7 @@ public:
 
    base_wnd * VirtualGetWnd();
 
-	devedgeDoc * GetDocument() const;
+	netnodedsDoc * GetDocument() const;
 
 protected:
    virtual BOOL PreTranslateMessage(MSG * pMsg);

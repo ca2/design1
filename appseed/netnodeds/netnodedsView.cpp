@@ -7,10 +7,10 @@ static char THIS_FILE[]=__FILE__;
 #endif
 
 
-// IMPLEMENT_DYNCREATE(devedgeView, base_edit_plain_text_view)
+// IMPLEMENT_DYNCREATE(netnodedsView, base_edit_plain_text_view)
 
-  BEGIN_MESSAGE_MAP(devedgeView, base_edit_plain_text_view)
-	//{{AFX_MSG_MAP(devedgeView)
+  BEGIN_MESSAGE_MAP(netnodedsView, base_edit_plain_text_view)
+	//{{AFX_MSG_MAP(netnodedsView)
 /*
    ON_WM_DESTROY()
 	ON_WM_SIZE()
@@ -30,15 +30,15 @@ static char THIS_FILE[]=__FILE__;
 END_MESSAGE_MAP()
 
 
-devedgeView::devedgeView(::ca::application * papp)
+netnodedsView::netnodedsView(::ca::application * papp)
 : base_edit_plain_text_view(papp), Ex1VirtualGuieInterface(papp), BaseVirtualGuie(papp),
 Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(papp)
 {
    m_bMultiLine = true;
-   connect_update_cmd_ui("edit_undo", &devedgeView::_001OnUpdateEditUndo);
-   connect_command("edit_undo", &devedgeView::_001OnEditUndo);
-   connect_update_cmd_ui("edit_redo", &devedgeView::_001OnUpdateEditRedo);
-   connect_command("edit_redo", &devedgeView::_001OnEditRedo);
+   connect_update_cmd_ui("edit_undo", &netnodedsView::_001OnUpdateEditUndo);
+   connect_command("edit_undo", &netnodedsView::_001OnEditUndo);
+   connect_update_cmd_ui("edit_redo", &netnodedsView::_001OnUpdateEditRedo);
+   connect_command("edit_redo", &netnodedsView::_001OnEditRedo);
 
 
    LOGFONT lf;
@@ -51,25 +51,25 @@ Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(pa
 
 }
 
-devedgeView::~devedgeView()
+netnodedsView::~netnodedsView()
 {
 }
 
 
 
 #ifdef _DEBUG
-void devedgeView::AssertValid() const
+void netnodedsView::AssertValid() const
 {
 	base_edit_plain_text_view::AssertValid();
 }
 
-void devedgeView::Dump(CDumpContext& dc) const
+void netnodedsView::Dump(CDumpContext& dc) const
 {
 	base_edit_plain_text_view::Dump(dc);
 }
 #endif //_DEBUG
 
-BOOL devedgeView::PreCreateWindow(::user::create_struct& cs)
+BOOL netnodedsView::PreCreateWindow(::user::create_struct& cs)
 {
    cs.lpszClass = AfxRegisterWndClass(
 		CS_DBLCLKS |
@@ -80,26 +80,26 @@ BOOL devedgeView::PreCreateWindow(::user::create_struct& cs)
 	return base_edit_plain_text_view::PreCreateWindow(cs);
 }
 
-BOOL devedgeView::OnPreparePrinting(CPrintInfo* pInfo)
+BOOL netnodedsView::OnPreparePrinting(CPrintInfo* pInfo)
 {
 	return DoPreparePrinting(pInfo);
 }
 
-void devedgeView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo)
+void netnodedsView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo)
 {
 }
 
-void devedgeView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo)
+void netnodedsView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo)
 {
 }
 
 
-base_wnd * devedgeView::_001GetWnd()
+base_wnd * netnodedsView::_001GetWnd()
 {
    return this;
 }
 
-void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint) 
+void netnodedsView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint) 
 {
    if(lHint == 1001)
    {
@@ -148,24 +148,24 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
 	
 }
 
-void devedgeView::_001OnDestroy(gen::signal_object * pobj) 
+void netnodedsView::_001OnDestroy(gen::signal_object * pobj) 
 {
 	base_edit_plain_text_view::OnDestroy();
 
 }
 
-void devedgeView::_001OnCreate(gen::signal_object * pobj) 
+void netnodedsView::_001OnCreate(gen::signal_object * pobj) 
 {
    if(pobj->previous())
       return;
 
-   devedgeDoc * pdoc = GetDocument();
+   netnodedsDoc * pdoc = GetDocument();
 
    SetTimer(100, 100, NULL);
    
 }
 
-void devedgeView::_001OnContextMenu(gen::signal_object * pobj) 
+void netnodedsView::_001OnContextMenu(gen::signal_object * pobj) 
 {
    SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj)
    int iItem;
@@ -182,7 +182,7 @@ void devedgeView::_001OnContextMenu(gen::signal_object * pobj)
    string strModuleFolder;
    strModuleFolder = Application.get_module_folder();
 
-   if(!file.Open(Application.dir().path(strModuleFolder, "devedge_contextmenu.xml"), Ex1File::typeText | Ex1File::modeRead))
+   if(!file.Open(Application.dir().path(strModuleFolder, "netnodeds_contextmenu.xml"), Ex1File::typeText | Ex1File::modeRead))
       return;
 
    string str;
@@ -210,53 +210,53 @@ void devedgeView::_001OnContextMenu(gen::signal_object * pobj)
 
 
 
-void devedgeView::_001OnSetCursor(gen::signal_object * pobj) 
+void netnodedsView::_001OnSetCursor(gen::signal_object * pobj) 
 {
    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
 	
 	pobj->previous();
 }
-void devedgeView::_001OnEraseBkgnd(gen::signal_object * pobj) 
+void netnodedsView::_001OnEraseBkgnd(gen::signal_object * pobj) 
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj)
    perasebkgnd->m_bRet = true;
    perasebkgnd->set_result(TRUE);
 }
 
-devedgeDoc * devedgeView::GetDocument() const
+netnodedsDoc * netnodedsView::GetDocument() const
 {
-	return (devedgeDoc *) base_edit_plain_text_view::GetDocument();
+	return (netnodedsDoc *) base_edit_plain_text_view::GetDocument();
 }
 
 
-base_wnd * devedgeView::VirtualGetWnd()
+base_wnd * netnodedsView::VirtualGetWnd()
 {
    return this;
 }
 
-BOOL devedgeView::PreTranslateMessage(MSG * pMsg)
+BOOL netnodedsView::PreTranslateMessage(MSG * pMsg)
 {
   return base_edit_plain_text_view::PreTranslateMessage(pMsg);
 }
 
-void devedgeView::_001OnUpdateEditUndo(gen::signal_object * pobj)
+void netnodedsView::_001OnUpdateEditUndo(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(m_editfile.CanUndo());
 }
 
-void devedgeView::_001OnUpdateEditRedo(gen::signal_object * pobj)
+void netnodedsView::_001OnUpdateEditRedo(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(m_editfile.GetRedoBranchCount() > 0);
 }
 
-void devedgeView::_001OnEditUndo(gen::signal_object * pobj)
+void netnodedsView::_001OnEditUndo(gen::signal_object * pobj)
 {
    Undo();
 }
 
-void devedgeView::_001OnEditRedo(gen::signal_object * pobj)
+void netnodedsView::_001OnEditRedo(gen::signal_object * pobj)
 {
    Redo();
 }

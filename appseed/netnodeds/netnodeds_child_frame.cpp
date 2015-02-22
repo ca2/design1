@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -34,7 +34,7 @@ namespace devedge
       strModuleFolder = System.get_module_folder();
 
 
-      LoadToolBar(0, "devedge_toolbar.xml");
+      LoadToolBar(0, "netnodeds_toolbar.xml");
 
       string str = Application.file().as_string(Application.dir().matter(""));
 
@@ -76,7 +76,7 @@ namespace devedge
    }*/
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

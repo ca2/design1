@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge 
+namespace netnodeds 
 {
 
 
@@ -10,7 +10,7 @@ namespace devedge
       simple_frame_window(papp)
    {
       m_iFrameData = 10;
-      m_dataid = "::devedge::main_frame";
+      m_dataid = "::netnodeds::main_frame";
       m_iAnimateStep = 0;
 //      System.SetMainWnd(this);
 
@@ -158,6 +158,6 @@ namespace devedge
    }
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

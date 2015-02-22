@@ -1,15 +1,15 @@
 #pragma once
 
-#include "devedgeView.h"
+#include "netnodedsView.h"
 
-class CLASS_DECL_CA2_DEVEDGE devedgeDoc :
+class CLASS_DECL_CA2_DEVEDGE netnodedsDoc :
    public BaseDocument,
    public DBInterface,
    public VmsDataClientInterface
 {
 public:
-	devedgeDoc(::ca::application * papp);           
-	// DECLARE_DYNCREATE(devedgeDoc)
+	netnodedsDoc(::ca::application * papp);           
+	// DECLARE_DYNCREATE(netnodedsDoc)
 
 public:
 	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
@@ -17,7 +17,7 @@ public:
 
    Ex1File           m_file;
    int               m_iBranch;
-   devedgeView *     m_pview;
+   netnodedsView *     m_pview;
 
    void reload();
    
@@ -44,7 +44,7 @@ public:
 	virtual BOOL OnNewDocument();
 
 public:
-	virtual ~devedgeDoc();
+	virtual ~netnodedsDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

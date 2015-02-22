@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge 
+namespace netnodeds 
 {
 
 
@@ -14,7 +14,7 @@ namespace devedge
    application::~application()
    {
 
-      m_pdevedge = NULL;
+      m_pnetnodeds = NULL;
 
    }
 
@@ -22,16 +22,16 @@ namespace devedge
    void application::construct()
    {
 
-      m_strAppName         = "devedge";
-      m_strBaseSupportId   = "ca2_devedge";
-      m_strInstallToken    = "devedge";
+      m_strAppName         = "netnodeds";
+      m_strBaseSupportId   = "ca2_netnodeds";
+      m_strInstallToken    = "netnodeds";
       m_ppaneview          = NULL;
 
-      m_pdevedge = new ::devedge::devedge(this);
+      m_pnetnodeds = new ::netnodeds::netnodeds(this);
 
-      m_pdevedge->construct(this);
+      m_pnetnodeds->construct(this);
 
-      m_pdevedge->connect_to_application_signal();
+      m_pnetnodeds->connect_to_application_signal();
 
    }
 
@@ -113,7 +113,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
       else
       {
-         string strId = "devedge://" +itema[0].m_strPath;
+         string strId = "netnodeds://" +itema[0].m_strPath;
          m_ppaneview->add_tab(strId, strId);
          m_ppaneview->set_cur_tab_by_id(strId);
       }
@@ -122,23 +122,23 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
    void application::on_request(sp(::create) pcreatecontext)
    {
       sp(::aura::document) pdoc = NULL;
-      if(devedge().m_ptemplateEdge->get_document_count() == NULL)
+      if(netnodeds().m_ptemplateEdge->get_document_count() == NULL)
       {
-         devedge().m_ptemplateEdge->open_document_file(pcreatecontext);
+         netnodeds().m_ptemplateEdge->open_document_file(pcreatecontext);
       }
      sp(main_document) pmaindoc = NULL;
-      if(devedge().m_ptemplateEdge->get_document(0) != NULL)
-         pmaindoc =  (devedge().m_ptemplateEdge->get_document(0));
+      if(netnodeds().m_ptemplateEdge->get_document(0) != NULL)
+         pmaindoc =  (netnodeds().m_ptemplateEdge->get_document(0));
       if(pmaindoc != NULL)
       {
          string strExtension = System.file().extension(pcreatecontext->m_spCommandLine->m_varFile);
-         sp(::devedge::pane_view) pview = pmaindoc->get_typed_view < ::devedge::pane_view > ();
+         sp(::netnodeds::pane_view) pview = pmaindoc->get_typed_view < ::netnodeds::pane_view > ();
          if(pview != NULL)
          {
             if(strExtension.CompareNoCase("ca2solution") == 0)
             {
                pview->set_cur_tab_by_id(PaneViewDevEdge, pcreatecontext);
-               sp(::user::single_document_template) ptemplate = (devedge().m_ptemplateEdge);
+               sp(::user::single_document_template) ptemplate = (netnodeds().m_ptemplateEdge);
                if(ptemplate != NULL)
                {
                   if(ptemplate->get_document_count() == NULL)
@@ -147,7 +147,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
                   }
                }
                pcreatecontext->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
-               pdoc = devedge().m_ptemplate_solution->open_document_file(pcreatecontext);
+               pdoc = netnodeds().m_ptemplate_solution->open_document_file(pcreatecontext);
             }
             else
             {
@@ -159,13 +159,13 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
 
 /*   void application::_001OnFileNew()
    {
-      devedge()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
+      netnodeds()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
    }*/
 
    bool application::on_install()
    {
 
-      System.os().file_association_set_shell_open_command("txt", "ca.devedge.txtfile", System.dir().ca2module("app.exe"), NULL);
+      System.os().file_association_set_shell_open_command("txt", "ca.netnodeds.txtfile", System.dir().ca2module("app.exe"), NULL);
 
       /*if(VistaTools::IsVista() && VistaTools::IsElevated() == S_OK)
       {
@@ -189,7 +189,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
    }
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 
@@ -197,10 +197,10 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
 
 
 extern "C"
-::aura::library * app_core_devedge_get_new_library(::aura::application * papp)
+::aura::library * app_core_netnodeds_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::devedge::application >(papp,"app-core");
+   return new ::aura::single_application_library < ::netnodeds::application >(papp,"app-core");
 
 }
 
