@@ -11,7 +11,6 @@ namespace biteditor
       ::aura::document(papp),
       m_memfile(papp),
       m_file(papp),
-      form_document(papp),
       html_document(papp)
    {
    }

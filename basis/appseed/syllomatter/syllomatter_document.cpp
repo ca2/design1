@@ -10,7 +10,7 @@ namespace syllomatter
       ::data::data_container_base(papp),
       ::aura::document(papp),
       html_document(papp),
-      form_document(papp)
+      ::aura::document(papp)
    {
 
 
@@ -19,7 +19,7 @@ namespace syllomatter
 
    bool document::on_new_document()
    {
-      if (!form_document::on_new_document())
+      if (!::aura::document::on_new_document())
          return FALSE;
 
       update_all_views(NULL, 0);
@@ -52,7 +52,7 @@ namespace syllomatter
 
    bool document::on_open_document(var varFile)
    {
-      return form_document::on_open_document(varFile);
+      return ::aura::document::on_open_document(varFile);
    }
 
    bool document::open_commit_message()
