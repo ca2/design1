@@ -9,23 +9,24 @@ namespace syllomatter
       ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
-      html_document(papp),
-      ::aura::document(papp)
+      html_document(papp)
    {
-
-
 
    }
 
+
    bool document::on_new_document()
    {
+
       if (!::aura::document::on_new_document())
          return FALSE;
 
       update_all_views(NULL, 0);
 
       return TRUE;
+
    }
+
 
    document::~document()
    {

@@ -102,7 +102,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_syllomatter.def">
+    <None Include="design_syllomatter.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

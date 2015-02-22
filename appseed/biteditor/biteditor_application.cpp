@@ -98,7 +98,7 @@ namespace biteditor
 
 
 extern "C"
-::aura::library * get_new_library(::aura::application * papp)
+::aura::library * design_biteditor_get_new_library(::aura::application * papp)
 {
 
    return new ::aura::single_application_library < biteditor::application > (papp, "app-core");

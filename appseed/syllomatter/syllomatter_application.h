@@ -32,7 +32,7 @@ namespace syllomatter
 
 
 
-      using ::request_interface::create;
+      using ::object::create;
       virtual void create(const char * psz);
       virtual void commit(const char * pszDescriptor, const char * pszWorkingCopy);
       virtual void checkout(const char * pszRepos, const char * pszWorkingCopy);
