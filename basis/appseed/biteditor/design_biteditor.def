@@ -1,0 +1,4 @@
+LIBRARY      "design_biteditor"
+
+EXPORTS
+design_biteditor_get_new_library

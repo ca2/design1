@@ -113,7 +113,7 @@ namespace syllomatter
       Platform.filemanager().m_ptemplateForm = new ::user::multiple_document_template(
          this,
          "system/form",
-         System.type_info < ::filemanager::::aura::document > (),
+         System.type_info < ::filemanager::aura::document > (),
          System.type_info < ::filemanager::form_child_frame > (),
          System.type_info < ::filemanager::form_view > ());
 
