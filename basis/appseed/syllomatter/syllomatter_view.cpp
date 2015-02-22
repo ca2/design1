@@ -19,24 +19,31 @@ namespace syllomatter
       ::user::form_interface(papp),
       ::user::form(papp),
       html_form(papp),
-      html_view(papp),
-      form_view(papp)
+      html_view(papp)
    {
+
       m_iMessageId = -1;
 
       m_dataid = "view";
+
       m_iBufSize = 1024 * 1024;
+
       m_buf1 = new char[m_iBufSize];
+
       m_buf2 = new char[m_iBufSize];
+
    }
+
 
    view::~view()
    {
    }
 
+
    void view::install_message_handling(::message::dispatch * pinterface)
    {
-      form_view::install_message_handling(pinterface);
+
+      ::user::form::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
@@ -109,16 +116,22 @@ namespace syllomatter
 
    }
 
+   
    void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
    {
-      form_view::on_update(pSender, lHint, phint);
+
+      ::user::form::on_update(pSender, lHint, phint);
+
    }
+
 
    void view::_001OnDestroy(::signal_details * pobj)
    {
+
       ::aura::impact::_001OnDestroy(pobj);
 
    }
+
 
    void view::_001OnSize(::signal_details * pobj)
    {
@@ -138,7 +151,7 @@ namespace syllomatter
    void view:: _001OnDraw(::draw2d::graphics * pdc)
    {
 
-      form_view::_001OnDraw(pdc);
+      ::user::form::_001OnDraw(pdc);
 
    }
 
@@ -149,9 +162,9 @@ namespace syllomatter
       if(pobj->previous())
          return;
 
-
-
    }
+
+
    void view::_001OnContextMenu(::signal_details * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj)

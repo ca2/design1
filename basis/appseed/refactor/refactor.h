@@ -2,7 +2,8 @@
 
 
 #include "core/core/core.h"
-#include "core/user/user/user.h"
+//#include "core/user/user/user.h"
+#include "core/user/userex/userex.h"
 //#include "core/filesystem/filemanager/filemanager.h"
 
 
@@ -22,6 +23,7 @@ namespace refactor
 
 #undef App
 #define App(pcaapp) (pcaapp->cast_app < ::refactor::application > ())
+
 
 #include "refactor_document.h"
 #include "refactor_view.h"

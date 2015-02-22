@@ -251,4 +251,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="design_netnodeds.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

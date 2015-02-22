@@ -6,10 +6,12 @@ namespace syllomatter
 
 
    filemanager_template::filemanager_template(::filemanager::filemanager * pfilemanager) :
-      element(pfilemanager->get_app()),
+      ::object(pfilemanager->get_app()),
       ::filemanager::manager_template(pfilemanager->get_app())
    {
+
    }
+
 
    filemanager_template::~filemanager_template()
    {

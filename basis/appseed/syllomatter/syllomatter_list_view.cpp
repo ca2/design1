@@ -190,8 +190,8 @@ namespace syllomatter
       }
       array < sort::ARG_COMPARE_FUNCTION, sort::ARG_COMPARE_FUNCTION > comparefna;
       array < sort::ARG_SWAP_FUNCTION, sort::ARG_SWAP_FUNCTION > swapfna;
-      ptr_array < void > comparearga;
-      ptr_array < void > swaparga;
+      void_ptra comparearga;
+      void_ptra swaparga;
       comparefna.add(&list_view::CompareStatus);
       comparefna.add(&list_view::ComparePath);
       comparearga.add((void *) this);

@@ -1318,7 +1318,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClInclude Include="syllomatter_view.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_syllomatter.def" />
+    <None Include="design_syllomatter.def" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\app-core\appseed\tesseract\tesseract.vcxproj">

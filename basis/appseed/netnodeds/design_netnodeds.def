@@ -1,0 +1,4 @@
+LIBRARY      "app_core_devedge"
+
+EXPORTS
+design_netnodeds_get_new_library
