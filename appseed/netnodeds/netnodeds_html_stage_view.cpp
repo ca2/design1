@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    html_stage_view::html_stage_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::interaction(papp), 
       ::user::scroll_view(papp),
       ::user::form_interface(papp),
@@ -14,7 +14,10 @@ namespace netnodeds
       html_form(papp),
       html_view(papp)
    {
+
+
    }
+
 
    html_stage_view::~html_stage_view()
    {

@@ -6,18 +6,23 @@ namespace netnodeds
 
 
    front_thread::front_thread(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       thread(papp),
       m_evInitialized(papp)
    {
+
       m_evInitialized.ResetEvent();
+
       m_bInitialized = false;
 
       //m_plistensocket = NULL;
+
    }
+
 
    front_thread::~front_thread()
    {
+
    }
 
 

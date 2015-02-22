@@ -1,8 +1,12 @@
 #pragma once
 
+
 namespace refactor
 {
+
+
    class pane_view;
+
 
    class CLASS_DECL_CA2_REFACTOR frame :
       public simple_frame_window
@@ -24,4 +28,9 @@ namespace refactor
 
    };
 
+
 } // namespace refactor
+
+
+
+

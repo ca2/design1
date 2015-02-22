@@ -6,12 +6,15 @@ namespace netnodeds
 
 
    source::source(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       spa(file)(papp),
       folder(papp)
    {
+      
       m_bFramework = false;
+
    }
+
 
    bool source::load(project * pproject)
    {

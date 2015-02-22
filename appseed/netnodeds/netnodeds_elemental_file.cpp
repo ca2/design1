@@ -1,13 +1,18 @@
 #include "framework.h"
 
+
 namespace netnodeds
 {
 
+
    file::file(::aura::application * papp) : 
-      element(papp)
+      ::object(papp)
    {   
+
       m_pdocument = NULL;
+
    }
+
 
    void file::initialize(folder * pfolder, const char * pszPath)
    {

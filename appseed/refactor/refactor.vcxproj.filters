@@ -62,7 +62,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_refactor.def">
+    <None Include="design_refactor.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

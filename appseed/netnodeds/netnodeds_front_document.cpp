@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    front_document::front_document(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
       m_memfile(papp), 
@@ -14,6 +14,8 @@ namespace netnodeds
       m_memfileBody(papp),
       html_document(papp)
    {
+
+
    }
 
    front_document::~front_document()

@@ -6,19 +6,22 @@ namespace netnodeds
 
 
    pane_view::pane_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::tab(papp),
-      
       ::user::tab_view(papp),
       ::userex::pane_tab_view(papp),
       place_holder_container(papp)
    {
+
 //      m_etranslucency      = TranslucencyPresent;
       m_bShowDevEdge       = false;
+
    }
+
 
    pane_view::~pane_view()
    {
+
    }
 
 

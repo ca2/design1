@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    netnodeds::netnodeds(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::aura::departament(papp)
    {
 

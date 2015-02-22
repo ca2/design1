@@ -6,16 +6,19 @@ namespace netnodeds
 
 
    html_edit_child_frame::html_edit_child_frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_child_frame(papp)
    {
+
       IGUI_WIN_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &html_edit_child_frame::_001OnAppLanguage);
+
    }
+
 
    html_edit_child_frame::~html_edit_child_frame()
    {
-   }
 
+   }
 
 
    bool html_edit_child_frame::on_create_bars()

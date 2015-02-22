@@ -6,15 +6,20 @@ namespace netnodeds
 
 
    front_child_frame::front_child_frame(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       simple_child_frame(papp)
    {
+
       IGUI_WIN_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &front_child_frame::_001OnAppLanguage);
+
    }
+
 
    front_child_frame::~front_child_frame()
    {
+
    }
+
 
    bool front_child_frame::on_create_bars()
    {

@@ -62,7 +62,7 @@
     <ProjectGuid>{C78451FA-2013-9999-8F97-4543BB980265}</ProjectGuid>
     <RootNamespace>app_core_refactor</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>app_core_refactor</ProjectName>
+    <ProjectName>design_refactor</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'" Label="Configuration">
@@ -1657,7 +1657,7 @@
     <ClInclude Include="refactor_view.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_refactor.def" />
+    <None Include="design_refactor.def" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\app\appseed\aura\aura.vcxproj">

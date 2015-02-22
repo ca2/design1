@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    view::view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::listener(papp),
       ::user::interaction(papp), 
       ::user::scroll_view(papp),
