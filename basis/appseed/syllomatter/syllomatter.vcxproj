@@ -44,9 +44,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8A05B3FD-3C90-4279-8680-F5F1D93585D5}</ProjectGuid>
-    <RootNamespace>app_core_syllomatter</RootNamespace>
+    <RootNamespace>design_syllomatter</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>app_core_syllomatter</ProjectName>
+    <ProjectName>design_syllomatter</ProjectName>
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and $(VisualStudioVersion) == ''">$(VCTargetsPath11)</VCTargetsPath>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
