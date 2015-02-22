@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -41,7 +41,7 @@ namespace devedge
       if(pobj->previous())
          return;
 
-      sp(::devedge::application) papp =  (get_app());
+      sp(::netnodeds::application) papp =  (get_app());
 
       papp->m_ppaneview = this;
 
@@ -61,20 +61,20 @@ namespace devedge
    void pane_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint) 
    {
 
-      sp(::devedge::application) papp =  (( (GetParentFrame()))->get_app());
-      papp->devedge().m_ptemplate_devedge->update_all_views(pSender, lHint, pHint);
-      papp->devedge().m_ptemplateHtmlEdit->update_all_views(pSender, lHint, pHint);
+      sp(::netnodeds::application) papp =  (( (GetParentFrame()))->get_app());
+      papp->netnodeds().m_ptemplate_netnodeds->update_all_views(pSender, lHint, pHint);
+      papp->netnodeds().m_ptemplateHtmlEdit->update_all_views(pSender, lHint, pHint);
 
       if(pHint != NULL)
       {
          if(base_class < main_document >::bases(pHint))
          {
-            ::devedge::pane_view_update_hint * puh = dynamic_cast < ::devedge::pane_view_update_hint * > (pHint);
-            if(puh->is_type_of(::devedge::pane_view_update_hint::TypeGetView))
+            ::netnodeds::pane_view_update_hint * puh = dynamic_cast < ::netnodeds::pane_view_update_hint * > (pHint);
+            if(puh->is_type_of(::netnodeds::pane_view_update_hint::TypeGetView))
             {
                puh->m_eview = (EPaneView) atoi(get_cur_tab_id());
             }
-            else if(puh->is_type_of(::devedge::pane_view_update_hint::TypeSetView))
+            else if(puh->is_type_of(::netnodeds::pane_view_update_hint::TypeSetView))
             {
                set_cur_tab_by_id(puh->m_eview);
             }
@@ -84,14 +84,14 @@ namespace devedge
       {
          if(base_class < main_document >::bases(pHint))
          {
-            ::devedge::pane_view_update_hint * puh = dynamic_cast < ::devedge::pane_view_update_hint * > (pHint);
-            if(puh->is_type_of(::devedge::pane_view_update_hint::TypeOnShowView))
+            ::netnodeds::pane_view_update_hint * puh = dynamic_cast < ::netnodeds::pane_view_update_hint * > (pHint);
+            if(puh->is_type_of(::netnodeds::pane_view_update_hint::TypeOnShowView))
             {
                if(puh->m_eview == PaneViewHtmlStage)
                {
-                  sp(::devedge::application) papp =  (( (GetParentFrame()))->get_app());
-                  sp(html_stage_document) pdocHtml =  (papp->devedge().m_ptemplateHtmlStage->get_document());
-                  sp(::devedge::document) pdoc =  (papp->devedge().m_ptemplate_devedge->get_document());
+                  sp(::netnodeds::application) papp =  (( (GetParentFrame()))->get_app());
+                  sp(html_stage_document) pdocHtml =  (papp->netnodeds().m_ptemplateHtmlStage->get_document());
+                  sp(::netnodeds::document) pdoc =  (papp->netnodeds().m_ptemplate_netnodeds->get_document());
                   string str;
                   pdoc->m_pview->_001GetText(str);
                   pdocHtml->get_html_data()->load(str);
@@ -105,21 +105,21 @@ namespace devedge
 
    void pane_view::on_create_view(::user::view_creator_data * pcreatordata)
    {
-      ::devedge::application & app = Application;
+      ::netnodeds::application & app = Application;
       if(pcreatordata->m_id.is_text())
       {
          string strPath(pcreatordata->m_id);
-         if(::str::begins_eat_ci(strPath, "devedgefile://"))
+         if(::str::begins_eat_ci(strPath, "netnodedsfile://"))
          {
             pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
             return;
          }
-         else if(::str::begins_eat_ci(strPath, "devedge://"))
+         else if(::str::begins_eat_ci(strPath, "netnodeds://"))
          {
             sp(::create) cc(get_app());
             cc->m_spCommandLine->m_varFile = strPath;
             cc->m_puiParent = this;
-            sp(::aura::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(cc));
+            sp(::aura::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(cc));
             if(pdoc != NULL)
             {
                sp(::aura::impact) pview = pdoc->get_view();
@@ -145,7 +145,7 @@ namespace devedge
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
                cc->m_puiParent = pcreatordata->m_pholder;
-               sp(front_document) pdoc =  (Application.devedge().m_ptemplateFront->open_document_file(cc));
+               sp(front_document) pdoc =  (Application.netnodeds().m_ptemplateFront->open_document_file(cc));
                if(pdoc != NULL)
                {
                   sp(::aura::impact) pview = pdoc->get_view();
@@ -162,7 +162,7 @@ namespace devedge
             break;
          case PaneViewDevEdge:
             {
-               sp(::aura::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(NULL, true, pcreatordata->m_pholder));
+               sp(::aura::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(NULL, true, pcreatordata->m_pholder));
                pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
                if(pdoc != NULL)
                {
@@ -186,7 +186,7 @@ namespace devedge
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
                cc->m_puiParent = this;
-               sp(::aura::document) pdoc =  (Application.devedge().m_ptemplateHtmlEdit->open_document_file(cc));
+               sp(::aura::document) pdoc =  (Application.netnodeds().m_ptemplateHtmlEdit->open_document_file(cc));
                if(pdoc != NULL)
                {
                   sp(::aura::impact) pview = pdoc->get_view();
@@ -204,7 +204,7 @@ namespace devedge
             break;
          case PaneViewHtmlStage:
             {
-               sp(html_stage_document) pdoc =  (app.devedge().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
+               sp(html_stage_document) pdoc =  (app.netnodeds().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
                if(pdoc != NULL)
                {
                   sp(::aura::impact) pview = pdoc->get_view();
@@ -223,7 +223,7 @@ namespace devedge
             {
                sp(::create) cc(get_app());
                cc->m_puiParent = this;
-               sp(::devedge::solution_document) pdoc =  (app.devedge().m_ptemplate_solution->open_document_file(cc));
+               sp(::netnodeds::solution_document) pdoc =  (app.netnodeds().m_ptemplate_solution->open_document_file(cc));
                if(pdoc != NULL)
                {
                   sp(::aura::impact) pview = pdoc->get_view();
@@ -269,7 +269,7 @@ namespace devedge
       {
          if(m_spcreatecontext.is_set())
          {
-            Application.devedge().m_ptemplate_devedge->get_document(0)->on_open_document(m_spcreatecontext->m_spCommandLine->m_varFile);
+            Application.netnodeds().m_ptemplate_netnodeds->get_document(0)->on_open_document(m_spcreatecontext->m_spCommandLine->m_varFile);
          }
 
       }
@@ -288,11 +288,11 @@ namespace devedge
 
    sp(::aura::document) pane_view::open_file(sp(::create) pcreatecontext)
    {
-      ensure_tab_by_id("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile));
-      return get("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;
+      ensure_tab_by_id("netnodeds://" + string(pcreatecontext->m_spCommandLine->m_varFile));
+      return get("netnodeds://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;
    }
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

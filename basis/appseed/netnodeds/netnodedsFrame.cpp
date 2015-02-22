@@ -1,10 +1,10 @@
-// MainFrm.cpp : implementation of the devedgeFrame class
+// MainFrm.cpp : implementation of the netnodedsFrame class
 //
 
 #include "stdafx.h"
 
-#include "devedgeFrame.h"
-#include "devedgeView.h"
+#include "netnodedsFrame.h"
+#include "netnodedsView.h"
 #include "netnode/netnodeBergEdgeDoc.h"
 
 
@@ -15,12 +15,12 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeFrame
+// netnodedsFrame
 
-// IMPLEMENT_DYNCREATE(devedgeFrame, SimpleFrameWindow)
+// IMPLEMENT_DYNCREATE(netnodedsFrame, SimpleFrameWindow)
 
-BEGIN_MESSAGE_MAP(devedgeFrame, SimpleFrameWindow)
-	//{{AFX_MSG_MAP(devedgeFrame)
+BEGIN_MESSAGE_MAP(netnodedsFrame, SimpleFrameWindow)
+	//{{AFX_MSG_MAP(netnodedsFrame)
 /* xxx	ON_WM_CREATE()
 	ON_WM_GETMINMAXINFO()
 	ON_WM_MOVE()
@@ -50,9 +50,9 @@ static UINT indicators[] =
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeFrame construction/destruction
+// netnodedsFrame construction/destruction
 
-devedgeFrame::devedgeFrame(::ca::application * papp)
+netnodedsFrame::netnodedsFrame(::ca::application * papp)
 : SimpleFrameWindow(papp)
 {
    m_iFrameData = 10;
@@ -65,11 +65,11 @@ devedgeFrame::devedgeFrame(::ca::application * papp)
    m_datakeyWindow = VMSDATAKEY(WindowData);
 }
 
-devedgeFrame::~devedgeFrame()
+netnodedsFrame::~netnodedsFrame()
 {
 }
 
-int devedgeFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (SimpleFrameWindow::OnCreate(lpCreateStruct) == -1)
 		return -1;
@@ -195,14 +195,14 @@ int devedgeFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void devedgeFrame::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
+void netnodedsFrame::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
 {
 	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
-   IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &devedgeFrame::_001OnClose);
+   IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &netnodedsFrame::_001OnClose);
 }
 
 
-BOOL devedgeFrame::PreCreateWindow(::user::create_struct& cs)
+BOOL netnodedsFrame::PreCreateWindow(::user::create_struct& cs)
 {
 	if( !SimpleFrameWindow::PreCreateWindow(cs) )
 		return FALSE;
@@ -232,15 +232,15 @@ BOOL devedgeFrame::PreCreateWindow(::user::create_struct& cs)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeFrame diagnostics
+// netnodedsFrame diagnostics
 
 #ifdef _DEBUG
-void devedgeFrame::AssertValid() const
+void netnodedsFrame::AssertValid() const
 {
 	SimpleFrameWindow::AssertValid();
 }
 
-void devedgeFrame::Dump(CDumpContext& dc) const
+void netnodedsFrame::Dump(CDumpContext& dc) const
 {
 	SimpleFrameWindow::Dump(dc);
 }
@@ -249,10 +249,10 @@ void devedgeFrame::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeFrame message handlers
+// netnodedsFrame message handlers
 
 
-void devedgeFrame::WfiOnFullScreen(bool bFullScreen)
+void netnodedsFrame::WfiOnFullScreen(bool bFullScreen)
 {
    if(bFullScreen)
    {
@@ -311,23 +311,23 @@ void devedgeFrame::WfiOnFullScreen(bool bFullScreen)
 
 }
 
-void devedgeFrame::OnViewFullScreen() 
+void netnodedsFrame::OnViewFullScreen() 
 {
 	ToggleFullScreen();
 }
 
-void devedgeFrame::OnUpdateViewFullScreen(CCmdUI* pCmdUI) 
+void netnodedsFrame::OnUpdateViewFullScreen(CCmdUI* pCmdUI) 
 {
    pCmdUI->Enable();	
    pCmdUI->SetCheck(WfiIsFullScreen() ? 1 : 0);	
 }
 
-void devedgeFrame::ToggleFullScreen()
+void netnodedsFrame::ToggleFullScreen()
 {
    WfiFullScreen(!WfiIsFullScreen(), true);
 }
 
-void devedgeFrame::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
+void netnodedsFrame::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
 {
 	if (IsFullScreen())
 	{
@@ -342,23 +342,23 @@ void devedgeFrame::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)
 	}
 }
 
-bool devedgeFrame::IsFullScreen()
+bool netnodedsFrame::IsFullScreen()
 {
    return WfiIsFullScreen();
 }
 
 
-void devedgeFrame::OnMove(int x, int y) 
+void netnodedsFrame::OnMove(int x, int y) 
 {
 	SimpleFrameWindow::OnMove(x, y);
 }
 
-void devedgeFrame::OnClose() 
+void netnodedsFrame::OnClose() 
 {
 	SimpleFrameWindow::OnClose();
 }
 
-void devedgeFrame::OnSysCommand(UINT nID, LPARAM lParam) 
+void netnodedsFrame::OnSysCommand(UINT nID, LPARAM lParam) 
 {
 
    if(nID == SC_SCREENSAVE)
@@ -372,7 +372,7 @@ void devedgeFrame::OnSysCommand(UINT nID, LPARAM lParam)
 
 
 
-void devedgeFrame::OnTimer(UINT nIDEvent) 
+void netnodedsFrame::OnTimer(UINT nIDEvent) 
 {
    static float theta;
    if(nIDEvent == 3)
@@ -406,7 +406,7 @@ void devedgeFrame::OnTimer(UINT nIDEvent)
 	SimpleFrameWindow::OnTimer(nIDEvent);
 }
 
-void devedgeFrame::SetAnimatedStatusBarText(LPCTSTR lpcsz)
+void netnodedsFrame::SetAnimatedStatusBarText(LPCTSTR lpcsz)
 {
    m_strAnimatedStatusBarText = lpcsz;
    if(m_strAnimatedStatusBarText.is_empty())
@@ -419,7 +419,7 @@ void devedgeFrame::SetAnimatedStatusBarText(LPCTSTR lpcsz)
    }
 }
 
-void devedgeFrame::AnimateStatusBar()
+void netnodedsFrame::AnimateStatusBar()
 {
    if(m_strAnimatedStatusBarText.is_empty())
       return;
@@ -434,7 +434,7 @@ void devedgeFrame::AnimateStatusBar()
 }
 
 
-void devedgeFrame::ShowControlBars(bool bShow)
+void netnodedsFrame::ShowControlBars(bool bShow)
 {
    UINT nShow;
    if(bShow)
@@ -454,7 +454,7 @@ void devedgeFrame::ShowControlBars(bool bShow)
 
 }
 
-void devedgeFrame::OnShowWindow(BOOL bShow, UINT nStatus) 
+void netnodedsFrame::OnShowWindow(BOOL bShow, UINT nStatus) 
 {
 	SimpleFrameWindow::OnShowWindow(bShow, nStatus);
 	
@@ -462,41 +462,41 @@ void devedgeFrame::OnShowWindow(BOOL bShow, UINT nStatus)
 	
 }
 
-void devedgeFrame::OnNcPaint() 
+void netnodedsFrame::OnNcPaint() 
 {
 	// TODO: Add your message handler code here
 	
 	// Do not call SimpleFrameWindow::OnNcPaint() for painting messages
 }
 
-void devedgeFrame::OnTogglecustomframe() 
+void netnodedsFrame::OnTogglecustomframe() 
 {
 	SetCustomFrame(!GetCustomFrame());
 	
 }
 
-void devedgeFrame::OnUpdateTogglecustomframe(CCmdUI* pCmdUI) 
+void netnodedsFrame::OnUpdateTogglecustomframe(CCmdUI* pCmdUI) 
 {
    pCmdUI->Enable();
    pCmdUI->SetCheck(m_bCustomFrame ? 1 : 0);
 }
 
 
-BOOL devedgeFrame::OnCopyData(base_wnd * pwnd, COPYDATASTRUCT* pcds)
+BOOL netnodedsFrame::OnCopyData(base_wnd * pwnd, COPYDATASTRUCT* pcds)
 {
 
    return FALSE;
 }
 
 
-BOOL devedgeFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo) 
+BOOL netnodedsFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo) 
 {
 	// TODO: Add your specialized code here and/or call the base class
 	
 	return SimpleFrameWindow::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
-void devedgeFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu) 
+void netnodedsFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu) 
 {
 	SimpleFrameWindow::OnInitMenuPopup(pPopupMenu, nIndex, bSysMenu);
 	
@@ -504,7 +504,7 @@ void devedgeFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu
 	
 }
 
-void devedgeFrame::OnInitMenu(CMenu* pMenu) 
+void netnodedsFrame::OnInitMenu(CMenu* pMenu) 
 {
 	SimpleFrameWindow::OnInitMenu(pMenu);
 	
@@ -512,7 +512,7 @@ void devedgeFrame::OnInitMenu(CMenu* pMenu)
 	
 }
 
-void devedgeFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized) 
+void netnodedsFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized) 
 {
 	SimpleFrameWindow::OnActivate(nState, pWndOther, bMinimized);
 	
@@ -521,7 +521,7 @@ void devedgeFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized)
 }
 
 
-void devedgeFrame::_001OnClose(gen::signal_object * pobj)
+void netnodedsFrame::_001OnClose(gen::signal_object * pobj)
 {
    pobj->m_bRet = true;
    ShowWindow(SW_HIDE);

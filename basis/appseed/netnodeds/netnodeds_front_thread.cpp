@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -34,7 +34,7 @@ namespace devedge
       int32_t i;
       for(int32_t i = 0; i < iCount; i++)
       {
-         //   devedgeSocketThread * pthread = __begin_thread < devedgeSocketThread >(get_app());
+         //   netnodedsSocketThread * pthread = __begin_thread < netnodedsSocketThread >(get_app());
          //      m_ptrathread.add(pthread);
       }
       int32_t iCount2 = iCount - 1;
@@ -78,7 +78,7 @@ namespace devedge
       //post_thread_message(WM_APP, 0, 0);
 
 
-      /*   m_plistensocket = new devedgeListenSocket(this);
+      /*   m_plistensocket = new netnodedsListenSocket(this);
       //Sleep(15000);
       if(!m_plistensocket->create(80, SOCK_STREAM))
       {
@@ -101,7 +101,7 @@ namespace devedge
       SCAST_PTR(::message::base, pbase, pobj);
       if(pbase->m_wparam == 0)
       {
-         /*   m_plistensocket = new devedgeListenSocket(this);
+         /*   m_plistensocket = new netnodedsListenSocket(this);
          //Sleep(15000);
          if(!m_plistensocket->create(10011, SOCK_STREAM))
          {
@@ -120,8 +120,8 @@ namespace devedge
       }
       else if(pbase->m_wparam == 1)
       {
-         //   devedgeListenSocket * plistensocket = (devedgeListenSocket *) pbase->m_lparam;
-         //      devedgeSocket * psocket = new devedgeSocket(plistensocket);
+         //   netnodedsListenSocket * plistensocket = (netnodedsListenSocket *) pbase->m_lparam;
+         //      netnodedsSocket * psocket = new netnodedsSocket(plistensocket);
          //single_lock sl(&m_csNetNodeSocket);
          //   plistensocket->Accept(*psocket);
       }
@@ -152,15 +152,15 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 
 
 
-void CLASS_DECL_DEVEDGE KickDevEdgeFront(::aura::application * papp)
+void CLASS_DECL_DESIGN_NETNODEDS KickDevEdgeFront(::aura::application * papp)
 {
-   __begin_thread < ::devedge::front_thread > (papp);   
+   __begin_thread < ::netnodeds::front_thread > (papp);   
 }
 
 

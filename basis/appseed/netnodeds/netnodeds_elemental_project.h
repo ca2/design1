@@ -1,15 +1,15 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
    class solution;
 
 
-   class CLASS_DECL_DEVEDGE project :
-      virtual public ::devedge::elemental
+   class CLASS_DECL_DESIGN_NETNODEDS project :
+      virtual public ::netnodeds::elemental
    {
    public:
       

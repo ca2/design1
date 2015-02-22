@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -51,7 +51,7 @@ namespace devedge
             sp(::xml::node) pnodeProject = pnodeProjects->child_at(i);
             if(pnodeProject->get_name() == "project")
             {
-               ::devedge::project * pproject = new ::devedge::project(get_app());
+               ::netnodeds::project * pproject = new ::netnodeds::project(get_app());
                ptree->insert_item(pproject, ::data::RelativeLastChild, m_psolution);
                pproject->m_strName = pnodeProject->attr("path");
                m_psolution->m_projectptra.add(pproject);
@@ -107,7 +107,7 @@ namespace devedge
 
       pcreate->previous();
 
-      merge(new ::devedge::solution_tree_data(get_app()), true);
+      merge(new ::netnodeds::solution_tree_data(get_app()), true);
 
 
    }
@@ -120,14 +120,14 @@ namespace devedge
       if(pfile != NULL)
       {
          
-         sp(pane_view) pview = Application.::devedge::application::m_ppaneview;
-         pview->ensure_pane_by_id("devedgefile://" + pfile->m_strPath);
+         sp(pane_view) pview = Application.::netnodeds::application::m_ppaneview;
+         pview->ensure_pane_by_id("netnodedsfile://" + pfile->m_strPath);
 
-         sp(::user::interaction) puieParent = pview->get_pane_by_id("devedgefile://" + pfile->m_strPath)->m_pholder;
+         sp(::user::interaction) puieParent = pview->get_pane_by_id("netnodedsfile://" + pfile->m_strPath)->m_pholder;
 
          pfile->open(puieParent);
 
-         pview->set_cur_tab_by_id("devedgefile://" + pfile->m_strPath);
+         pview->set_cur_tab_by_id("netnodedsfile://" + pfile->m_strPath);
 
          puieParent->layout();
 
@@ -144,7 +144,7 @@ namespace devedge
    }   
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

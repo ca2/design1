@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -86,7 +86,7 @@ namespace devedge
       //if(!::aura::document::on_open_document(varFile))
         // return FALSE;
 
-      m_psolution = new ::devedge::solution(this);
+      m_psolution = new ::netnodeds::solution(this);
 
       if(m_psolution == NULL)
          return false;
@@ -262,7 +262,7 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 
 

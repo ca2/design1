@@ -1,7 +1,7 @@
 ﻿#include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -127,9 +127,9 @@ namespace devedge
       }
       else if(puh->is_type_of(main_document::TypeOnShowView))
       {
-      devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
-      POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      netnodedsApp * papp = dynamic_cast < netnodedsApp * > (( (GetParentFrame()))->m_papp);
+      POSITION posDoc = papp->m_ptemplate_netnodeds->get_document_count();
+      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_netnodeds->get_document(posDoc);
 
       string str = pdoc->get_path_name();
       if(str.get_length() > 4)
@@ -207,11 +207,11 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, 
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonDown);
+      &::netnodeds::Element2D::_001OnLButtonDown);
       IGUI_WIN_MSG_LINK(WM_LBUTTONUP, 
       this,
       pdoc->m_elementptraVisible[i],
-      &::devedge::Element2D::_001OnLButtonUp);
+      &::netnodeds::Element2D::_001OnLButtonUp);
       }*/
 
    }
@@ -378,6 +378,6 @@ namespace devedge
    }
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

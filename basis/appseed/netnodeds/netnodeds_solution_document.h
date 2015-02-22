@@ -1,17 +1,17 @@
 #pragma once
 
-namespace devedge
+namespace netnodeds
 {
 
    class solution_view;
 
-   class CLASS_DECL_DEVEDGE solution_document :
+   class CLASS_DECL_DESIGN_NETNODEDS solution_document :
       public ::aura::document
    {
    public:
       
 
-      ::devedge::solution *      m_psolution;
+      ::netnodeds::solution *      m_psolution;
       ::file::buffer_sp                m_file;
       ::file::buffer_sp                m_fileSave;
       int32_t                        m_iBranch;
@@ -55,6 +55,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

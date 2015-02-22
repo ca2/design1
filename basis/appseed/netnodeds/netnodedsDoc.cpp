@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "devedgeDoc.h"
+#include "netnodedsDoc.h"
 
 
 
@@ -16,11 +16,11 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeDoc
+// netnodedsDoc
 
-// IMPLEMENT_DYNCREATE(devedgeDoc, BaseDocument)
+// IMPLEMENT_DYNCREATE(netnodedsDoc, BaseDocument)
 
-devedgeDoc::devedgeDoc(::ca::application * papp)
+netnodedsDoc::netnodedsDoc(::ca::application * papp)
 : m_file(papp)
 {
    m_pview = NULL;
@@ -40,25 +40,25 @@ devedgeDoc::devedgeDoc(::ca::application * papp)
    pid = m_signalidaCommand.get(&id);
    id.m_strCommand = "file_save";
    pid = m_signalidaCommand.get(&id);
-   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &devedgeDoc::_001OnUpdateFileSave);
-   m_dispatchCommand.AddMessageHandler(pid, this, &devedgeDoc::_001OnFileSave);
+   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &netnodedsDoc::_001OnUpdateFileSave);
+   m_dispatchCommand.AddMessageHandler(pid, this, &netnodedsDoc::_001OnFileSave);
    id.m_strCommand = "edit_cut";
    pid = m_signalidaCommand.get(&id);
-   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &devedgeDoc::_001OnUpdateEditCut);
-   m_dispatchCommand.AddMessageHandler(pid, this, &devedgeDoc::_001OnEditCut);
+   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &netnodedsDoc::_001OnUpdateEditCut);
+   m_dispatchCommand.AddMessageHandler(pid, this, &netnodedsDoc::_001OnEditCut);
    id.m_strCommand = "edit_copy";
    pid = m_signalidaCommand.get(&id);
-   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &devedgeDoc::_001OnUpdateEditCopy);
-   m_dispatchCommand.AddMessageHandler(pid, this, &devedgeDoc::_001OnEditCopy);
+   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &netnodedsDoc::_001OnUpdateEditCopy);
+   m_dispatchCommand.AddMessageHandler(pid, this, &netnodedsDoc::_001OnEditCopy);
    id.m_strCommand = "edit_paste";
    pid = m_signalidaCommand.get(&id);
-   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &devedgeDoc::_001OnUpdateEditPaste);
-   m_dispatchCommand.AddMessageHandler(pid, this, &devedgeDoc::_001OnEditPaste);
+   m_dispatchUpdateCmdUi.AddMessageHandler(pid, this, &netnodedsDoc::_001OnUpdateEditPaste);
+   m_dispatchCommand.AddMessageHandler(pid, this, &netnodedsDoc::_001OnEditPaste);
 
 
 }
 
-BOOL devedgeDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo) 
+BOOL netnodedsDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo) 
 {
 /*   gen::application * papp = gen::get_app();
    CommandIdSpace idspace;
@@ -123,7 +123,7 @@ BOOL devedgeDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO
 }
 
 
-BOOL devedgeDoc::OnNewDocument()
+BOOL netnodedsDoc::OnNewDocument()
 {
 	if (!BaseDocument::OnNewDocument())
 		return FALSE;
@@ -138,37 +138,37 @@ BOOL devedgeDoc::OnNewDocument()
 	return TRUE;
 }
 
-devedgeDoc::~devedgeDoc()
+netnodedsDoc::~netnodedsDoc()
 {
 }
 
 
-BEGIN_MESSAGE_MAP(devedgeDoc, BaseDocument)
-	//{{AFX_MSG_MAP(devedgeDoc)
+BEGIN_MESSAGE_MAP(netnodedsDoc, BaseDocument)
+	//{{AFX_MSG_MAP(netnodedsDoc)
 		// NOTE - the ClassWizard will add and remove mapping macros here.
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeDoc diagnostics
+// netnodedsDoc diagnostics
 
 #ifdef _DEBUG
-void devedgeDoc::AssertValid() const
+void netnodedsDoc::AssertValid() const
 {
 	BaseDocument::AssertValid();
 }
 
-void devedgeDoc::Dump(CDumpContext& dc) const
+void netnodedsDoc::Dump(CDumpContext& dc) const
 {
 	BaseDocument::Dump(dc);
 }
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// devedgeDoc serialization
+// netnodedsDoc serialization
 
 /*
-void devedgeDoc::Serialize(CArchive& ar)
+void netnodedsDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -181,7 +181,7 @@ void devedgeDoc::Serialize(CArchive& ar)
 }
 */
 
-BOOL devedgeDoc::OnOpenDocument(LPCTSTR lpszPathName)
+BOOL netnodedsDoc::OnOpenDocument(LPCTSTR lpszPathName)
 {
    if(m_file.IsOpened())
       m_file.Close();
@@ -189,12 +189,12 @@ BOOL devedgeDoc::OnOpenDocument(LPCTSTR lpszPathName)
       Ex1File::share_deny_none))
       return FALSE;
    POSITION pos = GetFirstViewPosition();
-   m_pview = dynamic_cast < devedgeView * > (GetNextView(pos));
+   m_pview = dynamic_cast < netnodedsView * > (GetNextView(pos));
    UpdateAllViews(NULL, 123);
    return TRUE;
 }
 
-void devedgeDoc::reload()
+void netnodedsDoc::reload()
 {
    if(m_file.IsOpened())
       m_file.Close();
@@ -205,59 +205,59 @@ void devedgeDoc::reload()
 }
 
 
-BOOL devedgeDoc::OnSaveDocument(LPCTSTR lpszPathName)
+BOOL netnodedsDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
    UpdateAllViews(NULL, 12345);
    return TRUE;
 }
 
-void devedgeDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
-void devedgeDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 
-void devedgeDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
-void devedgeDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
-void devedgeDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcmdui, pobj)
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
-void devedgeDoc::_001OnFileSave(gen::signal_object * pobj)
+void netnodedsDoc::_001OnFileSave(gen::signal_object * pobj)
 {
    BaseDocument::OnFileSave();
 }
 
-void devedgeDoc::_001OnEditCut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditCut(gen::signal_object * pobj)
 {
 }
-void devedgeDoc::_001OnEditCopy(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditCopy(gen::signal_object * pobj)
 {
 }
-void devedgeDoc::_001OnEditPaste(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditPaste(gen::signal_object * pobj)
 {
 }
 
-void devedgeDoc::_001OnFilePut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnFilePut(gen::signal_object * pobj)
 {
    BaseDocument::OnFileSave();
    Put();
@@ -266,7 +266,7 @@ void devedgeDoc::_001OnFilePut(gen::signal_object * pobj)
 
 
 
-void devedgeDoc::Put()
+void netnodedsDoc::Put()
 {
    string strVotagusFolder;
    Application.dir().votagus(strVotagusFolder);
@@ -282,7 +282,7 @@ void devedgeDoc::Put()
    }
 }
 
-void devedgeDoc::FtpPut(LPCTSTR lpcszLocal, LPCTSTR lpcszRemote)
+void netnodedsDoc::FtpPut(LPCTSTR lpcszLocal, LPCTSTR lpcszRemote)
 {
    CInternetSession sess(_T("MyProgram/1.0"));
 

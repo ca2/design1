@@ -1,12 +1,12 @@
 #pragma once
 
-namespace devedge
+namespace netnodeds
 {
 
    class project;
 
-   class CLASS_DECL_DEVEDGE folder :
-      virtual public ::devedge::elemental,
+   class CLASS_DECL_DESIGN_NETNODEDS folder :
+      virtual public ::netnodeds::elemental,
       virtual public spa(file)
    {
    public:
@@ -30,4 +30,4 @@ namespace devedge
       
    };
 
-} // namespace devedge
+} // namespace netnodeds

@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
-   class CLASS_DECL_DEVEDGE html_edit_view : public html_view
+   class CLASS_DECL_DESIGN_NETNODEDS html_edit_view : public html_view
    {
    public:
 
@@ -87,6 +87,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -18,7 +18,7 @@ namespace devedge
    };
 
 
-   class CLASS_DECL_DEVEDGE pane_view_update_hint :
+   class CLASS_DECL_DESIGN_NETNODEDS pane_view_update_hint :
       public ::object  
    {
    public:
@@ -44,6 +44,6 @@ namespace devedge
    };
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

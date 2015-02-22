@@ -1,10 +1,10 @@
 #pragma once
 
-class CLASS_DECL_CA2_DEVEDGE devedgeFrame : public SimpleFrameWindow
+class CLASS_DECL_CA2_DEVEDGE netnodedsFrame : public SimpleFrameWindow
 {
 	
 public:
-	devedgeFrame(::ca::application * papp);
+	netnodedsFrame(::ca::application * papp);
 
    void _001InstallMessageHandling(igui::win::message::Dispatch * pinterface);
 
@@ -35,7 +35,7 @@ public:
 	bool IsFullScreen();
 	void ToggleFullScreen();
 	virtual void WfiOnFullScreen(bool bFullScreen);
-	virtual ~devedgeFrame();
+	virtual ~netnodedsFrame();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;

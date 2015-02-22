@@ -2,12 +2,12 @@
 
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
 
-   class CLASS_DECL_DEVEDGE html_edit_child_frame :
+   class CLASS_DECL_DESIGN_NETNODEDS html_edit_child_frame :
       public simple_child_frame
    {
    public:
@@ -33,6 +33,6 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

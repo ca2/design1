@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -42,13 +42,13 @@ namespace devedge
       //string strModuleFolder;
       //strModuleFolder = System.get_module_folder();
 
-      //if(!spfile->open(System.dir().path(strModuleFolder, "devedge_front_toolbar.xml"), ::file::type_text | ::file::mode_read))
+      //if(!spfile->open(System.dir().path(strModuleFolder, "netnodeds_front_toolbar.xml"), ::file::type_text | ::file::mode_read))
       //   return false;
 
       //string str;
       //spfile->read_full_string(str);
 
-      if (!LoadToolBar("front", "devedge_front_toolbar.xml"))
+      if (!LoadToolBar("front", "netnodeds_front_toolbar.xml"))
       {
          TRACE0("Failed to create toolbar\n");
          return false;      // fail to create
@@ -194,6 +194,6 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
 
 

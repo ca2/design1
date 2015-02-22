@@ -3,7 +3,7 @@
 #include "Element2D.h"
 #include "TextInterface.h"
 
-namespace devedge
+namespace netnodeds
 {
 
 class CLASS_DECL_CA2_DEVEDGE PlainTextBox : 
@@ -45,36 +45,36 @@ public:
    AStrArray   m_straLines;
    int         m_y;
    bool        m_bGetTextNeedUpdate;
-   void _001OnKeyboardFocusTimer(devedgeView * pview, int iTimer);
+   void _001OnKeyboardFocusTimer(netnodedsView * pview, int iTimer);
 
    void OnUpdate();
 
-	int char_hit_test(devedgeView * pview, CDC * pdc, int x, int y);
+	int char_hit_test(netnodedsView * pview, CDC * pdc, int x, int y);
 
-	virtual void _001OnDraw(devedgeView * pview, CDC * pdc);
+	virtual void _001OnDraw(netnodedsView * pview, CDC * pdc);
 	void _001GetSelText(string & str);
 
-   void _001OnGetText(devedgeView * pview);
-	void _001GetViewText(devedgeView * pview, string & str);
+   void _001OnGetText(netnodedsView * pview);
+	void _001GetViewText(netnodedsView * pview, string & str);
 	void _001GetViewSel(int &iSelStart, int &iSelEnd);
 
-	void _001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj);
-	void _001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnCalcLayout(devedgeView * pview, CDC * pdc);
-   void _001OnMouseMove(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnChar(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnSysChar(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnCalcLayoutProc(devedgeView * pview, CDC * pdc);
+	void _001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj);
+	void _001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj);
+   void _001OnCalcLayout(netnodedsView * pview, CDC * pdc);
+   void _001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj);
+   void _001OnChar(netnodedsView * pview, gen::signal_object * pobj);
+   void _001OnSysChar(netnodedsView * pview, gen::signal_object * pobj);
+   void _001OnCalcLayoutProc(netnodedsView * pview, CDC * pdc);
 
    void SetFile(Ex1File * pfile);
    void OnFileUpdate();
    void CreateLineIndex();
 
-   int SelToColumn(devedgeView * pview, int iSel);
-   int SelToLine(devedgeView * pview, int iSel);
-   int LineColumnToSel(devedgeView * pview, int iLine, int iColumn);
+   int SelToColumn(netnodedsView * pview, int iSel);
+   int SelToLine(netnodedsView * pview, int iSel);
+   int LineColumnToSel(netnodedsView * pview, int iLine, int iColumn);
 
-   void OneLineUp(devedgeView * pview);
+   void OneLineUp(netnodedsView * pview);
 
    void IndexRegisterDelete(int iSel, int iCount);
    void IndexRegisterInsert(int iSel, LPCTSTR lpcszWhat);
@@ -84,4 +84,4 @@ protected:
 	
 };
 
-} // namespace devedge
+} // namespace netnodeds

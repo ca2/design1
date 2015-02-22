@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace devedge
+namespace netnodeds
 {
 
 
@@ -27,4 +27,4 @@ namespace devedge
 
 
 
-} // namespace devedge
+} // namespace netnodeds
