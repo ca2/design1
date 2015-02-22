@@ -6,18 +6,22 @@ namespace netnodeds
 
 
    html_edit_document::html_edit_document(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::data::data_container_base(papp),
       ::aura::document(papp),
       m_memfile(papp), 
       m_file(papp),
       html_document(papp)
    {
+
    }
+
 
    html_edit_document::~html_edit_document()
    {
+
    }
+
 
    bool html_edit_document::_001OnUpdateCmdUi(cmd_ui * pcmdui)
    {

@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    project::project(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       m_source(papp),
       m_headers(papp)
    {

@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    html_edit_view::html_edit_view(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       ::user::interaction(papp),
       ::user::scroll_view(papp),
       ::user::form_interface(papp),
@@ -14,11 +14,15 @@ namespace netnodeds
       html_form(papp),
       html_view(papp)
    {
+
    }
+
 
    html_edit_view::~html_edit_view()
    {
+
    }
+
 
    void html_edit_view::install_message_handling(::message::dispatch * pinterface)
    {

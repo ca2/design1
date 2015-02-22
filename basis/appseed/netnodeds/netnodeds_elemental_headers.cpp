@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    headers::headers(::aura::application * papp) :
-      element(papp),
+      ::object(papp),
       spa(file) (papp),
       folder(papp)
    {
