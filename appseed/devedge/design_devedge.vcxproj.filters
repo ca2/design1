@@ -14,9 +14,6 @@
     <ClCompile Include="framework.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="devedge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="devedge_application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -126,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="design_devedge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
