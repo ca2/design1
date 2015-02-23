@@ -1,4 +1,4 @@
-LIBRARY      "app_core_devedge"
+LIBRARY      "design_netnodeds"
 
 EXPORTS
 design_netnodeds_get_new_library
