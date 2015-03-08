@@ -9,7 +9,7 @@ namespace tarsila
    {
 
       m_strAppName         = "tarsila";
-      m_strInstallToken    = "tarsila";
+      //m_strInstallToken    = "tarsila";
       m_bLicense = false;
 
    }

@@ -7,6 +7,15 @@ namespace devedge
 
    application::application()
    {
+      m_strAppName         = "devedge";
+      m_bLicense = false;
+      m_ppaneview          = NULL;
+
+      m_pdevedge = new ::devedge::devedge(this);
+
+      m_pdevedge->construct(this);
+
+      m_pdevedge->connect_to_application_signal();
 
    }
 
@@ -19,21 +28,13 @@ namespace devedge
    }
 
 
-   void application::construct()
-   {
+   //void application::construct()
+   //{
 
-      m_strAppName         = "devedge";
-      m_strBaseSupportId   = "ca2_devedge";
-      m_strInstallToken    = "devedge";
-      m_ppaneview          = NULL;
+   //   m_strBaseSupportId   = "ca2_devedge";
+   //   m_strInstallToken    = "devedge";
 
-      m_pdevedge = new ::devedge::devedge(this);
-
-      m_pdevedge->construct(this);
-
-      m_pdevedge->connect_to_application_signal();
-
-   }
+   //}
 
 
    bool application::initialize_instance()
