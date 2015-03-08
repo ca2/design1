@@ -14,6 +14,9 @@ namespace tarsila
       place_holder_container(papp)
    {
 
+
+      m_dataid = ".local://";
+
       get_data()->m_bVertical = true;
 
       get_data()->m_matchanyRestore.add(new ::core::match::prefix("tarsila://"));

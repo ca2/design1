@@ -39,7 +39,7 @@ namespace devedge
       virtual ~application();
 
 
-      virtual void construct();
+      //virtual void construct();
 
 
       virtual bool initialize_instance();
