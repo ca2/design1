@@ -131,7 +131,7 @@ namespace devedge
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
       sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
 
-      string str = pdoc->get_path_name();
+      string str = pdoc->get_file_path();
       if(str.get_length() > 4)
       {
       if(str.Right(3).CompareNoCase(".ds") == 0)

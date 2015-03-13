@@ -13,7 +13,7 @@ namespace devedge
    {
       m_pfolder = pfolder;
       m_strPath = pszPath;
-      m_strName = System.file().name_(m_strPath);
+      m_strName = m_strPath.name();
    }
 
 

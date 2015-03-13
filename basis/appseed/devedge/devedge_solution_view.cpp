@@ -30,10 +30,10 @@ namespace devedge
 
       ptree->insert_item(m_psolution,::data::RelativeFirstChild,ptree->get_base_item());
 
-      m_psolution->m_strName = System.file().name_(pdoc->get_path_name());
+      m_psolution->m_strName = System.file().name_(pdoc->get_file_path());
       m_psolution->m_strName += ", ";
       stringa straAscendants;
-      System.file().get_ascendants_name(pdoc->get_path_name(), straAscendants);
+      System.file().get_ascendants_name(pdoc->get_file_path(), straAscendants);
 
       if(straAscendants.get_count() >= 4)
       {

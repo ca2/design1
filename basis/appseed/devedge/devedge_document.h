@@ -54,7 +54,7 @@ namespace devedge
       virtual void dump(dump_context & dumpcontext) const;
    #endif
 
-      void write(::file::byte_output_stream & ostream);
+      void write(::file::byte_ostream & ostream);
 
 
    };
