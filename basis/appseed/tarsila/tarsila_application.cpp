@@ -113,7 +113,7 @@ namespace tarsila
             string strFormatTime;
             strFormatTime = System.datetime().international().get_gmt_date_time();
             strFormatTime.replace(":","-");
-            strPath = System.dir().path(Platform.filemanager_get_initial_browse_path(),strFormatTime + ".tarsila");
+            strPath = Platform.filemanager_get_initial_browse_path()/strFormatTime + ".tarsila";
             if(!Application.file().exists(strPath))
             {
                Application.file().put_contents(strPath,"");
@@ -131,7 +131,7 @@ namespace tarsila
          string strFormatTime;
          strFormatTime = System.datetime().international().get_gmt_date_time();
          strFormatTime.replace(":","-");
-         strPath = System.dir().path(Platform.filemanager_get_initial_browse_path(),strFormatTime + ".tarsila");
+         strPath = Platform.filemanager_get_initial_browse_path()/ strFormatTime + ".tarsila";
          if(!Application.file().exists(strPath))
          {
             Application.file().put_contents(strPath,"");
@@ -160,7 +160,7 @@ namespace tarsila
       if(!tesseract::application::on_install())
          return false;
 
-      System.os().file_association_set_shell_open_command("jpg", "ca.tarsila.jpegfile", System.dir().ca2module("app.exe"), NULL);
+      System.os().file_association_set_shell_open_command("jpg", "ca.tarsila.jpegfile", System.dir().ca2module()/ "app.exe", NULL);
 
       return true;
 

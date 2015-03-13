@@ -194,7 +194,7 @@ namespace tarsila
 
    }
 
-   void document::write(::file::output_stream & ostream)
+   void document::write(::file::ostream & ostream)
    {
 
       data * pdata = get_typed_data < data >();
@@ -221,7 +221,7 @@ namespace tarsila
 
       pobj->m_bRet = true;
 
-      do_save(m_strPathName);
+      do_save(m_filepath);
 
    }
 
