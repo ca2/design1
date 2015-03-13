@@ -127,13 +127,13 @@ namespace devedge
       ::devedge::application_interface * papp = dynamic_cast < ::devedge::application_interface * > (get_app());
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
       sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
-      if(m_str == pdoc->get_path_name())
+      if(m_str == pdoc->get_file_path())
       {
       //               transform_back();
       }
       else
       {
-      m_str = pdoc->get_path_name();
+      m_str = pdoc->get_file_path();
       }
       }
       else if(puh->is_type_of(main_document::TypeOnShowView))
@@ -382,7 +382,7 @@ namespace devedge
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
       sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
 
-      string strSourcePath = pdoc->get_path_name();
+      string strSourcePath = pdoc->get_file_path();
       string strDestPath = System.dir().time("html.html");
       string strSource = Application.file().as_string(strSourcePath);
 
@@ -447,7 +447,7 @@ namespace devedge
       devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
       sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
-      string strDestPath = pdoc->get_path_name();
+      string strDestPath = pdoc->get_file_path();
 
       string str;
       GetDocumentHTML(str);

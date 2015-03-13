@@ -17,7 +17,7 @@ namespace devedge
       
       // initialize
       folder *          m_pfolder;
-      string            m_strPath;
+      ::file::path      m_strPath;
       //string          m_strName;
 
       // load

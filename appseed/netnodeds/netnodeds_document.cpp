@@ -278,7 +278,7 @@ namespace netnodeds
 
    }
 
-   void document::write(::file::byte_output_stream & ostream)
+   void document::write(::file::byte_ostream & ostream)
    {
       update_all_views(NULL, 771984, &ostream);
    }

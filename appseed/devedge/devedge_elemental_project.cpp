@@ -23,7 +23,7 @@ namespace devedge
       
       m_strProjectPath = calc_project_dir();
       
-      m_strProjectDir = System.dir().name(m_strProjectPath);
+      m_strProjectDir = m_strProjectPath.folder();
    
       if(!m_source.load(this))
          return false;
