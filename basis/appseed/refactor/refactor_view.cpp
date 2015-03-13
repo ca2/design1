@@ -127,7 +127,7 @@ namespace refactor
             main_document * puh = (main_document * ) phint;
             if(puh->is_type_of(main_document::TypeOnBeforeShowView))
             {
-               get_document()->on_save_document(get_document()->get_path_name());
+               get_document()->on_save_document(get_document()->get_file_path());
             }
             else if(puh->is_type_of(main_document::TypeOnShowView))
             {
