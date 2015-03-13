@@ -146,7 +146,7 @@ namespace biteditor
             biteditor::pane_view_update_hint * puh = (biteditor::pane_view_update_hint * ) phint;
             if(puh->is_type_of(biteditor::pane_view_update_hint::TypeOnBeforeShowView))
             {
-               //get_document()->on_save_document(get_document()->get_path_name());
+               //get_document()->on_save_document(get_document()->get_file_path());
             }
             else if(puh->is_type_of(biteditor::pane_view_update_hint::TypeOnShowView))
             {
