@@ -51,7 +51,7 @@ namespace netnodeds
       if(m_file->IsOpened())
          m_file->close();
 
-      if(!m_file->open(get_path_name(), ::file::type_binary | ::file::mode_read_write | ::file::share_deny_none))
+      if(!m_file->open(get_file_path(), ::file::type_binary | ::file::mode_read_write | ::file::share_deny_none))
          return FALSE;
 
       update_all_views(NULL, 11);
@@ -135,7 +135,7 @@ namespace netnodeds
    {
       if(m_file->IsOpened())
          m_file->close();
-      if(!m_file->open(get_path_name(), ::file::type_binary | ::file::mode_read_write |
+      if(!m_file->open(get_file_path(), ::file::type_binary | ::file::mode_read_write |
          ::file::share_deny_none))
          return;
       update_all_views(NULL, 123);
@@ -214,21 +214,33 @@ namespace netnodeds
       Put();
    }
 
+
    void document::Put()
    {
-      string strFolder;
-      System.dir().element(strFolder);
+      
+      ::file::path strFolder = System.dir().element();
+
       string strCommon;
+
       string strRemote;
-      strCommon = System.dir().path(strFolder, "seed\\ca\\fontopus\\net\\ds\\common");
-      if(strCommon.CompareNoCase(get_path_name().Mid(0, strCommon.get_length())) == 0)
+
+      strCommon = strFolder / "seed\\ca\\fontopus\\net\\ds\\common";
+
+      if(strCommon.CompareNoCase(get_file_path().Mid(0, strCommon.get_length())) == 0)
       {
-         strCommon = get_path_name().Mid(strCommon.get_length());
+         
+         strCommon = get_file_path().Mid(strCommon.get_length());
+
          strCommon.replace("\\", "/");
-         strRemote = "seed/ca/fontopus/net/ds/common" + strCommon;
-         FtpPut(get_path_name(), strRemote);
+
+         strRemote = ::file::path("seed/ca/fontopus/net/ds/common") / strCommon;
+
+         FtpPut(get_file_path(), strRemote);
+
       }
+
    }
+
 
    void document::FtpPut(const char * lpcszLocal, const char * lpcszRemote)
    {

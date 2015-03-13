@@ -161,20 +161,21 @@ namespace syllomatter
 
       stringa stra;
       stra.explode(strFileList, "\n");
-      string strSrcBase = System.dir().appdata("syllomatter", pszWorkingCopy);
-      string strDstBase = System.dir().element() / "syllomatter", pszWorkingCopy);
+      ::file::path strSrcBase = System.dir().appdata() / "syllomatter"/ pszWorkingCopy;
+      ::file::path strDstBase = System.dir().element() / "syllomatter" / pszWorkingCopy;
       string strFileSrc;
       string strFileDst;
       
       for(int32_t i = 0; i < stra.get_size(); i++)
       {
-         strFileSrc = System.dir().path(strSrcBase, stra[i]);
+
+         strFileSrc = strSrcBase / stra[i];
 
          property_set set(get_app());
 
          System.http().download("https://api.ca2.cc/syllomatter/get?revision=" + strHead + "repos=" + string(pszRepos) + "&file=" + System.url().url_encode(stra[i]), strFileSrc, set);
 
-         strFileDst = System.dir().path(strDstBase, stra[i]);
+         strFileDst = strDstBase / stra[i];
 
          Application.file().copy(strFileDst, strFileSrc);
 

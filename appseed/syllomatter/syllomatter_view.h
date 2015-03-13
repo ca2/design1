@@ -13,17 +13,23 @@ namespace syllomatter
       public html_view
    {
    public:
+
+
       view(::aura::application * papp);
+
 
       class extract : 
          virtual public ::object
       {
       public:
+
+         sp(view)             m_pview;
+         ::file::path         m_strCopy;
+         ::file::path         m_strCheck;
+         ::file::path         m_strLogFilePath;
+
          extract(::aura::application * papp);
-         sp(view)   m_pview;
-         string               m_strCopy;
-         string               m_strCheck;
-         string               m_strLogFilePath;
+
       };
 
       int32_t      m_iBufSize;
@@ -54,8 +60,8 @@ namespace syllomatter
       void start_syllomatter_extract(const char * pszCopy, const char * pszCheck);
       static uint32_t c_cdecl ThreadProc_syllomatter_extract(LPVOID lpParam);
       void syllomatter_extract(extract * pextract);
-      int32_t syllomatter_defer_extract(extract * pextract, const char * pszTopic);
-      int32_t bin_cmp(const char * pszFilePath1, const char * pszFilePath2);
+      int32_t syllomatter_defer_extract(extract * pextract, const ::file::path & pszTopic);
+      int32_t bin_cmp(const ::file::path & pszFilePath1, const ::file::path & pszFilePath2);
 
       ::aura::document * get_document();
 

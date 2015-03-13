@@ -19,9 +19,9 @@ namespace netnodeds
       
       m_strFilter = pszFilter;
       
-      stringa straPath;
+      ::file::listing straPath(get_app());
       
-      Application.dir().ls_pattern(pproject->m_strProjectDir, m_strFilter, &straPath);
+      straPath.ls_pattern(pproject->m_strProjectDir, m_strFilter);
       
       for(index i = 0; i < straPath.get_count(); i++)
       {

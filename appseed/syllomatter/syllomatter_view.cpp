@@ -316,7 +316,7 @@ namespace syllomatter
 
    void view::syllomatter_extract(extract * pextract)
    {
-      stringa straPath;
+      ::file::listing straPath(get_app());
       //   cube1sp(::core::application) papp = &App(pextract->get_app());
       stringa straRepos;
       straRepos.add("appmatter");
@@ -329,9 +329,12 @@ namespace syllomatter
       //straRepos.add("netseedcore");
       straRepos.add("node");
       straRepos.add("seed");
+
       for(int32_t i = 0; i < straRepos.get_size(); i++)
       {
-         Application.dir().rls(System.dir().path(pextract->m_strCheck, straRepos[i]), &straPath);
+         
+         straPath.rls(pextract->m_strCheck / straRepos[i]);
+
       }
 
       ::datetime::time time;
@@ -361,18 +364,28 @@ namespace syllomatter
                time.GetSecond(),
                iSerial);
          }
-         strFileTitle = System.dir().path(
-            pextract->m_strCopy, strFileTitle);
+
+         strFileTitle = pextract->m_strCopy / strFileTitle;
+
          if(!Application.file().exists(strFileTitle))
          {
+
             break;
+
          }
+
          iSerial++;
+
       }
+
       pextract->m_strLogFilePath = strFileTitle;
+      
       ::file::text_buffer_sp spfile(allocer());
-      Application.dir().mk(System.dir().name(pextract->m_strLogFilePath));
+      
+      Application.dir().mk(pextract->m_strLogFilePath.folder());
+
       spfile->open(pextract->m_strLogFilePath, ::file::type_text | ::file::mode_create | ::file::mode_write);
+
       spfile->close();
 
       strsize iLen = pextract->m_strCheck.get_length();
@@ -423,26 +436,37 @@ namespace syllomatter
          }
          iProgress++;
       }
+
       plist->m_stra[plist->m_stra.get_upper_bound()] = "OK";
+
    }
 
-   int32_t view::syllomatter_defer_extract(extract * pextract, const char * pszTopic)
+
+   int32_t view::syllomatter_defer_extract(extract * pextract, const ::file::path & pszTopic)
    {
-      string strSrc = System.dir().path(pextract->m_strCheck, pszTopic);
+
+      ::file::path strSrc = pextract->m_strCheck / pszTopic;
+
       if(strSrc.find("\\.svn\\") > 0)
       {
+
          return 0;
+
       }
+
       if(Application.dir().is(strSrc))
       {
+
          return 0;
+
       }
-      string strChk = System.dir().path(pextract->m_strCheck,
-         System.dir().path(System.dir().path(
-         System.dir().name(pszTopic), ".svn\\text-base"),
-         System.file().name_(pszTopic))) + ".svn-base";
-      string strDst = System.dir().path(pextract->m_strCopy, pszTopic);
+
+      ::file::path strChk = pextract->m_strCheck / pszTopic.folder() / ".svn\\text-base" / pszTopic.name() + ".svn-base";
+
+      ::file::path strDst = pextract->m_strCopy / pszTopic;
+
       int32_t iCmp = bin_cmp(strSrc, strChk);
+
       if(iCmp == 1 || iCmp == -1 || iCmp == 5 || iCmp == -5)
       {
          string strStatus;
@@ -462,33 +486,52 @@ namespace syllomatter
             strStatus = "Deleted";
             strStatus2 = "D";
          }
-         Application.dir().mk(System.dir().name(strDst));
+
+         Application.dir().mk(strDst.folder());
+
          Application.file().copy(strDst, strSrc, false);
+
          ::file::text_buffer_sp spfile(allocer());
+
          spfile->open(pextract->m_strLogFilePath, ::file::type_text | ::file::mode_no_truncate | ::file::mode_write);
+
          string str;
+
          str = strStatus2 + ": " + strSrc + "\r\n";
+
          spfile->seek_to_end();
+
          spfile->write_string(str);
+
          return iCmp;
+
       }
+
       return 0;
+
    }
 
-   int32_t view::bin_cmp(const char * pszFilePath1, const char * pszFilePath2)
+
+   int32_t view::bin_cmp(const ::file::path & pszFilePath1,const ::file::path & pszFilePath2)
    {
+      
       ::file::buffer_sp spfile1(get_app());
+
       ::file::buffer_sp spfile2(get_app());
 
       if(!spfile1->open(pszFilePath1, ::file::type_binary | ::file::mode_read))
          return -5;
+
       if(!spfile2->open(pszFilePath2, ::file::type_binary | ::file::mode_read))
          return 5;
 
       ::file::file_status status1;
+
       ::file::file_status status2;
+
       if(!spfile1->GetStatus(status1))
          return -5;
+
       if(!spfile2->GetStatus(status2))
          return 5;
 

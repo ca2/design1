@@ -23,7 +23,7 @@ namespace netnodeds
       
       m_strProjectPath = calc_project_dir();
       
-      m_strProjectDir = System.dir().name(m_strProjectPath);
+      m_strProjectDir = m_strProjectPath.folder();
    
       if(!m_source.load(this))
          return false;
@@ -37,16 +37,16 @@ namespace netnodeds
    }
 
 
-   string project::calc_project_dir()
+   ::file::path project::calc_project_dir()
    {
 
-      string str = m_psolution->m_pdoc->get_path_name();
+      ::file::path str = m_psolution->m_pdoc->get_file_path();
 
-      str = System.dir().name(str);
+      str = str.folder();
 
-      System.file().path().eat_end_level(str, 3, "\\");
+      str.go_up(3);
 
-      return System.dir().path(str, m_pnodeProject->attr("path").get_string(), "project.ca2project");
+      return str ;  m_pnodeProject->attr("path").get_string() / "project.ca2project";
 
    }
 

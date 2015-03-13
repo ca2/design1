@@ -114,10 +114,9 @@ namespace netnodeds
       sp(::aura::menu_base) menu = new aura::menu(get_app());
       ::file::text_buffer_sp spfile(get_app());
 
-      string strModuleFolder;
-      strModuleFolder = System.get_module_folder();
+      ::file::path strModuleFolder = System.get_module_folder();
 
-      if(!spfile->open(System.dir().path(strModuleFolder, "netnodeds_contextmenu.xml"), ::file::type_text | ::file::mode_read))
+      if(!spfile->open(strModuleFolder / "netnodeds_contextmenu.xml", ::file::type_text | ::file::mode_read))
          return;
 
       string str;

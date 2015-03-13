@@ -131,7 +131,9 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
          pmaindoc =  (netnodeds().m_ptemplateEdge->get_document(0));
       if(pmaindoc != NULL)
       {
-         string strExtension = System.file().extension(pcreatecontext->m_spCommandLine->m_varFile);
+
+         string strExtension = pcreatecontext->m_spCommandLine->m_varFile.get_file_path().ext();
+
          sp(::netnodeds::pane_view) pview = pmaindoc->get_typed_view < ::netnodeds::pane_view > ();
          if(pview != NULL)
          {
@@ -165,7 +167,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
    bool application::on_install()
    {
 
-      System.os().file_association_set_shell_open_command("txt", "ca.netnodeds.txtfile", System.dir().ca2module("app.exe"), NULL);
+      System.os().file_association_set_shell_open_command("txt", "ca.netnodeds.txtfile", System.dir().ca2module() / "app.exe", NULL);
 
       /*if(VistaTools::IsVista() && VistaTools::IsElevated() == S_OK)
       {

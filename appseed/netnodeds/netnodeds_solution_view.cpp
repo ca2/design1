@@ -29,16 +29,20 @@ namespace netnodeds
 
       ptree->insert_item(m_psolution,::data::RelativeFirstChild,ptree->get_base_item());
 
-      m_psolution->m_strName = System.file().name_(pdoc->get_file_path());
+      m_psolution->m_strName = pdoc->get_file_path().name();
       m_psolution->m_strName += ", ";
-      stringa straAscendants;
-      System.file().get_ascendants_name(pdoc->get_file_path(), straAscendants);
+      
+      ::file::patha straAscendants;
+      
+      pdoc->get_file_path().ascendants_name(straAscendants);
 
       if(straAscendants.get_count() >= 4)
       {
-         string str;
-         straAscendants.implode(str, "/", 3, MIN(straAscendants.get_count(), 3));
-         m_psolution->m_strName += str;
+
+         ::file::path path = straAscendants.implode("/", 3, MIN(straAscendants.get_count(), 3));
+
+         m_psolution->m_strName += path;
+
       }
 
 
