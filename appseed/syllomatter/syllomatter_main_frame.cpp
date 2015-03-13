@@ -21,7 +21,7 @@ namespace syllomatter
    bool main_frame::on_create_bars()
    {
       
-      if (!LoadToolBar(0, System.dir().path(m_pdocumenttemplate->m_strMatter, "toolbar.xml")))
+      if (!LoadToolBar(0, m_pdocumenttemplate->m_strMatter /  "toolbar.xml"))
       {
          TRACE0("Failed to create toolbar\n");
          return false;      // fail to create

@@ -193,7 +193,7 @@ though it is not a valid cursor handle.\n\
       {
          if(m_pfile->IsOpened())
             m_pfile->close();
-         if(!m_pfile->open(get_path_name(), ::file::type_binary | ::file::mode_read_write |
+         if(!m_pfile->open(get_file_path(), ::file::type_binary | ::file::mode_read_write |
             ::file::share_deny_none))
             return;
       }
@@ -441,17 +441,21 @@ though it is not a valid cursor handle.\n\
 
    void document::Put()
    {
-      string strFolder;
-      System.dir().element(strFolder);
+
+      ::file::path strFolder = System.dir().element();
+      
       string strCommon;
+
       string strRemote;
-      strCommon = System.dir().path(strFolder, "cast\\seed\\ca2\\fontopus\\net\\ds\\common");
-      if(strCommon.CompareNoCase(get_path_name().Mid(0, strCommon.get_length())) == 0)
+
+      strCommon = strFolder / "cast\\seed\\ca2\\fontopus\\net\\ds\\common";
+
+      if(strCommon.CompareNoCase(get_file_path().Mid(0, strCommon.get_length())) == 0)
       {
-         strCommon = get_path_name().Mid(strCommon.get_length());
+         strCommon = get_file_path().Mid(strCommon.get_length());
          strCommon.replace("\\", "/");
          strRemote = "cast/seed/ca2/fontopus/net/ds/common" + strCommon;
-         FtpPut(get_path_name(), strRemote);
+         FtpPut(get_file_path(), strRemote);
       }
    }
 
