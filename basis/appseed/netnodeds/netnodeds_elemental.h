@@ -25,7 +25,7 @@ namespace netnodeds
 
       index                      m_iImage;
       index                      m_iImageSelected;
-      string                     m_strName;
+      ::file::path               m_strName;
 
 
       elemental();

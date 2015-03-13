@@ -44,10 +44,10 @@ namespace netnodeds
 
       ::file::text_buffer_sp spfile(get_app());
 
-      string strModuleFolder;
+      ::file::path strModuleFolder;
       strModuleFolder = System.get_module_folder();
 
-      if(!spfile->open(System.dir().path(strModuleFolder, "netnodeds_toolbar.xml"), ::file::type_text | ::file::mode_read))
+      if(!spfile->open(strModuleFolder/ "netnodeds_toolbar.xml", ::file::type_text | ::file::mode_read))
          return false;
 
       string str;

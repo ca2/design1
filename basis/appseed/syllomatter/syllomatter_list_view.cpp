@@ -145,18 +145,23 @@ namespace syllomatter
       m_stra.remove_all();
       m_straStatus.remove_all();
       _001OnUpdateItemCount();
+      
       stringa straSep;
-      stringa straSub;
+
+      ::file::listing straSub;
+
       straSep.add("\r");
       straSep.add("\n");
       straSep.add("\r\n");
+
       for(int32_t i = 0; i < itema.get_size(); i++)
       {
          m_stra.add(itema[i]->m_strPath);
          m_committhread.m_str = itema[i]->m_strPath;
          m_straStatus.add("X");
-         string strCmd = System.dir().module("svn\\svn status") 
-            + " " + itema[i]->m_strPath;
+
+         string strCmd = System.dir().module() / "svn\\svn status" + " " + itema[i]->m_strPath;
+
          string strOutput;
          strOutput = System.process().get_output(strCmd);
          stringa stra;
@@ -177,12 +182,18 @@ namespace syllomatter
 
             if(strStatus == "?" && Application.dir().is(strPath))
             {
-               straSub.remove_all();
-               Application.dir().rls(strPath, &straSub);
+               
+               straSub.clear_results();
+
+               straSub.rls(strPath);
+
                for(int32_t l = 0; l < straSub.get_size(); l++)
                {
+
                   m_stra.add(straSub[l]);
+
                   m_straStatus.add("?");
+
                }
 
             }
@@ -255,10 +266,13 @@ namespace syllomatter
          {
             if(m_straStatus[iItem] == "?")
             {
+               
                ::process::process_sp process(allocer());
-               process->create_child_process(System.dir().module("svn\\svn add ") +
-                  m_stra[iItem], false);
+
+               process->create_child_process(System.dir().module() / "svn\\svn add " + m_stra[iItem], false);
+
                process->wait_until_exit();
+
             }
          }
       }
@@ -296,13 +310,18 @@ namespace syllomatter
       {
          for(index iItem = range.ItemAt(i).get_lower_bound(); iItem <= range.ItemAt(i).get_upper_bound(); iItem++)
          {
+            
             if(m_straStatus[iItem] == "!")
             {
+               
                ::process::process_sp process(allocer());
-               process->create_child_process(System.dir().module("svn\\svn delete ") +
-                  m_stra[iItem], false);
+
+               process->create_child_process(System.dir().module() / "svn\\svn delete " + m_stra[iItem], false);
+
                process->wait_until_exit();
+
             }
+
          }
       }
       Commit_(m_itema);
@@ -330,25 +349,39 @@ namespace syllomatter
          pcmdui->m_pcmdui->Enable(bEnable);
    }
 
+
    void list_view::_001OnRevert(::signal_details * pobj)
    {
+      
       UNREFERENCED_PARAMETER(pobj);
+      
       range range;
+      
       _001GetSelection(range);
+      
       for(index i = 0; i < range.get_item_count(); i++)
       {
+         
          for(index iItem = range.ItemAt(i).get_lower_bound(); iItem <= range.ItemAt(i).get_upper_bound(); iItem++)
          {
+            
             if(m_straStatus[iItem] == "M" || m_straStatus[iItem] == "A")
             {
+               
                ::process::process_sp process(allocer());
-               process->create_child_process(System.dir().module("svn\\svn revert ") +
-                  m_stra[iItem], false);
+               
+               process->create_child_process(System.dir().module() / "svn\\svn revert " + m_stra[iItem], false);
+
                process->wait_until_exit();
+
             }
+
          }
+
       }
+
       Commit_(m_itema);
+
    }
 
    void list_view::_001OnUpdateRevert(::signal_details * pobj)
@@ -382,9 +415,9 @@ namespace syllomatter
 
    int32_t list_view::commit_thread::run()
    {
-      string strCmd = System.dir().module("svn\\svn commit");
-      string strDelCmd = System.dir().module("svn\\svn delete");
-      string strAddCmd = System.dir().module("svn\\svn add");
+      ::file::path strCmd = System.dir().module() / "svn\\svn commit";
+      ::file::path strDelCmd = System.dir().module() / "svn\\svn delete";
+      ::file::path strAddCmd = System.dir().module() / "svn\\svn add";
       string strExtraCommitMessage;
       m_plistview->m_psvnview->m_peditview->_001GetText(strExtraCommitMessage);
       if(strExtraCommitMessage .get_length() > 0)
@@ -678,7 +711,7 @@ namespace syllomatter
          m_plistview->m_stra.add("Updating " +  m_itema[i]->m_strPath + "...");
          m_plistview->m_straStatus.add(" ");
          m_plistview->post_message(WM_USER + 1024);
-         string strCmd = System.dir().module("svn\\svn update") + " " + m_itema[i]->m_strPath;
+         string strCmd = System.dir().module() / "svn\\svn update" + " " + m_itema[i]->m_strPath;
          string strOutput;
          ::process::process_sp process(allocer());
          int32_t iRetry = -1;
