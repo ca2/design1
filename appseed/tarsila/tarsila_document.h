@@ -30,7 +30,7 @@ namespace tarsila
       DECL_GEN_SIGNAL(_001OnFileSave);
 
 
-      void write(::file::output_stream & ostream);
+      void write(::file::ostream & ostream);
 
    };
 

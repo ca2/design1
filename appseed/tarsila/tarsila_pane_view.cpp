@@ -102,7 +102,7 @@ namespace tarsila
 
       
 
-      string strPath(pcreatordata->m_id);
+      ::file::path strPath(pcreatordata->m_id.str());
 
       if(::str::begins_eat_ci(strPath, "tarsila://"))
       {
@@ -140,7 +140,7 @@ namespace tarsila
 
                   pcreatordata->m_pdoc = pdoc;
 
-                  pcreatordata->m_strTitle = System.file().name_(strPath);
+                  pcreatordata->m_strTitle = strPath.name();
 
                }
 
@@ -251,7 +251,7 @@ namespace tarsila
       for(index i = 0; i < count; i++)
       {
          sp(::aura::document) pdoc =  (papp->m_pdoctemplate->get_document(i));
-         if(pdoc != NULL && pdoc->get_path_name().CompareNoCase(strPath) == 0)
+         if(pdoc != NULL && pdoc->get_file_path().CompareNoCase(strPath) == 0)
          {
             return pdoc;
          }
