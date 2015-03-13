@@ -206,11 +206,10 @@ namespace devedge
 
    void solution_document::Put()
    {
-      string strFolder;
-      System.dir().element(strFolder);
+      ::file::path strFolder = System.dir().element();
       string strCommon;
       string strRemote;
-      strCommon = System.dir().path(strFolder, "seed\\ca\\fontopus\\net\\ds\\common");
+      strCommon = strFolder / "seed\\ca\\fontopus\\net\\ds\\common";
       if(strCommon.CompareNoCase(get_file_path().Mid(0, strCommon.get_length())) == 0)
       {
          strCommon = get_file_path().Mid(strCommon.get_length());

@@ -162,7 +162,7 @@ namespace syllomatter
       stringa stra;
       stra.explode(strFileList, "\n");
       string strSrcBase = System.dir().appdata("syllomatter", pszWorkingCopy);
-      string strDstBase = System.dir().element("syllomatter", pszWorkingCopy);
+      string strDstBase = System.dir().element() / "syllomatter", pszWorkingCopy);
       string strFileSrc;
       string strFileDst;
       
