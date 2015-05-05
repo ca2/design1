@@ -201,7 +201,6 @@ namespace tarsila
 
       ::xml::document document(get_app());
 
-
       ::xml::output_tree xmlof(get_app(),Application.m_pxmlschemaDrawing);
 
       xmlof.m_pdocument = &document;
