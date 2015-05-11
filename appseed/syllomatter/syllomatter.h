@@ -46,3 +46,7 @@ namespace tesseract
 #include "syllomatter_application.h"
 
 
+int libsvn_minimal_client_test(::syllomatter::list_view * plist,const char * strUrl);
+
+
+
