@@ -90,6 +90,9 @@ namespace syllomatter
          DECL_GEN_SIGNAL(_001OnVerisvnwellListMessage);
 
 
+         virtual void LibsvnMinimalClientTest();
+
+
    };
 
 

@@ -827,7 +827,12 @@ namespace syllomatter
       }
    }
 
+   void list_view::LibsvnMinimalClientTest()
+   {
 
+      libsvn_minimal_client_test(this,"https://repos.ca2.cc/app/basis");
+
+   }
 
 } // namespace syllomatter
 

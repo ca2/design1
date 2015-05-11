@@ -296,7 +296,43 @@
     <PreBuildEvent>
       <Command>mkdir "$(OutDir)svn"
 del /q "$(OutDir)svn/*.*"
-copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)svn"</Command>
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)svn"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\crshhndl.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libapr_tsvn32.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libaprutil_tsvn32.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libsasl32.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libsvn_tsvn32.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslANONYMOUS.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslCRAMMD5.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslDIGESTMD5.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslGSSAPI.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslLOGIN.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslNTLM.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslPLAIN.dll" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\lib.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libapr_tsvn.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libaprutil_tsvn.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libsasl.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\libsvn_tsvn32.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslANONYMOUS.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslCRAMMD5.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslDIGESTMD5.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslGSSAPI.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslLOGIN.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslNTLM.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\saslPLAIN.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svn.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnadmin.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnbench.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svndumpfilter.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnlook.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnmucc.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnrdump.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnserve.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnsync.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\svnversion.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\crshhndl.pdb" "$(OutDir)"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\debug\x86\gen_test_char.pdb" "$(OutDir)"</Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>-Zm384 /bigobj</AdditionalOptions>
@@ -339,9 +375,9 @@ copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)svn"</
       <AdditionalIncludeDirectories>$(SolutionDir)../../appseedcore/ca2/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>winmm.lib;version.lib;vfw32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libsvn_tsvn32.lib;libapr_tsvn.lib;winmm.lib;version.lib;vfw32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>$(IntDir);$(SolutionDir)../../../time/library/x86/$(ConfigurationName);$(SolutionDir)../../../nodeapp/thirdparty/library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(IntDir);$(SolutionDir)../../../time/library/x86/$(ConfigurationName);$(SolutionDir)../../../nodeapp/thirdparty/library/debug/x86;$(SolutionDir)../../../nodeapp/thirdparty/library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1286,6 +1322,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='codeanalysis|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='profiler|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="libsvn_minimal_client_test.cpp" />
     <ClCompile Include="syllomatter_application.cpp" />
     <ClCompile Include="syllomatter_document.cpp" />
     <ClCompile Include="syllomatter_filemanager_document.cpp" />

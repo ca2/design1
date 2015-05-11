@@ -53,6 +53,9 @@
     <ClCompile Include="syllomatter_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="libsvn_minimal_client_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">

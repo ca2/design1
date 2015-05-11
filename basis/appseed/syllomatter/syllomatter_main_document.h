@@ -14,6 +14,9 @@ namespace syllomatter
       virtual ~main_document();
 
       
+      DECL_GEN_SIGNAL(_001OnTest);
+
+
       DECL_GEN_SIGNAL(_001OnCommit_);
       DECL_GEN_SIGNAL(_001OnUpdate);
       DECL_GEN_SIGNAL(_001OnMajorCheckout);
