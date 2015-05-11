@@ -16,6 +16,7 @@ namespace syllomatter
       
       DECL_GEN_SIGNAL(_001OnCommit_);
       DECL_GEN_SIGNAL(_001OnUpdate);
+      DECL_GEN_SIGNAL(_001OnMajorCheckout);
 
 
    };

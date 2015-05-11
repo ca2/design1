@@ -161,6 +161,10 @@ namespace syllomatter
       switch(pcreatordata->m_id)
       {
       case syllomatter::PaneViewContextMenu:
+      {
+         sp(::user::menu_list_view) pview = (::aura::impact::create_view< ::user::menu_list_view >(pcreatordata));
+         pview->LoadXmlMenu("main_menu.xml");
+         pview->MenuFill(pview,GetParentFrame());
          /*{
          sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < syllomattersp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file("http://localhost:10011/");
          if(pdoc != NULL)
@@ -178,6 +182,7 @@ namespace syllomatter
          }
          }
          }*/
+      }
          break;
 
          /*         create_context cc;
@@ -210,7 +215,7 @@ namespace syllomatter
             Application.dir().matter("syllomatter_extract_changes_form.xhtml")));*/
             m_pdocForm = (
                m_pdoctemplateExtractChanges->open_document_file(NULL, true, pcreatordata->m_pholder));
-            m_pdocForm->open_commit_message();
+            //m_pdocForm->open_commit_message();
             sp(::syllomatter::view) pview = m_pdocForm->get_typed_view < ::syllomatter::view > ();
             m_pviewForm = pview;
             if(pview != NULL)
