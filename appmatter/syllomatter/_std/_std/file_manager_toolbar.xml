@@ -4,5 +4,6 @@
 <button id="syllomatter_commit">Commit</button>
 <button id="syllomatter_update">Update</button>
 <button id="syllomatter_menu">Syllomatter Menu</button>
+<button id="major_checkout">MajorCO</button>
 <button id="trash_that_is_not_trash">Trash that is not trash</button>
 </toolbar>

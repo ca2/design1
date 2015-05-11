@@ -45,7 +45,7 @@ namespace syllomatter
 
       InitializeFileManager("syllomatter/frame");
       Platform.filemanager().std().m_strLevelUp.Empty();
-      //Platform.filemanager().std().m_strToolBar = "syllomatter_::filemanager::toolbar.xml";
+      Platform.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
       Platform.filemanager().std().m_dataidStatic = "FileManagerFavoritesList";
       //Platform.filemanager().std().m_uiDialogBar = 0;
       //Platform.filemanager().std().m_uiMenuBar = 0;
@@ -106,7 +106,7 @@ namespace syllomatter
 
    void application::InitializeFileManager(const char * pszMatter)
    {
-      Platform.filemanager().m_ptemplateStd = new syllomatter::filemanager_template(&Platform.filemanager());
+/*      Platform.filemanager().m_ptemplateStd = new syllomatter::filemanager_template(&Platform.filemanager());
       Platform.userex()->shellimageset().initialize();
       Platform.filemanager().m_ptemplateStd->Initialize(0, pszMatter);
 
@@ -122,7 +122,9 @@ namespace syllomatter
          "system/form",
          System.type_info < ::filemanager::operation_document > (),
          System.type_info < ::filemanager::operation_child_frame > (),
-         System.type_info < ::filemanager::operation_view > ());
+         System.type_info < ::filemanager::operation_view > ());*/
+
+
    }
 
    void application::create(const char * psz)
@@ -220,10 +222,10 @@ namespace syllomatter
 #ifndef _WIN32
 extern "C"
 #endif
-::aura::library * app_core_syllomatter_get_new_library(::aura::application * papp)
+::aura::library * design_syllomatter_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::syllomatter::application >(papp, "app-core");
+   return new ::aura::single_application_library < ::syllomatter::application >(papp, "design");
 
 }
 
