@@ -9,12 +9,11 @@ namespace tarsila
       ::object(papp),
       simple_frame_window(papp)
    {
-      m_iFrameData = 10;
-      m_dataid = "app-core.tarsila.frame";
+
+      
 
       WfiEnableFullScreen();
 
-      m_dataidWindow = "WindowData";
    }
 
    frame::~frame()

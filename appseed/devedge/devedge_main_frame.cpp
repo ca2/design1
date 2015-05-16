@@ -9,19 +9,19 @@ namespace devedge
       ::object(papp),
       simple_frame_window(papp)
    {
-      m_iFrameData = 10;
-      m_dataid = "::devedge::main_frame";
+      
       m_iAnimateStep = 0;
-//      System.SetMainWnd(this);
 
       WfiEnableFullScreen();
 
-      m_dataidWindow = "WindowData";
    }
+
 
    main_frame::~main_frame()
    {
+
    }
+
 
    void main_frame::_001OnCreate(::signal_details * pobj)
    {

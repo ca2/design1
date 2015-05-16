@@ -10,18 +10,19 @@ namespace biteditor
       simple_frame_window(papp),
       m_imagelist(papp)
    {
-      m_iFrameData = 10;
-      m_dataid = "ca2::biteditor";
+      
       m_iAnimateStep = 0;
 
       WfiEnableFullScreen();
 
-      m_dataidWindow = "WindowData";
    }
 
+   
    frame::~frame()
    {
+
    }
+
 
    void frame::install_message_handling(::message::dispatch * pinterface)
    {
