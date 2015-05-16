@@ -8,8 +8,8 @@ namespace devedge
    public:
       
       
-      string                     m_strAnimatedStatusBarText;
-      int32_t                        m_iAnimateStep;
+      
+      
       sp(image_list)                m_pimagelist;
 
 
@@ -20,9 +20,7 @@ namespace devedge
 
       virtual bool pre_create_window(::user::create_struct& cs);
       void ShowControlBars(bool bShow);
-      void AnimateStatusBar();
-      void SetAnimatedStatusBarText(const char * lpcsz);
-
+    
       virtual bool is_application_main_window();
 
 

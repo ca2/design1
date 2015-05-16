@@ -11,7 +11,7 @@ namespace biteditor
       m_imagelist(papp)
    {
       
-      m_iAnimateStep = 0;
+      
 
       WfiEnableFullScreen();
 
@@ -106,7 +106,7 @@ namespace biteditor
       static float theta;
       if(nIDEvent == 3)
       {
-         //AnimateStatusBar();
+    
       }
       else if(nIDEvent == 8913)
       {
@@ -135,32 +135,6 @@ namespace biteditor
    // trans   simple_frame_window::OnTimer(nIDEvent);
    }
 
-   void frame::SetAnimatedStatusBarText(const char * lpcsz)
-   {
-      m_strAnimatedStatusBarText = lpcsz;
-      if(m_strAnimatedStatusBarText.is_empty())
-      {
-         KillTimer(3);
-      }
-      else
-      {
-         SetTimer(3, 500, NULL);
-      }
-   }
-
-   void frame::AnimateStatusBar()
-   {
-      if(m_strAnimatedStatusBarText.is_empty())
-         return;
-
-      strsize iLen = m_strAnimatedStatusBarText.get_length();
-      m_iAnimateStep++;
-      if(m_iAnimateStep > iLen)
-         m_iAnimateStep = 0;
-
-
-   //   m_statusbar.SetPaneText(0, m_strAnimatedStatusBarText.Mid(m_iAnimateStep));
-   }
 
 
    void frame::ShowControlBars(bool bShow)
