@@ -10,8 +10,8 @@ namespace biteditor
    public:
 
 
-      string                     m_strAnimatedStatusBarText;
-      int32_t                        m_iAnimateStep;
+      
+      
       image_list                 m_imagelist;
 
 
@@ -21,9 +21,7 @@ namespace biteditor
       virtual void install_message_handling(::message::dispatch * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
       void ShowControlBars(bool bShow);
-      void AnimateStatusBar();
-      void SetAnimatedStatusBarText(const char * lpcsz);
-
+ 
 #ifdef DEBUG
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;

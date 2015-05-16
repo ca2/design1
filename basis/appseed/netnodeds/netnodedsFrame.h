@@ -12,7 +12,7 @@ public:
 // Attributes
 public:
    //BaseMenuMessageHandler        m_menuhook;
-   string                     m_strAnimatedStatusBarText;
+   
    int                        m_iAnimateStep;
    ImageList *                m_pimagelist;
 
@@ -30,8 +30,7 @@ public:
 // Implementation
 public:
 	void ShowControlBars(bool bShow);
-	void AnimateStatusBar();
-	void SetAnimatedStatusBarText(LPCTSTR lpcsz);
+
 	bool IsFullScreen();
 	void ToggleFullScreen();
 	virtual void WfiOnFullScreen(bool bFullScreen);

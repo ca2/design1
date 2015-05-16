@@ -10,7 +10,7 @@ namespace devedge
       simple_frame_window(papp)
    {
       
-      m_iAnimateStep = 0;
+      
 
       WfiEnableFullScreen();
 
@@ -74,7 +74,7 @@ namespace devedge
       static float theta;
       if(nIDEvent == 3)
       {
-         //AnimateStatusBar();
+      
       }
       else if(nIDEvent == 8913)
       {
@@ -101,33 +101,6 @@ namespace devedge
          
       }
       //simple_frame_window::OnTimer(nIDEvent);
-   }
-
-   void main_frame::SetAnimatedStatusBarText(const char * lpcsz)
-   {
-      m_strAnimatedStatusBarText = lpcsz;
-      if(m_strAnimatedStatusBarText.is_empty())
-      {
-         KillTimer(3);
-      }
-      else
-      {
-         SetTimer(3, 500, NULL);
-      }
-   }
-
-   void main_frame::AnimateStatusBar()
-   {
-      if(m_strAnimatedStatusBarText.is_empty())
-         return;
-
-      strsize iLen = m_strAnimatedStatusBarText.get_length();
-      m_iAnimateStep++;
-      if(m_iAnimateStep > iLen)
-         m_iAnimateStep = 0;
-
-
-   //   m_statusbar.SetPaneText(0, m_strAnimatedStatusBarText.Mid(m_iAnimateStep));
    }
 
 

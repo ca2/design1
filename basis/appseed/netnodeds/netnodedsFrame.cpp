@@ -57,7 +57,7 @@ netnodedsFrame::netnodedsFrame(::ca::application * papp)
 {
    
    DISetSection("MusicalPlayerscreencaptureFrame");
-   m_iAnimateStep = 0;
+   
    AfxGetApp()->m_pMainWnd = this;
 
    WfiEnableFullScreen();
@@ -377,7 +377,7 @@ void netnodedsFrame::OnTimer(UINT nIDEvent)
    static float theta;
    if(nIDEvent == 3)
    {
-      //AnimateStatusBar();
+     
    }
    else if(nIDEvent == 8913)
    {
@@ -404,33 +404,6 @@ void netnodedsFrame::OnTimer(UINT nIDEvent)
 		
    }
 	SimpleFrameWindow::OnTimer(nIDEvent);
-}
-
-void netnodedsFrame::SetAnimatedStatusBarText(LPCTSTR lpcsz)
-{
-   m_strAnimatedStatusBarText = lpcsz;
-   if(m_strAnimatedStatusBarText.is_empty())
-   {
-      KillTimer(3);
-   }
-   else
-   {
-      SetTimer(3, 500, NULL);
-   }
-}
-
-void netnodedsFrame::AnimateStatusBar()
-{
-   if(m_strAnimatedStatusBarText.is_empty())
-      return;
-
-   int iLen = m_strAnimatedStatusBarText.GetLength();
-   m_iAnimateStep++;
-   if(m_iAnimateStep > iLen)
-      m_iAnimateStep = 0;
-
-
-//   m_statusbar.SetPaneText(0, m_strAnimatedStatusBarText.Mid(m_iAnimateStep));
 }
 
 
