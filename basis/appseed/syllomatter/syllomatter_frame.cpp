@@ -1,7 +1,9 @@
 #include "framework.h"
 
+
 namespace syllomatter
 {
+
 
    frame::frame(::aura::application * papp) :
       ::object(papp),
@@ -9,18 +11,19 @@ namespace syllomatter
       form_child_frame(papp),
       m_imagelist(papp)
    {
-      m_iFrameData = 10;
-      m_dataid = "MusicalPlayerscreencaptureFrame";
+      
       m_iAnimateStep = 0;
 
       WfiEnableFullScreen();
 
-      m_dataidWindow = "WindowData";
    }
+
 
    frame::~frame()
    {
+
    }
+
 
    void frame::_001OnCreate(::signal_details * pobj)
    {

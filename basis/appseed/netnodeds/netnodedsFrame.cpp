@@ -55,7 +55,7 @@ static UINT indicators[] =
 netnodedsFrame::netnodedsFrame(::ca::application * papp)
 : SimpleFrameWindow(papp)
 {
-   m_iFrameData = 10;
+   
    DISetSection("MusicalPlayerscreencaptureFrame");
    m_iAnimateStep = 0;
    AfxGetApp()->m_pMainWnd = this;
