@@ -52,7 +52,7 @@ namespace syllomatter
       virtual void install_message_handling(::message::dispatch * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
       virtual void OnDraw(::draw2d::graphics * pgraphics);      // overridden to draw this ::view
-      DECL_GEN_SIGNAL(_001OnInitialUpdate);
+      virtual void _001OnInitialUpdate();
          virtual void on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint);
 
       bool BaseOnControlEvent(::user::control_event * pevent);

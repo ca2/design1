@@ -53,7 +53,7 @@ namespace biteditor
       //virtual void pre_translate_message(::signal_details * pobj);
       virtual void install_message_handling(::message::dispatch * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
-      DECL_GEN_SIGNAL(_001OnInitialUpdate);
+      virtual void _001OnInitialUpdate();
 
      void OnDocumentComplete(const char * lpszURL);
 

@@ -90,9 +90,9 @@ namespace devedge
 
    }
 
-   void front_view::_001OnInitialUpdate(::signal_details * pobj)
+   void front_view::_001OnInitialUpdate()
    {
-      ::user::form::_001OnInitialUpdate(pobj);
+      ::user::form::_001OnInitialUpdate();
 
 
 

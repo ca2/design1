@@ -51,7 +51,7 @@ namespace devedge
 
          void OnDocumentComplete(const char * lpszURL);
 
-         DECL_GEN_SIGNAL(_001OnInitialUpdate);
+         virtual void _001OnInitialUpdate();
 
             DECL_GEN_SIGNAL(_001OnDestroy);
       DECL_GEN_SIGNAL(_001OnSize);

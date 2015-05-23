@@ -88,9 +88,9 @@ namespace biteditor
    }
 
 
-   void view::_001OnInitialUpdate(::signal_details * pobj)
+   void view::_001OnInitialUpdate()
    {
-      ::user::scroll_view::_001OnInitialUpdate(pobj);
+      ::user::scroll_view::_001OnInitialUpdate();
 
       m_pasciibox->on_update();
       m_phexbox->on_update();

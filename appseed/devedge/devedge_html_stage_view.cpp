@@ -89,9 +89,9 @@ namespace devedge
    }
 
 
-   void html_stage_view::_001OnInitialUpdate(::signal_details * pobj) 
+   void html_stage_view::_001OnInitialUpdate() 
    {
-      ::aura::impact::_001OnInitialUpdate(pobj);
+      ::aura::impact::_001OnInitialUpdate();
 
 
 

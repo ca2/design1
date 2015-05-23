@@ -92,9 +92,9 @@ namespace devedge
    }
 
 
-   void html_edit_view::_001OnInitialUpdate(::signal_details * pobj)
+   void html_edit_view::_001OnInitialUpdate()
    {
-      html_view::_001OnInitialUpdate(pobj);
+      html_view::_001OnInitialUpdate();
 
 
 

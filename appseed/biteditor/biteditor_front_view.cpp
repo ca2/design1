@@ -97,9 +97,9 @@ namespace biteditor
    }
 
 
-   void front_view::_001OnInitialUpdate(::signal_details * pobj)
+   void front_view::_001OnInitialUpdate()
    {
-      html_view::_001OnInitialUpdate(pobj);
+      html_view::_001OnInitialUpdate();
 
 
 

@@ -71,7 +71,7 @@ namespace netnodeds
       virtual void install_message_handling(::message::dispatch * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
 
-      DECL_GEN_SIGNAL(_001OnInitialUpdate);
+      virtual void _001OnInitialUpdate();
 
 
          DECL_GEN_SIGNAL(_001OnDestroy);
