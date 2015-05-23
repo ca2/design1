@@ -50,7 +50,7 @@ namespace tarsila
 
       virtual void layout();
 
-      DECL_GEN_SIGNAL(_001OnInitialUpdate);
+      virtual void _001OnInitialUpdate();
       DECL_GEN_SIGNAL(_001OnDestroy);
       DECL_GEN_SIGNAL(_001OnCreate);
       DECL_GEN_SIGNAL(_001OnContextMenu);
