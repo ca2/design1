@@ -33,17 +33,16 @@ namespace syllomatter
          int32_t run();
       };
 
-      stringa m_straStatus;
-      stringa m_stra;
+      stringa                          m_straStatus;
+      stringa                          m_stra;
 
-      update_thread m_updatethread;
-      commit_thread m_committhread;
+      update_thread                    m_updatethread;
+      commit_thread                    m_committhread;
 
       ::user::list_cache               m_cache;
-      simple_list_header_control       m_headerctrl;
-      ::fs::item_array       m_itema;
-      sp(pane_view)    m_ppaneview;
-      svn_view *                 m_psvnview;
+      ::fs::item_array                 m_itema;
+      sp(pane_view)                    m_ppaneview;
+      svn_view *                       m_psvnview;
 
 
       list_view(::aura::application * papp);
