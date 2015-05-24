@@ -6,21 +6,23 @@ namespace biteditor
 
 
    front_view::front_view(::aura::application * papp) :
-      ::user::interaction(papp),
-      ::user::scroll_view(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
+      object(papp),
       html_form(papp),
       html_view(papp)
    {
+
    }
+
 
    front_view::~front_view()
    {
+
    }
+
 
    void front_view::install_message_handling(::message::dispatch * pinterface)
    {
+
       html_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &front_view::_001OnDestroy);

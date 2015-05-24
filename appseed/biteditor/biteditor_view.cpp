@@ -7,8 +7,6 @@ namespace biteditor
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp),
-      ::user::scroll_view(papp),
       m_mutexData(papp)
    {
 
@@ -26,12 +24,16 @@ namespace biteditor
 
    }
 
+
    view::~view()
    {
+
    }
+
 
    void view::install_message_handling(::message::dispatch * pinterface)
    {
+
       ::user::scroll_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
