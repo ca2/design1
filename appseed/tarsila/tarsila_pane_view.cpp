@@ -208,7 +208,7 @@ namespace tarsila
       ////   break;
       /////*case tarsila::PaneViewFileManager:
       ////   {
-      ////      sp(::filemanager::manager) pdoc = Plat(papp).filemanager().std().open_child(papp, false, true, pcreatordata->m_pholder);
+      ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager().std().open_child(papp, false, true, pcreatordata->m_pholder);
       ////      m_pfilemanagerdoc = pdoc;
       ////      if(pdoc != NULL)
       ////      {
