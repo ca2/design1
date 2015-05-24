@@ -14,22 +14,14 @@ namespace syllomatter
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp),
-      ::user::scroll_view(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
       html_form(papp),
       html_view(papp)
    {
 
       m_iMessageId = -1;
-
       m_dataid = "view";
-
       m_iBufSize = 1024 * 1024;
-
       m_buf1 = new char[m_iBufSize];
-
       m_buf2 = new char[m_iBufSize];
 
    }
@@ -37,6 +29,7 @@ namespace syllomatter
 
    view::~view()
    {
+
    }
 
 
@@ -120,7 +113,7 @@ namespace syllomatter
    void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
    {
 
-      ::user::form::on_update(pSender, lHint, phint);
+      ::user::form_view::on_update(pSender, lHint, phint);
 
    }
 

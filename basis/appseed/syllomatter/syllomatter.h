@@ -12,12 +12,20 @@
     #define CLASS_DECL_CA2_SYLLOMATTER  CLASS_DECL_IMPORT
 #endif
 
-namespace tesseract
+namespace syllomatter
 {
 
    class application;
+   class document;
+   class list_view;
 
-} // namespace tesseract
+
+} // namespace syllomatter
+
+
+#undef App
+#define App(pcaapp) (pcaapp->cast_app < ::syllomatter::application > ())
+
 
 
 #include "syllomatter_frame.h"
