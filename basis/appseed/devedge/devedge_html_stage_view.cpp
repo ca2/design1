@@ -7,21 +7,21 @@ namespace devedge
 
    html_stage_view::html_stage_view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp), 
-      ::user::scroll_view(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
       html_form(papp),
       html_view(papp)
    {
+
    }
+
 
    html_stage_view::~html_stage_view()
    {
+
    }
 
    void html_stage_view::install_message_handling(::message::dispatch * pinterface)
    {
+
       html_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &html_stage_view::_001OnDestroy);

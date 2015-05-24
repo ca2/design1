@@ -7,21 +7,22 @@ namespace devedge
 
    html_edit_view::html_edit_view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp),
-      ::user::scroll_view(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
       html_form(papp),
       html_view(papp)
    {
+
    }
+
 
    html_edit_view::~html_edit_view()
    {
+
    }
+
 
    void html_edit_view::install_message_handling(::message::dispatch * pinterface)
    {
+
       html_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &html_edit_view::_001OnDestroy);
