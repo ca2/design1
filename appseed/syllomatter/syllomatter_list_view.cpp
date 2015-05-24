@@ -7,20 +7,12 @@ namespace syllomatter
 
    list_view::list_view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
-      ::user::scroll_view(papp),
-      ::user::list(papp),
       simple_list_view(papp),
-      ::user::form_list(papp),
-      m_headerctrl(papp),
       m_updatethread(papp),
       m_committhread(papp)
    {
       m_updatethread.m_plistview = this;
       m_committhread.m_plistview = this;
-      m_pheaderctrl->SetBaseListCtrlInterface(this);
 
       m_dataid = "list_view";
       connect_command("add", &list_view::_001OnAdd);

@@ -5,10 +5,6 @@ namespace syllomatter
 {
 
 
-   class document;
-   class list_view;
-
-
    class CLASS_DECL_CA2_SYLLOMATTER view :
       public html_view
    {
