@@ -7,13 +7,9 @@ namespace devedge
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::data::listener(papp),
-      ::user::interaction(papp), 
-      ::user::scroll_view(papp),
       ::user::edit_plain_text(papp),
       ::user::edit_plain_text_view(papp)
    {
-
 
       m_bMultiLine = true;
       m_bColorerTake5 = true;
@@ -23,17 +19,18 @@ namespace devedge
       connect_update_cmd_ui("edit_redo", &view::_001OnUpdateEditRedo);
       connect_command("edit_redo", &view::_001OnEditRedo);
 
-
-
    }
+
 
    view::~view()
    {
+
    }
 
 
+#ifdef DEBUG
 
-   #ifdef DEBUG
+
    void view::assert_valid() const
    {
       ::user::edit_plain_text_view::assert_valid();

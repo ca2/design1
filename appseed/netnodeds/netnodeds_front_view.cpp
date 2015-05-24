@@ -7,24 +7,22 @@ namespace netnodeds
 
    front_view::front_view(::aura::application * papp) :
       ::object(papp),
-      ::user::interaction(papp),
-      ::user::scroll_view(papp),
-      ::user::form_interface(papp),
-      ::user::form(papp),
       html_form(papp),
       html_view(papp)
    {
-
 
    }
 
 
    front_view::~front_view()
    {
+
    }
+
 
    void front_view::install_message_handling(::message::dispatch * pinterface)
    {
+
       html_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &front_view::_001OnDestroy);
@@ -93,18 +91,22 @@ namespace netnodeds
 
    }
 
+
    void front_view::_001OnInitialUpdate()
    {
-      ::user::form::_001OnInitialUpdate();
 
-
+      ::user::form_view::_001OnInitialUpdate();
 
    }
+
 
    sp(::user::interaction) front_view::get_guie()
    {
+
       return this;
+
    }
+
 
    void front_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
    {
