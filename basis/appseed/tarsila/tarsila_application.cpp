@@ -113,7 +113,7 @@ namespace tarsila
             string strFormatTime;
             strFormatTime = System.datetime().international().get_gmt_date_time();
             strFormatTime.replace(":","-");
-            strPath = Platform.filemanager_get_initial_browse_path()/strFormatTime + ".tarsila";
+            strPath = Session.filemanager_get_initial_browse_path()/strFormatTime + ".tarsila";
             if(!Application.file().exists(strPath))
             {
                Application.file().put_contents(strPath,"");
@@ -131,7 +131,7 @@ namespace tarsila
          string strFormatTime;
          strFormatTime = System.datetime().international().get_gmt_date_time();
          strFormatTime.replace(":","-");
-         strPath = Platform.filemanager_get_initial_browse_path()/ strFormatTime + ".tarsila";
+         strPath = Session.filemanager_get_initial_browse_path()/ strFormatTime + ".tarsila";
          if(!Application.file().exists(strPath))
          {
             Application.file().put_contents(strPath,"");

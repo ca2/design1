@@ -44,19 +44,19 @@ namespace syllomatter
          return FALSE;
 
       InitializeFileManager("syllomatter/frame");
-      Platform.filemanager().std().m_strLevelUp.Empty();
-      Platform.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
-      Platform.filemanager().std().m_dataidStatic = "FileManagerFavoritesList";
-      //Platform.filemanager().std().m_uiDialogBar = 0;
-      //Platform.filemanager().std().m_uiMenuBar = 0;
-      Platform.filemanager().std().m_strFilePopup = "filemanager\\file_popup.xml";
-      //Platform.filemanager().std().m_uiFilePopupSubstId = 0;
-      Platform.filemanager().std().m_strFolderPopup = "filemanager\\folder_popup.xml";
-      Platform.filemanager().std().m_strPopup = "filemanager\\popup.xml";
-      //Platform.filemanager().std().m_uiExpandBox = 0;
-      //Platform.filemanager().std().m_uiCollapseBox = 0;
-   //   Platform.filemanager().std().m_pfilelistcallback = this;
-     // Platform.filemanager().std().m_pfilelistcallback->set_app(this);
+      Session.filemanager().std().m_strLevelUp.Empty();
+      Session.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
+      Session.filemanager().std().m_dataidStatic = "FileManagerFavoritesList";
+      //Session.filemanager().std().m_uiDialogBar = 0;
+      //Session.filemanager().std().m_uiMenuBar = 0;
+      Session.filemanager().std().m_strFilePopup = "filemanager\\file_popup.xml";
+      //Session.filemanager().std().m_uiFilePopupSubstId = 0;
+      Session.filemanager().std().m_strFolderPopup = "filemanager\\folder_popup.xml";
+      Session.filemanager().std().m_strPopup = "filemanager\\popup.xml";
+      //Session.filemanager().std().m_uiExpandBox = 0;
+      //Session.filemanager().std().m_uiCollapseBox = 0;
+   //   Session.filemanager().std().m_pfilelistcallback = this;
+     // Session.filemanager().std().m_pfilelistcallback->set_app(this);
 
 
       ::user::single_document_template* pDocTemplate;
@@ -106,18 +106,18 @@ namespace syllomatter
 
    void application::InitializeFileManager(const char * pszMatter)
    {
-/*      Platform.filemanager().m_ptemplateStd = new syllomatter::filemanager_template(&Platform.filemanager());
-      Platform.userex()->shellimageset().initialize();
-      Platform.filemanager().m_ptemplateStd->Initialize(0, pszMatter);
+/*      Session.filemanager().m_ptemplateStd = new syllomatter::filemanager_template(&Session.filemanager());
+      Session.userex()->shellimageset().initialize();
+      Session.filemanager().m_ptemplateStd->Initialize(0, pszMatter);
 
-      Platform.filemanager().m_ptemplateForm = new ::user::multiple_document_template(
+      Session.filemanager().m_ptemplateForm = new ::user::multiple_document_template(
          this,
          "system/form",
          System.type_info < ::aura::document > (),
          System.type_info < ::filemanager::form_child_frame > (),
          System.type_info < ::filemanager::form > ());
 
-      Platform.filemanager().m_ptemplateOperation = new ::user::single_document_template(
+      Session.filemanager().m_ptemplateOperation = new ::user::single_document_template(
          this,
          "system/form",
          System.type_info < ::filemanager::operation_document > (),
