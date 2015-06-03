@@ -31,7 +31,7 @@ namespace devedge
 
 
       string strModuleFolder;
-      strModuleFolder = System.get_module_folder();
+      strModuleFolder = System.dir().module();
 
 
       LoadToolBar(0, "devedge_toolbar.xml");
