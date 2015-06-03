@@ -112,7 +112,7 @@ namespace devedge
       ::file::text_buffer_sp spfile(get_app());
 
       string strModuleFolder;
-      strModuleFolder = System.get_module_folder();
+      strModuleFolder = System.dir().module();
 
       if(!spfile->open(strModuleFolder /  "devedge_contextmenu.xml", ::file::type_text | ::file::mode_read))
          return;

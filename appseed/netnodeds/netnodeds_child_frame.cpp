@@ -31,7 +31,7 @@ namespace netnodeds
 
 
       string strModuleFolder;
-      strModuleFolder = System.get_module_folder();
+      strModuleFolder = System.dir().module();
 
 
       LoadToolBar(0, "netnodeds_toolbar.xml");
