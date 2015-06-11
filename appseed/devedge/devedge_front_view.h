@@ -39,7 +39,7 @@ namespace devedge
       DECL_GEN_SIGNAL(_001OnPost);
 
          //element2d * hit_test(int32_t x, int32_t y);
-         void on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint);
+         void on_update(::user::impact * pSender, LPARAM lHint, ::object* phint);
 
       void key_to_char(WPARAM wparam, LPARAM lparam);
 

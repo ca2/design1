@@ -106,7 +106,7 @@ namespace devedge
       return this;
    }
 
-   void html_edit_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
+   void html_edit_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(phint);
@@ -261,7 +261,7 @@ namespace devedge
 
    sp(::aura::document) html_edit_view::get_document() const
    {
-      return  (::aura::impact::get_document());
+      return  (::user::impact::get_document());
    }
 
    ::user::elemental * html_edit_view::hit_test(int32_t x, int32_t y)

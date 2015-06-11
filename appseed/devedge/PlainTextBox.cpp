@@ -249,7 +249,7 @@ void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pdc)
    if(y <= 0)
       y = 200;
 	m_size.cy = y;
-   pview->SetScrollSizes(MM_TEXT, 
+   pview->on_change_view_size(MM_TEXT, 
       m_size);
 }
 

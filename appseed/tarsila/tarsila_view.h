@@ -6,7 +6,7 @@ namespace tarsila
 
 
    class CLASS_DECL_APP_CORE_TARSILA view :
-      virtual public ::aura::impact
+      virtual public ::user::impact
    {
    public:
 
@@ -42,7 +42,7 @@ namespace tarsila
       virtual void _001OnDraw(::draw2d::graphics * pdc);
 
       virtual bool pre_create_window(::user::create_struct& cs);
-      virtual void on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint);
+      virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
       virtual void _001OnTabClick(int32_t iTab);
 

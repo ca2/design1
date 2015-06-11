@@ -34,12 +34,12 @@ namespace tarsila
    #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
    #endif //DEBUG
 
@@ -61,7 +61,7 @@ namespace tarsila
    }
 
 
-   void pane_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(lHint);
@@ -93,7 +93,7 @@ namespace tarsila
    {
       cs.dwExStyle &= ~WS_EX_CLIENTEDGE;   
 
-      return ::aura::impact::pre_create_window(cs);
+      return ::user::impact::pre_create_window(cs);
    }
 
 
@@ -128,7 +128,7 @@ namespace tarsila
          if(pdoc != NULL)
          {
 
-            sp(::aura::impact) pview = pdoc->get_view();
+            sp(::user::impact) pview = pdoc->get_view();
 
             if(pview != NULL)
             {
@@ -155,7 +155,7 @@ namespace tarsila
       {
          {
 
-            sp(::aura::impact) pview = ::aura::impact::create_view < ::simple_printer_list_view > (pcreatordata);
+            sp(::user::impact) pview = ::user::impact::create_view < ::simple_printer_list_view > (pcreatordata);
             if(pview != NULL)
             {
 //               sp(::user::menu_list_view) pmenuview = (sp(::user::menu_list_view)) pview;
@@ -173,7 +173,7 @@ namespace tarsila
       ////      if(pdoc != NULL)
       ////      {
       ////         POSITION pos = pdoc->get_view_count();
-      ////         sp(::aura::impact) pview = pdoc->get_view(pos);
+      ////         sp(::user::impact) pview = pdoc->get_view(pos);
       ////         if(pview != NULL)
       ////         {
       ////            sp(::user::frame_window) pframe = (sp(::user::frame_window)) pview->GetParentFrame();
@@ -193,7 +193,7 @@ namespace tarsila
       ////      sp(::aura::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(NULL, true, pcreatordata->m_pholder));
       ////      if(pdoc != NULL)
       ////      {
-      ////         sp(::aura::impact) pview = pdoc->get_view();
+      ////         sp(::user::impact) pview = pdoc->get_view();
       ////         if(pview != NULL)
       ////         {
       ////            sp(::user::frame_window) pframe = pview->GetParentFrame();
@@ -212,7 +212,7 @@ namespace tarsila
       ////      m_pfilemanagerdoc = pdoc;
       ////      if(pdoc != NULL)
       ////      {
-      ////         sp(::aura::impact) pview = pdoc->get_view();
+      ////         sp(::user::impact) pview = pdoc->get_view();
       ////         if(pview != NULL)
       ////         {
       ////            frame_window * pframe = (frame_window *) pview->GetParentFrame();

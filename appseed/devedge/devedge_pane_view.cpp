@@ -25,12 +25,12 @@ namespace devedge
    #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
    #endif //DEBUG
 
@@ -58,7 +58,7 @@ namespace devedge
    }
 
 
-   void pane_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
    {
 
       sp(::devedge::application) papp =  (( (GetParentFrame()))->get_app());
@@ -122,7 +122,7 @@ namespace devedge
             sp(::aura::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(cc));
             if(pdoc != NULL)
             {
-               sp(::aura::impact) pview = pdoc->get_view();
+               sp(::user::impact) pview = pdoc->get_view();
                if(pview != NULL)
                {
                   sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -148,7 +148,7 @@ namespace devedge
                sp(front_document) pdoc =  (Application.devedge().m_ptemplateFront->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -166,7 +166,7 @@ namespace devedge
                pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view(0);
+                  sp(::user::impact) pview = pdoc->get_view(0);
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -189,7 +189,7 @@ namespace devedge
                sp(::aura::document) pdoc =  (Application.devedge().m_ptemplateHtmlEdit->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -207,7 +207,7 @@ namespace devedge
                sp(html_stage_document) pdoc =  (app.devedge().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -226,7 +226,7 @@ namespace devedge
                sp(::devedge::solution_document) pdoc =  (app.devedge().m_ptemplate_solution->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
