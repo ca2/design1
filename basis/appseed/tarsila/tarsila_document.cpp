@@ -187,7 +187,7 @@ namespace tarsila
 
       //set_path_name(varFile);
 
-      //update_all_views(NULL,::aura::impact::hint_set_edit_file);
+      //update_all_views(NULL,::user::impact::hint_set_edit_file);
 
 
       return true;

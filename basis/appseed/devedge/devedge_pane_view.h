@@ -19,7 +19,7 @@ namespace devedge
 
 
       virtual void install_message_handling(::message::dispatch * pinterface);
-      virtual void on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint);
+      virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
       virtual void on_create_view(::user::view_creator_data * pcreatordata);
 

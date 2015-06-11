@@ -37,9 +37,9 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &html_stage_view::_001OnWavePlayerEvent);
       //  IGUI_WIN_MSG_LINK(WM_CHAR, pinterface, this, &html_stage_view::_001OnChar);
       //IGUI_WIN_MSG_LINK(WM_SYSCHAR, pinterface, this, &html_stage_view::_001OnSysChar);
-      //connect_command(ID_FILE_PRINT, ::aura::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::aura::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::aura::impact::OnFilePrintPreview)
+      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
+      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
+      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
 
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, 
          this,
@@ -59,12 +59,12 @@ namespace devedge
 #ifdef DEBUG
    void html_stage_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void html_stage_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
 #endif //DEBUG
 
@@ -84,14 +84,14 @@ namespace devedge
 
       cs.style &= ~WS_EX_CLIENTEDGE;
 
-      return ::aura::impact::pre_create_window(cs);
+      return ::user::impact::pre_create_window(cs);
 
    }
 
 
    void html_stage_view::_001OnInitialUpdate() 
    {
-      ::aura::impact::_001OnInitialUpdate();
+      ::user::impact::_001OnInitialUpdate();
 
 
 
@@ -102,7 +102,7 @@ namespace devedge
       return this;
    }
 
-   void html_stage_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint) 
+   void html_stage_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint) 
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(phint);
@@ -164,7 +164,7 @@ namespace devedge
 
    void html_stage_view::_001OnDestroy(::signal_details * pobj) 
    {
-      ::aura::impact::_001OnDestroy(pobj);
+      ::user::impact::_001OnDestroy(pobj);
 
    }
 
@@ -282,7 +282,7 @@ namespace devedge
 
    sp(html_stage_document) html_stage_view::get_document() const
    {
-      return  (::aura::impact::get_document());
+      return  (::user::impact::get_document());
    }
 
    ::user::elemental * html_stage_view::hit_test(int32_t x, int32_t y)
@@ -348,7 +348,7 @@ namespace devedge
 
    void html_stage_view::pre_translate_message(::signal_details * pobj)
    {
-      ::aura::impact::pre_translate_message(pobj);
+      ::user::impact::pre_translate_message(pobj);
    }
 
    void html_stage_view::key_to_char(WPARAM wparam, LPARAM lparam)

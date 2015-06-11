@@ -91,7 +91,7 @@ namespace devedge
    void solution_view::install_message_handling(::message::dispatch * pinterface)
    {
 
-      ::aura::impact::install_message_handling(pinterface);
+      ::user::impact::install_message_handling(pinterface);
       ::user::tree::install_message_handling(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&solution_view::_001OnCreate);
 

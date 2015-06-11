@@ -15,7 +15,7 @@ namespace devedge
 
       void install_message_handling(::message::dispatch * pinterface);
 
-      void on_update(::aura::impact * pSender, LPARAM lHint, ::object * phint);
+      void on_update(::user::impact * pSender, LPARAM lHint, ::object * phint);
 
       virtual void _001OnAfterChangeText();
 

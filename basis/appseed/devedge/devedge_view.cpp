@@ -7,7 +7,7 @@ namespace devedge
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::user::edit_plain_text(papp),
+      ::user::plain_edit(papp),
       ::user::edit_plain_text_view(papp)
    {
 
@@ -42,7 +42,7 @@ namespace devedge
    }
    #endif //DEBUG
 
-   void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object * phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
    {
       ::user::edit_plain_text_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)
@@ -75,7 +75,7 @@ namespace devedge
          //_001OnCalcLayout(pdc);
          //
 
-         //ThreadProcScrollSize(dynamic_cast < ::user::edit_plain_text * > (this));
+         //ThreadProcScrollSize(dynamic_cast < ::user::plain_edit * > (this));
 
       }
       /*xxx if(phint != NULL)
