@@ -119,7 +119,7 @@ namespace devedge
             sp(::create) cc(get_app());
             cc->m_spCommandLine->m_varFile = strPath;
             cc->m_puiParent = this;
-            sp(::aura::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(cc));
+            sp(::user::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(cc));
             if(pdoc != NULL)
             {
                sp(::user::impact) pview = pdoc->get_view();
@@ -162,7 +162,7 @@ namespace devedge
             break;
          case PaneViewDevEdge:
             {
-               sp(::aura::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(NULL, true, pcreatordata->m_pholder));
+               sp(::user::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(NULL, true, pcreatordata->m_pholder));
                pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
                if(pdoc != NULL)
                {
@@ -186,7 +186,7 @@ namespace devedge
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
                cc->m_puiParent = this;
-               sp(::aura::document) pdoc =  (Application.devedge().m_ptemplateHtmlEdit->open_document_file(cc));
+               sp(::user::document) pdoc =  (Application.devedge().m_ptemplateHtmlEdit->open_document_file(cc));
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();
@@ -286,7 +286,7 @@ namespace devedge
       }*/
    }
 
-   sp(::aura::document) pane_view::open_file(sp(::create) pcreatecontext)
+   sp(::user::document) pane_view::open_file(sp(::create) pcreatecontext)
    {
       ensure_tab_by_id("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile));
       return get("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;

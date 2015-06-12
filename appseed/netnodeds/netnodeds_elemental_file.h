@@ -21,7 +21,7 @@ namespace netnodeds
       //string          m_strName;
 
       // load
-      sp(::aura::document)        m_pdocument;
+      sp(::user::document)        m_pdocument;
 
 
       file(::aura::application * papp);

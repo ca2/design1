@@ -63,12 +63,12 @@ namespace biteditor
 #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
 #endif //DEBUG
 
@@ -104,7 +104,7 @@ namespace biteditor
 
             if(pdoc != NULL)
             {
-               sp(::aura::impact) pview = pdoc->get_view();
+               sp(::user::impact) pview = pdoc->get_view();
                if(pview != NULL)
                {
                   sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -120,10 +120,10 @@ namespace biteditor
          {
             sp(::create) cc(allocer());
             cc->m_puiParent = pcreatordata->m_pholder;
-            sp(::aura::document) pdoc =  (Application.m_ptemplate_devedge->open_document_file(cc));
+            sp(::user::document) pdoc =  (Application.m_ptemplate_devedge->open_document_file(cc));
             if(pdoc != NULL)
             {
-               sp(::aura::impact) pview = pdoc->get_view();
+               sp(::user::impact) pview = pdoc->get_view();
                if(pview != NULL)
                {
                   sp(::user::frame_window) pframe =  (pview->GetParentFrame());

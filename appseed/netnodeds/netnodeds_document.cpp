@@ -8,7 +8,7 @@ namespace netnodeds
    document::document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
-      ::aura::document(papp),
+      ::user::document(papp),
       m_file(papp)
    {
 
@@ -43,7 +43,7 @@ namespace netnodeds
    bool document::on_new_document()
    {
       
-      if (!::aura::document::on_new_document())
+      if (!::user::document::on_new_document())
          return FALSE;
 
       set_path_name(Application.file().time_square());
@@ -70,12 +70,12 @@ namespace netnodeds
    #ifdef DEBUG
    void document::assert_valid() const
    {
-      ::aura::document::assert_valid();
+      ::user::document::assert_valid();
    }
 
    void document::dump(dump_context & dumpcontext) const
    {
-      ::aura::document::dump(dumpcontext);
+      ::user::document::dump(dumpcontext);
    }
    #endif //DEBUG
 
@@ -183,13 +183,13 @@ namespace netnodeds
    void document::_001OnFileSave(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_file_save();
+      ::user::document::on_file_save();
    }
 
    void document::_001OnFileNew(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_new_document();
+      ::user::document::on_new_document();
    }
 
    void document::_001OnEditCut(::signal_details * pobj)
@@ -210,7 +210,7 @@ namespace netnodeds
    void document::_001OnFilePut(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_file_save();
+      ::user::document::on_file_save();
       Put();
    }
 

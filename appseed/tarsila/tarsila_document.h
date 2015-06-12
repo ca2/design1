@@ -6,7 +6,7 @@ namespace tarsila
 
 
    class CLASS_DECL_APP_CORE_TARSILA document:
-      public ::aura::document
+      public ::user::document
    {
    public:
 

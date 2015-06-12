@@ -37,7 +37,7 @@ namespace syllomatter
    void list_view::install_message_handling(::message::dispatch * pinterface)
    {
       ::user::form_list::install_message_handling(pinterface);
-      ::aura::impact::install_message_handling(pinterface);
+      ::user::impact::install_message_handling(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE            , pinterface, this, &list_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(MessageGeneralEvent  , pinterface, this, &list_view::_001OnGeneralEvent);
       IGUI_WIN_MSG_LINK(WM_USER + 1024       , pinterface, this, &list_view::_001OnVerisvnwellListMessage);

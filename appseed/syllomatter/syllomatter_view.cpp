@@ -48,9 +48,9 @@ namespace syllomatter
 
       //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
       IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
-      //connect_command(ID_FILE_PRINT, ::aura::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::aura::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::aura::impact::OnFilePrintPreview)
+      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
+      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
+      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
       //   IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &::user::interaction::_001OnLButtonDown);
       // IGUI_WIN_MSG_LINK(WM_LBUTTONUP, pinterface, this, &::user::interaction::_001OnLButtonUp);
       IGUI_WIN_MSG_LINK(WM_KEYDOWN, pinterface, this, &::user::interaction::_001OnKeyDown);
@@ -72,12 +72,12 @@ namespace syllomatter
 #ifdef DEBUG
    void view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
 #endif //DEBUG
 
@@ -97,20 +97,20 @@ namespace syllomatter
 
       cs.style &= ~WS_EX_CLIENTEDGE;
 
-      return ::aura::impact::pre_create_window(cs);
+      return ::user::impact::pre_create_window(cs);
 
    }
 
 
    void view::_001OnInitialUpdate()
    {
-      ::aura::impact::_001OnInitialUpdate();
+      ::user::impact::_001OnInitialUpdate();
 
 
    }
 
    
-   void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
 
       ::user::form_view::on_update(pSender, lHint, phint);
@@ -121,7 +121,7 @@ namespace syllomatter
    void view::_001OnDestroy(::signal_details * pobj)
    {
 
-      ::aura::impact::_001OnDestroy(pobj);
+      ::user::impact::_001OnDestroy(pobj);
 
    }
 
@@ -236,10 +236,10 @@ namespace syllomatter
    }
 
 
-   ::aura::document * view::get_document()
+   ::user::document * view::get_document()
    {
 
-      return ::aura::impact::get_document();
+      return ::user::impact::get_document();
 
    }
 

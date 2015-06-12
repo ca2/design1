@@ -123,7 +123,7 @@ namespace biteditor
 
    }
 
-   void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
       UNREFERENCED_PARAMETER(pSender);
       if(lHint == 1001)
@@ -180,7 +180,7 @@ namespace biteditor
 
 
 
-      //   sp(::aura::document) pdoc = get_document();
+      //   sp(::user::document) pdoc = get_document();
       ::draw2d::memory_graphics pdc(allocer());
 
       pdc->SelectObject(m_phexbox->m_spfont);
@@ -245,7 +245,7 @@ namespace biteditor
    /*
    void view:: _001OnDraw(::draw2d::graphics * pdc)
    {
-   // sp(::aura::document) pdoc = get_document();
+   // sp(::user::document) pdoc = get_document();
    //   pdc->OffsetViewportOrg(-m_ptScroll.x, -(m_ptScroll.y % m_iLineHeight));
 
    ::draw2d::region rgn;
@@ -277,7 +277,7 @@ namespace biteditor
       SetTimer(100, 100, NULL);
 
 
-      /*sp(::aura::document) pdoc = get_document();
+      /*sp(::user::document) pdoc = get_document();
       for(int32_t i = 0; i < pdoc->m_elementptraVisible.get_size(); i++)
       {
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,

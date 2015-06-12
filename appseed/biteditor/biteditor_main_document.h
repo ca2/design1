@@ -6,7 +6,7 @@ namespace biteditor
 
 
    class CLASS_DECL_CA2_BITEDITOR main_document :
-      public ::aura::document
+      public ::user::document
    {
    public:
 

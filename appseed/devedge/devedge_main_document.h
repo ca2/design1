@@ -6,7 +6,7 @@ namespace devedge
 
 
    class CLASS_DECL_DEVEDGE main_document :
-      public ::aura::document
+      public ::user::document
    {
    public:
 

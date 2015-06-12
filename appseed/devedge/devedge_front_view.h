@@ -43,7 +43,7 @@ namespace devedge
 
       void key_to_char(WPARAM wparam, LPARAM lparam);
 
-      sp(::aura::document) get_document() const;
+      sp(::user::document) get_document() const;
 
       virtual void pre_translate_message(::signal_details * pobj);
       virtual void install_message_handling(::message::dispatch * pinterface);

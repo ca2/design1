@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    class CLASS_DECL_DESIGN_NETNODEDS main_document :
-      public ::aura::document
+      public ::user::document
    {
    public:
 

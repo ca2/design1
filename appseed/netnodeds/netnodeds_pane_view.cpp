@@ -28,12 +28,12 @@ namespace netnodeds
    #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
    #endif //DEBUG
 
@@ -61,7 +61,7 @@ namespace netnodeds
    }
 
 
-   void pane_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
    {
 
       sp(::netnodeds::application) papp =  (( (GetParentFrame()))->get_app());
@@ -122,10 +122,10 @@ namespace netnodeds
             sp(::create) cc(get_app());
             cc->m_spCommandLine->m_varFile = strPath;
             cc->m_puiParent = this;
-            sp(::aura::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(cc));
+            sp(::user::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(cc));
             if(pdoc != NULL)
             {
-               sp(::aura::impact) pview = pdoc->get_view();
+               sp(::user::impact) pview = pdoc->get_view();
                if(pview != NULL)
                {
                   sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -151,7 +151,7 @@ namespace netnodeds
                sp(front_document) pdoc =  (Application.netnodeds().m_ptemplateFront->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -165,11 +165,11 @@ namespace netnodeds
             break;
          case PaneViewDevEdge:
             {
-               sp(::aura::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(NULL, true, pcreatordata->m_pholder));
+               sp(::user::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(NULL, true, pcreatordata->m_pholder));
                pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view(0);
+                  sp(::user::impact) pview = pdoc->get_view(0);
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -189,10 +189,10 @@ namespace netnodeds
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
                cc->m_puiParent = this;
-               sp(::aura::document) pdoc =  (Application.netnodeds().m_ptemplateHtmlEdit->open_document_file(cc));
+               sp(::user::document) pdoc =  (Application.netnodeds().m_ptemplateHtmlEdit->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -210,7 +210,7 @@ namespace netnodeds
                sp(html_stage_document) pdoc =  (app.netnodeds().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -229,7 +229,7 @@ namespace netnodeds
                sp(::netnodeds::solution_document) pdoc =  (app.netnodeds().m_ptemplate_solution->open_document_file(cc));
                if(pdoc != NULL)
                {
-                  sp(::aura::impact) pview = pdoc->get_view();
+                  sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
                      sp(::user::frame_window) pframe =  (pview->GetParentFrame());
@@ -289,7 +289,7 @@ namespace netnodeds
       }*/
    }
 
-   sp(::aura::document) pane_view::open_file(sp(::create) pcreatecontext)
+   sp(::user::document) pane_view::open_file(sp(::create) pcreatecontext)
    {
       ensure_tab_by_id("netnodeds://" + string(pcreatecontext->m_spCommandLine->m_varFile));
       return get("netnodeds://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;

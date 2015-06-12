@@ -31,7 +31,7 @@ namespace refactor
 
       virtual void _001OnDraw(::draw2d::graphics * pdc);
 
-      virtual void on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint);
+      virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
       sp(document) get_document();
 

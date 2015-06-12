@@ -24,12 +24,12 @@ namespace refactor
 #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-	   ::aura::impact::assert_valid();
+	   ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-	   ::aura::impact::dump(dumpcontext);
+	   ::user::impact::dump(dumpcontext);
    }
 #endif //DEBUG
 

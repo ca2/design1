@@ -6,7 +6,7 @@ namespace refactor
 
 
    class CLASS_DECL_CA2_REFACTOR document :
-      public ::aura::document
+      public ::user::document
    {
    public:
 

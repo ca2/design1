@@ -9,7 +9,7 @@ namespace biteditor
       ::object(papp),
       ::data::data(papp),
       ::data::data_container_base(papp),
-      ::aura::document(papp),
+      ::user::document(papp),
       m_memfile(papp),
       ::data::tree(papp)
    {
@@ -112,13 +112,13 @@ though it is not a valid cursor handle.\n\
       }
       }
       }*/
-      return ::aura::document::_001OnCmdMsg(pcmdmsg);
+      return ::user::document::_001OnCmdMsg(pcmdmsg);
    }
 
 
    bool document::on_new_document()
    {
-      if (!::aura::document::on_new_document())
+      if (!::user::document::on_new_document())
          return FALSE;
 
       update_all_views(NULL, 0);
@@ -135,12 +135,12 @@ though it is not a valid cursor handle.\n\
 #ifdef DEBUG
    void document::assert_valid() const
    {
-      ::aura::document::assert_valid();
+      ::user::document::assert_valid();
    }
 
    void document::dump(dump_context & dumpcontext) const
    {
-      ::aura::document::dump(dumpcontext);
+      ::user::document::dump(dumpcontext);
    }
 #endif //DEBUG
 

@@ -146,7 +146,7 @@ namespace netnodeds
    void html_stage_child_frame::OnChangeEditSearch()
    {
 
-      /*   sp(::aura::document) pdoc = GetActiveDocument();
+      /*   sp(::user::document) pdoc = GetActiveDocument();
 
       if(pdoc != NULL)
       {

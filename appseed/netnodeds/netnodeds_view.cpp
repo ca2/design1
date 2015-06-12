@@ -42,7 +42,7 @@ namespace netnodeds
    }
    #endif //DEBUG
 
-   void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object * phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
    {
       ::user::edit_plain_text_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)

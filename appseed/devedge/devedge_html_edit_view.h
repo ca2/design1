@@ -63,7 +63,7 @@ namespace devedge
 
       virtual void key_to_char(WPARAM wparam, LPARAM lparam);
 
-      sp(::aura::document) get_document() const;
+      sp(::user::document) get_document() const;
 
 
 

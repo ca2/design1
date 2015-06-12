@@ -8,7 +8,7 @@ namespace refactor
    document::document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
-      ::aura::document(papp),
+      ::user::document(papp),
       m_file(papp)
    {
    }
@@ -21,12 +21,12 @@ namespace refactor
 #ifdef DEBUG
    void document::assert_valid() const
    {
-	   ::aura::document::assert_valid();
+	   ::user::document::assert_valid();
    }
 
    void document::dump(dump_context & dumpcontext) const
    {
-	   ::aura::document::dump(dumpcontext);
+	   ::user::document::dump(dumpcontext);
    }
 #endif //DEBUG
 
