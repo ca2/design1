@@ -37,12 +37,12 @@ namespace syllomatter
 #ifdef DEBUG
    void pane_view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void pane_view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
 #endif //DEBUG
 
@@ -65,7 +65,7 @@ namespace syllomatter
    }
 
 
-   void pane_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
    {
 
       UNREFERENCED_PARAMETER(pSender);
@@ -149,7 +149,7 @@ namespace syllomatter
    {
       cs.dwExStyle &= ~WS_EX_CLIENTEDGE;   
 
-      return ::aura::impact::pre_create_window(cs);
+      return ::user::impact::pre_create_window(cs);
    }
 
 
@@ -162,7 +162,7 @@ namespace syllomatter
       {
       case syllomatter::PaneViewContextMenu:
       {
-         sp(::user::menu_list_view) pview = (::aura::impact::create_view< ::user::menu_list_view >(pcreatordata));
+         sp(::user::menu_list_view) pview = (::user::impact::create_view< ::user::menu_list_view >(pcreatordata));
          pview->LoadXmlMenu("main_menu.xml");
          pview->MenuFill(pview,GetParentFrame());
          /*{
@@ -170,7 +170,7 @@ namespace syllomatter
          if(pdoc != NULL)
          {
          POSITION pos = pdoc->get_view_count();
-         sp(::aura::impact) pview = pdoc->get_view(pos);
+         sp(::user::impact) pview = pdoc->get_view(pos);
          if(pview != NULL)
          {
          sp(::user::frame_window) pframe = (sp(::user::frame_window)) pview->GetParentFrame();
@@ -189,7 +189,7 @@ namespace syllomatter
          cc.m_pCurrentDoc = get_document();
          cc.m_typeinfoNewView =  RUNTIME_CLASS(::user::menu_list_view);
 
-         sp(::aura::impact) pview = (CreateView(&cc, 101, this));
+         sp(::user::impact) pview = (CreateView(&cc, 101, this));
          if(pview != NULL)
          {
          sp(::user::menu_list_view) pmenuview = (sp(::user::menu_list_view)) pview;
@@ -210,7 +210,7 @@ namespace syllomatter
                System.type_info < syllomatter::view > ());
 
             /*
-            sp(::aura::document) pdoc =  (
+            sp(::user::document) pdoc =  (
             m_pdoctemplateExtractChanges->open_document_file(
             Application.dir().matter("syllomatter_extract_changes_form.xhtml")));*/
             m_pdocForm = (
@@ -226,11 +226,11 @@ namespace syllomatter
          break;
       case syllomatter::PaneViewSVN:
          {
-            //         sp(::aura::document) pdoc =  (m_pdoctemplateExtractChanges->get_document());
+            //         sp(::user::document) pdoc =  (m_pdoctemplateExtractChanges->get_document());
             /*         create_context cc;
             cc.m_pCurrentDoc = pdoc;
             cc.m_typeinfoNewView = System.type_info < svn_view > ();*/
-                                      sp(::syllomatter::svn_view) pview = (::aura::impact::create_view< svn_view >(pcreatordata));
+                                      sp(::syllomatter::svn_view) pview = (::user::impact::create_view< svn_view >(pcreatordata));
             m_psvnview = pview;
             m_psvnview->m_ppaneview = this;
             m_psvnview->CreateViews();

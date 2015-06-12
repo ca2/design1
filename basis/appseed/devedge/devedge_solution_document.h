@@ -6,7 +6,7 @@ namespace devedge
    class solution_view;
 
    class CLASS_DECL_DEVEDGE solution_document :
-      public ::aura::document
+      public ::user::document
    {
    public:
       

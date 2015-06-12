@@ -121,7 +121,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
 */
    void application::on_request(sp(::create) pcreatecontext)
    {
-      sp(::aura::document) pdoc = NULL;
+      sp(::user::document) pdoc = NULL;
       if(netnodeds().m_ptemplateEdge->get_document_count() == NULL)
       {
          netnodeds().m_ptemplateEdge->open_document_file(pcreatecontext);

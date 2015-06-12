@@ -26,7 +26,7 @@ namespace devedge
       void rotate();
 
 
-      sp(::aura::document) open_file(sp(::create) pcreatecontext);
+      sp(::user::document) open_file(sp(::create) pcreatecontext);
 
       void on_show_view();
       DECL_GEN_SIGNAL(_001OnCreate);

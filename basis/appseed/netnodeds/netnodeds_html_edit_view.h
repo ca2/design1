@@ -59,11 +59,11 @@ namespace netnodeds
          using html_view::hit_test;
       
       ::user::elemental * hit_test(int32_t x, int32_t y);
-      void on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint);
+      void on_update(::user::impact * pSender, LPARAM lHint, ::object* phint);
 
       virtual void key_to_char(WPARAM wparam, LPARAM lparam);
 
-      sp(::aura::document) get_document() const;
+      sp(::user::document) get_document() const;
 
 
 

@@ -25,7 +25,7 @@ namespace tarsila
       virtual bool pre_create_window(::user::create_struct& cs);
 
 
-      virtual sp(::aura::document) get_veriedit_document(const char * pszUrl);
+      virtual sp(::user::document) get_veriedit_document(const char * pszUrl);
 
       virtual void get_opened_documents(stringa & stra);
 

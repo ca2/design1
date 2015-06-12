@@ -5,7 +5,7 @@ namespace syllomatter
 {
 
 
-   class CLASS_DECL_CA2_SYLLOMATTER main_document : public ::aura::document
+   class CLASS_DECL_CA2_SYLLOMATTER main_document : public ::user::document
    {
    public:
 

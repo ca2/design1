@@ -50,7 +50,7 @@ namespace biteditor
          sp(::aura::impact_system) ptemplate = Application.document_manager().get_template(iTemplate);
          for(int iDocument = 0; iDocument < ptemplate->get_document_count(); iDocument++)
          {
-            sp(::aura::document) pdocument = ptemplate->get_document(iDocument);
+            sp(::user::document) pdocument = ptemplate->get_document(iDocument);
             if(!pdocument->can_close_frame(this))
             {
                pobj->m_bRet = true;

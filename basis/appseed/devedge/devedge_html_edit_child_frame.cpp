@@ -151,7 +151,7 @@ namespace devedge
    void html_edit_child_frame::OnChangeEditSearch()
    {
 
-      /*   sp(::aura::document) pdoc = GetActiveDocument();
+      /*   sp(::user::document) pdoc = GetActiveDocument();
 
       if(pdoc != NULL)
       {

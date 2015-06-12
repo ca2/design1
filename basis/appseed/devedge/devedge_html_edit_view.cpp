@@ -127,7 +127,7 @@ namespace devedge
       {
       ::devedge::application_interface * papp = dynamic_cast < ::devedge::application_interface * > (get_app());
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      sp(::user::document) pdoc = (sp(::user::document)) papp->m_ptemplate_devedge->get_document(posDoc);
       if(m_str == pdoc->get_file_path())
       {
       //               transform_back();
@@ -166,7 +166,7 @@ namespace devedge
    {
       UNREFERENCED_PARAMETER(pobj);
       // SCAST_PTR(::message::size, psize, pobj)
-      //   sp(::aura::document) pdoc = get_document();
+      //   sp(::user::document) pdoc = get_document();
    }
 
    void html_edit_view::_001OnPaint(::signal_details * pobj)
@@ -191,7 +191,7 @@ namespace devedge
 
 
 
-      /*sp(::aura::document) pdoc = get_document();
+      /*sp(::user::document) pdoc = get_document();
       for(int32_t i = 0; i < pdoc->m_elementptraVisible.get_size(); i++)
       {
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
@@ -259,7 +259,7 @@ namespace devedge
          point pt = pmouse->m_pt;
    }
 
-   sp(::aura::document) html_edit_view::get_document() const
+   sp(::user::document) html_edit_view::get_document() const
    {
       return  (::user::impact::get_document());
    }
@@ -268,7 +268,7 @@ namespace devedge
    {
       UNREFERENCED_PARAMETER(x);
       UNREFERENCED_PARAMETER(y);
-      //   sp(::aura::document) pdoc = get_document();
+      //   sp(::user::document) pdoc = get_document();
       return NULL;
    }
 
@@ -381,7 +381,7 @@ namespace devedge
       /* xxx
       devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      sp(::user::document) pdoc = (sp(::user::document)) papp->m_ptemplate_devedge->get_document(posDoc);
 
       string strSourcePath = pdoc->get_file_path();
       string strDestPath = System.dir().time("html.html");
@@ -447,7 +447,7 @@ namespace devedge
       /* xxx
       devedgeApp * papp = dynamic_cast < devedgeApp * > (( (GetParentFrame()))->m_papp);
       POSITION posDoc = papp->m_ptemplate_devedge->get_document_count();
-      sp(::aura::document) pdoc = (sp(::aura::document)) papp->m_ptemplate_devedge->get_document(posDoc);
+      sp(::user::document) pdoc = (sp(::user::document)) papp->m_ptemplate_devedge->get_document(posDoc);
       string strDestPath = pdoc->get_file_path();
 
       string str;

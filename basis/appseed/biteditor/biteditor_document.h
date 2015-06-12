@@ -6,7 +6,7 @@ namespace biteditor
 
 
    class CLASS_DECL_CA2_BITEDITOR document :
-      virtual public ::aura::document,
+      virtual public ::user::document,
       virtual public ::data::tree
    {
    public:

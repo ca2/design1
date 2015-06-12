@@ -108,7 +108,7 @@ namespace netnodeds
    }
 
 
-   void front_view::on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint)
+   void front_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(phint);
@@ -129,7 +129,7 @@ namespace netnodeds
    {
       UNREFERENCED_PARAMETER(pobj);
       // SCAST_PTR(::message::size, psize, pobj)
-      //   sp(::aura::document) pdoc = get_document();
+      //   sp(::user::document) pdoc = get_document();
    }
 
    void front_view::_001OnPaint(::signal_details * pobj)
@@ -155,7 +155,7 @@ namespace netnodeds
 
 
 
-      /*sp(::aura::document) pdoc = get_document();
+      /*sp(::user::document) pdoc = get_document();
       for(int32_t i = 0; i < pdoc->m_elementptraVisible.get_size(); i++)
       {
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
@@ -223,14 +223,14 @@ namespace netnodeds
          point pt = pmouse->m_pt;
    }
 
-   sp(::aura::document) front_view::get_document() const
+   sp(::user::document) front_view::get_document() const
    {
-      return  (::aura::impact::get_document());
+      return  (::user::impact::get_document());
    }
 
    //::netnodeds::Element2D * front_view::hit_test(int32_t x, int32_t y)
    //{
-   //   sp(::aura::document) pdoc = get_document();
+   //   sp(::user::document) pdoc = get_document();
    //   return NULL;
    //}
 

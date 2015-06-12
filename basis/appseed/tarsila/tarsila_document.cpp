@@ -8,7 +8,7 @@ namespace tarsila
    document::document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
-      ::aura::document(papp)
+      ::user::document(papp)
    {
       connect_command("file_save",&document::_001OnFileSave);
       connect_command("file_save_as",&document::_001OnFileSaveAs);
@@ -18,7 +18,7 @@ namespace tarsila
    bool document::on_new_document()
    {
 
-      if (!::aura::document::on_new_document())
+      if (!::user::document::on_new_document())
          return FALSE;
 
       update_all_views(NULL, 0);
@@ -36,12 +36,12 @@ namespace tarsila
    #ifdef DEBUG
    void document::assert_valid() const
    {
-      ::aura::document::assert_valid();
+      ::user::document::assert_valid();
    }
 
    void document::dump(dump_context & dumpcontext) const
    {
-      ::aura::document::dump(dumpcontext);
+      ::user::document::dump(dumpcontext);
    }
    #endif //DEBUG
 

@@ -49,7 +49,7 @@ namespace syllomatter
       virtual bool pre_create_window(::user::create_struct& cs);
       virtual void OnDraw(::draw2d::graphics * pgraphics);      // overridden to draw this ::view
       virtual void _001OnInitialUpdate();
-         virtual void on_update(::aura::impact * pSender, LPARAM lHint, ::object* pHint);
+         virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
       bool BaseOnControlEvent(::user::control_event * pevent);
 
@@ -59,7 +59,7 @@ namespace syllomatter
       int32_t syllomatter_defer_extract(extract * pextract, const ::file::path & pszTopic);
       int32_t bin_cmp(const ::file::path & pszFilePath1, const ::file::path & pszFilePath2);
 
-      ::aura::document * get_document();
+      ::user::document * get_document();
 
       DECL_GEN_SIGNAL(_001OnDestroy);
          DECL_GEN_SIGNAL(_001OnSize);

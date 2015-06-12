@@ -60,7 +60,7 @@ namespace biteditor
          DECL_GEN_SIGNAL(_001OnChar);
          DECL_GEN_SIGNAL(_001OnSysChar);
 
-         void on_update(::aura::impact * pSender, LPARAM lHint, ::object* phint);
+         void on_update(::user::impact * pSender, LPARAM lHint, ::object* phint);
 
       void key_to_char(WPARAM wparam, LPARAM lparam);
 

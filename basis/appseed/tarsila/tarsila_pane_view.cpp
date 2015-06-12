@@ -107,7 +107,7 @@ namespace tarsila
       if(::str::begins_eat_ci(strPath, "tarsila://"))
       {
 
-         sp(::aura::document) pdoc = NULL;
+         sp(::user::document) pdoc = NULL;
 
          try
          {
@@ -190,7 +190,7 @@ namespace tarsila
       ////      break;
       ////case tarsila::PaneViewEdit:
       ////   {
-      ////      sp(::aura::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(NULL, true, pcreatordata->m_pholder));
+      ////      sp(::user::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(NULL, true, pcreatordata->m_pholder));
       ////      if(pdoc != NULL)
       ////      {
       ////         sp(::user::impact) pview = pdoc->get_view();
@@ -242,7 +242,7 @@ namespace tarsila
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &pane_view::_001OnCreate);
    }
 
-   sp(::aura::document) pane_view::get_veriedit_document(const char * pszUrl)
+   sp(::user::document) pane_view::get_veriedit_document(const char * pszUrl)
    {
       sp(::tarsila::application) papp =  (get_app());
       ::count count = papp->m_pdoctemplate->get_document_count();
@@ -250,7 +250,7 @@ namespace tarsila
       ::str::begins_eat_ci(strPath, "tarsila://");
       for(index i = 0; i < count; i++)
       {
-         sp(::aura::document) pdoc =  (papp->m_pdoctemplate->get_document(i));
+         sp(::user::document) pdoc =  (papp->m_pdoctemplate->get_document(i));
          if(pdoc != NULL && pdoc->get_file_path().CompareNoCase(strPath) == 0)
          {
             return pdoc;

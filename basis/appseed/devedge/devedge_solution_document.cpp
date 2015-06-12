@@ -8,7 +8,7 @@ namespace devedge
    solution_document::solution_document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
-      ::aura::document(papp),
+      ::user::document(papp),
       m_file(papp),
       m_fileSave(papp)
    {
@@ -52,7 +52,7 @@ namespace devedge
 
    bool solution_document::on_new_document()
    {
-      if (!::aura::document::on_new_document())
+      if (!::user::document::on_new_document())
          return FALSE;
 
       set_path_name(Application.file().time_square());
@@ -71,19 +71,19 @@ namespace devedge
    #ifdef DEBUG
    void solution_document::assert_valid() const
    {
-      ::aura::document::assert_valid();
+      ::user::document::assert_valid();
    }
 
    void solution_document::dump(dump_context & dumpcontext) const
    {
-      ::aura::document::dump(dumpcontext);
+      ::user::document::dump(dumpcontext);
    }
    #endif //DEBUG
 
 
    bool solution_document::on_open_document(var varFile)
    {
-      //if(!::aura::document::on_open_document(varFile))
+      //if(!::user::document::on_open_document(varFile))
         // return FALSE;
 
       m_psolution = new ::devedge::solution(this);
@@ -170,13 +170,13 @@ namespace devedge
    void solution_document::_001OnFileSave(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_file_save();
+      ::user::document::on_file_save();
    }
 
    void solution_document::_001OnFileNew(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_new_document();
+      ::user::document::on_new_document();
    }
 
    void solution_document::_001OnEditCut(::signal_details * pobj)
@@ -197,7 +197,7 @@ namespace devedge
    void solution_document::_001OnFilePut(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      ::aura::document::on_file_save();
+      ::user::document::on_file_save();
       Put();
    }
 

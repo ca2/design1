@@ -47,12 +47,12 @@ namespace refactor
 #ifdef DEBUG
    void view::assert_valid() const
    {
-      ::aura::impact::assert_valid();
+      ::user::impact::assert_valid();
    }
 
    void view::dump(dump_context & dumpcontext) const
    {
-      ::aura::impact::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
    }
 #endif 
 
@@ -73,7 +73,7 @@ namespace refactor
 
    }
 
-   void view::on_update(::aura::impact * pSender, LPARAM lHint, ::object * phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
    {
       
       ::user::edit_plain_text_view::on_update(pSender, lHint, phint);

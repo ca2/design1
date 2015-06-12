@@ -3,7 +3,7 @@
 namespace tarsila
 {
 
-   class CLASS_DECL_APP_CORE_TARSILA main_document : public ::aura::document
+   class CLASS_DECL_APP_CORE_TARSILA main_document : public ::user::document
    {
    public:
       main_document(::aura::application * papp);

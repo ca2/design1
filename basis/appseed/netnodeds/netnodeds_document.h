@@ -6,7 +6,7 @@ namespace netnodeds
    class view;
 
    class CLASS_DECL_DESIGN_NETNODEDS document :
-      public ::aura::document
+      public ::user::document
    {
    public:
 
