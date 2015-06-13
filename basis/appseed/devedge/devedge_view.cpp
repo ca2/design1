@@ -8,7 +8,7 @@ namespace devedge
    view::view(::aura::application * papp) :
       ::object(papp),
       ::user::plain_edit(papp),
-      ::user::edit_plain_text_view(papp)
+      ::user::plain_edit_view(papp)
    {
 
       m_bMultiLine = true;
@@ -33,18 +33,18 @@ namespace devedge
 
    void view::assert_valid() const
    {
-      ::user::edit_plain_text_view::assert_valid();
+      ::user::plain_edit_view::assert_valid();
    }
 
    void view::dump(dump_context & dumpcontext) const
    {
-      ::user::edit_plain_text_view::dump(dumpcontext);
+      ::user::plain_edit_view::dump(dumpcontext);
    }
    #endif //DEBUG
 
    void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
    {
-      ::user::edit_plain_text_view::on_update(pSender, lHint, phint);
+      ::user::plain_edit_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)
       {
          _001RedrawWindow();
@@ -135,7 +135,7 @@ namespace devedge
 
    sp(::devedge::document) view::get_document() const
    {
-      return  (::user::edit_plain_text_view::get_document());
+      return  (::user::plain_edit_view::get_document());
    }
 
    void view::_001OnUpdateEditUndo(::signal_details * pobj)
@@ -167,14 +167,14 @@ namespace devedge
    void view::_001OnAfterChangeText()
    {
       // xyzxyz
-//      ::user::edit_plain_text_view::_001OnAfterChangeText();
+//      ::user::plain_edit_view::_001OnAfterChangeText();
       get_document()->set_modified_flag(TRUE);
    }
 
    void view::install_message_handling(::message::dispatch * pinterface)
    {
       
-      ::user::edit_plain_text_view::install_message_handling(pinterface);
+      ::user::plain_edit_view::install_message_handling(pinterface);
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
 

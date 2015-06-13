@@ -6,7 +6,7 @@ namespace devedge
    class document;
 
    class CLASS_DECL_DEVEDGE view : 
-      public ::user::edit_plain_text_view
+      public ::user::plain_edit_view
    {
    public:
       

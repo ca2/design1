@@ -11,7 +11,7 @@ namespace syllomatter
    public:
       
       sp(pane_view)                            m_ppaneview;
-      ::user::edit_plain_text_view *     m_peditview;
+      ::user::plain_edit_view *     m_peditview;
       sp(list_view)                            m_plistview;
 
 
