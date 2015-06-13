@@ -9,7 +9,7 @@ namespace refactor
 
 
    class CLASS_DECL_CA2_REFACTOR view :
-      public ::user::edit_plain_text_view
+      public ::user::plain_edit_view
    {
    public:
 

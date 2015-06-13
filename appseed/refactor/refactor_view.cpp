@@ -25,7 +25,7 @@ namespace refactor
    view::view(::aura::application * papp) :
       ::object(papp),
       ::user::edit_plain_text(papp),
-      ::user::edit_plain_text_view(papp),
+      ::user::plain_edit_view(papp),
       m_dib(allocer()),
       m_dibColor(allocer()),
       m_font(allocer())
@@ -76,7 +76,7 @@ namespace refactor
    void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
    {
       
-      ::user::edit_plain_text_view::on_update(pSender, lHint, phint);
+      ::user::plain_edit_view::on_update(pSender, lHint, phint);
 
       if(lHint == 1001)
       {
@@ -142,7 +142,7 @@ namespace refactor
    void view:: _001OnDraw(::draw2d::graphics * pdc)
    {
 
-      ::user::edit_plain_text_view::_001OnDraw(pdc);
+      ::user::plain_edit_view::_001OnDraw(pdc);
 
 //      if(m_iSelStart != m_iSelEnd)
 //         return;
@@ -455,7 +455,7 @@ namespace refactor
    sp(document) view::get_document()
    {
 
-      return ::user::edit_plain_text_view::get_document();
+      return ::user::plain_edit_view::get_document();
 
    }
 
@@ -484,7 +484,7 @@ namespace refactor
    {
 
 
-      ::user::edit_plain_text_view::install_message_handling(pinterface);
+      ::user::plain_edit_view::install_message_handling(pinterface);
 
       //IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);

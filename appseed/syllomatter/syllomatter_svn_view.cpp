@@ -33,9 +33,9 @@ namespace syllomatter
 
       /*   create_context cc;
       cc.m_pCurrentDoc = get_document();
-      cc.m_typeinfoNewView =  System.type_info < ::user::edit_plain_text_view > ();*/
+      cc.m_typeinfoNewView =  System.type_info < ::user::plain_edit_view > ();*/
 
-      ::user::edit_plain_text_view * ptopview = create_view < ::user::edit_plain_text_view > ();
+      ::user::plain_edit_view * ptopview = create_view < ::user::plain_edit_view > ();
       m_peditview = ptopview;
       if(ptopview == NULL)
       {
