@@ -108,7 +108,9 @@ namespace devedge
       class point ptClient = point;
       ClientToScreen(&point);
       //ScreenToClient(&ptClient);
-      sp(::aura::menu_base) menu = new aura::menu(get_app());
+
+      sp(::user::menu_base) menu = new user::menu(get_app());
+
       ::file::text_buffer_sp spfile(get_app());
 
       string strModuleFolder;

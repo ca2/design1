@@ -11,9 +11,9 @@ namespace biteditor
    public:
 
 
-      sp(::aura::impact_system) m_ptemplateEdge;
-      sp(::aura::impact_system) m_ptemplate_devedge;
-      sp(::aura::impact_system) m_ptemplateFront;
+      sp(::user::impact_system) m_ptemplateEdge;
+      sp(::user::impact_system) m_ptemplate_devedge;
+      sp(::user::impact_system) m_ptemplateFront;
 
 
       application();

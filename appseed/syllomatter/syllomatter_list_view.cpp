@@ -24,7 +24,7 @@ namespace syllomatter
       connect_command("syllomatter_do_commit", &list_view::_001OnDoCommit);
       connect_update_cmd_ui("syllomatter_do_commit", &list_view::_001OnUpdateDoCommit);
 
-      m_scrollinfo.m_rectMargin.deflate(26, 26, 26, 26);
+//      m_scrollinfo.m_rectMargin.deflate(26, 26, 26, 26);
 
    }
 

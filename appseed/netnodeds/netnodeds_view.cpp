@@ -7,7 +7,7 @@ namespace netnodeds
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::user::edit_plain_text(papp),
+      ::user::plain_edit(papp),
       ::user::plain_edit_view(papp)
    {
 
@@ -75,7 +75,7 @@ namespace netnodeds
          //_001OnCalcLayout(pdc);
          //
 
-         //ThreadProcScrollSize(dynamic_cast < ::user::edit_plain_text * > (this));
+         //ThreadProcScrollSize(dynamic_cast < ::user::plain_edit * > (this));
 
       }
       /*xxx if(phint != NULL)
@@ -108,7 +108,9 @@ namespace netnodeds
       class point ptClient = point;
       ClientToScreen(&point);
       //ScreenToClient(&ptClient);
-      sp(::aura::menu_base) menu = new aura::menu(get_app());
+
+      sp(::user::menu_base) menu = new user::menu(get_app());
+
       ::file::text_buffer_sp spfile(get_app());
 
       ::file::path strModuleFolder = System.dir().module();

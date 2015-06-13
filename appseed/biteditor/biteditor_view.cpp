@@ -34,7 +34,7 @@ namespace biteditor
    void view::install_message_handling(::message::dispatch * pinterface)
    {
 
-      ::user::scroll_view::install_message_handling(pinterface);
+      ::userex::scroll_view::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
@@ -67,15 +67,22 @@ namespace biteditor
    }
 
 #ifdef DEBUG
+   
    void view::assert_valid() const
    {
-      ::user::scroll_view::assert_valid();
+
+      ::userex::scroll_view::assert_valid();
+
    }
 
+   
    void view::dump(dump_context & dumpcontext) const
    {
-      ::user::scroll_view::dump(dumpcontext);
+      
+      ::userex::scroll_view::dump(dumpcontext);
+
    }
+
 #endif //DEBUG
 
 
@@ -85,14 +92,14 @@ namespace biteditor
 
       cs.style &= ~WS_EX_CLIENTEDGE;
 
-      return ::user::scroll_view::pre_create_window(cs);
+      return ::userex::scroll_view::pre_create_window(cs);
 
    }
 
 
    void view::_001OnInitialUpdate()
    {
-      ::user::scroll_view::_001OnInitialUpdate();
+      ::userex::scroll_view::_001OnInitialUpdate();
 
       m_pasciibox->on_update();
       m_phexbox->on_update();
@@ -116,11 +123,11 @@ namespace biteditor
       size64 sizeLine;
       sizeLine.cx = sizeTotal.cx;
       sizeLine.cy = m_iLineHeight;
-      m_scrollinfo.m_sizeTotal = sizeTotal;
-      m_scrollinfo.m_sizePage = sizePage;
-      m_scrollinfo. m_sizeLine = sizeLine;
+      m_sizeTotal = sizeTotal;
+      //m_scrollinfo.m_sizePage = sizePage;
+      //m_scrollinfo. m_sizeLine = sizeLine;
       //SetScrollSizes(MM_TEXT, sizeTotal, sizePage, sizeLine);
-
+      on_change_view_size();
    }
 
    void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
@@ -159,12 +166,13 @@ namespace biteditor
 
    }
 
+
    void view::_001OnDestroy(::signal_details * pobj)
    {
-      ::user::scroll_view::_001OnDestroy(pobj);
+
+      ::userex::scroll_view::_001OnDestroy(pobj);
 
    }
-
 
 
    void view::_001OnSize(::signal_details * pobj)
@@ -370,9 +378,12 @@ namespace biteditor
 
    }
 
+   
    sp(::biteditor::document) view::get_document() const
    {
-      return  (::user::scroll_view::get_document());
+
+      return ::userex::scroll_view::get_document();
+
    }
 
 
@@ -507,13 +518,21 @@ namespace biteditor
          if(pkey->m_bRet)
             return;
       }
-      ::user::scroll_view::pre_translate_message(pobj);
+
+      ::userex::scroll_view::pre_translate_message(pobj);
+
    }
+
+
    void view::key_to_char(WPARAM wparam, LPARAM lparam)
    {
+
       UNREFERENCED_PARAMETER(lparam);
+
       ::message::key key(get_app());
+
       key.m_nChar = wparam;
+
       if(wparam == VK_LSHIFT || wparam == VK_RSHIFT
          || wparam == VK_LCONTROL || wparam == VK_RCONTROL
          || wparam == VK_LMENU || wparam == VK_RMENU
@@ -563,13 +582,22 @@ namespace biteditor
 
    int32_t view::UpdateScrollSizes()
    {
-      m_scrollinfo.m_sizeTotal.cx = 1024;
-      m_scrollinfo.m_sizeTotal.cy = m_pasciibox->m_size.cy;
+
+
+      m_sizeTotal.cx = 1024;
+
+      m_sizeTotal.cy = m_pasciibox->m_size.cy;
+
+      on_change_view_size();
+
       return 0;
+
    }
+
 
    void view::get_view_lines(stringa & straLines)
    {
+      
       file_offset iOffset = (m_iViewOffset / m_iLineSize * m_iLineSize);
 
       get_document()->m_memfile.seek(iOffset, ::file::seek_begin);
@@ -577,27 +605,42 @@ namespace biteditor
       int64_t iLineCount = m_iViewSize / m_iLineSize;
 
       char sz[16];
-      primitive::memory_size iRead;
+
+      ::primitive::memory_size iRead;
+
       string strLine;
+
       for(int32_t i = 0; i < iLineCount; i++)
       {
          //      int32_t iCount;
+         
          strLine.Empty();
+
          iRead = get_document()->m_memfile.read(sz, 16);
-         for(primitive::memory_size i = 0; i < iRead; i++)
+
+         for(::primitive::memory_size i = 0; i < iRead; i++)
          {
+            
             if(sz[i] == '\0')
             {
+            
                strLine += '\xff';
+
             }
             else
             {
+               
                strLine += sz[i];
+
             }
+
          }
+
          straLines.add(strLine);
+
          if(iRead <= 0)
             break;
+
       }
 
    }
@@ -605,12 +648,17 @@ namespace biteditor
 
    void view::_001GetSelText(string & str)
    {
+
       file_position iEnd;
+
       file_position iStart;
+
       if(m_iSelEnd < 0)
       {
+
          if(m_iSelStart < 0)
          {
+
             iEnd = (file_position) get_document()->m_peditfile->get_length();
             iStart = 0;
          }
@@ -689,25 +737,50 @@ namespace biteditor
 
    void view::OneLineUp()
    {
-      m_scrollinfo.m_ptScroll.y -= m_iLineHeight;
-      if(m_scrollinfo.m_ptScroll.y < 0)
-         m_scrollinfo.m_ptScroll.y = 0;
+
+      set_viewport_offset_y(-m_iLineHeight);
+
+      if(get_viewport_offset().y < 0)
+      {
+      
+         set_viewport_offset_y(0);
+
+      }
+
       int32_t iHeight = 0;
    //   char flag;
       m_iViewOffset = 0;
       int64_t iLineSize;
       int64_t i = 0;
       int64_t iLineCount = CalcLineCount();
-      while(m_scrollinfo.m_ptScroll.y > iHeight && i < iLineCount)
+
+      while(get_viewport_offset().y > iHeight && i < iLineCount)
       {
+
          iLineSize = m_iLineSize;
+
          iHeight += m_iLineHeight;
+
          m_iViewOffset += iLineSize;
+
          i++;
+
       }
 
    }
 
+   
+   size view::get_total_size()
+   {
+
+      return m_sizeTotal;
+
+   }
+
+
 } // namespace biteditor
+
+
+
 
 

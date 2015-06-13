@@ -24,7 +24,7 @@ namespace refactor
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      ::user::edit_plain_text(papp),
+      ::user::plain_edit(papp),
       ::user::plain_edit_view(papp),
       m_dib(allocer()),
       m_dibColor(allocer()),
@@ -115,7 +115,7 @@ namespace refactor
          //_001OnCalcLayout(pdc);
          //ReleaseDC(pdc);
 
-         //__begin_thread(get_app(), ThreadProcScrollSize, dynamic_cast < ::user::edit_plain_text * > (this));
+         //__begin_thread(get_app(), ThreadProcScrollSize, dynamic_cast < ::user::plain_edit * > (this));
 
       }
       /*xxx if(phint != NULL)

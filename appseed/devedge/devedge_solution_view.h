@@ -6,7 +6,7 @@ namespace devedge
 
 
    class solution_view :
-      virtual public ::user::tree
+      virtual public ::user::tree_view
    {
    public:
 
@@ -28,5 +28,13 @@ namespace devedge
 
 
 } // namespace devedge
+
+
+
+
+
+
+
+
 
 
