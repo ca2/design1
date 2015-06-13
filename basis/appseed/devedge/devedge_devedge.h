@@ -12,11 +12,11 @@ namespace devedge
       
       
       sp(::user::single_document_template)    m_ptemplateEdge;
-      sp(::aura::impact_system)           m_ptemplate_devedge;
-      sp(::aura::impact_system)           m_ptemplate_solution;
-      sp(::aura::impact_system)           m_ptemplateHtmlEdit;
-      sp(::aura::impact_system)           m_ptemplateHtmlStage;
-      sp(::aura::impact_system)           m_ptemplateFront;
+      sp(::user::impact_system)           m_ptemplate_devedge;
+      sp(::user::impact_system)           m_ptemplate_solution;
+      sp(::user::impact_system)           m_ptemplateHtmlEdit;
+      sp(::user::impact_system)           m_ptemplateHtmlStage;
+      sp(::user::impact_system)           m_ptemplateFront;
 
 
       devedge(::aura::application * papp);

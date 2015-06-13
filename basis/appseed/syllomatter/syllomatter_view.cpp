@@ -531,12 +531,17 @@ namespace syllomatter
       if(status1.m_mtime == status2.m_mtime)
          return 0;
 
-      primitive::memory_size iRead1;
-      primitive::memory_size iRead2;
+      ::primitive::memory_size iRead1;
+
+      ::primitive::memory_size iRead2;
+
       while(true)
       {
+
          iRead1 = spfile1->read(m_buf1, m_iBufSize);
+
          iRead2 = spfile2->read(m_buf2, m_iBufSize);
+
          if(iRead1 > iRead2)
             return 1;
          else if(iRead1 < iRead2)

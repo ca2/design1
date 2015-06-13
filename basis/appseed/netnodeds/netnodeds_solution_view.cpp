@@ -16,7 +16,7 @@ namespace netnodeds
    bool solution_view::load()
    {
 
-      sp(solution_document) pdoc =  (get_document());
+      sp(solution_document) pdoc = get_document();
       
       m_psolution = pdoc->m_psolution;
 

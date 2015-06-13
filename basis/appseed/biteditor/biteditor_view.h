@@ -8,11 +8,11 @@ namespace biteditor
 
 
    class CLASS_DECL_CA2_BITEDITOR view : 
-      virtual public ::user::scroll_view
+      virtual public ::userex::scroll_view
    {
    public:
 
-
+      size                          m_sizeTotal;
       mutex                         m_mutexData;
 
       file_position                 m_iSelStart;
@@ -98,7 +98,7 @@ namespace biteditor
 
       void OneLineUp();
 
-
+      virtual size get_total_size();
 
 
    };

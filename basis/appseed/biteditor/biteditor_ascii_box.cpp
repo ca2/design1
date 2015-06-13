@@ -53,9 +53,9 @@ namespace biteditor
 
       single_lock sl(&m_pview->m_mutexData, true);
 
+      point ptOffset = get_viewport_offset();
 
-
-      m_pview->m_iViewOffset = (m_pview->m_scrollinfo.m_ptScroll.y * m_pview->m_iLineSize / m_pview->m_iLineHeight);
+      m_pview->m_iViewOffset = (ptOffset.y * m_pview->m_iLineSize / m_pview->m_iLineHeight);
 
       //if(m_pview->get_document()->get_data()->is_in_use())
         // return;
@@ -126,7 +126,9 @@ namespace biteditor
       file_position iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
       file_position iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
 
-      pdc->OffsetViewportOrg(0, - m_pview->m_scrollinfo.m_ptScroll.y % m_pview->m_iLineHeight);
+//      point ptOffset = get_viewport_offset();
+
+      pdc->OffsetViewportOrg(0, - ptOffset.y % m_pview->m_iLineHeight);
 
       string strLine;
       string str1;
@@ -300,7 +302,8 @@ namespace biteditor
    {
       single_lock sl(&m_pview->m_mutexData, true);
       pdc->SelectObject(m_spfont);
-      py += m_pview->m_scrollinfo.m_ptScroll.y % m_pview->m_iLineHeight;
+      point ptOffset = get_viewport_offset();
+      py += ptOffset.y % m_pview->m_iLineHeight;
       file_position iSelStart;
       file_position iSelEnd;
       _001GetViewSel(iSelStart, iSelEnd);
@@ -382,14 +385,22 @@ namespace biteditor
 
    void ascii_box::read_line(string & str, int64_t iLine)
    {
+      
       str.Empty();
+      
       m_pview->get_document()->m_peditfile->seek(iLine * m_pview->m_iLineSize, ::file::seek_begin);
-      primitive::memory_size iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (primitive::memory_size) m_pview->m_iLineSize);
-            string strChar;
-            WCHAR sz[2];
-      for(primitive::memory_size i = 0; i < iRead; i++)
+
+      ::primitive::memory_size iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (::primitive::memory_size) m_pview->m_iLineSize);
+
+      string strChar;
+
+      WCHAR sz[2];
+
+      for(::primitive::memory_size i = 0; i < iRead; i++)
       {
+
          char ch = m_pchLineBuffer[i];
+
          if(ch < 0)
          {
             WCHAR table[] =
@@ -541,19 +552,26 @@ namespace biteditor
          }
          else if(m_pview->m_iSelEnd < m_pview->get_document()->m_peditfile->get_length())
          {
+            
             char buf[2];
+            
             m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
-            primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
-            if(uiRead == 2 &&
-               buf[0] == '\r' &&
-               buf[1] == '\n')
+
+            ::primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
+
+            if(uiRead == 2 && buf[0] == '\r' && buf[1] == '\n')
             {
+
                m_pview->m_iSelEnd += 2;
+
             }
             else
             {
+
                m_pview->m_iSelEnd ++;
+
             }
+
             if(!bShift)
             {
                m_pview->m_iSelStart = m_pview->m_iSelEnd;
@@ -575,19 +593,26 @@ namespace biteditor
          {
             if(m_pview->m_iSelEnd > 2)
             {
+               
                char buf[2];
+               
                m_pview->get_document()->m_peditfile->seek(m_pview->m_iSelEnd - 2, ::file::seek_begin);
-               primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
-               if(uiRead == 2 &&
-                  buf[0] == '\r' &&
-                  buf[1] == '\n')
+
+               ::primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
+
+               if(uiRead == 2 && buf[0] == '\r' && buf[1] == '\n')
                {
+
                   m_pview->m_iSelEnd -= 2;
+
                }
                else
                {
+
                   m_pview->m_iSelEnd --;
+
                }
+
             }
             else
             {
