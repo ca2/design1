@@ -293,7 +293,7 @@ namespace devedge
       return NULL;
    }
 
-   void html_stage_view::_001OnTimer(::signal_details * pobj) 
+   void html_stage_view::_001OnTimer(timer * ptimer)
    {
       super::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100 
