@@ -232,7 +232,7 @@ namespace devedge
    //   return NULL;
    //}
 
-   void front_view::_001OnTimer(::signal_details * pobj)
+   void front_view::_001OnTimer(timer * ptimer)
    {
       super::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100

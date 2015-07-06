@@ -44,6 +44,8 @@ namespace tarsila
       if(!::tesseract::application::initialize_instance())
          return false;
 
+      m_dataid += ".local://";
+
       SetRegistryKey("ca2core");
 
       ::user::multiple_document_template* pDocTemplate;

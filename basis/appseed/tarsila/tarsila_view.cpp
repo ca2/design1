@@ -211,17 +211,21 @@ namespace tarsila
 
    void view::_001OnTimer(timer * ptimer) 
    {
-      super::_001OnTimer(ptimer);
+
+      ::user::impact::_001OnTimer(ptimer);
 
       if(ptimer->m_nIDEvent == 123)
       {
+
          ::property_set post;
          ::property_set headers;
          string strQuery;
          point pt;
          Session.get_cursor_pos(&pt);
          ScreenToClient(&pt);
+
       }
+
    }
 
    void view::_001OnMouseMove(signal_details * pobj) 
