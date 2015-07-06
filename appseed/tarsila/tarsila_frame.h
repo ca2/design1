@@ -5,7 +5,8 @@ namespace tarsila
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA frame : public simple_frame_window
+   class CLASS_DECL_APP_CORE_TARSILA frame : 
+      virtual public simple_frame_window
    {
    public:
    
@@ -21,7 +22,7 @@ namespace tarsila
 
 
       DECL_GEN_SIGNAL(_001OnCreate);
-      DECL_GEN_SIGNAL(_001OnTimer);
+      void _001OnTimer(timer * ptimer);;
 
 
       bool get_translucency(::user::ETranslucency  & etranslucency);

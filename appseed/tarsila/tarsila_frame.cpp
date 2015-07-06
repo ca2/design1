@@ -41,7 +41,7 @@ namespace tarsila
       simple_frame_window::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &frame::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &frame::_001OnTimer);
+//      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &frame::_001OnTimer);
 
    }
 
@@ -60,10 +60,10 @@ namespace tarsila
 
 
 
-   void frame::_001OnTimer(signal_details * pobj)
+   void frame::_001OnTimer(timer * ptimer)
    {
 
-      SCAST_PTR(::message::timer, ptimer, pobj)
+      simple_frame_window::_001OnTimer(ptimer);
 
 
    }

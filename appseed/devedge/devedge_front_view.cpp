@@ -234,7 +234,7 @@ namespace devedge
 
    void front_view::_001OnTimer(::signal_details * pobj)
    {
-      SCAST_PTR(::message::timer, ptimer, pobj)
+      super::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {

@@ -33,7 +33,7 @@ namespace tarsila
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
       IGUI_WIN_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
-      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &view::_001OnTimer);
+//      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &view::_001OnTimer);
       IGUI_WIN_MSG_LINK(WM_MOUSEMOVE, pinterface, this, &view::_001OnMouseMove);
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &view::_001OnLButtonDown);
       IGUI_WIN_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
@@ -209,9 +209,9 @@ namespace tarsila
       perasebkgnd->set_result(TRUE);
    }
 
-   void view::_001OnTimer(signal_details * pobj) 
+   void view::_001OnTimer(timer * ptimer) 
    {
-      SCAST_PTR(::message::timer, ptimer, pobj)
+      super::_001OnTimer(ptimer);
 
       if(ptimer->m_nIDEvent == 123)
       {
