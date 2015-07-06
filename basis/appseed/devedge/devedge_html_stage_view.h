@@ -5,10 +5,8 @@ namespace devedge
 {
 
 
-   class html_stage_document;
-
-
-   class CLASS_DECL_DEVEDGE html_stage_view: public html_view
+   class CLASS_DECL_DEVEDGE html_stage_view :
+      virtual public html_view
    {
    public:
 

@@ -29,7 +29,13 @@
 namespace devedge
 {
 
+
    class application;
+   class document;
+   class html_stage_document;
+
+
+
 
 
 } // namespace devedge

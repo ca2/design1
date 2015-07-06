@@ -31,7 +31,7 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &html_edit_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &html_edit_view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &html_edit_view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &html_edit_view::_001OnTimer);
+//      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &html_edit_view::_001OnTimer);
       IGUI_WIN_MSG_LINK(WM_USER + 101     , this, this, &html_edit_view::_001OnPost);
 
       //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &html_edit_view::_001OnTabClick);
@@ -274,7 +274,7 @@ namespace devedge
 
    void html_edit_view::_001OnTimer(timer * ptimer)
    {
-      super::_001OnTimer(ptimer);
+      html_view::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {

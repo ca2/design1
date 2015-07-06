@@ -4,21 +4,22 @@
 namespace devedge
 {
 
-   class document;
 
-
-   class CLASS_DECL_DEVEDGE front_view : public html_view
+   class CLASS_DECL_DEVEDGE front_view : 
+      virtual public html_view
    {
    public:
-      front_view(::aura::application * papp);
 
+
+      front_view(::aura::application * papp);
       virtual ~front_view();
+
+
 #ifdef DEBUG
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-   public:
       virtual sp(::user::interaction) get_guie();
 
       virtual void _001OnDraw(::draw2d::graphics * pdc);

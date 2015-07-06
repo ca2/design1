@@ -5,7 +5,8 @@ namespace devedge
 {
 
 
-   class CLASS_DECL_DEVEDGE html_edit_view : public html_view
+   class CLASS_DECL_DEVEDGE html_edit_view : 
+      virtual public html_view
    {
    public:
 
