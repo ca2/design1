@@ -44,7 +44,7 @@ namespace devedge
       if(!::core::application::initialize_instance())
          return false;
 
-
+      m_dataid += ".local://";
 
 
       KickDevEdgeFront(this);
