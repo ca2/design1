@@ -236,7 +236,7 @@ namespace netnodeds
 
    void front_view::_001OnTimer(::timer * ptimer) 
    {
-      BASE::_001OnTimer(ptimer);
+      html_view::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {

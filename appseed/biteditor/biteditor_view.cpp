@@ -389,7 +389,7 @@ namespace biteditor
 
    void view::_001OnTimer(::timer * ptimer) 
    {
-      BASE::_001OnTimer(ptimer);
+      ::userex::scroll_view::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {
