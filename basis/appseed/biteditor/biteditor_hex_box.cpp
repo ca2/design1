@@ -49,7 +49,7 @@ namespace biteditor
 
    void hex_box::_001OnDraw(::draw2d::graphics * pdc)
    {
-      if(Session.user()->get_keyboard_focus() == this)
+      if(Session.get_keyboard_focus() == this)
       {
          m_bFocus = true;
       }
@@ -229,7 +229,7 @@ namespace biteditor
       m_pview->m_iSelEnd = m_pview->m_iSelStart;
 
       m_pview->_001RedrawWindow();
-      Session.user()->set_keyboard_focus(this);
+      Session.set_keyboard_focus(this);
       Session.user()->set_mouse_focus_LButtonDown(this);
       pobj->m_bRet = true;
 

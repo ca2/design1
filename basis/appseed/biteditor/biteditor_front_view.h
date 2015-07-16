@@ -8,7 +8,8 @@ namespace biteditor
    class document;
 
 
-   class CLASS_DECL_CA2_BITEDITOR front_view : public html_view
+   class CLASS_DECL_CA2_BITEDITOR front_view : 
+      virtual public html_view
    {
    public:
 
