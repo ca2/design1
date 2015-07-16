@@ -31,7 +31,7 @@ namespace biteditor
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &front_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &front_view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &front_view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
+      //IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
       IGUI_WIN_MSG_LINK(WM_USER + 101     , pinterface, this, &front_view::_001OnPost);
 
       //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &front_view::_001OnTabClick);
@@ -244,9 +244,9 @@ namespace biteditor
       return NULL;
    }
 
-   void front_view::::_001OnTimer(timer * ptimer) 
+   void front_view::::_001OnTimer(::timer * ptimer) 
    {
-      SCAST_PTR(::message::timer, ptimer, pobj)
+      BASE::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {

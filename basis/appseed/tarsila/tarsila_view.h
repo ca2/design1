@@ -56,7 +56,7 @@ namespace tarsila
       DECL_GEN_SIGNAL(_001OnContextMenu);
       DECL_GEN_SIGNAL(_001OnSetCursor);
       DECL_GEN_SIGNAL(_001OnEraseBkgnd);
-      void _001OnTimer(timer * ptimer);;
+      void _001OnTimer(::timer * ptimer);;
       DECL_GEN_SIGNAL(_001OnMouseMove);
       DECL_GEN_SIGNAL(_001OnLButtonDown);
       DECL_GEN_SIGNAL(_001OnLButtonUp);
