@@ -7,7 +7,8 @@ namespace netnodeds
    class document;
 
 
-   class CLASS_DECL_DESIGN_NETNODEDS front_view : public html_view
+   class CLASS_DECL_DESIGN_NETNODEDS front_view :
+      virtual public html_view
    {
    public:
       front_view(::aura::application * papp);

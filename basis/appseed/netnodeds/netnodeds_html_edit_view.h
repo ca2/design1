@@ -5,7 +5,8 @@ namespace netnodeds
 {
 
 
-   class CLASS_DECL_DESIGN_NETNODEDS html_edit_view : public html_view
+   class CLASS_DECL_DESIGN_NETNODEDS html_edit_view :
+      virtual public html_view
    {
    public:
 
