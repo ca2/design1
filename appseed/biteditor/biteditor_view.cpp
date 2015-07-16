@@ -42,7 +42,7 @@ namespace biteditor
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &view::_001OnTimer);
+      //IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &view::_001OnTimer);
       IGUI_WIN_MSG_LINK(WM_HSCROLL, pinterface, this, &view::_001OnHScroll);
 
       IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
@@ -387,9 +387,9 @@ namespace biteditor
    }
 
 
-   void view::::_001OnTimer(timer * ptimer) 
+   void view::::_001OnTimer(::timer * ptimer) 
    {
-      SCAST_PTR(::message::timer, ptimer, pobj)
+      BASE::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {

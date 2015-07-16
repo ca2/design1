@@ -31,7 +31,7 @@ namespace devedge
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &html_stage_view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &html_stage_view::_001OnSetCursor);
       IGUI_WIN_MSG_LINK(WM_ERASEBKGND, pinterface, this, &html_stage_view::_001OnEraseBkgnd);
-//      IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &html_stage_view::_001OnTimer);
+//      //IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &html_stage_view::_001OnTimer);
 
       //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &html_stage_view::_001OnTabClick);
       IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &html_stage_view::_001OnWavePlayerEvent);
@@ -293,7 +293,7 @@ namespace devedge
       return NULL;
    }
 
-   void html_stage_view::_001OnTimer(timer * ptimer)
+   void html_stage_view::_001OnTimer(::timer * ptimer)
    {
       html_view::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100 
