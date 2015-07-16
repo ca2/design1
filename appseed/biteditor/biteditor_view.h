@@ -52,7 +52,7 @@ namespace biteditor
          DECL_GEN_SIGNAL(_001OnMouseMove);
          DECL_GEN_SIGNAL(_001OnKeyDown);
          DECL_GEN_SIGNAL(_001OnKeyUp);
-         DECL_GEN_SIGNAL(_001OnTimer);
+         virtual void _001OnTimer(::timer * ptimer);
          DECL_GEN_SIGNAL(_001OnHScroll);
 
          DECL_GEN_SIGNAL(_001OnRButtonUp);
