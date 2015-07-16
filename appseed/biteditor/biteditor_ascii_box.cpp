@@ -86,7 +86,7 @@ namespace biteditor
 
 
       //pdc->SelectClipRgn(rgn, RGN_COPY);
-      if(Session.user()->get_keyboard_focus() == (elemental *) this)
+      if(Session.get_keyboard_focus() == (elemental *) this)
       {
          m_bFocus = true;
       }
@@ -205,7 +205,7 @@ namespace biteditor
 
       Session.user()->set_mouse_focus_LButtonDown(this);
 
-      Session.user()->set_keyboard_focus(this);
+      Session.set_keyboard_focus(this);
 
       if(m_pview->m_iSelStart >= 0)
       {

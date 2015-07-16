@@ -393,11 +393,11 @@ namespace biteditor
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {
-            if(Session.user()->get_keyboard_focus() == m_pasciibox)
+            if(Session.get_keyboard_focus() == m_pasciibox)
             {
                m_pasciibox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
             }
-            else if(Session.user()->get_keyboard_focus() == m_phexbox)
+            else if(Session.get_keyboard_focus() == m_phexbox)
             {
                m_phexbox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
             }
@@ -470,11 +470,11 @@ namespace biteditor
                return;
             }
          }
-         if(Session.user()->get_keyboard_focus() == m_pasciibox)
+         if(Session.get_keyboard_focus() == m_pasciibox)
          {
             //m_pasciibox->_001OnChar(this, pobj);
          }
-         else if(Session.user()->get_keyboard_focus() == m_phexbox)
+         else if(Session.get_keyboard_focus() == m_phexbox)
          {
             //m_phexbox->_001OnChar(this, pobj);
          }
@@ -484,11 +484,11 @@ namespace biteditor
    void view::_001OnSysChar(::signal_details * pobj)
    {
       //   SCAST_PTR(::message::key, pkey, pobj)
-      if(Session.user()->get_keyboard_focus() == m_pasciibox)
+      if(Session.get_keyboard_focus() == m_pasciibox)
       {
          //m_pasciibox->_001OnSysChar(this, pobj);
       }
-      else if(Session.user()->get_keyboard_focus() == m_phexbox)
+      else if(Session.get_keyboard_focus() == m_phexbox)
       {
          //m_phexbox->_001OnSysChar(this, pobj);
       }
