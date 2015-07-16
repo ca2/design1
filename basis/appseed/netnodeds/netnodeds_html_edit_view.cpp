@@ -272,7 +272,7 @@ namespace netnodeds
       return NULL;
    }
 
-   void html_edit_view::::_001OnTimer(::timer * ptimer) 
+   void html_edit_view::_001OnTimer(::timer * ptimer) 
    {
       BASE::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
