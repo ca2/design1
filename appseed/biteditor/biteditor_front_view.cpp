@@ -244,7 +244,7 @@ namespace biteditor
       return NULL;
    }
 
-   void front_view::::_001OnTimer(::timer * ptimer) 
+   void front_view::_001OnTimer(::timer * ptimer) 
    {
       BASE::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
