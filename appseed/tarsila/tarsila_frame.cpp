@@ -41,7 +41,7 @@ namespace tarsila
       simple_frame_window::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &frame::_001OnCreate);
-//      //IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &frame::_001OnTimer);
+//      
 
    }
 
