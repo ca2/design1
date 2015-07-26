@@ -63,6 +63,7 @@
     <RootNamespace>app_core_refactor</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>design_refactor</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'" Label="Configuration">
