@@ -28,6 +28,8 @@ namespace syllomatter
    {
       
 
+      pobj->m_bRet =true;
+
       UNREFERENCED_PARAMETER(pobj);
 
       get_typed_view < pane_view >()->set_cur_tab_by_id(syllomatter::PaneViewSVN);

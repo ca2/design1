@@ -60,14 +60,14 @@ namespace syllomatter
       static int32_t ComparePath(LPVOID lparg, index dwa, index dwb);
 
       virtual count _001GetItemCount();
-      virtual void _001GetItemText(::user::list_item * pitem);
+      virtual void _001GetItemText(::user::mesh_item * pitem);
 
       static index StatusSortWeight(string & strStatus);
 
-      virtual void _001GetItemColor(::user::list_item * pitem);
+      virtual void _001GetItemColor(::user::mesh_item * pitem);
 
 
-      void _001GetItemImage(::user::list_item * pitem);
+      void _001GetItemImage(::user::mesh_item * pitem);
 
 
 
