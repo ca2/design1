@@ -74,7 +74,7 @@ namespace syllomatter
       _001AddColumn(column);
    }
 
-   void list_view::_001GetItemImage(::user::list_item * pitem)
+   void list_view::_001GetItemImage(::user::mesh_item * pitem)
    {
       if(pitem->m_iSubItem == 2)
       {
@@ -97,7 +97,7 @@ namespace syllomatter
 
 
 
-   void list_view::_001GetItemText(::user::list_item * pitem)
+   void list_view::_001GetItemText(::user::mesh_item * pitem)
    {
       if(pitem->m_iSubItem == 0)
       {
@@ -782,7 +782,7 @@ namespace syllomatter
 
 
 
-   void list_view::_001GetItemColor(::user::list_item * pitem)
+   void list_view::_001GetItemColor(::user::mesh_item * pitem)
    {
       if(m_straStatus[pitem->m_iItem] == "M")
       {

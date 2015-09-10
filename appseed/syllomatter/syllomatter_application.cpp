@@ -43,6 +43,9 @@ namespace syllomatter
       if(!tesseract::application::initialize_instance())
          return FALSE;
 
+
+      m_dataid += ".local://";
+
       InitializeFileManager("syllomatter/frame");
       Session.filemanager().std().m_strLevelUp.Empty();
       Session.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
