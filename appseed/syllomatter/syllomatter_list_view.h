@@ -33,6 +33,9 @@ namespace syllomatter
          int32_t run();
       };
 
+
+      string                           m_strRealm;
+
       stringa                          m_straStatus;
       stringa                          m_stra;
 
