@@ -113,6 +113,8 @@ apr_pool_t *pool)
 
    App(((::syllomatter::list_view *) baton)->get_app()).get_cred(realm,rect(0,0,0,0),strUsername,strPassword,realm,realm,true);
 
+   ((::syllomatter::list_view *) baton)->m_strRealm = realm;
+
    ret->username = apr_pstrdup(pool,strUsername);
 
    ret->password = apr_pstrdup(pool,strPassword);
@@ -299,6 +301,8 @@ int libsvn_minimal_client_test(::syllomatter::list_view * plist, const char * st
      svn_handle_error2(err,stderr,FALSE,"minimal_client: ");
      return EXIT_FAILURE;
   }
+
+  ::fontopus::set_cred_ok(plist->get_app(),plist->m_strRealm, true);
 
   /* Print the dir entries in the hash. */
   for(hi = apr_hash_first(pool,dirents); hi; hi = apr_hash_next(hi))
