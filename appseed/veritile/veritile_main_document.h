@@ -1,9 +1,9 @@
 #pragma once
 
-namespace tarsila
+namespace veritile
 {
 
-   class CLASS_DECL_APP_CORE_TARSILA main_document : public ::user::document
+   class CLASS_DECL_APP_CORE_VERITILE main_document : public ::user::document
    {
    public:
       main_document(::aura::application * papp);

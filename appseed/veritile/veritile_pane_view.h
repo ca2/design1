@@ -1,11 +1,11 @@
 #pragma once
 
-namespace tarsila
+namespace veritile
 {
 
    class document;
 
-   class CLASS_DECL_APP_CORE_TARSILA pane_view : 
+   class CLASS_DECL_APP_CORE_VERITILE pane_view : 
       virtual public ::userex::pane_tab_view
    {
    public:
@@ -37,4 +37,4 @@ namespace tarsila
       DECL_GEN_SIGNAL(_001OnCreate);
    };
 
-} // namespace tarsila
+} // namespace veritile

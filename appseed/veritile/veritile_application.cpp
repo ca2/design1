@@ -1,15 +1,15 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
    application::application()
    {
 
-      m_strAppName         = "tarsila";
-      //m_strInstallToken    = "tarsila";
+      m_strAppName         = "veritile";
+      //m_strInstallToken    = "veritile";
       m_bLicense = false;
 
    }
@@ -107,7 +107,7 @@ namespace tarsila
       {
 
          stringa stra;
-         m_ppaneview->get_begins_ci_eat_id(stra,"tarsila://");
+         m_ppaneview->get_begins_ci_eat_id(stra,"veritile://");
          if( stra.get_count() <= 0)
          {
 
@@ -115,12 +115,12 @@ namespace tarsila
             string strFormatTime;
             strFormatTime = System.datetime().international().get_gmt_date_time();
             strFormatTime.replace(":","-");
-            strPath = Session.filemanager_get_initial_browse_path()/strFormatTime + ".tarsila";
+            strPath = Session.filemanager_get_initial_browse_path()/strFormatTime + ".veritile";
             if(!Application.file().exists(strPath))
             {
                Application.file().put_contents(strPath,"");
             }
-            string strId = "tarsila://" + strPath;
+            string strId = "veritile://" + strPath;
             m_ppaneview->set_cur_tab_by_id(strId);
 
          }
@@ -133,19 +133,19 @@ namespace tarsila
          string strFormatTime;
          strFormatTime = System.datetime().international().get_gmt_date_time();
          strFormatTime.replace(":","-");
-         strPath = Session.filemanager_get_initial_browse_path()/ strFormatTime + ".tarsila";
+         strPath = Session.filemanager_get_initial_browse_path()/ strFormatTime + ".veritile";
          if(!Application.file().exists(strPath))
          {
             Application.file().put_contents(strPath,"");
          }
-         string strId = "tarsila://" + strPath;
+         string strId = "veritile://" + strPath;
          m_ppaneview->set_cur_tab_by_id(strId);
 
       }
       else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
       {
          
-         m_ppaneview->set_cur_tab_by_id("tarsila://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+         m_ppaneview->set_cur_tab_by_id("veritile://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
 
       }
 
@@ -162,21 +162,21 @@ namespace tarsila
       if(!tesseract::application::on_install())
          return false;
 
-      System.os().file_association_set_shell_open_command("jpg", "ca.tarsila.jpegfile", System.dir().ca2module()/ "app.exe", NULL);
+      System.os().file_association_set_shell_open_command("jpg", "ca.veritile.jpegfile", System.dir().ca2module()/ "app.exe", NULL);
 
       return true;
 
    }
 
-} // namespace tarsila
+} // namespace veritile
 
 
 
 extern "C"
-::aura::library * design_tarsila_get_new_library(::aura::application * papp)
+::aura::library * design_veritile_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::tarsila::application >(papp, "design");
+   return new ::aura::single_application_library < ::veritile::application >(papp, "design");
 
 }
 

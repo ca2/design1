@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -102,7 +102,7 @@ namespace tarsila
       return true;
    }
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

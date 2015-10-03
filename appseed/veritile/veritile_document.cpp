@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -231,7 +231,7 @@ namespace tarsila
       Application.m_ppaneview->FileManagerSaveAs(this);
    }
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

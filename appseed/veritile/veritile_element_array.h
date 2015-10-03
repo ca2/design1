@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA element_array:
+   class CLASS_DECL_APP_CORE_VERITILE element_array:
       public ptr_array < element >
    {
    public:
@@ -25,7 +25,7 @@ namespace tarsila
 
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

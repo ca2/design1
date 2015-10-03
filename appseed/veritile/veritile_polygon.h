@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA polygon:
+   class CLASS_DECL_APP_CORE_VERITILE polygon:
       virtual public element
    {
    public:
@@ -38,7 +38,7 @@ namespace tarsila
 
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

@@ -1,6 +1,6 @@
 #include "framework.h"
 
-namespace tarsila
+namespace veritile
 {
 
    pane_view_update_hint::pane_view_update_hint()
@@ -23,5 +23,5 @@ namespace tarsila
       m_etype = e_type;
    }
 
-} // namespace tarsila
+} // namespace veritile
 

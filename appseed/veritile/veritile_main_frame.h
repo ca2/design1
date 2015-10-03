@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA main_frame : public simple_frame_window
+   class CLASS_DECL_APP_CORE_VERITILE main_frame : public simple_frame_window
    {
    public:
       

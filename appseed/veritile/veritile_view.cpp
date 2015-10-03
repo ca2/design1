@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -285,7 +285,7 @@ namespace tarsila
       if(pdata->m_drawing.m_emode == drawing::mode_selection)
       {
 
-         ::tarsila::element * pelement = pdata->m_drawing.hit_test(pt);
+         ::veritile::element * pelement = pdata->m_drawing.hit_test(pt);
 
          
 
@@ -484,4 +484,4 @@ namespace tarsila
          pcmdui->m_pcmdui->Enable(TRUE);
    }
 
-} // namespace tarsila
+} // namespace veritile
