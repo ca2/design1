@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA area
+   class CLASS_DECL_APP_CORE_VERITILE area
    {
    public:
 
@@ -21,7 +21,7 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

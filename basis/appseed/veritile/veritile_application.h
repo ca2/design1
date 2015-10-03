@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA application :
+   class CLASS_DECL_APP_CORE_VERITILE application :
       virtual public ::tesseract::application
    {
    public:
@@ -34,6 +34,6 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 

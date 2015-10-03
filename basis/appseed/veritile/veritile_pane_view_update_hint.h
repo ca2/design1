@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -13,7 +13,7 @@ namespace tarsila
 
 
 
-   class CLASS_DECL_APP_CORE_TARSILA pane_view_update_hint :
+   class CLASS_DECL_APP_CORE_VERITILE pane_view_update_hint :
       public ::object  
    {
    public:
@@ -37,4 +37,4 @@ namespace tarsila
 
    };
 
-} // namespace tarsila
+} // namespace veritile

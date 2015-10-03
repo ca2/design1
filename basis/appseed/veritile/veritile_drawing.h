@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA drawing:
+   class CLASS_DECL_APP_CORE_VERITILE drawing:
       virtual public ::xml::exportable,
       virtual public ::xml::importable
    {
@@ -45,7 +45,7 @@ namespace tarsila
       virtual void xml_import(::xml::input_tree & xmlif);
       virtual void xml_export(::xml::output_tree & xmlof);
 
-      ::tarsila::element * hit_test(point pt);
+      ::veritile::element * hit_test(point pt);
 
 
       DRAWDD();
@@ -54,7 +54,7 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

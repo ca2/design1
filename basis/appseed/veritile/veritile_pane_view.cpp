@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -19,7 +19,7 @@ namespace tarsila
 
       get_data()->m_bVertical = true;
 
-      get_data()->m_matchanyRestore.add(new ::core::match::prefix("tarsila://"));
+      get_data()->m_matchanyRestore.add(new ::core::match::prefix("veritile://"));
 
       
 
@@ -50,13 +50,13 @@ namespace tarsila
       if(pobj->previous())
          return;
 
-      set_tab("menu", tarsila::pane_view_context_menu);
-      //set_tab("Plain Text Media", tarsila::PaneViewEdit);
+      set_tab("menu", veritile::pane_view_context_menu);
+      //set_tab("Plain Text Media", veritile::PaneViewEdit);
       set_tab("File Manager", "file_manager");
       //set_tab("Printer", "printer", false);
 
 
-      sp(::tarsila::application) papp = get_app();
+      sp(::veritile::application) papp = get_app();
       papp->m_ppaneview = this;
    }
 
@@ -72,7 +72,7 @@ namespace tarsila
    void pane_view::on_show_view()
    {
       ::userex::pane_tab_view::on_show_view();
-      if(::str::begins_ci(m_pviewdata->m_id, "tarsila://"))
+      if(::str::begins_ci(m_pviewdata->m_id, "veritile://"))
       {
          GetParentFrame()->LoadToolBar(0, "edit_toolbar.xml");
 //         show_tab_by_id("printer");
@@ -104,7 +104,7 @@ namespace tarsila
 
       ::file::path strPath(pcreatordata->m_id.str());
 
-      if(::str::begins_eat_ci(strPath, "tarsila://"))
+      if(::str::begins_eat_ci(strPath, "veritile://"))
       {
 
          sp(::user::document) pdoc = NULL;
@@ -167,7 +167,7 @@ namespace tarsila
       }
       //switch(pcreatordata->m_id)
       //{
-      ////case tarsila::PaneViewContextMenu:
+      ////case veritile::PaneViewContextMenu:
       ////   /*{
       ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file("http://localhost:10011/");
       ////      if(pdoc != NULL)
@@ -188,7 +188,7 @@ namespace tarsila
       ////      }
       ////   }*/
       ////      break;
-      ////case tarsila::PaneViewEdit:
+      ////case veritile::PaneViewEdit:
       ////   {
       ////      sp(::user::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(NULL, true, pcreatordata->m_pholder));
       ////      if(pdoc != NULL)
@@ -206,7 +206,7 @@ namespace tarsila
       ////      }
       ////   }
       ////   break;
-      /////*case tarsila::PaneViewFileManager:
+      /////*case veritile::PaneViewFileManager:
       ////   {
       ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager().std().open_child(papp, false, true, pcreatordata->m_pholder);
       ////      m_pfilemanagerdoc = pdoc;
@@ -244,10 +244,10 @@ namespace tarsila
 
    sp(::user::document) pane_view::get_veriedit_document(const char * pszUrl)
    {
-      sp(::tarsila::application) papp =  (get_app());
+      sp(::veritile::application) papp =  (get_app());
       ::count count = papp->m_pdoctemplate->get_document_count();
       string strPath(pszUrl);
-      ::str::begins_eat_ci(strPath, "tarsila://");
+      ::str::begins_eat_ci(strPath, "veritile://");
       for(index i = 0; i < count; i++)
       {
          sp(::user::document) pdoc =  (papp->m_pdoctemplate->get_document(i));
@@ -266,4 +266,4 @@ namespace tarsila
       stra = vara;
    }
 
-} // namespace tarsila
+} // namespace veritile

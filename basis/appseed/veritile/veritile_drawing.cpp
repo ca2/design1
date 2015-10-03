@@ -1,6 +1,6 @@
 #include "framework.h"
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -64,7 +64,7 @@ namespace tarsila
    }
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

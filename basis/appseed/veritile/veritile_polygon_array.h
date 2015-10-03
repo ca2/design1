@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA polygon_array:
+   class CLASS_DECL_APP_CORE_VERITILE polygon_array:
       public ::xml::smart_pointer_array < drawing_polygon,polygon >
    {
    public:
@@ -28,7 +28,7 @@ namespace tarsila
 
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

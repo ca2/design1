@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA frame : 
+   class CLASS_DECL_APP_CORE_VERITILE frame : 
       virtual public simple_frame_window
    {
    public:
@@ -31,7 +31,7 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

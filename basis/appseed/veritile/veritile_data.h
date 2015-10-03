@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA data:
+   class CLASS_DECL_APP_CORE_VERITILE data:
       virtual public ::data::data,
       virtual public ::xml::exportable,
       virtual public ::xml::importable
@@ -30,7 +30,7 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

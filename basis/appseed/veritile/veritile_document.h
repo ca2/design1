@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA document:
+   class CLASS_DECL_APP_CORE_VERITILE document:
       public ::user::document
    {
    public:
@@ -34,4 +34,4 @@ namespace tarsila
 
    };
 
-} // namespace tarsila 
+} // namespace veritile 

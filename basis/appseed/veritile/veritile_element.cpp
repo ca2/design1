@@ -1,7 +1,7 @@
 #include "framework.h"
 
 
-namespace tarsila
+namespace veritile
 {
 
 
@@ -50,7 +50,7 @@ namespace tarsila
    void element::draw_this(drawing * pdrawing)
    {
 
-      ::tarsila::element::draw draw;
+      ::veritile::element::draw draw;
 
 
       draw.m_pdrawing = pdrawing;
@@ -312,7 +312,7 @@ namespace tarsila
 
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 

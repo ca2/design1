@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{56749E96-56B2-4FD1-B72C-C5B4D3A051A1}</ProjectGuid>
-    <RootNamespace>design_tarsila</RootNamespace>
+    <RootNamespace>design_veritile</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>design_tarsila</ProjectName>
+    <ProjectName>design_veritile</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -503,49 +503,49 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     </CustomBuild>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="tarsila_area.cpp" />
+    <ClCompile Include="veritile_area.cpp" />
     <ClCompile Include="framework.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='basis|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='stage|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='basis|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='stage|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="tarsila_application.cpp" />
-    <ClCompile Include="tarsila_data.cpp" />
-    <ClCompile Include="tarsila_document.cpp" />
-    <ClCompile Include="tarsila_drawing.cpp" />
-    <ClCompile Include="tarsila_element.cpp" />
-    <ClCompile Include="tarsila_element_array.cpp" />
-    <ClCompile Include="tarsila_frame.cpp" />
-    <ClCompile Include="tarsila_main_document.cpp" />
-    <ClCompile Include="tarsila_main_frame.cpp" />
-    <ClCompile Include="tarsila_pane_view.cpp" />
-    <ClCompile Include="tarsila_pane_view_update_hint.cpp" />
-    <ClCompile Include="tarsila_polygon.cpp" />
-    <ClCompile Include="tarsila_view.cpp" />
+    <ClCompile Include="veritile_application.cpp" />
+    <ClCompile Include="veritile_data.cpp" />
+    <ClCompile Include="veritile_document.cpp" />
+    <ClCompile Include="veritile_drawing.cpp" />
+    <ClCompile Include="veritile_element.cpp" />
+    <ClCompile Include="veritile_element_array.cpp" />
+    <ClCompile Include="veritile_frame.cpp" />
+    <ClCompile Include="veritile_main_document.cpp" />
+    <ClCompile Include="veritile_main_frame.cpp" />
+    <ClCompile Include="veritile_pane_view.cpp" />
+    <ClCompile Include="veritile_pane_view_update_hint.cpp" />
+    <ClCompile Include="veritile_polygon.cpp" />
+    <ClCompile Include="veritile_view.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tarsila_application.h" />
-    <ClInclude Include="tarsila_area.h" />
-    <ClInclude Include="tarsila_data.h" />
-    <ClInclude Include="tarsila_document.h" />
-    <ClInclude Include="tarsila_drawing.h" />
-    <ClInclude Include="tarsila_element.h" />
-    <ClInclude Include="tarsila_element_array.h" />
-    <ClInclude Include="tarsila_enum.h" />
-    <ClInclude Include="tarsila_frame.h" />
+    <ClInclude Include="veritile_application.h" />
+    <ClInclude Include="veritile_area.h" />
+    <ClInclude Include="veritile_data.h" />
+    <ClInclude Include="veritile_document.h" />
+    <ClInclude Include="veritile_drawing.h" />
+    <ClInclude Include="veritile_element.h" />
+    <ClInclude Include="veritile_element_array.h" />
+    <ClInclude Include="veritile_enum.h" />
+    <ClInclude Include="veritile_frame.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="tarsila.h" />
-    <ClInclude Include="tarsila_main_document.h" />
-    <ClInclude Include="tarsila_main_frame.h" />
-    <ClInclude Include="tarsila_pane_view.h" />
-    <ClInclude Include="tarsila_pane_view_update_hint.h" />
-    <ClInclude Include="tarsila_polygon.h" />
-    <ClInclude Include="tarsila_polygon_array.h" />
-    <ClInclude Include="tarsila_view.h" />
+    <ClInclude Include="veritile.h" />
+    <ClInclude Include="veritile_main_document.h" />
+    <ClInclude Include="veritile_main_frame.h" />
+    <ClInclude Include="veritile_pane_view.h" />
+    <ClInclude Include="veritile_pane_view_update_hint.h" />
+    <ClInclude Include="veritile_polygon.h" />
+    <ClInclude Include="veritile_polygon_array.h" />
+    <ClInclude Include="veritile_view.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="design_tarsila.def" />
+    <None Include="design_veritile.def" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\app-core\appseed\tesseract\tesseract.vcxproj">

@@ -1,11 +1,11 @@
 #pragma once
 
 
-namespace tarsila
+namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_TARSILA view :
+   class CLASS_DECL_APP_CORE_VERITILE view :
       virtual public ::user::impact
    {
    public:
@@ -72,7 +72,7 @@ namespace tarsila
    };
 
 
-} // namespace tarsila
+} // namespace veritile
 
 
 
