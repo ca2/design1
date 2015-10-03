@@ -1,0 +1,4 @@
+LIBRARY      "design_tarsila"
+
+EXPORTS
+design_tarsila_get_new_library
