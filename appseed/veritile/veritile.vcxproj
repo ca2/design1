@@ -523,6 +523,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClCompile Include="veritile_pane_view_update_hint.cpp" />
     <ClCompile Include="veritile_polygon.cpp" />
     <ClCompile Include="veritile_property_sheet.cpp" />
+    <ClCompile Include="veritile_general_data.cpp" />
     <ClCompile Include="veritile_tileset.cpp" />
     <ClCompile Include="veritile_tileset_view.cpp" />
     <ClCompile Include="veritile_view.cpp" />
@@ -546,6 +547,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClInclude Include="veritile_polygon.h" />
     <ClInclude Include="veritile_polygon_array.h" />
     <ClInclude Include="veritile_property_sheet.h" />
+    <ClInclude Include="veritile_general_data.h" />
     <ClInclude Include="veritile_tileset.h" />
     <ClInclude Include="veritile_tileset_view.h" />
     <ClInclude Include="veritile_view.h" />

@@ -65,6 +65,9 @@
     <ClCompile Include="veritile_property_sheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="veritile_general_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -128,6 +131,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="veritile_property_sheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="veritile_general_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
