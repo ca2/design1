@@ -10,31 +10,18 @@ namespace veritile
    using base_grid_view = ::user::show < ::user::form_mesh >;
 
 
+
    class CLASS_DECL_APP_CORE_VERITILE property_sheet:
       virtual public base_grid_view
    {
    public:
 
 
-      class CLASS_DECL_APP_CORE_VERITILE item
-      {
-      public:
 
-
-         ::user::validate     m_validate;
-
-         string               m_strName;
-
-         var                  m_var;
-
-
-      };
+      general_data *          m_pdata;
 
 
       ::draw2d::font_sp       m_font;
-
-      array < item >          m_itema;
-
 
       property_sheet(::aura::application * papp);
       virtual ~property_sheet();
@@ -88,6 +75,9 @@ namespace veritile
       virtual count _001GetColumnCount();
 
       bool get_color(COLORREF & cr,::user::e_color ecolor);
+
+
+      void set_data(general_data * pdata);
 
 
    };

@@ -28,6 +28,9 @@ namespace veritile
       m_font(allocer())
    {
 
+
+      m_pdata = NULL;
+
       m_iItemHeight  = 24;
       m_iLeftMargin  = 49;
       m_iTopMargin   = 33;
@@ -169,13 +172,13 @@ namespace veritile
    void property_sheet::_001OnUpdateEditUndo(::signal_details * pobj)
    {
       SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
-         //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.CanUndo());
+      //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.CanUndo());
    }
 
    void property_sheet::_001OnUpdateEditRedo(::signal_details * pobj)
    {
       SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
-         //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
+      //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
    }
 
    void property_sheet::_001OnEditUndo(::signal_details * pobj)
@@ -261,7 +264,7 @@ namespace veritile
 
       SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
 
-         pcmdui->m_pcmdui->Enable(TRUE);
+      pcmdui->m_pcmdui->Enable(TRUE);
 
 
    }
@@ -579,6 +582,29 @@ namespace veritile
       }
 
       return ::user::form_mesh::get_color(cr,ecolor);
+
+   }
+
+
+   void property_sheet::set_data(general_data * pdata)
+   {
+
+      if(m_pdata != NULL)
+      {
+         
+         synch_lock sl(m_pdata->m_pmutex);
+
+         m_pdata = NULL;
+
+      }
+
+      {
+
+         synch_lock sl(pdata->m_pmutex);
+
+         m_pdata = pdata;
+
+      }
 
    }
 
