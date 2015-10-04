@@ -47,7 +47,7 @@ namespace veritile
 #include "veritile_tileset_view.h"
 
 
-#include "veritile_property_sheet_data.h"
+#include "veritile_general_data.h"
 #include "veritile_property_sheet.h"
 
 
