@@ -119,53 +119,15 @@ namespace veritile
    void view:: _001OnDraw(::draw2d::graphics * pdc)
    {
 
-      
 
       rect rectClient;
 
       GetClientRect(rectClient);
 
-      pdc->FillSolidRect(rectClient,ARGB(184 - 66,184,184,177));
 
-      data * pdata = get_document()->get_typed_data < data>();
+      pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
+      
 
-      if(pdata == NULL)
-         return;
-
-      point_array pta;
-
-      pta = pdata->m_pointa;
-
-      if (m_estate == state_polygon_tool_dots)
-      {
-
-         point pt;
-
-         Session.get_cursor_pos(&pt);
-
-         ScreenToClient(&pt);
-
-         pta.add(pt);
-
-      }
-
-      ::draw2d::pen_sp pen(allocer());
-
-      pen->create_solid(1.0,ARGB(184,0,255,0));
-
-      pdc->SelectObject(pen);
-
-      ::draw2d::brush_sp br(allocer());
-
-      br->create_solid(ARGB(184,255,255,0));
-
-      pdc->SelectObject(br);
-
-      pdc->Polygon(pta.get_data(), pta.get_size());
-
-      br->create_solid(ARGB(184,255,255,255));
-
-      pdata->m_drawing._001OnDraw(pdc);
 
    }
 
@@ -189,6 +151,26 @@ namespace veritile
    void view::_001OnTabClick(int32_t iTab)
    {
    }
+
+   
+   bool view::keyboard_focus_is_focusable()
+   {
+   
+      return true;
+
+   }
+
+
+   bool view::keyboard_focus_OnSetFocus()
+   {
+
+      if(!::user::impact::keyboard_focus_OnSetFocus())
+         return false;
+
+      return true;
+
+   }
+
 
    void view::_001OnSetCursor(signal_details * pobj) 
    {
@@ -276,116 +258,6 @@ namespace veritile
 
       SCAST_PTR(::message::mouse, pmouse, pobj)
 
-         data * pdata = get_document()->get_typed_data < data>();
-
-      point pt = pmouse->m_pt;
-
-      ScreenToClient(&pt);
-
-      if(pdata->m_drawing.m_emode == drawing::mode_selection)
-      {
-
-         ::veritile::element * pelement = pdata->m_drawing.hit_test(pt);
-
-         
-
-
-         if(pelement != NULL)
-         {
-
-            if(pdata->m_drawing.m_elementptraSelected.contains(pelement))
-            {
-
-
-               int iSelPoint = pelement->sel_point_hit_test(pt);
-
-               if(iSelPoint >= 0)
-               {
-
-                  if(!pelement->sel_point_selected(iSelPoint))
-                  {
-
-                     if(!Session.is_key_pressed(::user::key_control))
-                     {
-
-                        pdata->m_drawing.m_elementptraSelected.sel_point_clear();
-
-                     }
-
-                     pelement->sel_point_select(iSelPoint);
-
-                  }
-
-                  pdata->m_drawing.m_bMovingPoint = true;
-
-               }
-               else
-               {
-
-                  pdata->m_drawing.m_elementptraSelected.sel_point_clear();
-
-                  pdata->m_drawing.m_bMoving = true;
-
-               }
-
-               SetCapture();
-
-               pdata->m_drawing.m_ptStart = pt;
-
-               pdata->m_drawing.m_ptMove = pt;
-
-
-               m_bMouseDown = true;
-
-            }
-            else
-            {
-               
-               if(!Session.is_key_pressed(::user::key_control))
-               {
-
-                  pdata->m_drawing.m_elementptraSelected.remove_all();
-
-               }
-
-               pdata->m_drawing.m_elementptraSelected.add(pelement);
-
-            }
-
-         }
-         else
-         {
-            if(!Session.is_key_pressed(::user::key_control))
-            {
-
-               pdata->m_drawing.m_elementptraSelected.remove_all();
-
-            }
-
-         }
-
-      }
-      else if(pdata->m_drawing.m_emode == drawing::mode_polygon_tool)
-      {
-
-         if(m_estate == state_polygon_tool_initial)
-         {
-
-            m_estate = state_polygon_tool_dots;
-
-            pdata->m_pointa.add(pt);
-
-         }
-         else if(m_estate == state_polygon_tool_dots)
-         {
-
-            pdata->m_pointa.add(pt);
-
-         }
-
-      }
-
-      pobj->m_bRet = true;
 
    }
 
@@ -395,27 +267,6 @@ namespace veritile
          point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
-      data * pdata = get_document()->get_typed_data < data>();
-      if (m_estate == state_polygon_tool_dots)
-      {
-         
-         m_estate = state_polygon_tool_initial;
-         
-         pdata->m_pointa.add(pt);
-
-         sp(polygon) sppolygon(canew(polygon(get_app())));
-
-         sppolygon->m_pointa =pdata->m_pointa;
-         
-         pdata->m_drawing.m_polygona.add(sppolygon);
-
-         pdata->m_drawing.m_elementptra.add(sppolygon);
-
-         pdata->m_pointa.remove_all();
-
-      }
-
-      pobj->m_bRet = true;
 
    }
 
@@ -425,32 +276,6 @@ namespace veritile
       SCAST_PTR(::message::mouse, pmouse, pobj)
       point pt = pmouse->m_pt;
       ScreenToClient(&pt);
-      data * pdata = get_document()->get_typed_data < data>();
-      if(pdata->m_drawing.m_emode == drawing::mode_selection)
-      {
-
-         if(pdata->m_drawing.m_bMoving)
-         {
-
-            pdata->m_drawing.m_bMoving = false;
-
-            pdata->m_drawing.m_elementptraSelected.translate(pdata->m_drawing.m_ptMove - pdata->m_drawing.m_ptStart);
-
-         }
-         else if(pdata->m_drawing.m_bMovingPoint)
-         {
-
-            pdata->m_drawing.m_bMovingPoint = false;
-
-            pdata->m_drawing.m_elementptraSelected.move_to_sel_points(&pdata->m_drawing);
-
-
-         }
-
-
-      }
-
-      pmouse->m_bRet = true;
 
    }
 

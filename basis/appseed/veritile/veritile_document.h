@@ -10,7 +10,10 @@ namespace veritile
    {
    public:
 
+ 
+      spa(tileset)  m_tileseta;
 
+      id             m_idVeritile;
       
 
 
@@ -31,6 +34,9 @@ namespace veritile
 
 
       void write(::file::ostream & ostream);
+
+
+      virtual bool add_tile_set(var varFile);
 
    };
 

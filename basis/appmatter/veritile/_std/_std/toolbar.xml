@@ -1,0 +1,6 @@
+﻿<toolbar>
+	<button id="selection_tool">Ferramenta Seleção</button>
+	<button id="polygon_tool">Ferramenta Polígono</button>
+	<button id="file_save">Salvar</button>
+	<button id="file_save_as">Salvar Como...</button>
+</toolbar>

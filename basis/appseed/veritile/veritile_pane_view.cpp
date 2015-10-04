@@ -14,6 +14,7 @@ namespace veritile
       place_holder_container(papp)
    {
 
+      Application.m_ppaneview = this;
 
       m_dataid = ".local://";
 
@@ -56,8 +57,6 @@ namespace veritile
       //set_tab("Printer", "printer", false);
 
 
-      sp(::veritile::application) papp = get_app();
-      papp->m_ppaneview = this;
    }
 
 
@@ -74,6 +73,10 @@ namespace veritile
       ::userex::pane_tab_view::on_show_view();
       if(::str::begins_ci(m_pviewdata->m_id, "veritile://"))
       {
+
+         m_pdocCur = dynamic_cast < document * > (m_pviewdata->m_pdoc);
+         m_pviewCur = m_pviewdata->m_pdoc->get_typed_view < view > ();
+
          GetParentFrame()->LoadToolBar(0, "edit_toolbar.xml");
 //         show_tab_by_id("printer");
       }
@@ -100,47 +103,62 @@ namespace veritile
    void pane_view::on_create_view(::user::view_creator_data * pcreatordata)
    {
 
-      
-
       ::file::path strPath(pcreatordata->m_id.str());
 
       if(::str::begins_eat_ci(strPath, "veritile://"))
       {
 
-         sp(::user::document) pdoc = NULL;
-
-         try
+         if(strPath.ends_ci(".png"))
          {
-            pdoc =  (Application.m_pdoctemplate->open_document_file(strPath, true, pcreatordata->m_pholder));
+
+            m_pdocCur->add_tile_set(strPath);
+
          }
-         catch(::file::exception & e)
+         else if(strPath.ends_ci(".veritile"))
          {
 
-            if(e.m_cause == ::file::exception::badPath)
+            pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
+
+            sp(document) pdoc = NULL;
+
+            try
             {
 
-               throw ::user::view_creator::create_exception(pcreatordata->m_id);
+               pdoc =  (Application.m_pdoctemplate->open_document_file(strPath,true,pcreatordata->m_pholder));
+
+            }
+            catch(::file::exception & e)
+            {
+
+               if(e.m_cause == ::file::exception::badPath)
+               {
+
+                  throw ::user::view_creator::create_exception(pcreatordata->m_id);
+
+               }
 
             }
 
-         }
-
-         if(pdoc != NULL)
-         {
-
-            sp(::user::impact) pview = pdoc->get_view();
-
-            if(pview != NULL)
+            if(pdoc != NULL)
             {
 
-               sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+               sp(::user::impact) pview = pdoc->get_view();
 
-               if(pframe != NULL)
+               if(pview != NULL)
                {
 
-                  pcreatordata->m_pdoc = pdoc;
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
 
-                  pcreatordata->m_strTitle = strPath.name();
+                  if(pframe != NULL)
+                  {
+
+                     pcreatordata->m_pdoc = pdoc;
+
+                     pcreatordata->m_strTitle = strPath.name();
+
+                     pdoc->m_idVeritile = pcreatordata->m_id;
+
+                  }
 
                }
 
@@ -149,7 +167,9 @@ namespace veritile
          }
 
          return;
+
       }
+
 
       if(pcreatordata->m_id == "printer")
       {

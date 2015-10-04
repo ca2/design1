@@ -47,6 +47,8 @@ namespace veritile
       virtual void _001OnTabClick(int32_t iTab);
 
 
+      virtual bool keyboard_focus_is_focusable();
+      virtual bool keyboard_focus_OnSetFocus();
 
       virtual void layout();
 

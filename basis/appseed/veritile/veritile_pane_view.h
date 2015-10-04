@@ -10,6 +10,10 @@ namespace veritile
    {
    public:
 
+
+      document *           m_pdocCur;
+      view *               m_pviewCur;
+
       sp(::user::single_document_template)    m_pdoctemplateExtractChanges;
 
       pane_view(::aura::application * papp);
