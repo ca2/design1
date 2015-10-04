@@ -190,7 +190,7 @@ void syllomatter_view::_001OnDestroy(gen::signal_object * pobj)
 
 void syllomatter_view::_001OnSize(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::size, psize, pobj)
+   SCAST_PTR(igui::win::message::size, psize, pobj);
 
 
 /*   pobj->previous();
@@ -258,7 +258,7 @@ void syllomatter_view::_001OnCreate(gen::signal_object * pobj)
 }
 void syllomatter_view::_001OnContextMenu(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj)
+   SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    point point = pcontextmenu->GetPoint();
 	
 }
@@ -274,16 +274,16 @@ void syllomatter_view::_001OnTabClick(int iTab)
 
 void syllomatter_view::_001OnWavePlayerEvent(gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::base, pbase, pobj)
+   SCAST_PTR(igui::win::message::base, pbase, pobj);
 }
 
 void syllomatter_view::_001OnUpdateViewEncoding(gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::update_cmd_ui, pupdatecmdui, pobj)
+   SCAST_PTR(igui::win::message::update_cmd_ui, pupdatecmdui, pobj);
 }
 void syllomatter_view::_001OnViewEncoding(gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::command, pcommand, pobj)
+   SCAST_PTR(igui::win::message::command, pcommand, pobj);
 }
 
 
@@ -305,7 +305,7 @@ void syllomatter_view::_001OnSetCursor(gen::signal_object * pobj)
 }
 void syllomatter_view::_001OnEraseBkgnd(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj)
+   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;
    perasebkgnd->set_result(TRUE);
 }

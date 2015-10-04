@@ -124,7 +124,7 @@ namespace syllomatter
 
    void list_view::_001OnGeneralEvent(::signal_details * pobj)
    {
-      SCAST_PTR(::message::base, pbase, pobj)
+      SCAST_PTR(::message::base, pbase, pobj);
          if(pbase->m_wparam == GeneralEventPosCreate1)
          {
             _001UpdateColumns();
@@ -289,7 +289,7 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(bEnable);
    }
 
@@ -337,7 +337,7 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(bEnable);
    }
 
@@ -394,7 +394,7 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(bEnable);
    }
 
@@ -672,7 +672,7 @@ namespace syllomatter
       range range;
       _001GetSelection(range);
       bool bEnable = range.get_item_count() > 0;
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(bEnable);
    }
 

@@ -206,7 +206,7 @@ void PlainTextBox::_001GetSelText(string & str)
 
 void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 	m_bMouseDown = true;
 	CDC * pdc = pview->GetDC();
 	m_iSelStart = char_hit_test(pview, pdc, pmouse->m_pt.x, pmouse->m_pt.y);
@@ -218,7 +218,7 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * p
 }
 void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 	CDC * pdc = pview->GetDC();
 	m_iSelEnd = char_hit_test(pview, pdc,pmouse->m_pt.x, pmouse->m_pt.y);
    m_iColumn = SelToColumn(pview, m_iSelEnd);
@@ -444,7 +444,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
 
 void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
       ::SetCursor(::LoadCursor(NULL, IDC_IBEAM));
       
       
@@ -617,7 +617,7 @@ void PlainTextBox::CreateLineIndex()
 
 void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::key, pkey, pobj)
+   SCAST_PTR(igui::win::message::key, pkey, pobj);
    bool bShift = ::GetKeyState(VK_SHIFT) & 0x80000000;
    
    if(pkey->m_nChar == VK_BACK)
@@ -835,7 +835,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
 
 void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::key, pkey, pobj)
+   SCAST_PTR(igui::win::message::key, pkey, pobj);
    if(pkey->m_nChar == VK_DELETE)
    {
       int i1 = m_iSelStart;

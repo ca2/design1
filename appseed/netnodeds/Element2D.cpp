@@ -12,7 +12,7 @@ void Element2D::_001OnDraw(netnodedsView * pview, CDC * pdc)
 
 void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 /*	netnodedsApp * papp = (netnodedsApp *) AfxGetApp();
 	BaseView * pviewGeneric = papp->GetView(this);
 	netnodedsView * pview = dynamic_cast < netnodedsView * > (pviewGeneric);
@@ -22,12 +22,12 @@ void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * po
 }
 void Element2D::_001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }
 
 void Element2D::_001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj)
 {
-	SCAST_PTR(igui::win::message::mouse, pmouse, pobj)
+	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }
 
 bool Element2D::hit_test(int x, int y)

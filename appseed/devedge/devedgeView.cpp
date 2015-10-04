@@ -167,7 +167,7 @@ void devedgeView::_001OnCreate(gen::signal_object * pobj)
 
 void devedgeView::_001OnContextMenu(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj)
+   SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    int iItem;
    HRESULT hr;
    //point point = pmouse->m_pt;
@@ -218,7 +218,7 @@ void devedgeView::_001OnSetCursor(gen::signal_object * pobj)
 }
 void devedgeView::_001OnEraseBkgnd(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj)
+   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;
    perasebkgnd->set_result(TRUE);
 }
@@ -241,13 +241,13 @@ BOOL devedgeView::PreTranslateMessage(MSG * pMsg)
 
 void devedgeView::_001OnUpdateEditUndo(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(m_editfile.CanUndo());
 }
 
 void devedgeView::_001OnUpdateEditRedo(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(m_editfile.GetRedoBranchCount() > 0);
 }
 
