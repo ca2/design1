@@ -27,7 +27,7 @@ namespace veritile
       string                                          m_strServer;
       bool                                            m_bMouseDown;
 
-      general_data                             m_
+      general_data                                    m_data;
 
 
       view(::aura::application * papp);

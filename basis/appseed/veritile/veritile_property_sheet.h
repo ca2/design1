@@ -7,12 +7,12 @@ namespace veritile
 {
 
 
-   using base_grid_view = ::user::show < ::user::form_mesh >;
+   using base_form_list_view = ::user::show < ::user::form_list >;
 
 
 
    class CLASS_DECL_APP_CORE_VERITILE property_sheet:
-      virtual public base_grid_view
+      virtual public base_form_list_view
    {
    public:
 
@@ -32,13 +32,15 @@ namespace veritile
 
       virtual void _001OnAfterChangeText(::action::context actioncontext);
 
+      virtual void _001InsertColumns();
+
 
       //virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
-      //*virtual void _001GetItemText(::user::mesh_item * pitem);*/
+      virtual void _001GetItemText(::user::mesh_item * pitem);
 
 
-      virtual void draw_item(::draw2d::graphics * pgraphics,int x,int y,item * pitem);
+      virtual void draw_item(::draw2d::graphics * pgraphics,int x,int y,general_data::item * pitem);
       virtual void draw_framing(::draw2d::graphics * pgraphics);
 
       virtual void load_plain_text(const string & str);

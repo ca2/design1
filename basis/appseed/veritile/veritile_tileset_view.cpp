@@ -6,7 +6,8 @@ namespace veritile
 
 
    tileset_view::tileset_view(::aura::application * papp):
-      ::object(papp)
+      ::object(papp),
+      m_data(papp)
    {
 
 
@@ -139,6 +140,8 @@ namespace veritile
 
       SetTimer(123,240,NULL);
 
+      m_data.m_set["tilex"] = 32;
+      m_data.m_set["tiley"] = 32;
 
    }
 
@@ -286,6 +289,8 @@ namespace veritile
 
       if(!::user::impact::keyboard_focus_OnSetFocus())
          return false;
+
+      get_document()->get_typed_view < property_sheet >()->set_data(&m_data);
 
       return true;
 
