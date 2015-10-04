@@ -181,7 +181,7 @@ namespace biteditor
       single_lock sl(&m_mutexData, true);
 
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::size, psize, pobj)
+      //   SCAST_PTR(::message::size, psize, pobj);
 
       m_pasciibox->on_update();
       m_phexbox->on_update();
@@ -301,7 +301,7 @@ namespace biteditor
    }
    void view::_001OnContextMenu(::signal_details * pobj)
    {
-      SCAST_PTR(::message::context_menu, pcontextmenu, pobj)
+      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
          point point = pcontextmenu->GetPoint();
 
    }
@@ -320,24 +320,24 @@ namespace biteditor
    void view::_001OnWavePlayerEvent(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::base, pbase, pobj)
+      //   SCAST_PTR(::message::base, pbase, pobj);
    }
 
    void view::_001OnUpdateViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj)
+      //   SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj);
    }
    void view::_001OnViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::command, pcommand, pobj)
+      //   SCAST_PTR(::message::command, pcommand, pobj);
    }
 
    void view::_001OnSetCursor(::signal_details * pobj)
    {
 
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
 
       pmouse->m_ecursor = ::visual::cursor_arrow;
 
@@ -347,14 +347,14 @@ namespace biteditor
 
    void view::_001OnLButtonDown(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
    }
 
    void view::_001OnLButtonUp(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
       if(Session.user()->get_mouse_focus_LButtonDown() != NULL)
@@ -372,7 +372,7 @@ namespace biteditor
 
    void view::_001OnMouseMove(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
 
@@ -416,7 +416,7 @@ namespace biteditor
 
    void view::_001OnKeyDown(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
 
          if(pkey->m_ekey == ::user::key_return)
          {
@@ -441,7 +441,7 @@ namespace biteditor
 
    void view::_001OnKeyUp(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
          if(pkey->m_ekey == ::user::key_return)
          {
             if(Session.is_key_pressed(::user::key_control)
@@ -462,7 +462,7 @@ namespace biteditor
 
    void view::_001OnChar(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
          if(pkey->m_ekey == ::user::key_s)
          {
             if(Session.is_key_pressed(::user::key_control))
@@ -483,7 +483,7 @@ namespace biteditor
 
    void view::_001OnSysChar(::signal_details * pobj)
    {
-      //   SCAST_PTR(::message::key, pkey, pobj)
+      //   SCAST_PTR(::message::key, pkey, pobj);
       if(Session.get_keyboard_focus() == m_pasciibox)
       {
          //m_pasciibox->_001OnSysChar(this, pobj);

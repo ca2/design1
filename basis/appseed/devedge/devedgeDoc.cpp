@@ -213,32 +213,32 @@ BOOL devedgeDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 void devedgeDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 
 void devedgeDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 

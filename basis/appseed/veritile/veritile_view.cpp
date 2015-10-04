@@ -144,7 +144,7 @@ namespace veritile
 
    void view::_001OnContextMenu(signal_details * pobj) 
    {
-      SCAST_PTR(::message::context_menu, pcontextmenu, pobj)
+      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
       point point = pcontextmenu->GetPoint();
    }
 
@@ -186,7 +186,7 @@ namespace veritile
 
    void view::_001OnEraseBkgnd(signal_details * pobj) 
    {
-      SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj)
+      SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
       perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
@@ -213,7 +213,7 @@ namespace veritile
    void view::_001OnMouseMove(signal_details * pobj) 
    {
       
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
 
       data * pdata = get_document()->get_typed_data < data>();
       
@@ -256,16 +256,33 @@ namespace veritile
    void view::_001OnLButtonDown(signal_details * pobj) 
    {
 
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse,pmouse,pobj);
+
+      pobj->previous();
+
+      point pt = pmouse->m_pt;
+
+      ScreenToClient(&pt);
+
+      pobj->m_bRet = true;
+
 
 
    }
 
+
    void view::_001OnLButtonDblClk(signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
-         point pt = pmouse->m_pt;
+      
+      SCAST_PTR(::message::mouse, pmouse, pobj);
+      
+      pobj->previous();
+
+      point pt = pmouse->m_pt;
+
       ScreenToClient(&pt);
+
+      pobj->m_bRet = true;
 
 
    }
@@ -273,7 +290,7 @@ namespace veritile
 
    void view::_001OnLButtonUp(signal_details * pobj) 
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
       point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
@@ -288,7 +305,7 @@ namespace veritile
 
    void view::_001OnUpdateSelectionTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(TRUE);
    }
 
@@ -305,7 +322,7 @@ namespace veritile
 
    void view::_001OnUpdatePolygonTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(TRUE);
    }
 

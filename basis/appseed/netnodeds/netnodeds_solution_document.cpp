@@ -131,38 +131,38 @@ namespace netnodeds
 
    void solution_document::_001OnUpdateFileSave(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateFileNew(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateFilePut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 
 
    void solution_document::_001OnUpdateEditCut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateEditCopy(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateEditPaste(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
       pcmdui->m_pcmdui->Enable(TRUE);
    }
 

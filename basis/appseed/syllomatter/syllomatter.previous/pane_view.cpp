@@ -111,7 +111,7 @@ void pane_view::Dump(CDumpContext& dc) const
 
 void pane_view::_001OnCreate(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::create, pcreate, pobj)
+   SCAST_PTR(igui::win::message::create, pcreate, pobj);
    if(pobj->previous())
       return;
 
@@ -398,7 +398,7 @@ EPaneView pane_view::GetViewId()
 /*
 void pane_view::_001OnEraseBkgnd(gen::signal_object * pobj) 
 {
-   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj)
+   SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->set_result(TRUE);
    perasebkgnd->m_bRet = true;
 }

@@ -216,7 +216,7 @@ namespace biteditor
    void hex_box::_001OnLButtonDown(::signal_details * pobj)
    {
       
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
       
       m_bMouseDown = true;
 
@@ -237,7 +237,7 @@ namespace biteditor
    void hex_box::_001OnLButtonUp(::signal_details * pobj)
    {
       
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
       
       ::draw2d::memory_graphics pdc(allocer());
 
@@ -383,7 +383,7 @@ namespace biteditor
    void hex_box::_001OnMouseMove(::signal_details * pobj)
    {
 
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
 
       //pmouse->m_ecursor = ::visual::cursor_text_select;
 
@@ -461,7 +461,7 @@ namespace biteditor
 
    void hex_box::_001OnChar(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
       bool bShift = Session.is_key_pressed(::user::key_shift);
 
       if(pkey->m_ekey == ::user::key_back)
@@ -693,7 +693,7 @@ namespace biteditor
 
    void hex_box::_001OnSysChar(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
       if(pkey->m_ekey == ::user::key_delete)
       {
          file_position i1 = m_pview->m_iSelStart;

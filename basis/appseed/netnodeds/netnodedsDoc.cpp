@@ -213,32 +213,32 @@ BOOL netnodedsDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 void netnodedsDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 
 void netnodedsDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj)
+   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
    pcmdui->m_pcmdui->Enable(TRUE);
 }
 

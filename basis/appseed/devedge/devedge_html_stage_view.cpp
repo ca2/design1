@@ -173,7 +173,7 @@ namespace devedge
    void html_stage_view::_001OnSize(::signal_details * pobj) 
    {
       UNREFERENCED_PARAMETER(pobj);
-      // SCAST_PTR(::message::size, psize, pobj)
+      // SCAST_PTR(::message::size, psize, pobj);
       //   sp(html_stage_document) pdoc = get_document();
    }
 
@@ -217,7 +217,7 @@ namespace devedge
    }
    void html_stage_view::_001OnContextMenu(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::context_menu, pcontextmenu, pobj)
+      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
          point point = pcontextmenu->GetPoint();
 
    }
@@ -227,19 +227,19 @@ namespace devedge
    void html_stage_view::_001OnWavePlayerEvent(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::base, pbase, pobj)
+      //   SCAST_PTR(::message::base, pbase, pobj);
    }
 
    void html_stage_view::_001OnUpdateViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj)
+      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj);
    }
 
    void html_stage_view::_001OnViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::command, pcommand, pobj)
+      //SCAST_PTR(::message::command, pcommand, pobj);
    }
 
 
@@ -257,26 +257,26 @@ namespace devedge
 
    void html_stage_view::_001OnEraseBkgnd(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj)
+      SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
          perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
 
    void html_stage_view::_001OnLButtonDown(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
    void html_stage_view::_001OnLButtonUp(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
    void html_stage_view::_001OnMouseMove(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
@@ -313,14 +313,14 @@ namespace devedge
 
    void html_stage_view::_001OnKeyDown(::signal_details * pobj) 
    {
-      //   SCAST_PTR(::message::key, pkey, pobj)
+      //   SCAST_PTR(::message::key, pkey, pobj);
       UNREFERENCED_PARAMETER(pobj);
       SetTimer(500, 500, NULL);
    }
 
    void html_stage_view::_001OnKeyUp(::signal_details * pobj) 
    {
-      // SCAST_PTR(::message::key, pkey, pobj)
+      // SCAST_PTR(::message::key, pkey, pobj);
       UNREFERENCED_PARAMETER(pobj);
       KillTimer(500);
       KillTimer(501);
@@ -329,7 +329,7 @@ namespace devedge
 
    void html_stage_view::_001OnChar(::signal_details * pobj) 
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
          if(pkey->m_ekey == ::user::key_s)
          {
             if(Session.is_key_pressed(::user::key_control))
@@ -343,7 +343,7 @@ namespace devedge
    void html_stage_view::_001OnSysChar(::signal_details * pobj) 
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::key, pkey, pobj)
+      //   SCAST_PTR(::message::key, pkey, pobj);
    }
 
    void html_stage_view::pre_translate_message(::signal_details * pobj)

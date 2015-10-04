@@ -128,7 +128,7 @@ namespace netnodeds
    void front_view::_001OnSize(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      // SCAST_PTR(::message::size, psize, pobj)
+      // SCAST_PTR(::message::size, psize, pobj);
       //   sp(::user::document) pdoc = get_document();
    }
 
@@ -171,7 +171,7 @@ namespace netnodeds
    }
    void front_view::_001OnContextMenu(::signal_details * pobj)
    {
-      SCAST_PTR(::message::context_menu, pcontextmenu, pobj)
+      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
          point point = pcontextmenu->GetPoint();
 
    }
@@ -181,24 +181,24 @@ namespace netnodeds
    void front_view::_001OnWavePlayerEvent(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::base, pbase, pobj)
+      //   SCAST_PTR(::message::base, pbase, pobj);
    }
 
    void front_view::_001OnUpdateViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj)
+      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj);
    }
    void front_view::_001OnViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::command, pcommand, pobj)
+      //SCAST_PTR(::message::command, pcommand, pobj);
    }
 
 
    void front_view::_001OnSetCursor(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
 
       pmouse->m_ecursor = ::visual::cursor_arrow;
 
@@ -207,19 +207,19 @@ namespace netnodeds
 
    void front_view::_001OnLButtonDown(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnLButtonUp(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnMouseMove(::signal_details * pobj)
    {
-      SCAST_PTR(::message::mouse, pmouse, pobj)
+      SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
@@ -256,7 +256,7 @@ namespace netnodeds
    void front_view::_001OnKeyDown(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::key, pkey, pobj)
+      //   SCAST_PTR(::message::key, pkey, pobj);
       //m_dwLastKeyWparam = pkey->m_wparam;
       // m_dwLastKeyLparam = pkey->m_lparam;
       //   key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
@@ -266,7 +266,7 @@ namespace netnodeds
    void front_view::_001OnKeyUp(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::key, pkey, pobj)
+      //SCAST_PTR(::message::key, pkey, pobj);
       KillTimer(500);
       KillTimer(501);
    }
@@ -274,7 +274,7 @@ namespace netnodeds
 
    void front_view::_001OnChar(::signal_details * pobj)
    {
-      SCAST_PTR(::message::key, pkey, pobj)
+      SCAST_PTR(::message::key, pkey, pobj);
          if(pkey->m_ekey == ::user::key_s)
          {
             if(Session.is_key_pressed(::user::key_control))
@@ -288,7 +288,7 @@ namespace netnodeds
    void front_view::_001OnSysChar(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::key, pkey, pobj)
+      //   SCAST_PTR(::message::key, pkey, pobj);
    }
 
    void front_view::pre_translate_message(::signal_details * pobj)
@@ -324,7 +324,7 @@ namespace netnodeds
 
    void front_view::_001OnPost(::signal_details * pobj)
    {
-      SCAST_PTR(::message::base, pbase, pobj)
+      SCAST_PTR(::message::base, pbase, pobj);
          if(pbase->m_wparam == 100)
          {
             post_message(WM_USER + 101, 101);

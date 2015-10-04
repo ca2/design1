@@ -99,7 +99,7 @@ namespace netnodeds
    void view::_001OnContextMenu(::signal_details * pobj) 
    {
       UNREFERENCED_PARAMETER(pobj);
-//      SCAST_PTR(::message::context_menu, pcontextmenu, pobj)
+//      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
 //      int32_t iItem;
 //      HRESULT hr;
       //point point = pmouse->m_pt;
@@ -141,14 +141,14 @@ namespace netnodeds
 
    void view::_001OnUpdateEditUndo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          // xyzxyz
       //pcmdui->m_pcmdui->Enable(m_pdata->m_editfile.CanUndo());
    }
 
    void view::_001OnUpdateEditRedo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj)
+      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          // xyzxyz
       //pcmdui->m_pcmdui->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
    }
