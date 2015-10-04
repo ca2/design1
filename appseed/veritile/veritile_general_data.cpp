@@ -5,8 +5,9 @@ namespace veritile
 {
 
 
-   property_sheet_data::property_sheet_data(::aura::application * papp):
-      object(papp)
+   general_data::general_data(::aura::application * papp):
+      object(papp),
+      ::data::data(papp)
    {
 
       m_pmutex = canew(mutex(papp));
@@ -14,7 +15,7 @@ namespace veritile
    }
 
 
-   property_sheet_data::~property_sheet_data()
+   general_data::~general_data()
    {
 
 

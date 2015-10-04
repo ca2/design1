@@ -5,7 +5,7 @@ namespace veritile
 {
 
 
-   class CLASS_DECL_APP_CORE_VERITILE property_sheet_data:
+   class CLASS_DECL_APP_CORE_VERITILE general_data:
       virtual public ::data::data
    {
    public:
@@ -26,8 +26,8 @@ namespace veritile
       property_set            m_set;
 
 
-      property_sheet_data(::aura::application * papp);
-      virtual  ~property_sheet_data();
+      general_data(::aura::application * papp);
+      virtual  ~general_data();
 
 
    };

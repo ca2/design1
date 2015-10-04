@@ -24,7 +24,7 @@ namespace veritile
 
    property_sheet::property_sheet(::aura::application * papp):
       ::object(papp),
-      base_grid_view(papp),
+      base_form_list_view(papp),
       m_font(allocer())
    {
 
@@ -58,7 +58,7 @@ namespace veritile
    void property_sheet::assert_valid() const
    {
 
-      base_grid_view::assert_valid();
+      base_form_list_view::assert_valid();
 
    }
 
@@ -66,7 +66,7 @@ namespace veritile
    void property_sheet::dump(dump_context & dumpcontext) const
    {
 
-      base_grid_view::dump(dumpcontext);
+      base_form_list_view::dump(dumpcontext);
 
    }
 
@@ -77,7 +77,7 @@ namespace veritile
    bool property_sheet::on_simple_command(e_simple_command ecommand,lparam lparam,LRESULT & lresult)
    {
 
-      if(base_grid_view::on_simple_command(ecommand,lparam,lresult))
+      if(base_form_list_view::on_simple_command(ecommand,lparam,lresult))
          return true;
 
       switch(ecommand)
@@ -98,7 +98,7 @@ namespace veritile
    void property_sheet::on_update(::user::impact * pSender,LPARAM lHint,::object * phint)
    {
 
-      base_grid_view::on_update(pSender,lHint,phint);
+      base_form_list_view::on_update(pSender,lHint,phint);
 
       if(lHint == 1001)
       {
@@ -161,6 +161,61 @@ namespace veritile
 
    }
 
+
+   void property_sheet::_001InsertColumns()
+   {
+      
+      class user::control::descriptor control;
+
+      m_eview = view_report;
+
+      ::user::list_column column;
+
+
+      //index i;
+      //for(i = 0; i < iCount; i++)
+      //{
+      //   control.m_bTransparent = true;
+      //   control.set_type(user::control_type_button);
+      //   control.m_typeinfo = System.type_info < ::user::button >();
+      //   control.m_id = 1000 + i;
+      //   control.add_function(user::control::function_action);
+      //   index iControl = _001AddControl(control);
+
+      //   column.m_iWidth = 18;
+      //   column.m_iSubItem = i;
+      //   column.m_iControl = iControl;
+      //   column.m_bCustomDraw = true;
+      //   column.m_bEditOnSecondClick = true;
+      //   column.m_pil = pcallback->GetActionButtonImageList(i);
+      //   _001AddColumn(column);
+      //}
+
+
+      column.m_iWidth = 50;
+      column.m_iSubItem = 0;
+      column.m_iControl = -1;
+      _001AddColumn(column);
+
+
+      control.set_type(user::control_type_edit_plain_text);
+      control.m_typeinfo = System.type_info < ::user::plain_edit >();
+      control.m_iSubItem = 1;
+      control.m_id = "edit";
+      index iControl = _001AddControl(control);
+
+
+      column.m_iWidth = 300;
+      column.m_iSubItem = 1;
+      column.m_iControl = iControl;
+      column.m_bEditOnSecondClick = true;
+      column.m_bCustomDraw = true;
+      _001AddColumn(column);
+
+
+   }
+
+
    void property_sheet::_001OnContextMenu(::signal_details * pobj)
    {
 
@@ -204,9 +259,42 @@ namespace veritile
 
    }
 
-   /*   void property_sheet::_001GetItemText(::user::mesh_item * pitem)
+   void property_sheet::_001GetItemText(::user::mesh_item * pitem)
    {
-   }*/
+
+      if(m_pdata == NULL)
+      {
+         
+         pitem->m_strText = "-";
+
+         pitem->m_bOk = true;
+
+         return;
+
+      }
+
+      if(pitem->m_iSubItem == 0)
+      {
+
+         pitem->m_strText = m_pdata->m_set.at(pitem->m_iItem).m_element1;
+
+         pitem->m_bOk = true;
+
+         return;
+
+      }
+      else if(pitem->m_iSubItem == 1)
+      {
+
+         pitem->m_strText = m_pdata->m_set.at(pitem->m_iItem).m_element2;
+
+         pitem->m_bOk = true;
+
+         return;
+
+      }
+
+   }
 
 
    void property_sheet::_001OnAfterChangeText(::action::context actioncontext)
@@ -230,7 +318,7 @@ namespace veritile
    {
 
 
-      base_grid_view::install_message_handling(pinterface);
+      base_form_list_view::install_message_handling(pinterface);
 
 
       IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&property_sheet::_001OnCreate);
@@ -253,7 +341,7 @@ namespace veritile
 
       m_font->create_point_font("Lucida Console",12.0);
 
-
+      _001UpdateColumns();
 
    }
 
@@ -291,7 +379,10 @@ namespace veritile
    ::count property_sheet::_001GetItemCount()
    {
 
-      return 32768;
+      if(m_pdata == NULL)
+         return 1;
+
+      return m_pdata->m_set.get_count();
 
    }
 
@@ -299,7 +390,7 @@ namespace veritile
    ::count property_sheet::_001GetColumnCount()
    {
 
-      return 32768;
+      return base_form_list_view::_001GetColumnCount();
 
    }
 
@@ -313,14 +404,14 @@ namespace veritile
 
    }
 
-   void property_sheet::draw_item(::draw2d::graphics * pgraphics,int x,int y,item * pitem)
+   void property_sheet::draw_item(::draw2d::graphics * pgraphics,int x,int y,general_data::item * pitem)
    {
 
       int iGridW = 200;
       int iGridH = m_iItemHeight;
 
 
-      pgraphics->TextOut(m_iLeftMargin + (iGridW * x),iGridH * (y + 1),pitem->m_strName);
+      //pgraphics->TextOut(m_iLeftMargin + (iGridW * x),iGridH * (y + 1),pitem->m_strName);
 
 
    }
@@ -605,6 +696,8 @@ namespace veritile
          m_pdata = pdata;
 
       }
+
+      _001OnUpdateItemCount();
 
    }
 

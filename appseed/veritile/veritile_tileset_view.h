@@ -11,7 +11,10 @@ namespace veritile
    public:
 
 
-      sp(tileset)          m_ptileset;
+      sp(tileset)                                     m_ptileset;
+
+      general_data                                    m_data;
+
 
       tileset_view(::aura::application * papp);
       virtual ~tileset_view();
