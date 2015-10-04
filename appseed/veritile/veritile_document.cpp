@@ -45,9 +45,50 @@ namespace veritile
    }
    #endif //DEBUG
 
+   bool document::add_tile_set(var varFile)
+   {
+
+      try
+      {
+
+         Application.ensure_tileset_dock(m_idVeritile);
+
+      }
+      catch(...)
+      {
+
+         return false;
+
+      }
+
+
+      sp(tileset) ptileset = canew(tileset(get_app()));
+
+      ptileset->m_strFile = varFile;
+
+      m_tileseta.add(ptileset);
+
+      sp(tileset_view) ptilesetview = get_typed_view < tileset_view >();
+
+      ptilesetview->m_ptileset = ptileset;
+
+      ptileset->m_pview = ptilesetview;
+
+      ptileset->m_dib.load_from_file(varFile);
+
+      return true;
+
+   }
 
    bool document::on_open_document(var varFile)
    {
+
+      if(::str::ends_ci(varFile.get_string(),".png"))
+      {
+
+         return add_tile_set(varFile);
+
+      }
 
 
 

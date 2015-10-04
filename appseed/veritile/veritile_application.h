@@ -22,6 +22,8 @@ namespace veritile
       application();
       virtual ~application();
 
+      virtual void ensure_tileset_dock(id id);
+
 
       virtual bool initialize_instance();
       virtual int32_t exit_instance();
@@ -30,6 +32,10 @@ namespace veritile
       void on_request(sp(::create) pcreatecontext);
 
       virtual bool on_install();
+
+
+
+      virtual void on_create_split_view(::user::split_view * psplit);
 
    };
 

@@ -32,11 +32,13 @@ namespace veritile
       System.factory().cloneable_small < document >();
       System.factory().cloneable_small < frame >();
       System.factory().creatable_small < view >();
+      System.factory().creatable_small < tileset_view >();
       System.factory().creatable_small < polygon >();
 
       System.factory().cloneable_small < main_document >();
       System.factory().cloneable_small < main_frame >();
       System.factory().creatable_small < pane_view >();
+      System.factory().creatable_small < property_sheet >();
 
 
 
@@ -54,7 +56,7 @@ namespace veritile
          "system/form",
          System.type_info < document > (),
          System.type_info < frame > (),       // main SDI frame ::user::interaction_impl
-         System.type_info < view > ());
+         System.type_info < ::user::split_view > ());
       add_document_template(pDocTemplate);
       m_pdoctemplate = pDocTemplate;
 
@@ -144,8 +146,28 @@ namespace veritile
       }
       else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
       {
-         
-         m_ppaneview->set_cur_tab_by_id("veritile://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+
+         if(spcreatecontext->m_spCommandLine->m_varFile.get_string().ends_ci(".png"))
+         {
+            if(m_ppaneview->m_pdocCur != NULL            && m_ppaneview->m_pviewCur != NULL)
+            {
+
+               m_ppaneview->m_pdocCur->add_tile_set(spcreatecontext->m_spCommandLine->m_varFile);
+
+            }
+            else
+            {
+               
+               Application.simple_message_box(NULL, "You should create a tile first", MB_OK);
+
+            }
+         }
+         else
+         {
+          
+            m_ppaneview->set_cur_tab_by_id("veritile://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+
+         }
 
       }
 
@@ -167,6 +189,88 @@ namespace veritile
       return true;
 
    }
+
+
+   void application::ensure_tileset_dock(id idVeritile)
+   {
+      
+      m_ppaneview->ensure_tab_by_id(idVeritile);
+
+      m_ppaneview->set_cur_tab_by_id(idVeritile);
+
+      ::user::tab_pane * ppane = m_ppaneview->get_pane_by_id(idVeritile);
+
+      if(ppane == NULL)
+         throw simple_exception(get_app(),"could not ensure tileset dock (1)");
+
+      sp(::user::place_holder) pholder =  ppane->m_pholder;
+
+      if(pholder.is_null())
+         throw simple_exception(get_app(),"could not ensure tileset dock (2)");
+
+      sp(::user::split_view) pview = pholder->first_child()->get_child_by_id("pane_first");
+
+      if(pview.is_null())
+         throw simple_exception(get_app(),"could not ensure tileset dock (3)");
+
+      if(pview->GetParentFrame()->get_child_by_id(idVeritile + ".tilesetdock") != NULL)
+         return;
+
+      m_ppaneview->create_view < ::user::split_view > (
+         pview->get_document(),
+         ::null_rect(),pview->get_pane_holder(1),string(idVeritile) + ".tilesetdock");
+
+   }
+
+
+   void application::on_create_split_view(::user::split_view * psplit)
+   {
+
+      if(psplit->get_document()->get_document_template() == m_pdoctemplate && psplit->m_id == "pane_first")
+      {
+
+         if(psplit->get_pane_count() > 0)
+            return;
+
+         psplit->SetPaneCount(2);
+
+         psplit->SetSplitOrientation(orientation_vertical);
+
+         psplit->set_position_rate(0,0.77);
+
+         psplit->initialize_split_layout();
+
+         psplit->create_view < view >(psplit->get_document(),::null_rect(),psplit->get_pane_holder(0),"tile_view");
+
+         psplit->create_view < property_sheet >(psplit->get_document(),::null_rect(),psplit->get_pane_holder(1),"tileset_view");
+
+
+      }
+      else if(string(psplit->m_id).ends_ci(".tilesetdock"))
+      {
+
+
+         if(psplit->get_pane_count() > 0)
+            return;
+
+         psplit->SetPaneCount(2);
+
+         psplit->SetSplitOrientation(orientation_horizontal);
+
+         psplit->set_position_rate(0,0.5);
+
+         psplit->initialize_split_layout();
+
+         psplit->SetPane(0,psplit->get_document()->get_typed_view < property_sheet >(), false, "tile_view");
+
+         psplit->create_view < tileset_view > (psplit->get_document(),::null_rect(),psplit->get_pane_holder(1),"tileset_view");
+
+      }
+
+   }
+
+
+
 
 } // namespace veritile
 

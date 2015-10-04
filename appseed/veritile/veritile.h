@@ -20,6 +20,8 @@ namespace veritile
    class application;
    class drawing;
    class element;
+   class tileset_view;
+   class pane_view;
 
 } // namespace veritile
 
@@ -38,6 +40,14 @@ namespace veritile
 
 #include "veritile_element.h"
 #include "veritile_element_array.h"
+
+
+#include "veritile_tileset.h"
+
+#include "veritile_tileset_view.h"
+
+#include "veritile_property_sheet.h"
+
 
 #include "veritile_polygon.h"
 #include "veritile_polygon_array.h"
