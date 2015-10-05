@@ -17,7 +17,6 @@ namespace veritile
    public:
 
 
-
       general_data *          m_pdata;
 
 
@@ -80,6 +79,15 @@ namespace veritile
 
 
       void set_data(general_data * pdata);
+
+      virtual bool _001OnSetItemText(::user::interaction * pui,index iItem,index iSubItem) override;
+      virtual bool _001OnControlSetFocus(::user::interaction * pui) override;
+      
+      
+      virtual bool validate(::user::interaction * pui, index iItem);
+
+
+      bool BaseOnControlEvent(::user::control_event * pevent);
 
 
    };

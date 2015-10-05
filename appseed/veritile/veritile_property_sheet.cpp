@@ -164,7 +164,7 @@ namespace veritile
 
    void property_sheet::_001InsertColumns()
    {
-      
+
       class user::control::descriptor control;
 
       m_eview = view_report;
@@ -226,24 +226,30 @@ namespace veritile
 
    void property_sheet::_001OnUpdateEditUndo(::signal_details * pobj)
    {
+
       SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
+
       //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.CanUndo());
+
    }
+
 
    void property_sheet::_001OnUpdateEditRedo(::signal_details * pobj)
    {
+
       SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
+
       //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
+
    }
+
 
    void property_sheet::_001OnEditUndo(::signal_details * pobj)
    {
 
-
       UNREFERENCED_PARAMETER(pobj);
 
       //Undo();
-
 
    }
 
@@ -259,12 +265,13 @@ namespace veritile
 
    }
 
+
    void property_sheet::_001GetItemText(::user::mesh_item * pitem)
    {
 
       if(m_pdata == NULL)
       {
-         
+
          pitem->m_strText = "-";
 
          pitem->m_bOk = true;
@@ -682,7 +689,7 @@ namespace veritile
 
       if(m_pdata != NULL)
       {
-         
+
          synch_lock sl(m_pdata->m_pmutex);
 
          m_pdata = NULL;
@@ -701,7 +708,118 @@ namespace veritile
 
    }
 
+   bool property_sheet::_001OnControlSetFocus(::user::interaction * pui)
+   {
+
+      base_form_list_view::_001OnControlSetFocus(pui);
+
+      index iItem;
+
+      index iSubItem;
+
+      if(m_controldescriptorset.find_control(pui,iItem,iSubItem))
+      {
+
+         if(iSubItem == 1)
+         {
+
+            validate(pui, iItem);
+
+         }
+
+      }
+
+      return true;
+
+   }
+
+
+
+   bool property_sheet::_001OnSetItemText(::user::interaction * pui,index iItem,index iSubItem)
+   {
+
+      if(iSubItem == 1)
+      {
+
+         if(!validate(pui, iItem))
+         {
+
+            return false;
+
+         }
+
+      }
+
+      return true;
+
+   }
+
+
+   bool property_sheet::validate(::user::interaction * pui, index iItem)
+   {
+
+      string strText;
+
+      sp(::user::plain_edit) pedit = pui;
+
+      if(pedit.is_set())
+      {
+
+         pedit->_001GetText(strText);
+
+         id id = m_pdata->m_set.at(iItem).m_element1;
+
+         general_data::item & item = m_pdata->m_map[id];
+
+         var val;
+
+         val = strText;
+
+         stringa stra = item.m_validate.nok(val);
+
+         if(stra.get_count() > 0)
+         {
+
+            pedit->show_tooltip(stra.implode("\r\n"),true);
+
+            return false;
+
+         }
+
+         m_pdata->m_set.at(iItem).m_element2 = strText;
+
+      }
+
+      return true;
+
+   }
+
+
+   bool property_sheet::BaseOnControlEvent(::user::control_event * pevent)
+   {
+
+      if(pevent->m_eevent == ::user::event_after_change_text)
+      {
+
+         if(pevent->m_actioncontext.is_user_source())
+         {
+
+            pevent->m_puie->hide_tooltip();
+
+         }
+
+
+      }
+
+      return base_form_list_view::BaseOnControlEvent(pevent);
+
+   }
 
 } // namespace veritile
+
+
+
+
+
 
 
