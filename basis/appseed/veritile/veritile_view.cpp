@@ -135,16 +135,25 @@ namespace veritile
 
    void view::_001OnCreate(signal_details * pobj) 
    {
+
       if(pobj->previous())
          return;
       
       SetTimer(123, 240, NULL);
 
       m_data.m_set["tilex"] = 20;
+      m_data.m_map["tilex"].m_validate.m_rules["natural"] = true;
+      m_data.m_map["tilex"].m_validate.m_rules["m_iMin"] = 16;
+      m_data.m_map["tilex"].m_validate.m_rules["m_iMax"] = 256;
+
+
       m_data.m_set["tiley"] = 20;
+
+      
 
 
    }
+
 
    void view::_001OnContextMenu(signal_details * pobj) 
    {

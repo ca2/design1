@@ -31,6 +31,8 @@ namespace veritile
 #undef App
 #define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::veritile::application > ())
 
+#include "veritile_general_data.h"
+#include "veritile_property_sheet.h"
 
 
 #include "veritile_enum.h"
@@ -41,7 +43,6 @@ namespace veritile
 #include "veritile_element.h"
 #include "veritile_element_array.h"
 
-#include "veritile_general_data.h"
 
 
 #include "veritile_tileset.h"
@@ -49,7 +50,6 @@ namespace veritile
 #include "veritile_tileset_view.h"
 
 
-#include "veritile_property_sheet.h"
 
 
 #include "veritile_polygon.h"
