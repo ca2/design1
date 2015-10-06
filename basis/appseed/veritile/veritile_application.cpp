@@ -149,10 +149,11 @@ namespace veritile
 
          if(spcreatecontext->m_spCommandLine->m_varFile.get_string().ends_ci(".png"))
          {
+            
             if(m_ppaneview->m_pdocCur != NULL            && m_ppaneview->m_pviewCur != NULL)
             {
 
-               m_ppaneview->m_pdocCur->add_tile_set(spcreatecontext->m_spCommandLine->m_varFile);
+               m_ppaneview->m_pdocCur->add_tileset(spcreatecontext->m_spCommandLine->m_varFile);
 
             }
             else

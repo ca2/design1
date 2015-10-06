@@ -21,6 +21,12 @@ namespace abc
 namespace veritile
 {
 
+   
+   void property_sheet::callback::on_property_change(property & property)
+   {
+
+   }
+
 
    property_sheet::property_sheet(::aura::application * papp):
       ::object(papp),
