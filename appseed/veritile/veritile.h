@@ -46,9 +46,8 @@ namespace veritile
 
 
 #include "veritile_tileset.h"
-
 #include "veritile_tileset_view.h"
-
+#include "veritile_tileset_pane_view.h"
 
 
 

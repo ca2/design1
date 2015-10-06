@@ -148,6 +148,9 @@ namespace veritile
 
 
       m_data.m_set["tiley"] = 20;
+      m_data.m_map["tiley"].m_validate.m_rules["natural"] = true;
+      m_data.m_map["tiley"].m_validate.m_rules["m_iMin"] = 16;
+      m_data.m_map["tiley"].m_validate.m_rules["m_iMax"] = 256;
 
       
 

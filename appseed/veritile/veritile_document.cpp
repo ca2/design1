@@ -45,7 +45,8 @@ namespace veritile
    }
    #endif //DEBUG
 
-   bool document::add_tile_set(var varFile)
+
+   bool document::add_tileset(const string & strFile)
    {
 
       try
@@ -64,21 +65,47 @@ namespace veritile
 
       sp(tileset) ptileset = canew(tileset(get_app()));
 
-      ptileset->m_strFile = varFile;
+      if(!ptileset->load(strFile))
+      {
+
+         return false;
+
+      }
 
       m_tileseta.add(ptileset);
 
-      sp(tileset_view) ptilesetview = get_typed_view < tileset_view >();
+      sp(tileset_pane_view) ptilesetview = get_typed_view < tileset_pane_view >();
 
-      ptilesetview->m_ptileset = ptileset;
+      
 
-      ptileset->m_pview = ptilesetview;
-
-      ptileset->m_dib.load_from_file(varFile);
+      ptilesetview->ensure_tab_by_id(ptileset->m_strFile);
 
       return true;
 
    }
+
+
+   tileset * document::get_tileset(const string & strPath, index iIndex)
+   {
+
+      string strId;
+      
+      strId += strPath;
+      strId += ":";
+      strId += ::str::from(iIndex);
+
+      return m_tileseta.ptr_first([=](tileset * ptileset) { ptileset->get_id() == strId; });
+
+   }
+
+
+   tileset * document::get_tileset(const string & strPath)
+   {
+
+      return m_tileseta.get_count([=](tileset * ptileset) { ptileset->m_strFile == strPath; });
+
+   }
+
 
    bool document::on_open_document(var varFile)
    {

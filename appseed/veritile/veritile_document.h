@@ -36,7 +36,9 @@ namespace veritile
       void write(::file::ostream & ostream);
 
 
-      virtual bool add_tile_set(var varFile);
+      virtual bool add_tileset(const string & strPth);
+      virtual tileset * get_tileset(const string & strPath, index iId);
+      virtual ::count get_tileset_count(const string & strPath);
 
    };
 

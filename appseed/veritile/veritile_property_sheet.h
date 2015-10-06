@@ -16,6 +16,16 @@ namespace veritile
    {
    public:
 
+      class CLASS_DECL_APP_CORE_VERITILE callback
+      {
+      public:
+
+
+         virtual void on_property_change(property & property);
+
+
+      };
+
 
       general_data *          m_pdata;
 
@@ -78,7 +88,7 @@ namespace veritile
       bool get_color(COLORREF & cr,::user::e_color ecolor);
 
 
-      void set_data(general_data * pdata);
+      void set_data(general_data * pdata, callback * pcallback);
 
       virtual bool _001OnSetItemText(::user::interaction * pui,index iItem,index iSubItem) override;
       virtual bool _001OnControlSetFocus(::user::interaction * pui) override;

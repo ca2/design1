@@ -6,18 +6,24 @@ namespace veritile
 
 
    class CLASS_DECL_APP_CORE_VERITILE tileset_view:
-      virtual public ::user::impact
+      virtual public ::user::show < ::user::scroll < ::user::control > >
    {
    public:
 
 
-      sp(tileset)                                     m_ptileset;
+      typedef ::user::show < ::userex::scroll < ::user::control > > BASE_VIEW;
 
-      general_data                                    m_data;
+
+      sp(tileset)                      m_ptileset;
+         
+      point_array                      m_pta;
 
 
       tileset_view(::aura::application * papp);
       virtual ~tileset_view();
+
+
+      virtual bool initialize(tileset * ptileset);
 
 
 #ifdef DEBUG
@@ -60,6 +66,9 @@ namespace veritile
       DECL_GEN_SIGNAL(_001OnUpdatePolygonTool);
 
 
+      virtual bool hit_test(point & ptTile,point pt);
+
+      virtual ::size get_total_size();
 
    };
 

@@ -26,7 +26,7 @@ namespace veritile
 
    void tileset_view::install_message_handling(::message::dispatch * pinterface)
    {
-      ::user::impact::install_message_handling(pinterface);
+      BASE_VIEW::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY,pinterface,this,&tileset_view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE,pinterface,this,&tileset_view::_001OnSize);
@@ -92,6 +92,7 @@ namespace veritile
    void tileset_view::layout()
    {
 
+      BASE_VIEW::layout();
       /*   pobj->previous();
 
       double d = psize->height();
@@ -127,8 +128,32 @@ namespace veritile
       if(m_ptileset.is_null())
          return;
 
-      pdc->StretchBlt(0,0,rectClient.width(),rectClient.height(),
-         m_ptileset->m_dib->get_graphics(),0, 0,m_ptileset->m_dib->m_size.cx,m_ptileset->m_dib->m_size.cy,SRCCOPY);
+      int cx = m_ptileset->width();
+      int cy = m_ptileset->height();
+
+      pdc->BitBlt(0,0,cx,cy, m_ptileset->m_dib->get_graphics(),0, 0,SRCCOPY);
+
+      int wm = cx - 1;
+      int hm = cy - 1;
+      
+      ::draw2d::pen_sp pen(allocer());
+
+      pen->create_solid(1.0,ARGB(127,255,255,255));
+
+      pdc->SelectObject(pen);
+
+      for(int x = iTileX; x < cx; x+= iTileX)
+      {
+         pdc->MoveTo(x, 0);
+         pdc->LineTo(x,hm);
+      }
+
+      for(int y = iTileY; y < cy; y+= iTileY)
+      {
+         pdc->MoveTo(0,y);
+         pdc->LineTo(wm,y);
+      }
+
 
    }
 
@@ -140,8 +165,6 @@ namespace veritile
 
       SetTimer(123,240,NULL);
 
-      m_data.m_set["tilex"] = 32;
-      m_data.m_set["tiley"] = 32;
 
    }
 
@@ -296,5 +319,42 @@ namespace veritile
 
    }
 
+   bool tileset_view::hit_test(int & iTileX,int & iTileY,point pt)
+   {
+
+      if(m_ptileset.is_null())
+      {
+
+         return false;
+
+      }
+
+      if(m_ptileset->hit_test(iTileX,iTileY,pt))
+      {
+
+         return false;
+
+      }
+
+      return true;
+
+   }
+
+
+   bool tileset_view::initialize(tileset * ptileset)
+   {
+
+      m_ptileset = ptileset;
+
+      layout();
+
+   }
+
+   ::size tileset_view::get_total_size()
+   {
+
+      return m_ptileset->size();
+
+   }
 
 } // namespace veritile
