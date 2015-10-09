@@ -606,7 +606,7 @@ namespace biteditor
 
       char sz[16];
 
-      ::primitive::memory_size iRead;
+      memory_size_t iRead;
 
       string strLine;
 
@@ -618,7 +618,7 @@ namespace biteditor
 
          iRead = get_document()->m_memfile.read(sz, 16);
 
-         for(::primitive::memory_size i = 0; i < iRead; i++)
+         for(memory_size_t i = 0; i < iRead; i++)
          {
             
             if(sz[i] == '\0')

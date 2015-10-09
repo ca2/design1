@@ -531,9 +531,9 @@ namespace syllomatter
       if(status1.m_mtime == status2.m_mtime)
          return 0;
 
-      ::primitive::memory_size iRead1;
+      memory_size_t iRead1;
 
-      ::primitive::memory_size iRead2;
+      memory_size_t iRead2;
 
       while(true)
       {
