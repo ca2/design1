@@ -415,7 +415,7 @@ namespace biteditor
       
       m_pview->get_document()->m_peditfile->seek(iLine * m_pview->m_iLineSize, ::file::seek_begin);
 
-      ::primitive::memory_size iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (::primitive::memory_size) m_pview->m_iLineSize);
+      memory_size_t iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (memory_size_t) m_pview->m_iLineSize);
 
       if(iRead <= 0)
          return;
@@ -426,7 +426,7 @@ namespace biteditor
 
       str.Format("%02x", dw);
 
-      for(::primitive::memory_size i = 1; i < iRead; i++)
+      for(memory_size_t i = 1; i < iRead; i++)
       {
          
          dw = m_pchLineBuffer[i] & 0x000000ff;
@@ -483,7 +483,7 @@ namespace biteditor
             
             m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
 
-            m_pview->get_document()->m_peditfile->Delete((::primitive::memory_size) (i2 - i1));
+            m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
 
             IndexRegisterDelete(i1, i2 - i1);
 
@@ -505,7 +505,7 @@ namespace biteditor
             psetsel->m_iPreviousSelEnd = m_pview->m_iSelEnd;
             m_pview->m_iSelEnd--;
             m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
-            m_pview->get_document()->m_peditfile->Delete((::primitive::memory_size) 1);
+            m_pview->get_document()->m_peditfile->Delete((memory_size_t) 1);
             IndexRegisterDelete(m_pview->m_iSelEnd, 1);
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
             psetsel->m_iSelStart = m_pview->m_iSelStart;
@@ -556,7 +556,7 @@ namespace biteditor
             
             m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
 
-            ::primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
+            memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
 
             if(uiRead == 2 && buf[0] == '\r' && buf[1] == '\n')
             {
@@ -592,7 +592,7 @@ namespace biteditor
 
                m_pview->get_document()->m_peditfile->seek(m_pview->m_iSelEnd - 2, ::file::seek_begin);
 
-               ::primitive::memory_size uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
+               memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
 
                if(uiRead == 2 && buf[0] == '\r' && buf[1] == '\n')
                {
@@ -655,7 +655,7 @@ namespace biteditor
          file_position i2 = m_pview->m_iSelEnd;
          Sort(i1, i2);
          m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
-         m_pview->get_document()->m_peditfile->Delete((::primitive::memory_size) (i2 - i1));
+         m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
          IndexRegisterDelete(i1, i2 - i1);
          m_pview->m_iSelEnd = i1;
          m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
@@ -702,14 +702,14 @@ namespace biteditor
          {
             Sort(i1, i2);
             m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
-            m_pview->get_document()->m_peditfile->Delete((::primitive::memory_size) (i2 - i1));
+            m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
             m_pview->m_iSelEnd = i1;
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
          else if(natural(m_pview->m_iSelEnd) < m_pview->get_document()->m_peditfile->get_length())
          {
             m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
-            m_pview->get_document()->m_peditfile->Delete((::primitive::memory_size) 1);
+            m_pview->get_document()->m_peditfile->Delete((memory_size_t) 1);
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
       }
