@@ -32,17 +32,25 @@ namespace biteditor
 
       };
 
+      
       class SetSelCommand : public Command
       {
       public:
-         file_position   m_iSelStart;
-         file_position   m_iSelEnd;
-         file_position   m_iPreviousSelStart;
-         file_position   m_iPreviousSelEnd;
+         
+         
+         file_position_t   m_iSelStart;
+         file_position_t   m_iSelEnd;
+         file_position_t   m_iPreviousSelStart;
+         file_position_t   m_iPreviousSelEnd;
+
+
          virtual void Undo(sp(::biteditor::document) pdoc);
          virtual void Redo(sp(::biteditor::document) pdoc);
          virtual ECommand get_command(){ return CommandSetSel;};
+
+
       };
+
 
       class FileCommand : public Command
       {
@@ -70,15 +78,15 @@ namespace biteditor
 
       sp(::data::tree_item)      m_ptreeitem;
 
-      ::file::memory_buffer        m_memfile;
-      ::file::buffer_sp             m_pfile;
-      ::file::edit_buffer *        m_peditfile;
-      file_position           m_iSelStart;
-      file_position           m_iSelEnd;
-      int32_t                     m_iBranch;
+      ::file::memory_buffer      m_memfile;
+      ::file::buffer_sp          m_pfile;
+      ::file::edit_buffer *      m_peditfile;
+      file_position_t            m_iSelStart;
+      file_position_t            m_iSelEnd;
+      int32_t                    m_iBranch;
 
-      sp(GroupCommand)          m_pgroupcommand;
-      bool                    m_bReadOnly;
+      sp(GroupCommand)           m_pgroupcommand;
+      bool                       m_bReadOnly;
 
 
       document(::aura::application * papp);

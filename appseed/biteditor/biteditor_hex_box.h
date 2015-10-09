@@ -37,18 +37,18 @@ namespace biteditor
       virtual void install_message_handling(::message::dispatch * pdispatch);
 
 
-      void read_line(string & str, file_position iLine);
+      void read_line(string & str, file_position_t iLine);
 
       void _001OnKeyboardFocusTimer(sp(view) pview, int32_t iTimer);
 
       void on_update();
 
-      file_position char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y, bool bSelBeg);
+      file_position_t char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y, bool bSelBeg);
 
       virtual void _001OnDraw(::draw2d::graphics * pdc);
       virtual void _001GetSelText(string & str); 
 
-      void _001GetViewSel(file_position &iSelStart, file_position &iSelEnd);
+      void _001GetViewSel(file_position_t &iSelStart, file_position_t &iSelEnd);
 
       DECL_GEN_SIGNAL(_001OnLButtonDown);
       DECL_GEN_SIGNAL(_001OnLButtonUp);
@@ -64,8 +64,8 @@ namespace biteditor
       void OnFileUpdate();
 
 
-      void IndexRegisterDelete(file_position iSel, file_size iCount);
-      void IndexRegisterInsert(file_position iSel, const char * lpcszWhat);
+      void IndexRegisterDelete(file_position_t iSel, file_size_t iCount);
+      void IndexRegisterInsert(file_position_t iSel, const char * lpcszWhat);
 
 
    };

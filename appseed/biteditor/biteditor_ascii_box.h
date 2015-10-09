@@ -45,11 +45,11 @@ namespace biteditor
 
       void on_update();
 
-      file_position char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y);
+      file_position_t char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y);
 
       virtual void _001OnDraw(::draw2d::graphics * pdc);
 
-      void _001GetViewSel(file_position &iSelStart, file_position &iSelEnd);
+      void _001GetViewSel(file_position_t &iSelStart, file_position_t &iSelEnd);
 
       DECL_GEN_SIGNAL(_001OnLButtonDown);
       DECL_GEN_SIGNAL(_001OnLButtonUp);
@@ -62,8 +62,8 @@ namespace biteditor
       void SetFile(sp(::file::stream_buffer) pfile);
       void OnFileUpdate();
 
-      void IndexRegisterDelete(file_position iSel, file_size iCount);
-      void IndexRegisterInsert(file_position iSel, const char * lpcszWhat);
+      void IndexRegisterDelete(file_position_t iSel, file_size_t iCount);
+      void IndexRegisterInsert(file_position_t iSel, const char * lpcszWhat);
 
 
    };

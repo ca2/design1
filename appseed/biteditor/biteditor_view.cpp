@@ -202,7 +202,7 @@ namespace biteditor
 
       m_iLineHeight = MAX(size1.cy, size2.cy);
 
-      file_position iLineCount = MIN(m_iViewSize, get_document()->m_peditfile->get_length()) / m_iLineSize;
+      file_position_t iLineCount = MIN(m_iViewSize, get_document()->m_peditfile->get_length()) / m_iLineSize;
 
       iLineCount += 4;
 
@@ -570,7 +570,7 @@ namespace biteditor
 
    int64_t view::CalcLineCount()
    {
-      file_position dwLength = get_document()->m_peditfile->get_length();
+      file_position_t dwLength = get_document()->m_peditfile->get_length();
       int64_t iMod = dwLength % m_iLineSize;
       int64_t iLineCount = dwLength / m_iLineSize;
       if(iMod == 0)
@@ -598,7 +598,7 @@ namespace biteditor
    void view::get_view_lines(stringa & straLines)
    {
       
-      file_offset iOffset = (m_iViewOffset / m_iLineSize * m_iLineSize);
+      file_offset_t iOffset = (m_iViewOffset / m_iLineSize * m_iLineSize);
 
       get_document()->m_memfile.seek(iOffset, ::file::seek_begin);
 
@@ -649,9 +649,9 @@ namespace biteditor
    void view::_001GetSelText(string & str)
    {
 
-      file_position iEnd;
+      file_position_t iEnd;
 
-      file_position iStart;
+      file_position_t iStart;
 
       if(m_iSelEnd < 0)
       {
@@ -659,13 +659,13 @@ namespace biteditor
          if(m_iSelStart < 0)
          {
 
-            iEnd = (file_position) get_document()->m_peditfile->get_length();
+            iEnd = (file_position_t) get_document()->m_peditfile->get_length();
             iStart = 0;
          }
          else
          {
             iStart = m_iSelStart;
-            iEnd = (file_position) get_document()->m_peditfile->get_length();
+            iEnd = (file_position_t) get_document()->m_peditfile->get_length();
          }
       }
       else
@@ -683,7 +683,7 @@ namespace biteditor
       }
       strsize iSize = (strsize) (iEnd - iStart);
       char * psz = str.GetBufferSetLength(iSize + 1);
-      get_document()->m_peditfile->seek((file_offset) iStart, ::file::seek_begin);
+      get_document()->m_peditfile->seek((file_offset_t) iStart, ::file::seek_begin);
       get_document()->m_peditfile->read(psz, iSize);
       psz[iSize] = '\0';
       str.ReleaseBuffer();
@@ -695,13 +695,13 @@ namespace biteditor
       return m_iLineHeight;
    }
 
-   index view::SelToLine(file_position iSel)
+   index view::SelToLine(file_position_t iSel)
    {
       iSel -= m_iViewOffset;
       return (index) (iSel / m_iLineSize);
    }
 
-   file_position view::LineColumnToSel(index iLine, index iColumn)
+   file_position_t view::LineColumnToSel(index iLine, index iColumn)
    {
 //      int32_t i1;
 //      int32_t i2 = 0;
@@ -715,7 +715,7 @@ namespace biteditor
          }
          iLine++;
       }
-      file_position iOffset = 0;
+      file_position_t iOffset = 0;
       for(int32_t i = 0; i < iLine; i++)
       {
          iOffset += m_iLineSize;
@@ -728,7 +728,7 @@ namespace biteditor
    }
 
 
-   index view::SelToColumn(file_position iSel)
+   index view::SelToColumn(file_position_t iSel)
    {
       iSel -= m_iViewOffset;
       return (int32_t) (iSel % m_iLineSize);
