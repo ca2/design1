@@ -88,9 +88,9 @@ namespace biteditor
       //pdc->SelectClipRgn(rgn, RGN_COPY);
 
 
-      file_position iSelStart;
-      file_position iSelEnd;
-      file_position lim = 0;
+      file_position_t iSelStart;
+      file_position_t iSelEnd;
+      file_position_t lim = 0;
 
 
       cr = ARGB(255, 0, 0, 0);
@@ -101,13 +101,13 @@ namespace biteditor
 
       int32_t y = rectClient.top;
       _001GetViewSel(iSelStart, iSelEnd);
-      file_position iCursor = iSelEnd;
+      file_position_t iCursor = iSelEnd;
       Sort(iSelStart, iSelEnd);
       pdc->SelectObject(m_spfont);
       size size3 = pdc->GetTextExtent("gqYALH");
       int32_t maxcy = size3.cy;
-      file_position iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
-      file_position iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
+      file_position_t iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
+      file_position_t iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
 
       iSelStart *= 3;
       iSelEnd *= 3;
@@ -127,7 +127,7 @@ namespace biteditor
       pdc->OffsetViewportOrg(0, - ptOffset.y % m_pview->m_iLineHeight);
 
 
-      for(file_position iLine = iLineStart; iLine <= iLineEnd; iLine++)
+      for(file_position_t iLine = iLineStart; iLine <= iLineEnd; iLine++)
       {
          read_line(strLine, iLine);
          strLine.replace("\t", " ");
@@ -177,19 +177,19 @@ namespace biteditor
 
    void hex_box::_001GetSelText(string & str)
    {
-      file_position iEnd;
-      file_position iStart;
+      file_position_t iEnd;
+      file_position_t iStart;
       if(m_pview->m_iSelEnd < 0)
       {
          if(m_pview->m_iSelStart < 0)
          {
-            iEnd = (file_position) m_pview->get_document()->m_peditfile->get_length();
+            iEnd = (file_position_t) m_pview->get_document()->m_peditfile->get_length();
             iStart = 0;
          }
          else
          {
             iStart = m_pview->m_iSelStart;
-            iEnd = (file_position) m_pview->get_document()->m_peditfile->get_length();
+            iEnd = (file_position_t) m_pview->get_document()->m_peditfile->get_length();
          }
       }
       else
@@ -207,7 +207,7 @@ namespace biteditor
       }
       strsize iSize = (strsize) (iEnd - iStart);
       char * psz = str.GetBufferSetLength(iSize + 1);
-      m_pview->get_document()->m_peditfile->seek((file_offset) iStart, ::file::seek_begin);
+      m_pview->get_document()->m_peditfile->seek((file_offset_t) iStart, ::file::seek_begin);
       m_pview->get_document()->m_peditfile->read(psz, iSize);
       psz[iSize] = '\0';
       str.ReleaseBuffer();
@@ -284,8 +284,8 @@ namespace biteditor
       string str;
       _001GetViewText(pview, str);
       stringa & straLines = m_straLines;
-      file_position iSelStart;
-      file_position iSelEnd;
+      file_position_t iSelStart;
+      file_position_t iSelEnd;
       _001GetViewSel(iSelStart, iSelEnd);
 //      int32_t lim = 0;
       int32_t maxcy;
@@ -310,7 +310,7 @@ namespace biteditor
    }
 
 
-   file_position hex_box::char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t px, int32_t py, bool bSelBeg)
+   file_position_t hex_box::char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t px, int32_t py, bool bSelBeg)
    {
       
       pdc->SelectObject(m_spfont);
@@ -319,8 +319,8 @@ namespace biteditor
 
       py += ptOffset.y % m_pview->m_iLineHeight;
 
-      file_position iSelStart;
-      file_position iSelEnd;
+      file_position_t iSelStart;
+      file_position_t iSelEnd;
       _001GetViewSel(iSelStart, iSelEnd);
       int32_t lim = 0;
       int32_t maxcy;
@@ -330,12 +330,12 @@ namespace biteditor
       bool bFound = false;
       string strLine;
       string strExtent;
-      file_position iOffset = 0;
-      file_position iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
-      file_position iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
+      file_position_t iOffset = 0;
+      file_position_t iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
+      file_position_t iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
 
       string strExtent3;
-      file_position iLine;
+      file_position_t iLine;
       for(iLine = iLineStart; iLine <= iLineEnd; iLine++)
       {
          maxcy = m_pview->m_iLineHeight;
@@ -408,7 +408,7 @@ namespace biteditor
    }
 
 
-   void hex_box::read_line(string & str, file_position iLine)
+   void hex_box::read_line(string & str, file_position_t iLine)
    {
       
       str.Empty();
@@ -440,7 +440,7 @@ namespace biteditor
    }
 
 
-   void hex_box::_001GetViewSel(file_position &iSelStart, file_position &iSelEnd)
+   void hex_box::_001GetViewSel(file_position_t &iSelStart, file_position_t &iSelEnd)
    {
       iSelStart = m_pview->m_iSelStart - m_pview->m_iViewOffset;
       iSelEnd = m_pview->m_iSelEnd - m_pview->m_iViewOffset;
@@ -466,8 +466,8 @@ namespace biteditor
 
       if(pkey->m_ekey == ::user::key_back)
       {
-         file_position i1 = m_pview->m_iSelStart;
-         file_position i2 = m_pview->m_iSelEnd;
+         file_position_t i1 = m_pview->m_iSelStart;
+         file_position_t i2 = m_pview->m_iSelEnd;
          if(i1 != i2)
          {
             
@@ -481,7 +481,7 @@ namespace biteditor
             
             Sort(i1, i2);
             
-            m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
+            m_pview->get_document()->m_peditfile->seek((file_offset_t) i1, ::file::seek_begin);
 
             m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
 
@@ -504,7 +504,7 @@ namespace biteditor
             psetsel->m_iPreviousSelStart = m_pview->m_iSelStart;
             psetsel->m_iPreviousSelEnd = m_pview->m_iSelEnd;
             m_pview->m_iSelEnd--;
-            m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
+            m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
             m_pview->get_document()->m_peditfile->Delete((memory_size_t) 1);
             IndexRegisterDelete(m_pview->m_iSelEnd, 1);
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
@@ -554,7 +554,7 @@ namespace biteditor
             
             char buf[2];
             
-            m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
+            m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
 
             memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
 
@@ -651,14 +651,14 @@ namespace biteditor
          psetsel->m_iPreviousSelStart = m_pview->m_iSelStart;
          psetsel->m_iPreviousSelEnd = m_pview->m_iSelEnd;
          m_pview->get_document()->m_peditfile->MacroBegin();
-         file_position i1 = m_pview->m_iSelStart;
-         file_position i2 = m_pview->m_iSelEnd;
+         file_position_t i1 = m_pview->m_iSelStart;
+         file_position_t i2 = m_pview->m_iSelEnd;
          Sort(i1, i2);
-         m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
+         m_pview->get_document()->m_peditfile->seek((file_offset_t) i1, ::file::seek_begin);
          m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
          IndexRegisterDelete(i1, i2 - i1);
          m_pview->m_iSelEnd = i1;
-         m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
+         m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
          m_pview->m_iSelEnd++;
          m_pview->m_iSelStart = m_pview->m_iSelEnd;
          string str;
@@ -696,19 +696,19 @@ namespace biteditor
       SCAST_PTR(::message::key, pkey, pobj);
       if(pkey->m_ekey == ::user::key_delete)
       {
-         file_position i1 = m_pview->m_iSelStart;
-         file_position i2 = m_pview->m_iSelEnd;
+         file_position_t i1 = m_pview->m_iSelStart;
+         file_position_t i2 = m_pview->m_iSelEnd;
          if(i1 != i2)
          {
             Sort(i1, i2);
-            m_pview->get_document()->m_peditfile->seek((file_offset) i1, ::file::seek_begin);
+            m_pview->get_document()->m_peditfile->seek((file_offset_t) i1, ::file::seek_begin);
             m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
             m_pview->m_iSelEnd = i1;
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
          else if(natural(m_pview->m_iSelEnd) < m_pview->get_document()->m_peditfile->get_length())
          {
-            m_pview->get_document()->m_peditfile->seek((file_offset) m_pview->m_iSelEnd, ::file::seek_begin);
+            m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
             m_pview->get_document()->m_peditfile->Delete((memory_size_t) 1);
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
@@ -730,13 +730,13 @@ namespace biteditor
    }
 
 
-   void hex_box::IndexRegisterDelete(file_position iSel, file_size iCount)
+   void hex_box::IndexRegisterDelete(file_position_t iSel, file_size_t iCount)
    {
       UNREFERENCED_PARAMETER(iSel);
       UNREFERENCED_PARAMETER(iCount);
    }
 
-   void hex_box::IndexRegisterInsert(file_position iSel, const char * lpcszWhat)
+   void hex_box::IndexRegisterInsert(file_position_t iSel, const char * lpcszWhat)
    {
       UNREFERENCED_PARAMETER(iSel);
       UNREFERENCED_PARAMETER(lpcszWhat);

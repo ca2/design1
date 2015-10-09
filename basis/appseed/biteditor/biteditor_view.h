@@ -15,10 +15,10 @@ namespace biteditor
       size                          m_sizeTotal;
       mutex                         m_mutexData;
 
-      file_position                 m_iSelStart;
-      file_position                 m_iSelEnd;
-      file_position                 m_iViewOffset;
-      file_position                 m_iViewSize;
+      file_position_t               m_iSelStart;
+      file_position_t               m_iSelEnd;
+      file_position_t               m_iViewOffset;
+      file_position_t               m_iViewSize;
       index                         m_iColumn;
 
 
@@ -92,9 +92,9 @@ namespace biteditor
       virtual int32_t get_wheel_scroll_delta();
 
 
-      index SelToColumn(file_position iSel);
-      index SelToLine(file_position iSel);
-      file_position LineColumnToSel(index iLine, index iColumn);
+      index SelToColumn(file_position_t iSel);
+      index SelToLine(file_position_t iSel);
+      file_position_t LineColumnToSel(index iLine, index iColumn);
 
       void OneLineUp();
 

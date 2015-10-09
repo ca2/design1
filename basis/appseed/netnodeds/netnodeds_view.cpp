@@ -128,7 +128,9 @@ namespace netnodeds
       if(menu->LoadMenu(&doc))
       {
          
-         menu->TrackPopupMenu(0, point.x, point.y, GetParentFrame(), &menu);
+         //menu->TrackPopupMenu(0, point.x, point.y, GetParentFrame(), &menu);
+
+         menu->TrackPopupMenu(0,point.x,point.y,GetParentFrame());
 
       }
 
