@@ -9,12 +9,14 @@ namespace veritile
 
 
    class CLASS_DECL_APP_CORE_VERITILE tileset_pane_view:
-      virtual public ::userex::pane_tab_view
+      virtual public ::userex::pane_tab_view,
+      virtual public property_sheet::callback
    {
    public:
 
 
       tileset_view *          m_pviewCur;
+
 
       tileset_pane_view(::aura::application * papp);
       virtual ~tileset_pane_view();

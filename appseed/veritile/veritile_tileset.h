@@ -6,7 +6,8 @@ namespace veritile
 
    
    class tileset:
-      virtual public object
+      virtual public object,
+      virtual public property_sheet::callback
    {
    public:
 
@@ -14,20 +15,21 @@ namespace veritile
 //      tileset_view *       m_pview;
       ::visual::dib_sp     m_dib;
       string               m_strFile;
-      index                m_iIndex;
+      string               m_strId;
 
       general_data         m_data;
 
+      point                m_ptBeg;
+      point                m_ptEnd;
 
 
 
+      point_array          m_ptaSel;
 
 
       tileset(::aura::application * papp);
       virtual ~tileset();
 
-
-      string get_id();
 
 
       virtual bool load(var varFile);
@@ -42,7 +44,7 @@ namespace veritile
       virtual ::size size();
       virtual bool hit_test(point & ptTile, point pt);
 
-      
+      virtual void on_property_change(property & property);
 
    };
 

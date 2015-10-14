@@ -76,14 +76,20 @@ namespace veritile
 
       sp(tileset_pane_view) ptilesetview = get_typed_view < tileset_pane_view >();
 
-      
+      ptileset->m_strId = ptileset->m_strFile + ":" + get_tileset_count(ptileset->m_strFile);
 
-      ptilesetview->ensure_tab_by_id(ptileset->m_strFile);
+      ptilesetview->ensure_tab_by_id(ptileset->m_strId);
 
       return true;
 
    }
 
+   tileset * document::get_tileset(const string & strId)
+   {
+
+      return m_tileseta.pred_ptr_first([=](tileset * ptileset) { return ptileset->m_strId == strId; });
+
+   }
 
    tileset * document::get_tileset(const string & strPath, index iIndex)
    {
@@ -94,15 +100,15 @@ namespace veritile
       strId += ":";
       strId += ::str::from(iIndex);
 
-      return m_tileseta.ptr_first([=](tileset * ptileset) { ptileset->get_id() == strId; });
+      return get_tileset(strId);
 
    }
 
 
-   tileset * document::get_tileset(const string & strPath)
+   ::count document::get_tileset_count(const string & strPath)
    {
 
-      return m_tileseta.get_count([=](tileset * ptileset) { ptileset->m_strFile == strPath; });
+      return m_tileseta.pred_get_count([=](tileset * ptileset) { return ptileset->m_strFile == strPath; });
 
    }
 
@@ -113,7 +119,7 @@ namespace veritile
       if(::str::ends_ci(varFile.get_string(),".png"))
       {
 
-         return add_tile_set(varFile);
+         return add_tileset(varFile);
 
       }
 

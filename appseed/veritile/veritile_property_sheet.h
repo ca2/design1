@@ -32,6 +32,10 @@ namespace veritile
 
       ::draw2d::font_sp       m_font;
 
+
+      callback *              m_pcallback;
+
+
       property_sheet(::aura::application * papp);
       virtual ~property_sheet();
 
@@ -94,7 +98,7 @@ namespace veritile
       virtual bool _001OnControlSetFocus(::user::interaction * pui) override;
       
       
-      virtual bool validate(::user::interaction * pui, index iItem);
+      virtual bool validate(::user::interaction * pui, index iItem, bool bInteract);
 
 
       bool BaseOnControlEvent(::user::control_event * pevent);

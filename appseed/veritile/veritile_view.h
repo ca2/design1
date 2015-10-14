@@ -6,7 +6,8 @@ namespace veritile
 
 
    class CLASS_DECL_APP_CORE_VERITILE view :
-      virtual public ::user::impact
+      virtual public ::user::impact,
+      virtual public property_sheet::callback
    {
    public:
 
@@ -71,6 +72,8 @@ namespace veritile
       DECL_GEN_SIGNAL(_001OnPolygonTool);
       DECL_GEN_SIGNAL(_001OnUpdatePolygonTool);
 
+
+      virtual void on_property_change(property & property);
 
 
    };

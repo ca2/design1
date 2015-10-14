@@ -16,7 +16,7 @@ namespace veritile
 
       m_dataid = ".local://";
 
-      get_data()->m_bVertical = true;
+      get_data()->m_bVertical = false;
 
    }
 
@@ -45,7 +45,6 @@ namespace veritile
          return;
 
 
-
    }
 
 
@@ -59,15 +58,22 @@ namespace veritile
 
    void tileset_pane_view::on_show_view()
    {
+
       ::userex::pane_tab_view::on_show_view();
+
+      get_pane_by_id(get_current_id())->m_bPermanent = true;
+
       if(::str::begins_ci(m_pviewdata->m_id,"veritile://"))
       {
 
-         m_pdocCur = dynamic_cast < document * > (m_pviewdata->m_pdoc);
-         m_pviewCur = m_pviewdata->m_pdoc->get_typed_view < view >();
+         //m_pdocCur = dynamic_cast < document * > (m_pviewdata->m_pdoc);
+
+         m_pviewCur = dynamic_cast <tileset_view *> (m_pviewdata->m_pholder->top_child());
 
          GetParentFrame()->LoadToolBar(0,"edit_toolbar.xml");
+
          //         show_tab_by_id("printer");
+
       }
       else if(m_pviewdata->m_id == "printer")
       {
@@ -92,13 +98,15 @@ namespace veritile
    void tileset_pane_view::on_create_view(::user::view_creator_data * pcreatordata)
    {
 
-      ::file::path strPath(pcreatordata->m_id.str());
+      ::file::path strId(pcreatordata->m_id.str());
 
-      sp(tileset) ptileset = Application.m_ppaneview->m_pdocCur->get_tile_set(strPath);
+      sp(tileset) ptileset = Application.m_ppaneview->m_pdocCur->get_tileset(strId);
 
       sp(tileset_view) pview = create_view < tileset_view >(Application.m_ppaneview->m_pdocCur,::null_rect(),pcreatordata->m_pholder);
 
       pview->initialize(ptileset);
+
+      pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
 
    }
 
@@ -132,5 +140,10 @@ namespace veritile
       get_restore_tab(vara);
       stra = vara;
    }
+
+   //void tileset_pane_view::on_property_change(property & property)
+   //{
+   //}
+
 
 } // namespace veritile

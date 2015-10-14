@@ -690,8 +690,10 @@ namespace veritile
    }
 
 
-   void property_sheet::set_data(general_data * pdata)
+   void property_sheet::set_data(general_data * pdata, callback * pcallback)
    {
+
+      m_pcallback = pcallback;
 
       if(m_pdata != NULL)
       {
@@ -709,6 +711,7 @@ namespace veritile
          m_pdata = pdata;
 
       }
+
 
       _001OnUpdateItemCount();
 
@@ -761,7 +764,7 @@ namespace veritile
    }
 
 
-   bool property_sheet::validate(::user::interaction * pui, index iItem)
+   bool property_sheet::validate(::user::interaction * pui, index iItem, bool bInteract)
    {
 
       string strText;
@@ -786,7 +789,12 @@ namespace veritile
          if(stra.get_count() > 0)
          {
 
-            pedit->show_tooltip(stra.implode("\r\n"),true);
+            if(bInteract)
+            { 
+            
+               pedit->show_tooltip(stra.implode("\r\n"),true);
+
+            }
 
             return false;
 
@@ -811,6 +819,22 @@ namespace veritile
          {
 
             pevent->m_puie->hide_tooltip();
+
+         }
+
+         index iItem;
+
+         index iSubItem;
+
+         if(m_controldescriptorset.find_control(pevent->m_puie,iItem,iSubItem))
+         {
+
+            if(iSubItem == 1)
+            {
+
+               validate(pevent->m_puie,iItem);
+
+            }
 
          }
 
