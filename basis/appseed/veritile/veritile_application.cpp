@@ -38,6 +38,7 @@ namespace veritile
       System.factory().cloneable_small < main_document >();
       System.factory().cloneable_small < main_frame >();
       System.factory().creatable_small < pane_view >();
+      System.factory().creatable_small < tileset_pane_view >();
       System.factory().creatable_small < property_sheet >();
 
 
@@ -264,7 +265,7 @@ namespace veritile
 
          psplit->SetPane(0,psplit->get_document()->get_typed_view < property_sheet >(), false, "tile_view");
 
-         psplit->create_view < tileset_view > (psplit->get_document(),::null_rect(),psplit->get_pane_holder(1),"tileset_view");
+         psplit->create_view < tileset_pane_view > (psplit->get_document(),::null_rect(),psplit->get_pane_holder(1),"tileset_pane_view");
 
       }
 

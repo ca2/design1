@@ -11,12 +11,13 @@ namespace veritile
    public:
 
 
-      typedef ::user::show < ::userex::scroll < ::user::control > > BASE_VIEW;
-
+      typedef ::user::show < ::user::scroll < ::user::control > > BASE_VIEW;
 
       sp(tileset)                      m_ptileset;
          
-      point_array                      m_pta;
+//      point_array                      m_pta;
+
+      bool                             m_bMouseDown;
 
 
       tileset_view(::aura::application * papp);
@@ -69,6 +70,7 @@ namespace veritile
       virtual bool hit_test(point & ptTile,point pt);
 
       virtual ::size get_total_size();
+
 
    };
 

@@ -183,7 +183,7 @@ namespace veritile
       if(!::user::impact::keyboard_focus_OnSetFocus())
          return false;
 
-      get_document()->get_typed_view < property_sheet >()->set_data(&m_data);
+      get_document()->get_typed_view < property_sheet >()->set_data(&m_data,this);
 
       return true;
 
@@ -342,6 +342,11 @@ namespace veritile
    {
       SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
          pcmdui->m_pcmdui->Enable(TRUE);
+   }
+
+   void view::on_property_change(property & property)
+   {
+
    }
 
 } // namespace veritile

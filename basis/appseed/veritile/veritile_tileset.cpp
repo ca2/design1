@@ -21,6 +21,10 @@ namespace veritile
       m_data.m_map["tiley"].m_validate.m_rules["natural"] = true;
       m_data.m_map["tiley"].m_validate.m_rules["m_iMin"] = 1;
 
+
+      m_ptBeg = point(-1, -1);
+      m_ptEnd = point(-1, -1);
+
    }
 
 
@@ -50,39 +54,31 @@ namespace veritile
    }
 
    
-   string tileset::get_id()
-   {
-
-      return m_strFile + "." + ::str::from(m_iIndex);
-
-   }
-
-
    int tileset::tilex()
    {
 
-      return MAX(1,abs(m_data["tilex"].int32()));
+      return MAX(1,abs(m_data.m_set["tilex"].int32()));
 
    }
 
    int tileset::tiley()
    {
 
-      return MAX(1,abs(m_data["tilex"].int32()));
+      return MAX(1,abs(m_data.m_set["tiley"].int32()));
 
    }
 
    int tileset::xcount()
    {
 
-      return m_dib->height() / tiley();
+      return m_dib->size().cx / tilex();
 
    }
 
-   bool tileset::ycount()
+   int tileset::ycount()
    {
 
-      return m_dib->width() / tilex();
+      return m_dib->size().cy / tiley();
 
 
    }
@@ -108,28 +104,33 @@ namespace veritile
 
    }
 
-   bool tileset::hit_test(int & iTileX,int & iTileY, point pt)
+   bool tileset::hit_test(point & ptTile, point pt)
    {
 
-      iTileX =  pt.x / tilex();
+      ptTile.x =  pt.x / tilex();
 
-      iTileY =  pt.y / tiley();
+      ptTile.y =  pt.y / tiley();
 
-      if(iTileX < 0)
+      if(ptTile.x < 0)
          return false;
 
-      if(iTileY < 0)
+      if(ptTile.y < 0)
          return false;
 
-      if(iTileX >= xcount())
+      if(ptTile.x >= xcount())
          return false;
 
-      if(iTileY >= ycount())
+      if(ptTile.y >= ycount())
          return false;
 
       return true;
 
    }
 
+
+   void tileset::on_property_change(property & property)
+   {
+
+   }
 
 } // namespace veritile

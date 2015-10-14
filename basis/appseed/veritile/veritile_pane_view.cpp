@@ -111,7 +111,7 @@ namespace veritile
          if(strPath.ends_ci(".png"))
          {
 
-            m_pdocCur->add_tile_set(strPath);
+            m_pdocCur->add_tileset(strPath);
 
          }
          else if(strPath.ends_ci(".veritile"))

@@ -6,8 +6,7 @@ namespace veritile
 
 
    tileset_view::tileset_view(::aura::application * papp):
-      ::object(papp),
-      m_data(papp)
+      ::object(papp)
    {
 
 
@@ -17,6 +16,8 @@ namespace veritile
       connect_command("polygon_tool",&tileset_view::_001OnPolygonTool);
       connect_update_cmd_ui("polygon_tool",&tileset_view::_001OnUpdatePolygonTool);
 
+
+      m_bMouseDown = false;
 
    }
 
@@ -128,6 +129,8 @@ namespace veritile
       if(m_ptileset.is_null())
          return;
 
+      pdc->FillSolidRect(rectClient,ARGB(184,245,250,255));
+
       int cx = m_ptileset->width();
       int cy = m_ptileset->height();
 
@@ -142,6 +145,10 @@ namespace veritile
 
       pdc->SelectObject(pen);
 
+      int iTileX = m_ptileset->tilex();
+
+      int iTileY = m_ptileset->tiley();
+
       for(int x = iTileX; x < cx; x+= iTileX)
       {
          pdc->MoveTo(x, 0);
@@ -154,6 +161,24 @@ namespace veritile
          pdc->LineTo(wm,y);
       }
 
+      pdc->set_alpha_mode(::draw2d::alpha_mode_blend);
+
+      if(m_ptileset->m_ptBeg.x >= 0 && m_ptileset->m_ptBeg.y >= 0
+         && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
+      {
+
+         point_array pta;
+
+         pta.add_unique()
+
+      }
+
+
+      for(index i = 0; i < m_ptileset->m_ptaSel.get_size(); i++)
+      {
+         point pt =  m_ptileset->m_ptaSel[i];
+         pdc->FillSolidRect(iTileX * pt.x,iTileY * pt.y,iTileX,iTileY,ARGB(127,245,250,255));
+      }
 
    }
 
@@ -216,21 +241,6 @@ namespace veritile
 
    }
 
-   void tileset_view::_001OnMouseMove(signal_details * pobj)
-   {
-
-      SCAST_PTR(::message::mouse,pmouse,pobj);
-
-         data * pdata = get_document()->get_typed_data < data>();
-
-      point pt = pmouse->m_pt;
-
-      ScreenToClient(&pt);
-
-
-   }
-
-
    void tileset_view::_001OnLButtonDown(signal_details * pobj)
    {
 
@@ -242,9 +252,86 @@ namespace veritile
 
       ScreenToClient(&pt);
 
+      point ptSel;
+
+      if(hit_test(ptSel,pt))
+      {
+
+         m_ptileset->m_ptBeg = ptSel;
+
+         m_ptileset->m_ptEnd = ptSel;
+
+      }
+
+      GetCapture();
+
+      m_bMouseDown = true;
+
       pobj->m_bRet = true;
 
    }
+
+   void tileset_view::_001OnMouseMove(signal_details * pobj)
+   {
+
+      SCAST_PTR(::message::mouse,pmouse,pobj);
+
+      data * pdata = get_document()->get_typed_data < data>();
+
+      point pt = pmouse->m_pt;
+
+      ScreenToClient(&pt);
+
+      if(m_bMouseDown)
+      {
+
+      }
+
+
+   }
+
+   void tileset_view::_001OnLButtonUp(signal_details * pobj)
+   {
+
+      SCAST_PTR(::message::mouse,pmouse,pobj);
+
+      pobj->previous();
+
+      if(m_bMouseDown)
+      {
+
+         point pt = pmouse->m_pt;
+
+         ScreenToClient(&pt);
+
+         point ptSel;
+
+         if(hit_test(ptSel,pt))
+         {
+
+            m_ptileset->m_ptEnd = ptSel;
+
+         }
+
+         ReleaseCapture();
+
+         if(m_ptileset->m_ptBeg.x >= 0 && m_ptileset->m_ptBeg.y >= 0
+         && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
+         {
+
+            m_ptileset->m_ptaSel.add_unique_range(m_ptileset->m_ptBeg,m_ptilset->m_ptEnd);
+      
+            m_ptileset->m_ptBeg = point(-1,-1);
+            m_ptileset->m_ptEnd = point(-1,-1);
+      
+         }
+
+      }
+
+         pmouse->m_bRet = true;
+
+   }
+
 
 
    void tileset_view::_001OnLButtonDblClk(signal_details * pobj)
@@ -258,21 +345,6 @@ namespace veritile
 
    }
 
-
-   void tileset_view::_001OnLButtonUp(signal_details * pobj)
-   {
-      
-      SCAST_PTR(::message::mouse,pmouse,pobj);
-
-      pobj->previous();
-      
-      point pt = pmouse->m_pt;
-      
-      ScreenToClient(&pt);
-
-      pmouse->m_bRet = true;
-
-   }
 
    void tileset_view::_001OnSelectionTool(signal_details * pobj)
    {
@@ -313,13 +385,13 @@ namespace veritile
       if(!::user::impact::keyboard_focus_OnSetFocus())
          return false;
 
-      get_document()->get_typed_view < property_sheet >()->set_data(&m_data);
+      get_document()->get_typed_view < property_sheet >()->set_data(&m_ptileset->m_data, m_ptileset);
 
       return true;
 
    }
 
-   bool tileset_view::hit_test(int & iTileX,int & iTileY,point pt)
+   bool tileset_view::hit_test(point & ptTile,point pt)
    {
 
       if(m_ptileset.is_null())
@@ -329,7 +401,7 @@ namespace veritile
 
       }
 
-      if(m_ptileset->hit_test(iTileX,iTileY,pt))
+      if(!m_ptileset->hit_test(ptTile,pt))
       {
 
          return false;
@@ -348,13 +420,19 @@ namespace veritile
 
       layout();
 
+      return true;
+
    }
 
    ::size tileset_view::get_total_size()
    {
 
+      if(m_ptileset.is_null())
+         return size(0,0);
+
       return m_ptileset->size();
 
    }
+
 
 } // namespace veritile
