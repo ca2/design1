@@ -73,6 +73,15 @@ namespace veritile
       DECL_GEN_SIGNAL(_001OnUpdatePolygonTool);
 
 
+
+      virtual int tilex();
+      virtual int tiley();
+      virtual int xcount();
+      virtual int ycount();
+      virtual int width();
+      virtual int height();
+      virtual ::size size();
+
       virtual void on_property_change(property & property);
 
 

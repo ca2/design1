@@ -119,6 +119,24 @@ namespace veritile
       LayoutKaraokeBouncingBall();*/
    }
 
+   void tileset_view::_001OnDrawSel(::draw2d::graphics * pdc,const point_array & ptaSel)
+   {
+
+      int iTileX = m_ptileset->tilex();
+
+      int iTileY = m_ptileset->tiley();
+
+      for(index i = 0; i < ptaSel.get_size(); i++)
+      {
+
+         point pt =  ptaSel[i];
+
+         pdc->FillSolidRect(iTileX * pt.x,iTileY * pt.y,iTileX,iTileY,ARGB(127,245,250,255));
+
+      }
+
+   }
+
    void tileset_view:: _001OnDraw(::draw2d::graphics * pdc)
    {
 
@@ -169,16 +187,20 @@ namespace veritile
 
          point_array pta;
 
-         pta.add_unique()
+         pta = m_ptileset->m_ptaSel;
+
+         pta.add_unique_range(m_ptileset->m_ptBeg,m_ptileset->m_ptEnd);
+
+         _001OnDrawSel(pdc,pta);
 
       }
-
-
-      for(index i = 0; i < m_ptileset->m_ptaSel.get_size(); i++)
+      else
       {
-         point pt =  m_ptileset->m_ptaSel[i];
-         pdc->FillSolidRect(iTileX * pt.x,iTileY * pt.y,iTileX,iTileY,ARGB(127,245,250,255));
+
+         _001OnDrawSel(pdc,m_ptileset->m_ptaSel);
+
       }
+
 
    }
 
@@ -257,6 +279,13 @@ namespace veritile
       if(hit_test(ptSel,pt))
       {
 
+         if(!Session.is_key_pressed(::user::key_control))
+         {
+
+            m_ptileset->m_ptaSel.remove_all();
+
+         }
+
          m_ptileset->m_ptBeg = ptSel;
 
          m_ptileset->m_ptEnd = ptSel;
@@ -284,6 +313,20 @@ namespace veritile
 
       if(m_bMouseDown)
       {
+
+         point pt = pmouse->m_pt;
+
+         ScreenToClient(&pt);
+
+         point ptSel;
+
+         if(hit_test(ptSel,pt))
+         {
+
+            m_ptileset->m_ptEnd = ptSel;
+
+         }
+
 
       }
 
@@ -319,7 +362,7 @@ namespace veritile
          && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
          {
 
-            m_ptileset->m_ptaSel.add_unique_range(m_ptileset->m_ptBeg,m_ptilset->m_ptEnd);
+            m_ptileset->m_ptaSel.add_unique_range(m_ptileset->m_ptBeg,m_ptileset->m_ptEnd);
       
             m_ptileset->m_ptBeg = point(-1,-1);
             m_ptileset->m_ptEnd = point(-1,-1);

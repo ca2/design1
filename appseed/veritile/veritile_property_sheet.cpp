@@ -732,7 +732,7 @@ namespace veritile
          if(iSubItem == 1)
          {
 
-            validate(pui, iItem);
+            validate(pui, iItem, true);
 
          }
 
@@ -750,7 +750,7 @@ namespace veritile
       if(iSubItem == 1)
       {
 
-         if(!validate(pui, iItem))
+         if(!validate(pui, iItem, true))
          {
 
             return false;
@@ -832,7 +832,7 @@ namespace veritile
             if(iSubItem == 1)
             {
 
-               validate(pevent->m_puie,iItem);
+               validate(pevent->m_puie,iItem, true);
 
             }
 
