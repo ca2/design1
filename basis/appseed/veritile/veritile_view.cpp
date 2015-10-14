@@ -61,6 +61,55 @@ namespace veritile
    }
    #endif 
 
+   int view::tilex()
+   {
+
+      return MAX(1,abs(m_data.m_set["tilex"].int32()));
+
+   }
+
+   int view::tiley()
+   {
+
+      return MAX(1,abs(m_data.m_set["tiley"].int32()));
+
+   }
+
+   int view::xcount()
+   {
+
+      return MAX(1,abs(m_data.m_set["xcount"].int32()));
+
+   }
+
+   int view::ycount()
+   {
+
+      return MAX(1,abs(m_data.m_set["ycount"].int32()));
+
+   }
+
+   int view::width()
+   {
+
+      return xcount() * tilex();
+
+   }
+
+   int view::height()
+   {
+
+      return ycount() * tiley();
+
+   }
+
+   ::size view::size()
+   {
+
+      return ::size(width(),height());
+
+   }
+
    bool view::pre_create_window(::user::create_struct& cs)
    {
 
@@ -91,6 +140,7 @@ namespace veritile
 
    void view::layout() 
    {
+
 
    /*   pobj->previous();
 
@@ -127,7 +177,44 @@ namespace veritile
 
 
       pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
+
+
+      ::draw2d::pen_sp pen(allocer());
+
+      pen->create_solid(1.0,ARGB(127,255,255,255));
+
+      pdc->SelectObject(pen);
+
+      int cx = width();
+      int cy = height();
+
+//      pdc->BitBlt(0,0,cx,cy,m_ptileset->m_dib->get_graphics(),0,0,SRCCOPY);
+
+      int wm = cx - 1;
+      int hm = cy - 1;
+
       
+      int iTileX = tilex();
+
+      int iTileY = tiley();
+
+      for(int x = iTileX; x < cx; x+= iTileX)
+      {
+         pdc->MoveTo(x,0);
+         
+         pdc->LineTo(x,hm);
+
+      }
+
+      for(int y = iTileY; y < cy; y+= iTileY)
+      {
+         
+         pdc->MoveTo(0,y);
+
+         pdc->LineTo(wm,y);
+
+      }
+
 
 
    }
@@ -152,7 +239,18 @@ namespace veritile
       m_data.m_map["tiley"].m_validate.m_rules["m_iMin"] = 16;
       m_data.m_map["tiley"].m_validate.m_rules["m_iMax"] = 256;
 
-      
+
+      m_data.m_set["xcount"] = 20;
+      m_data.m_map["xcount"].m_validate.m_rules["natural"] = true;
+      m_data.m_map["xcount"].m_validate.m_rules["m_iMin"] = 1;
+      m_data.m_map["xcount"].m_validate.m_rules["m_iMax"] = 1024;
+
+
+      m_data.m_set["ycount"] = 20;
+      m_data.m_map["ycount"].m_validate.m_rules["natural"] = true;
+      m_data.m_map["ycount"].m_validate.m_rules["m_iMin"] = 1;
+      m_data.m_map["ycount"].m_validate.m_rules["m_iMax"] = 1024;
+
 
 
    }
@@ -348,5 +446,6 @@ namespace veritile
    {
 
    }
+
 
 } // namespace veritile
