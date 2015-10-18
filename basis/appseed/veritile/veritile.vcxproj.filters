@@ -71,6 +71,9 @@
     <ClCompile Include="veritile_tileset_pane_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="veritile_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -140,6 +143,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="veritile_tileset_pane_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="veritile_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

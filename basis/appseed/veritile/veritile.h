@@ -40,6 +40,8 @@ namespace veritile
 
 #include "veritile_area.h"
 
+#include "veritile_layer.h"
+
 #include "veritile_element.h"
 #include "veritile_element_array.h"
 

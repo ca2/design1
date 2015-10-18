@@ -78,7 +78,9 @@ namespace veritile
 
       ptileset->m_strId = ptileset->m_strFile + ":" + get_tileset_count(ptileset->m_strFile);
 
-      ptilesetview->ensure_tab_by_id(ptileset->m_strId);
+      ptilesetview->add_tab(::file::path(ptileset->m_strFile).name(),ptileset->m_strId,true,true);
+
+      ptilesetview->set_cur_tab_by_id(ptileset->m_strId);
 
       return true;
 
