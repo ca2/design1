@@ -30,6 +30,8 @@ namespace veritile
 
       general_data                                    m_data;
 
+      layer                                           m_layer;
+
 
       view(::aura::application * papp);
       virtual ~view();
@@ -84,6 +86,16 @@ namespace veritile
 
       virtual void on_property_change(property & property);
 
+
+      tileset_view * get_cur_tileset_view();
+
+      tileset * get_cur_tileset();
+
+      virtual void update_layer();
+
+      virtual bool hit_test(point & ptTile,point pt);
+
+      virtual void draw_layer(::draw2d::graphics * pdc,layer & l);
 
    };
 

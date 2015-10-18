@@ -517,6 +517,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClCompile Include="veritile_element.cpp" />
     <ClCompile Include="veritile_element_array.cpp" />
     <ClCompile Include="veritile_frame.cpp" />
+    <ClCompile Include="veritile_layer.cpp" />
     <ClCompile Include="veritile_main_document.cpp" />
     <ClCompile Include="veritile_main_frame.cpp" />
     <ClCompile Include="veritile_pane_view.cpp" />
@@ -541,6 +542,7 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ClInclude Include="veritile_frame.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="veritile.h" />
+    <ClInclude Include="veritile_layer.h" />
     <ClInclude Include="veritile_main_document.h" />
     <ClInclude Include="veritile_main_frame.h" />
     <ClInclude Include="veritile_pane_view.h" />

@@ -10,11 +10,13 @@ namespace veritile
       ::data::data_container_base(papp),
       ::user::document(papp)
    {
+
    }
    
 
    main_document::~main_document()
    {
+
    }
 
 

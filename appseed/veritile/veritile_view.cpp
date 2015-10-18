@@ -7,7 +7,8 @@ namespace veritile
 
    view::view(::aura::application * papp) :
       ::object(papp),
-      m_data(papp)
+      m_data(papp),
+      m_layer(papp)
    {
 
       
@@ -178,6 +179,9 @@ namespace veritile
 
       pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
 
+      
+      draw_layer(pdc,m_layer);
+
 
       ::draw2d::pen_sp pen(allocer());
 
@@ -251,7 +255,7 @@ namespace veritile
       m_data.m_map["ycount"].m_validate.m_rules["m_iMin"] = 1;
       m_data.m_map["ycount"].m_validate.m_rules["m_iMax"] = 1024;
 
-
+      update_layer();
 
    }
 
@@ -382,10 +386,30 @@ namespace veritile
 
       pobj->m_bRet = true;
 
+      tileset * pset = get_cur_tileset();
+
+      if(pset != NULL && pset->m_ptaSel.has_elements())
+      {
+
+         point ptSel = pset->m_ptaSel[0];
+
+         point ptLayer;
+
+         if(hit_test(ptLayer,pt))
+         {
+
+            m_layer.m_tile2a[ptLayer.y][ptLayer.x].m_iTile = 0;
+
+            m_layer.m_tile2a[ptLayer.y][ptLayer.x].m_pt = ptSel;
+
+         }
+
+      }
+
+
 
 
    }
-
 
    void view::_001OnLButtonDblClk(signal_details * pobj)
    {
@@ -444,6 +468,163 @@ namespace veritile
 
    void view::on_property_change(property & property)
    {
+
+      if(property.m_element1 == "xcount")
+      {
+
+         update_layer();
+
+      }
+      else if(property.m_element1 == "ycount")
+      {
+
+         update_layer();
+
+      }
+
+
+
+   }
+
+   
+
+   tileset_view * view::get_cur_tileset_view()
+   {
+
+      if(get_document() == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      tileset_pane_view * ppaneview = get_document()->get_typed_view < tileset_pane_view >();
+
+      if(ppaneview == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      ::user::tab_pane * ppane = ppaneview->get_pane_by_id(ppaneview->get_cur_tab_id());
+
+      if(ppane == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      if(ppane->m_pholder.is_null())
+      {
+
+         return NULL;
+
+      }
+
+      ::user::interaction * pui = ppane->m_pholder->top_child();
+
+      if(pui == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      tileset_view * pview = dynamic_cast <tileset_view *> (pui);
+
+      if(pview == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      return pview;
+
+   }
+
+   tileset * view::get_cur_tileset()
+   {
+
+      tileset_view * pview = get_cur_tileset_view();
+
+      if(pview == NULL)
+      {
+
+         return NULL;
+
+      }
+
+      return pview->m_ptileset;
+
+   }
+
+
+
+   void view::update_layer()
+   {
+
+      m_layer.update(xcount(),ycount());
+
+   }
+
+
+   bool view::hit_test(point & ptTile,point pt)
+   {
+
+      ptTile.x =  pt.x / tilex();
+
+      ptTile.y =  pt.y / tiley();
+
+      if(ptTile.x < 0)
+         return false;
+
+      if(ptTile.y < 0)
+         return false;
+
+      if(ptTile.x >= xcount())
+         return false;
+
+      if(ptTile.y >= ycount())
+         return false;
+
+      return true;
+
+   }
+
+
+   void view::draw_layer(::draw2d::graphics * pdc,layer & l)
+   {
+
+      int iTileX = tilex();
+
+      int iTileY = tiley();
+
+      for(int y = 0; y < l.m_size.cy; y++)
+      {
+
+         for(int x = 0; x < l.m_size.cx; x++)
+         {
+
+            layer::tile & tile = l.m_tile2a[y][x];
+
+            if(tile.m_iTile >= 0)
+            {
+
+               tileset * pset = get_cur_tileset();
+
+               pdc->BitBlt(x * iTileX,y * iTileY,MIN(iTileX,pset->tilex()),MIN(iTileY,pset->tiley()),
+                  pset->m_dib->get_graphics(),
+                  tile.m_pt.x * pset->tilex(),
+                  tile.m_pt.y * pset->tiley(),SRCCOPY);
+
+            }
+
+         }
+
+      }
 
    }
 

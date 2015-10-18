@@ -800,7 +800,19 @@ namespace veritile
 
          }
 
-         m_pdata->m_set.at(iItem).m_element2 = strText;
+         if(m_pdata->m_set.at(iItem).m_element2 != strText)
+         {
+
+            m_pdata->m_set.at(iItem).m_element2 = strText;
+         
+            if(m_pcallback != NULL)
+            {
+
+               m_pcallback->on_property_change(m_pdata->m_set.at(iItem));
+
+            }
+
+         }
 
       }
 
@@ -832,7 +844,7 @@ namespace veritile
             if(iSubItem == 1)
             {
 
-               validate(pevent->m_puie,iItem, true);
+               validate(pevent->m_puie,iItem, false);
 
             }
 
