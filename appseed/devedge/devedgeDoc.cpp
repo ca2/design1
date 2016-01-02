@@ -293,7 +293,7 @@ void devedgeDoc::FtpPut(LPCTSTR lpcszLocal, LPCTSTR lpcszRemote)
         // Request a connection to ftp.microsoft.com. Default
         // parameters mean that we'll try with username = ANONYMOUS
         // and password set to the machine name @ domain name
-        pConnect = sess.GetFtpConnection("votagus.net", "votagus", "1p.t5mL.1..");
+        pConnect = sess.GetFtpConnection("votagus.net", file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_user.txt"), file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_pass.txt"));
 
         pConnect->PutFile(lpcszLocal, lpcszRemote);
 
