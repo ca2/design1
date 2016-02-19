@@ -6,7 +6,7 @@ namespace netnodeds
 
 
    class CLASS_DECL_DESIGN_NETNODEDS netnodeds :
-      virtual public ::aura::departament
+      virtual public ::aura::department
    {
    public:
       

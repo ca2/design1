@@ -7,7 +7,7 @@ namespace devedge
 
    devedge::devedge(::aura::application * papp) :
       ::object(papp),
-      ::aura::departament(papp)
+      ::aura::department(papp)
    {
 
    }

@@ -6,7 +6,7 @@ namespace devedge
 
 
    class CLASS_DECL_DEVEDGE devedge :
-      virtual public ::aura::departament
+      virtual public ::aura::department
    {
    public:
       
