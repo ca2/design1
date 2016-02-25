@@ -16,7 +16,7 @@ namespace tarsila
       public:
 
          drawing *               m_pdrawing;
-         ::draw2d::graphics *    m_pgraphics;
+         ::draw2d::dib *         m_pdib;
          bool                    m_bSelected;
 
       };

@@ -30,13 +30,13 @@ namespace tarsila
 
 
 
-      mutex                         m_mutex;
-      polygon_array                 m_polygona;
+      mutex                                           m_mutex;
+      polygon_array                                   m_polygona;
 
-      element_array                               m_elementptra;
-      element_array                               m_elementptraSelected;
+      element_array                                   m_elementptra;
+      element_array                                   m_elementptraSelected;
 
-      ::draw2d::graphics *         m_pgraphics;
+      ::draw2d::dib *                                 m_pdib;
 
 
       drawing(::aura::application * papp);
