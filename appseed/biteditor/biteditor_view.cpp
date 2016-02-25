@@ -251,7 +251,7 @@ namespace biteditor
    }
 
    /*
-   void view:: _001OnDraw(::draw2d::graphics * pdc)
+   void view:: _001OnDraw(::draw2d::dib * pdib)
    {
    // sp(::user::document) pdoc = get_document();
    //   pdc->OffsetViewportOrg(-m_ptScroll.x, -(m_ptScroll.y % m_iLineHeight));

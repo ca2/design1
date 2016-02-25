@@ -137,7 +137,7 @@ namespace veritile
 
    }
 
-   void tileset_view:: _001OnDraw(::draw2d::graphics * pdc)
+   void tileset_view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
       rect rectClient;

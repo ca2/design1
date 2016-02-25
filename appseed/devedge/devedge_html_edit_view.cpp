@@ -175,7 +175,7 @@ namespace devedge
    }
 
 
-   void html_edit_view:: _001OnDraw(::draw2d::graphics * pdc)
+   void html_edit_view:: _001OnDraw(::draw2d::dib * pdib)
    {
       html_view::_001OnDraw(pdc);
    }

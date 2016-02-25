@@ -34,7 +34,7 @@ namespace veritile
 
       virtual void install_message_handling(::message::dispatch * pinterface);
 
-      virtual void _001OnDraw(::draw2d::graphics * pdc);
+      virtual void _001OnDraw(::draw2d::dib * pdib);
       virtual void _001OnDrawSel(::draw2d::graphics * pdc, const point_array & ptaSel);
 
       virtual bool pre_create_window(::user::create_struct& cs);

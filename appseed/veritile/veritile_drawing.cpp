@@ -15,7 +15,7 @@ namespace veritile
    }
 
 
-   void drawing::_001OnDraw(::draw2d::graphics * pgraphics)
+   void drawing::_001OnDraw(::draw2d::dib * pdib)
    {
 
       synch_lock sl(&m_mutex);
