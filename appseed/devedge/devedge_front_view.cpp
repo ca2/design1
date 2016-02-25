@@ -130,17 +130,24 @@ namespace devedge
       //   sp(::user::document) pdoc = get_document();
    }
 
+   
    void front_view::_001OnPaint(::signal_details * pobj)
    {
+      
       UNREFERENCED_PARAMETER(pobj);
+
    }
 
 
    void front_view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
+      ::draw2d::graphics * pdc = pdib->get_graphics();
+
       pdc->OffsetViewportOrg(-2, -2);
+
    }
+
 
    void front_view::_001OnCreate(::signal_details * pobj)
    {

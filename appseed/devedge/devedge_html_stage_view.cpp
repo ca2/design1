@@ -112,7 +112,11 @@ namespace devedge
       }
       else if(lHint == 123)
       {
-         ::draw2d::graphics_sp g(allocer());
+         
+         ::draw2d::dib_sp g(allocer());
+
+         g->create(50, 50);
+
          get_document()->get_html_data()->layout(g);
          
       }
@@ -186,8 +190,10 @@ namespace devedge
    void html_stage_view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
-      html_view::_001OnDraw(pdc);
+      html_view::_001OnDraw(pdib);
+
    }
+
 
    void html_stage_view::_001OnCreate(::signal_details * pobj) 
    {

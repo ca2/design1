@@ -119,7 +119,7 @@ namespace tarsila
    void view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
-      
+      ::draw2d::graphics * pdc = pdib->get_graphics();
 
       rect rectClient;
 
@@ -165,7 +165,7 @@ namespace tarsila
 
       br->create_solid(ARGB(184,255,255,255));
 
-      pdata->m_drawing._001OnDraw(pdc);
+      pdata->m_drawing._001OnDraw(pdib);
 
    }
 
