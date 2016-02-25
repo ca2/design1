@@ -48,13 +48,13 @@ namespace veritile
       virtual void _001InsertColumns();
 
 
-      //virtual void _001OnDraw(::draw2d::graphics * pgraphics);
+      //virtual void _001OnDraw(::draw2d::dib * pdib);
 
       virtual void _001GetItemText(::user::mesh_item * pitem);
 
 
       virtual void draw_item(::draw2d::graphics * pgraphics,int x,int y,general_data::item * pitem);
-      virtual void draw_framing(::draw2d::graphics * pgraphics);
+      virtual void draw_framing(::draw2d::dib * pdib);
 
       virtual void load_plain_text(const string & str);
 
