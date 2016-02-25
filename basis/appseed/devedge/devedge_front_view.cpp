@@ -136,7 +136,7 @@ namespace devedge
    }
 
 
-   void front_view:: _001OnDraw(::draw2d::graphics * pdc)
+   void front_view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
       pdc->OffsetViewportOrg(-2, -2);

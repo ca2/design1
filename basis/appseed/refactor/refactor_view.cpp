@@ -139,7 +139,7 @@ namespace refactor
 
 
 
-   void view:: _001OnDraw(::draw2d::graphics * pdc)
+   void view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
       ::user::plain_edit_view::_001OnDraw(pdc);

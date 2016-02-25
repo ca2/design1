@@ -39,7 +39,7 @@ namespace syllomatter
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      virtual void _001OnDraw(::draw2d::graphics * pdc);
+      virtual void _001OnDraw(::draw2d::dib * pdib);
 
       void on_document_complete(const char * pszUrl);
 
@@ -47,7 +47,7 @@ namespace syllomatter
 
       virtual void install_message_handling(::message::dispatch * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
-      virtual void OnDraw(::draw2d::graphics * pgraphics);      // overridden to draw this ::view
+      virtual void OnDraw(::draw2d::dib * pdib);      // overridden to draw this ::view
       virtual void _001OnInitialUpdate();
          virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 

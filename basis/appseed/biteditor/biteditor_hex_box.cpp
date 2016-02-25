@@ -47,7 +47,7 @@ namespace biteditor
 
    }
 
-   void hex_box::_001OnDraw(::draw2d::graphics * pdc)
+   void hex_box::_001OnDraw(::draw2d::dib * pdib)
    {
       if(Session.get_keyboard_focus() == this)
       {

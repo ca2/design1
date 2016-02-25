@@ -22,7 +22,7 @@ namespace netnodeds
    public:
       virtual sp(::user::interaction) get_guie();
 
-      virtual void _001OnDraw(::draw2d::graphics * pdc);
+      virtual void _001OnDraw(::draw2d::dib * pdib);
 
 
 

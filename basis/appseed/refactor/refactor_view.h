@@ -29,7 +29,7 @@ namespace refactor
 	   virtual void dump(dump_context & dumpcontext) const;
    #endif
 
-      virtual void _001OnDraw(::draw2d::graphics * pdc);
+      virtual void _001OnDraw(::draw2d::dib * pdib);
 
       virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 

@@ -47,7 +47,7 @@ namespace biteditor
 
       file_position_t char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y);
 
-      virtual void _001OnDraw(::draw2d::graphics * pdc);
+      virtual void _001OnDraw(::draw2d::dib * pdib);
 
       void _001GetViewSel(file_position_t &iSelStart, file_position_t &iSelEnd);
 
