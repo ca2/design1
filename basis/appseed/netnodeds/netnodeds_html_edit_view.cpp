@@ -177,8 +177,11 @@ namespace netnodeds
 
    void html_edit_view:: _001OnDraw(::draw2d::dib * pdib)
    {
-      html_view::_001OnDraw(pdc);
+      
+      html_view::_001OnDraw(pdib);
+
    }
+
 
    void html_edit_view::_001OnCreate(::signal_details * pobj)
    {
