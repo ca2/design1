@@ -2,7 +2,7 @@
 
 
 #include "app-core/appseed/tesseract/tesseract/tesseract.h"
-#include "html/html/html.h"
+#include "core/user/html/html/html.h"
 #include "core/filesystem/filemanager/filemanager.h"
 
 

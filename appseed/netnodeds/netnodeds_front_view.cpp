@@ -141,8 +141,10 @@ namespace netnodeds
    void front_view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
-      pdc->OffsetViewportOrg(-2, -2);
+      pdib->get_graphics()->OffsetViewportOrg(-2, -2);
+
    }
+
 
    void front_view::_001OnCreate(::signal_details * pobj)
    {

@@ -63,7 +63,7 @@ namespace syllomatter
 
    void view::OnDraw(::draw2d::dib * pdib)
    {
-      UNREFERENCED_PARAMETER(pdcScreen);
+      UNREFERENCED_PARAMETER(pdib);
    }
 
    /////////////////////////////////////////////////////////////////////////////
@@ -144,7 +144,7 @@ namespace syllomatter
    void view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
-      ::user::form::_001OnDraw(pdc);
+      ::user::form::_001OnDraw(pdib);
 
    }
 

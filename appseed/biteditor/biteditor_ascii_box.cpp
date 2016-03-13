@@ -45,8 +45,11 @@ namespace biteditor
       }
    }
 
+
    void ascii_box::_001OnDraw(::draw2d::dib * pdib)
    {
+
+      ::draw2d::graphics * pdc = pdib->get_graphics();
 
       if(m_pview == NULL || m_pview->get_document() == NULL)
          return;
