@@ -106,8 +106,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='stage|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'">
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>mkdir "$(OutDir)svn"
+del /q "$(OutDir)svn/*.*"
+copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)"</Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>-Zm384 /bigobj</AdditionalOptions>
