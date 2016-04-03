@@ -171,17 +171,15 @@ namespace veritile
    void view:: _001OnDraw(::draw2d::dib * pdib)
    {
 
-
+      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
       rect rectClient;
 
       GetClientRect(rectClient);
 
-
       pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
-
       
       draw_layer(pdc,m_layer);
-
 
       ::draw2d::pen_sp pen(allocer());
 

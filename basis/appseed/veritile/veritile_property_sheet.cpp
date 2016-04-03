@@ -431,6 +431,9 @@ namespace veritile
 
    void property_sheet::draw_framing(::draw2d::dib * pdib)
    {
+
+      ::draw2d::graphics * pgraphics = pdib->get_graphics();
+
       int iGridW = 200;
       int iGridH = m_iItemHeight;
 
