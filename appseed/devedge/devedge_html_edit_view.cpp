@@ -149,7 +149,7 @@ namespace devedge
 
    }
 
-   sp(::database::user::interaction) html_edit_view::BackViewGetWnd()
+   sp(::user::box) html_edit_view::BackViewGetWnd()
    {
       return this;
    }

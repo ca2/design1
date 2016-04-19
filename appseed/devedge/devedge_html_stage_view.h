@@ -20,7 +20,7 @@ namespace devedge
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      virtual sp(::database::user::interaction) BackViewGetWnd();
+      virtual sp(::user::box) BackViewGetWnd();
       virtual sp(::user::interaction) get_guie();
 
       virtual void _001OnDraw(::draw2d::dib * pdib);
