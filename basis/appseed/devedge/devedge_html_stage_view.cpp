@@ -161,7 +161,7 @@ namespace devedge
 
    }
 
-   sp(::database::user::interaction) html_stage_view::BackViewGetWnd()
+   sp(::user::box) html_stage_view::BackViewGetWnd()
    {
       return this;
    }
