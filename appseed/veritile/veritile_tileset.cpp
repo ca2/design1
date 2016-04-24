@@ -128,6 +128,13 @@ namespace veritile
    }
 
 
+   point tileset::pick_random_from_sel()
+   {
+
+      return ::lemon::array::pick_random(m_ptaSel);
+
+   }
+
    void tileset::on_property_change(property & property)
    {
 

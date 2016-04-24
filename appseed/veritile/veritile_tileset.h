@@ -46,6 +46,8 @@ namespace veritile
 
       virtual void on_property_change(property & property);
 
+      point pick_random_from_sel();
+
    };
 
 

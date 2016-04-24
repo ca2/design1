@@ -22,16 +22,22 @@ namespace veritile
 
       };
 
+      enum e_mode
+      {
 
+         mode_none,
+         mode_place,
+         mode_random,
+
+      };
+
+      e_mode                                          m_emode;
       e_state                                         m_estate;
       //visual::dib_sp                                  m_spdib;
       string                                          m_strServer;
       bool                                            m_bMouseDown;
 
-      general_data                                    m_data;
-
-      layer                                           m_layer;
-
+      point m_ptMove;
 
       view(::aura::application * papp);
       virtual ~view();
@@ -69,10 +75,10 @@ namespace veritile
       DECL_GEN_SIGNAL(_001OnLButtonUp);
       DECL_GEN_SIGNAL(_001OnLButtonDblClk);
 
-      DECL_GEN_SIGNAL(_001OnSelectionTool);
-      DECL_GEN_SIGNAL(_001OnUpdateSelectionTool);
-      DECL_GEN_SIGNAL(_001OnPolygonTool);
-      DECL_GEN_SIGNAL(_001OnUpdatePolygonTool);
+      DECL_GEN_SIGNAL(_001OnModePlace);
+      DECL_GEN_SIGNAL(_001OnUpdateModePlace);
+      DECL_GEN_SIGNAL(_001OnModeRandom);
+      DECL_GEN_SIGNAL(_001OnUpdateModeRandom);
 
 
 
@@ -96,6 +102,17 @@ namespace veritile
       virtual bool hit_test(point & ptTile,point pt);
 
       virtual void draw_layer(::draw2d::graphics * pdc,layer & l);
+
+      virtual void do_place(point pt, int iTile);
+      document * get_document()
+      {
+         return dynamic_cast <document *> (::user::impact::get_document());
+      }
+
+      data * get_data()
+      {
+         return get_document()->get_typed_data<data >();
+      }
 
    };
 

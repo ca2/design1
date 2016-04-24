@@ -6,12 +6,12 @@ namespace veritile
 
 
    class CLASS_DECL_APP_CORE_VERITILE tileset_view:
-      virtual public ::user::show < ::user::scroll < ::user::control > >
+      virtual public ::user::show < ::user::control >
    {
    public:
 
 
-      typedef ::user::show < ::user::scroll < ::user::control > > BASE_VIEW;
+      typedef ::user::show < ::user::control > BASE_VIEW;
 
       sp(tileset)                      m_ptileset;
          
