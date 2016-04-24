@@ -77,7 +77,7 @@ namespace veritile
          m_pdocCur = dynamic_cast < document * > (m_pviewdata->m_pdoc);
          m_pviewCur = m_pviewdata->m_pdoc->get_typed_view < view > ();
 
-         GetParentFrame()->LoadToolBar(0, "edit_toolbar.xml");
+         GetParentFrame()->LoadToolBar(0, "toolbar.xml");
 //         show_tab_by_id("printer");
       }
       else if(m_pviewdata->m_id == "printer")
@@ -114,7 +114,7 @@ namespace veritile
             m_pdocCur->add_tileset(strPath);
 
          }
-         else if(strPath.ends_ci(".veritile"))
+         else if(strPath.ends_ci(".veritile") || strPath.ends_ci(".tmx"))
          {
 
             pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
@@ -163,6 +163,12 @@ namespace veritile
                }
 
             }
+
+         }
+         else
+         {
+
+            pcreatordata->m_bOk = false;
 
          }
 

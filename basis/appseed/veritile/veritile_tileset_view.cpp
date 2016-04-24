@@ -394,7 +394,7 @@ namespace veritile
    void tileset_view::_001OnSelectionTool(signal_details * pobj)
    {
       data * pdata = get_document()->get_typed_data < data>();
-      pdata->m_drawing.m_emode = drawing::mode_selection;
+//      pdata->m_drawing.m_emode = drawing::mode_place;
       pobj->m_bRet = true;
    }
 

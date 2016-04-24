@@ -6,18 +6,16 @@ namespace veritile
 
 
    view::view(::aura::application * papp) :
-      ::object(papp),
-      m_data(papp),
-      m_layer(papp)
+      ::object(papp)
    {
 
-      
+      m_emode = mode_place;
 
-      connect_command("selection_tool", &view::_001OnSelectionTool);
-      connect_update_cmd_ui("selection_tool", &view::_001OnUpdateSelectionTool);
-      connect_command("polygon_tool", &view::_001OnPolygonTool);
-      connect_update_cmd_ui("polygon_tool", &view::_001OnUpdatePolygonTool);
-
+      connect_command("tool_place", &view::_001OnModePlace);
+      connect_update_cmd_ui("tool_place", &view::_001OnUpdateModePlace);
+      connect_command("tool_random", &view::_001OnModeRandom);
+      connect_update_cmd_ui("tool_random", &view::_001OnUpdateModeRandom);
+      // connect_command("selection_tool", &view::_001OnSelectionTool);
 
    }
 
@@ -65,28 +63,28 @@ namespace veritile
    int view::tilex()
    {
 
-      return MAX(1,abs(m_data.m_set["tilex"].int32()));
+      return MAX(1,abs(get_data()->m_data.m_set["tilex"].int32()));
 
    }
 
    int view::tiley()
    {
 
-      return MAX(1,abs(m_data.m_set["tiley"].int32()));
+      return MAX(1,abs(get_data()->m_data.m_set["tiley"].int32()));
 
    }
 
    int view::xcount()
    {
 
-      return MAX(1,abs(m_data.m_set["xcount"].int32()));
+      return MAX(1,abs(get_data()->m_data.m_set["xcount"].int32()));
 
    }
 
    int view::ycount()
    {
 
-      return MAX(1,abs(m_data.m_set["ycount"].int32()));
+      return MAX(1,abs(get_data()->m_data.m_set["ycount"].int32()));
 
    }
 
@@ -132,6 +130,36 @@ namespace veritile
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(lHint);
       ::user::view_update_hint * puh = dynamic_cast < ::user::view_update_hint * > (phint);
+
+      if (lHint == 0)
+      {
+
+         get_data()->m_data.m_set["tilex"] = 20;
+         get_data()->m_data.m_map["tilex"].m_validate.m_rules["natural"] = true;
+         get_data()->m_data.m_map["tilex"].m_validate.m_rules["m_iMin"] = 16;
+         get_data()->m_data.m_map["tilex"].m_validate.m_rules["m_iMax"] = 256;
+
+
+         get_data()->m_data.m_set["tiley"] = 20;
+         get_data()->m_data.m_map["tiley"].m_validate.m_rules["natural"] = true;
+         get_data()->m_data.m_map["tiley"].m_validate.m_rules["m_iMin"] = 16;
+         get_data()->m_data.m_map["tiley"].m_validate.m_rules["m_iMax"] = 256;
+
+
+         get_data()->m_data.m_set["xcount"] = 20;
+         get_data()->m_data.m_map["xcount"].m_validate.m_rules["natural"] = true;
+         get_data()->m_data.m_map["xcount"].m_validate.m_rules["m_iMin"] = 1;
+         get_data()->m_data.m_map["xcount"].m_validate.m_rules["m_iMax"] = 1024;
+
+
+         get_data()->m_data.m_set["ycount"] = 20;
+         get_data()->m_data.m_map["ycount"].m_validate.m_rules["natural"] = true;
+         get_data()->m_data.m_map["ycount"].m_validate.m_rules["m_iMin"] = 1;
+         get_data()->m_data.m_map["ycount"].m_validate.m_rules["m_iMax"] = 1024;
+
+         update_layer();
+
+      }
    }
 
    void view::_001OnDestroy(signal_details * pobj) 
@@ -179,7 +207,12 @@ namespace veritile
 
       pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
       
-      draw_layer(pdc,m_layer);
+      for (auto & player : get_data()->m_spalayer)
+      {
+       
+         draw_layer(pdc, *player);
+
+      }
 
       ::draw2d::pen_sp pen(allocer());
 
@@ -230,30 +263,6 @@ namespace veritile
       
       SetTimer(123, 240, NULL);
 
-      m_data.m_set["tilex"] = 20;
-      m_data.m_map["tilex"].m_validate.m_rules["natural"] = true;
-      m_data.m_map["tilex"].m_validate.m_rules["m_iMin"] = 16;
-      m_data.m_map["tilex"].m_validate.m_rules["m_iMax"] = 256;
-
-
-      m_data.m_set["tiley"] = 20;
-      m_data.m_map["tiley"].m_validate.m_rules["natural"] = true;
-      m_data.m_map["tiley"].m_validate.m_rules["m_iMin"] = 16;
-      m_data.m_map["tiley"].m_validate.m_rules["m_iMax"] = 256;
-
-
-      m_data.m_set["xcount"] = 20;
-      m_data.m_map["xcount"].m_validate.m_rules["natural"] = true;
-      m_data.m_map["xcount"].m_validate.m_rules["m_iMin"] = 1;
-      m_data.m_map["xcount"].m_validate.m_rules["m_iMax"] = 1024;
-
-
-      m_data.m_set["ycount"] = 20;
-      m_data.m_map["ycount"].m_validate.m_rules["natural"] = true;
-      m_data.m_map["ycount"].m_validate.m_rules["m_iMin"] = 1;
-      m_data.m_map["ycount"].m_validate.m_rules["m_iMax"] = 1024;
-
-      update_layer();
 
    }
 
@@ -283,7 +292,7 @@ namespace veritile
       if(!::user::impact::keyboard_focus_OnSetFocus())
          return false;
 
-      get_document()->get_typed_view < property_sheet >()->set_data(&m_data,this);
+      get_document()->get_typed_view < property_sheet >()->set_data(&get_data()->m_data,this);
 
       return true;
 
@@ -339,35 +348,28 @@ namespace veritile
       
       ScreenToClient(&pt);
 
-      if(pdata->m_drawing.m_emode == drawing::mode_selection)
+      if(m_bMouseDown)
       {
 
-         if(m_bMouseDown && (pdata->m_drawing.m_bMoving || pdata->m_drawing.m_bMovingPoint))
+         point ptLayer;
+
+         if (hit_test(ptLayer, pt))
          {
 
-            pdata->m_drawing.m_ptMove = pt;
+            if (m_ptMove != ptLayer)
+            {
+             
+               m_ptMove = ptLayer;
+
+               do_place(ptLayer, 0);
+
+
+            }
 
          }
-         
-      }
-      else if(pdata->m_drawing.m_emode == drawing::mode_polygon_tool)
-      {
 
-         if (m_estate == state_polygon_tool_initial)
-         {
-
-            pobj->m_bRet = true;
-
-         }
-         else if (m_estate == state_polygon_tool_dots)
-         {
-
-            pobj->m_bRet = true;
-
-         }
 
       }
-
    }
 
 
@@ -384,23 +386,14 @@ namespace veritile
 
       pobj->m_bRet = true;
 
-      tileset * pset = get_cur_tileset();
+      m_bMouseDown = true;
 
-      if(pset != NULL && pset->m_ptaSel.has_elements())
+      point ptLayer;
+
+      if(hit_test(ptLayer,pt))
       {
 
-         point ptSel = pset->m_ptaSel[0];
-
-         point ptLayer;
-
-         if(hit_test(ptLayer,pt))
-         {
-
-            m_layer.m_tile2a[ptLayer.y][ptLayer.x].m_iTile = 0;
-
-            m_layer.m_tile2a[ptLayer.y][ptLayer.x].m_pt = ptSel;
-
-         }
+         do_place(ptLayer,0);
 
       }
 
@@ -432,36 +425,34 @@ namespace veritile
       point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
+      m_bMouseDown = false;
+
    }
 
-   void view::_001OnSelectionTool(signal_details * pobj)
+   void view::_001OnModePlace(signal_details * pobj)
    {
-      data * pdata = get_document()->get_typed_data < data>();
-      pdata->m_drawing.m_emode = drawing::mode_selection;
+      //data * pdata = get_document()->get_typed_data < data>();
+      m_emode = mode_place;
       pobj->m_bRet = true;
    }
 
-   void view::_001OnUpdateSelectionTool(signal_details * pobj)
+   void view::_001OnUpdateModePlace(signal_details * pobj)
    {
       SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+         pcmdui->m_pcmdui->Enable(m_emode != mode_place);
    }
 
 
-   void view::_001OnPolygonTool(signal_details * pobj)
+   void view::_001OnModeRandom(signal_details * pobj)
    {
-      data * pdata = get_document()->get_typed_data < data>();
-      pdata->m_drawing.m_emode = drawing::mode_polygon_tool;
-      pdata->m_pointa.remove_all();
-      m_estate = state_polygon_tool_initial;
-
+      m_emode = mode_random;
       pobj->m_bRet = true;
    }
 
-   void view::_001OnUpdatePolygonTool(signal_details * pobj)
+   void view::_001OnUpdateModeRandom(signal_details * pobj)
    {
       SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+         pcmdui->m_pcmdui->Enable(m_emode != mode_random);
    }
 
    void view::on_property_change(property & property)
@@ -564,7 +555,7 @@ namespace veritile
    void view::update_layer()
    {
 
-      m_layer.update(xcount(),ycount());
+      get_data()->m_spalayer[0]->update(xcount(),ycount());
 
    }
 
@@ -621,6 +612,59 @@ namespace veritile
             }
 
          }
+
+      }
+
+   }
+
+
+
+   void view::do_place(point pt, int iTile)
+   {
+
+      tileset * pset = get_cur_tileset();
+
+      if (pset == NULL || !pset->m_ptaSel.has_elements())
+      {
+
+         return;
+
+      }
+
+      if (m_emode == mode_place)
+      {
+
+         point ptMin(0x7fffffff, 0x7fffffff);
+         for (auto & ptSel : pset->m_ptaSel)
+         {
+
+            ptMin.x = MIN(ptMin.x, ptSel.x);
+            ptMin.y = MIN(ptMin.y, ptSel.y);
+
+         }
+
+         
+
+         for (auto & ptSel : pset->m_ptaSel)
+         {
+            
+            point ptRel = ptSel - ptMin;
+            
+            point ptNew = pt + ptRel;
+
+            get_data()->m_spalayer[0]->m_tile2a[ptNew.y][ptNew.x].m_iTile = iTile;
+
+            get_data()->m_spalayer[0]->m_tile2a[ptNew.y][ptNew.x].m_pt = ptSel;
+
+         }
+
+      }
+      else if (m_emode == mode_random)
+      {
+
+         get_data()->m_spalayer[0]->m_tile2a[pt.y][pt.x].m_iTile = iTile;
+
+         get_data()->m_spalayer[0]->m_tile2a[pt.y][pt.x].m_pt = pset->pick_random_from_sel();
 
       }
 

@@ -15,9 +15,8 @@ namespace veritile
       {
 
          mode_none,
-         mode_selection,
-         mode_polygon_tool,
-         mode_show_alarm,
+         mode_place,
+         mode_random,
 
       };
 
@@ -47,6 +46,7 @@ namespace veritile
 
       ::veritile::element * hit_test(point pt);
 
+      
 
       DRAWDD();
 
