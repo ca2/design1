@@ -12,7 +12,7 @@ namespace biteditor
    {
    public:
 
-      size                          m_sizeTotal;
+      //size                          m_sizeTotal;
       mutex                         m_mutexData;
 
       file_position_t               m_iSelStart;
