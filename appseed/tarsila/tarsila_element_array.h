@@ -6,7 +6,7 @@ namespace tarsila
 
 
    class CLASS_DECL_APP_CORE_TARSILA element_array:
-      public ptr_array < element >
+      public ref_array < element >
    {
    public:
 
