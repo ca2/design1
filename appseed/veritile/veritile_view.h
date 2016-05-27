@@ -50,7 +50,7 @@ namespace veritile
 
       virtual void install_message_handling(::message::dispatch * pinterface);
 
-      virtual void _001OnDraw(::draw2d::dib * pdib);
+      virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
       virtual bool pre_create_window(::user::create_struct& cs);
       virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
@@ -101,7 +101,7 @@ namespace veritile
 
       virtual bool hit_test(point & ptTile,point pt);
 
-      virtual void draw_layer(::draw2d::graphics * pdc,layer & l);
+      virtual void draw_layer(::draw2d::graphics * pgraphics,layer & l);
 
       virtual void do_place(point pt, int iTile);
       document * get_document()

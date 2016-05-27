@@ -663,10 +663,10 @@ void pane_view::GetChildRect(LPRECT lprect)
 }
 
 
-void pane_view::_001OnDraw(CDC *pdc)
+void pane_view::_001OnDraw(CDC *pgraphics)
 {
-   //_001DrawChildren(pdc);
-   m_basecontrol._001OnDraw(pdc);
+   //_001DrawChildren(pgraphics);
+   m_basecontrol._001OnDraw(pgraphics);
 }
 
 void pane_view::Rotate()

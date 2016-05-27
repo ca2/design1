@@ -116,16 +116,16 @@ namespace tarsila
       LayoutKaraokeBouncingBall();*/
    }
 
-   void view:: _001OnDraw(::draw2d::dib * pdib)
+   void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
 
       rect rectClient;
 
       GetClientRect(rectClient);
 
-      pdc->FillSolidRect(rectClient,ARGB(184 - 66,184,184,177));
+      pgraphics->FillSolidRect(rectClient,ARGB(184 - 66,184,184,177));
 
       data * pdata = get_document()->get_typed_data < data>();
 
@@ -153,15 +153,15 @@ namespace tarsila
 
       pen->create_solid(1.0,ARGB(184,0,255,0));
 
-      pdc->SelectObject(pen);
+      pgraphics->SelectObject(pen);
 
       ::draw2d::brush_sp br(allocer());
 
       br->create_solid(ARGB(184,255,255,0));
 
-      pdc->SelectObject(br);
+      pgraphics->SelectObject(br);
 
-      pdc->Polygon(pta.get_data(), pta.get_size());
+      pgraphics->Polygon(pta.get_data(), pta.get_size());
 
       br->create_solid(ARGB(184,255,255,255));
 

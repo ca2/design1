@@ -432,7 +432,7 @@ namespace veritile
    void property_sheet::draw_framing(::draw2d::dib * pdib)
    {
 
-      ::draw2d::graphics * pgraphics = pdib->get_graphics();
+      
 
       int iGridW = 200;
       int iGridH = m_iItemHeight;
@@ -598,7 +598,7 @@ namespace veritile
 
    }
 
-   //void property_sheet::_001OnDraw(::draw2d::dib * pdib)
+   //void property_sheet::_001OnDraw(::draw2d::graphics * pgraphics)
    //{
 
    //   ::user::scroll_view::draw_control_background(pgraphics);

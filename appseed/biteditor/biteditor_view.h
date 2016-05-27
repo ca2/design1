@@ -37,7 +37,7 @@ namespace biteditor
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      //   virtual void _001OnDraw(::draw2d::dib * pdib);
+      //   virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
       int64_t CalcLineCount();
 

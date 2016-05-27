@@ -39,7 +39,7 @@ namespace syllomatter
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      virtual void _001OnDraw(::draw2d::dib * pdib);
+      virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
       void on_document_complete(const char * pszUrl);
 

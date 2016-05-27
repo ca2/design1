@@ -26,7 +26,7 @@ namespace netnodeds
       virtual sp(::user::box) BackViewGetWnd();
       virtual sp(::user::interaction) get_guie();
 
-      virtual void _001OnDraw(::draw2d::dib * pdib);
+      virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
 
 

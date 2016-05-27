@@ -196,21 +196,21 @@ namespace veritile
       LayoutKaraokeBouncingBall();*/
    }
 
-   void view:: _001OnDraw(::draw2d::dib * pdib)
+   void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
       
       rect rectClient;
 
       GetClientRect(rectClient);
 
-      pdc->FillSolidRect(rectClient,ARGB(128,184,188,184));
+      pgraphics->FillSolidRect(rectClient,ARGB(128,184,188,184));
       
       for (auto & player : get_data()->m_spalayer)
       {
        
-         draw_layer(pdc, *player);
+         draw_layer(pgraphics, *player);
 
       }
 
@@ -218,12 +218,12 @@ namespace veritile
 
       pen->create_solid(1.0,ARGB(127,255,255,255));
 
-      pdc->SelectObject(pen);
+      pgraphics->SelectObject(pen);
 
       int cx = width();
       int cy = height();
 
-//      pdc->BitBlt(0,0,cx,cy,m_ptileset->m_dib->get_graphics(),0,0,SRCCOPY);
+//      pgraphics->BitBlt(0,0,cx,cy,m_ptileset->m_dib->get_graphics(),0,0,SRCCOPY);
 
       int wm = cx - 1;
       int hm = cy - 1;
@@ -235,18 +235,18 @@ namespace veritile
 
       for(int x = iTileX; x < cx; x+= iTileX)
       {
-         pdc->MoveTo(x,0);
+         pgraphics->MoveTo(x,0);
          
-         pdc->LineTo(x,hm);
+         pgraphics->LineTo(x,hm);
 
       }
 
       for(int y = iTileY; y < cy; y+= iTileY)
       {
          
-         pdc->MoveTo(0,y);
+         pgraphics->MoveTo(0,y);
 
-         pdc->LineTo(wm,y);
+         pgraphics->LineTo(wm,y);
 
       }
 
@@ -584,7 +584,7 @@ namespace veritile
    }
 
 
-   void view::draw_layer(::draw2d::graphics * pdc,layer & l)
+   void view::draw_layer(::draw2d::graphics * pgraphics,layer & l)
    {
 
       int iTileX = tilex();
@@ -604,7 +604,7 @@ namespace veritile
 
                tileset * pset = get_cur_tileset();
 
-               pdc->BitBlt(x * iTileX,y * iTileY,MIN(iTileX,pset->tilex()),MIN(iTileY,pset->tiley()),
+               pgraphics->BitBlt(x * iTileX,y * iTileY,MIN(iTileX,pset->tilex()),MIN(iTileY,pset->tiley()),
                   pset->m_dib->get_graphics(),
                   tile.m_pt.x * pset->tilex(),
                   tile.m_pt.y * pset->tiley(),SRCCOPY);

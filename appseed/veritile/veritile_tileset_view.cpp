@@ -119,7 +119,7 @@ namespace veritile
       LayoutKaraokeBouncingBall();*/
    }
 
-   void tileset_view::_001OnDrawSel(::draw2d::graphics * pdc,const point_array & ptaSel)
+   void tileset_view::_001OnDrawSel(::draw2d::graphics * pgraphics,const point_array & ptaSel)
    {
 
       int iTileX = m_ptileset->tilex();
@@ -131,16 +131,16 @@ namespace veritile
 
          point pt =  ptaSel[i];
 
-         pdc->FillSolidRect(iTileX * pt.x,iTileY * pt.y,iTileX,iTileY,ARGB(127,245,250,255));
+         pgraphics->FillSolidRect(iTileX * pt.x,iTileY * pt.y,iTileX,iTileY,ARGB(127,245,250,255));
 
       }
 
    }
 
-   void tileset_view:: _001OnDraw(::draw2d::dib * pdib)
+   void tileset_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
 
       rect rectClient;
 
@@ -149,12 +149,12 @@ namespace veritile
       if(m_ptileset.is_null())
          return;
 
-      pdc->FillSolidRect(rectClient,ARGB(184,245,250,255));
+      pgraphics->FillSolidRect(rectClient,ARGB(184,245,250,255));
 
       int cx = m_ptileset->width();
       int cy = m_ptileset->height();
 
-      pdc->BitBlt(0,0,cx,cy, m_ptileset->m_dib->get_graphics(),0, 0,SRCCOPY);
+      pgraphics->BitBlt(0,0,cx,cy, m_ptileset->m_dib->get_graphics(),0, 0,SRCCOPY);
 
       int wm = cx - 1;
       int hm = cy - 1;
@@ -163,7 +163,7 @@ namespace veritile
 
       pen->create_solid(1.0,ARGB(127,255,255,255));
 
-      pdc->SelectObject(pen);
+      pgraphics->SelectObject(pen);
 
       int iTileX = m_ptileset->tilex();
 
@@ -171,17 +171,17 @@ namespace veritile
 
       for(int x = iTileX; x < cx; x+= iTileX)
       {
-         pdc->MoveTo(x, 0);
-         pdc->LineTo(x,hm);
+         pgraphics->MoveTo(x, 0);
+         pgraphics->LineTo(x,hm);
       }
 
       for(int y = iTileY; y < cy; y+= iTileY)
       {
-         pdc->MoveTo(0,y);
-         pdc->LineTo(wm,y);
+         pgraphics->MoveTo(0,y);
+         pgraphics->LineTo(wm,y);
       }
 
-      pdc->set_alpha_mode(::draw2d::alpha_mode_blend);
+      pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
 
       if(m_ptileset->m_ptBeg.x >= 0 && m_ptileset->m_ptBeg.y >= 0
          && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
@@ -193,13 +193,13 @@ namespace veritile
 
          pta.add_unique_range(m_ptileset->m_ptBeg,m_ptileset->m_ptEnd);
 
-         _001OnDrawSel(pdc,pta);
+         _001OnDrawSel(pgraphics,pta);
 
       }
       else
       {
 
-         _001OnDrawSel(pdc,m_ptileset->m_ptaSel);
+         _001OnDrawSel(pgraphics,m_ptileset->m_ptaSel);
 
       }
 
