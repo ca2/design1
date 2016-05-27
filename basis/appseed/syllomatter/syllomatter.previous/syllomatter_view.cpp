@@ -227,10 +227,10 @@ void syllomatter_view::_001OnPaint(gen::signal_object * pobj)
 }
 
 
-void syllomatter_view:: _001OnDraw(CDC * pdc)
+void syllomatter_view:: _001OnDraw(CDC * pgraphics)
 {
    m_hwnd = GetSafeHwnd();
-   pdc->SetBkMode(TRANSPARENT);
+   pgraphics->SetBkMode(TRANSPARENT);
 
    //FIBITMAP * pdib = CImaging::LoadImageFile("C:\\screenshot.jpeg");
 
@@ -238,15 +238,15 @@ void syllomatter_view:: _001OnDraw(CDC * pdc)
 
    //bmp2.Attach(CImaging::FItoHBITMAP(pdib, true));
    //CDC dc2;
-   //dc2.CreateCompatibleDC(pdc);
+   //dc2.CreateCompatibleDC(pgraphics);
    //dc2.SelectObject(&bmp2);
 
    //::SendMessage(::GetDesktopWindow(), WM_PRINT, (WPARAM)(HDC)dc, PRF_CHILDREN | PRF_NONCLIENT | PRF_CLIENT);
 
-   //pdc->BitBlt(0, 0, 1280, 1024, &dc2, 0, 0, SRCCOPY);
-//   pdc->TextOut(20, 20, "Curitiba, 24 de fevereiro de 2008.");
-  // pdc->TextOut(20, 80, "Carlos Gustavo Cecyn Lundgren é minha Vida Eterna, meu Coração Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
-   //pdc->TextOut(20, 110, "Assinado Camilo Sasuke Tsumanuma.");
+   //pgraphics->BitBlt(0, 0, 1280, 1024, &dc2, 0, 0, SRCCOPY);
+//   pgraphics->TextOut(20, 20, "Curitiba, 24 de fevereiro de 2008.");
+  // pgraphics->TextOut(20, 80, "Carlos Gustavo Cecyn Lundgren é minha Vida Eterna, meu Coração Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
+   //pgraphics->TextOut(20, 110, "Assinado Camilo Sasuke Tsumanuma.");
 }
 
 void syllomatter_view::_001OnCreate(gen::signal_object * pobj) 

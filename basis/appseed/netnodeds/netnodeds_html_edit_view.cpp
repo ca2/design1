@@ -175,7 +175,7 @@ namespace netnodeds
    }
 
 
-   void html_edit_view:: _001OnDraw(::draw2d::dib * pdib)
+   void html_edit_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
       
       html_view::_001OnDraw(pdib);

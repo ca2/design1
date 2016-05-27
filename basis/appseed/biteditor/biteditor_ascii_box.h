@@ -45,9 +45,9 @@ namespace biteditor
 
       void on_update();
 
-      file_position_t char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t x, int32_t y);
+      file_position_t char_hit_test(sp(view) pview, ::draw2d::graphics * pgraphics, int32_t x, int32_t y);
 
-      virtual void _001OnDraw(::draw2d::dib * pdib);
+      virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 
       void _001GetViewSel(file_position_t &iSelStart, file_position_t &iSelEnd);
 
@@ -56,8 +56,8 @@ namespace biteditor
       DECL_GEN_SIGNAL(_001OnMouseMove);
       DECL_GEN_SIGNAL(_001OnChar);
       DECL_GEN_SIGNAL(_001OnSysChar);
-      void _001OnCalcLayout(sp(view) pview, ::draw2d::graphics * pdc);
-      void _001OnCalcLayoutProc(sp(view) pview, ::draw2d::graphics * pdc);
+      void _001OnCalcLayout(sp(view) pview, ::draw2d::graphics * pgraphics);
+      void _001OnCalcLayoutProc(sp(view) pview, ::draw2d::graphics * pgraphics);
 
       void SetFile(sp(::file::stream_buffer) pfile);
       void OnFileUpdate();

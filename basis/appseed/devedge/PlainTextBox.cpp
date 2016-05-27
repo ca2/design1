@@ -54,7 +54,7 @@ namespace devedge
 		}
 	}
 
-void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pgraphics)
 {
    if(pview->m_pkeyboardfocus == (KeyboardFocus *) this)
    {
@@ -87,7 +87,7 @@ void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pdc)
    rectClient.left = m_pt.x;
    rectClient.bottom = rectClient.top + m_size.cy;
    rectClient.right = rectClient.left + m_size.cx;
-   pdc->FillSolidRect(rectClient, crBk);
+   pgraphics->FillSolidRect(rectClient, crBk);
 
 	
 	int y = m_pt.y;
@@ -96,9 +96,9 @@ void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pdc)
 	Sort(iSelStart, iSelEnd);
 	if(m_pfont != NULL)
 	{
-		pdc->SelectObject(m_pfont);
+		pgraphics->SelectObject(m_pfont);
 	}
-	size size3 = pdc->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALÍ");
 	int maxcy = size3.cy;
    AStrArray & straLines = m_straLines;
    AStrArray straLineFeed;
@@ -136,30 +136,30 @@ void PlainTextBox::_001OnDraw(devedgeView * pview, CDC * pdc)
       strExtent1.Replace("\t", "   ");
       strExtent2.Replace("\t", "   ");
       strExtent3.Replace("\t", "   ");
-		pdc->SetBkMode(TRANSPARENT);
-      pdc->SetTextColor(cr);
-      pdc->SetBkColor(crBkSel);
-		pdc->TextOut(m_pt.x, y, strExtent1);
-		size size1 = pdc->GetTextExtent(strExtent1);
-		pdc->SetBkMode(OPAQUE);
-      pdc->SetTextColor(crSel);
-		pdc->TextOut(m_pt.x + size1.cx, y, strExtent2);
-		size size2 = pdc->GetTextExtent(strExtent2);
-      pdc->SetTextColor(cr);
-      pdc->SetBkColor(RGB(120, 240, 180));
-		pdc->SetBkMode(TRANSPARENT);
-		pdc->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
+		pgraphics->SetBkMode(TRANSPARENT);
+      pgraphics->SetTextColor(cr);
+      pgraphics->SetBkColor(crBkSel);
+		pgraphics->TextOut(m_pt.x, y, strExtent1);
+		size size1 = pgraphics->GetTextExtent(strExtent1);
+		pgraphics->SetBkMode(OPAQUE);
+      pgraphics->SetTextColor(crSel);
+		pgraphics->TextOut(m_pt.x + size1.cx, y, strExtent2);
+		size size2 = pgraphics->GetTextExtent(strExtent2);
+      pgraphics->SetTextColor(cr);
+      pgraphics->SetBkColor(RGB(120, 240, 180));
+		pgraphics->SetBkMode(TRANSPARENT);
+		pgraphics->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
 		maxcy = max(size1.cy, size2.cy);
 		maxcy = max(maxcy, size3.cy);
       if(m_bFocus && m_bCaretOn && i3 == str1.GetLength())
       {
-         pdc->MoveTo(m_pt.x + size1.cx, y);
-         pdc->LineTo(m_pt.x + size1.cx, y + maxcy);
+         pgraphics->MoveTo(m_pt.x + size1.cx, y);
+         pgraphics->LineTo(m_pt.x + size1.cx, y + maxcy);
       }
       if(m_bFocus && m_bCaretOn && i3 == (str1.GetLength() + str2.GetLength()))
       {
-         pdc->MoveTo(m_pt.x + size1.cx + size2.cx, y);
-         pdc->LineTo(m_pt.x + size1.cx + size2.cx, y + maxcy);
+         pgraphics->MoveTo(m_pt.x + size1.cx + size2.cx, y);
+         pgraphics->LineTo(m_pt.x + size1.cx + size2.cx, y + maxcy);
       }
 		y += maxcy;
 		lim += straLines[i].GetLength();
@@ -208,10 +208,10 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * p
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 	m_bMouseDown = true;
-	CDC * pdc = pview->GetDC();
-	m_iSelStart = char_hit_test(pview, pdc, pmouse->m_pt.x, pmouse->m_pt.y);
+	CDC * pgraphics = pview->GetDC();
+	m_iSelStart = char_hit_test(pview, pgraphics, pmouse->m_pt.x, pmouse->m_pt.y);
 	m_iSelEnd = m_iSelStart;
-	pview->ReleaseDC(pdc);
+	pview->ReleaseDC(pgraphics);
 	pview->_001RedrawWindow();
 	pview->m_pelementMouseDown = this;
 	
@@ -219,24 +219,24 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * p
 void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
-	CDC * pdc = pview->GetDC();
-	m_iSelEnd = char_hit_test(pview, pdc,pmouse->m_pt.x, pmouse->m_pt.y);
+	CDC * pgraphics = pview->GetDC();
+	m_iSelEnd = char_hit_test(pview, pgraphics,pmouse->m_pt.x, pmouse->m_pt.y);
    m_iColumn = SelToColumn(pview, m_iSelEnd);
-	pview->ReleaseDC(pdc);
+	pview->ReleaseDC(pgraphics);
 	pview->_001RedrawWindow();
 	m_bMouseDown = false;
 	//AfxMessageBox(m_strText);
 }
 
-void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pgraphics)
 {
    if(m_pfont != NULL)
 	{
-		pdc->SelectObject(m_pfont);
+		pgraphics->SelectObject(m_pfont);
 	}
    int y = 0;
    int i = 1;
-	size size3 = pdc->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALÍ");
 
    m_iLineHeight = size3.cy;
    char buf[4096 + 1];
@@ -253,11 +253,11 @@ void PlainTextBox::_001OnCalcLayoutProc(devedgeView * pview, CDC * pdc)
       m_size);
 }
 
-void PlainTextBox::_001OnCalcLayout(devedgeView * pview, CDC * pdc)
+void PlainTextBox::_001OnCalcLayout(devedgeView * pview, CDC * pgraphics)
 {
 if(m_pfont != NULL)
 	{
-		pdc->SelectObject(m_pfont);
+		pgraphics->SelectObject(m_pfont);
 	}
 	string str;
 	_001GetViewText(pview, str);
@@ -270,7 +270,7 @@ if(m_pfont != NULL)
 	int y = 0;
 	bool bFound = false;
 	string strLine;
-	size size3 = pdc->GetTextExtent("gqYALÍWM");
+	size size3 = pgraphics->GetTextExtent("gqYALÍWM");
 	size size;
 	m_size.cx = 0;
 	for(int i = 0; i < straLines.GetSize(); i++)
@@ -375,11 +375,11 @@ int PlainTextBox::SelToColumn(devedgeView * pview, int iSel)
    return -1;
 }
 
-int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
+int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pgraphics, int px, int py)
 {
    if(m_pfont != NULL)
 	{
-		pdc->SelectObject(m_pfont);
+		pgraphics->SelectObject(m_pfont);
 	}
    py += pview->m_ptScroll.y % m_iLineHeight;
 	string str;
@@ -394,7 +394,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
 	bool bFound = false;
 	string strLine;
    string strExtent;
-	size size3 = pdc->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALÍ");
 	int iOffset = 0;
    AStrArray stra;
 	for(int i = 0; i < straLines.GetSize(); i++)
@@ -411,7 +411,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
       }
       strExtent = strLine;
       strExtent.Replace("\t", "   ");
-		size size = pdc->GetTextExtent(strExtent);
+		size size = pgraphics->GetTextExtent(strExtent);
 		maxcy = max(size.cy, size3.cy);
 		if(py >= y && py < y + maxcy)
 		{
@@ -428,7 +428,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pdc, int px, int py)
 		lim1 = lim2;
       strExtent = strLine.Mid(0, i + 1);
       strExtent.Replace("\t", "   ");
-		lim2 = pdc->GetTextExtent(strExtent).cx;
+		lim2 = pgraphics->GetTextExtent(strExtent).cx;
 		lim = (lim2 + lim1) / 2;
 		if(px >= lim1 && px <= lim)
 		{
@@ -450,9 +450,9 @@ void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::signal_object * pob
       
 		if(m_bMouseDown)
 		{
-		CDC * pdc = pview->GetDC();
-		m_iSelEnd = char_hit_test(pview, pdc,pmouse->m_pt.x, pmouse->m_pt.y);
-		pview->ReleaseDC(pdc);
+		CDC * pgraphics = pview->GetDC();
+		m_iSelEnd = char_hit_test(pview, pgraphics,pmouse->m_pt.x, pmouse->m_pt.y);
+		pview->ReleaseDC(pgraphics);
 		pview->_001RedrawWindow();
 		}
 

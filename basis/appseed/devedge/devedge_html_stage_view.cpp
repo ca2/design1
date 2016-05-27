@@ -187,7 +187,7 @@ namespace devedge
    }
 
 
-   void html_stage_view:: _001OnDraw(::draw2d::dib * pdib)
+   void html_stage_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
       html_view::_001OnDraw(pdib);

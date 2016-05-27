@@ -108,9 +108,9 @@ namespace biteditor
          return;
 
 
-      ::draw2d::memory_graphics pdc(allocer());
-      m_pasciibox->_001OnCalcLayout(this, pdc);
-      m_phexbox->_001OnCalcLayout(this, pdc);
+      ::draw2d::memory_graphics pgraphics(allocer());
+      m_pasciibox->_001OnCalcLayout(this, pgraphics);
+      m_phexbox->_001OnCalcLayout(this, pgraphics);
 
       size64 sizeTotal;
       sizeTotal.cx = m_pasciibox->m_size.cx + m_phexbox->m_size.cx + 200;
@@ -189,13 +189,13 @@ namespace biteditor
 
 
       //   sp(::user::document) pdoc = get_document();
-      ::draw2d::memory_graphics pdc(allocer());
+      ::draw2d::memory_graphics pgraphics(allocer());
 
-      pdc->SelectObject(m_phexbox->m_spfont);
-      size size1 = pdc->GetTextExtent("gqYALH");
+      pgraphics->SelectObject(m_phexbox->m_spfont);
+      size size1 = pgraphics->GetTextExtent("gqYALH");
 
-      pdc->SelectObject(m_pasciibox->m_spfont);
-      size size2 = pdc->GetTextExtent("gqYALH");
+      pgraphics->SelectObject(m_pasciibox->m_spfont);
+      size size2 = pgraphics->GetTextExtent("gqYALH");
 
 
 
@@ -251,10 +251,10 @@ namespace biteditor
    }
 
    /*
-   void view:: _001OnDraw(::draw2d::dib * pdib)
+   void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
    // sp(::user::document) pdoc = get_document();
-   //   pdc->OffsetViewportOrg(-m_ptScroll.x, -(m_ptScroll.y % m_iLineHeight));
+   //   pgraphics->OffsetViewportOrg(-m_ptScroll.x, -(m_ptScroll.y % m_iLineHeight));
 
    ::draw2d::region rgn;
 
@@ -263,10 +263,10 @@ namespace biteditor
    ClientToScreen(rectClient);
    rgn.create_rect(rectClient);
 
-   pdc->SelectClipRgn(&rgn);
+   pgraphics->SelectClipRgn(&rgn);
 
-   m_pasciibox->_001OnDraw(this, pdc);
-   m_phexbox->_001OnDraw(this, pdc);
+   m_pasciibox->_001OnDraw(this, pgraphics);
+   m_phexbox->_001OnDraw(this, pgraphics);
 
    }
    */

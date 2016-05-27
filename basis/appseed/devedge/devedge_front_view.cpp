@@ -139,12 +139,12 @@ namespace devedge
    }
 
 
-   void front_view:: _001OnDraw(::draw2d::dib * pdib)
+   void front_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
 
-      pdc->OffsetViewportOrg(-2, -2);
+      pgraphics->OffsetViewportOrg(-2, -2);
 
    }
 

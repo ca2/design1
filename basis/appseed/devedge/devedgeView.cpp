@@ -108,9 +108,9 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
    else if(lHint == 123)
    {
       SetFile(&GetDocument()->m_file);
-      CDC * pdc = _001GetWnd()->GetDC();
-      _001OnCalcLayout(pdc);
-      _001GetWnd()->ReleaseDC(pdc);
+      CDC * pgraphics = _001GetWnd()->GetDC();
+      _001OnCalcLayout(pgraphics);
+      _001GetWnd()->ReleaseDC(pgraphics);
 
       AfxBeginThread(get_app(), ThreadProcScrollSize, dynamic_cast < Ex1EditPlainTextInterface * > (this));
    }
@@ -123,9 +123,9 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
       CreateLineIndex();
       m_bGetTextNeedUpdate = true;
       RedrawWindow();
-      CDC * pdc = _001GetWnd()->GetDC();
-      _001OnCalcLayout(pdc);
-      _001GetWnd()->ReleaseDC(pdc);
+      CDC * pgraphics = _001GetWnd()->GetDC();
+      _001OnCalcLayout(pgraphics);
+      _001GetWnd()->ReleaseDC(pgraphics);
 
       AfxBeginThread(get_app(), ThreadProcScrollSize, dynamic_cast < Ex1EditPlainTextInterface * > (this));
 

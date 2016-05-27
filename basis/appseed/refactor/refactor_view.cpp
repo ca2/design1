@@ -91,9 +91,9 @@ namespace refactor
       {
          //m_pdata->SetFile(get_document()->m_file);
          //// todo colorer_select_type();
-         //::ca::graphics * pdc = GetDC();
-         //_001OnCalcLayout(pdc);
-         //ReleaseDC(pdc);
+         //::ca::graphics * pgraphics = GetDC();
+         //_001OnCalcLayout(pgraphics);
+         //ReleaseDC(pgraphics);
          //_001LayoutScrollBars();
       }
       else if(lHint == 12345)
@@ -111,9 +111,9 @@ namespace refactor
          //CreateLineIndex();
          //m_bGetTextNeedUpdate = true;
          //RedrawWindow();
-         //::ca::graphics * pdc = GetDC();
-         //_001OnCalcLayout(pdc);
-         //ReleaseDC(pdc);
+         //::ca::graphics * pgraphics = GetDC();
+         //_001OnCalcLayout(pgraphics);
+         //ReleaseDC(pgraphics);
 
          //__begin_thread(get_app(), ThreadProcScrollSize, dynamic_cast < ::user::plain_edit * > (this));
 
@@ -139,7 +139,7 @@ namespace refactor
 
 
 
-   void view:: _001OnDraw(::draw2d::dib * pdib)
+   void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
       ::user::plain_edit_view::_001OnDraw(pdib);
@@ -152,7 +152,7 @@ namespace refactor
 //      on_auto_complete(m_iSelStart, straAutoComplete);
 //
 //
-//      pdc->set_text_rendering(::ca::text_rendering_anti_alias);
+//      pgraphics->set_text_rendering(::ca::text_rendering_anti_alias);
 //
 //      COLORREF crBk;
 //      COLORREF crBkSel;
@@ -165,7 +165,7 @@ namespace refactor
 //      crBkSel     = ARGB(255, 0, 0, 127);
 //      crSel       = ARGB(255, 255, 255, 255);
 //
-//      ::ca::job * pjob = pdc->m_pjob;
+//      ::ca::job * pjob = pgraphics->m_pjob;
 //
 //      ::user::print_job * pprintjob = NULL;
 //      if(pjob!= NULL)
@@ -201,7 +201,7 @@ namespace refactor
 //      && !System.savings().is_trying_to_save(gen::resource_blur_background))
 //      {
 //
-//         pdc->blur(true, 4, rectClient);
+//         pgraphics->blur(true, 4, rectClient);
 //         //class imaging & imaging = System.imaging();
 //         //rect rectClient;
 ////         GetWindowRect(rectClient);
@@ -217,7 +217,7 @@ namespace refactor
 //         }
 //         if(m_fastblur.is_set() && m_fastblur->get_graphics() != NULL)
 //         {
-//            m_fastblur->get_graphics()->BitBlt(0, 0, rectClient.width(), rectClient.height(), pdc, 0, 0, SRCCOPY);
+//            m_fastblur->get_graphics()->BitBlt(0, 0, rectClient.width(), rectClient.height(), pgraphics, 0, 0, SRCCOPY);
 //            m_fastblur.blur();
 //            imaging.bitmap_blend(
 //               m_fastblur->get_graphics(),
@@ -226,7 +226,7 @@ namespace refactor
 //               m_dibBk->get_graphics(),
 //               null_point(),
 //               49);
-//            pdc->from(rectClient.size(),
+//            pgraphics->from(rectClient.size(),
 //               m_fastblur->get_graphics(),
 //               null_point(),
 //               SRCCOPY);
@@ -235,9 +235,9 @@ namespace refactor
 //      else
 //      {
 //         class imaging & imaging = System.imaging();
-//         //_001DrawBackground(pdc, rectClipBox);
+//         //_001DrawBackground(pgraphics, rectClipBox);
 //         imaging.color_blend(
-//            pdc,
+//            pgraphics,
 //            rectClient,
 //            RGB(200, 255, 255),
 //            127);
@@ -247,7 +247,7 @@ namespace refactor
 //      c.set_rgb(RGB(227, 227, 210));
 //      c.hls_rate(0.0, -0.33, -0.23);
 //      COLORREF crBorder = c.get_rgb() | (0xff << 24);
-//      pdc->Draw3dRect(rectClient, crBorder, crBorder);
+//      pgraphics->Draw3dRect(rectClient, crBorder, crBorder);
 //
 //      if(m_pdata == NULL)
 //         return;
@@ -259,11 +259,11 @@ namespace refactor
 //
 //      if(m_iLineHeight == 0)
 //      {
-//         pdc->OffsetViewportOrg(-m_scrollinfo.m_ptScroll.x, m_scrollinfo.m_ptScroll.y);
+//         pgraphics->OffsetViewportOrg(-m_scrollinfo.m_ptScroll.x, m_scrollinfo.m_ptScroll.y);
 //      }
 //      else
 //      {
-//         pdc->OffsetViewportOrg(-m_scrollinfo.m_ptScroll.x, -(m_scrollinfo.m_ptScroll.y % m_iLineHeight));
+//         pgraphics->OffsetViewportOrg(-m_scrollinfo.m_ptScroll.x, -(m_scrollinfo.m_ptScroll.y % m_iLineHeight));
 //      }
 //
 //      ::ca::region_sp rgn(get_app());
@@ -275,7 +275,7 @@ namespace refactor
 //
 //      double left = rectClient.left;
 //
-//   //   pdc->SelectClipRgn(&rgn);
+//   //   pgraphics->SelectClipRgn(&rgn);
 //
 //      if(Application.get_keyboard_focus() == this)
 //      {
@@ -298,9 +298,9 @@ namespace refactor
 //      _001GetViewSel(iSelStart, iSelEnd);
 //      strsize iCursor = iSelEnd;
 //      sort::sort(iSelStart, iSelEnd);
-//      pdc->SelectObject(GetFont());
+//      pgraphics->SelectObject(GetFont());
 //      size size3;
-//      visual::graphics_extension(get_app()).GetTextExtent(pdc, unitext("gGYIﾍ"), size3);
+//      visual::graphics_extension(get_app()).GetTextExtent(pgraphics, unitext("gGYIﾍ"), size3);
 //      int iLineHeight = size3.cy;
 //      stringa & straLines = m_lines.lines;
 //      stringa straLineFeed;
@@ -364,8 +364,8 @@ namespace refactor
 //               string strExtent2;
 //               strExtent2 = strLine.Mid(x, len);
 //               class size size1;
-//               visual::graphics_extension(get_app()).GetTextExtent(pdc, strExtent1, size1);
-//               pdc->TextOutA(left + size1.cx, y, strExtent2);
+//               visual::graphics_extension(get_app()).GetTextExtent(pgraphics, strExtent1, size1);
+//               pgraphics->TextOutA(left + size1.cx, y, strExtent2);
 //
 //            }
 //         }
@@ -397,21 +397,21 @@ namespace refactor
 //               str_fill(strExtent2, '*');
 //               str_fill(strExtent3, '*');
 //            }
-//            pdc->SetBkMode(TRANSPARENT);
-//            pdc->set_color(cr);
-//            pdc->SetBkColor(crBkSel);
+//            pgraphics->SetBkMode(TRANSPARENT);
+//            pgraphics->set_color(cr);
+//            pgraphics->SetBkColor(crBkSel);
 //            sized size1(0.0, 0.0);
-//            pdc->GetTextExtent(size1, strLine, strLine.length(), iStart);
+//            pgraphics->GetTextExtent(size1, strLine, strLine.length(), iStart);
 //
 //            if(i1 >= 0 && i1 <= iEnd)
 //            {
 //               
-//               pdc->setColor(ARGB(255, 0, 255, 0));
+//               pgraphics->setColor(ARGB(255, 0, 255, 0));
 //
 //               for(int i = 0; i < straAutoComplete.get_size(); i++)
 //               {
 //
-//                  pdc->TextOut(left + size1.cx, y + (iLineHeight * (i + 1)), straAutoComplete[i]);
+//                  pgraphics->TextOut(left + size1.cx, y + (iLineHeight * (i + 1)), straAutoComplete[i]);
 //
 //               }
 //               
@@ -420,20 +420,20 @@ namespace refactor
 //            }
 //
 //            sized sizeb(0.0, 0.0);
-//            pdc->GetTextExtent(sizeb, strLine, iEnd);
+//            pgraphics->GetTextExtent(sizeb, strLine, iEnd);
 //            sized size2(0.0, 0.0);
-//            pdc->GetTextExtent(size2, strLine, strLine.length(), iEnd);
+//            pgraphics->GetTextExtent(size2, strLine, strLine.length(), iEnd);
 //            size2.cx -= size1.cx;
 //            if(iEnd > iStart)
 //            {
-//      //         pdc->FillSolidRect((int) (left + size1.cx), y, size2.cx, size2.cy, ARGB(255, 120, 240, 180));
-//               pdc->set_color(crSel);
-//    //           pdc->TextOut(left + size1.cx, y, strExtent2);
+//      //         pgraphics->FillSolidRect((int) (left + size1.cx), y, size2.cx, size2.cy, ARGB(255, 120, 240, 180));
+//               pgraphics->set_color(crSel);
+//    //           pgraphics->TextOut(left + size1.cx, y, strExtent2);
 //            }
-//            pdc->set_color(cr);
+//            pgraphics->set_color(cr);
 //            
-//            pdc->SetBkMode(TRANSPARENT);
-//  //          pdc->TextOut(left + size1.cx + size2.cx, y, strExtent3);
+//            pgraphics->SetBkMode(TRANSPARENT);
+//  //          pgraphics->TextOut(left + size1.cx + size2.cx, y, strExtent3);
 //            //maxcy = max(size1.cy, size2.cy);
 //            //maxcy = max(maxcy, size3.cy);
 //            if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
@@ -441,7 +441,7 @@ namespace refactor
 //            }
 //            else if(m_bFocus && m_bCaretOn && i3 == (str1.get_length() + str2.get_length()))
 //            {
-////               pdc->MoveTo(left + size2.cx + size1.cx, y);
+////               pgraphics->MoveTo(left + size2.cx + size1.cx, y);
 //            }
 //         }
 //         y += iLineHeight;

@@ -5,7 +5,7 @@
 namespace netnodeds
 {
 
-void Element2D::_001OnDraw(netnodedsView * pview, CDC * pdc)
+void Element2D::_001OnDraw(netnodedsView * pview, CDC * pgraphics)
 {
 	
 }
@@ -36,7 +36,7 @@ bool Element2D::hit_test(int x, int y)
 	y >= m_pt.y && y <= m_pt.y + m_size.cy;
 }
 
-void Element2D::_001OnCalcLayout(CDC * pdc)
+void Element2D::_001OnCalcLayout(CDC * pgraphics)
 {
 }
 

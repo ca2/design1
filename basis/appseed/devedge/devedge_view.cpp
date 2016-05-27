@@ -57,8 +57,8 @@ namespace devedge
       {
          //m_pdata->SetFile(get_document()->m_file);
          //colorer_select_type();
-         //::ca::client_graphics pdc(this);
-         //_001OnCalcLayout(pdc);
+         //::ca::client_graphics pgraphics(this);
+         //_001OnCalcLayout(pgraphics);
          //
          //_001LayoutScrollBars();
       }
@@ -71,8 +71,8 @@ namespace devedge
          //CreateLineIndex();
          //m_bGetTextNeedUpdate = true;
          //RedrawWindow();
-         //::ca::client_graphics pdc(this);
-         //_001OnCalcLayout(pdc);
+         //::ca::client_graphics pgraphics(this);
+         //_001OnCalcLayout(pgraphics);
          //
 
          //ThreadProcScrollSize(dynamic_cast < ::user::plain_edit * > (this));
@@ -194,8 +194,8 @@ namespace devedge
 //         m_pdata->SetFile(get_document()->m_file);
          // xyzxyz
 //         _001OnUpdate();
-//         ::ca::client_graphics pdc(this);
-  //       _001OnCalcLayout(pdc);
+//         ::ca::client_graphics pgraphics(this);
+  //       _001OnCalcLayout(pgraphics);
     //     
       //   _001LayoutScrollBars();
          colorer_select_type();

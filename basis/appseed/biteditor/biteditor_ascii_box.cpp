@@ -46,10 +46,10 @@ namespace biteditor
    }
 
 
-   void ascii_box::_001OnDraw(::draw2d::dib * pdib)
+   void ascii_box::_001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::draw2d::graphics * pdc = pdib->get_graphics();
+      
 
       if(m_pview == NULL || m_pview->get_document() == NULL)
          return;
@@ -74,7 +74,7 @@ namespace biteditor
       COLORREF crSel = ARGB(255, 10, 30, 20);
       COLORREF cr = ARGB(255, 0, 0, 0);
 
-      pdc->FillSolidRect(rectClient, ARGB(255, 240, 255, 240));
+      pgraphics->FillSolidRect(rectClient, ARGB(255, 240, 255, 240));
 
       ::draw2d::region_sp rgn(allocer());
 
@@ -88,7 +88,7 @@ namespace biteditor
 
 
 
-      //pdc->SelectClipRgn(rgn, RGN_COPY);
+      //pgraphics->SelectClipRgn(rgn, RGN_COPY);
       if(Session.get_keyboard_focus() == (elemental *) this)
       {
          m_bFocus = true;
@@ -114,14 +114,14 @@ namespace biteditor
       rectClient.left = m_pt.x;
       rectClient.bottom = rectClient.top + m_size.cy;
       rectClient.right = rectClient.left + m_size.cx;*/
-      ///pdc->FillSolidRect(rectClient, crBk);
+      ///pgraphics->FillSolidRect(rectClient, crBk);
 
 
       int32_t y = m_pt.y;
       _001GetViewSel(iSelStart, iSelEnd);
       file_position_t iCursor = iSelEnd;
       Sort(iSelStart, iSelEnd);
-      pdc->SelectObject(m_spfont);
+      pgraphics->SelectObject(m_spfont);
       int32_t maxcy = m_pview->m_iLineHeight;
 
 
@@ -131,7 +131,7 @@ namespace biteditor
 
 //      point ptOffset = get_viewport_offset();
 
-      pdc->OffsetViewportOrg(0, - ptOffset.y % m_pview->m_iLineHeight);
+      pgraphics->OffsetViewportOrg(0, - ptOffset.y % m_pview->m_iLineHeight);
 
       string strLine;
       string str1;
@@ -155,31 +155,31 @@ namespace biteditor
          strExtent1 = str1;
          strExtent2 = str2;
          strExtent3 = str3;
-//         pdc->SetBkMode(TRANSPARENT);
-         pdc->set_text_color(cr);
-//         pdc->SetBkColor(crBkSel);
-         pdc->TextOut(m_pt.x, y, strExtent1);
-         size size1 = pdc->GetTextExtent(strExtent1);
-//         pdc->SetBkMode(OPAQUE);
-         size size2 = pdc->GetTextExtent(strExtent2);
-         pdc->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, m_pview->m_iLineHeight,crBkSel);
-         pdc->set_text_color(crSel);
-         pdc->TextOut(m_pt.x + size1.cx, y, strExtent2);
-         pdc->set_text_color(cr);
-//         pdc->SetBkColor(ARGB(255, 120, 240, 180));
-//         pdc->SetBkMode(TRANSPARENT);
-         pdc->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
+//         pgraphics->SetBkMode(TRANSPARENT);
+         pgraphics->set_text_color(cr);
+//         pgraphics->SetBkColor(crBkSel);
+         pgraphics->TextOut(m_pt.x, y, strExtent1);
+         size size1 = pgraphics->GetTextExtent(strExtent1);
+//         pgraphics->SetBkMode(OPAQUE);
+         size size2 = pgraphics->GetTextExtent(strExtent2);
+         pgraphics->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, m_pview->m_iLineHeight,crBkSel);
+         pgraphics->set_text_color(crSel);
+         pgraphics->TextOut(m_pt.x + size1.cx, y, strExtent2);
+         pgraphics->set_text_color(cr);
+//         pgraphics->SetBkColor(ARGB(255, 120, 240, 180));
+//         pgraphics->SetBkMode(TRANSPARENT);
+         pgraphics->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
 
          maxcy = m_pview->m_iLineHeight;
          if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
          {
-            pdc->MoveTo(m_pt.x + size1.cx, y);
-            pdc->LineTo(m_pt.x + size1.cx, y + maxcy);
+            pgraphics->MoveTo(m_pt.x + size1.cx, y);
+            pgraphics->LineTo(m_pt.x + size1.cx, y + maxcy);
          }
          if(m_bFocus && m_bCaretOn && i3 == (str1.get_length() + str2.get_length()))
          {
-            pdc->MoveTo(m_pt.x + size1.cx + size2.cx, y);
-            pdc->LineTo(m_pt.x + size1.cx + size2.cx, y + maxcy);
+            pgraphics->MoveTo(m_pt.x + size1.cx + size2.cx, y);
+            pgraphics->LineTo(m_pt.x + size1.cx + size2.cx, y + maxcy);
          }
          y += m_pview->m_iLineHeight;
          lim += m_pview->m_iLineSize;
@@ -194,13 +194,13 @@ namespace biteditor
 
       m_bMouseDown = true;
 
-      ::draw2d::memory_graphics pdc(allocer());
+      ::draw2d::memory_graphics pgraphics(allocer());
 
       point pt = pmouse->m_pt;
 
       ScreenToClient(&pt);
 
-      m_pview->m_iSelStart = char_hit_test(m_pview, pdc, pt.x, pt.y);
+      m_pview->m_iSelStart = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
 
       m_pview->m_iSelEnd = m_pview->m_iSelStart;
 
@@ -225,13 +225,13 @@ namespace biteditor
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
-      ::draw2d::memory_graphics pdc(allocer());
+      ::draw2d::memory_graphics pgraphics(allocer());
 
       point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
 
-      m_pview->m_iSelEnd = char_hit_test(m_pview, pdc, pt.x, pt.y);
+      m_pview->m_iSelEnd = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
       m_pview->m_iColumn = m_pview->SelToColumn(m_pview->m_iSelEnd);
       m_pview->_001RedrawWindow();
       m_bMouseDown = false;
@@ -241,12 +241,12 @@ namespace biteditor
       }
    }
 
-   void ascii_box::_001OnCalcLayoutProc(sp(view) pview, ::draw2d::graphics * pdc)
+   void ascii_box::_001OnCalcLayoutProc(sp(view) pview, ::draw2d::graphics * pgraphics)
    {
       UNREFERENCED_PARAMETER(pview);
-      UNREFERENCED_PARAMETER(pdc);
+      UNREFERENCED_PARAMETER(pgraphics);
       /*UNREFERENCED_PARAMETER(pview);
-      pdc->SelectObject(m_spfont);
+      pgraphics->SelectObject(m_spfont);
       int64_t y = 0;
       //int32_t i = 1;
    //   char buf[4096 + 1];
@@ -260,17 +260,17 @@ namespace biteditor
       if(y <= 0)
          y = 200;
       m_size.cy = (long) y;
-      size size3 = pdc->GetTextExtent("gqYALÍpd");
+      size size3 = pgraphics->GetTextExtent("gqYALÍpd");
       m_size.cx = size3.cx * m_pview->m_iLineSize / 8;
       m_pview->UpdateScrollSizes();*/
    }
 
-   void ascii_box::_001OnCalcLayout(sp(view) pview, ::draw2d::graphics * pdc)
+   void ascii_box::_001OnCalcLayout(sp(view) pview, ::draw2d::graphics * pgraphics)
    {
       UNREFERENCED_PARAMETER(pview);
-      UNREFERENCED_PARAMETER(pdc);
+      UNREFERENCED_PARAMETER(pgraphics);
       /*
-      pdc->SelectObject(m_spfont);
+      pgraphics->SelectObject(m_spfont);
       string str;
       _001GetViewText(pview, str);
       stringa & straLines = m_straLines;
@@ -282,7 +282,7 @@ namespace biteditor
       int32_t y = 0;
    //   bool bFound = false;
       string strLine;
-      size size3 = pdc->GetTextExtent("gqYALÍWM");
+      size size3 = pgraphics->GetTextExtent("gqYALÍWM");
       size size;
       m_size.cx = 0;
       for(int32_t i = 0; i < straLines.get_size(); i++)
@@ -301,10 +301,10 @@ namespace biteditor
 
 
 
-   file_position_t ascii_box::char_hit_test(sp(view) pview, ::draw2d::graphics * pdc, int32_t px, int32_t py)
+   file_position_t ascii_box::char_hit_test(sp(view) pview, ::draw2d::graphics * pgraphics, int32_t px, int32_t py)
    {
       single_lock sl(&m_pview->m_mutexData, true);
-      pdc->SelectObject(m_spfont);
+      pgraphics->SelectObject(m_spfont);
       point ptOffset = get_viewport_offset();
       py += ptOffset.y % m_pview->m_iLineHeight;
       file_position_t iSelStart;
@@ -316,7 +316,7 @@ namespace biteditor
       bool bFound = false;
       string strLine;
       string strExtent;
-      size size3 = pdc->GetTextExtent("gqYALÍ");
+      size size3 = pgraphics->GetTextExtent("gqYALÍ");
       file_position_t iOffset = 0;
       file_position_t iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
       file_position_t iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
@@ -327,7 +327,7 @@ namespace biteditor
          read_line(strLine, iLine);
          strExtent = strLine;
          strExtent.replace("\t", " ");
-         size size = pdc->GetTextExtent(strExtent);
+         size size = pgraphics->GetTextExtent(strExtent);
          maxcy = m_pview->m_iLineHeight;
          if(py >= y && py < y + m_pview->m_iLineHeight)
          {
@@ -344,7 +344,7 @@ namespace biteditor
          lim1 = lim2;
          strExtent = strLine.Mid(0, i + 1);
          strExtent.replace("\t", " ");
-         lim2 = pdc->GetTextExtent(strExtent).cx;
+         lim2 = pgraphics->GetTextExtent(strExtent).cx;
          lim = (lim2 + lim1) / 2;
          if(px >= lim1 && px <= lim)
          {
@@ -371,13 +371,13 @@ namespace biteditor
 
          single_lock sl(&m_pview->m_mutexData, true);
 
-         ::draw2d::memory_graphics pdc(allocer());
+         ::draw2d::memory_graphics pgraphics(allocer());
 
          point pt = pmouse->m_pt;
          
          ScreenToClient(&pt);
 
-         m_pview->m_iSelEnd = char_hit_test(m_pview, pdc, pt.x, pt.y);
+         m_pview->m_iSelEnd = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
 
          m_pview->_001RedrawWindow();
 
