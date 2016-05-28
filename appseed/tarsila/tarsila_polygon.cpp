@@ -19,7 +19,7 @@ namespace tarsila
       if(!pdraw->m_bSelected)
       {
 
-         pdraw->m_pdib->get_graphics()->Polygon(m_pointa);
+         pdraw->m_pgraphics->Polygon(m_pointa);
 
       }
       else
@@ -37,7 +37,7 @@ namespace tarsila
 
          }
 
-         pdraw->m_pdib->get_graphics()->Polygon(pointa);
+         pdraw->m_pgraphics->Polygon(pointa);
 
 
       }

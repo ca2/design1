@@ -54,7 +54,7 @@ namespace tarsila
 
 
       draw.m_pdrawing = pdrawing;
-      draw.m_pdib = pdrawing->m_pdib;
+      draw.m_pgraphics = pdrawing->m_pgraphics;
       draw.m_bSelected = is_selected(pdrawing);
 
       bool bMoving = pdrawing->m_bMoving;
@@ -64,11 +64,11 @@ namespace tarsila
       if(bMoving && draw.m_bSelected)
       {
 
-         ptViewport = draw.m_pdib->get_graphics()->GetViewportOrg();
+         ptViewport = draw.m_pgraphics->GetViewportOrg();
 
          point ptOffset = pdrawing->m_ptMove - pdrawing->m_ptStart;
 
-         draw.m_pdrawing->m_pdib->get_graphics()->OffsetViewportOrg(ptOffset.x,ptOffset.y);
+         draw.m_pdrawing->m_pgraphics->OffsetViewportOrg(ptOffset.x,ptOffset.y);
 
       }
 
@@ -102,13 +102,13 @@ namespace tarsila
                   if(bSelected)
                   {
 
-                     draw.m_pdib->get_graphics()->FillSolidRect(rect,ARGB(255,0,0,0));
+                     draw.m_pgraphics->FillSolidRect(rect,ARGB(255,0,0,0));
 
                   }
                   else
                   {
 
-                     draw.m_pdib->get_graphics()->Draw3dRect(rect,ARGB(255,0,0,0),ARGB(255,0,0,0));
+                     draw.m_pgraphics->Draw3dRect(rect,ARGB(255,0,0,0),ARGB(255,0,0,0));
 
                   }
 
@@ -126,7 +126,7 @@ namespace tarsila
       if(bMoving && draw.m_bSelected)
       {
 
-         draw.m_pdib->get_graphics()->SetViewportOrg(ptViewport);
+         draw.m_pgraphics->SetViewportOrg(ptViewport);
 
       }
 

@@ -117,7 +117,7 @@ namespace devedge
 
          g->create(50, 50);
 
-         get_document()->get_html_data()->layout(g);
+         get_document()->get_html_data()->layout(g->get_graphics());
          
       }
       /*xxx   if(phint != NULL)
@@ -190,7 +190,7 @@ namespace devedge
    void html_stage_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      html_view::_001OnDraw(pdib);
+      html_view::_001OnDraw(pgraphics);
 
    }
 
