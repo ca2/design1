@@ -36,7 +36,7 @@ namespace tarsila
       element_array                                   m_elementptra;
       element_array                                   m_elementptraSelected;
 
-      ::draw2d::dib *                                 m_pdib;
+      ::draw2d::graphics *                            m_pgraphics;
 
 
       drawing(::aura::application * papp);

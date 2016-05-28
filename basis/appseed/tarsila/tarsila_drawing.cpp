@@ -20,7 +20,7 @@ namespace tarsila
 
       synch_lock sl(&m_mutex);
 
-      m_pdib = pdib;
+      m_pgraphics = pgraphics;
 
       for(index i = 0; i < m_elementptra.get_size(); i++)
       {

@@ -165,7 +165,7 @@ namespace tarsila
 
       br->create_solid(ARGB(184,255,255,255));
 
-      pdata->m_drawing._001OnDraw(pdib);
+      pdata->m_drawing._001OnDraw(pgraphics);
 
    }
 
