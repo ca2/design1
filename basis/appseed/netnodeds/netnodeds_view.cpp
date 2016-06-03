@@ -130,7 +130,7 @@ namespace netnodeds
          
          //menu->TrackPopupMenu(0, point.x, point.y, GetParentFrame(), &menu);
 
-         menu->TrackPopupMenu(0,point.x,point.y,GetParentFrame());
+         menu->TrackPopupMenu(0,point,GetParentFrame());
 
       }
 

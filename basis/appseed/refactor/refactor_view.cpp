@@ -142,7 +142,7 @@ namespace refactor
    void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::user::plain_edit_view::_001OnDraw(pdib);
+      ::user::plain_edit_view::_001OnDraw(pgraphics);
 
 //      if(m_iSelStart != m_iSelEnd)
 //         return;
