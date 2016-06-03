@@ -34,7 +34,7 @@ namespace biteditor
    void view::install_message_handling(::message::dispatch * pinterface)
    {
 
-      ::userex::scroll_view::install_message_handling(pinterface);
+      ::user::impact::install_message_handling(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
@@ -71,7 +71,7 @@ namespace biteditor
    void view::assert_valid() const
    {
 
-      ::userex::scroll_view::assert_valid();
+      ::user::impact::assert_valid();
 
    }
 
@@ -79,7 +79,7 @@ namespace biteditor
    void view::dump(dump_context & dumpcontext) const
    {
       
-      ::userex::scroll_view::dump(dumpcontext);
+      ::user::impact::dump(dumpcontext);
 
    }
 
@@ -92,14 +92,14 @@ namespace biteditor
 
       cs.style &= ~WS_EX_CLIENTEDGE;
 
-      return ::userex::scroll_view::pre_create_window(cs);
+      return ::user::impact::pre_create_window(cs);
 
    }
 
 
    void view::_001OnInitialUpdate()
    {
-      ::userex::scroll_view::_001OnInitialUpdate();
+      ::user::impact::_001OnInitialUpdate();
 
       m_pasciibox->on_update();
       m_phexbox->on_update();
@@ -170,7 +170,7 @@ namespace biteditor
    void view::_001OnDestroy(::signal_details * pobj)
    {
 
-      ::userex::scroll_view::_001OnDestroy(pobj);
+      ::user::impact::_001OnDestroy(pobj);
 
    }
 
@@ -382,14 +382,14 @@ namespace biteditor
    sp(::biteditor::document) view::get_document() const
    {
 
-      return ::userex::scroll_view::get_document();
+      return ::user::impact::get_document();
 
    }
 
 
    void view::_001OnTimer(::timer * ptimer) 
    {
-      ::userex::scroll_view::_001OnTimer(ptimer);
+      ::user::impact::_001OnTimer(ptimer);
          if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
          {
@@ -519,7 +519,7 @@ namespace biteditor
             return;
       }
 
-      ::userex::scroll_view::pre_translate_message(pobj);
+      ::user::impact::pre_translate_message(pobj);
 
    }
 

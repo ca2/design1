@@ -144,7 +144,7 @@ namespace syllomatter
    void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      ::user::form::_001OnDraw(pdib);
+      ::user::form::_001OnDraw(pgraphics);
 
    }
 

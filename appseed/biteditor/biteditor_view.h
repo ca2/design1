@@ -8,7 +8,7 @@ namespace biteditor
 
 
    class CLASS_DECL_CA2_BITEDITOR view : 
-      virtual public ::userex::scroll_view
+      virtual public ::user::impact
    {
    public:
 

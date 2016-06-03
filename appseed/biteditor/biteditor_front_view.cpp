@@ -143,7 +143,7 @@ namespace biteditor
    void front_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      pdib->get_graphics()->OffsetViewportOrg(-2, -2);
+      pgraphics->OffsetViewportOrg(-2, -2);
       //CFileSpec fsDest(szDestFilename);
       //CBitmapDC destDC(srcSize.cx, srcSize.cy);
 

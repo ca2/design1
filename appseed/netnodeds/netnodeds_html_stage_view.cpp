@@ -115,7 +115,7 @@ namespace netnodeds
       {
          ::draw2d::dib_sp g(allocer());
          g->create(100, 100);
-         get_document()->get_html_data()->layout(g);
+         get_document()->get_html_data()->layout(g->get_graphics());
          
       }
       /*xxx   if(phint != NULL)
@@ -188,7 +188,7 @@ namespace netnodeds
    void html_stage_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      html_view::_001OnDraw(pdib);
+      html_view::_001OnDraw(pgraphics);
 
    }
 
