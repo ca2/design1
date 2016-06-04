@@ -9,22 +9,22 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 		{
-			TRACE0("devedge DLL_PROCESS_ATTACH");
+			output_debug_string("devedge DLL_PROCESS_ATTACH");
 		}
 		break;
 	case DLL_THREAD_ATTACH:
 		{
-			TRACE0("devedge DLL_THREAD_ATTACH");
+         output_debug_string("devedge DLL_THREAD_ATTACH");
 		}
 		break;
 	case DLL_THREAD_DETACH:
 		{
-			TRACE0("devedge DLL_THREAD_DETACH");
+         output_debug_string("devedge DLL_THREAD_DETACH");
 		}
 		break;
 	case DLL_PROCESS_DETACH:
 		{
-			TRACE0("devedge DLL_PROCESS_DETACH");
+         output_debug_string("devedge DLL_PROCESS_DETACH");
 		}
 		break;
 	}
