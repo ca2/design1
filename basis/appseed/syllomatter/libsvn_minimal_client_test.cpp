@@ -84,7 +84,7 @@ svn_boolean_t may_save,
 apr_pool_t *pool)
 {
    svn_auth_cred_simple_t *ret = (svn_auth_cred_simple_t *)apr_pcalloc(pool,sizeof(*ret));
-   char answerbuf[100];
+//   char answerbuf[100];
 
 
    /*
