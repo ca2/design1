@@ -514,9 +514,6 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
     <ProjectReference Include="..\..\..\app\appseed\core\core.vcxproj">
       <Project>{e000ffaf-392f-4e32-bf51-fd7ed638991f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\app\aura\sqlite\aurasqlite.vcxproj">
-      <Project>{424f72d6-053a-41c5-be03-3b0bd535f1eb}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Element2D.cpp">
