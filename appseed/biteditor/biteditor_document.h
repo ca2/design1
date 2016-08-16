@@ -26,10 +26,6 @@ namespace biteditor
          virtual void Undo(sp(::biteditor::document) pdoc) {UNREFERENCED_PARAMETER(pdoc);}
          virtual void Redo(sp(::biteditor::document) pdoc) {UNREFERENCED_PARAMETER(pdoc);}
 
-   #undef new
-            DECLARE_AND_IMPLEMENT_DEFAULT_ALLOCATION
-   #define new AURA_NEW
-
       };
 
       
@@ -69,10 +65,6 @@ namespace biteditor
          virtual ECommand get_command(){ return CommandGroup;};
          virtual void Undo(sp(::biteditor::document) pdoc);
          virtual void Redo(sp(::biteditor::document) pdoc);
-
-   #undef new
-            DECLARE_AND_IMPLEMENT_DEFAULT_ALLOCATION
-   #define new AURA_NEW
 
       };
 

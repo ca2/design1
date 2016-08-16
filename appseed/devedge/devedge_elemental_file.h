@@ -36,10 +36,6 @@ namespace devedge
 
       void close();
 
-#undef new
-         DECLARE_AND_IMPLEMENT_DEFAULT_ALLOCATION
-#define new AURA_NEW
-
    };
 
 } // namespace devedge
