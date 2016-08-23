@@ -223,13 +223,11 @@ void pane_view::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* pHint)
          }
          else if(puh->IsTypeOf(pane_view_update_hint::TypeOnShowView))
          {
+
             int iTab;
-//            if(puh->m_eview == PaneViewContextMenu)
-  //          {
-    //           m_tab._001AddSel(0);
-      //      }
-//            else
+
             {
+
                switch(puh->m_eview)
                {
                case PaneViewContextMenu:

@@ -196,7 +196,7 @@ namespace veritile
    void application::ensure_tileset_dock(id idVeritile)
    {
       
-      m_ppaneview->ensure_tab_by_id(idVeritile);
+      m_ppaneview->create_tab_by_id(idVeritile);
 
       m_ppaneview->set_cur_tab_by_id(idVeritile);
 
