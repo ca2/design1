@@ -140,7 +140,7 @@ namespace tarsila
 
                   pcreatordata->m_pdoc = pdoc;
 
-                  pcreatordata->m_strTitle = strPath.name();
+                  pcreatordata->m_strCreatorDataTitle = strPath.name();
 
                }
 
