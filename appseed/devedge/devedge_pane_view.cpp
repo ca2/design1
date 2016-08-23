@@ -288,7 +288,7 @@ namespace devedge
 
    sp(::user::document) pane_view::open_file(sp(::create) pcreatecontext)
    {
-      ensure_tab_by_id("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile));
+      create_tab_by_id("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile));
       return get("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;
    }
 

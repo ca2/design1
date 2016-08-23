@@ -122,7 +122,7 @@ namespace netnodeds
       {
          
          sp(pane_view) pview = Application.::netnodeds::application::m_ppaneview;
-         pview->ensure_pane_by_id("netnodedsfile://" + pfile->m_strPath);
+         pview->create_pane_by_id("netnodedsfile://" + pfile->m_strPath);
 
          sp(::user::interaction) puieParent = pview->get_pane_by_id("netnodedsfile://" + pfile->m_strPath)->m_pholder;
 
