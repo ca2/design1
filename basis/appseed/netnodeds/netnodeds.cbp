@@ -51,7 +51,7 @@
 			<Add option="-lca2c" />
 			<Add option="-lca2" />
 			<Add option="-Wl,-z,defs" />
-			<Add directory="../../../stage/x86" />
+			<Add directory="../../../time/x64/basis" />
 		</Linker>
 		<Unit filename="atesseract/atesseract.h" />
 		<Unit filename="atesseract/atesseract_application.cpp" />
