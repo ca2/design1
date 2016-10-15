@@ -103,7 +103,7 @@ void netnodedsView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint
 {
    if(lHint == 1001)
    {
-      _001RedrawWindow();
+      RedrawWindow();
    }
    else if(lHint == 123)
    {

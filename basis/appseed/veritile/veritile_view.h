@@ -61,7 +61,7 @@ namespace veritile
       virtual bool keyboard_focus_is_focusable();
       virtual bool keyboard_focus_OnSetFocus();
 
-      virtual void layout();
+      virtual void on_layout();
 
       virtual void _001OnInitialUpdate();
       DECL_GEN_SIGNAL(_001OnDestroy);

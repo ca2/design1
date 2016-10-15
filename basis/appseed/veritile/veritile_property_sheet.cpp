@@ -108,7 +108,7 @@ namespace veritile
 
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 123)
       {

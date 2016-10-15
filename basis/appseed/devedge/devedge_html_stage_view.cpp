@@ -108,7 +108,7 @@ namespace devedge
       UNREFERENCED_PARAMETER(phint);
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 123)
       {
@@ -117,7 +117,7 @@ namespace devedge
 
          g->create(50, 50);
 
-         get_document()->get_html_data()->layout(g->get_graphics());
+         get_document()->get_html_data()->on_layout(g->get_graphics());
          
       }
       /*xxx   if(phint != NULL)

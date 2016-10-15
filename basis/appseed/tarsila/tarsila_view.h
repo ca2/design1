@@ -48,7 +48,7 @@ namespace tarsila
 
 
 
-      virtual void layout();
+      virtual void on_layout();
 
       virtual void _001OnInitialUpdate();
       DECL_GEN_SIGNAL(_001OnDestroy);

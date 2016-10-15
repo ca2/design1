@@ -112,7 +112,7 @@ namespace netnodeds
       UNREFERENCED_PARAMETER(phint);
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       /*xxx   if(phint != NULL)
       {

@@ -55,7 +55,7 @@ namespace syllomatter
       }
       m_plistview->m_psvnview = this;
       SetPane(1, m_plistview, true);
-      layout();
+      on_layout();
    }
 
 

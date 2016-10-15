@@ -56,7 +56,7 @@ namespace devedge
          return false;      // fail to create
       }
 
-      layout();
+      on_layout();
 
       return true;
 
@@ -87,7 +87,7 @@ namespace devedge
       return -1;      // fail to create
       }*/
 
-      layout();
+      on_layout();
 
       return true;
    }

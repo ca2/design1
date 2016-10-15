@@ -130,14 +130,14 @@ namespace netnodeds
 
          pview->set_cur_tab_by_id("netnodedsfile://" + pfile->m_strPath);
 
-         puieParent->layout();
+         puieParent->on_layout();
 
 /*         ::user::split_layout * psplit = dynamic_cast < ::user::split_layout * > (puieParent);
          if(psplit != NULL)
          {
             psplit->get_pane_window(1)->ShowWindow(SW_HIDE);
             psplit->SetPane(1, pfile->m_pdocument->get_edit_view()->GetParentFrame(), false);
-            psplit->layout();
+            psplit->on_layout();
          }*/
 
       }
