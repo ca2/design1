@@ -47,7 +47,7 @@ namespace devedge
       ::user::plain_edit_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 11)
       {

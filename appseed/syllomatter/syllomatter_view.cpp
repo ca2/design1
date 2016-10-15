@@ -278,7 +278,7 @@ namespace syllomatter
             strId.Format("messagetext_%d", m_iMessageId);
             html::elemental * pelemental = get_html_data()->get_element_by_id(strId);
             pelemental->m_style.m_propertyset["background-color"] = "#CCFFC2";
-            _001RedrawWindow();
+            RedrawWindow();
          }
       }
       return false;
@@ -425,7 +425,7 @@ namespace syllomatter
             dwLastUpdate = ::GetTickCount();
             strFormat.Format("%d/%d", i, iCount);
             plist->m_stra[plist->m_stra.get_upper_bound()] = strFormat;
-            plist->_001RedrawWindow();
+            plist->RedrawWindow();
          }
          iProgress++;
       }

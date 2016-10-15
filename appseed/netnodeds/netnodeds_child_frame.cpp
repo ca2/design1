@@ -38,7 +38,7 @@ namespace netnodeds
 
       string str = Application.file().as_string(Application.dir().matter(""));
 
-      layout();
+      on_layout();
 
       return true;
    }

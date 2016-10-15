@@ -27,7 +27,7 @@ namespace syllomatter
          return false;      // fail to create
       }
 
-      layout();
+      on_layout();
 
       return true;
 

@@ -59,7 +59,7 @@ namespace netnodeds
          return false;      // fail to create
       }
 
-      //layout();
+      //on_layout();
 
       return true;
 
@@ -90,7 +90,7 @@ namespace netnodeds
       return -1;      // fail to create
       }*/
 
-      layout();
+      on_layout();
 
       return true;
    }

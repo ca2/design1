@@ -49,7 +49,7 @@ namespace biteditor
          return false;      // fail to create
       }
 
-      layout();
+      on_layout();
 
       return true;
 
@@ -80,7 +80,7 @@ namespace biteditor
       return -1;      // fail to create
       }*/
 
-      layout();
+      on_layout();
 
       return true;
    }

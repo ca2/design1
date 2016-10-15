@@ -167,7 +167,7 @@ namespace veritile
       ::user::impact::_001OnDestroy(pobj);
    }
 
-   void view::layout() 
+   void view::on_layout() 
    {
 
 

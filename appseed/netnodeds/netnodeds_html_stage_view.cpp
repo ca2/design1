@@ -109,13 +109,13 @@ namespace netnodeds
       UNREFERENCED_PARAMETER(phint);
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 123)
       {
          ::draw2d::dib_sp g(allocer());
          g->create(100, 100);
-         get_document()->get_html_data()->layout(g->get_graphics());
+         get_document()->get_html_data()->on_layout(g->get_graphics());
          
       }
       /*xxx   if(phint != NULL)

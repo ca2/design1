@@ -341,7 +341,7 @@ void pane_view::Layout()
             rectChild.Width(), rectChild.Height(),
             SWP_SHOWWINDOW);
       //}
-      RedrawWindow(NULL, NULL, RDW_UPDATENOW | RDW_INVALIDATE);
+      RedrawWindow(NULL, NULL, RDW_INVALIDATE);
    }
 }
 
@@ -733,6 +733,6 @@ void pane_view::_001OnTabClick(int iTab)
       break;
    }
    ShowView(eview);
-   ((BaseFrameWnd *) GetParentFrame())->_001RedrawWindow();
+   ((BaseFrameWnd *) GetParentFrame())->RedrawWindow();
    
 }

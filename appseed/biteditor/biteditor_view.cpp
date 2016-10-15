@@ -135,7 +135,7 @@ namespace biteditor
       UNREFERENCED_PARAMETER(pSender);
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 789231)
       {
@@ -146,7 +146,7 @@ namespace biteditor
       {
          m_iSelStart = get_document()->m_iSelStart;
          m_iSelEnd = get_document()->m_iSelEnd;
-         _001RedrawWindow();
+         RedrawWindow();
       }
       if(phint != NULL)
       {

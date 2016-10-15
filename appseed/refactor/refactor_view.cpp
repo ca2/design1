@@ -80,7 +80,7 @@ namespace refactor
 
       if(lHint == 1001)
       {
-         _001RedrawWindow();
+         RedrawWindow();
       }
       else if(lHint == 11)
       {

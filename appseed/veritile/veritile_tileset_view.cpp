@@ -90,10 +90,10 @@ namespace veritile
       ::user::impact::_001OnDestroy(pobj);
    }
 
-   void tileset_view::layout()
+   void tileset_view::on_layout()
    {
 
-      BASE_VIEW::layout();
+      BASE_VIEW::on_layout();
       /*   pobj->previous();
 
       double d = psize->height();
@@ -463,7 +463,7 @@ namespace veritile
 
       m_ptileset = ptileset;
 
-      layout();
+      on_layout();
 
       return true;
 
