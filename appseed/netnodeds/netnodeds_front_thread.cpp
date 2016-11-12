@@ -138,15 +138,7 @@ namespace netnodeds
       else if(pbase->m_wparam == 1)
       {
 
-#ifdef WINDOWS
-
-         ::PostThreadMessageA(m_pi.dwThreadId, WM_APP, 1, 0);
-
-#else
-
          throw not_implemented(get_app());
-
-#endif
 
       }
       else if(pbase->m_wparam == 2)
