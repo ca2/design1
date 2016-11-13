@@ -173,8 +173,6 @@ namespace veritile
 
       }
 
-      //System.post_thread_message(WM_QUIT);
-
 
    }
 

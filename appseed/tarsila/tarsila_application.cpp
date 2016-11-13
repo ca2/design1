@@ -147,10 +147,7 @@ namespace tarsila
          
          m_ppaneview->set_cur_tab_by_id("tarsila://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
 
-      }
-
-      //System.post_thread_message(WM_QUIT);
-
+ 
 
    }
 
