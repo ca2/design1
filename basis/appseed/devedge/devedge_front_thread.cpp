@@ -46,7 +46,7 @@ namespace devedge
 
       //   m_pthreadCurrent = m_ptrathread[0];
 
-      post_thread_message(WM_APP, 0, 0);
+      post_message(WM_APP, 0, 0);
 
 
       /*   STARTUPINFO startupinfo;
@@ -139,11 +139,12 @@ namespace devedge
       }
       else if(pbase->m_wparam == 2)
       {
-         m_pnext->post_thread_message(WM_APP, 1, 0);
+         
+         m_pnext->post_message(WM_APP, 1, 0);
+
       }
+
    }
-
-
 
 } // namespace devedge
 

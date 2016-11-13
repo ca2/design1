@@ -142,12 +142,12 @@ namespace tarsila
          m_ppaneview->set_cur_tab_by_id(strId);
 
       }
-      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
+      else if (spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
       {
-         
+
          m_ppaneview->set_cur_tab_by_id("tarsila://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
 
- 
+      }
 
    }
 
