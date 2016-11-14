@@ -25,8 +25,8 @@ namespace veritile
       virtual void ensure_tileset_dock(id id);
 
 
-      virtual bool initialize_instance();
-      virtual int32_t exit_instance();
+      virtual bool initialize_application();
+      virtual int32_t exit_application() override;
 
 
       void on_request(sp(::create) pcreatecontext);

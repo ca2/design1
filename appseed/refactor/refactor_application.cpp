@@ -20,7 +20,7 @@ namespace refactor
    }
 
 
-   bool application::initialize_instance()
+   bool application::initialize_application()
    {
 
       System.factory().creatable_small < ::refactor::pane_view >();
@@ -28,7 +28,7 @@ namespace refactor
       System.factory().creatable_small < ::refactor::frame >();
       System.factory().creatable_small < ::refactor::view >();
 
-      if(!core::application::initialize_instance())
+      if(!core::application::initialize_application())
          return false;
 
 	   ::user::single_document_template* pDocTemplate;
@@ -52,10 +52,10 @@ namespace refactor
       return true;
    }
 
-   int application::exit_instance()
+   int application::exit_application()
    {
       
-      return ::core::application::exit_instance();
+      return ::core::application::exit_application();
    }
 
    void application::on_request(sp(::create) pcreatecontext)

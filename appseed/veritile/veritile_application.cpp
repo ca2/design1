@@ -20,7 +20,7 @@ namespace veritile
 
    }
 
-   bool application::initialize_instance()
+   bool application::initialize_application()
    {
 
 
@@ -44,7 +44,7 @@ namespace veritile
 
 
 
-      if(!::tesseract::application::initialize_instance())
+      if(!::tesseract::application::initialize_application())
          return false;
 
       m_dataid += ".local://";
@@ -74,7 +74,7 @@ namespace veritile
       return TRUE;
    }
 
-   int32_t application::exit_instance()
+   int32_t application::exit_application()
    {
 
       int32_t iExitCode = 0;
@@ -82,7 +82,7 @@ namespace veritile
       try
       {
 
-         iExitCode = ::tesseract::application::exit_instance();
+         iExitCode = ::tesseract::application::exit_application();
 
       }
       catch(...)

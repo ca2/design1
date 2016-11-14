@@ -22,7 +22,7 @@ namespace biteditor
    {
    }
 
-   bool application::initialize_instance()
+   bool application::initialize_application()
    {
       System.factory().creatable_small < main_document > ();
       System.factory().creatable_small < frame > ();
@@ -37,7 +37,7 @@ namespace biteditor
       System.factory().creatable_small < biteditor::front_child_frame > ();
       System.factory().creatable_small < biteditor::front_view > ();
 
-      if(!::tesseract::application::initialize_instance())
+      if(!::tesseract::application::initialize_application())
          return false;
 
 

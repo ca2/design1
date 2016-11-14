@@ -36,11 +36,11 @@ namespace netnodeds
    }
 
 
-   bool application::initialize_instance()
+   bool application::initialize_application()
    {
       
 
-      if(!::core::application::initialize_instance())
+      if(!::core::application::initialize_application())
          return false;
 
 
@@ -56,7 +56,7 @@ namespace netnodeds
 
 
 
-   int32_t application::exit_instance()
+   int32_t application::exit_application()
    {
 
       int32_t iExitCode = 0;
@@ -64,7 +64,7 @@ namespace netnodeds
       try
       {
 
-         iExitCode = ::core::application::exit_instance();
+         iExitCode = ::core::application::exit_application();
 
       }
       catch(...)

@@ -27,7 +27,7 @@ namespace syllomatter
    }
 
 
-   bool application::initialize_instance()
+   bool application::initialize_application()
    {
       System.factory().creatable_small < syllomatter::main_document >();
       System.factory().creatable_small < syllomatter::main_frame >();
@@ -40,7 +40,7 @@ namespace syllomatter
       System.factory().creatable_small < syllomatter::list_view >();
       System.factory().creatable_small < syllomatter::svn_view >();
 
-      if(!tesseract::application::initialize_instance())
+      if(!tesseract::application::initialize_application())
          return FALSE;
 
 
@@ -78,7 +78,7 @@ namespace syllomatter
       return TRUE;
    }
 
-   int32_t application::exit_instance()
+   int32_t application::exit_application()
    {
 
       int32_t iExitCode = 0;
@@ -86,7 +86,7 @@ namespace syllomatter
       try
       {
 
-         iExitCode = ::tesseract::application::exit_instance();
+         iExitCode = ::tesseract::application::exit_application();
 
       }
       catch(...)
