@@ -27,7 +27,7 @@ namespace devedge
    }
 
 
-   bool front_thread::initialize_instance()
+   bool front_thread::initialize_thread()
    {
 
       int32_t iCount = 2;

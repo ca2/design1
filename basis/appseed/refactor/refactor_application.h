@@ -17,8 +17,8 @@ namespace refactor
       virtual ~application();
 
 
-      virtual bool initialize_instance();
-      virtual int  exit_instance();
+      virtual bool initialize_application();
+      virtual int  exit_application() override;
 
       virtual void on_request(sp(::create) pcreatecontext);
 

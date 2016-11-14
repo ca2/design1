@@ -23,7 +23,7 @@ namespace biteditor
 
       virtual void on_request(sp(::create) pcreatecontext);
 
-      bool initialize_instance();
+      bool initialize_application();
 
 
    };
