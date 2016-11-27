@@ -83,16 +83,16 @@ namespace syllomatter
       get_typed_view < pane_view >()->set_cur_tab_by_id(syllomatter::PaneViewSVN);
 
 
-      if(itema.get_count() == 1 && Application.dir().is(itema[0]->m_strPath))
+      if(itema.get_count() == 1 && Application.dir().is(itema[0]->m_filepath))
       {
 
-         ::MessageBox(NULL,itema[0]->m_strPath,"Going to Major Checkout... :",MB_ICONINFORMATION);
+         ::MessageBox(NULL,itema[0]->m_filepath,"Going to Major Checkout... :",MB_ICONINFORMATION);
 
       }
       else
       {
 
-         ::MessageBox(NULL,get_typed_view < pane_view >()->filemanager_manager().get_filemanager_item().m_strPath,"Going to Major Checkout... :",MB_ICONINFORMATION);
+         ::MessageBox(NULL,get_typed_view < pane_view >()->filemanager_manager().get_filemanager_item().m_filepath,"Going to Major Checkout... :",MB_ICONINFORMATION);
 
       }
 
