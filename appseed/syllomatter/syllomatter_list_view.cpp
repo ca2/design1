@@ -9,7 +9,8 @@ namespace syllomatter
       ::object(papp),
       simple_list_view(papp),
       m_updatethread(papp),
-      m_committhread(papp)
+      m_committhread(papp),
+      m_cache(papp)
    {
       m_updatethread.m_plistview = this;
       m_committhread.m_plistview = this;
@@ -148,11 +149,11 @@ namespace syllomatter
 
       for(int32_t i = 0; i < itema.get_size(); i++)
       {
-         m_stra.add(itema[i]->m_strPath);
-         m_committhread.m_str = itema[i]->m_strPath;
+         m_stra.add(itema[i]->m_filepath);
+         m_committhread.m_str = itema[i]->m_filepath;
          m_straStatus.add("X");
 
-         string strCmd = System.dir().module() / "svn\\svn status" + " " + itema[i]->m_strPath;
+         string strCmd = System.dir().module() / "svn\\svn status" + " " + itema[i]->m_filepath;
 
          string strOutput;
          strOutput = System.process().get_output(strCmd);
@@ -700,10 +701,10 @@ namespace syllomatter
       string strLine;
       for(int32_t i = 0; i < m_itema.get_size(); i++)
       {
-         m_plistview->m_stra.add("Updating " +  m_itema[i]->m_strPath + "...");
+         m_plistview->m_stra.add("Updating " +  m_itema[i]->m_filepath + "...");
          m_plistview->m_straStatus.add(" ");
          m_plistview->post_message(WM_USER + 1024);
-         string strCmd = System.dir().module() / "svn\\svn update" + " " + m_itema[i]->m_strPath;
+         string strCmd = System.dir().module() / "svn\\svn update" + " " + m_itema[i]->m_filepath;
          string strOutput;
          ::process::process_sp process(allocer());
          int32_t iRetry = -1;

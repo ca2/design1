@@ -51,7 +51,7 @@ namespace netnodeds
 
       //   m_pthreadCurrent = m_ptrathread[0];
 
-      post_thread_message(WM_APP, 0, 0);
+      post_message(WM_APP);
 
 
       /*   STARTUPINFO startupinfo;
@@ -143,7 +143,7 @@ namespace netnodeds
       }
       else if(pbase->m_wparam == 2)
       {
-         m_pnext->post_thread_message(WM_APP, 1, 0);
+         m_pnext->post_message(WM_APP, 1);
       }
    }
 
