@@ -12,8 +12,8 @@ namespace netnodeds
       
 
       ::netnodeds::solution *      m_psolution;
-      ::file::buffer_sp                m_file;
-      ::file::buffer_sp                m_fileSave;
+      ::file::file_sp                m_file;
+      ::file::file_sp                m_fileSave;
       int32_t                        m_iBranch;
       solution_view *            m_pview;
 

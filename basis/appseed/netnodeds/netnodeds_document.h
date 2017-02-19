@@ -11,7 +11,7 @@ namespace netnodeds
    public:
 
       
-      ::file::buffer_sp          m_file;
+      ::file::file_sp          m_file;
       int32_t                  m_iBranch;
       sp(view)               m_pview;
 

@@ -450,7 +450,7 @@ namespace biteditor
       iSelEnd = m_pview->m_iSelEnd - m_pview->m_iViewOffset;
    }
 
-   void hex_box::SetFile(sp(::file::stream_buffer) pfile)
+   void hex_box::SetFile(sp(::file::file) pfile)
    {
       m_pview->get_document()->m_peditfile->SetFile(pfile);
       OnFileUpdate();
