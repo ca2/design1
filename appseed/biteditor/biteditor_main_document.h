@@ -11,7 +11,7 @@ namespace biteditor
    public:
 
       ::file::memory_buffer        m_memfile;
-      ::file::buffer_sp             m_file;
+      ::file::file_sp             m_file;
 
 
       main_document(::aura::application * papp);

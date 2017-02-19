@@ -12,7 +12,7 @@ namespace biteditor
 
 
       ::file::memory_buffer           m_memfile;
-      ::file::buffer_sp                m_file;
+      ::file::file_sp                m_file;
 
 
       front_document(::aura::application * papp);   

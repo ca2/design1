@@ -16,7 +16,7 @@ namespace devedge
 
 
       ::file::memory_buffer         m_memfile;
-      ::file::buffer_sp           m_file;
+      ::file::file_sp           m_file;
       ::file::memory_buffer       m_memfileBody;
 
       bool _001OnUpdateCmdUi(cmd_ui * pcmdui);

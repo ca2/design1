@@ -508,9 +508,9 @@ namespace syllomatter
    int32_t view::bin_cmp(const ::file::path & pszFilePath1,const ::file::path & pszFilePath2)
    {
       
-      ::file::buffer_sp spfile1(get_app());
+      ::file::file_sp spfile1(get_app());
 
-      ::file::buffer_sp spfile2(get_app());
+      ::file::file_sp spfile2(get_app());
 
       if(!spfile1->open(pszFilePath1, ::file::type_binary | ::file::mode_read))
          return -5;

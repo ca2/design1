@@ -12,7 +12,7 @@ namespace netnodeds
 
 
       ::file::memory_buffer *         m_pmemfile;
-      ::file::buffer_sp *              m_pfile;
+      ::file::file_sp *              m_pfile;
 
 
       main_document(::aura::application * papp);

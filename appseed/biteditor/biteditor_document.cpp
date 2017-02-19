@@ -170,7 +170,7 @@ though it is not a valid cursor handle.\n\
    bool document::on_open_document(var varFile)
    {
 
-      ::file::buffer_sp spfile;
+      ::file::file_sp spfile;
       m_bReadOnly = false;
       spfile = Application.file().get_file(varFile, ::file::type_binary | ::file::mode_read_write | ::file::share_deny_none);
       if(spfile.is_null())

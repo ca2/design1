@@ -20,7 +20,7 @@ namespace netnodeds
 
 
       ::file::memory_buffer         m_memfile;
-      ::file::buffer_sp           m_file;
+      ::file::file_sp           m_file;
       int32_t m_iBranch;
 
 

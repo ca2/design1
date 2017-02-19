@@ -60,7 +60,7 @@ namespace biteditor
       
       void _001OnCalcLayoutProc(sp(view) pview, ::draw2d::graphics * pgraphics);
 
-      void SetFile(sp(::file::stream_buffer) pfile);
+      void SetFile(sp(::file::file) pfile);
       void OnFileUpdate();
 
 

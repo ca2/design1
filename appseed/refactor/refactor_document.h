@@ -11,7 +11,7 @@ namespace refactor
    public:
 
 
-      ::file::buffer_sp             m_file;
+      ::file::file_sp             m_file;
       //ex1::filesp             m_fileSave;
       int                     m_iBranch;
 //      edit_view *             m_pview;
