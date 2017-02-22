@@ -32,7 +32,7 @@ though it is not a valid cursor handle.\n\
 ";
       m_memfile.write(str, str.get_length());
       m_pfile = &m_memfile;
-      m_peditfile = new ::file::edit_buffer(get_app());
+      m_peditfile = new ::file::edit_file(get_app());
       m_peditfile->SetFile(m_pfile);
 
 

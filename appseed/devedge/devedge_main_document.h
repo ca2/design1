@@ -11,7 +11,7 @@ namespace devedge
    public:
 
 
-      ::file::memory_buffer *         m_pmemfile;
+      ::memory_file *         m_pmemfile;
       ::file::file_sp *              m_pfile;
 
 

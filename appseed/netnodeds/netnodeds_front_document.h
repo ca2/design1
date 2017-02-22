@@ -15,14 +15,14 @@ namespace netnodeds
       virtual bool on_save_document(const char * lpszPathName);
 
 
-      ::file::memory_buffer         m_memfile;
+      ::memory_file         m_memfile;
       ::file::file_sp           m_file;
-      ::file::memory_buffer       m_memfileBody;
+      ::memory_file       m_memfileBody;
 
       bool _001OnUpdateCmdUi(cmd_ui * pcmdui);
       bool _001OnCommand(id id);
 
-      void get_output(const char * lpcsz, string &strHead, ::file::memory_buffer & file);
+      void get_output(const char * lpcsz, string &strHead, ::memory_file & file);
 
       void OnUpdateStart(cmd_ui *pcmdui);
       void OnUpdateEditUndo(cmd_ui *pcmdui);
