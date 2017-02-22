@@ -138,7 +138,7 @@ namespace devedge
 
 
 
-   void front_document::get_output(const char * lpcsz, string & strHead, ::file::memory_buffer & file)
+   void front_document::get_output(const char * lpcsz, string & strHead, ::memory_file & file)
    {
 
       UNREFERENCED_PARAMETER(lpcsz);

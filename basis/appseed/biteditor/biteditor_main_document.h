@@ -10,7 +10,7 @@ namespace biteditor
    {
    public:
 
-      ::file::memory_buffer        m_memfile;
+      ::memory_file        m_memfile;
       ::file::file_sp             m_file;
 
 

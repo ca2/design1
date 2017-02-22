@@ -252,7 +252,7 @@ namespace biteditor
    //   char buf[4096 + 1];
    ///   uint32_t uiRead;
    //   LPTSTR lpsz;
-      ::file::edit_buffer * peditfile = get_document()->m_peditfile;
+      ::file::edit_file * peditfile = get_document()->m_peditfile;
       peditfile->seek(0, ::file::seek_begin);
       if(m_size.cx <= 0)
          m_size.cx = 200;

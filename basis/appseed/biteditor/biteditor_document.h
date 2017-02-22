@@ -70,9 +70,9 @@ namespace biteditor
 
       sp(::data::tree_item)      m_ptreeitem;
 
-      ::file::memory_buffer      m_memfile;
+      ::memory_file      m_memfile;
       ::file::file_sp          m_pfile;
-      ::file::edit_buffer *      m_peditfile;
+      ::file::edit_file *      m_peditfile;
       file_position_t            m_iSelStart;
       file_position_t            m_iSelEnd;
       int32_t                    m_iBranch;

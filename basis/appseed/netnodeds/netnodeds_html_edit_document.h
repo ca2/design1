@@ -11,8 +11,8 @@ namespace netnodeds
    public:
 
 
-      ::file::memory_buffer_sp      m_memfile;
-      ::file::file_sp             m_file;
+      ::memory_file_sp              m_memfile;
+      ::file::file_sp               m_file;
 
 
       html_edit_document(::aura::application * papp);
