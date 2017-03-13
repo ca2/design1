@@ -342,7 +342,7 @@ though it is not a valid cursor handle.\n\
 
       sp(Command) pcommand = (sp(Command)) m_ptreeitem->m_pitem;
       pcommand->Undo(this);
-      m_ptreeitem = m_ptreeitem->get_previous();
+      m_ptreeitem = m_ptreeitem->m_ppreviousParent;
       update_all_views(NULL, 789231, NULL);
       return true;
    }
