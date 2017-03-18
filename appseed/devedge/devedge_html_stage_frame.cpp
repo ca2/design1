@@ -32,7 +32,7 @@ namespace devedge
       BaseMenuCentral::GetMenuCentral()->MenuV033GetImageList(),
       BaseMenuCentral::GetMenuCentral()->MenuV033GetImageListDisabled(),
       prel,
-      System.visual().font_central().GetMenuFont()) ||
+      System.visual().fonts().GetMenuFont()) ||
       VMS_FAILED(m_menubar.LoadMenuBar(uiMenuBar)))
       {
       TRACE0("Failed to create toolbar\n");
