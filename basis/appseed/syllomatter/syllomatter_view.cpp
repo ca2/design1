@@ -192,15 +192,6 @@ namespace syllomatter
    }
 
 
-   /*xxxvoid view::data_on_after_change(int32_t iConfigurationId, int32_t iLine, int32_t iColumn, CVmsDataUpdateHint * puh)
-   {
-   if(iConfigurationId == _vmsp::CConfiguration::CfgKaraokeEncoding)
-   {
-   PrepareLyricLines();
-   RedrawWindow();
-   }
-   }*/
-
 
    void view::_001OnSetCursor(::signal_details * pobj)
    {

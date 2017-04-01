@@ -287,15 +287,6 @@ void syllomatter_view::_001OnViewEncoding(gen::signal_object * pobj)
 }
 
 
-/*xxxvoid syllomatter_view::VmsDataOnAfterChange(int iConfigurationId, int iLine, int iColumn, CVmsDataUpdateHint * puh)
-{
-   if(iConfigurationId == _vmsp::CConfiguration::CfgKaraokeEncoding)
-   {
-      PrepareLyricLines();
-      RedrawWindow();
-   }
-}*/
-
 
 void syllomatter_view::_001OnSetCursor(gen::signal_object * pobj) 
 {
