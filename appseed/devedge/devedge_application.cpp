@@ -50,7 +50,7 @@ namespace devedge
       KickDevEdgeFront(this);
 
       Session.filemanager().std().m_strLevelUp = "levelup";
-      Session.filemanager().std().m_strToolBar = "filemanager_toolbar.xml";
+//      Session.filemanager().std().m_strToolBar = "filemanager_toolbar.xml";
 
       return true;
    }
