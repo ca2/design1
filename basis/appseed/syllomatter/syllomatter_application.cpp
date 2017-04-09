@@ -48,7 +48,7 @@ namespace syllomatter
 
       InitializeFileManager("syllomatter/frame");
       Session.filemanager().std().m_strLevelUp.Empty();
-      Session.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
+      //Session.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
       Session.filemanager().std().m_dataidStatic = "FileManagerFavoritesList";
       //Session.filemanager().std().m_uiDialogBar = 0;
       //Session.filemanager().std().m_uiMenuBar = 0;
