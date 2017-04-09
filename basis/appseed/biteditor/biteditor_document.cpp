@@ -331,7 +331,7 @@ though it is not a valid cursor handle.\n\
    int32_t document::GetRedoBranchCount()
    {
       return (int32_t) (m_ptreeitem->get_expandable_children_count()
-         + (m_ptreeitem->next() != NULL ? 1 : 0)
+         + (m_ptreeitem->get_next() != NULL ? 1 : 0)
          + (m_ptreeitem->first_child() != NULL ? 1 : 0));
    }
 
@@ -342,7 +342,7 @@ though it is not a valid cursor handle.\n\
 
       sp(Command) pcommand = (sp(Command)) m_ptreeitem->m_pitem;
       pcommand->Undo(this);
-      m_ptreeitem = m_ptreeitem->m_ppreviousParent;
+      m_ptreeitem = m_ptreeitem->get_previous_or_parent();
       update_all_views(NULL, 789231, NULL);
       return true;
    }
@@ -359,9 +359,9 @@ though it is not a valid cursor handle.\n\
       {
          ptreeitem = m_ptreeitem->get_expandable_child(m_iBranch);
       }
-      else if(m_ptreeitem->next() != NULL)
+      else if(m_ptreeitem->get_next() != NULL)
       {
-         ptreeitem = m_ptreeitem->next();
+         ptreeitem = m_ptreeitem->get_next();
       }
       else
       {
