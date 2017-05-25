@@ -62,7 +62,7 @@ namespace syllomatter
       column.m_sizeIcon.cy          = 16;
       column.m_iControl             = -1;
       column.m_bEditOnSecondClick   = false;
-      column.m_pil                  = Session.userex()->shellimageset().GetImageList16();
+      column.m_pil                  = Session.userex()->shell().GetImageList(16);
       _001AddColumn(column);
 
 
@@ -787,17 +787,17 @@ namespace syllomatter
    {
       if(m_straStatus[pitem->m_iItem] == "M")
       {
-         pitem->m_cr = ARGB(255, 100, 150, 255);
+         pitem->m_crText = ARGB(255, 100, 150, 255);
          pitem->m_bOk = true;
       }
       else if(m_straStatus[pitem->m_iItem] == "A")
       {
-         pitem->m_cr = ARGB(255, 235, 150, 255);
+         pitem->m_crText = ARGB(255, 235, 150, 255);
          pitem->m_bOk = true;
       }
       else if(m_straStatus[pitem->m_iItem] == "D")
       {
-         pitem->m_cr = ARGB(255, 255, 100, 55);
+         pitem->m_crText = ARGB(255, 255, 100, 55);
          pitem->m_bOk = true;
       }
       else
