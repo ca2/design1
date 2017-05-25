@@ -53,7 +53,7 @@ namespace refactor
 
          string strError;
 
-         strError = e.m_strMessage;
+         strError = e.m_pszMessage;
 
          strMessage.Format("Failed to open file. Error: %s", strError);
 
