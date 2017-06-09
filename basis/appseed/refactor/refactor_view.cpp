@@ -317,7 +317,7 @@ namespace refactor
 //      for(index i = iLineStart; i <= iLineEnd; i++)
 //      {
 //         straLineFeed.remove_all();
-//         straLineFeed.add_smallest_tokens(straLines[i], m_straSep, FALSE, FALSE);
+//         straLineFeed.add_shortest_tokens(straLines[i], m_straSep, FALSE, FALSE);
 //         if(straLineFeed.get_size() > 0)
 //         {
 //            strLine = straLineFeed[0];
