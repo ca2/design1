@@ -252,7 +252,7 @@ void pane_view::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* pHint)
 /*void pane_view::ShowPlaylist()
 {
    ViewData * pview;
-   if(!m_viewmap.Lookup(PaneViewPlaylist, pview))
+   if(!m_viewmap.lookup(PaneViewPlaylist, pview))
    {
       CreatePlaylist();
    }
@@ -358,7 +358,7 @@ void pane_view::ShowView(EPaneView eview)
    CWaitCursor wc;
 
    ViewData * pview;
-   if(m_viewmap.Lookup(eview, pview))
+   if(m_viewmap.lookup(eview, pview))
    {
       Show(pview);
    }
@@ -412,7 +412,7 @@ BOOL pane_view::PreCreateWindow(CREATESTRUCT& cs)
 /*Document * pane_view::GetMediaLibraryDoc()
 {
    ViewData * pview;
-   if(m_viewmap.Lookup(PaneViewMediaLibrary, pview))
+   if(m_viewmap.lookup(PaneViewMediaLibrary, pview))
    {
       return pview->m_pdoc;
    }
@@ -425,7 +425,7 @@ BOOL pane_view::PreCreateWindow(CREATESTRUCT& cs)
 pane_view::ViewData * pane_view::CreateView(EPaneView eview)
 {
    ViewData * pviewdata = NULL;
-   if(m_viewmap.Lookup(eview, pviewdata))
+   if(m_viewmap.lookup(eview, pviewdata))
    {
       return pviewdata;
    }
@@ -645,7 +645,7 @@ pane_view::ViewData * pane_view::CreateView(EPaneView eview)
 base_wnd * pane_view::GetDevEdgeWindow()
 {
    ViewData * pview;
-   if(m_viewmap.Lookup(PaneViewDevEdge, pview))
+   if(m_viewmap.lookup(PaneViewDevEdge, pview))
    {
       return pview->m_pwnd;
    }
