@@ -16,7 +16,7 @@ namespace devedge
       
       
       xml::document                                               m_xmldoc;
-      array < ::devedge::project * >                     m_projectptra;
+      comparable_array < ::devedge::project * >                     m_projectptra;
       sp(solution_document)                                         m_pdoc;
       solution_view *                                             m_pview;
       string                                                      m_strSolutionPath;

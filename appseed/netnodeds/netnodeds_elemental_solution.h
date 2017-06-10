@@ -16,7 +16,7 @@ namespace netnodeds
       
       
       xml::document                                               m_xmldoc;
-      array < ::netnodeds::project * >                     m_projectptra;
+      comparable_array < ::netnodeds::project * >                     m_projectptra;
       sp(solution_document)                                         m_pdoc;
       solution_view *                                             m_pview;
       string                                                      m_strSolutionPath;
