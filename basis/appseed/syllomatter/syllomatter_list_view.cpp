@@ -158,7 +158,7 @@ namespace syllomatter
          string strOutput;
          strOutput = System.process().get_output(strCmd);
          stringa stra;
-         stra.add_shortest_tokens(strOutput, straSep, true, FALSE);
+         stra.add_smallest_tokens(strOutput, straSep, true, FALSE);
          for(int32_t j = 0; j < stra.get_size(); j++)
          {
 

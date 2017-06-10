@@ -807,7 +807,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
          iChar |= 0x80000000;
       }
       int i;
-      if(m_imapAbnt.lookup(iChar, i))
+      if(m_imapAbnt.Lookup(iChar, i))
       {
          ch = i;
       }
