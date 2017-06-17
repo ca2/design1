@@ -138,7 +138,7 @@ namespace devedge
       string str = pdoc->get_file_path();
       if(str.get_length() > 4)
       {
-      if(str.Right(3).CompareNoCase(".ds") == 0)
+      if(str.Right(3).compare_ci(".ds") == 0)
       {
       int32_t iPos = str.reverse_find('\\');
       str = str.Mid(iPos + 1);

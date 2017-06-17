@@ -41,7 +41,7 @@ namespace netnodeds
       for(index i = 0; i < get_count(); i++)
       {
          file & file = operator()(i);
-         if(file.m_strName.CompareNoCase(pszName) == 0)
+         if(file.m_strName.compare_ci(pszName) == 0)
             return i;
       }
       return -1;

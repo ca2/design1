@@ -245,7 +245,7 @@ namespace syllomatter
    int32_t list_view::ComparePath(LPVOID lparg, index dwa, index dwb)
    {
       sp(list_view) plist = (list_view *) lparg;
-      return plist->m_stra[dwa].Compare(plist->m_stra[dwb]);
+      return plist->m_stra[dwa].compare(plist->m_stra[dwb]);
    }
 
    void list_view::_001OnAdd(::signal_details * pobj)

@@ -108,7 +108,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
    {
       UNREFERENCED_PARAMETER(pdata);
       string strExtension = System.file().extension(itema[0].m_strPath);
-      if(strExtension.CompareNoCase("ca2solution") == 0)
+      if(strExtension.compare_ci("ca2solution") == 0)
       {
          m_ptemplate_solution->open_document_file(itema[0].m_strPath);
       }
@@ -136,7 +136,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
          sp(::devedge::pane_view) pview = pmaindoc->get_typed_view < ::devedge::pane_view > ();
          if(pview != NULL)
          {
-            if(strExtension.CompareNoCase("ca2solution") == 0)
+            if(strExtension.compare_ci("ca2solution") == 0)
             {
                pview->set_cur_tab_by_id(PaneViewDevEdge, pcreatecontext);
                sp(::user::single_document_template) ptemplate = (devedge().m_ptemplateEdge);

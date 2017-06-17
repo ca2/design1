@@ -226,7 +226,7 @@ namespace netnodeds
 
       strCommon = strFolder / "seed\\ca\\fontopus\\net\\ds\\common";
 
-      if(strCommon.CompareNoCase(get_file_path().Mid(0, strCommon.get_length())) == 0)
+      if(strCommon.compare_ci(get_file_path().Mid(0, strCommon.get_length())) == 0)
       {
          
          strCommon = get_file_path().Mid(strCommon.get_length());

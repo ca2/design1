@@ -450,7 +450,7 @@ though it is not a valid cursor handle.\n\
 
       strCommon = strFolder / "cast\\seed\\ca2\\fontopus\\net\\ds\\common";
 
-      if(strCommon.CompareNoCase(get_file_path().Mid(0, strCommon.get_length())) == 0)
+      if(strCommon.compare_ci(get_file_path().Mid(0, strCommon.get_length())) == 0)
       {
          strCommon = get_file_path().Mid(strCommon.get_length());
          strCommon.replace("\\", "/");

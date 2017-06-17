@@ -273,7 +273,7 @@ void netnodedsDoc::Put()
    string strCommon;
    string strRemote;
    strCommon = Application.dir().path(strVotagusFolder, "seed\\ca2\\fontopus\\net\\ds\\common");
-   if(strCommon.CompareNoCase(GetPathName().Mid(0, strCommon.GetLength())) == 0)
+   if(strCommon.compare_ci(GetPathName().Mid(0, strCommon.GetLength())) == 0)
    {
       strCommon = GetPathName().Mid(strCommon.GetLength());
       strCommon.Replace("\\", "/");

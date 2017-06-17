@@ -386,7 +386,7 @@ namespace syllomatter
       for(int32_t i = 0; i < iCount; i++)
       {
          string & strPath = straPath[i];
-         if(strPath.Left(iLen).CompareNoCase(pextract->m_strCheck) == 0)
+         if(strPath.Left(iLen).compare_ci(pextract->m_strCheck) == 0)
          {
             iCmp = syllomatter_defer_extract(pextract, strPath.Mid(iLen + 1));
             if(iCmp != 0)
