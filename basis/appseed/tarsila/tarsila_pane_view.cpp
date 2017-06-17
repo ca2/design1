@@ -251,7 +251,7 @@ namespace tarsila
       for(index i = 0; i < count; i++)
       {
          sp(::user::document) pdoc =  (papp->m_pdoctemplate->get_document(i));
-         if(pdoc != NULL && pdoc->get_file_path().CompareNoCase(strPath) == 0)
+         if(pdoc != NULL && pdoc->get_file_path().compare_ci(strPath) == 0)
          {
             return pdoc;
          }
