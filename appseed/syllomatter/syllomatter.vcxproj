@@ -146,9 +146,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='stage|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='basis|Win32'">
     <PreBuildEvent>
-      <Command>mkdir "$(OutDir)svn"
-del /q "$(OutDir)svn/*.*"
-copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>-Zm384 /bigobj</AdditionalOptions>
@@ -247,9 +246,8 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='cover|Win32'">
     <PreBuildEvent>
-      <Command>mkdir "$(OutDir)svn"
-del /q "$(OutDir)svn/*.*"
-copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>-Zm384 /bigobj</AdditionalOptions>
@@ -348,9 +346,8 @@ copy "$(SolutionDir)..\..\thirdparty\binary\libvorbisfile.dll" "$(OutDir)libvorb
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='stage|Win32'">
     <PreBuildEvent>
-      <Command>mkdir "$(OutDir)svn"
-del /q "$(OutDir)svn/*.*"
-copy "$(SolutionDir)..\..\..\nodeapp\thirdparty\binary\svn\*.*" "$(OutDir)svn"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <ClCompile>
       <AdditionalOptions>-Zm384 /bigobj</AdditionalOptions>
