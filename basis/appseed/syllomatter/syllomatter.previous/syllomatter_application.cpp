@@ -113,14 +113,6 @@ BOOL paint_application::OnCmdMsg(UINT nID, int nCode, void* pExtra,
 
 
 
-CLASS_DECL_CA2_PAINTAPPLICATION bergedge_app * get_new_app()
-{
-   paint_application * papp = new paint_application;
-   papp->m_hInstance = AfxGetApp()->m_hInstance;
-   return papp;
-}
-
-
 bergedge_app * paint_application::get_app()
 {
    return this;

@@ -124,14 +124,6 @@ BOOL syllomatter_console::OnCmdMsg(UINT nID, int nCode, void* pExtra,
 
 
 
-CLASS_DECL_CA2_SYLLOMATTERCONSOLE bergedge_application * get_new_app()
-{
-   syllomatter_console * papp = new syllomatter_console;
-   papp->m_hInstance = AfxGetApp()->m_hInstance;
-   return papp;
-}
-
-
 bergedge_application * syllomatter_console::get_app()
 {
    return this;
