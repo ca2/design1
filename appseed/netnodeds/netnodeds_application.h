@@ -47,7 +47,7 @@ namespace netnodeds
 
       virtual void pre_translate_message(::signal_details * pobj);
 
-      virtual void on_request(sp(::create) pcreatecontext);
+      virtual void on_request(::create * pcreatecontext);
 
       virtual bool _001OnCmdMsg(::aura::cmd_msg * pcmdmsg);
 

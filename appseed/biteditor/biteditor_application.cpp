@@ -76,7 +76,7 @@ namespace biteditor
    }
 
 
-   void application::on_request(sp(::create) pcreatecontext)
+   void application::on_request(::create * pcreatecontext)
    {
 
       if(m_ptemplateEdge->get_document() == NULL)

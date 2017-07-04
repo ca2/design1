@@ -120,7 +120,7 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
    }
 */
-   void application::on_request(sp(::create) pcreatecontext)
+   void application::on_request(::create * pcreatecontext)
    {
       sp(::user::document) pdoc = NULL;
       if(devedge().m_ptemplateEdge->get_document_count() == NULL)

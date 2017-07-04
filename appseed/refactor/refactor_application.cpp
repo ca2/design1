@@ -58,7 +58,7 @@ namespace refactor
       return ::core::application::exit_application();
    }
 
-   void application::on_request(sp(::create) pcreatecontext)
+   void application::on_request(::create * pcreatecontext)
    {
 
       if(!pcreatecontext->m_spCommandLine->m_varQuery.has_property("client_only"))

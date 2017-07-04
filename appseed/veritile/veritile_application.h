@@ -29,7 +29,7 @@ namespace veritile
       virtual int32_t exit_application() override;
 
 
-      void on_request(sp(::create) pcreatecontext);
+      void on_request(::create * pcreatecontext);
 
       virtual bool on_install();
 
