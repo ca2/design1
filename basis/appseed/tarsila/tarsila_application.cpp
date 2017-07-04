@@ -93,7 +93,7 @@ namespace tarsila
 
    }
 
-   void application::on_request(sp(::create) spcreatecontext)
+   void application::on_request(::create * pcreatecontext)
    {
 
       if(m_pdoctemplateMain->get_document_count() <= 0)

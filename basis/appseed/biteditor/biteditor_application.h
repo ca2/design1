@@ -21,7 +21,7 @@ namespace biteditor
 
       virtual void construct();
 
-      virtual void on_request(sp(::create) pcreatecontext);
+      virtual void on_request(::create * pcreatecontext);
 
       bool initialize_application();
 

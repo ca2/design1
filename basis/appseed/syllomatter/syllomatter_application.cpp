@@ -100,7 +100,7 @@ namespace syllomatter
 
    }
 
-   void application::on_request(sp(::create) pcreatecontext)
+   void application::on_request(::create * pcreatecontext)
    {
 
       m_ptemplateSyllomatter->open_document_file(pcreatecontext);
