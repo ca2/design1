@@ -76,14 +76,14 @@ namespace biteditor
    }
 
 
-   void application::on_request(::create * pcreatecontext)
+   void application::on_request(::create * pcreate)
    {
 
       if(m_ptemplateEdge->get_document() == NULL)
       {
-         m_ptemplateEdge->open_document_file(pcreatecontext);
+         m_ptemplateEdge->open_document_file(pcreate);
       }
-      m_ptemplate_devedge->open_document_file(pcreatecontext);
+      m_ptemplate_devedge->open_document_file(pcreate);
 
    }
 

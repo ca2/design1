@@ -26,7 +26,7 @@ namespace netnodeds
       void rotate();
 
 
-      sp(::user::document) open_file(sp(::create) pcreatecontext);
+      sp(::user::document) open_file(::create * pcreate);
 
       void on_show_view();
       DECL_GEN_SIGNAL(_001OnCreate);

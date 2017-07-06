@@ -119,12 +119,12 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
    }
 */
-   void application::on_request(::create * pcreatecontext)
+   void application::on_request(::create * pcreate)
    {
       sp(::user::document) pdoc = NULL;
       if(netnodeds().m_ptemplateEdge->get_document_count() == NULL)
       {
-         netnodeds().m_ptemplateEdge->open_document_file(pcreatecontext);
+         netnodeds().m_ptemplateEdge->open_document_file(pcreate);
       }
      sp(main_document) pmaindoc = NULL;
       if(netnodeds().m_ptemplateEdge->get_document(0) != NULL)
@@ -132,14 +132,14 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       if(pmaindoc != NULL)
       {
 
-         string strExtension = pcreatecontext->m_spCommandLine->m_varFile.get_file_path().ext();
+         string strExtension = pcreate->m_spCommandLine->m_varFile.get_file_path().ext();
 
          sp(::netnodeds::pane_view) pview = pmaindoc->get_typed_view < ::netnodeds::pane_view > ();
          if(pview != NULL)
          {
             if(strExtension.compare_ci("ca2solution") == 0)
             {
-               pview->set_cur_tab_by_id(PaneViewDevEdge, pcreatecontext);
+               pview->set_cur_tab_by_id(PaneViewDevEdge, pcreate);
                sp(::user::single_document_template) ptemplate = (netnodeds().m_ptemplateEdge);
                if(ptemplate != NULL)
                {
@@ -148,12 +148,12 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
                      ptemplate->open_new_document();
                   }
                }
-               pcreatecontext->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
-               pdoc = netnodeds().m_ptemplate_solution->open_document_file(pcreatecontext);
+               pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
+               pdoc = netnodeds().m_ptemplate_solution->open_document_file(pcreate);
             }
             else
             {
-               pdoc = pview->open_file(pcreatecontext);
+               pdoc = pview->open_file(pcreate);
             }
          }
       }

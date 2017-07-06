@@ -93,7 +93,7 @@ namespace tarsila
 
    }
 
-   void application::on_request(::create * pcreatecontext)
+   void application::on_request(::create * pcreate)
    {
 
       if(m_pdoctemplateMain->get_document_count() <= 0)
@@ -103,7 +103,7 @@ namespace tarsila
 
       }
 
-      if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_application_start)
+      if(pcreate->m_spCommandLine->m_ecommand == ::command_line::command_application_start)
       {
 
          stringa stra;
@@ -126,7 +126,7 @@ namespace tarsila
          }
 
       }
-      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_new)
+      else if(pcreate->m_spCommandLine->m_ecommand == ::command_line::command_file_new)
       {
 
          string strPath;
@@ -142,10 +142,10 @@ namespace tarsila
          m_ppaneview->set_cur_tab_by_id(strId);
 
       }
-      else if (spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
+      else if (pcreate->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
       {
 
-         m_ppaneview->set_cur_tab_by_id("tarsila://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+         m_ppaneview->set_cur_tab_by_id("tarsila://" + pcreate->m_spCommandLine->m_varFile.get_string());
 
       }
 
