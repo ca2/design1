@@ -25,7 +25,7 @@ namespace syllomatter
       virtual bool initialize_application();
       virtual int32_t  exit_application() override;
 
-      virtual void on_request(::create * pcreatecontext);
+      virtual void on_request(::create * pcreate);
 
 
       virtual void OnFileManagerOpenContextMenuFolder(::filemanager::data * pdata, const ::fs::item & item, stringa & straCommand, stringa & straCommandTitle);

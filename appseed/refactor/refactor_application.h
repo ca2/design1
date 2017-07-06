@@ -20,7 +20,7 @@ namespace refactor
       virtual bool initialize_application();
       virtual int  exit_application() override;
 
-      virtual void on_request(::create * pcreatecontext);
+      virtual void on_request(::create * pcreate);
 
 
    };

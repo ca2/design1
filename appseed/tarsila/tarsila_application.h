@@ -27,7 +27,7 @@ namespace tarsila
       virtual int32_t exit_application() override;
 
 
-      void on_request(::create * pcreatecontext);
+      void on_request(::create * pcreate);
 
       virtual bool on_install();
 

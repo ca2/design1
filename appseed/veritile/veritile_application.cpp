@@ -96,7 +96,7 @@ namespace veritile
 
    }
 
-   void application::on_request(::create * pcreatecontext)
+   void application::on_request(::create * pcreate)
    {
 
       if(m_pdoctemplateMain->get_document_count() <= 0)
@@ -106,7 +106,7 @@ namespace veritile
 
       }
 
-      if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_application_start)
+      if(spcreate->m_spCommandLine->m_ecommand == ::command_line::command_application_start)
       {
 
          stringa stra;
@@ -129,7 +129,7 @@ namespace veritile
          }
 
       }
-      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_new)
+      else if(spcreate->m_spCommandLine->m_ecommand == ::command_line::command_file_new)
       {
 
          string strPath;
@@ -145,16 +145,16 @@ namespace veritile
          m_ppaneview->set_cur_tab_by_id(strId);
 
       }
-      else if(spcreatecontext->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
+      else if(spcreate->m_spCommandLine->m_ecommand == ::command_line::command_file_open)
       {
 
-         if(spcreatecontext->m_spCommandLine->m_varFile.get_string().ends_ci(".png"))
+         if(spcreate->m_spCommandLine->m_varFile.get_string().ends_ci(".png"))
          {
             
             if(m_ppaneview->m_pdocCur != NULL            && m_ppaneview->m_pviewCur != NULL)
             {
 
-               m_ppaneview->m_pdocCur->add_tileset(spcreatecontext->m_spCommandLine->m_varFile);
+               m_ppaneview->m_pdocCur->add_tileset(spcreate->m_spCommandLine->m_varFile);
 
             }
             else
@@ -167,7 +167,7 @@ namespace veritile
          else
          {
           
-            m_ppaneview->set_cur_tab_by_id("veritile://" + spcreatecontext->m_spCommandLine->m_varFile.get_string());
+            m_ppaneview->set_cur_tab_by_id("veritile://" + spcreate->m_spCommandLine->m_varFile.get_string());
 
          }
 

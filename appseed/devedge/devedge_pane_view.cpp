@@ -267,9 +267,9 @@ namespace devedge
    {
       if(m_pviewdata->m_id == PaneViewDevEdge)
       {
-         if(m_spcreatecontext.is_set())
+         if(m_spcreate.is_set())
          {
-            Application.devedge().m_ptemplate_devedge->get_document(0)->on_open_document(m_spcreatecontext->m_spCommandLine->m_varFile);
+            Application.devedge().m_ptemplate_devedge->get_document(0)->on_open_document(m_spcreate->m_spCommandLine->m_varFile);
          }
 
       }
@@ -286,10 +286,10 @@ namespace devedge
       }*/
    }
 
-   sp(::user::document) pane_view::open_file(sp(::create) pcreatecontext)
+   sp(::user::document) pane_view::open_file(::create * pcreate)
    {
-      create_tab_by_id("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile));
-      return get("devedge://" + string(pcreatecontext->m_spCommandLine->m_varFile))->m_pdoc;
+      create_tab_by_id("devedge://" + string(pcreate->m_spCommandLine->m_varFile));
+      return get("devedge://" + string(pcreate->m_spCommandLine->m_varFile))->m_pdoc;
    }
 
 

@@ -58,17 +58,17 @@ namespace refactor
       return ::core::application::exit_application();
    }
 
-   void application::on_request(::create * pcreatecontext)
+   void application::on_request(::create * pcreate)
    {
 
-      if(!pcreatecontext->m_spCommandLine->m_varQuery.has_property("client_only"))
+      if(!pcreate->m_spCommandLine->m_varQuery.has_property("client_only"))
       {
-         m_ptemplateRefactorMain->open_document_file(pcreatecontext);
+         m_ptemplateRefactorMain->open_document_file(pcreate);
       }
 
-      if(!pcreatecontext->m_spCommandLine->m_varFile.is_empty())
+      if(!pcreate->m_spCommandLine->m_varFile.is_empty())
       {
-         m_ptemplateRefactor->open_document_file(pcreatecontext);
+         m_ptemplateRefactor->open_document_file(pcreate);
       }
 
    }
