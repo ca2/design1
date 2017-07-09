@@ -119,23 +119,40 @@ namespace netnodeds
          }
          else if(::str::begins_eat_ci(strPath, "netnodeds://"))
          {
+            
             sp(::create) cc(get_app());
+            
             cc->m_spCommandLine->m_varFile = strPath;
+            
             cc->m_puiParent = this;
-            sp(::user::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(cc));
+            
+            app.netnodeds().m_ptemplate_netnodeds->request_create(cc);
+
+            m_pdocument = ::user::get_document(cc);
+
             if(pdoc != NULL)
             {
+
                sp(::user::impact) pview = pdoc->get_view();
+
                if(pview != NULL)
                {
+
                   sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+
                   if(pframe != NULL)
                   {
+
                      pcreatordata->m_pdoc = pdoc;
+
                      pcreatordata->m_pwnd = pframe;
+
                   }
+
                }
+
             }
+
             return;
          }
       }
@@ -148,7 +165,11 @@ namespace netnodeds
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
                cc->m_puiParent = pcreatordata->m_pholder;
-               sp(front_document) pdoc =  (Application.netnodeds().m_ptemplateFront->open_document_file(cc));
+               
+               Application.netnodeds().m_ptemplateFront->request_create(cc);
+
+               sp(front_document) pdoc = ::user::get_document(cc);
+
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();
@@ -186,10 +207,17 @@ namespace netnodeds
             break;
          case PaneViewHtmlEdit:
             {
-               sp(::create) cc(get_app());
+               
+            sp(::create) cc(get_app());
+               
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
+               
                cc->m_puiParent = this;
-               sp(::user::document) pdoc =  (Application.netnodeds().m_ptemplateHtmlEdit->open_document_file(cc));
+               
+               Application.netnodeds().m_ptemplateHtmlEdit->request_create(cc);
+
+               sp(::user::document) pdoc = ::user::document(cc);
+
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();
@@ -224,9 +252,15 @@ namespace netnodeds
             break;
          case PaneViewSolution:
             {
-               sp(::create) cc(get_app());
+               
+            sp(::create) cc(get_app());
+               
                cc->m_puiParent = this;
-               sp(::netnodeds::solution_document) pdoc =  (app.netnodeds().m_ptemplate_solution->open_document_file(cc));
+               
+               app.netnodeds().m_ptemplate_solution->request_create(cc);
+
+               sp(::netnodeds::solution_document) pdoc = ::user::document(cc);
+
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();

@@ -100,7 +100,9 @@ namespace biteditor
             cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
             cc->m_puiParent = pcreatordata->m_pholder;
 
-            sp(front_document) pdoc =  (Application.::biteditor::application::m_ptemplateFront->open_document_file(cc));
+            Application.::biteditor::application::m_ptemplateFront->request_create(cc);
+
+            sp(front_document) pdoc = ::user::get_document(cc);
 
             if(pdoc != NULL)
             {
@@ -118,9 +120,15 @@ namespace biteditor
          break;
       case pane_view_bit_editor:
          {
-            sp(::create) cc(allocer());
+            
+         sp(::create) cc(allocer());
+            
             cc->m_puiParent = pcreatordata->m_pholder;
-            sp(::user::document) pdoc =  (Application.m_ptemplate_devedge->open_document_file(cc));
+            
+            Application.m_ptemplate_devedge->request_create(cc);
+
+            sp(::user::document) pdoc = ::user::get_document(cc);
+
             if(pdoc != NULL)
             {
                sp(::user::impact) pview = pdoc->get_view();

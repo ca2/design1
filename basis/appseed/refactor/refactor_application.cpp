@@ -56,22 +56,29 @@ namespace refactor
    {
       
       return ::core::application::exit_application();
+
    }
 
+   
    void application::on_request(::create * pcreate)
    {
 
       if(!pcreate->m_spCommandLine->m_varQuery.has_property("client_only"))
       {
-         m_ptemplateRefactorMain->open_document_file(pcreate);
+
+         m_ptemplateRefactorMain->request_create(pcreate);
+
       }
 
       if(!pcreate->m_spCommandLine->m_varFile.is_empty())
       {
-         m_ptemplateRefactor->open_document_file(pcreate);
+         
+         m_ptemplateRefactor->request_create(pcreate);
+
       }
 
    }
+
 
 } // namespace refactor
 

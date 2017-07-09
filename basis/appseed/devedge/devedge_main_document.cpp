@@ -47,7 +47,10 @@ namespace devedge
       ::devedge::devedge & devedge = Application.devedge();
       sp(::create) cc(get_app());
       cc->m_spCommandLine->m_varFile = varFile;
-      return devedge.m_ptemplate_devedge->open_document_file(cc) != NULL;
+      
+      devedge.m_ptemplate_devedge->request_create(cc);
+
+      return ::user::get_document(cc) != NULL;
 
    }
 
