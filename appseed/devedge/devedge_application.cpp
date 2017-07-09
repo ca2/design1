@@ -120,16 +120,31 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
    }
 */
+   
+   
    void application::on_request(::create * pcreate)
    {
+      
       sp(::user::document) pdoc = NULL;
+      
       if(devedge().m_ptemplateEdge->get_document_count() == NULL)
       {
-         devedge().m_ptemplateEdge->open_document_file(pcreate);
+
+         devedge().m_ptemplateEdge->request_create(pcreate);
+
       }
-     sp(main_document) pmaindoc = NULL;
-      if(devedge().m_ptemplateEdge->get_document(0) != NULL)
-         pmaindoc =  (devedge().m_ptemplateEdge->get_document(0));
+
+      sp(main_document) pmaindoc = NULL;
+
+      if (devedge().m_ptemplateEdge->get_document(0) != NULL)
+      {
+
+
+         pmaindoc = (devedge().m_ptemplateEdge->get_document(0));
+
+      }
+
+
       if(pmaindoc != NULL)
       {
          string strExtension = pcreate->m_spCommandLine->m_varFile.get_file_path().ext();
@@ -147,8 +162,13 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
                      ptemplate->open_new_document();
                   }
                }
+               
                pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
-               pdoc = devedge().m_ptemplate_solution->open_document_file(pcreate);
+               
+               devedge().m_ptemplate_solution->request_create(pcreate);
+
+               pdoc = ::user::get_document(pcreate);
+
             }
             else
             {

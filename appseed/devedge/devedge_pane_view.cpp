@@ -119,7 +119,11 @@ namespace devedge
             sp(::create) cc(get_app());
             cc->m_spCommandLine->m_varFile = strPath;
             cc->m_puiParent = this;
-            sp(::user::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(cc));
+            
+            app.devedge().m_ptemplate_devedge->request_create(cc);
+
+            sp(::user::document) pdoc = ::user::get_document(cc);
+
             if(pdoc != NULL)
             {
                sp(::user::impact) pview = pdoc->get_view();
@@ -145,7 +149,11 @@ namespace devedge
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
                cc->m_puiParent = pcreatordata->m_pholder;
-               sp(front_document) pdoc =  (Application.devedge().m_ptemplateFront->open_document_file(cc));
+               
+               Application.devedge().m_ptemplateFront->request_create(cc);
+
+               sp(front_document) pdoc = ::user::get_document(cc);
+
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();
@@ -186,9 +194,14 @@ namespace devedge
                sp(::create) cc(get_app());
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
                cc->m_puiParent = this;
-               sp(::user::document) pdoc =  (Application.devedge().m_ptemplateHtmlEdit->open_document_file(cc));
+               
+               m_ptemplateHtmlEdit->request_create(cc);
+
+               sp(::user::document) pdoc = ::user::get_document(cc);
+
                if(pdoc != NULL)
                {
+
                   sp(::user::impact) pview = pdoc->get_view();
                   if(pview != NULL)
                   {
@@ -221,9 +234,17 @@ namespace devedge
             break;
          case PaneViewSolution:
             {
+               
                sp(::create) cc(get_app());
+               
                cc->m_puiParent = this;
-               sp(::devedge::solution_document) pdoc =  (app.devedge().m_ptemplate_solution->open_document_file(cc));
+               
+               app.devedge().m_ptemplate_solution->request_create(cc);
+
+               sp(::user::document) pdoc = ::user::get_document(cc);
+
+               sp(::devedge::solution_document) pdoc = ::user::get_document(cc);
+
                if(pdoc != NULL)
                {
                   sp(::user::impact) pview = pdoc->get_view();

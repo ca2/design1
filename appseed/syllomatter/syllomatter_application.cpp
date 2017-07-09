@@ -100,12 +100,14 @@ namespace syllomatter
 
    }
 
+   
    void application::on_request(::create * pcreate)
    {
 
-      m_ptemplateSyllomatter->open_document_file(pcreate);
+      m_ptemplateSyllomatter->request_create(pcreate);
 
    }
+
 
    void application::InitializeFileManager(const char * pszMatter)
    {

@@ -48,20 +48,26 @@ namespace netnodeds
    {
 
       ::netnodeds::netnodeds & netnodeds = Application.netnodeds();
+      
       sp(::create) cc(get_app());
+      
       cc->m_spCommandLine->m_varFile = varFile;
-      return netnodeds.m_ptemplate_netnodeds->open_document_file(cc) != NULL;
+      
+      netnodeds.m_ptemplate_netnodeds->request_create(cc);
+
+      return ::user::get_document(cc) != NULL;
 
    }
 
 
    bool main_document::on_save_document(const char * lpszPathName)
    {
+      
       UNREFERENCED_PARAMETER(lpszPathName);
-      return TRUE;
+
+      return true;
+
    }
-
-
 
 
 } // namespace netnodeds

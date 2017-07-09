@@ -19,6 +19,7 @@ namespace netnodeds
       m_pfolder = pfolder;
       m_strPath = pszPath;
       m_strName = m_strPath.name();
+
    }
 
 
@@ -26,20 +27,30 @@ namespace netnodeds
    {
 
       ::netnodeds::netnodeds & netnodeds = Application.netnodeds();
+      
       sp(::create) cc(get_app());
+      
       cc->m_spCommandLine->m_varFile = m_strPath;
+      
       cc->m_puiParent = puieParent;
-      m_pdocument =  (netnodeds.m_ptemplate_netnodeds->open_document_file(cc));
+      
+      netnodeds.m_ptemplate_netnodeds->request_create(cc);
+
+      m_pdocument = ::user::get_document(cc);
 
    }
 
 
    void file::close()
    {
+
       if(m_pdocument != NULL)
       {
+
          m_pdocument->on_close_document();
+
       }
+
    }
 
    elemental::e_solution_type file::get_solution_type()

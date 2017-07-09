@@ -24,7 +24,9 @@ namespace devedge
       sp(::create) cc(get_app());
       cc->m_spCommandLine->m_varFile = m_strPath;
       cc->m_puiParent = puieParent;
-      m_pdocument =  (devedge.m_ptemplate_devedge->open_document_file(cc));
+      devedge.m_ptemplate_devedge->request_create(cc);
+
+      m_pdocument = ::user::get_document(cc);
 
    }
 

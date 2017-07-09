@@ -81,9 +81,12 @@ namespace biteditor
 
       if(m_ptemplateEdge->get_document() == NULL)
       {
-         m_ptemplateEdge->open_document_file(pcreate);
+
+         m_ptemplateEdge->request_create(pcreate);
+
       }
-      m_ptemplate_devedge->open_document_file(pcreate);
+
+      m_ptemplate_devedge->request_create(pcreate);
 
    }
 
