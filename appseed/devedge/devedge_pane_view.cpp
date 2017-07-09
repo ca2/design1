@@ -191,11 +191,14 @@ namespace devedge
             break;
          case PaneViewHtmlEdit:
             {
-               sp(::create) cc(get_app());
+               
+            sp(::create) cc(get_app());
+
                cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
+
                cc->m_puiParent = this;
                
-               m_ptemplateHtmlEdit->request_create(cc);
+               app.devedge().m_ptemplateHtmlEdit->request_create(cc);
 
                sp(::user::document) pdoc = ::user::get_document(cc);
 
@@ -240,8 +243,6 @@ namespace devedge
                cc->m_puiParent = this;
                
                app.devedge().m_ptemplate_solution->request_create(cc);
-
-               sp(::user::document) pdoc = ::user::get_document(cc);
 
                sp(::devedge::solution_document) pdoc = ::user::get_document(cc);
 
