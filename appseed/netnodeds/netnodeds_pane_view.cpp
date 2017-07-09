@@ -128,7 +128,9 @@ namespace netnodeds
             
             app.netnodeds().m_ptemplate_netnodeds->request_create(cc);
 
-            m_pdocument = ::user::get_document(cc);
+            sp(::user::document) pdoc = ::user::get_document(cc);
+
+            m_pdocument = pdoc;
 
             if(pdoc != NULL)
             {
@@ -216,7 +218,7 @@ namespace netnodeds
                
                Application.netnodeds().m_ptemplateHtmlEdit->request_create(cc);
 
-               sp(::user::document) pdoc = ::user::document(cc);
+               sp(::user::document) pdoc = ::user::get_document(cc);
 
                if(pdoc != NULL)
                {
@@ -259,7 +261,7 @@ namespace netnodeds
                
                app.netnodeds().m_ptemplate_solution->request_create(cc);
 
-               sp(::netnodeds::solution_document) pdoc = ::user::document(cc);
+               sp(::netnodeds::solution_document) pdoc = ::user::get_document(cc);
 
                if(pdoc != NULL)
                {
