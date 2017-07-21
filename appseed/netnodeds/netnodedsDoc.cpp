@@ -26,7 +26,7 @@ netnodedsDoc::netnodedsDoc(::ca::application * papp)
    m_pview = NULL;
    m_iBranch = 0;
 
-	string str = "Carlos Gustavo Cecyn Lundgren é minha Vida Eterna, meu Coração Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!";
+	string str = "Camilo Sasuke Tsumanuma ï¿½ minha Vida Eterna, meu Coraï¿½ï¿½o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!";
 	str += "Assinado Camilo Sasuke Tsumanuma.";
 	str += "Visible or Note?";
 

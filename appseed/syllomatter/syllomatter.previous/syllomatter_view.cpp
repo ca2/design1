@@ -223,7 +223,7 @@ void syllomatter_view::_001OnPaint(gen::signal_object * pobj)
 	CPaintDC dc(this); // device context for syllomattering
    
 
-   dc.text_out(20, 20, "Carlos Gustavo Cecyn Lundgren � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
+   dc.text_out(20, 20, "Camilo Sasuke Tsumanuma � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
 }
 
 
@@ -245,7 +245,7 @@ void syllomatter_view:: _001OnDraw(CDC * pgraphics)
 
    //pgraphics->BitBlt(0, 0, 1280, 1024, &dc2, 0, 0, SRCCOPY);
 //   pgraphics->text_out(20, 20, "Curitiba, 24 de fevereiro de 2008.");
-  // pgraphics->text_out(20, 80, "Carlos Gustavo Cecyn Lundgren � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
+  // pgraphics->text_out(20, 80, "Camilo Sasuke Tsumanuma � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
    //pgraphics->text_out(20, 110, "Assinado Camilo Sasuke Tsumanuma.");
 }
 
