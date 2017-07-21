@@ -424,7 +424,7 @@ namespace veritile
       int iGridH = m_iItemHeight;
 
 
-      //pgraphics->TextOut(m_iLeftMargin + (iGridW * x),iGridH * (y + 1),pitem->m_strName);
+      //pgraphics->text_out(m_iLeftMargin + (iGridW * x),iGridH * (y + 1),pitem->m_strName);
 
 
    }

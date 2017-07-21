@@ -27,7 +27,7 @@ namespace netnodeds
       m_imapAbnt.SetAt('3' | 0x80000000, '#');
       m_imapAbnt.SetAt('4' | 0x80000000, '$');
       m_imapAbnt.SetAt('5' | 0x80000000, '%');
-      m_imapAbnt.SetAt('6' | 0x80000000, '¨');
+      m_imapAbnt.SetAt('6' | 0x80000000, 'ï¿½');
       m_imapAbnt.SetAt('7' | 0x80000000, '&');
       m_imapAbnt.SetAt('8' | 0x80000000, '*');
       m_imapAbnt.SetAt('9' | 0x80000000, '(');
@@ -98,7 +98,7 @@ void PlainTextBox::_001OnDraw(netnodedsView * pview, CDC * pgraphics)
 	{
 		pgraphics->SelectObject(m_pfont);
 	}
-	size size3 = pgraphics->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALï¿½");
 	int maxcy = size3.cy;
    AStrArray & straLines = m_straLines;
    AStrArray straLineFeed;
@@ -139,16 +139,16 @@ void PlainTextBox::_001OnDraw(netnodedsView * pview, CDC * pgraphics)
 		pgraphics->SetBkMode(TRANSPARENT);
       pgraphics->SetTextColor(cr);
       pgraphics->SetBkColor(crBkSel);
-		pgraphics->TextOut(m_pt.x, y, strExtent1);
+		pgraphics->text_out(m_pt.x, y, strExtent1);
 		size size1 = pgraphics->GetTextExtent(strExtent1);
 		pgraphics->SetBkMode(OPAQUE);
       pgraphics->SetTextColor(crSel);
-		pgraphics->TextOut(m_pt.x + size1.cx, y, strExtent2);
+		pgraphics->text_out(m_pt.x + size1.cx, y, strExtent2);
 		size size2 = pgraphics->GetTextExtent(strExtent2);
       pgraphics->SetTextColor(cr);
       pgraphics->SetBkColor(RGB(120, 240, 180));
 		pgraphics->SetBkMode(TRANSPARENT);
-		pgraphics->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
+		pgraphics->text_out(m_pt.x + size1.cx + size2.cx, y, strExtent3);
 		maxcy = max(size1.cy, size2.cy);
 		maxcy = max(maxcy, size3.cy);
       if(m_bFocus && m_bCaretOn && i3 == str1.GetLength())
@@ -236,7 +236,7 @@ void PlainTextBox::_001OnCalcLayoutProc(netnodedsView * pview, CDC * pgraphics)
 	}
    int y = 0;
    int i = 1;
-	size size3 = pgraphics->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALï¿½");
 
    m_iLineHeight = size3.cy;
    char buf[4096 + 1];
@@ -270,7 +270,7 @@ if(m_pfont != NULL)
 	int y = 0;
 	bool bFound = false;
 	string strLine;
-	size size3 = pgraphics->GetTextExtent("gqYALÍWM");
+	size size3 = pgraphics->GetTextExtent("gqYALï¿½WM");
 	size size;
 	m_size.cx = 0;
 	for(int i = 0; i < straLines.GetSize(); i++)
@@ -394,7 +394,7 @@ int PlainTextBox::char_hit_test(netnodedsView * pview, CDC * pgraphics, int px, 
 	bool bFound = false;
 	string strLine;
    string strExtent;
-	size size3 = pgraphics->GetTextExtent("gqYALÍ");
+	size size3 = pgraphics->GetTextExtent("gqYALï¿½");
 	int iOffset = 0;
    AStrArray stra;
 	for(int i = 0; i < straLines.GetSize(); i++)

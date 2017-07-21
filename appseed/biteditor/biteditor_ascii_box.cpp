@@ -158,17 +158,17 @@ namespace biteditor
 //         pgraphics->SetBkMode(TRANSPARENT);
          pgraphics->set_text_color(cr);
 //         pgraphics->SetBkColor(crBkSel);
-         pgraphics->TextOut(m_pt.x, y, strExtent1);
+         pgraphics->text_out(m_pt.x, y, strExtent1);
          size size1 = pgraphics->GetTextExtent(strExtent1);
 //         pgraphics->SetBkMode(OPAQUE);
          size size2 = pgraphics->GetTextExtent(strExtent2);
          pgraphics->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, m_pview->m_iLineHeight,crBkSel);
          pgraphics->set_text_color(crSel);
-         pgraphics->TextOut(m_pt.x + size1.cx, y, strExtent2);
+         pgraphics->text_out(m_pt.x + size1.cx, y, strExtent2);
          pgraphics->set_text_color(cr);
 //         pgraphics->SetBkColor(ARGB(255, 120, 240, 180));
 //         pgraphics->SetBkMode(TRANSPARENT);
-         pgraphics->TextOut(m_pt.x + size1.cx + size2.cx, y, strExtent3);
+         pgraphics->text_out(m_pt.x + size1.cx + size2.cx, y, strExtent3);
 
          maxcy = m_pview->m_iLineHeight;
          if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
@@ -260,7 +260,7 @@ namespace biteditor
       if(y <= 0)
          y = 200;
       m_size.cy = (long) y;
-      size size3 = pgraphics->GetTextExtent("gqYALÍpd");
+      size size3 = pgraphics->GetTextExtent("gqYALï¿½pd");
       m_size.cx = size3.cx * m_pview->m_iLineSize / 8;
       m_pview->UpdateScrollSizes();*/
    }
@@ -282,7 +282,7 @@ namespace biteditor
       int32_t y = 0;
    //   bool bFound = false;
       string strLine;
-      size size3 = pgraphics->GetTextExtent("gqYALÍWM");
+      size size3 = pgraphics->GetTextExtent("gqYALï¿½WM");
       size size;
       m_size.cx = 0;
       for(int32_t i = 0; i < straLines.get_size(); i++)
@@ -316,7 +316,7 @@ namespace biteditor
       bool bFound = false;
       string strLine;
       string strExtent;
-      size size3 = pgraphics->GetTextExtent("gqYALÍ");
+      size size3 = pgraphics->GetTextExtent("gqYALï¿½");
       file_position_t iOffset = 0;
       file_position_t iLineStart = m_pview->m_iViewOffset / m_pview->m_iLineSize;
       file_position_t iLineEnd = (iLineStart * m_pview->m_iLineSize + m_pview->m_iViewSize) / m_pview->m_iLineSize + 1;
