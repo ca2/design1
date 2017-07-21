@@ -150,18 +150,18 @@ namespace biteditor
 //         pgraphics->SetBkMode(TRANSPARENT);
          pgraphics->set_text_color(cr);
 //         pgraphics->SetBkColor(crBkSel);
-         pgraphics->TextOut(rectClient.left, y, strExtent1);
+         pgraphics->text_out(rectClient.left, y, strExtent1);
          size size1 = pgraphics->GetTextExtent(strExtent1);
 //         pgraphics->SetBkMode(OPAQUE);
          size size2 = pgraphics->GetTextExtent(strExtent2);
          pgraphics->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, size2.cy,crBkSel);
          pgraphics->set_text_color(crSel);
-         pgraphics->TextOut(rectClient.left + size1.cx, y, strExtent2);
+         pgraphics->text_out(rectClient.left + size1.cx, y, strExtent2);
          pgraphics->set_text_color(cr);
 //         pgraphics->SetBkColor(ARGB(255, 120, 240, 180));
 //         pgraphics->SetBkMode(TRANSPARENT);
          size sizeExt3 = pgraphics->GetTextExtent(strExtent1 + strExtent2);
-         pgraphics->TextOut(rectClient.left + sizeExt3.cx, y, strExtent3);
+         pgraphics->text_out(rectClient.left + sizeExt3.cx, y, strExtent3);
          maxcy = MAX(size1.cy, size2.cy);
          maxcy = MAX(maxcy, size3.cy);
          if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
@@ -272,7 +272,7 @@ namespace biteditor
       if(y <= 0)
          y = 200;
       m_size.cy = (LONG) y;
-      size size3 = pgraphics->GetTextExtent("gqYALÍpd");
+      size size3 = pgraphics->GetTextExtent("gqYALï¿½pd");
       m_size.cx = (LONG) (size3.cx * m_pview->m_iLineSize * 3 / 8 );
       m_pview->UpdateScrollSizes();
    }
@@ -296,7 +296,7 @@ namespace biteditor
       int32_t y = 0;
 //      bool bFound = false;
       string strLine;
-      size size3 = pgraphics->GetTextExtent("gqYALÍWM");
+      size size3 = pgraphics->GetTextExtent("gqYALï¿½WM");
       size size;
       m_size.cx = 0;
       for(int32_t i = 0; i < straLines.get_size(); i++)

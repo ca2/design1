@@ -411,7 +411,7 @@ namespace refactor
 //               for(int i = 0; i < straAutoComplete.get_size(); i++)
 //               {
 //
-//                  pgraphics->TextOut(left + size1.cx, y + (iLineHeight * (i + 1)), straAutoComplete[i]);
+//                  pgraphics->text_out(left + size1.cx, y + (iLineHeight * (i + 1)), straAutoComplete[i]);
 //
 //               }
 //               
@@ -428,12 +428,12 @@ namespace refactor
 //            {
 //      //         pgraphics->FillSolidRect((int) (left + size1.cx), y, size2.cx, size2.cy, ARGB(255, 120, 240, 180));
 //               pgraphics->set_color(crSel);
-//    //           pgraphics->TextOut(left + size1.cx, y, strExtent2);
+//    //           pgraphics->text_out(left + size1.cx, y, strExtent2);
 //            }
 //            pgraphics->set_color(cr);
 //            
 //            pgraphics->SetBkMode(TRANSPARENT);
-//  //          pgraphics->TextOut(left + size1.cx + size2.cx, y, strExtent3);
+//  //          pgraphics->text_out(left + size1.cx + size2.cx, y, strExtent3);
 //            //maxcy = max(size1.cy, size2.cy);
 //            //maxcy = max(maxcy, size3.cy);
 //            if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
