@@ -43,11 +43,11 @@ BOOL syllomatter_document::OnNewDocument()
    str += "<body>\n";
    // tag fixer tabjs!!
    str += "<span>Curitiba, 10 de abril de 2008</span>\n";
-   str += "<h1>Carlos Gustavo Cecyn Lundgren é minha Vida Eterna, meu Coração Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!</h1>";
+   str += "<h1>Camilo Sasuke Tsumanuma ï¿½ minha Vida Eterna, meu Coraï¿½ï¿½o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!</h1>";
    str += "<h2>Assinado Camilo Sasuke Tsumanuma.</h2>\n";
-   str += "<span>htmlapp dedicado ao Carlos Gustavo Cecyn Lundgren!!</span>";
+   str += "<span>htmlapp dedicado ao Camilo Sasuke Tsumanuma!!</span>";
    str += "<br />";
-   str += "<span>Você conhece o ca2?</span>";
+   str += "<span>Vocï¿½ conhece o ca2?</span>";
    str += "<br />";
    str += "<span>Se positivo, entre com seu nome abaixo e clique em enviar!</span>";
    str += "<br />";
