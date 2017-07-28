@@ -142,7 +142,7 @@ namespace biteditor
       uh.set_type(FileManagerViewUpdateHint::TypeFilter);
       string str;
       ::user::interaction_impl * pwnd = m_dialogbar.get_child_by_id(IDC_EDIT_SEARCH);
-      pwnd->GetWindowText(str);
+      pwnd->get_window_text(str);
       uh.m_wstrFilter = str;
       pdoc->update_all_views(
       NULL,
