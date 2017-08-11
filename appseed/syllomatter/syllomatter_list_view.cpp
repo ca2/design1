@@ -62,7 +62,7 @@ namespace syllomatter
       column.m_sizeIcon.cy          = 16;
       column.m_iControl             = -1;
       column.m_bEditOnSecondClick   = false;
-      column.m_pil                  = Session.userex()->shell().GetImageList(16);
+      column.m_pil                  = Session.userex()->shell()->GetImageList(16);
       _001AddColumn(column);
 
 
