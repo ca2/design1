@@ -14,7 +14,7 @@ namespace refactor
 
       WfiEnableFullScreen();
 
-      m_bWindowFrame = !Application.command()->m_varTopicQuery["client_only"].is_set();
+      m_bWindowFrame = !Application.handler()->m_varTopicQuery["client_only"].is_set();
 
    }
 
@@ -39,7 +39,7 @@ namespace refactor
    sp(::user::wndfrm::frame::frame) frame::create_frame_schema()
    {
 
-      sp(::user::wndfrm::frame::frame) pschema = Application.wndfrm().get_frame_schema(NULL,"002");
+      sp(::user::wndfrm::frame::frame) pschema = Application.wndfrm()->get_frame_schema(NULL,"002");
       pschema->set_style("StyleLightBlue");
 //      pschema->m_typeinfoControlBoxButton = System.template type_info < MetaButton > ();
       return pschema;

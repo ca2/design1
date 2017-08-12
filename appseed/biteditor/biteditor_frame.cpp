@@ -45,9 +45,9 @@ namespace biteditor
    void frame::_001OnClose(::signal_details *pobj)
    {
 
-      for(int iTemplate = 0; iTemplate < Application.document_manager().get_template_count(); iTemplate++)
+      for(int iTemplate = 0; iTemplate < Application.document_manager()->get_template_count(); iTemplate++)
       {
-         sp(::user::impact_system) ptemplate = Application.document_manager().get_template(iTemplate);
+         sp(::user::impact_system) ptemplate = Application.document_manager()->get_template(iTemplate);
          for(int iDocument = 0; iDocument < ptemplate->get_document_count(); iDocument++)
          {
             sp(::user::document) pdocument = ptemplate->get_document(iDocument);
