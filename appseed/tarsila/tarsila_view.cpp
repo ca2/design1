@@ -463,8 +463,8 @@ namespace tarsila
 
    void view::_001OnUpdateSelectionTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
 
@@ -480,8 +480,8 @@ namespace tarsila
 
    void view::_001OnUpdatePolygonTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
 } // namespace tarsila

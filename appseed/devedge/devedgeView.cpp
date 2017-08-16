@@ -241,14 +241,14 @@ BOOL devedgeView::PreTranslateMessage(MSG * pMsg)
 
 void devedgeView::_001OnUpdateEditUndo(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(m_editfile.CanUndo());
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(m_editfile.CanUndo());
 }
 
 void devedgeView::_001OnUpdateEditRedo(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(m_editfile.GetRedoBranchCount() > 0);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(m_editfile.GetRedoBranchCount() > 0);
 }
 
 void devedgeView::_001OnEditUndo(gen::signal_object * pobj)

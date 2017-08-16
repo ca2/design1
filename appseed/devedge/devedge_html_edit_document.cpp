@@ -19,26 +19,26 @@ namespace devedge
    {
    }
 
-   bool html_edit_document::_001OnUpdateCmdUi(cmd_ui * pcmdui)
+   bool html_edit_document::_001OnUpdateCmdUi(command_ui * pcommandui)
    {
-      string strId(pcmdui->m_id);
+      string strId(pcommandui->m_id);
       if(strId == "file::save")
       {
-         OnUpdateFileSave(pcmdui);
+         OnUpdateFileSave(pcommandui);
          return TRUE;
       }
       else if(strId == "edit::undo")
       {
-         OnUpdateEditUndo(pcmdui);
+         OnUpdateEditUndo(pcommandui);
          return TRUE;
       }
       else if(strId == "edit::redo")
       {
-         OnUpdateEditRedo(pcmdui);
+         OnUpdateEditRedo(pcommandui);
          return TRUE;
       }
       // xyzxyz
-//      return html_document::_001OnUpdateCmdUi(pcmdui);
+//      return html_document::_001OnUpdateCmdUi(pcommandui);
       return false;
    }
 
@@ -124,19 +124,19 @@ namespace devedge
       return TRUE;
    }
 
-   void html_edit_document::OnUpdateFileSave(cmd_ui *pcmdui)
+   void html_edit_document::OnUpdateFileSave(command_ui *pcommandui)
    {
-      pcmdui->Enable(TRUE);
+      pcommandui->Enable(TRUE);
    }
 
-   void html_edit_document::OnUpdateEditUndo(cmd_ui *pcmdui)
+   void html_edit_document::OnUpdateEditUndo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
-   void html_edit_document::OnUpdateEditRedo(cmd_ui *pcmdui)
+   void html_edit_document::OnUpdateEditRedo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
    void html_edit_document::on_file_save()

@@ -51,31 +51,31 @@ though it is not a valid cursor handle.\n\
 
    }
 
-   bool document::_001OnCmdMsg(::aura::cmd_msg * pcmdmsg)
+   bool document::_001OnCmdMsg(::user::command * pcmdmsg)
    {
       /*   sp(::aura::application) papp = ::ca2::get_app();
       CommandIdSpace idspace;
       if (nCode == CN_UPDATE_COMMAND_UI)
       {
-      cmd_ui * pcmdui = (cmd_ui *) pExtra;
+      command_ui * pcommandui = (command_ui *) pExtra;
       if(nID == papp->GetResourceId(idspace, "file_save"))
       {
-      OnUpdateFileSave(pcmdui);
+      OnUpdateFileSave(pcommandui);
       return TRUE;
       }
       else if(nID == papp->GetResourceId(idspace, "edit_undo"))
       {
-      OnUpdateEditUndo(pcmdui);
+      OnUpdateEditUndo(pcommandui);
       return TRUE;
       }
       else if(nID == 1003)
       {
-      OnUpdateEditRedo(pcmdui);
+      OnUpdateEditRedo(pcommandui);
       return TRUE;
       }
       else if(nID == 1004)
       {
-      OnUpdateFilePut(pcmdui);
+      OnUpdateFilePut(pcommandui);
       return TRUE;
       }
       }
@@ -211,44 +211,44 @@ though it is not a valid cursor handle.\n\
 
    void document::_001OnUpdateFileSave(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateFilePut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditUndo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(m_peditfile->CanUndo());
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(m_peditfile->CanUndo());
    }
 
    void document::_001OnUpdateEditRedo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(m_peditfile->GetRedoBranchCount() > 0);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(m_peditfile->GetRedoBranchCount() > 0);
    }
 
    void document::_001OnUpdateEditCut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditCopy(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditPaste(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(TRUE);
    }
 
    void document::_001OnFileSave(::signal_details * pobj)

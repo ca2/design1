@@ -145,39 +145,39 @@ namespace devedge
 
    void document::_001OnUpdateFileSave(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateFileNew(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateFilePut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
 
    void document::_001OnUpdateEditCut(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditCopy(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditPaste(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-      pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+      pcommandui->Enable(TRUE);
    }
 
    void document::_001OnFileSave(::signal_details * pobj)

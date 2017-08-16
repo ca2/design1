@@ -438,8 +438,8 @@ namespace veritile
 
    void view::_001OnUpdateModePlace(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(m_emode != mode_place);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(m_emode != mode_place);
    }
 
 
@@ -451,8 +451,8 @@ namespace veritile
 
    void view::_001OnUpdateModeRandom(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(m_emode != mode_random);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(m_emode != mode_random);
    }
 
    void view::on_property_change(property & property)

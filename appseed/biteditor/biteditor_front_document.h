@@ -23,11 +23,11 @@ namespace biteditor
 
 
       bool on_simple_action(id id); 
-      bool on_simple_update(cmd_ui * pcmdui); 
+      bool on_simple_update(command_ui * pcommandui); 
 
-      void OnUpdateStart(cmd_ui *pcmdui);
-      void OnUpdateEditUndo(cmd_ui *pcmdui);
-      void OnUpdateEditRedo(cmd_ui *pcmdui);
+      void OnUpdateStart(command_ui *pcommandui);
+      void OnUpdateEditUndo(command_ui *pcommandui);
+      void OnUpdateEditRedo(command_ui *pcommandui);
       void OnStart();
       void OnEditUndo();
       void OnEditRedo();

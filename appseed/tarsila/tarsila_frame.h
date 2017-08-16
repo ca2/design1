@@ -25,7 +25,7 @@ namespace tarsila
       void _001OnTimer(::timer * ptimer);;
 
 
-      bool get_translucency(::user::ETranslucency  & etranslucency);
+      bool get_translucency(::user::e_translucency  & etranslucency);
 
 
    };

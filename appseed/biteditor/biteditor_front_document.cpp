@@ -35,24 +35,24 @@ namespace biteditor
       return html_document::on_simple_action(id);
    }
 
-   bool front_document::on_simple_update(cmd_ui * pcmdui)
+   bool front_document::on_simple_update(command_ui * pcommandui)
    {
-      if(pcmdui->m_id == "start")
+      if(pcommandui->m_id == "start")
       {
-         OnUpdateStart(pcmdui);
+         OnUpdateStart(pcommandui);
          return TRUE;
       }
-      else if(pcmdui->m_id == "edit::undo")
+      else if(pcommandui->m_id == "edit::undo")
       {
-         OnUpdateEditUndo(pcmdui);
+         OnUpdateEditUndo(pcommandui);
          return TRUE;
       }
-      else if(pcmdui->m_id == "edit::redor")
+      else if(pcommandui->m_id == "edit::redor")
       {
-         OnUpdateEditRedo(pcmdui);
+         OnUpdateEditRedo(pcommandui);
          return TRUE;
       }
-      return html_document::on_simple_update(pcmdui);
+      return html_document::on_simple_update(pcommandui);
    }
 
    bool front_document::on_new_document()
@@ -100,19 +100,19 @@ namespace biteditor
       return TRUE;
    }
 
-   void front_document::OnUpdateStart(cmd_ui *pcmdui)
+   void front_document::OnUpdateStart(command_ui *pcommandui)
    {
-      pcmdui->Enable(TRUE);
+      pcommandui->Enable(TRUE);
    }
 
-   void front_document::OnUpdateEditUndo(cmd_ui *pcmdui)
+   void front_document::OnUpdateEditUndo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
-   void front_document::OnUpdateEditRedo(cmd_ui *pcmdui)
+   void front_document::OnUpdateEditRedo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
    void front_document::OnStart()

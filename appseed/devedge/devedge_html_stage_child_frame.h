@@ -23,7 +23,7 @@ namespace devedge
       
       bool pre_create_window(::user::create_struct& cs);
 
-      virtual bool _001OnCmdMsg(::aura::cmd_msg * pcmdmsg); 
+      virtual bool _001OnCmdMsg(::user::command * pcmdmsg); 
 
       
 

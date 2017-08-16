@@ -400,8 +400,8 @@ namespace veritile
 
    void tileset_view::_001OnUpdateSelectionTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui,pcommandui,pobj);
+         pcommandui->Enable(TRUE);
    }
 
 
@@ -412,8 +412,8 @@ namespace veritile
 
    void tileset_view::_001OnUpdatePolygonTool(signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
-         pcmdui->m_pcmdui->Enable(TRUE);
+      SCAST_PTR(::command_ui,pcommandui,pobj);
+         pcommandui->Enable(TRUE);
    }
 
    bool tileset_view::keyboard_focus_is_focusable()

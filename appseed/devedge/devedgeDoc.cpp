@@ -64,25 +64,25 @@ BOOL devedgeDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO
    CommandIdSpace idspace;
 	if (nCode == CN_UPDATE_COMMAND_UI)
 	{
-      CCmdUI * pcmdui = (CCmdUI *) pExtra;
+      CCmdUI * pcommandui = (CCmdUI *) pExtra;
       if(nID == papp->GetResourceId(idspace, "file_save"))
       {
-         OnUpdateFileSave(pcmdui);
+         OnUpdateFileSave(pcommandui);
          return TRUE;
       }
       else if(nID == papp->GetResourceId(idspace, "edit_undo"))
       {
-         OnUpdateEditUndo(pcmdui);
+         OnUpdateEditUndo(pcommandui);
          return TRUE;
       }
       else if(nID == 1003)
       {
-         OnUpdateEditRedo(pcmdui);
+         OnUpdateEditRedo(pcommandui);
          return TRUE;
       }
       else if(nID == 1004)
       {
-         OnUpdateFilePut(pcmdui);
+         OnUpdateFilePut(pcommandui);
          return TRUE;
       }
 	}
@@ -213,33 +213,33 @@ BOOL devedgeDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 void devedgeDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 
 void devedgeDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnFileSave(gen::signal_object * pobj)

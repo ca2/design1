@@ -8,13 +8,13 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 
    if (dwReason == DLL_PROCESS_ATTACH)
    {
-      ::OutputDebugString("::ca2:: refactor.dll :: initializing!\n");
+      ::output_debug_string("::ca2:: refactor.dll :: initializing!\n");
       
 
    }
    else if (dwReason == DLL_PROCESS_DETACH)
    {
-      ::OutputDebugString("::ca2:: refactor.dll :: terminating!\n");
+      ::output_debug_string("::ca2:: refactor.dll :: terminating!\n");
    }
    return 1;   // ok
 }

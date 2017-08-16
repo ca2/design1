@@ -143,16 +143,16 @@ namespace netnodeds
 
    void view::_001OnUpdateEditUndo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
          // xyzxyz
-      //pcmdui->m_pcmdui->Enable(m_pdata->m_editfile.CanUndo());
+      //pcommandui->Enable(m_pdata->m_editfile.CanUndo());
    }
 
    void view::_001OnUpdateEditRedo(::signal_details * pobj)
    {
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
          // xyzxyz
-      //pcmdui->m_pcmdui->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
+      //pcommandui->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
    }
 
    void view::_001OnEditUndo(::signal_details * pobj)

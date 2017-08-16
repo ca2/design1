@@ -64,25 +64,25 @@ BOOL netnodedsDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERIN
    CommandIdSpace idspace;
 	if (nCode == CN_UPDATE_COMMAND_UI)
 	{
-      CCmdUI * pcmdui = (CCmdUI *) pExtra;
+      CCmdUI * pcommandui = (CCmdUI *) pExtra;
       if(nID == papp->GetResourceId(idspace, "file_save"))
       {
-         OnUpdateFileSave(pcmdui);
+         OnUpdateFileSave(pcommandui);
          return TRUE;
       }
       else if(nID == papp->GetResourceId(idspace, "edit_undo"))
       {
-         OnUpdateEditUndo(pcmdui);
+         OnUpdateEditUndo(pcommandui);
          return TRUE;
       }
       else if(nID == 1003)
       {
-         OnUpdateEditRedo(pcmdui);
+         OnUpdateEditRedo(pcommandui);
          return TRUE;
       }
       else if(nID == 1004)
       {
-         OnUpdateFilePut(pcmdui);
+         OnUpdateFilePut(pcommandui);
          return TRUE;
       }
 	}
@@ -213,33 +213,33 @@ BOOL netnodedsDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 void netnodedsDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 
 void netnodedsDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcmdui, pobj);
-   pcmdui->m_pcmdui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
+   pcommandui->Enable(TRUE);
 }
 
 void netnodedsDoc::_001OnFileSave(gen::signal_object * pobj)

@@ -97,7 +97,7 @@ namespace netnodeds
       ::core::application::pre_translate_message(pobj);
    }
 
-   bool application::_001OnCmdMsg(::aura::cmd_msg * pcmdmsg)
+   bool application::_001OnCmdMsg(::user::command * pcmdmsg)
 
    {
       return ::core::application::_001OnCmdMsg(pcmdmsg);

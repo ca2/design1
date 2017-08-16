@@ -29,7 +29,7 @@ pane_view::pane_view()
    m_pviewdataOld = NULL;
 
    // BaseWndInterface
-   m_etranslucency      = TranslucencyPresent;
+   m_etranslucency      = translucency_present;
 
    m_pviewdata              = NULL;
    m_pviewdataOld              = NULL;

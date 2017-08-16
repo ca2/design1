@@ -111,7 +111,7 @@ namespace devedge
    //   return true;
    //}
 
-   bool html_edit_child_frame::_001OnCmdMsg(::aura::cmd_msg * pcmdmsg)  
+   bool html_edit_child_frame::_001OnCmdMsg(::user::command * pcmdmsg)  
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
@@ -122,7 +122,7 @@ namespace devedge
       if(nCode == CN_UPDATE_COMMAND_UI)
       {
       GetSelected(itema);
-      pcallback->GetMenuItemUpdate(nID, itema, (cmd_ui *) pExtra);
+      pcallback->GetMenuItemUpdate(nID, itema, (command_ui *) pExtra);
       return TRUE;
       }
       else

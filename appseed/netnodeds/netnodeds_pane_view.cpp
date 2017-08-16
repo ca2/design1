@@ -13,7 +13,7 @@ namespace netnodeds
       place_holder_container(papp)
    {
 
-//      m_etranslucency      = TranslucencyPresent;
+//      m_etranslucency      = translucency_present;
       m_bShowDevEdge       = false;
 
    }
@@ -320,7 +320,7 @@ namespace netnodeds
          {
             keeper < bool > keepShowDevEdge(&m_bShowDevEdge, true, false, true);
             set_cur_tab_by_id(PaneViewSolution);
-            m_pviewdata->m_pwnd->m_etranslucency = TranslucencyNone;
+            m_pviewdata->m_pwnd->m_etranslucency = translucency_none;
          }
       }*/
    }

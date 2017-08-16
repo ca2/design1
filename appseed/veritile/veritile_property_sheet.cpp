@@ -233,9 +233,9 @@ namespace veritile
    void property_sheet::_001OnUpdateEditUndo(::signal_details * pobj)
    {
 
-      SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
+      SCAST_PTR(::command_ui,pcommandui,pobj);
 
-      //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.CanUndo());
+      //pcommandui->Enable(m_ptree->m_editfile.CanUndo());
 
    }
 
@@ -243,9 +243,9 @@ namespace veritile
    void property_sheet::_001OnUpdateEditRedo(::signal_details * pobj)
    {
 
-      SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
+      SCAST_PTR(::command_ui,pcommandui,pobj);
 
-      //pcmdui->m_pcmdui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
+      //pcommandui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
 
    }
 
@@ -363,9 +363,9 @@ namespace veritile
    {
 
 
-      SCAST_PTR(::aura::cmd_ui,pcmdui,pobj);
+      SCAST_PTR(::command_ui,pcommandui,pobj);
 
-      pcmdui->m_pcmdui->Enable(TRUE);
+      pcommandui->Enable(TRUE);
 
 
    }

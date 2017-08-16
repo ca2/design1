@@ -290,8 +290,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(bEnable);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(bEnable);
    }
 
    void list_view::_001OnDelete(::signal_details * pobj)
@@ -338,8 +338,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(bEnable);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(bEnable);
    }
 
 
@@ -395,8 +395,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(bEnable);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(bEnable);
    }
 
    list_view::commit_thread::commit_thread(::aura::application * papp) :
@@ -673,8 +673,8 @@ namespace syllomatter
       range range;
       _001GetSelection(range);
       bool bEnable = range.get_item_count() > 0;
-      SCAST_PTR(::aura::cmd_ui, pcmdui, pobj);
-         pcmdui->m_pcmdui->Enable(bEnable);
+      SCAST_PTR(::command_ui, pcommandui, pobj);
+         pcommandui->Enable(bEnable);
    }
 
 

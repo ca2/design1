@@ -22,26 +22,26 @@ namespace netnodeds
    {
    }
 
-   bool front_document::_001OnUpdateCmdUi(cmd_ui * pcmdui)
+   bool front_document::_001OnUpdateCmdUi(command_ui * pcommandui)
    {
-      string strId(pcmdui->m_id);
+      string strId(pcommandui->m_id);
       if(strId == "start")
       {
-         OnUpdateStart(pcmdui);
+         OnUpdateStart(pcommandui);
          return TRUE;
       }
       else if(strId == "edit::undo")
       {
-         OnUpdateEditUndo(pcmdui);
+         OnUpdateEditUndo(pcommandui);
          return TRUE;
       }
       else if(strId == "edit::redo")
       {
-         OnUpdateEditRedo(pcmdui);
+         OnUpdateEditRedo(pcommandui);
          return TRUE;
       }
       // xyzxyz
-      //return html_document::_001OnCmdMsg(pcmdui);
+      //return html_document::_001OnCmdMsg(pcommandui);
       return false;
    }
 
@@ -110,19 +110,19 @@ namespace netnodeds
       return TRUE;
    }
 
-   void front_document::OnUpdateStart(cmd_ui *pcmdui)
+   void front_document::OnUpdateStart(command_ui *pcommandui)
    {
-      pcmdui->Enable(TRUE);
+      pcommandui->Enable(TRUE);
    }
 
-   void front_document::OnUpdateEditUndo(cmd_ui *pcmdui)
+   void front_document::OnUpdateEditUndo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
-   void front_document::OnUpdateEditRedo(cmd_ui *pcmdui)
+   void front_document::OnUpdateEditRedo(command_ui *pcommandui)
    {
-      UNREFERENCED_PARAMETER(pcmdui);
+      UNREFERENCED_PARAMETER(pcommandui);
    }
 
    void front_document::OnStart()

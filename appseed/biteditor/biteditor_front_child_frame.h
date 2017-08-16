@@ -23,7 +23,7 @@ namespace biteditor
 
       virtual bool on_create_bars();
 
-      virtual bool _001OnCmdMsg(::aura::cmd_msg * pcmdmsg); 
+      virtual bool _001OnCmdMsg(::user::command * pcmdmsg); 
 
       DECL_GEN_SIGNAL(_001OnCreate);
 

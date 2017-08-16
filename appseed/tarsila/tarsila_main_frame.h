@@ -14,7 +14,7 @@ namespace tarsila
       virtual ~main_frame();
 
 
-      virtual bool get_translucency(::user::ETranslucency & etranslucency);
+      virtual bool get_translucency(::user::e_translucency & etranslucency);
 
 
    };
