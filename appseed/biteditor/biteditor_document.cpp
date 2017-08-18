@@ -51,7 +51,7 @@ though it is not a valid cursor handle.\n\
 
    }
 
-   bool document::_001OnCmdMsg(::user::command * pcmdmsg)
+   bool document::_001OnCmdMsg(::user::command * pcommand)
    {
       /*   sp(::aura::application) papp = ::ca2::get_app();
       CommandIdSpace idspace;
@@ -112,7 +112,7 @@ though it is not a valid cursor handle.\n\
       }
       }
       }*/
-      return ::user::document::_001OnCmdMsg(pcmdmsg);
+      return ::user::document::_001OnCmdMsg(pcommand);
    }
 
 

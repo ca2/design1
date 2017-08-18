@@ -49,7 +49,7 @@ namespace netnodeds
 
       virtual void on_request(::create * pcreate);
 
-      virtual bool _001OnCmdMsg(::user::command * pcmdmsg);
+      virtual bool _001OnCmdMsg(::user::command * pcommand);
 
       virtual bool on_install();
 

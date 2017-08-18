@@ -101,7 +101,7 @@ namespace biteditor
       void MacroEnd();
       DECL_GEN_SIGNAL(data_on_after_change);
 
-      bool _001OnCmdMsg(::user::command * pcmdmsg);
+      bool _001OnCmdMsg(::user::command * pcommand);
 
       DECL_GEN_SIGNAL(_001OnUpdateFileSave);
       DECL_GEN_SIGNAL(_001OnUpdateFilePut);

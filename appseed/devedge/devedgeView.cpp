@@ -197,10 +197,10 @@ void devedgeView::_001OnContextMenu(gen::signal_object * pobj)
       //BaseWndMenu* pPopup = (BaseWndMenuItem *) menu.GetSubMenu(0);
       //ASSERT(pPopup != NULL);
       BaseFrameWnd * pframe = dynamic_cast < BaseFrameWnd * > ( dynamic_cast < base_wnd * > (GetParentFrame()));
-      //pPopup->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
+      //pPopup->track_popup_menu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
         // point.x, point.y,
          //(base_wnd *) pframe);
-      menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
+      menu.track_popup_menu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
          point.x, point.y,
          pframe->GetSafeHwnd());
    }

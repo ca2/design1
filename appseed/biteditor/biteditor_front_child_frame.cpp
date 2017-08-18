@@ -94,7 +94,7 @@ namespace biteditor
 
 
 
-   bool front_child_frame::_001OnCmdMsg(::user::command * pcmdmsg)  
+   bool front_child_frame::_001OnCmdMsg(::user::command * pcommand)  
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_template()->m_pfilelistcallback;
@@ -128,7 +128,7 @@ namespace biteditor
       }
       }
       }*/
-      return simple_child_frame::_001OnCmdMsg(pcmdmsg);
+      return simple_child_frame::_001OnCmdMsg(pcommand);
    }
 
    void front_child_frame::OnChangeEditSearch()

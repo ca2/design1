@@ -21,7 +21,7 @@ namespace netnodeds
       sp(::filemanager::manager) GetFileManager();
       virtual bool on_create_bars() override;
       
-      virtual bool _001OnCmdMsg(::user::command * pcmdmsg); 
+      virtual bool _001OnCmdMsg(::user::command * pcommand); 
 
       bool pre_create_window(::user::create_struct& cs);
 

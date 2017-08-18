@@ -103,7 +103,7 @@ namespace devedge
    //   return true;
    //}
 
-   bool html_stage_child_frame::_001OnCmdMsg(::user::command * pcmdmsg)  
+   bool html_stage_child_frame::_001OnCmdMsg(::user::command * pcommand)  
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
@@ -137,7 +137,7 @@ namespace devedge
       }
       }
       }*/
-      return simple_child_frame::_001OnCmdMsg(pcmdmsg);
+      return simple_child_frame::_001OnCmdMsg(pcommand);
    }
 
    void html_stage_child_frame::OnChangeEditSearch()

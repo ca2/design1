@@ -109,7 +109,7 @@ namespace netnodeds
       ClientToScreen(&point);
       //ScreenToClient(&ptClient);
 
-      sp(::user::menu_base) menu = new user::menu(get_app());
+      sp(::user::menu) menu = new user::menu(get_app());
 
       ::file::text_buffer_sp spfile(get_app());
 
@@ -128,9 +128,9 @@ namespace netnodeds
       if(menu->LoadMenu(&doc))
       {
          
-         //menu->TrackPopupMenu(0, point.x, point.y, GetParentFrame(), &menu);
+         //menu->track_popup_menu(0, point.x, point.y, GetParentFrame(), &menu);
 
-         menu->TrackPopupMenu(0,point,GetParentFrame());
+         menu->track_popup_menu(0,point,GetParentFrame());
 
       }
 
