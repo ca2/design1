@@ -189,7 +189,7 @@ namespace netnodeds
    void front_view::_001OnUpdateViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj);
+      //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
    }
    void front_view::_001OnViewEncoding(::signal_details * pobj)
    {

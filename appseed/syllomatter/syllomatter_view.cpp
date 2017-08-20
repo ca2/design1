@@ -183,7 +183,7 @@ namespace syllomatter
    void view::_001OnUpdateViewEncoding(::signal_details * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_cmd_ui, pupdatecmdui, pobj);
+      //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
    }
    void view::_001OnViewEncoding(::signal_details * pobj)
    {

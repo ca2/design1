@@ -279,7 +279,7 @@ void syllomatter_view::_001OnWavePlayerEvent(gen::signal_object * pobj)
 
 void syllomatter_view::_001OnUpdateViewEncoding(gen::signal_object * pobj)
 {
-   SCAST_PTR(igui::win::message::update_cmd_ui, pupdatecmdui, pobj);
+   SCAST_PTR(igui::win::message::update_command_ui, pupdatecmdui, pobj);
 }
 void syllomatter_view::_001OnViewEncoding(gen::signal_object * pobj)
 {
