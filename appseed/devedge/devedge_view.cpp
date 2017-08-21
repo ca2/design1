@@ -126,10 +126,10 @@ namespace devedge
 
       doc.load(str);
 
-      if(menu->LoadMenu(&doc))
+      if(menu->load_menu(&doc))
       {
          
-         menu->track_popup_menu(0, point, GetParentFrame());
+         menu->track_popup_menu(GetParentFrame());
 
       }
 

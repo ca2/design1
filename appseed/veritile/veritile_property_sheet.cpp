@@ -171,7 +171,7 @@ namespace veritile
    void property_sheet::_001InsertColumns()
    {
 
-      class user::control::descriptor control;
+      class user::control_descriptor control;
 
       m_eview = view_report;
 
@@ -185,7 +185,7 @@ namespace veritile
       //   control.set_type(user::control_type_button);
       //   control.m_typeinfo = System.type_info < ::user::button >();
       //   control.m_id = 1000 + i;
-      //   control.add_function(user::control::function_action);
+      //   control.add_function(user::control_function_action);
       //   index iControl = _001AddControl(control);
 
       //   column.m_iWidth = 18;
