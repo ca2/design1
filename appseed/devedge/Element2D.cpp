@@ -10,7 +10,7 @@ void Element2D::_001OnDraw(devedgeView * pview, CDC * pgraphics)
 	
 }
 
-void Element2D::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonDown(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 /*	devedgeApp * papp = (devedgeApp *) AfxGetApp();
@@ -20,12 +20,12 @@ void Element2D::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj
 	{
 	}*/
 }
-void Element2D::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonUp(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }
 
-void Element2D::_001OnMouseMove(devedgeView * pview, gen::signal_object * pobj)
+void Element2D::_001OnMouseMove(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }

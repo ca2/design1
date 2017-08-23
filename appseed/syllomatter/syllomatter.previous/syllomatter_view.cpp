@@ -53,7 +53,7 @@ syllomatter_view::~syllomatter_view()
 {
 }
 
-void syllomatter_view::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
+void syllomatter_view::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
    BaseView::_001InstallMessageHandling(this);
 
@@ -152,7 +152,7 @@ void syllomatter_view::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo)
 
 /////////////////////////////////////////////////////////////////////////////
 // syllomatter_view message handlers
-void syllomatter_view::_001OnInitialUpdate(gen::signal_object * pobj) 
+void syllomatter_view::_001OnInitialUpdate(gen::message::sender_object * pobj) 
 {
    BaseView::_001OnInitialUpdate(pobj);
 
@@ -180,7 +180,7 @@ base_wnd * syllomatter_view::BackViewGetWnd()
 {
    return this;
 }
-void syllomatter_view::_001OnDestroy(gen::signal_object * pobj) 
+void syllomatter_view::_001OnDestroy(gen::message::sender_object * pobj) 
 {
 	BaseView::OnDestroy();
 
@@ -188,7 +188,7 @@ void syllomatter_view::_001OnDestroy(gen::signal_object * pobj)
 
 
 
-void syllomatter_view::_001OnSize(gen::signal_object * pobj) 
+void syllomatter_view::_001OnSize(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::size, psize, pobj);
 
@@ -218,7 +218,7 @@ void syllomatter_view::_001OnSize(gen::signal_object * pobj)
    LayoutKaraokeBouncingBall();*/
 }
 
-void syllomatter_view::_001OnPaint(gen::signal_object * pobj) 
+void syllomatter_view::_001OnPaint(gen::message::sender_object * pobj) 
 {
 	CPaintDC dc(this); // device context for syllomattering
    
@@ -249,14 +249,14 @@ void syllomatter_view:: _001OnDraw(CDC * pgraphics)
    //pgraphics->text_out(20, 110, "Assinado Camilo Sasuke Tsumanuma.");
 }
 
-void syllomatter_view::_001OnCreate(gen::signal_object * pobj) 
+void syllomatter_view::_001OnCreate(gen::message::sender_object * pobj) 
 {
    if(pobj->previous())
       return;
    
 
 }
-void syllomatter_view::_001OnContextMenu(gen::signal_object * pobj) 
+void syllomatter_view::_001OnContextMenu(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    point point = pcontextmenu->GetPoint();
@@ -272,29 +272,29 @@ void syllomatter_view::_001OnTabClick(int iTab)
    }
 }
 
-void syllomatter_view::_001OnWavePlayerEvent(gen::signal_object * pobj)
+void syllomatter_view::_001OnWavePlayerEvent(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::base, pbase, pobj);
 }
 
-void syllomatter_view::_001OnUpdateViewEncoding(gen::signal_object * pobj)
+void syllomatter_view::_001OnUpdateViewEncoding(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::update_command_ui, pupdatecmdui, pobj);
 }
-void syllomatter_view::_001OnViewEncoding(gen::signal_object * pobj)
+void syllomatter_view::_001OnViewEncoding(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::command, pcommand, pobj);
 }
 
 
 
-void syllomatter_view::_001OnSetCursor(gen::signal_object * pobj) 
+void syllomatter_view::_001OnSetCursor(gen::message::sender_object * pobj) 
 {
    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
 	
 	pobj->previous();
 }
-void syllomatter_view::_001OnEraseBkgnd(gen::signal_object * pobj) 
+void syllomatter_view::_001OnEraseBkgnd(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;

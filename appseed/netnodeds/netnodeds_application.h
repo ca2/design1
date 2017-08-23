@@ -45,7 +45,7 @@ namespace netnodeds
       virtual bool initialize_application();
       virtual int32_t exit_application() override;
 
-      virtual void pre_translate_message(::signal_details * pobj);
+      virtual void pre_translate_message(::message::message * pobj);
 
       virtual void on_request(::create * pcreate);
 

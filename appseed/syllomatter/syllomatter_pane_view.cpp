@@ -49,7 +49,7 @@ namespace syllomatter
    /////////////////////////////////////////////////////////////////////////////
    // pane_view message handlers
 
-   void pane_view::_001OnCreate(::signal_details * pobj) 
+   void pane_view::_001OnCreate(::message::message * pobj) 
    {
 
       if(pobj->previous())
@@ -249,22 +249,22 @@ namespace syllomatter
 
 
 
-   void pane_view::_001OnMenuMessage(::signal_details * pobj)
+   void pane_view::_001OnMenuMessage(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       set_cur_tab_by_id(m_pviewdataOld->m_id);
    }
 
-   void pane_view::install_message_handling(::message::dispatch * pinterface)
+   void pane_view::install_message_routing(::message::sender * pinterface)
    {
-      ::userex::pane_tab_view::install_message_handling(pinterface);
+      ::userex::pane_tab_view::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &pane_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_USER + 1122  , pinterface, this, &pane_view::_001OnMenuMessage);
       IGUI_WIN_MSG_LINK(WM_USER + 1123  , pinterface, this, &pane_view::_001OnStartVerisvnwellExtract);
 
    }
 
-   void pane_view::_001OnStartVerisvnwellExtract(::signal_details * pobj)
+   void pane_view::_001OnStartVerisvnwellExtract(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       set_cur_tab_by_id(syllomatter::PaneViewSVN);

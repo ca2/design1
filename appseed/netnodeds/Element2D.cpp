@@ -10,7 +10,7 @@ void Element2D::_001OnDraw(netnodedsView * pview, CDC * pgraphics)
 	
 }
 
-void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 /*	netnodedsApp * papp = (netnodedsApp *) AfxGetApp();
@@ -20,12 +20,12 @@ void Element2D::_001OnLButtonDown(netnodedsView * pview, gen::signal_object * po
 	{
 	}*/
 }
-void Element2D::_001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj)
+void Element2D::_001OnLButtonUp(netnodedsView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }
 
-void Element2D::_001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj)
+void Element2D::_001OnMouseMove(netnodedsView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 }

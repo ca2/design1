@@ -222,7 +222,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnContextMenu(::signal_details * pobj)
+   void property_sheet::_001OnContextMenu(::message::message * pobj)
    {
 
       track_popup_xml_matter_menu("devedge_contextmenu.xml",0,pobj);
@@ -230,7 +230,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnUpdateEditUndo(::signal_details * pobj)
+   void property_sheet::_001OnUpdateEditUndo(::message::message * pobj)
    {
 
       SCAST_PTR(::command_ui,pcommandui,pobj);
@@ -240,7 +240,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnUpdateEditRedo(::signal_details * pobj)
+   void property_sheet::_001OnUpdateEditRedo(::message::message * pobj)
    {
 
       SCAST_PTR(::command_ui,pcommandui,pobj);
@@ -250,7 +250,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnEditUndo(::signal_details * pobj)
+   void property_sheet::_001OnEditUndo(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
@@ -260,7 +260,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnEditRedo(::signal_details * pobj)
+   void property_sheet::_001OnEditRedo(::message::message * pobj)
    {
 
 
@@ -327,11 +327,11 @@ namespace veritile
    }
 
 
-   void property_sheet::install_message_handling(::message::dispatch * pinterface)
+   void property_sheet::install_message_routing(::message::sender * pinterface)
    {
 
 
-      base_form_list_view::install_message_handling(pinterface);
+      base_form_list_view::install_message_routing(pinterface);
 
 
       IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&property_sheet::_001OnCreate);
@@ -341,7 +341,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnCreate(::signal_details * pobj)
+   void property_sheet::_001OnCreate(::message::message * pobj)
    {
 
 
@@ -359,7 +359,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnUpdateMediaTransfer(::signal_details * pobj)
+   void property_sheet::_001OnUpdateMediaTransfer(::message::message * pobj)
    {
 
 
@@ -371,7 +371,7 @@ namespace veritile
    }
 
 
-   void property_sheet::_001OnMediaTransfer(::signal_details * pobj)
+   void property_sheet::_001OnMediaTransfer(::message::message * pobj)
    {
 
 

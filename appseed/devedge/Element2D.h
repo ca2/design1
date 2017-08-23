@@ -22,9 +22,9 @@ public:
 
 	virtual bool hit_test(int x, int y);
 
-	virtual void _001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj);
-	virtual void _001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj);
-	virtual void _001OnMouseMove(devedgeView * pview, gen::signal_object * pobj);
+	virtual void _001OnLButtonDown(devedgeView * pview, gen::message::sender_object * pobj);
+	virtual void _001OnLButtonUp(devedgeView * pview, gen::message::sender_object * pobj);
+	virtual void _001OnMouseMove(devedgeView * pview, gen::message::sender_object * pobj);
 
 };
 

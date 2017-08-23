@@ -170,7 +170,7 @@ namespace devedge
       */
    }
 
-   void html_edit_child_frame::_001OnCreate(::signal_details * pobj) 
+   void html_edit_child_frame::_001OnCreate(::message::message * pobj) 
    {
       
       UNREFERENCED_PARAMETER(pobj);
@@ -180,7 +180,7 @@ namespace devedge
    }
 
 
-   void html_edit_child_frame::_001OnAppLanguage(::signal_details * pobj)
+   void html_edit_child_frame::_001OnAppLanguage(::message::message * pobj)
    {
       // xyzxyz || see the code below!! in App Language!!
       on_create_bars();

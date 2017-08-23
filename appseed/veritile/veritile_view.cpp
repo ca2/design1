@@ -23,9 +23,9 @@ namespace veritile
    {
    }
 
-   void view::install_message_handling(::message::dispatch * pinterface)
+   void view::install_message_routing(::message::sender * pinterface)
    {
-      ::user::impact::install_message_handling(pinterface);
+      ::user::impact::install_message_routing(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
@@ -162,7 +162,7 @@ namespace veritile
       }
    }
 
-   void view::_001OnDestroy(signal_details * pobj) 
+   void view::_001OnDestroy(::message::message * pobj) 
    {
       ::user::impact::_001OnDestroy(pobj);
    }
@@ -255,7 +255,7 @@ namespace veritile
    }
 
 
-   void view::_001OnCreate(signal_details * pobj) 
+   void view::_001OnCreate(::message::message * pobj) 
    {
 
       if(pobj->previous())
@@ -267,7 +267,7 @@ namespace veritile
    }
 
 
-   void view::_001OnContextMenu(signal_details * pobj) 
+   void view::_001OnContextMenu(::message::message * pobj) 
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
       point point = pcontextmenu->GetPoint();
@@ -299,7 +299,7 @@ namespace veritile
    }
 
 
-   void view::_001OnSetCursor(signal_details * pobj) 
+   void view::_001OnSetCursor(::message::message * pobj) 
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -311,7 +311,7 @@ namespace veritile
    }
 
 
-   void view::_001OnEraseBkgnd(signal_details * pobj) 
+   void view::_001OnEraseBkgnd(::message::message * pobj) 
    {
       SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
       perasebkgnd->m_bRet = true;
@@ -337,7 +337,7 @@ namespace veritile
 
    }
 
-   void view::_001OnMouseMove(signal_details * pobj) 
+   void view::_001OnMouseMove(::message::message * pobj) 
    {
       
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -373,7 +373,7 @@ namespace veritile
    }
 
 
-   void view::_001OnLButtonDown(signal_details * pobj) 
+   void view::_001OnLButtonDown(::message::message * pobj) 
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -402,7 +402,7 @@ namespace veritile
 
    }
 
-   void view::_001OnLButtonDblClk(signal_details * pobj)
+   void view::_001OnLButtonDblClk(::message::message * pobj)
    {
       
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -419,7 +419,7 @@ namespace veritile
    }
 
 
-   void view::_001OnLButtonUp(signal_details * pobj) 
+   void view::_001OnLButtonUp(::message::message * pobj) 
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
       point pt = pmouse->m_pt;
@@ -429,27 +429,27 @@ namespace veritile
 
    }
 
-   void view::_001OnModePlace(signal_details * pobj)
+   void view::_001OnModePlace(::message::message * pobj)
    {
       //data * pdata = get_document()->get_typed_data < data>();
       m_emode = mode_place;
       pobj->m_bRet = true;
    }
 
-   void view::_001OnUpdateModePlace(signal_details * pobj)
+   void view::_001OnUpdateModePlace(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(m_emode != mode_place);
    }
 
 
-   void view::_001OnModeRandom(signal_details * pobj)
+   void view::_001OnModeRandom(::message::message * pobj)
    {
       m_emode = mode_random;
       pobj->m_bRet = true;
    }
 
-   void view::_001OnUpdateModeRandom(signal_details * pobj)
+   void view::_001OnUpdateModeRandom(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(m_emode != mode_random);

@@ -35,16 +35,16 @@ namespace syllomatter
    }
 
 
-   void list_view::install_message_handling(::message::dispatch * pinterface)
+   void list_view::install_message_routing(::message::sender * pinterface)
    {
-      ::user::form_list::install_message_handling(pinterface);
-      ::user::impact::install_message_handling(pinterface);
+      ::user::form_list::install_message_routing(pinterface);
+      ::user::impact::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE            , pinterface, this, &list_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(MessageGeneralEvent  , pinterface, this, &list_view::_001OnGeneralEvent);
       IGUI_WIN_MSG_LINK(WM_USER + 1024       , pinterface, this, &list_view::_001OnVerisvnwellListMessage);
    }
 
-   void list_view::_001OnCreate(::signal_details * pobj)
+   void list_view::_001OnCreate(::message::message * pobj)
    {
       pobj->previous();
 
@@ -123,7 +123,7 @@ namespace syllomatter
       return m_stra.get_size();
    }
 
-   void list_view::_001OnGeneralEvent(::signal_details * pobj)
+   void list_view::_001OnGeneralEvent(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
          if(pbase->m_wparam == GeneralEventPosCreate1)
@@ -248,7 +248,7 @@ namespace syllomatter
       return plist->m_stra[dwa].compare(plist->m_stra[dwb]);
    }
 
-   void list_view::_001OnAdd(::signal_details * pobj)
+   void list_view::_001OnAdd(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       range range;
@@ -272,7 +272,7 @@ namespace syllomatter
       Commit_(m_itema);
    }
 
-   void list_view::_001OnUpdateAdd(::signal_details * pobj)
+   void list_view::_001OnUpdateAdd(::message::message * pobj)
    {
       range range;
       _001GetSelection(range);
@@ -294,7 +294,7 @@ namespace syllomatter
          pcommandui->Enable(bEnable);
    }
 
-   void list_view::_001OnDelete(::signal_details * pobj)
+   void list_view::_001OnDelete(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       range range;
@@ -320,7 +320,7 @@ namespace syllomatter
       Commit_(m_itema);
    }
 
-   void list_view::_001OnUpdateDelete(::signal_details * pobj)
+   void list_view::_001OnUpdateDelete(::message::message * pobj)
    {
       range range;
       _001GetSelection(range);
@@ -343,7 +343,7 @@ namespace syllomatter
    }
 
 
-   void list_view::_001OnRevert(::signal_details * pobj)
+   void list_view::_001OnRevert(::message::message * pobj)
    {
       
       UNREFERENCED_PARAMETER(pobj);
@@ -377,7 +377,7 @@ namespace syllomatter
 
    }
 
-   void list_view::_001OnUpdateRevert(::signal_details * pobj)
+   void list_view::_001OnUpdateRevert(::message::message * pobj)
    {
       range range;
       _001GetSelection(range);
@@ -649,7 +649,7 @@ namespace syllomatter
    }
 
 
-   void list_view::_001OnDoCommit(::signal_details * pobj)
+   void list_view::_001OnDoCommit(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       range range;
@@ -668,7 +668,7 @@ namespace syllomatter
       m_committhread.begin();
    }
 
-   void list_view::_001OnUpdateDoCommit(::signal_details * pobj)
+   void list_view::_001OnUpdateDoCommit(::message::message * pobj)
    {
       range range;
       _001GetSelection(range);
@@ -807,7 +807,7 @@ namespace syllomatter
    }
 
 
-   void list_view::_001OnVerisvnwellListMessage(::signal_details * pobj)
+   void list_view::_001OnVerisvnwellListMessage(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
       if(pbase->m_wparam == 0)

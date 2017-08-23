@@ -21,10 +21,10 @@ namespace biteditor
       m_dwLastCaret = GetTickCount();
    }
 
-   void ascii_box::install_message_handling(::message::dispatch * pdispatch)
+   void ascii_box::install_message_routing(::message::sender * psender)
    {
 
-      ::user::interaction::install_message_handling(pdispatch);
+      ::user::interaction::install_message_routing(pdispatch);
 
       IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN , pdispatch, this, &::biteditor::ascii_box::_001OnLButtonDown);
       IGUI_WIN_MSG_LINK(WM_LBUTTONUP   , pdispatch, this, &::biteditor::ascii_box::_001OnLButtonUp);
@@ -187,7 +187,7 @@ namespace biteditor
    }
 
 
-   void ascii_box::_001OnLButtonDown(::signal_details * pobj)
+   void ascii_box::_001OnLButtonDown(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -220,7 +220,7 @@ namespace biteditor
    }
 
 
-   void ascii_box::_001OnLButtonUp(::signal_details * pobj)
+   void ascii_box::_001OnLButtonUp(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -358,7 +358,7 @@ namespace biteditor
       return (int32_t)(iOffset + strLine.get_length() + m_pview->m_iViewOffset);
    }
 
-   void ascii_box::_001OnMouseMove(::signal_details * pobj)
+   void ascii_box::_001OnMouseMove(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -472,7 +472,7 @@ namespace biteditor
    }
 
 
-   void ascii_box::_001OnChar(::signal_details * pobj)
+   void ascii_box::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
       bool bShift = Session.is_key_pressed(::user::key_shift);
@@ -700,7 +700,7 @@ namespace biteditor
       m_pview->RedrawWindow();
    }
 
-   void ascii_box::_001OnSysChar(::signal_details * pobj)
+   void ascii_box::_001OnSysChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
       if(pkey->m_ekey == ::user::key_delete)

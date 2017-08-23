@@ -162,7 +162,7 @@ though it is not a valid cursor handle.\n\
    */
 
 
-   void document::data_on_after_change(::signal_details * pobj)
+   void document::data_on_after_change(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
@@ -209,83 +209,83 @@ though it is not a valid cursor handle.\n\
       return TRUE;
    }
 
-   void document::_001OnUpdateFileSave(::signal_details * pobj)
+   void document::_001OnUpdateFileSave(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateFilePut(::signal_details * pobj)
+   void document::_001OnUpdateFilePut(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateEditUndo(::signal_details * pobj)
+   void document::_001OnUpdateEditUndo(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(m_peditfile->CanUndo());
    }
 
-   void document::_001OnUpdateEditRedo(::signal_details * pobj)
+   void document::_001OnUpdateEditRedo(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(m_peditfile->GetRedoBranchCount() > 0);
    }
 
-   void document::_001OnUpdateEditCut(::signal_details * pobj)
+   void document::_001OnUpdateEditCut(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateEditCopy(::signal_details * pobj)
+   void document::_001OnUpdateEditCopy(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateEditPaste(::signal_details * pobj)
+   void document::_001OnUpdateEditPaste(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnFileSave(::signal_details * pobj)
+   void document::_001OnFileSave(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       ::biteditor::document::on_file_save();
    }
 
-   void document::_001OnEditCut(::signal_details * pobj)
+   void document::_001OnEditCut(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnEditCopy(::signal_details * pobj)
+   void document::_001OnEditCopy(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnEditPaste(::signal_details * pobj)
+   void document::_001OnEditPaste(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnFilePut(::signal_details * pobj)
+   void document::_001OnFilePut(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       ::biteditor::document::on_file_save();
       Put();
    }
 
-   void document::_001OnEditUndo(::signal_details * pobj)
+   void document::_001OnEditUndo(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       Undo();
    }
 
-   void document::_001OnEditRedo(::signal_details * pobj)
+   void document::_001OnEditRedo(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       Redo();

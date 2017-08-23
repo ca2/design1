@@ -58,7 +58,7 @@ namespace biteditor
 
 
 
-   void main_document::data_on_after_change(::signal_details * pobj)
+   void main_document::data_on_after_change(::message::message * pobj)
    {
 
 

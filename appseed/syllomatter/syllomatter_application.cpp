@@ -207,7 +207,7 @@ namespace syllomatter
    }
 
 
-   void application::_001OnAddWorkingCopy(::signal_details * pobj)
+   void application::_001OnAddWorkingCopy(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);

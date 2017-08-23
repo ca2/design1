@@ -39,7 +39,7 @@ namespace veritile
       property_sheet(::aura::application * papp);
       virtual ~property_sheet();
 
-      void install_message_handling(::message::dispatch * pinterface);
+      void install_message_routing(::message::sender * pinterface);
 
       void on_update(::user::impact * pSender,LPARAM lHint,::object * phint);
 

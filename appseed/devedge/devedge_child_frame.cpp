@@ -12,9 +12,9 @@ namespace devedge
       
    }
 
-   void child_frame::install_message_handling(::message::dispatch * pinterface)
+   void child_frame::install_message_routing(::message::sender * pinterface)
    {
-      simple_child_frame::install_message_handling(pinterface);
+      simple_child_frame::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &child_frame::_001OnCreate);
    }
@@ -44,7 +44,7 @@ namespace devedge
    }
 
 
-   void child_frame::_001OnCreate(::signal_details * pobj) 
+   void child_frame::_001OnCreate(::message::message * pobj) 
    {
       pobj->previous();
 
@@ -52,7 +52,7 @@ namespace devedge
    }
 
 
-   void child_frame::_001OnAppLanguage(::signal_details * pobj)
+   void child_frame::_001OnAppLanguage(::message::message * pobj)
    {
       // xyzxyz || see the code below!! in App Language!!
       on_create_bars();

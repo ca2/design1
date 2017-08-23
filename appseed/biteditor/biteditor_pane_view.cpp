@@ -51,9 +51,9 @@ namespace biteditor
    {
    }
 
-   void pane_view::install_message_handling(::message::dispatch * pinterface)
+   void pane_view::install_message_routing(::message::sender * pinterface)
    {
-      ::userex::pane_tab_view::install_message_handling(pinterface);
+      ::userex::pane_tab_view::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &pane_view::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_USER + 1122  , pinterface, this, &pane_view::_001OnMenuMessage);
    }
@@ -73,7 +73,7 @@ namespace biteditor
 #endif //DEBUG
 
 
-   void pane_view::_001OnCreate(::signal_details * pobj) 
+   void pane_view::_001OnCreate(::message::message * pobj) 
    {
       
       if(pobj->previous())

@@ -18,7 +18,7 @@ namespace devedge
       virtual ~pane_view();
 
 
-      virtual void install_message_handling(::message::dispatch * pinterface);
+      virtual void install_message_routing(::message::sender * pinterface);
       virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
       virtual void on_create_view(::user::view_creator_data * pcreatordata);

@@ -96,7 +96,7 @@ namespace devedge
       
    }
 
-   void view::_001OnContextMenu(::signal_details * pobj) 
+   void view::_001OnContextMenu(::message::message * pobj) 
    {
       UNREFERENCED_PARAMETER(pobj);
 //      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
@@ -140,27 +140,27 @@ namespace devedge
       return  (::user::plain_edit_view::get_document());
    }
 
-   void view::_001OnUpdateEditUndo(::signal_details * pobj)
+   void view::_001OnUpdateEditUndo(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          // xyzxyz
       //pcommandui->Enable(m_pdata->m_editfile.CanUndo());
    }
 
-   void view::_001OnUpdateEditRedo(::signal_details * pobj)
+   void view::_001OnUpdateEditRedo(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
          // xyzxyz
       //pcommandui->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
    }
 
-   void view::_001OnEditUndo(::signal_details * pobj)
+   void view::_001OnEditUndo(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       Undo();
    }
 
-   void view::_001OnEditRedo(::signal_details * pobj)
+   void view::_001OnEditRedo(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       Redo();
@@ -173,17 +173,17 @@ namespace devedge
       get_document()->set_modified_flag(TRUE);
    }
 
-   void view::install_message_handling(::message::dispatch * pinterface)
+   void view::install_message_routing(::message::sender * pinterface)
    {
       
-      ::user::plain_edit_view::install_message_handling(pinterface);
+      ::user::plain_edit_view::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
 
    }
 
 
-   void view::_001OnUserMessage(::signal_details * pobj)
+   void view::_001OnUserMessage(::message::message * pobj)
    {
       
       SCAST_PTR(::message::base, pbase, pobj);

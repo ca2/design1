@@ -25,9 +25,9 @@ namespace veritile
    {
    }
 
-   void tileset_view::install_message_handling(::message::dispatch * pinterface)
+   void tileset_view::install_message_routing(::message::sender * pinterface)
    {
-      BASE_VIEW::install_message_handling(pinterface);
+      BASE_VIEW::install_message_routing(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY,pinterface,this,&tileset_view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE,pinterface,this,&tileset_view::_001OnSize);
@@ -85,7 +85,7 @@ namespace veritile
       ::user::view_update_hint * puh = dynamic_cast < ::user::view_update_hint * > (phint);
    }
 
-   void tileset_view::_001OnDestroy(signal_details * pobj)
+   void tileset_view::_001OnDestroy(::message::message * pobj)
    {
       ::user::impact::_001OnDestroy(pobj);
    }
@@ -207,7 +207,7 @@ namespace veritile
    }
 
 
-   void tileset_view::_001OnCreate(signal_details * pobj)
+   void tileset_view::_001OnCreate(::message::message * pobj)
    {
       if(pobj->previous())
          return;
@@ -217,7 +217,7 @@ namespace veritile
 
    }
 
-   void tileset_view::_001OnContextMenu(signal_details * pobj)
+   void tileset_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu,pcontextmenu,pobj);
          point point = pcontextmenu->GetPoint();
@@ -227,7 +227,7 @@ namespace veritile
    {
    }
 
-   void tileset_view::_001OnSetCursor(signal_details * pobj)
+   void tileset_view::_001OnSetCursor(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -239,7 +239,7 @@ namespace veritile
    }
 
 
-   void tileset_view::_001OnEraseBkgnd(signal_details * pobj)
+   void tileset_view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd,perasebkgnd,pobj);
          perasebkgnd->m_bRet = true;
@@ -265,7 +265,7 @@ namespace veritile
 
    }
 
-   void tileset_view::_001OnLButtonDown(signal_details * pobj)
+   void tileset_view::_001OnLButtonDown(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -302,7 +302,7 @@ namespace veritile
 
    }
 
-   void tileset_view::_001OnMouseMove(signal_details * pobj)
+   void tileset_view::_001OnMouseMove(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -335,7 +335,7 @@ namespace veritile
 
    }
 
-   void tileset_view::_001OnLButtonUp(signal_details * pobj)
+   void tileset_view::_001OnLButtonUp(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -379,7 +379,7 @@ namespace veritile
 
 
 
-   void tileset_view::_001OnLButtonDblClk(signal_details * pobj)
+   void tileset_view::_001OnLButtonDblClk(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse,pmouse,pobj);
          point pt = pmouse->m_pt;
@@ -391,26 +391,26 @@ namespace veritile
    }
 
 
-   void tileset_view::_001OnSelectionTool(signal_details * pobj)
+   void tileset_view::_001OnSelectionTool(::message::message * pobj)
    {
       data * pdata = get_document()->get_typed_data < data>();
 //      pdata->m_drawing.m_emode = drawing::mode_place;
       pobj->m_bRet = true;
    }
 
-   void tileset_view::_001OnUpdateSelectionTool(signal_details * pobj)
+   void tileset_view::_001OnUpdateSelectionTool(::message::message * pobj)
    {
       SCAST_PTR(::command_ui,pcommandui,pobj);
          pcommandui->Enable(TRUE);
    }
 
 
-   void tileset_view::_001OnPolygonTool(signal_details * pobj)
+   void tileset_view::_001OnPolygonTool(::message::message * pobj)
    {
       pobj->m_bRet = true;
    }
 
-   void tileset_view::_001OnUpdatePolygonTool(signal_details * pobj)
+   void tileset_view::_001OnUpdatePolygonTool(::message::message * pobj)
    {
       SCAST_PTR(::command_ui,pcommandui,pobj);
          pcommandui->Enable(TRUE);

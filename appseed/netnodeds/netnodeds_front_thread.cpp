@@ -26,7 +26,7 @@ namespace netnodeds
    }
 
 
-   void front_thread::install_message_handling(::message::dispatch * pinterface)
+   void front_thread::install_message_routing(::message::sender * pinterface)
    {
       IGUI_WIN_MSG_LINK(WM_APP, pinterface, this, &front_thread::OnApp);
    }
@@ -101,7 +101,7 @@ namespace netnodeds
    }
 
 
-   void front_thread::OnApp(::signal_details * pobj)
+   void front_thread::OnApp(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
       if(pbase->m_wparam == 0)

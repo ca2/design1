@@ -297,7 +297,7 @@ namespace veritile
 
 
 
-   void document::_001OnFileSave(::signal_details * pobj)
+   void document::_001OnFileSave(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
@@ -308,7 +308,7 @@ namespace veritile
 
    }
 
-   void document::_001OnFileSaveAs(::signal_details * pobj)
+   void document::_001OnFileSaveAs(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       Application.m_ppaneview->set_cur_tab_by_id("file_manager");

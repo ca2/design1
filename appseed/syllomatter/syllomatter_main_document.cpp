@@ -24,7 +24,7 @@ namespace syllomatter
    }
 
 
-   void main_document::_001OnTest(::signal_details * pobj)
+   void main_document::_001OnTest(::message::message * pobj)
    {
       
 
@@ -40,7 +40,7 @@ namespace syllomatter
    }
 
 
-   void main_document::_001OnCommit_(::signal_details * pobj)
+   void main_document::_001OnCommit_(::message::message * pobj)
    {
   
    
@@ -58,7 +58,7 @@ namespace syllomatter
    }
 
 
-   void main_document::_001OnUpdate(::signal_details * pobj)
+   void main_document::_001OnUpdate(::message::message * pobj)
    {
    
       UNREFERENCED_PARAMETER(pobj);
@@ -74,7 +74,7 @@ namespace syllomatter
 
    }
 
-   void main_document::_001OnMajorCheckout(::signal_details * pobj)
+   void main_document::_001OnMajorCheckout(::message::message * pobj)
    {
       ::fs::item_array itema;
 

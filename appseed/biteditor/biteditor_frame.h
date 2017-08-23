@@ -18,7 +18,7 @@ namespace biteditor
       frame(::aura::application * papp);
       virtual ~frame();
 
-      virtual void install_message_handling(::message::dispatch * pinterface);
+      virtual void install_message_routing(::message::sender * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
       void ShowControlBars(bool bShow);
  

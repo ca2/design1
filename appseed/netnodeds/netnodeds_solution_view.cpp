@@ -93,16 +93,16 @@ namespace netnodeds
    }
 
 
-   void solution_view::install_message_handling(::message::dispatch * pinterface)
+   void solution_view::install_message_routing(::message::sender * pinterface)
    {
 
-      ::user::impact::install_message_handling(pinterface);
-      ::user::tree::install_message_handling(pinterface);
+      ::user::impact::install_message_routing(pinterface);
+      ::user::tree::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&solution_view::_001OnCreate);
 
    }
 
-   void solution_view::_001OnCreate(signal_details* pobj)
+   void solution_view::_001OnCreate(::message::message* pobj)
    {
       SCAST_PTR(message::create,pcreate,pobj);
 

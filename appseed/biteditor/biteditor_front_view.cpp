@@ -20,10 +20,10 @@ namespace biteditor
    }
 
 
-   void front_view::install_message_handling(::message::dispatch * pinterface)
+   void front_view::install_message_routing(::message::sender * pinterface)
    {
 
-      html_view::install_message_handling(pinterface);
+      html_view::install_message_routing(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &front_view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &front_view::_001OnSize);
@@ -119,7 +119,7 @@ namespace biteditor
 
    }
 
-   void front_view::_001OnDestroy(::signal_details * pobj)
+   void front_view::_001OnDestroy(::message::message * pobj)
    {
       html_view::_001OnDestroy(pobj);
 
@@ -127,14 +127,14 @@ namespace biteditor
 
 
 
-   void front_view::_001OnSize(::signal_details * pobj)
+   void front_view::_001OnSize(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       //   SCAST_PTR(::message::size, psize, pobj);
       //sp(::user::document) pdoc = get_document();
    }
 
-   void front_view::_001OnPaint(::signal_details * pobj)
+   void front_view::_001OnPaint(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
@@ -149,7 +149,7 @@ namespace biteditor
 
    }
 
-   void front_view::_001OnCreate(::signal_details * pobj)
+   void front_view::_001OnCreate(::message::message * pobj)
    {
       if(pobj->previous())
          return;
@@ -174,7 +174,7 @@ namespace biteditor
       }*/
 
    }
-   void front_view::_001OnContextMenu(::signal_details * pobj)
+   void front_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
          point point = pcontextmenu->GetPoint();
@@ -183,24 +183,24 @@ namespace biteditor
 
 
 
-   void front_view::_001OnWavePlayerEvent(::signal_details * pobj)
+   void front_view::_001OnWavePlayerEvent(::message::message * pobj)
    {
       //   SCAST_PTR(::message::base, pbase, pobj);
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void front_view::_001OnUpdateViewEncoding(::signal_details * pobj)
+   void front_view::_001OnUpdateViewEncoding(::message::message * pobj)
    {
       //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
       UNREFERENCED_PARAMETER(pobj);
    }
-   void front_view::_001OnViewEncoding(::signal_details * pobj)
+   void front_view::_001OnViewEncoding(::message::message * pobj)
    {
       //SCAST_PTR(::message::command, pcommand, pobj);
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void front_view::_001OnSetCursor(::signal_details * pobj)
+   void front_view::_001OnSetCursor(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
@@ -209,19 +209,19 @@ namespace biteditor
       pobj->previous();
    }
 
-   void front_view::_001OnLButtonDown(::signal_details * pobj)
+   void front_view::_001OnLButtonDown(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
-   void front_view::_001OnLButtonUp(::signal_details * pobj)
+   void front_view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
    }
 
-   void front_view::_001OnMouseMove(::signal_details * pobj)
+   void front_view::_001OnMouseMove(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
          point pt = pmouse->m_pt;
@@ -263,7 +263,7 @@ namespace biteditor
 
    }
 
-   void front_view::_001OnKeyDown(::signal_details * pobj)
+   void front_view::_001OnKeyDown(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
          m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
@@ -272,7 +272,7 @@ namespace biteditor
       SetTimer(500, 500, NULL);
    }
 
-   void front_view::_001OnKeyUp(::signal_details * pobj)
+   void front_view::_001OnKeyUp(::message::message * pobj)
    {
       //   SCAST_PTR(::message::key, pkey, pobj);
       UNREFERENCED_PARAMETER(pobj);
@@ -281,7 +281,7 @@ namespace biteditor
    }
 
 
-   void front_view::_001OnChar(::signal_details * pobj)
+   void front_view::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
          if(pkey->m_ekey == ::user::key_s)
@@ -294,7 +294,7 @@ namespace biteditor
    }
 
 
-   void front_view::_001OnSysChar(::signal_details * pobj)
+   void front_view::_001OnSysChar(::message::message * pobj)
    {
       //   SCAST_PTR(::message::key, pkey, pobj);
       UNREFERENCED_PARAMETER(pobj);
@@ -302,7 +302,7 @@ namespace biteditor
 
 
    /*
-   bool front_view::pre_translate_message(::signal_details * pobj)
+   bool front_view::pre_translate_message(::message::message * pobj)
    {
    if(pMsg->oswindow == GetSafeoswindow_())
    {
@@ -354,7 +354,7 @@ namespace biteditor
       _001OnChar(&key);
    }
 
-   void front_view::_001OnPost(::signal_details * pobj)
+   void front_view::_001OnPost(::message::message * pobj)
    {
 
       SCAST_PTR(::message::base, pbase, pobj);

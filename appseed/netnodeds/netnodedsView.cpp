@@ -148,13 +148,13 @@ void netnodedsView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint
 	
 }
 
-void netnodedsView::_001OnDestroy(gen::signal_object * pobj) 
+void netnodedsView::_001OnDestroy(gen::message::sender_object * pobj) 
 {
 	base_edit_plain_text_view::OnDestroy();
 
 }
 
-void netnodedsView::_001OnCreate(gen::signal_object * pobj) 
+void netnodedsView::_001OnCreate(gen::message::sender_object * pobj) 
 {
    if(pobj->previous())
       return;
@@ -165,7 +165,7 @@ void netnodedsView::_001OnCreate(gen::signal_object * pobj)
    
 }
 
-void netnodedsView::_001OnContextMenu(gen::signal_object * pobj) 
+void netnodedsView::_001OnContextMenu(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    int iItem;
@@ -210,13 +210,13 @@ void netnodedsView::_001OnContextMenu(gen::signal_object * pobj)
 
 
 
-void netnodedsView::_001OnSetCursor(gen::signal_object * pobj) 
+void netnodedsView::_001OnSetCursor(gen::message::sender_object * pobj) 
 {
    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
 	
 	pobj->previous();
 }
-void netnodedsView::_001OnEraseBkgnd(gen::signal_object * pobj) 
+void netnodedsView::_001OnEraseBkgnd(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;
@@ -239,24 +239,24 @@ BOOL netnodedsView::PreTranslateMessage(MSG * pMsg)
   return base_edit_plain_text_view::PreTranslateMessage(pMsg);
 }
 
-void netnodedsView::_001OnUpdateEditUndo(gen::signal_object * pobj)
+void netnodedsView::_001OnUpdateEditUndo(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(m_editfile.CanUndo());
 }
 
-void netnodedsView::_001OnUpdateEditRedo(gen::signal_object * pobj)
+void netnodedsView::_001OnUpdateEditRedo(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(m_editfile.GetRedoBranchCount() > 0);
 }
 
-void netnodedsView::_001OnEditUndo(gen::signal_object * pobj)
+void netnodedsView::_001OnEditUndo(gen::message::sender_object * pobj)
 {
    Undo();
 }
 
-void netnodedsView::_001OnEditRedo(gen::signal_object * pobj)
+void netnodedsView::_001OnEditRedo(gen::message::sender_object * pobj)
 {
    Redo();
 }

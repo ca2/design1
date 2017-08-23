@@ -81,7 +81,7 @@ namespace netnodeds
 
 
 
-   void application::pre_translate_message(::signal_details * pobj)
+   void application::pre_translate_message(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
       if(pbase->m_uiMessage == WM_KEYDOWN)

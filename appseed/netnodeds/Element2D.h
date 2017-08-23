@@ -22,9 +22,9 @@ public:
 
 	virtual bool hit_test(int x, int y);
 
-	virtual void _001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj);
-	virtual void _001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj);
-	virtual void _001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj);
+	virtual void _001OnLButtonDown(netnodedsView * pview, gen::message::sender_object * pobj);
+	virtual void _001OnLButtonUp(netnodedsView * pview, gen::message::sender_object * pobj);
+	virtual void _001OnMouseMove(netnodedsView * pview, gen::message::sender_object * pobj);
 
 };
 

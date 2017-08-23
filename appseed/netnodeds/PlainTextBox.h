@@ -58,12 +58,12 @@ public:
 	void _001GetViewText(netnodedsView * pview, string & str);
 	void _001GetViewSel(int &iSelStart, int &iSelEnd);
 
-	void _001OnLButtonDown(netnodedsView * pview, gen::signal_object * pobj);
-	void _001OnLButtonUp(netnodedsView * pview, gen::signal_object * pobj);
+	void _001OnLButtonDown(netnodedsView * pview, gen::message::sender_object * pobj);
+	void _001OnLButtonUp(netnodedsView * pview, gen::message::sender_object * pobj);
    void _001OnCalcLayout(netnodedsView * pview, CDC * pdc);
-   void _001OnMouseMove(netnodedsView * pview, gen::signal_object * pobj);
-   void _001OnChar(netnodedsView * pview, gen::signal_object * pobj);
-   void _001OnSysChar(netnodedsView * pview, gen::signal_object * pobj);
+   void _001OnMouseMove(netnodedsView * pview, gen::message::sender_object * pobj);
+   void _001OnChar(netnodedsView * pview, gen::message::sender_object * pobj);
+   void _001OnSysChar(netnodedsView * pview, gen::message::sender_object * pobj);
    void _001OnCalcLayoutProc(netnodedsView * pview, CDC * pdc);
 
    void SetFile(Ex1File * pfile);

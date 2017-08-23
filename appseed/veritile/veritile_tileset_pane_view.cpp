@@ -39,7 +39,7 @@ namespace veritile
 #endif //DEBUG
 
 
-   void tileset_pane_view::_001OnCreate(::signal_details * pobj)
+   void tileset_pane_view::_001OnCreate(::message::message * pobj)
    {
       if(pobj->previous())
          return;
@@ -111,9 +111,9 @@ namespace veritile
    }
 
 
-   void tileset_pane_view::install_message_handling(::message::dispatch * pinterface)
+   void tileset_pane_view::install_message_routing(::message::sender * pinterface)
    {
-      ::userex::pane_tab_view::install_message_handling(pinterface);
+      ::userex::pane_tab_view::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&tileset_pane_view::_001OnCreate);
    }
 

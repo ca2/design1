@@ -33,10 +33,10 @@ namespace syllomatter
    }
 
 
-   void view::install_message_handling(::message::dispatch * pinterface)
+   void view::install_message_routing(::message::sender * pinterface)
    {
 
-      ::user::form::install_message_handling(pinterface);
+      ::user::form::install_message_routing(pinterface);
 
       IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
       IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
@@ -118,7 +118,7 @@ namespace syllomatter
    }
 
 
-   void view::_001OnDestroy(::signal_details * pobj)
+   void view::_001OnDestroy(::message::message * pobj)
    {
 
       ::user::impact::_001OnDestroy(pobj);
@@ -126,14 +126,14 @@ namespace syllomatter
    }
 
 
-   void view::_001OnSize(::signal_details * pobj)
+   void view::_001OnSize(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
 
    }
 
-   void view::_001OnPaint(::signal_details * pobj)
+   void view::_001OnPaint(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
@@ -149,7 +149,7 @@ namespace syllomatter
    }
 
 
-   void view::_001OnCreate(::signal_details * pobj)
+   void view::_001OnCreate(::message::message * pobj)
    {
 
       if(pobj->previous())
@@ -158,7 +158,7 @@ namespace syllomatter
    }
 
 
-   void view::_001OnContextMenu(::signal_details * pobj)
+   void view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
          point point = pcontextmenu->GetPoint();
@@ -174,18 +174,18 @@ namespace syllomatter
       }
    }
 
-   void view::_001OnWavePlayerEvent(::signal_details * pobj)
+   void view::_001OnWavePlayerEvent(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       //   SCAST_PTR(::message::base, pbase, pobj);
    }
 
-   void view::_001OnUpdateViewEncoding(::signal_details * pobj)
+   void view::_001OnUpdateViewEncoding(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
    }
-   void view::_001OnViewEncoding(::signal_details * pobj)
+   void view::_001OnViewEncoding(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       //SCAST_PTR(::message::command, pcommand, pobj);
@@ -193,7 +193,7 @@ namespace syllomatter
 
 
 
-   void view::_001OnSetCursor(::signal_details * pobj)
+   void view::_001OnSetCursor(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
@@ -205,7 +205,7 @@ namespace syllomatter
    }
 
 
-   void view::_001OnEraseBkgnd(::signal_details * pobj)
+   void view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
          perasebkgnd->m_bRet = true;

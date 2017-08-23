@@ -31,7 +31,7 @@ netnodedsDoc::netnodedsDoc(::ca::application * papp)
 	str += "Visible or Note?";
 
    command_signalid id;
-   gen::signalid * pid;
+   gen::message::senderid * pid;
 
 
    id.m_strCommand = "edit_undo";
@@ -211,53 +211,53 @@ BOOL netnodedsDoc::OnSaveDocument(LPCTSTR lpszPathName)
    return TRUE;
 }
 
-void netnodedsDoc::_001OnUpdateFileSave(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateFileSave(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(TRUE);
 }
 
-void netnodedsDoc::_001OnUpdateFilePut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateFilePut(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(TRUE);
 }
 
 
-void netnodedsDoc::_001OnUpdateEditCut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditCut(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(TRUE);
 }
 
-void netnodedsDoc::_001OnUpdateEditCopy(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditCopy(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(TRUE);
 }
 
-void netnodedsDoc::_001OnUpdateEditPaste(gen::signal_object * pobj)
+void netnodedsDoc::_001OnUpdateEditPaste(gen::message::sender_object * pobj)
 {
    SCAST_PTR(BaseCmdUi, pcommandui, pobj);
    pcommandui->Enable(TRUE);
 }
 
-void netnodedsDoc::_001OnFileSave(gen::signal_object * pobj)
+void netnodedsDoc::_001OnFileSave(gen::message::sender_object * pobj)
 {
    BaseDocument::OnFileSave();
 }
 
-void netnodedsDoc::_001OnEditCut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditCut(gen::message::sender_object * pobj)
 {
 }
-void netnodedsDoc::_001OnEditCopy(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditCopy(gen::message::sender_object * pobj)
 {
 }
-void netnodedsDoc::_001OnEditPaste(gen::signal_object * pobj)
+void netnodedsDoc::_001OnEditPaste(gen::message::sender_object * pobj)
 {
 }
 
-void netnodedsDoc::_001OnFilePut(gen::signal_object * pobj)
+void netnodedsDoc::_001OnFilePut(gen::message::sender_object * pobj)
 {
    BaseDocument::OnFileSave();
    Put();

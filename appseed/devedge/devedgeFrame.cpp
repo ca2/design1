@@ -195,7 +195,7 @@ int devedgeFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void devedgeFrame::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
+void devedgeFrame::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
 	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
    IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &devedgeFrame::_001OnClose);
@@ -495,7 +495,7 @@ void devedgeFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized)
 }
 
 
-void devedgeFrame::_001OnClose(gen::signal_object * pobj)
+void devedgeFrame::_001OnClose(gen::message::sender_object * pobj)
 {
    pobj->m_bRet = true;
    ShowWindow(SW_HIDE);

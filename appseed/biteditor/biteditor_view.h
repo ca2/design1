@@ -66,8 +66,8 @@ namespace biteditor
 
       sp(::biteditor::document) get_document() const;
 
-      virtual void pre_translate_message(::signal_details * pobj);
-      virtual void install_message_handling(::message::dispatch * pinterface);
+      virtual void pre_translate_message(::message::message * pobj);
+      virtual void install_message_routing(::message::sender * pinterface);
       virtual bool pre_create_window(::user::create_struct& cs);
 
       virtual void _001OnInitialUpdate();

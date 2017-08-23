@@ -75,7 +75,7 @@ public:
 	void Show(ViewData * pviewdata);
 	//void ShowPlaylist();
    static base_wnd* CreateView(CreateContext* pContext, UINT nID, base_wnd * pwndParent);
-   void _001InstallMessageHandling(igui::win::message::Dispatch * pinterface);
+   void _001InstallMessageHandling(igui::win::message::sender * pinterface);
 
    void _001OnTabClick(int iTab);
 

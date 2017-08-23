@@ -84,7 +84,7 @@ namespace biteditor
    }
 
 
-   void child_frame::_001OnCreate(::signal_details * pobj) 
+   void child_frame::_001OnCreate(::message::message * pobj) 
    {
       pobj->previous();
 
@@ -95,7 +95,7 @@ namespace biteditor
    }
 
 
-   void child_frame::_001OnAppLanguage(::signal_details * pobj)
+   void child_frame::_001OnAppLanguage(::message::message * pobj)
    {
       pobj->m_bRet = false;
    }

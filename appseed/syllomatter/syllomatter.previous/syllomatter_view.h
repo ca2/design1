@@ -30,7 +30,7 @@ public:
 	// ClassWizard generated virtual function overrides
 	//{{AFX_VIRTUAL(syllomatter_view)
 	protected:
-   virtual void _001InstallMessageHandling(igui::win::message::Dispatch * pinterface);
+   virtual void _001InstallMessageHandling(igui::win::message::sender * pinterface);
    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
    virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
    virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);

@@ -34,7 +34,7 @@ namespace biteditor
 
 
 
-      virtual void install_message_handling(::message::dispatch * pdispatch);
+      virtual void install_message_routing(::message::sender * psender);
 
 
       void read_line(string & str, file_position_t iLine);

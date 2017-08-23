@@ -37,7 +37,7 @@ namespace biteditor
       ascii_box(::aura::application * papp);
 
 
-      virtual void install_message_handling(::message::dispatch * pdispatch);
+      virtual void install_message_routing(::message::sender * psender);
 
       void read_line(string & str, int64_t iLine);
 

@@ -32,7 +32,7 @@ namespace veritile
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      virtual void install_message_handling(::message::dispatch * pinterface);
+      virtual void install_message_routing(::message::sender * pinterface);
 
       virtual void _001OnDraw(::draw2d::graphics * pgraphics);
       virtual void _001OnDrawSel(::draw2d::graphics * pgraphics, const point_array & ptaSel);

@@ -109,7 +109,7 @@ void pane_view::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // pane_view message handlers
 
-void pane_view::_001OnCreate(gen::signal_object * pobj) 
+void pane_view::_001OnCreate(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::create, pcreate, pobj);
    if(pobj->previous())
@@ -345,7 +345,7 @@ void pane_view::Layout()
    }
 }
 
-void pane_view::_001OnSize(gen::signal_object * pobj) 
+void pane_view::_001OnSize(gen::message::sender_object * pobj) 
 {
 	pobj->previous();
 	
@@ -394,7 +394,7 @@ EPaneView pane_view::GetViewId()
 }
 
 /*
-void pane_view::_001OnEraseBkgnd(gen::signal_object * pobj) 
+void pane_view::_001OnEraseBkgnd(gen::message::sender_object * pobj) 
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->set_result(TRUE);
@@ -699,12 +699,12 @@ void pane_view::Rotate()
    ShowView(eviewNew);
 }
 
-void pane_view::_001OnMenuMessage(gen::signal_object * pobj)
+void pane_view::_001OnMenuMessage(gen::message::sender_object * pobj)
 {
    ShowView(m_pviewdataOld->m_eview);
 }
 
-void pane_view::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
+void pane_view::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
    BaseView::_001InstallMessageHandling(this);
 

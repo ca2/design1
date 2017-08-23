@@ -24,14 +24,14 @@ namespace biteditor
    }
 
 
-   void frame::install_message_handling(::message::dispatch * pinterface)
+   void frame::install_message_routing(::message::sender * pinterface)
    {
-      simple_frame_window::install_message_handling(pinterface);
+      simple_frame_window::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CREATE   , pinterface, this, &frame::_001OnCreate);
       IGUI_WIN_MSG_LINK(WM_CLOSE    , pinterface, this, &frame::_001OnClose);
    }
 
-   void frame::_001OnCreate(::signal_details *pobj)
+   void frame::_001OnCreate(::message::message *pobj)
    {
 
       pobj->previous();
@@ -42,7 +42,7 @@ namespace biteditor
 
    }
 
-   void frame::_001OnClose(::signal_details *pobj)
+   void frame::_001OnClose(::message::message *pobj)
    {
 
       for(int iTemplate = 0; iTemplate < Application.document_manager()->get_template_count(); iTemplate++)

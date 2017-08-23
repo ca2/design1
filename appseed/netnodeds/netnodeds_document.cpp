@@ -17,7 +17,7 @@ namespace netnodeds
 
 
       //command_signalid id;
-      //::ca::signalid * pid;
+      //::ca::message::senderid * pid;
 
 
       /*id.m_id = System.id("edit_undo";
@@ -143,71 +143,71 @@ namespace netnodeds
 
 
 
-   void document::_001OnUpdateFileSave(::signal_details * pobj)
+   void document::_001OnUpdateFileSave(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateFileNew(::signal_details * pobj)
+   void document::_001OnUpdateFileNew(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateFilePut(::signal_details * pobj)
+   void document::_001OnUpdateFilePut(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
 
-   void document::_001OnUpdateEditCut(::signal_details * pobj)
+   void document::_001OnUpdateEditCut(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateEditCopy(::signal_details * pobj)
+   void document::_001OnUpdateEditCopy(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnUpdateEditPaste(::signal_details * pobj)
+   void document::_001OnUpdateEditPaste(::message::message * pobj)
    {
       SCAST_PTR(::command_ui, pcommandui, pobj);
       pcommandui->Enable(TRUE);
    }
 
-   void document::_001OnFileSave(::signal_details * pobj)
+   void document::_001OnFileSave(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       ::user::document::on_file_save();
    }
 
-   void document::_001OnFileNew(::signal_details * pobj)
+   void document::_001OnFileNew(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       ::user::document::on_new_document();
    }
 
-   void document::_001OnEditCut(::signal_details * pobj)
+   void document::_001OnEditCut(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnEditCopy(::signal_details * pobj)
+   void document::_001OnEditCopy(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnEditPaste(::signal_details * pobj)
+   void document::_001OnEditPaste(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
    }
 
-   void document::_001OnFilePut(::signal_details * pobj)
+   void document::_001OnFilePut(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
       ::user::document::on_file_save();

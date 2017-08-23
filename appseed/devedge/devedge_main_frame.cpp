@@ -23,7 +23,7 @@ namespace devedge
    }
 
 
-   void main_frame::_001OnCreate(::signal_details * pobj)
+   void main_frame::_001OnCreate(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
@@ -34,9 +34,9 @@ namespace devedge
 
    }
 
-   void main_frame::install_message_handling(::message::dispatch * pinterface)
+   void main_frame::install_message_routing(::message::sender * pinterface)
    {
-      simple_frame_window::install_message_handling(pinterface);
+      simple_frame_window::install_message_routing(pinterface);
       IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &main_frame::_001OnClose);
    }
 

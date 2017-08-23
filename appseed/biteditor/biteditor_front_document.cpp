@@ -15,7 +15,7 @@ namespace biteditor
    {
    }
 
-   bool front_document::on_simple_action(id id)
+   bool front_document::on_simple_action(::user::command * pcommand)
    {
       if(id == "start")
       {

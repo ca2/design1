@@ -6,7 +6,7 @@ class CLASS_DECL_CA2_DEVEDGE netnodedsFrame : public SimpleFrameWindow
 public:
 	netnodedsFrame(::ca::application * papp);
 
-   void _001InstallMessageHandling(igui::win::message::Dispatch * pinterface);
+   void _001InstallMessageHandling(igui::win::message::sender * pinterface);
 
    DECL_GEN_SIGNAL(_001OnClose)
 // Attributes

@@ -204,7 +204,7 @@ void PlainTextBox::_001GetSelText(string & str)
 	str.ReleaseBuffer();
 }
 
-void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 	m_bMouseDown = true;
@@ -216,7 +216,7 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::signal_object * p
 	pview->m_pelementMouseDown = this;
 	
 }
-void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
 	CDC * pgraphics = pview->GetDC();
@@ -442,7 +442,7 @@ int PlainTextBox::char_hit_test(devedgeView * pview, CDC * pgraphics, int px, in
 	return iOffset + strLine.GetLength() + m_iViewOffset;
 }
 
-void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::message::sender_object * pobj)
 {
 	SCAST_PTR(igui::win::message::mouse, pmouse, pobj);
       ::SetCursor(::LoadCursor(NULL, IDC_IBEAM));
@@ -615,7 +615,7 @@ void PlainTextBox::CreateLineIndex()
    }
 }
 
-void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::key, pkey, pobj);
    bool bShift = ::GetKeyState(VK_SHIFT) & 0x80000000;
@@ -833,7 +833,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::signal_object * pobj)
    pview->RedrawWindow();
 }
 
-void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::signal_object * pobj)
+void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::key, pkey, pobj);
    if(pkey->m_nChar == VK_DELETE)

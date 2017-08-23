@@ -57,7 +57,7 @@ namespace refactor
 #endif 
 
 
-   void view::_001OnUserMessage(::signal_details * pobj)
+   void view::_001OnUserMessage(::message::message * pobj)
    {
       
       SCAST_PTR(::message::base, pbase, pobj);
@@ -480,11 +480,11 @@ namespace refactor
    }
 
 
-   void view::install_message_handling(::message::dispatch * pinterface)
+   void view::install_message_routing(::message::sender * pinterface)
    {
 
 
-      ::user::plain_edit_view::install_message_handling(pinterface);
+      ::user::plain_edit_view::install_message_routing(pinterface);
 
       //IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
       IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);

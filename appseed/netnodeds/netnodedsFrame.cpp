@@ -195,7 +195,7 @@ int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void netnodedsFrame::_001InstallMessageHandling(igui::win::message::Dispatch * pinterface)
+void netnodedsFrame::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
 	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
    IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &netnodedsFrame::_001OnClose);
@@ -494,7 +494,7 @@ void netnodedsFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimize
 }
 
 
-void netnodedsFrame::_001OnClose(gen::signal_object * pobj)
+void netnodedsFrame::_001OnClose(gen::message::sender_object * pobj)
 {
    pobj->m_bRet = true;
    ShowWindow(SW_HIDE);

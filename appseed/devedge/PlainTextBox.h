@@ -58,12 +58,12 @@ public:
 	void _001GetViewText(devedgeView * pview, string & str);
 	void _001GetViewSel(int &iSelStart, int &iSelEnd);
 
-	void _001OnLButtonDown(devedgeView * pview, gen::signal_object * pobj);
-	void _001OnLButtonUp(devedgeView * pview, gen::signal_object * pobj);
+	void _001OnLButtonDown(devedgeView * pview, gen::message::sender_object * pobj);
+	void _001OnLButtonUp(devedgeView * pview, gen::message::sender_object * pobj);
    void _001OnCalcLayout(devedgeView * pview, CDC * pdc);
-   void _001OnMouseMove(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnChar(devedgeView * pview, gen::signal_object * pobj);
-   void _001OnSysChar(devedgeView * pview, gen::signal_object * pobj);
+   void _001OnMouseMove(devedgeView * pview, gen::message::sender_object * pobj);
+   void _001OnChar(devedgeView * pview, gen::message::sender_object * pobj);
+   void _001OnSysChar(devedgeView * pview, gen::message::sender_object * pobj);
    void _001OnCalcLayoutProc(devedgeView * pview, CDC * pdc);
 
    void SetFile(Ex1File * pfile);

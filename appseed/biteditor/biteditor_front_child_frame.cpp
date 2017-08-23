@@ -153,7 +153,7 @@ namespace biteditor
       */
    }
 
-   void front_child_frame::_001OnCreate(::signal_details * pobj)
+   void front_child_frame::_001OnCreate(::message::message * pobj)
    {
       
       UNREFERENCED_PARAMETER(pobj);
@@ -161,7 +161,7 @@ namespace biteditor
    }
 
 
-   void front_child_frame::_001OnAppLanguage(::signal_details * pobj)
+   void front_child_frame::_001OnAppLanguage(::message::message * pobj)
    {
       pobj->m_bRet = false;
    }
