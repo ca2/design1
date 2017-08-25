@@ -38,23 +38,23 @@ namespace syllomatter
 
       ::user::form::install_message_routing(pinterface);
 
-      IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
-      IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
-      IGUI_WIN_MSG_LINK(WM_PAINT, pinterface, this, &view::_001OnPaint);
-      IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
+      IGUI_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
+      IGUI_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
+      IGUI_MSG_LINK(WM_PAINT, pinterface, this, &view::_001OnPaint);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
+      IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
 
-      //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-      IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
+      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
+      IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
       //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
-      //   IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &::user::interaction::_001OnLButtonDown);
-      // IGUI_WIN_MSG_LINK(WM_LBUTTONUP, pinterface, this, &::user::interaction::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_KEYDOWN, pinterface, this, &::user::interaction::_001OnKeyDown);
-      IGUI_WIN_MSG_LINK(WM_KEYUP, pinterface, this, &::user::interaction::_001OnKeyUp);
+      //   IGUI_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &::user::interaction::_001OnLButtonDown);
+      // IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &::user::interaction::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_KEYDOWN, pinterface, this, &::user::interaction::_001OnKeyDown);
+      IGUI_MSG_LINK(WM_KEYUP, pinterface, this, &::user::interaction::_001OnKeyUp);
 
 
    }
@@ -183,7 +183,7 @@ namespace syllomatter
    void view::_001OnUpdateViewEncoding(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
+      //SCAST_PTR(::user::command, pcommand, pobj);
    }
    void view::_001OnViewEncoding(::message::message * pobj)
    {

@@ -198,7 +198,7 @@ int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 void netnodedsFrame::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
 	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
-   IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &netnodedsFrame::_001OnClose);
+   IGUI_MSG_LINK(WM_CLOSE,          pinterface, this, &netnodedsFrame::_001OnClose);
 }
 
 

@@ -35,7 +35,7 @@ namespace netnodeds
    void main_frame::install_message_routing(::message::sender * pinterface)
    {
       simple_frame_window::install_message_routing(pinterface);
-      IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &main_frame::_001OnClose);
+      IGUI_MSG_LINK(WM_CLOSE,          pinterface, this, &main_frame::_001OnClose);
    }
 
 

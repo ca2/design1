@@ -39,11 +39,11 @@ namespace biteditor
    void hex_box::install_message_routing(::message::sender * psender)
    {
 
-      ::user::interaction::install_message_routing(pdispatch);
+      ::user::interaction::install_message_routing(psender);
 
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN    , pdispatch, this, &hex_box::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP      , pdispatch, this, &hex_box::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE      , pdispatch, this, &hex_box::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN    , psender, this, &hex_box::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP      , psender, this, &hex_box::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_MOUSEMOVE      , psender, this, &hex_box::_001OnMouseMove);
 
    }
 

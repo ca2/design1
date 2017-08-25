@@ -12,9 +12,9 @@ namespace veritile
       m_emode = mode_place;
 
       connect_command("tool_place", &view::_001OnModePlace);
-      connect_update_cmd_ui("tool_place", &view::_001OnUpdateModePlace);
+      connect_command_probe("tool_place", &view::_001OnUpdateModePlace);
       connect_command("tool_random", &view::_001OnModeRandom);
-      connect_update_cmd_ui("tool_random", &view::_001OnUpdateModeRandom);
+      connect_command_probe("tool_random", &view::_001OnUpdateModeRandom);
       // connect_command("selection_tool", &view::_001OnSelectionTool);
 
    }
@@ -27,20 +27,20 @@ namespace veritile
    {
       ::user::impact::install_message_routing(pinterface);
 
-      IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
-      IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
-      IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
+      IGUI_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
+      IGUI_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
+      IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
 //      
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE, pinterface, this, &view::_001OnMouseMove);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &view::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDBLCLK, pinterface, this, &view::_001OnLButtonDblClk);
+      IGUI_MSG_LINK(WM_MOUSEMOVE, pinterface, this, &view::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &view::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_LBUTTONDBLCLK, pinterface, this, &view::_001OnLButtonDblClk);
 
-   //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-   //   IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
+   //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
+   //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
       //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
@@ -438,8 +438,8 @@ namespace veritile
 
    void view::_001OnUpdateModePlace(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(m_emode != mode_place);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(m_emode != mode_place);
    }
 
 
@@ -451,8 +451,8 @@ namespace veritile
 
    void view::_001OnUpdateModeRandom(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(m_emode != mode_random);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(m_emode != mode_random);
    }
 
    void view::on_property_change(property & property)

@@ -59,10 +59,10 @@ pane_view::pane_view()
 
    m_pdoctemplateAudioControl = pdoctemplate;*/
    
-	IGUI_WIN_MSG_LINK(WM_CREATE       , this, this, &pane_view::_001OnCreate);
-	IGUI_WIN_MSG_LINK(WM_SIZE         , this, this, &pane_view::_001OnSize);
-	IGUI_WIN_MSG_LINK(WM_ERASEBKGND   , this, this, &pane_view::_001OnEraseBkgnd);
-   IGUI_WIN_MSG_LINK(WM_USER + 1122  , this, this, &pane_view::_001OnMenuMessage);
+	IGUI_MSG_LINK(WM_CREATE       , this, this, &pane_view::_001OnCreate);
+	IGUI_MSG_LINK(WM_SIZE         , this, this, &pane_view::_001OnSize);
+	IGUI_MSG_LINK(WM_ERASEBKGND   , this, this, &pane_view::_001OnEraseBkgnd);
+   IGUI_MSG_LINK(WM_USER + 1122  , this, this, &pane_view::_001OnMenuMessage);
 
 }
 

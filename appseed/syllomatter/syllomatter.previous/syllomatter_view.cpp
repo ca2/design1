@@ -57,24 +57,24 @@ void syllomatter_view::_001InstallMessageHandling(igui::win::message::sender * p
 {
    BaseView::_001InstallMessageHandling(this);
 
-	IGUI_WIN_MSG_LINK(WM_DESTROY        , this, this, &syllomatter_view::_001OnDestroy);
-	IGUI_WIN_MSG_LINK(WM_SIZE           , this, this, &syllomatter_view::_001OnSize);
-	IGUI_WIN_MSG_LINK(WM_PAINT          , this, this, &syllomatter_view::_001OnPaint);
-	IGUI_WIN_MSG_LINK(WM_CREATE         , this, this, &syllomatter_view::_001OnCreate);
-	IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , this, this, &syllomatter_view::_001OnContextMenu);
-	IGUI_WIN_MSG_LINK(WM_SETCURSOR      , this, this, &syllomatter_view::_001OnSetCursor);
-	IGUI_WIN_MSG_LINK(WM_ERASEBKGND     , this, this, &syllomatter_view::_001OnEraseBkgnd);
+	IGUI_MSG_LINK(WM_DESTROY        , this, this, &syllomatter_view::_001OnDestroy);
+	IGUI_MSG_LINK(WM_SIZE           , this, this, &syllomatter_view::_001OnSize);
+	IGUI_MSG_LINK(WM_PAINT          , this, this, &syllomatter_view::_001OnPaint);
+	IGUI_MSG_LINK(WM_CREATE         , this, this, &syllomatter_view::_001OnCreate);
+	IGUI_MSG_LINK(WM_CONTEXTMENU    , this, this, &syllomatter_view::_001OnContextMenu);
+	IGUI_MSG_LINK(WM_SETCURSOR      , this, this, &syllomatter_view::_001OnSetCursor);
+	IGUI_MSG_LINK(WM_ERASEBKGND     , this, this, &syllomatter_view::_001OnEraseBkgnd);
 
-//	IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &syllomatter_view::_001OnTabClick);
-	IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &syllomatter_view::_001OnWavePlayerEvent);
+//	IGUI_MSG_LINK(WM_USER + 177     , this, this, &syllomatter_view::_001OnTabClick);
+	IGUI_MSG_LINK(WM_APP + 119      , this, this, &syllomatter_view::_001OnWavePlayerEvent);
 	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT, BaseView::OnFilePrint)
 	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT_DIRECT, BaseView::OnFilePrint)
 	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT_PREVIEW, BaseView::OnFilePrintPreview)
-   IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonDown);
-   IGUI_WIN_MSG_LINK(WM_LBUTTONUP    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonUp);
-   IGUI_WIN_MSG_LINK(WM_KEYDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnKeyDown);
-   IGUI_WIN_MSG_LINK(WM_KEYUP    , this, this, &Ex1VirtualGuieInterface::_001OnKeyUp);
-   //IGUI_WIN_MSG_LINK(WM_TIMER    , this, this, &Ex1VirtualGuieInterface::_001OnTimer);
+   IGUI_MSG_LINK(WM_LBUTTONDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonDown);
+   IGUI_MSG_LINK(WM_LBUTTONUP    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonUp);
+   IGUI_MSG_LINK(WM_KEYDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnKeyDown);
+   IGUI_MSG_LINK(WM_KEYUP    , this, this, &Ex1VirtualGuieInterface::_001OnKeyUp);
+   //IGUI_MSG_LINK(WM_TIMER    , this, this, &Ex1VirtualGuieInterface::_001OnTimer);
 
 
 }
@@ -279,7 +279,7 @@ void syllomatter_view::_001OnWavePlayerEvent(gen::message::sender_object * pobj)
 
 void syllomatter_view::_001OnUpdateViewEncoding(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(igui::win::message::update_command_ui, pupdatecmdui, pobj);
+   SCAST_PTR(igui::win::user::command, pcommand, pobj);
 }
 void syllomatter_view::_001OnViewEncoding(gen::message::sender_object * pobj)
 {

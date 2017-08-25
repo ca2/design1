@@ -486,8 +486,8 @@ namespace refactor
 
       ::user::plain_edit_view::install_message_routing(pinterface);
 
-      //IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
+      //IGUI_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
 
 
    }

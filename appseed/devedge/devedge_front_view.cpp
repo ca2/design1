@@ -25,32 +25,32 @@ namespace devedge
 
       html_view::install_message_routing(pinterface);
 
-      IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &front_view::_001OnDestroy);
-      IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &front_view::_001OnSize);
-      IGUI_WIN_MSG_LINK(WM_PAINT, pinterface, this, &front_view::_001OnPaint);
-      IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &front_view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &front_view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &front_view::_001OnSetCursor);
-      ////IGUI_WIN_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
-      IGUI_WIN_MSG_LINK(WM_USER + 101     , this, this, &front_view::_001OnPost);
+      IGUI_MSG_LINK(WM_DESTROY, pinterface, this, &front_view::_001OnDestroy);
+      IGUI_MSG_LINK(WM_SIZE, pinterface, this, &front_view::_001OnSize);
+      IGUI_MSG_LINK(WM_PAINT, pinterface, this, &front_view::_001OnPaint);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &front_view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &front_view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &front_view::_001OnSetCursor);
+      ////IGUI_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
+      IGUI_MSG_LINK(WM_USER + 101     , this, this, &front_view::_001OnPost);
 
-      //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &front_view::_001OnTabClick);
-      IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &front_view::_001OnWavePlayerEvent);
-      //  IGUI_WIN_MSG_LINK(WM_CHAR, pinterface, this, &front_view::_001OnChar);
-      //IGUI_WIN_MSG_LINK(WM_SYSCHAR, pinterface, this, &front_view::_001OnSysChar);
+      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &front_view::_001OnTabClick);
+      IGUI_MSG_LINK(WM_APP + 119      , this, this, &front_view::_001OnWavePlayerEvent);
+      //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &front_view::_001OnChar);
+      //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &front_view::_001OnSysChar);
       //connect_command(ID_FILE_PRINT, html_view::OnFilePrint)
       //connect_command(ID_FILE_PRINT_DIRECT, html_view::OnFilePrint)
       //connect_command(ID_FILE_PRINT_PREVIEW, html_view::OnFilePrintPreview)
 
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
+      IGUI_MSG_LINK(WM_LBUTTONDOWN,
          this,
          this,
          &front_view::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
+      IGUI_MSG_LINK(WM_LBUTTONUP,
          this,
          this,
          &front_view::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE,
+      IGUI_MSG_LINK(WM_MOUSEMOVE,
          this,
          this,
          &front_view::_001OnMouseMove);
@@ -163,11 +163,11 @@ namespace devedge
       /*sp(::user::document) pdoc = get_document();
       for(int32_t i = 0; i < pdoc->m_elementptraVisible.get_size(); i++)
       {
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
+      IGUI_MSG_LINK(WM_LBUTTONDOWN,
       this,
       pdoc->m_elementptraVisible[i],
       &::devedge::Element2D::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
+      IGUI_MSG_LINK(WM_LBUTTONUP,
       this,
       pdoc->m_elementptraVisible[i],
       &::devedge::Element2D::_001OnLButtonUp);
@@ -192,7 +192,7 @@ namespace devedge
    void front_view::_001OnUpdateViewEncoding(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
+      //SCAST_PTR(::user::command, pcommand, pobj);
    }
    void front_view::_001OnViewEncoding(::message::message * pobj)
    {

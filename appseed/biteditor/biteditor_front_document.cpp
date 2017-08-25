@@ -15,7 +15,7 @@ namespace biteditor
    {
    }
 
-   bool front_document::on_simple_action(::user::command * pcommand)
+   bool front_document::on_simple_command(::user::command * pcommand)
    {
       if(id == "start")
       {
@@ -32,27 +32,27 @@ namespace biteditor
          OnEditRedo();
          return true;
       }
-      return html_document::on_simple_action(id);
+      return html_document::on_simple_command(id);
    }
 
-   bool front_document::on_simple_update(command_ui * pcommandui)
+   bool front_document::on_simple_command_probe(::user::command * pcommand)
    {
-      if(pcommandui->m_id == "start")
+      if(pcommand->m_id == "start")
       {
-         OnUpdateStart(pcommandui);
+         OnUpdateStart(pcommand);
          return TRUE;
       }
-      else if(pcommandui->m_id == "edit::undo")
+      else if(pcommand->m_id == "edit::undo")
       {
-         OnUpdateEditUndo(pcommandui);
+         OnUpdateEditUndo(pcommand);
          return TRUE;
       }
-      else if(pcommandui->m_id == "edit::redor")
+      else if(pcommand->m_id == "edit::redor")
       {
-         OnUpdateEditRedo(pcommandui);
+         OnUpdateEditRedo(pcommand);
          return TRUE;
       }
-      return html_document::on_simple_update(pcommandui);
+      return html_document::on_simple_command_probe(pcommand);
    }
 
    bool front_document::on_new_document()
@@ -100,19 +100,19 @@ namespace biteditor
       return TRUE;
    }
 
-   void front_document::OnUpdateStart(command_ui *pcommandui)
+   void front_document::OnUpdateStart(::user::command *pcommand)
    {
-      pcommandui->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
-   void front_document::OnUpdateEditUndo(command_ui *pcommandui)
+   void front_document::OnUpdateEditUndo(::user::command *pcommand)
    {
-      UNREFERENCED_PARAMETER(pcommandui);
+      UNREFERENCED_PARAMETER(pcommand);
    }
 
-   void front_document::OnUpdateEditRedo(command_ui *pcommandui)
+   void front_document::OnUpdateEditRedo(::user::command *pcommand)
    {
-      UNREFERENCED_PARAMETER(pcommandui);
+      UNREFERENCED_PARAMETER(pcommand);
    }
 
    void front_document::OnStart()

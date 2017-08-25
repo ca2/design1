@@ -36,30 +36,30 @@ namespace biteditor
 
       ::user::impact::install_message_routing(pinterface);
 
-      IGUI_WIN_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
-      IGUI_WIN_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
-      IGUI_WIN_MSG_LINK(WM_PAINT, pinterface, this, &view::_001OnPaint);
-      IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
+      IGUI_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
+      IGUI_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
+      IGUI_MSG_LINK(WM_PAINT, pinterface, this, &view::_001OnPaint);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
       
-      IGUI_WIN_MSG_LINK(WM_HSCROLL, pinterface, this, &view::_001OnHScroll);
+      IGUI_MSG_LINK(WM_HSCROLL, pinterface, this, &view::_001OnHScroll);
 
-      IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
+      IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
 
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
+      IGUI_MSG_LINK(WM_LBUTTONDOWN,
          this,
          this,
          &view::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
+      IGUI_MSG_LINK(WM_LBUTTONUP,
          this,
          this,
          &view::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE,
+      IGUI_MSG_LINK(WM_MOUSEMOVE,
          this,
          this,
          &view::_001OnMouseMove);
-      IGUI_WIN_MSG_LINK(WM_RBUTTONUP,
+      IGUI_MSG_LINK(WM_RBUTTONUP,
          this,
          this,
          &view::_001OnRButtonUp);
@@ -288,11 +288,11 @@ namespace biteditor
       /*sp(::user::document) pdoc = get_document();
       for(int32_t i = 0; i < pdoc->m_elementptraVisible.get_size(); i++)
       {
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,
+      IGUI_MSG_LINK(WM_LBUTTONDOWN,
       this,
       pdoc->m_elementptraVisible[i],
       &biteditor::Element2D::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP,
+      IGUI_MSG_LINK(WM_LBUTTONUP,
       this,
       pdoc->m_elementptraVisible[i],
       &biteditor::Element2D::_001OnLButtonUp);
@@ -326,7 +326,7 @@ namespace biteditor
    void view::_001OnUpdateViewEncoding(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
-      //   SCAST_PTR(::message::update_command_ui, pupdatecmdui, pobj);
+      //   SCAST_PTR(::user::command, pcommand, pobj);
    }
    void view::_001OnViewEncoding(::message::message * pobj)
    {
@@ -504,14 +504,14 @@ namespace biteditor
    void view::pre_translate_message(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
-      if(pbase->m_uiMessage == WM_KEYDOWN)
+      if(pbase->m_id == WM_KEYDOWN)
       {
          SCAST_PTR(::message::key, pkey, pobj);
          _001OnKeyDown(pkey);
          if(pkey->m_bRet)
             return;
       }
-      else if(pbase->m_uiMessage == WM_KEYUP)
+      else if(pbase->m_id == WM_KEYUP)
       {
          SCAST_PTR(::message::key, pkey, pobj);
          _001OnKeyUp(pkey);

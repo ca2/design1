@@ -17,13 +17,13 @@ namespace syllomatter
 
       m_dataid = "list_view";
       connect_command("add", &list_view::_001OnAdd);
-      connect_update_cmd_ui("add", &list_view::_001OnUpdateAdd);
+      connect_command_probe("add", &list_view::_001OnUpdateAdd);
       connect_command("delete", &list_view::_001OnDelete);
-      connect_update_cmd_ui("delete", &list_view::_001OnUpdateDelete);
+      connect_command_probe("delete", &list_view::_001OnUpdateDelete);
       connect_command("revert", &list_view::_001OnRevert);
-      connect_update_cmd_ui("revert", &list_view::_001OnUpdateRevert);
+      connect_command_probe("revert", &list_view::_001OnUpdateRevert);
       connect_command("syllomatter_do_commit", &list_view::_001OnDoCommit);
-      connect_update_cmd_ui("syllomatter_do_commit", &list_view::_001OnUpdateDoCommit);
+      connect_command_probe("syllomatter_do_commit", &list_view::_001OnUpdateDoCommit);
 
 //      m_scrollinfo.m_rectMargin.deflate(26, 26, 26, 26);
 
@@ -39,9 +39,9 @@ namespace syllomatter
    {
       ::user::form_list::install_message_routing(pinterface);
       ::user::impact::install_message_routing(pinterface);
-      IGUI_WIN_MSG_LINK(WM_CREATE            , pinterface, this, &list_view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(MessageGeneralEvent  , pinterface, this, &list_view::_001OnGeneralEvent);
-      IGUI_WIN_MSG_LINK(WM_USER + 1024       , pinterface, this, &list_view::_001OnVerisvnwellListMessage);
+      IGUI_MSG_LINK(WM_CREATE            , pinterface, this, &list_view::_001OnCreate);
+      IGUI_MSG_LINK(MessageGeneralEvent  , pinterface, this, &list_view::_001OnGeneralEvent);
+      IGUI_MSG_LINK(WM_USER + 1024       , pinterface, this, &list_view::_001OnVerisvnwellListMessage);
    }
 
    void list_view::_001OnCreate(::message::message * pobj)
@@ -290,8 +290,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(bEnable);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(bEnable);
    }
 
    void list_view::_001OnDelete(::message::message * pobj)
@@ -338,8 +338,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(bEnable);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(bEnable);
    }
 
 
@@ -395,8 +395,8 @@ namespace syllomatter
          if(bEnable)
             break;
       }
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(bEnable);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(bEnable);
    }
 
    list_view::commit_thread::commit_thread(::aura::application * papp) :
@@ -673,8 +673,8 @@ namespace syllomatter
       range range;
       _001GetSelection(range);
       bool bEnable = range.get_item_count() > 0;
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(bEnable);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(bEnable);
    }
 
 

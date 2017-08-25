@@ -30,16 +30,16 @@ namespace devedge
       pid = m_signalidaCommand.get(&id);
       id.m_id = "file_save";
       pid = m_signalidaCommand.get(&id);*/
-      connect_update_cmd_ui("file_save", &solution_document::_001OnUpdateFileSave);
+      connect_command_probe("file_save", &solution_document::_001OnUpdateFileSave);
       connect_command("file_save", &solution_document::_001OnFileSave);
-      connect_update_cmd_ui("edit_cut", &solution_document::_001OnUpdateEditCut);
+      connect_command_probe("edit_cut", &solution_document::_001OnUpdateEditCut);
       connect_command("edit_cut", &solution_document::_001OnEditCut);
-      connect_update_cmd_ui("edit_copy", &solution_document::_001OnUpdateEditCopy);
+      connect_command_probe("edit_copy", &solution_document::_001OnUpdateEditCopy);
       connect_command("edit_copy", &solution_document::_001OnEditCopy);
-      connect_update_cmd_ui("edit_paste", &solution_document::_001OnUpdateEditPaste);
+      connect_command_probe("edit_paste", &solution_document::_001OnUpdateEditPaste);
       connect_command("edit_paste", &solution_document::_001OnEditPaste);
       connect_command("file_new", &solution_document::_001OnFileNew);
-      connect_update_cmd_ui("file_new", &solution_document::_001OnUpdateFileNew);
+      connect_command_probe("file_new", &solution_document::_001OnUpdateFileNew);
    }
 
 
@@ -132,39 +132,39 @@ namespace devedge
 
    void solution_document::_001OnUpdateFileSave(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateFileNew(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateFilePut(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
 
    void solution_document::_001OnUpdateEditCut(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateEditCopy(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
    void solution_document::_001OnUpdateEditPaste(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-      pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+      pcommand->Enable(TRUE);
    }
 
    void solution_document::_001OnFileSave(::message::message * pobj)

@@ -62,27 +62,27 @@ BOOL devedgeDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO
 {
 /*   gen::application * papp = gen::get_app();
    CommandIdSpace idspace;
-	if (nCode == CN_UPDATE_COMMAND_UI)
+	if (nCode == CN_UPDATE_::user::command)
 	{
-      CCmdUI * pcommandui = (CCmdUI *) pExtra;
+      CCmdUI * pcommand = (CCmdUI *) pExtra;
       if(nID == papp->GetResourceId(idspace, "file_save"))
       {
-         OnUpdateFileSave(pcommandui);
+         OnUpdateFileSave(pcommand);
          return TRUE;
       }
       else if(nID == papp->GetResourceId(idspace, "edit_undo"))
       {
-         OnUpdateEditUndo(pcommandui);
+         OnUpdateEditUndo(pcommand);
          return TRUE;
       }
       else if(nID == 1003)
       {
-         OnUpdateEditRedo(pcommandui);
+         OnUpdateEditRedo(pcommand);
          return TRUE;
       }
       else if(nID == 1004)
       {
-         OnUpdateFilePut(pcommandui);
+         OnUpdateFilePut(pcommand);
          return TRUE;
       }
 	}
@@ -213,33 +213,33 @@ BOOL devedgeDoc::OnSaveDocument(LPCTSTR lpszPathName)
 
 void devedgeDoc::_001OnUpdateFileSave(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateFilePut(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(TRUE);
 }
 
 
 void devedgeDoc::_001OnUpdateEditCut(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditCopy(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnUpdateEditPaste(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(TRUE);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(TRUE);
 }
 
 void devedgeDoc::_001OnFileSave(gen::message::sender_object * pobj)

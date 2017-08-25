@@ -14,9 +14,9 @@ namespace netnodeds
       m_bMultiLine = true;
       m_bColorerTake5 = true;
 
-      connect_update_cmd_ui("edit_undo", &view::_001OnUpdateEditUndo);
+      connect_command_probe("edit_undo", &view::_001OnUpdateEditUndo);
       connect_command("edit_undo", &view::_001OnEditUndo);
-      connect_update_cmd_ui("edit_redo", &view::_001OnUpdateEditRedo);
+      connect_command_probe("edit_redo", &view::_001OnUpdateEditRedo);
       connect_command("edit_redo", &view::_001OnEditRedo);
 
    }
@@ -143,16 +143,16 @@ namespace netnodeds
 
    void view::_001OnUpdateEditUndo(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
+      SCAST_PTR(::user::command, pcommand, pobj);
          // xyzxyz
-      //pcommandui->Enable(m_pdata->m_editfile.CanUndo());
+      //pcommand->Enable(m_pdata->m_editfile.CanUndo());
    }
 
    void view::_001OnUpdateEditRedo(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
+      SCAST_PTR(::user::command, pcommand, pobj);
          // xyzxyz
-      //pcommandui->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
+      //pcommand->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
    }
 
    void view::_001OnEditUndo(::message::message * pobj)
@@ -178,8 +178,8 @@ namespace netnodeds
    {
       
       ::user::plain_edit_view::install_message_routing(pinterface);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
+      IGUI_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
 
    }
 

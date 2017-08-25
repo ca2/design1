@@ -12,9 +12,9 @@ namespace veritile
 
 
       connect_command("selection_tool",&tileset_view::_001OnSelectionTool);
-      connect_update_cmd_ui("selection_tool",&tileset_view::_001OnUpdateSelectionTool);
+      connect_command_probe("selection_tool",&tileset_view::_001OnUpdateSelectionTool);
       connect_command("polygon_tool",&tileset_view::_001OnPolygonTool);
-      connect_update_cmd_ui("polygon_tool",&tileset_view::_001OnUpdatePolygonTool);
+      connect_command_probe("polygon_tool",&tileset_view::_001OnUpdatePolygonTool);
 
 
       m_bMouseDown = false;
@@ -29,20 +29,20 @@ namespace veritile
    {
       BASE_VIEW::install_message_routing(pinterface);
 
-      IGUI_WIN_MSG_LINK(WM_DESTROY,pinterface,this,&tileset_view::_001OnDestroy);
-      IGUI_WIN_MSG_LINK(WM_SIZE,pinterface,this,&tileset_view::_001OnSize);
-      IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&tileset_view::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU,pinterface,this,&tileset_view::_001OnContextMenu);
-      IGUI_WIN_MSG_LINK(WM_SETCURSOR,pinterface,this,&tileset_view::_001OnSetCursor);
-      IGUI_WIN_MSG_LINK(WM_ERASEBKGND,pinterface,this,&tileset_view::_001OnEraseBkgnd);
+      IGUI_MSG_LINK(WM_DESTROY,pinterface,this,&tileset_view::_001OnDestroy);
+      IGUI_MSG_LINK(WM_SIZE,pinterface,this,&tileset_view::_001OnSize);
+      IGUI_MSG_LINK(WM_CREATE,pinterface,this,&tileset_view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU,pinterface,this,&tileset_view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_SETCURSOR,pinterface,this,&tileset_view::_001OnSetCursor);
+      IGUI_MSG_LINK(WM_ERASEBKGND,pinterface,this,&tileset_view::_001OnEraseBkgnd);
       //      
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE,pinterface,this,&tileset_view::_001OnMouseMove);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN,pinterface,this,&tileset_view::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP,pinterface,this,&tileset_view::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDBLCLK,pinterface,this,&tileset_view::_001OnLButtonDblClk);
+      IGUI_MSG_LINK(WM_MOUSEMOVE,pinterface,this,&tileset_view::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN,pinterface,this,&tileset_view::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP,pinterface,this,&tileset_view::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_LBUTTONDBLCLK,pinterface,this,&tileset_view::_001OnLButtonDblClk);
 
-      //   IGUI_WIN_MSG_LINK(WM_USER + 177     , this, this, &tileset_view::_001OnTabClick);
-      //   IGUI_WIN_MSG_LINK(WM_APP + 119      , this, this, &tileset_view::_001OnWavePlayerEvent);
+      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &tileset_view::_001OnTabClick);
+      //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &tileset_view::_001OnWavePlayerEvent);
       //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
@@ -400,8 +400,8 @@ namespace veritile
 
    void tileset_view::_001OnUpdateSelectionTool(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui,pcommandui,pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command,pcommand,pobj);
+         pcommand->Enable(TRUE);
    }
 
 
@@ -412,8 +412,8 @@ namespace veritile
 
    void tileset_view::_001OnUpdatePolygonTool(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui,pcommandui,pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command,pcommand,pobj);
+         pcommand->Enable(TRUE);
    }
 
    bool tileset_view::keyboard_focus_is_focusable()

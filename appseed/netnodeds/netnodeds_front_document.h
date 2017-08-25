@@ -19,14 +19,14 @@ namespace netnodeds
       ::file::file_sp           m_file;
       ::memory_file       m_memfileBody;
 
-      bool _001OnUpdateCmdUi(command_ui * pcommandui);
+      bool _001OnUpdateCmdUi(::user::command * pcommand);
       bool _001OnCommand(id id);
 
       void get_output(const char * lpcsz, string &strHead, ::memory_file & file);
 
-      void OnUpdateStart(command_ui *pcommandui);
-      void OnUpdateEditUndo(command_ui *pcommandui);
-      void OnUpdateEditRedo(command_ui *pcommandui);
+      void OnUpdateStart(::user::command *pcommand);
+      void OnUpdateEditUndo(::user::command *pcommand);
+      void OnUpdateEditRedo(::user::command *pcommand);
       void OnStart();
       void OnEditUndo();
       void OnEditRedo();

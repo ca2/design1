@@ -26,27 +26,27 @@ namespace netnodeds
 
 
 
-   bool html_stage_document::_001OnUpdateCmdUi(command_ui * pcommandui)
+   bool html_stage_document::_001OnUpdateCmdUi(::user::command * pcommand)
    {
 
-      string strId(pcommandui->m_id);
+      string strId(pcommand->m_id);
       if(strId == "file::save")
       {
-         OnUpdateFileSave(pcommandui);
+         OnUpdateFileSave(pcommand);
          return TRUE;
       }
       else if(strId == "edit::undo")
       {
-         OnUpdateEditUndo(pcommandui);
+         OnUpdateEditUndo(pcommand);
          return TRUE;
       }
       else if(strId == "edit::redo")
       {
-         OnUpdateEditRedo(pcommandui);
+         OnUpdateEditRedo(pcommand);
          return TRUE;
       }
       // xyzxyz
-//      return html_document::_001OnUpdateCmdUi(pcommandui);
+//      return html_document::_001OnUpdateCmdUi(pcommand);
       return false;
    }
 
@@ -108,19 +108,19 @@ namespace netnodeds
       return TRUE;
    }
 
-   void html_stage_document::OnUpdateFileSave(command_ui *pcommandui)
+   void html_stage_document::OnUpdateFileSave(::user::command *pcommand)
    {
-      pcommandui->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
-   void html_stage_document::OnUpdateEditUndo(command_ui *pcommandui)
+   void html_stage_document::OnUpdateEditUndo(::user::command *pcommand)
    {
-      UNREFERENCED_PARAMETER(pcommandui);
+      UNREFERENCED_PARAMETER(pcommand);
    }
 
-   void html_stage_document::OnUpdateEditRedo(command_ui *pcommandui)
+   void html_stage_document::OnUpdateEditRedo(::user::command *pcommand)
    {
-      UNREFERENCED_PARAMETER(pcommandui);
+      UNREFERENCED_PARAMETER(pcommand);
    }
 
    void html_stage_document::on_file_save()

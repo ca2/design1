@@ -15,8 +15,8 @@ namespace devedge
    void child_frame::install_message_routing(::message::sender * pinterface)
    {
       simple_child_frame::install_message_routing(pinterface);
-      IGUI_WIN_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
-      IGUI_WIN_MSG_LINK(WM_CREATE, pinterface, this, &child_frame::_001OnCreate);
+      IGUI_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &child_frame::_001OnCreate);
    }
 
    child_frame::~child_frame()

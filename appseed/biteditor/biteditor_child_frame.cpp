@@ -10,7 +10,7 @@ namespace biteditor
       simple_child_frame(papp)
    {
 
-      IGUI_WIN_MSG_LINK(::core::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
+      IGUI_MSG_LINK(::core::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
 
    }
 

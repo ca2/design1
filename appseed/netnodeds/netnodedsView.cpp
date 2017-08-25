@@ -35,9 +35,9 @@ netnodedsView::netnodedsView(::ca::application * papp)
 Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(papp)
 {
    m_bMultiLine = true;
-   connect_update_cmd_ui("edit_undo", &netnodedsView::_001OnUpdateEditUndo);
+   connect_command_probe("edit_undo", &netnodedsView::_001OnUpdateEditUndo);
    connect_command("edit_undo", &netnodedsView::_001OnEditUndo);
-   connect_update_cmd_ui("edit_redo", &netnodedsView::_001OnUpdateEditRedo);
+   connect_command_probe("edit_redo", &netnodedsView::_001OnUpdateEditRedo);
    connect_command("edit_redo", &netnodedsView::_001OnEditRedo);
 
 
@@ -241,14 +241,14 @@ BOOL netnodedsView::PreTranslateMessage(MSG * pMsg)
 
 void netnodedsView::_001OnUpdateEditUndo(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(m_editfile.CanUndo());
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(m_editfile.CanUndo());
 }
 
 void netnodedsView::_001OnUpdateEditRedo(gen::message::sender_object * pobj)
 {
-   SCAST_PTR(BaseCmdUi, pcommandui, pobj);
-   pcommandui->Enable(m_editfile.GetRedoBranchCount() > 0);
+   SCAST_PTR(BaseCmdUi, pcommand, pobj);
+   pcommand->Enable(m_editfile.GetRedoBranchCount() > 0);
 }
 
 void netnodedsView::_001OnEditUndo(gen::message::sender_object * pobj)

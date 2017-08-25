@@ -10,7 +10,7 @@ namespace netnodeds
       simple_child_frame(papp)
    {
 
-      IGUI_WIN_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &html_stage_child_frame::_001OnAppLanguage);
+      IGUI_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &html_stage_child_frame::_001OnAppLanguage);
 
    }
 
@@ -114,16 +114,16 @@ namespace netnodeds
       pcallback->GetMenuItemCallback(nID))
       {
       ::fs::item_array itema;
-      if(nCode == CN_UPDATE_COMMAND_UI)
+      if(nCode == CN_UPDATE_::user::command)
       {
       GetSelected(itema);
-      pcallback->GetMenuItemUpdate(nID, itema, (command_ui *) pExtra);
+      pcallback->GetMenuItemUpdate(nID, itema, (::user::command *) pExtra);
       return TRUE;
       }
       else
       {
       int32_t nMsg;
-      if (nCode != CN_UPDATE_COMMAND_UI)
+      if (nCode != CN_UPDATE_::user::command)
       {
       nMsg = HIWORD(nCode);
       }

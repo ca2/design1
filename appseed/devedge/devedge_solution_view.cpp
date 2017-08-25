@@ -93,7 +93,7 @@ namespace devedge
 
       ::user::impact::install_message_routing(pinterface);
       ::user::tree::install_message_routing(pinterface);
-      IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&solution_view::_001OnCreate);
+      IGUI_MSG_LINK(WM_CREATE,pinterface,this,&solution_view::_001OnCreate);
 
    }
 

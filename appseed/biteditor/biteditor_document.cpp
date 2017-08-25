@@ -36,17 +36,17 @@ though it is not a valid cursor handle.\n\
       m_peditfile->SetFile(m_pfile);
 
 
-      connect_update_cmd_ui("edit_undo", &document::_001OnUpdateEditUndo);
+      connect_command_probe("edit_undo", &document::_001OnUpdateEditUndo);
       connect_command("edit_undo", &document::_001OnEditUndo);
-      connect_update_cmd_ui("edit_redo", &document::_001OnUpdateEditRedo);
+      connect_command_probe("edit_redo", &document::_001OnUpdateEditRedo);
       connect_command("edit_redo", &document::_001OnEditRedo);
-      connect_update_cmd_ui("file_save", &document::_001OnUpdateFileSave);
+      connect_command_probe("file_save", &document::_001OnUpdateFileSave);
       connect_command("file_save", &document::_001OnFileSave);
-      connect_update_cmd_ui("edit_cut", &document::_001OnUpdateEditCut);
+      connect_command_probe("edit_cut", &document::_001OnUpdateEditCut);
       connect_command("edit_cut", &document::_001OnEditCut);
-      connect_update_cmd_ui("edit_copy", &document::_001OnUpdateEditCopy);
+      connect_command_probe("edit_copy", &document::_001OnUpdateEditCopy);
       connect_command("edit_copy", &document::_001OnEditCopy);
-      connect_update_cmd_ui("edit_paste", &document::_001OnUpdateEditPaste);
+      connect_command_probe("edit_paste", &document::_001OnUpdateEditPaste);
       connect_command("edit_paste", &document::_001OnEditPaste);
 
    }
@@ -55,27 +55,27 @@ though it is not a valid cursor handle.\n\
    {
       /*   sp(::aura::application) papp = ::ca2::get_app();
       CommandIdSpace idspace;
-      if (nCode == CN_UPDATE_COMMAND_UI)
+      if (nCode == CN_UPDATE_::user::command)
       {
-      command_ui * pcommandui = (command_ui *) pExtra;
+      ::user::command * pcommand = (::user::command *) pExtra;
       if(nID == papp->GetResourceId(idspace, "file_save"))
       {
-      OnUpdateFileSave(pcommandui);
+      OnUpdateFileSave(pcommand);
       return TRUE;
       }
       else if(nID == papp->GetResourceId(idspace, "edit_undo"))
       {
-      OnUpdateEditUndo(pcommandui);
+      OnUpdateEditUndo(pcommand);
       return TRUE;
       }
       else if(nID == 1003)
       {
-      OnUpdateEditRedo(pcommandui);
+      OnUpdateEditRedo(pcommand);
       return TRUE;
       }
       else if(nID == 1004)
       {
-      OnUpdateFilePut(pcommandui);
+      OnUpdateFilePut(pcommand);
       return TRUE;
       }
       }
@@ -211,44 +211,44 @@ though it is not a valid cursor handle.\n\
 
    void document::_001OnUpdateFileSave(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateFilePut(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditUndo(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(m_peditfile->CanUndo());
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(m_peditfile->CanUndo());
    }
 
    void document::_001OnUpdateEditRedo(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(m_peditfile->GetRedoBranchCount() > 0);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(m_peditfile->GetRedoBranchCount() > 0);
    }
 
    void document::_001OnUpdateEditCut(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditCopy(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditPaste(::message::message * pobj)
    {
-      SCAST_PTR(::command_ui, pcommandui, pobj);
-         pcommandui->Enable(TRUE);
+      SCAST_PTR(::user::command, pcommand, pobj);
+         pcommand->Enable(TRUE);
    }
 
    void document::_001OnFileSave(::message::message * pobj)

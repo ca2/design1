@@ -24,13 +24,13 @@ namespace biteditor
    void ascii_box::install_message_routing(::message::sender * psender)
    {
 
-      ::user::interaction::install_message_routing(pdispatch);
+      ::user::interaction::install_message_routing(psender);
 
-      IGUI_WIN_MSG_LINK(WM_LBUTTONDOWN , pdispatch, this, &::biteditor::ascii_box::_001OnLButtonDown);
-      IGUI_WIN_MSG_LINK(WM_LBUTTONUP   , pdispatch, this, &::biteditor::ascii_box::_001OnLButtonUp);
-      IGUI_WIN_MSG_LINK(WM_MOUSEMOVE   , pdispatch, this, &::biteditor::ascii_box::_001OnMouseMove);
-      IGUI_WIN_MSG_LINK(WM_CHAR        , pdispatch, this, &::biteditor::ascii_box::_001OnChar);
-      IGUI_WIN_MSG_LINK(WM_SYSCHAR     , pdispatch, this, &::biteditor::ascii_box::_001OnSysChar);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN , psender, this, &::biteditor::ascii_box::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP   , psender, this, &::biteditor::ascii_box::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_MOUSEMOVE   , psender, this, &::biteditor::ascii_box::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_CHAR        , psender, this, &::biteditor::ascii_box::_001OnChar);
+      IGUI_MSG_LINK(WM_SYSCHAR     , psender, this, &::biteditor::ascii_box::_001OnSysChar);
 
    }
 

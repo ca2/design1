@@ -22,12 +22,12 @@ namespace biteditor
       virtual bool on_save_document(const char * lpszPathName);
 
 
-      bool on_simple_action(::user::command * pcommand); 
-      bool on_simple_update(command_ui * pcommandui); 
+      bool on_simple_command(::user::command * pcommand); 
+      bool on_simple_command_probe(::user::command * pcommand); 
 
-      void OnUpdateStart(command_ui *pcommandui);
-      void OnUpdateEditUndo(command_ui *pcommandui);
-      void OnUpdateEditRedo(command_ui *pcommandui);
+      void OnUpdateStart(::user::command *pcommand);
+      void OnUpdateEditUndo(::user::command *pcommand);
+      void OnUpdateEditRedo(::user::command *pcommand);
       void OnStart();
       void OnEditUndo();
       void OnEditRedo();

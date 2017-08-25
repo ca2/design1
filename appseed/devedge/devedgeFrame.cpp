@@ -198,7 +198,7 @@ int devedgeFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 void devedgeFrame::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
 	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
-   IGUI_WIN_MSG_LINK(WM_CLOSE,          pinterface, this, &devedgeFrame::_001OnClose);
+   IGUI_MSG_LINK(WM_CLOSE,          pinterface, this, &devedgeFrame::_001OnClose);
 }
 
 

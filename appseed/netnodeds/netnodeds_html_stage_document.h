@@ -33,11 +33,11 @@ namespace netnodeds
 
 
       bool _001OnCommand(id id);
-      bool _001OnUpdateCmdUi(command_ui * pcommandui);
+      bool _001OnUpdateCmdUi(::user::command * pcommand);
 
-      void OnUpdateFileSave(command_ui *pcommandui);
-      void OnUpdateEditUndo(command_ui *pcommandui);
-      void OnUpdateEditRedo(command_ui *pcommandui);
+      void OnUpdateFileSave(::user::command *pcommand);
+      void OnUpdateEditUndo(::user::command *pcommand);
+      void OnUpdateEditRedo(::user::command *pcommand);
       void on_file_save();
       void OnEditUndo();
       void OnEditRedo();

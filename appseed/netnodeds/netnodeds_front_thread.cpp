@@ -28,7 +28,7 @@ namespace netnodeds
 
    void front_thread::install_message_routing(::message::sender * pinterface)
    {
-      IGUI_WIN_MSG_LINK(WM_APP, pinterface, this, &front_thread::OnApp);
+      IGUI_MSG_LINK(WM_APP, pinterface, this, &front_thread::OnApp);
    }
 
 

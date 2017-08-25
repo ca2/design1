@@ -41,11 +41,11 @@ namespace veritile
       m_iLeftMargin  = 49;
       m_iTopMargin   = 33;
 
-      connect_update_cmd_ui("edit_undo",&property_sheet::_001OnUpdateEditUndo);
+      connect_command_probe("edit_undo",&property_sheet::_001OnUpdateEditUndo);
       connect_command("edit_undo",&property_sheet::_001OnEditUndo);
-      connect_update_cmd_ui("edit_redo",&property_sheet::_001OnUpdateEditRedo);
+      connect_command_probe("edit_redo",&property_sheet::_001OnUpdateEditRedo);
       connect_command("edit_redo",&property_sheet::_001OnEditRedo);
-      connect_update_cmd_ui("media_transfer",&property_sheet::_001OnUpdateMediaTransfer);
+      connect_command_probe("media_transfer",&property_sheet::_001OnUpdateMediaTransfer);
       connect_command("media_transfer",&property_sheet::_001OnMediaTransfer);
 
 
@@ -233,9 +233,9 @@ namespace veritile
    void property_sheet::_001OnUpdateEditUndo(::message::message * pobj)
    {
 
-      SCAST_PTR(::command_ui,pcommandui,pobj);
+      SCAST_PTR(::user::command,pcommand,pobj);
 
-      //pcommandui->Enable(m_ptree->m_editfile.CanUndo());
+      //pcommand->Enable(m_ptree->m_editfile.CanUndo());
 
    }
 
@@ -243,9 +243,9 @@ namespace veritile
    void property_sheet::_001OnUpdateEditRedo(::message::message * pobj)
    {
 
-      SCAST_PTR(::command_ui,pcommandui,pobj);
+      SCAST_PTR(::user::command,pcommand,pobj);
 
-      //pcommandui->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
+      //pcommand->Enable(m_ptree->m_editfile.GetRedoBranchCount() > 0);
 
    }
 
@@ -334,8 +334,8 @@ namespace veritile
       base_form_list_view::install_message_routing(pinterface);
 
 
-      IGUI_WIN_MSG_LINK(WM_CREATE,pinterface,this,&property_sheet::_001OnCreate);
-      IGUI_WIN_MSG_LINK(WM_CONTEXTMENU,pinterface,this,&property_sheet::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_CREATE,pinterface,this,&property_sheet::_001OnCreate);
+      IGUI_MSG_LINK(WM_CONTEXTMENU,pinterface,this,&property_sheet::_001OnContextMenu);
 
 
    }
@@ -363,9 +363,9 @@ namespace veritile
    {
 
 
-      SCAST_PTR(::command_ui,pcommandui,pobj);
+      SCAST_PTR(::user::command,pcommand,pobj);
 
-      pcommandui->Enable(TRUE);
+      pcommand->Enable(TRUE);
 
 
    }

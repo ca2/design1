@@ -85,12 +85,12 @@ namespace devedge
    void application::pre_translate_message(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
-      if(pbase->m_uiMessage == WM_KEYDOWN)
+      if(pbase->m_id == WM_KEYDOWN)
       {
          int32_t i = 1;
          i = i + 1;
       }
-      else if(pbase->m_uiMessage == WM_KEYUP)
+      else if(pbase->m_id == WM_KEYUP)
       {
          int32_t i = 1;
          i = i + 1;
