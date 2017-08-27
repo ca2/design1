@@ -80,10 +80,10 @@ namespace veritile
 #endif //DEBUG
 
 
-   bool property_sheet::on_simple_command(e_simple_command ecommand,lparam lparam,LRESULT & lresult)
+   bool property_sheet::on_command(e_simple_command ecommand,lparam lparam,LRESULT & lresult)
    {
 
-      if(base_form_list_view::on_simple_command(ecommand,lparam,lresult))
+      if(base_form_list_view::on_command(ecommand,lparam,lresult))
          return true;
 
       switch(ecommand)

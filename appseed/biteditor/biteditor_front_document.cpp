@@ -15,7 +15,7 @@ namespace biteditor
    {
    }
 
-   bool front_document::on_simple_command(::user::command * pcommand)
+   bool front_document::on_command(::user::command * pcommand)
    {
       if(id == "start")
       {
@@ -32,10 +32,10 @@ namespace biteditor
          OnEditRedo();
          return true;
       }
-      return html_document::on_simple_command(id);
+      return html_document::on_command(id);
    }
 
-   bool front_document::on_simple_command_probe(::user::command * pcommand)
+   bool front_document::on_command_probe(::user::command * pcommand)
    {
       if(pcommand->m_id == "start")
       {
@@ -52,7 +52,7 @@ namespace biteditor
          OnUpdateEditRedo(pcommand);
          return TRUE;
       }
-      return html_document::on_simple_command_probe(pcommand);
+      return html_document::on_command_probe(pcommand);
    }
 
    bool front_document::on_new_document()
