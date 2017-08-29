@@ -98,11 +98,15 @@ namespace devedge
       ::core::application::pre_translate_message(pobj);
    }
 
-   bool application::_001OnCmdMsg(::user::command * pcommand)
 
+   void application::_001OnCmdMsg(::user::command * pcommand)
    {
-      return ::core::application::_001OnCmdMsg(pcommand);
+
+      ::core::application::_001OnCmdMsg(pcommand);
+
    }
+
+
 /*
 void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)
    {

@@ -28,7 +28,7 @@ namespace tarsila
       ::user::impact::install_message_routing(pinterface);
 
       IGUI_MSG_LINK(WM_DESTROY, pinterface, this, &view::_001OnDestroy);
-      IGUI_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
+      //IGUI_MSG_LINK(WM_SIZE, pinterface, this, &view::_001OnSize);
       IGUI_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);

@@ -9,7 +9,7 @@ namespace devedge
       ::object(papp),
       simple_child_frame(papp)
    {
-      IGUI_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &html_stage_child_frame::_001OnAppLanguage);
+      MSG_TYPE_LINK(::message::type_language, this, this, &html_stage_child_frame::_001OnAppLanguage);
    }
 
    html_stage_child_frame::~html_stage_child_frame()
@@ -103,7 +103,7 @@ namespace devedge
    //   return true;
    //}
 
-   bool html_stage_child_frame::_001OnCmdMsg(::user::command * pcommand)  
+   void html_stage_child_frame::_001OnCmdMsg(::user::command * pcommand)  
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
