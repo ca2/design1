@@ -77,7 +77,7 @@ namespace veritile
       virtual void dump(dump_context & dumpcontext) const;
 #endif
 
-      virtual void on_command(e_simple_command ecommand,lparam lparam,LRESULT & lresult);
+      virtual void on_simple_command(e_simple_command ecommand,lparam lparam,LRESULT & lresult);
 
 
       virtual bool keyboard_focus_OnSetFocus() override;
