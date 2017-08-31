@@ -8,6 +8,7 @@ namespace devedge
    solution_document::solution_document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
+      ::user::controller(papp),
       ::user::document(papp),
       m_file(papp),
       m_fileSave(papp)

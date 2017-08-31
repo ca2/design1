@@ -8,17 +8,22 @@ namespace devedge
    front_document::front_document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
+      ::user::controller(papp),
       ::user::document(papp),
       m_memfile(papp), 
       m_file(papp),
       m_memfileBody(papp),
       html_document(papp)
    {
+
    }
+
 
    front_document::~front_document()
    {
+
    }
+
 
    bool front_document::_001OnUpdateCmdUi(::user::command * pcommand)
    {

@@ -8,6 +8,7 @@ namespace devedge
    html_stage_document::html_stage_document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
+      ::user::controller(papp),
       ::user::document(papp),
       m_memfile(papp),
       m_file(papp), 
@@ -19,11 +20,10 @@ namespace devedge
    }
 
 
-
    html_stage_document::~html_stage_document()
    {
-   }
 
+   }
 
 
    bool html_stage_document::_001OnUpdateCmdUi(::user::command * pcommand)

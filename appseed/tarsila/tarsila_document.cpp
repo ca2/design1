@@ -8,10 +8,13 @@ namespace tarsila
    document::document(::aura::application * papp) :
       ::object(papp),
       ::data::data_container_base(papp),
+      ::user::controller(papp),
       ::user::document(papp)
    {
+
       connect_command("file_save",&document::_001OnFileSave);
       connect_command("file_save_as",&document::_001OnFileSaveAs);
+
    }
 
 
