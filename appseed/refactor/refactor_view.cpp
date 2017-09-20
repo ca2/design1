@@ -101,7 +101,7 @@ namespace refactor
          //m_pdata->m_editfile.Save(get_document()->m_fileSave);
          //m_pdata->m_editfile.Flush();
       }
-      else if(lHint == 771984)
+      else if(lHint == 772000)
       {
          //ex1::byte_ostream & ostream = dynamic_cast < ex1::byte_ostream & > (*phint);
          //m_pdata->m_editfile.SaveTo(ostream);

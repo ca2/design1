@@ -280,7 +280,7 @@ namespace devedge
 
    void document::write(::file::byte_ostream & ostream)
    {
-      update_all_views(NULL, 771984, &ostream);
+      update_all_views(NULL, 772000, &ostream);
    }
 
 
