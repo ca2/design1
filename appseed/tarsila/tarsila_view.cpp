@@ -9,7 +9,7 @@ namespace tarsila
       ::object(papp)
    {
 
-      
+
 
       connect_command("selection_tool", &view::_001OnSelectionTool);
       connect_command_probe("selection_tool", &view::_001OnUpdateSelectionTool);
@@ -33,14 +33,14 @@ namespace tarsila
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
       IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
-//      
+//
       IGUI_MSG_LINK(WM_MOUSEMOVE, pinterface, this, &view::_001OnMouseMove);
       IGUI_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_LBUTTONDBLCLK, pinterface, this, &view::_001OnLButtonDblClk);
 
-   //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-   //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
+      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
+      //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
       //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
       //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
@@ -48,7 +48,7 @@ namespace tarsila
 
    }
 
-   #ifdef DEBUG
+#ifdef DEBUG
    void view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -58,7 +58,7 @@ namespace tarsila
    {
       ::user::impact::dump(dumpcontext);
    }
-   #endif 
+#endif
 
    bool view::pre_create_window(::user::create_struct& cs)
    {
@@ -70,56 +70,56 @@ namespace tarsila
    }
 
 
-   void view::_001OnInitialUpdate() 
+   void view::_001OnInitialUpdate()
    {
       ::user::impact::_001OnInitialUpdate();
 
    }
 
-   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(lHint);
       ::user::view_update_hint * puh = dynamic_cast < ::user::view_update_hint * > (phint);
    }
 
-   void view::_001OnDestroy(::message::message * pobj) 
+   void view::_001OnDestroy(::message::message * pobj)
    {
       ::user::impact::_001OnDestroy(pobj);
    }
 
-   void view::on_layout() 
+   void view::on_layout()
    {
 
-   /*   pobj->previous();
+      /*   pobj->previous();
 
-      double d = psize->height();
-      d /= GetSystemMetrics(SM_CYSCREEN);
-      SetScale(d);
+         double d = psize->height();
+         d /= GetSystemMetrics(SM_CYSCREEN);
+         SetScale(d);
 
-      GetClientRect(m_rectKaraokeView);
-
-
-      rect rectClient;
-      GetClientRect(rectClient);
-      rect rect = rectClient;
-
-      rect.top = rect.bottom - 24;
-      m_viewlineStatus.SetPlacement(rect);
+         GetClientRect(m_rectKaraokeView);
 
 
-      m_rectKaraokeView.bottom -= 16;
+         rect rectClient;
+         GetClientRect(rectClient);
+         rect rect = rectClient;
 
-      LayoutTitleLines();
-      LayoutLyricTemplateLines();
-      LayoutLyricLines();
-      LayoutKaraokeBouncingBall();*/
+         rect.top = rect.bottom - 24;
+         m_viewlineStatus.SetPlacement(rect);
+
+
+         m_rectKaraokeView.bottom -= 16;
+
+         LayoutTitleLines();
+         LayoutLyricTemplateLines();
+         LayoutLyricLines();
+         LayoutKaraokeBouncingBall();*/
    }
 
    void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
+
 
       rect rectClient;
 
@@ -170,17 +170,17 @@ namespace tarsila
    }
 
 
-   void view::_001OnCreate(::message::message * pobj) 
+   void view::_001OnCreate(::message::message * pobj)
    {
       if(pobj->previous())
          return;
-      
+
       SetTimer(123, 240, NULL);
 
 
    }
 
-   void view::_001OnContextMenu(::message::message * pobj) 
+   void view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
       point point = pcontextmenu->GetPoint();
@@ -190,26 +190,26 @@ namespace tarsila
    {
    }
 
-   void view::_001OnSetCursor(::message::message * pobj) 
+   void view::_001OnSetCursor(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
       pmouse->m_ecursor = ::visual::cursor_arrow;
-      
+
       pobj->previous();
 
    }
 
 
-   void view::_001OnEraseBkgnd(::message::message * pobj) 
+   void view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
       perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
 
-   void view::_001OnTimer(::timer * ptimer) 
+   void view::_001OnTimer(::timer * ptimer)
    {
 
       ::user::impact::_001OnTimer(ptimer);
@@ -228,15 +228,15 @@ namespace tarsila
 
    }
 
-   void view::_001OnMouseMove(::message::message * pobj) 
+   void view::_001OnMouseMove(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
       data * pdata = get_document()->get_typed_data < data>();
-      
+
       point pt = pmouse->m_pt;
-      
+
       ScreenToClient(&pt);
 
       if(pdata->m_drawing.m_emode == drawing::mode_selection)
@@ -248,7 +248,7 @@ namespace tarsila
             pdata->m_drawing.m_ptMove = pt;
 
          }
-         
+
       }
       else if(pdata->m_drawing.m_emode == drawing::mode_polygon_tool)
       {
@@ -271,12 +271,12 @@ namespace tarsila
    }
 
 
-   void view::_001OnLButtonDown(::message::message * pobj) 
+   void view::_001OnLButtonDown(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
-         data * pdata = get_document()->get_typed_data < data>();
+      data * pdata = get_document()->get_typed_data < data>();
 
       point pt = pmouse->m_pt;
 
@@ -287,7 +287,7 @@ namespace tarsila
 
          ::tarsila::element * pelement = pdata->m_drawing.hit_test(pt);
 
-         
+
 
 
          if(pelement != NULL)
@@ -297,7 +297,7 @@ namespace tarsila
             {
 
 
-               int iSelPoint = pelement->sel_point_hit_test(pt);
+               auto iSelPoint = pelement->sel_point_hit_test(pt);
 
                if(iSelPoint >= 0)
                {
@@ -340,7 +340,7 @@ namespace tarsila
             }
             else
             {
-               
+
                if(!Session.is_key_pressed(::user::key_control))
                {
 
@@ -392,21 +392,21 @@ namespace tarsila
    void view::_001OnLButtonDblClk(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
       data * pdata = get_document()->get_typed_data < data>();
       if (m_estate == state_polygon_tool_dots)
       {
-         
+
          m_estate = state_polygon_tool_initial;
-         
+
          pdata->m_pointa.add(pt);
 
          sp(polygon) sppolygon(canew(polygon(get_app())));
 
          sppolygon->m_pointa =pdata->m_pointa;
-         
+
          pdata->m_drawing.m_polygona.add(sppolygon);
 
          pdata->m_drawing.m_elementptra.add(sppolygon);
@@ -420,7 +420,7 @@ namespace tarsila
    }
 
 
-   void view::_001OnLButtonUp(::message::message * pobj) 
+   void view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
       point pt = pmouse->m_pt;
@@ -464,7 +464,7 @@ namespace tarsila
    void view::_001OnUpdateSelectionTool(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
 
@@ -481,7 +481,7 @@ namespace tarsila
    void view::_001OnUpdatePolygonTool(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
 } // namespace tarsila

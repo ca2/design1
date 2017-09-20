@@ -27,13 +27,13 @@ namespace tarsila
 
          point_array pointa = m_pointa;
 
-         
+
 
          for(index i = 0; i < m_pointa.get_upper_bound(); i++)
          {
 
             call_sel_get_point(pdraw->m_pdrawing,pointa[i],i);
-            
+
 
          }
 
@@ -73,38 +73,66 @@ namespace tarsila
    {
 
       m_pointa.offset(sz);
-      
+
    }
 
 
-   int polygon::sel_get_point_count()
+   ::count polygon::sel_get_point_count()
    {
+
       return m_pointa.get_count();
+
    }
 
-   bool polygon::sel_get_point(LPPOINT ppt,int iIndex)
+
+   bool polygon::sel_get_point(LPPOINT ppt, index iIndex)
    {
-      if(iIndex < 0)
+
+      if (iIndex < 0)
+      {
+
          return false;
-      if(iIndex >= m_pointa.get_size())
+
+      }
+
+      if (iIndex >= m_pointa.get_size())
+      {
+
          return false;
-      *ppt =m_pointa[iIndex];
+
+      }
+
+      *ppt = m_pointa[iIndex];
+
       return true;
+
    }
 
-   bool polygon::sel_set_point(LPPOINT ppt,int iIndex)
+
+   bool polygon::sel_set_point(LPPOINT ppt, index iIndex)
    {
-      if(iIndex < 0)
+
+      if (iIndex < 0)
+      {
+
          return false;
-      if(iIndex >= m_pointa.get_size())
+
+      }
+
+      if (iIndex >= m_pointa.get_size())
+      {
+
          return false;
+
+      }
+
       m_pointa[iIndex] = *ppt;
+
       return true;
+
    }
+
 
 } // namespace tarsila
-
-
-
 
 

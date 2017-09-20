@@ -135,31 +135,34 @@ namespace tarsila
 
    void element::translate(::size sz)
    {
+
    }
 
-   int element::sel_get_point_count()
+
+   ::count element::sel_get_point_count()
    {
 
       return 0;
 
    }
 
-   bool element::sel_get_point(LPPOINT lppt,int iIndex)
+
+   bool element::sel_get_point(LPPOINT lppt, index iIndex)
    {
 
       return false;
 
    }
 
-   
-   bool element::sel_set_point(LPPOINT ppt,int iIndex)
+
+   bool element::sel_set_point(LPPOINT ppt, index iIndex)
    {
 
       return false;
    }
 
 
-   bool element::call_sel_get_point(drawing * pdrawing,LPPOINT lppt,int iIndex,bool * pbSelected)
+   bool element::call_sel_get_point(drawing * pdrawing,LPPOINT lppt, index iIndex, bool * pbSelected)
    {
 
       if(iIndex < 0)
@@ -181,7 +184,7 @@ namespace tarsila
          if(pdrawing->m_elementptraSelected.contains(this) && pdrawing->m_bMovingPoint)
          {
 
-            
+
 
             if(bSel)
             {
@@ -190,7 +193,7 @@ namespace tarsila
 
                ::offset(*lppt,ptOffset.x, ptOffset.y);
 
-               
+
 
             }
 
@@ -200,7 +203,7 @@ namespace tarsila
 
       if(pbSelected != NULL)
       {
-         
+
          *pbSelected = bSel;
 
       }
@@ -209,14 +212,15 @@ namespace tarsila
 
    }
 
-   bool element::sel_get_rect(drawing * pdrawing, LPRECT lrpect,int iIndex, bool * pbSelected)
+
+   bool element::sel_get_rect(drawing * pdrawing, LPRECT lrpect, index iIndex, bool * pbSelected)
    {
 
       point pt;
 
       if(!call_sel_get_point(pdrawing,&pt,iIndex,pbSelected))
       {
-         
+
          return false;
 
       }
@@ -231,14 +235,16 @@ namespace tarsila
 
    }
 
-   bool element::sel_point_selected(int iIndex)
+
+   bool element::sel_point_selected(index iIndex)
    {
 
       return m_iaSelectedPoint.contains(iIndex);
 
    }
 
-   void element::sel_point_select(int iIndex)
+
+   void element::sel_point_select(index iIndex)
    {
 
       m_iaSelectedPoint.add_unique(iIndex);
@@ -252,11 +258,12 @@ namespace tarsila
 
    }
 
-   int element::sel_point_hit_test(point pt)
+
+   index element::sel_point_hit_test(point pt)
    {
 
       ::rect r;
-      
+
       for(index i = 0; i < sel_get_point_count(); i++)
       {
 
@@ -297,7 +304,7 @@ namespace tarsila
 
             if(sel_get_point(pt,i))
             {
-               
+
                pt += pdrawing->m_ptMove - pdrawing->m_ptStart;
 
                sel_set_point(pt,i);
@@ -308,7 +315,7 @@ namespace tarsila
 
       }
 
-      
+
    }
 
 
