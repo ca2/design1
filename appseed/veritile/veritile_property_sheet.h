@@ -89,21 +89,19 @@ namespace veritile
 
       virtual count _001GetColumnCount();
 
-      bool get_color(COLORREF & cr,::user::e_color ecolor);
-
+      bool get_color(COLORREF & cr,::user::e_color ecolor, ::user::interaction * pui) override;
 
       void set_data(general_data * pdata, callback * pcallback);
 
       virtual bool _001OnSetItemText(::user::interaction * pui,index iItem,index iSubItem) override;
+
       virtual bool _001OnControlSetFocus(::user::interaction * pui) override;
-      
       
       virtual bool validate(::user::interaction * pui, index iItem, bool bInteract);
 
-
       bool BaseOnControlEvent(::user::control_event * pevent);
 
-
+      
    };
 
 
