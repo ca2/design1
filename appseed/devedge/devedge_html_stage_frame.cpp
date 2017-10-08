@@ -52,7 +52,7 @@ namespace devedge
 
       if(!LoadToolBar("devedge","devedge_toolbar.xml"))
       {
-         TRACE0("Failed to create toolbar\n");
+         TRACE("Failed to create toolbar\n");
          return false;      // fail to create
       }
 
@@ -64,7 +64,7 @@ namespace devedge
       {
       uint32_t uiDialogBar = pdoc->get_filemanager_data()->m_ptemplate->m_uiDialogBar;
 
-      if (!m_dialogbar.create(this, uiDialogBar, 
+      if (!m_dialogbar.create(this, uiDialogBar,
       CBRS_ALIGN_TOP, AFX_IDW_DIALOGBAR))
       {
       TRACE0("Failed to create dialogbar\n");
@@ -103,11 +103,11 @@ namespace devedge
    //   return true;
    //}
 
-   void html_stage_child_frame::_001OnCmdMsg(::user::command * pcommand)  
+   void html_stage_child_frame::_001OnCmdMsg(::user::command * pcommand)
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
-      /*if(pcallback != NULL && 
+      /*if(pcallback != NULL &&
       pcallback->GetMenuItemCallback(nID))
       {
       ::fs::item_array itema;
@@ -162,12 +162,12 @@ namespace devedge
       */
    }
 
-   void html_stage_child_frame::_001OnCreate(::message::message * pobj) 
+   void html_stage_child_frame::_001OnCreate(::message::message * pobj)
    {
 
       UNREFERENCED_PARAMETER(pobj);
 
-      
+
 
 
    }
@@ -188,7 +188,7 @@ namespace devedge
 
    /*void html_stage_child_frame::GetSelected(::fs::item_array &itema)
    {
-   sp(::filemanager::SimpleFileListInterface) plistinterface = 
+   sp(::filemanager::SimpleFileListInterface) plistinterface =
    (GetActiveView());
    if(plistinterface != NULL)
    {

@@ -52,7 +52,7 @@ namespace devedge
 
       if (!LoadToolBar("front", "devedge_front_toolbar.xml"))
       {
-         TRACE0("Failed to create toolbar\n");
+         TRACE("Failed to create toolbar\n");
          return false;      // fail to create
       }
 
@@ -64,7 +64,7 @@ namespace devedge
       {
       uint32_t uiDialogBar = pdoc->get_filemanager_data()->m_ptemplate->m_uiDialogBar;
 
-      if (!m_dialogbar.create(this, uiDialogBar, 
+      if (!m_dialogbar.create(this, uiDialogBar,
       CBRS_ALIGN_TOP, AFX_IDW_DIALOGBAR))
       {
       TRACE0("Failed to create dialogbar\n");
@@ -111,11 +111,11 @@ namespace devedge
    //   return true;
    //}
 
-   void front_child_frame::_001OnCmdMsg(::user::command * pcommand)  
+   void front_child_frame::_001OnCmdMsg(::user::command * pcommand)
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
-      /*if(pcallback != NULL && 
+      /*if(pcallback != NULL &&
       pcallback->GetMenuItemCallback(nID))
       {
       ::fs::item_array itema;
@@ -145,7 +145,7 @@ namespace devedge
       }
       }
       }*/
-      
+
       simple_child_frame::_001OnCmdMsg(pcommand);
 
    }
@@ -177,7 +177,7 @@ namespace devedge
 
       UNREFERENCED_PARAMETER(pobj);
 
-      
+
 
    }
 
