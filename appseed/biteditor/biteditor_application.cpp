@@ -69,7 +69,7 @@ namespace biteditor
          System.type_info < front_child_frame > (),
          System.type_info < front_view > ());
 
-      Session.filemanager().std().m_strLevelUp = "levelup";
+      Session.filemanager()->m_strLevelUp = "levelup";
 
 
       return true;

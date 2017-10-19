@@ -44,22 +44,22 @@ namespace syllomatter
          return FALSE;
 
 
-      m_dataid += ".local://";
+      set_local_data_key_modifier();
 
       InitializeFileManager("syllomatter/frame");
-      Session.filemanager().std().m_strLevelUp.Empty();
-      //Session.filemanager().std().m_strToolBar = "file_manager_toolbar.xml";
-      Session.filemanager().std().m_dataidStatic = "FileManagerFavoritesList";
-      //Session.filemanager().std().m_uiDialogBar = 0;
-      //Session.filemanager().std().m_uiMenuBar = 0;
-      Session.filemanager().std().m_strFilePopup = "filemanager\\file_popup.xml";
-      //Session.filemanager().std().m_uiFilePopupSubstId = 0;
-      Session.filemanager().std().m_strFolderPopup = "filemanager\\folder_popup.xml";
-      Session.filemanager().std().m_strPopup = "filemanager\\popup.xml";
-      //Session.filemanager().std().m_uiExpandBox = 0;
-      //Session.filemanager().std().m_uiCollapseBox = 0;
-   //   Session.filemanager().std().m_pfilelistcallback = this;
-     // Session.filemanager().std().m_pfilelistcallback->set_app(this);
+      Session.filemanager()->m_strLevelUp.Empty();
+      //Session.filemanager()->m_strToolBar = "file_manager_toolbar.xml";
+      Session.filemanager()->m_dataidStatic = "FileManagerFavoritesList";
+      //Session.filemanager()->m_uiDialogBar = 0;
+      //Session.filemanager()->m_uiMenuBar = 0;
+      Session.filemanager()->m_strFilePopup = "filemanager\\file_popup.xml";
+      //Session.filemanager()->m_uiFilePopupSubstId = 0;
+      Session.filemanager()->m_strFolderPopup = "filemanager\\folder_popup.xml";
+      Session.filemanager()->m_strPopup = "filemanager\\popup.xml";
+      //Session.filemanager()->m_uiExpandBox = 0;
+      //Session.filemanager()->m_uiCollapseBox = 0;
+   //   Session.filemanager()->m_pfilelistcallback = this;
+     // Session.filemanager()->m_pfilelistcallback->set_app(this);
 
 
       ::user::single_document_template* pDocTemplate;

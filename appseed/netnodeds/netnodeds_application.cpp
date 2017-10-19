@@ -48,8 +48,8 @@ namespace netnodeds
 
       KickDevEdgeFront(this);
 
-      Session.filemanager().std().m_strLevelUp = "levelup";
-      //Session.filemanager().std().m_strToolBar = "filemanager_toolbar.xml";
+      Session.filemanager()->m_strLevelUp = "levelup";
+      //Session.filemanager()->m_strToolBar = "filemanager_toolbar.xml";
 
       return true;
    }

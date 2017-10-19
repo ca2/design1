@@ -47,7 +47,7 @@ namespace veritile
       if(!::tesseract::application::initialize_application())
          return false;
 
-      m_dataid += ".local://";
+      set_local_data_key_modifier();
 
       SetRegistryKey("ca2core");
 

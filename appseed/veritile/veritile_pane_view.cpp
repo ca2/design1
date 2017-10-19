@@ -16,7 +16,7 @@ namespace veritile
 
       Application.m_ppaneview = this;
 
-      m_dataid = ".local://";
+      set_local_data_key_modifier();
 
       get_data()->m_bVertical = true;
 
@@ -234,7 +234,7 @@ namespace veritile
       ////   break;
       /////*case veritile::PaneViewFileManager:
       ////   {
-      ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager().std().open_child(papp, false, true, pcreatordata->m_pholder);
+      ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager()->open_child(papp, false, true, pcreatordata->m_pholder);
       ////      m_pfilemanagerdoc = pdoc;
       ////      if(pdoc != NULL)
       ////      {

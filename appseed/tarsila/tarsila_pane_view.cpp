@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace tarsila
@@ -8,20 +8,20 @@ namespace tarsila
    pane_view::pane_view(::aura::application * papp) :
       ::object(papp),
       ::user::tab(papp),
-      
+
       ::user::tab_view(papp),
       ::userex::pane_tab_view(papp),
       place_holder_container(papp)
    {
 
 
-      m_dataid = ".local://";
+      set_local_data_key_modifier();
 
       get_data()->m_bVertical = true;
 
       get_data()->m_matchanyRestore.add(new ::core::match::prefix("tarsila://"));
 
-      
+
 
    }
 
@@ -31,7 +31,7 @@ namespace tarsila
 
 
 
-   #ifdef DEBUG
+#ifdef DEBUG
    void pane_view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -41,10 +41,10 @@ namespace tarsila
    {
       ::user::impact::dump(dumpcontext);
    }
-   #endif //DEBUG
+#endif //DEBUG
 
 
-   void pane_view::_001OnCreate(::message::message * pobj) 
+   void pane_view::_001OnCreate(::message::message * pobj)
    {
 //      SCAST_PTR(::message::create, pcreate, pobj);
       if(pobj->previous())
@@ -61,7 +61,7 @@ namespace tarsila
    }
 
 
-   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint)
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(lHint);
@@ -89,9 +89,9 @@ namespace tarsila
    }
 
 
-   bool pane_view::pre_create_window(::user::create_struct& cs) 
+   bool pane_view::pre_create_window(::user::create_struct& cs)
    {
-      cs.dwExStyle &= ~WS_EX_CLIENTEDGE;   
+      cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
 
       return ::user::impact::pre_create_window(cs);
    }
@@ -100,7 +100,7 @@ namespace tarsila
    void pane_view::on_create_view(::user::view_creator_data * pcreatordata)
    {
 
-      
+
 
       ::file::path strPath(pcreatordata->m_id.str());
 
@@ -208,7 +208,7 @@ namespace tarsila
       ////   break;
       /////*case tarsila::PaneViewFileManager:
       ////   {
-      ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager().std().open_child(papp, false, true, pcreatordata->m_pholder);
+      ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager()->open_child(papp, false, true, pcreatordata->m_pholder);
       ////      m_pfilemanagerdoc = pdoc;
       ////      if(pdoc != NULL)
       ////      {

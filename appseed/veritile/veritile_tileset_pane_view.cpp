@@ -14,7 +14,7 @@ namespace veritile
       place_holder_container(papp)
    {
 
-      m_dataid = ".local://";
+      set_local_data_key_modifier();
 
       get_data()->m_bVertical = false;
 

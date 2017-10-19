@@ -1,7 +1,7 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
-namespace devedge 
+namespace devedge
 {
 
 
@@ -39,18 +39,18 @@ namespace devedge
 
    bool application::initialize_application()
    {
-      
+
 
       if(!::core::application::initialize_application())
          return false;
 
-      m_dataid += ".local://";
+      set_local_data_key_modifier();
 
 
       KickDevEdgeFront(this);
 
-      Session.filemanager().std().m_strLevelUp = "levelup";
-//      Session.filemanager().std().m_strToolBar = "filemanager_toolbar.xml";
+      Session.filemanager()->m_strLevelUp = "levelup";
+//      Session.filemanager()->m_strToolBar = "filemanager_toolbar.xml";
 
       return true;
    }
@@ -74,7 +74,7 @@ namespace devedge
          iExitCode = -1;
 
       }
-      
+
       return iExitCode;
 
    }
@@ -107,30 +107,30 @@ namespace devedge
    }
 
 
-/*
-void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)
-   {
-      UNREFERENCED_PARAMETER(pdata);
-      string strExtension = System.file().extension(itema[0].m_strPath);
-      if(strExtension.compare_ci("ca2solution") == 0)
+   /*
+   void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)
       {
-         m_ptemplate_solution->open_document_file(itema[0].m_strPath);
+         UNREFERENCED_PARAMETER(pdata);
+         string strExtension = System.file().extension(itema[0].m_strPath);
+         if(strExtension.compare_ci("ca2solution") == 0)
+         {
+            m_ptemplate_solution->open_document_file(itema[0].m_strPath);
+         }
+         else
+         {
+            string strId = "devedge://" +itema[0].m_strPath;
+            m_ppaneview->add_tab(strId, strId);
+            m_ppaneview->set_cur_tab_by_id(strId);
+         }
       }
-      else
-      {
-         string strId = "devedge://" +itema[0].m_strPath;
-         m_ppaneview->add_tab(strId, strId);
-         m_ppaneview->set_cur_tab_by_id(strId);
-      }
-   }
-*/
-   
-   
+   */
+
+
    void application::on_request(::create * pcreate)
    {
-      
+
       sp(::user::document) pdoc = NULL;
-      
+
       if(devedge().m_ptemplateEdge->get_document_count() == NULL)
       {
 
@@ -166,9 +166,9 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
                      ptemplate->open_new_document();
                   }
                }
-               
+
                pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
-               
+
                devedge().m_ptemplate_solution->request_create(pcreate);
 
                pdoc = ::user::get_document(pcreate);
@@ -182,10 +182,10 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
    }
 
-/*   void application::_001OnFileNew()
-   {
-      devedge()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
-   }*/
+   /*   void application::_001OnFileNew()
+      {
+         devedge()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
+      }*/
 
    bool application::on_install()
    {
