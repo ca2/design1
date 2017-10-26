@@ -11,9 +11,6 @@ namespace syllomatter
    public:
 
 
-      view(::aura::application * papp);
-
-
       class extract : 
          virtual public ::object
       {
@@ -33,11 +30,14 @@ namespace syllomatter
       char *   m_buf2;
       int32_t m_iMessageId;
 
+      
+      view(::aura::application * papp);
       virtual ~view();
-#ifdef DEBUG
+
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
       virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 

@@ -43,10 +43,10 @@ namespace devedge
       // Implementation
    public:
       virtual ~front_document();
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
    };
 

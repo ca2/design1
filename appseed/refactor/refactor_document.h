@@ -17,13 +17,12 @@ namespace refactor
 //      edit_view *             m_pview;
 
       document(::aura::application * papp);
-	   virtual ~document();
+      virtual ~document();
 
       
-   #ifdef DEBUG
-	   virtual void assert_valid() const;
-	   virtual void dump(dump_context & dumpcontext) const;
-   #endif
+	virtual void assert_valid() const;
+      virtual void dump(dump_context & dumpcontext) const;
+      
 
       bool on_open_document(var varFile);
 

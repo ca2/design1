@@ -24,10 +24,10 @@ namespace devedge
       virtual bool is_application_main_window();
 
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
    
       DECL_GEN_SIGNAL(_001OnCreate);

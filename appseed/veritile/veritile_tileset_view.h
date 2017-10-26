@@ -27,10 +27,10 @@ namespace veritile
       virtual bool initialize(tileset * ptileset);
 
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
       virtual void install_message_routing(::message::sender * pinterface);
 

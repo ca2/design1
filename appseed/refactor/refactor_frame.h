@@ -18,12 +18,12 @@ namespace refactor
       virtual ~frame();
 
 
-      sp(::user::wndfrm::frame::frame) create_frame_schema();
-	   
-   #ifdef DEBUG
 	   virtual void assert_valid() const;
 	   virtual void dump(dump_context & dumpcontext) const;
-   #endif
+
+
+      sp(::user::wndfrm::frame::frame) create_frame_schema();
+	   
 
 
    };

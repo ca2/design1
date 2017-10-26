@@ -12,17 +12,17 @@ namespace syllomatter
 
 
       document(::aura::application * papp);
+      virtual ~document();
+      
 
+      virtual void assert_valid() const;
+      virtual void dump(dump_context & dumpcontext) const;
+      
 
 
       bool open_commit_message();
 
       virtual bool on_new_document();
-      virtual ~document();
-#ifdef DEBUG
-      virtual void assert_valid() const;
-      virtual void dump(dump_context & dumpcontext) const;
-#endif
 
       bool on_open_document(var varFile);
 

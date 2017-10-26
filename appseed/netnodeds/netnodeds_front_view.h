@@ -14,10 +14,10 @@ namespace netnodeds
       front_view(::aura::application * papp);
 
       virtual ~front_view();
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
    public:
       virtual sp(::user::interaction) get_guie();

@@ -72,10 +72,10 @@ namespace veritile
       DECL_GEN_SIGNAL(_001OnEditRedo);
       DECL_GEN_SIGNAL(_001OnMediaTransfer);
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
       virtual void on_simple_command(::message::simple_command * psimplecommand);
 

@@ -28,10 +28,10 @@ namespace devedge
 
       html_edit_view(::aura::application * papp);
       virtual ~html_edit_view();
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
       virtual sp(::user::box) BackViewGetWnd();
       virtual sp(::user::interaction) get_guie();

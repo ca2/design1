@@ -49,10 +49,10 @@ namespace devedge
 
    public:
       virtual ~document();
-   #ifdef DEBUG
+   
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-   #endif
+   
 
       void write(::file::byte_ostream & ostream);
 

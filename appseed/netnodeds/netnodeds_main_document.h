@@ -26,10 +26,9 @@ namespace netnodeds
 
       virtual bool on_new_document();
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
 
    };
 

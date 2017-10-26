@@ -29,10 +29,8 @@ namespace netnodeds
       DECL_GEN_SIGNAL(_001OnEditRedo);
       DECL_GEN_SIGNAL(_001OnUserMessage);
 
-   #ifdef DEBUG
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-   #endif
 
    };
 

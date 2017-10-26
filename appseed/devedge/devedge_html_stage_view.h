@@ -15,10 +15,10 @@ namespace devedge
       virtual ~html_stage_view();
 
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
+
 
       virtual sp(::user::box) BackViewGetWnd();
       virtual sp(::user::interaction) get_guie();

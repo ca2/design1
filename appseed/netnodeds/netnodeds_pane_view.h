@@ -30,10 +30,10 @@ namespace netnodeds
 
       void on_show_view();
       DECL_GEN_SIGNAL(_001OnCreate);
-   #ifdef DEBUG
+   
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-   #endif
+   
 
 
    };

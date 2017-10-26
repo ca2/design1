@@ -21,10 +21,10 @@ namespace biteditor
       front_view(::aura::application * papp);
       virtual ~front_view();
 
-   #ifdef DEBUG
+   
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-   #endif
+   
 
       virtual void _001OnDraw(::draw2d::graphics * pgraphics);
 

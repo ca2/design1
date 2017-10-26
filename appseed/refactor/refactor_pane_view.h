@@ -18,15 +18,13 @@ namespace refactor
       pane_view(::aura::application * papp);
 	   virtual ~pane_view();
 
+	   virtual void assert_valid() const;
+	   virtual void dump(dump_context & dumpcontext) const;
       
       void on_create_view(::user::view_creator_data * pcreatordata);
 
       virtual void install_message_routing(::message::sender * pinterface);
 
-   #ifdef DEBUG
-	   virtual void assert_valid() const;
-	   virtual void dump(dump_context & dumpcontext) const;
-   #endif
 
       DECL_GEN_SIGNAL(_001OnCreate);
 

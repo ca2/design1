@@ -34,10 +34,9 @@ namespace devedge
 
       virtual bool on_new_document();
 
-#ifdef DEBUG
+
       virtual void assert_valid() const;
       virtual void dump(dump_context & dumpcontext) const;
-#endif
 
       DECL_GEN_SIGNAL(_001OnUpdateFileNew);
       DECL_GEN_SIGNAL(_001OnUpdateFileSave);
