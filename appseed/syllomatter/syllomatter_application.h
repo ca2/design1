@@ -22,7 +22,7 @@ namespace syllomatter
 
       virtual void InitializeFileManager(const char * pszMatter);
 
-      virtual bool initialize_application();
+      virtual bool init_instance();
       virtual int32_t  exit_application() override;
 
       virtual void on_request(::create * pcreate);

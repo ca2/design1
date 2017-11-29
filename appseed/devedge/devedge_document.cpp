@@ -234,7 +234,7 @@ namespace devedge
    {
       UNREFERENCED_PARAMETER(lpcszLocal);
       UNREFERENCED_PARAMETER(lpcszRemote);
-      throw not_implemented(get_app());
+      throw new not_implemented(get_app());
 /*      CInternetSession sess("MyProgram/1.0");
 
       CFtpConnection* pConnect = NULL;

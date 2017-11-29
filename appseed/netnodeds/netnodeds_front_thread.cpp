@@ -138,7 +138,7 @@ namespace netnodeds
       else if(pbase->m_wparam == 1)
       {
 
-         throw not_implemented(get_app());
+         throw new not_implemented(get_app());
 
       }
       else if(pbase->m_wparam == 2)

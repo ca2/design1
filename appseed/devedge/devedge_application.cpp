@@ -37,11 +37,11 @@ namespace devedge
    //}
 
 
-   bool application::initialize_application()
+   bool application::init_instance()
    {
 
 
-      if(!::core::application::initialize_application())
+      if(!::core::application::init_instance())
          return false;
 
       set_local_data_key_modifier();

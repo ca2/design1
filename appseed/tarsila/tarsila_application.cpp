@@ -20,7 +20,7 @@ namespace tarsila
 
    }
 
-   bool application::initialize_application()
+   bool application::init_instance()
    {
 
 
@@ -41,7 +41,7 @@ namespace tarsila
 
 
 
-      if(!::tesseract::application::initialize_application())
+      if(!::tesseract::application::init_instance())
          return false;
 
       set_local_data_key_modifier();

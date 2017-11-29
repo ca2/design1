@@ -15,7 +15,7 @@ namespace devedge
    sp(::data::tree_item) solution_tree_data::on_allocate_item()
    {
       // please use insert item with proper allocated data type
-      throw interface_only_exception(get_app());
+      throw new interface_only_exception(get_app());
       return NULL;
    }
 

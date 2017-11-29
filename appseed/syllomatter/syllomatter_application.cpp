@@ -27,7 +27,7 @@ namespace syllomatter
    }
 
 
-   bool application::initialize_application()
+   bool application::init_instance()
    {
       System.factory().creatable_small < syllomatter::main_document >();
       System.factory().creatable_small < syllomatter::main_frame >();
@@ -40,7 +40,7 @@ namespace syllomatter
       System.factory().creatable_small < syllomatter::list_view >();
       System.factory().creatable_small < syllomatter::svn_view >();
 
-      if(!tesseract::application::initialize_application())
+      if(!tesseract::application::init_instance())
          return FALSE;
 
 

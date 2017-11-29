@@ -18,7 +18,7 @@ namespace netnodeds
    {
 
       // please use insert item with proper allocated data type
-      throw interface_only_exception(get_app());
+      throw new interface_only_exception(get_app());
 
       return NULL;
 

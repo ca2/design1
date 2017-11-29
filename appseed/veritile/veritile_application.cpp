@@ -20,7 +20,7 @@ namespace veritile
 
    }
 
-   bool application::initialize_application()
+   bool application::init_instance()
    {
 
 
@@ -44,7 +44,7 @@ namespace veritile
 
 
 
-      if(!::tesseract::application::initialize_application())
+      if(!::tesseract::application::init_instance())
          return false;
 
       set_local_data_key_modifier();
@@ -201,17 +201,17 @@ namespace veritile
       ::user::tab_pane * ppane = m_ppaneview->get_pane_by_id(idVeritile);
 
       if(ppane == NULL)
-         throw simple_exception(get_app(),"could not ensure tileset dock (1)");
+         throw new simple_exception(get_app(),"could not ensure tileset dock (1)");
 
       sp(::user::place_holder) pholder =  ppane->m_pholder;
 
       if(pholder.is_null())
-         throw simple_exception(get_app(),"could not ensure tileset dock (2)");
+         throw new simple_exception(get_app(),"could not ensure tileset dock (2)");
 
       sp(::user::split_view) pview = pholder->first_child()->get_child_by_id("pane_first");
 
       if(pview.is_null())
-         throw simple_exception(get_app(),"could not ensure tileset dock (3)");
+         throw new simple_exception(get_app(),"could not ensure tileset dock (3)");
 
       if(pview->GetParentFrame()->get_child_by_id(idVeritile + ".tilesetdock") != NULL)
          return;

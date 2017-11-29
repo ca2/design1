@@ -20,7 +20,7 @@ namespace refactor
    }
 
 
-   bool application::initialize_application()
+   bool application::init_instance()
    {
 
       System.factory().creatable_small < ::refactor::pane_view >();
@@ -28,7 +28,7 @@ namespace refactor
       System.factory().creatable_small < ::refactor::frame >();
       System.factory().creatable_small < ::refactor::view >();
 
-      if(!core::application::initialize_application())
+      if(!core::application::init_instance())
          return false;
 
 	   ::user::single_document_template* pDocTemplate;
