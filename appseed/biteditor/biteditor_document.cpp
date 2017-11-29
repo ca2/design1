@@ -463,7 +463,7 @@ though it is not a valid cursor handle.\n\
    {
       UNREFERENCED_PARAMETER(lpcszLocal);
       UNREFERENCED_PARAMETER(lpcszRemote);
-      throw new not_implemented(get_app());
+      _throw(not_implemented(get_app()));
 
       //   CInternetSession Sess("MyProgram/1.0");
 

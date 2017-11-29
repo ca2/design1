@@ -119,7 +119,7 @@ namespace tarsila
             if(e.m_cause == ::file::exception::badPath)
             {
 
-               throw new ::user::view_creator::create_exception(pcreatordata->m_id);
+               _throw(::user::view_creator::create_exception(pcreatordata->m_id));
 
             }
 

@@ -67,7 +67,7 @@ namespace netnodeds
 
    elemental::e_solution_type elemental::get_solution_type()
    {
-      throw new interface_only_exception(get_app());
+      _throw(interface_only_exception(get_app()));
    }
    
 
