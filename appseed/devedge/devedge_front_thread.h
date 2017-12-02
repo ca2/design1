@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 
 
 namespace devedge
 {
 
 
-   class CLASS_DECL_DEVEDGE front_thread : 
+   class CLASS_DECL_DEVEDGE front_thread :
       public ::thread
    {
    public:
@@ -25,7 +25,7 @@ namespace devedge
 
       void install_message_routing(::message::sender * pinterface);
 
-      virtual bool initialize_thread() override;
+      virtual bool init_thread() override;
 
 
       DECL_GEN_SIGNAL(OnApp);

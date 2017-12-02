@@ -56,30 +56,21 @@ namespace devedge
    }
 
 
-
-   int32_t application::exit_application()
+   void application::term_instance()
    {
-
-      int32_t iExitCode = 0;
 
       try
       {
 
-         iExitCode = ::core::application::exit_application();
+         ::core::application::term_instance();
 
       }
       catch(...)
       {
 
-         iExitCode = -1;
-
       }
 
-      return iExitCode;
-
    }
-
-
 
 
    void application::pre_translate_message(::message::message * pobj)

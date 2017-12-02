@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace devedge
@@ -23,11 +23,13 @@ namespace devedge
 
    void front_thread::install_message_routing(::message::sender * pinterface)
    {
+
       IGUI_MSG_LINK(WM_APP, pinterface, this, &front_thread::OnApp);
+
    }
 
 
-   bool front_thread::initialize_thread()
+   bool front_thread::init_thread()
    {
 
       int32_t iCount = 2;
@@ -51,11 +53,11 @@ namespace devedge
 
       /*   STARTUPINFO startupinfo;
       memset(&startupinfo, 0, sizeof(startupinfo));
-      if(!::CreateProcess(NULL, "netnoderewrite.exe", 
+      if(!::CreateProcess(NULL, "netnoderewrite.exe",
       NULL,
       NULL,
       TRUE,
-      0, 
+      0,
       NULL,
       ".",
       &startupinfo,
@@ -139,7 +141,7 @@ namespace devedge
       }
       else if(pbase->m_wparam == 2)
       {
-         
+
          m_pnext->post_message(WM_APP, 1, 0);
 
       }
@@ -154,7 +156,7 @@ namespace devedge
 
 void CLASS_DECL_DEVEDGE KickDevEdgeFront(::aura::application * papp)
 {
-   __begin_thread < ::devedge::front_thread > (papp);   
+   __begin_thread < ::devedge::front_thread > (papp);
 }
 
 

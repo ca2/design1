@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 void CLASS_DECL_DEVEDGE KickDevEdgeFront(::aura::application * papp);
@@ -42,8 +42,8 @@ namespace devedge
       //virtual void construct();
 
 
-      virtual bool init_instance();
-      virtual int32_t exit_application() override;
+      virtual bool init_instance() override;
+      virtual void term_instance() override;
 
       virtual void pre_translate_message(::message::message * pobj);
 

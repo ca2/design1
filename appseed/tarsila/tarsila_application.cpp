@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace tarsila
@@ -50,48 +50,44 @@ namespace tarsila
 
       ::user::multiple_document_template* pDocTemplate;
       pDocTemplate = new ::user::multiple_document_template(
-         this,
-         "system/form",
-         System.type_info < document > (),
-         System.type_info < frame > (),       // main SDI frame ::user::interaction_impl
-         System.type_info < view > ());
+      this,
+      "system/form",
+      System.type_info < document > (),
+      System.type_info < frame > (),       // main SDI frame ::user::interaction_impl
+      System.type_info < view > ());
       add_document_template(pDocTemplate);
       m_pdoctemplate = pDocTemplate;
 
       ::user::single_document_template* pDocTemplateMain;
       pDocTemplateMain = new ::user::single_document_template(
-         this,
-         "system/form",
-         System.type_info < main_document >(),
-         System.type_info < main_frame >(),       // main SDI frame ::user::interaction_impl
-         System.type_info < pane_view >());
+      this,
+      "system/form",
+      System.type_info < main_document >(),
+      System.type_info < main_frame >(),       // main SDI frame ::user::interaction_impl
+      System.type_info < pane_view >());
       add_document_template(pDocTemplateMain);
       m_pdoctemplateMain = pDocTemplateMain;
 
       return TRUE;
    }
 
-   int32_t application::exit_application()
-   {
 
-      int32_t iExitCode = 0;
+   void application::term_instance()
+   {
 
       try
       {
 
-         iExitCode = ::tesseract::application::exit_application();
+         ::tesseract::application::term_instance();
 
       }
       catch(...)
       {
 
-         iExitCode = -1;
-
       }
 
-      return iExitCode;
-
    }
+
 
    void application::on_request(::create * pcreate)
    {

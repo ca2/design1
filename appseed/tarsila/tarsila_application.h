@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 namespace tarsila
@@ -23,13 +23,15 @@ namespace tarsila
       virtual ~application();
 
 
-      virtual bool init_instance();
-      virtual int32_t exit_application() override;
+      virtual bool init_instance() override;
+      virtual void term_instance() override;
 
 
       void on_request(::create * pcreate);
 
+
       virtual bool on_install();
+
 
    };
 
