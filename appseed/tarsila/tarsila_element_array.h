@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 namespace tarsila
@@ -6,7 +6,7 @@ namespace tarsila
 
 
    class CLASS_DECL_APP_CORE_TARSILA element_array:
-      public ref_array < element >
+      public pointer_array < element * >
    {
    public:
 
