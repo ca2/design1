@@ -205,7 +205,7 @@ namespace netnodeds
 
    void solution_document::Put()
    {
-      ::file::path strFolder = System.dir().element();
+      ::file::path strFolder = System.dir().install();
       string strCommon;
       string strRemote;
       strCommon = strFolder / "seed\\ca\\fontopus\\net\\ds\\common";

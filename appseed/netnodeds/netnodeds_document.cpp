@@ -218,7 +218,7 @@ namespace netnodeds
    void document::Put()
    {
       
-      ::file::path strFolder = System.dir().element();
+      ::file::path strFolder = System.dir().install();
 
       string strCommon;
 

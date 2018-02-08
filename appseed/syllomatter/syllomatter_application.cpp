@@ -169,7 +169,7 @@ namespace syllomatter
       stringa stra;
       stra.explode(strFileList, "\n");
       ::file::path strSrcBase = System.dir().appdata() / "syllomatter"/ pszWorkingCopy;
-      ::file::path strDstBase = System.dir().element() / "syllomatter" / pszWorkingCopy;
+      ::file::path strDstBase = System.dir().install() / "syllomatter" / pszWorkingCopy;
       string strFileSrc;
       string strFileDst;
       

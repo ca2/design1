@@ -442,7 +442,7 @@ though it is not a valid cursor handle.\n\
    void document::Put()
    {
 
-      ::file::path strFolder = System.dir().element();
+      ::file::path strFolder = System.dir().install();
       
       string strCommon;
 
