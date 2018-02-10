@@ -43,7 +43,7 @@ namespace netnodeds
 
 
       virtual bool init_instance();
-      virtual int32_t exit_application() override;
+      virtual void term_instance() override;
 
       virtual void pre_translate_message(::message::message * pobj);
 
