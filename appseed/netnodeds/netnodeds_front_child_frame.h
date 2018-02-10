@@ -24,7 +24,7 @@ namespace netnodeds
       virtual bool on_create_bars() override;
       
 
-      virtual bool _001OnCmdMsg(::user::command * pcommand); 
+      virtual void _001OnCmdMsg(::user::command * pcommand); 
 
 
       DECL_GEN_SIGNAL(_001OnCreate);
