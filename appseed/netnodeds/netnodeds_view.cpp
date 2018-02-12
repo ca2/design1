@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -40,9 +40,9 @@ namespace netnodeds
    {
       ::user::plain_edit_view::dump(dumpcontext);
    }
-   #endif //DEBUG
+#endif //DEBUG
 
-   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint)
    {
       ::user::plain_edit_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)
@@ -93,10 +93,10 @@ namespace netnodeds
             }
          }
       }*/
-      
+
    }
 
-   void view::_001OnContextMenu(::message::message * pobj) 
+   void view::_001OnContextMenu(::message::message * pobj)
    {
       UNREFERENCED_PARAMETER(pobj);
 //      SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
@@ -125,12 +125,12 @@ namespace netnodeds
 
       doc.load(str);
 
-      if(menu->LoadMenu(&doc))
+      if(menu->load_menu(&doc))
       {
-         
+
          //menu->track_popup_menu(0, point.x, point.y, GetParentFrame(), &menu);
 
-         menu->track_popup_menu(0,point,GetParentFrame());
+         menu->track_popup_menu(GetParentFrame());
 
       }
 
@@ -144,14 +144,14 @@ namespace netnodeds
    void view::_001OnUpdateEditUndo(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         // xyzxyz
+      // xyzxyz
       //pcommand->Enable(m_pdata->m_editfile.CanUndo());
    }
 
    void view::_001OnUpdateEditRedo(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         // xyzxyz
+      // xyzxyz
       //pcommand->Enable(m_pdata->m_editfile.GetRedoBranchCount() > 0);
    }
 
@@ -176,17 +176,17 @@ namespace netnodeds
 
    void view::install_message_routing(::message::sender * pinterface)
    {
-      
+
       ::user::plain_edit_view::install_message_routing(pinterface);
-      IGUI_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
-      IGUI_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
+      IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
+      IGUI_MSG_LINK(WM_USER, pinterface, this, &view::_001OnUserMessage);
 
    }
 
 
    void view::_001OnUserMessage(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::base, pbase, pobj);
 
       if(pbase->m_wparam == 11)
@@ -196,9 +196,9 @@ namespace netnodeds
          // xyzxyz
 //         _001OnUpdate();
 //         ::ca::client_graphics pgraphics(this);
-  //       _001OnCalcLayout(pgraphics);
-    //     
-      //   _001LayoutScrollBars();
+         //       _001OnCalcLayout(pgraphics);
+         //
+         //   _001LayoutScrollBars();
          colorer_select_type();
       }
 

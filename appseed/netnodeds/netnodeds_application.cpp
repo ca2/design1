@@ -1,7 +1,7 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
-namespace netnodeds 
+namespace netnodeds
 {
 
 
@@ -38,7 +38,7 @@ namespace netnodeds
 
    bool application::init_instance()
    {
-      
+
 
       if(!::core::application::init_instance())
          return false;
@@ -73,12 +73,8 @@ namespace netnodeds
          m_error.m_iaErrorCode2.add(-1);
 
       }
-      
-      return iExitCode;
 
    }
-
-
 
 
    void application::pre_translate_message(::message::message * pobj)
@@ -97,42 +93,42 @@ namespace netnodeds
       ::core::application::pre_translate_message(pobj);
    }
 
-   bool application::_001OnCmdMsg(::user::command * pcommand)
+   void application::_001OnCmdMsg(::user::command * pcommand)
 
    {
-      return ::core::application::_001OnCmdMsg(pcommand);
+      ::core::application::_001OnCmdMsg(pcommand);
    }
-/*
-void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)
-   {
-      UNREFERENCED_PARAMETER(pdata);
-      string strExtension = System.file().extension(itema[0].m_strPath);
-      if(strExtension.compare_ci("ca2solution") == 0)
+   /*
+   void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)
       {
-         m_ptemplate_solution->open_document_file(itema[0].m_strPath);
+         UNREFERENCED_PARAMETER(pdata);
+         string strExtension = System.file().extension(itema[0].m_strPath);
+         if(strExtension.compare_ci("ca2solution") == 0)
+         {
+            m_ptemplate_solution->open_document_file(itema[0].m_strPath);
+         }
+         else
+         {
+            string strId = "netnodeds://" +itema[0].m_strPath;
+            m_ppaneview->add_tab(strId, strId);
+            m_ppaneview->set_cur_tab_by_id(strId);
+         }
       }
-      else
-      {
-         string strId = "netnodeds://" +itema[0].m_strPath;
-         m_ppaneview->add_tab(strId, strId);
-         m_ppaneview->set_cur_tab_by_id(strId);
-      }
-   }
-*/
+   */
 
 
    void application::on_request(::create * pcreate)
    {
-      
+
       sp(::user::document) pdoc = NULL;
 
       if(netnodeds().m_ptemplateEdge->get_document_count() == NULL)
       {
-      
+
          netnodeds().m_ptemplateEdge->request_create(pcreate);
 
       }
-     
+
       sp(main_document) pmaindoc = NULL;
 
       if (netnodeds().m_ptemplateEdge->get_document(0) != NULL)
@@ -161,9 +157,9 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
                      ptemplate->open_new_document();
                   }
                }
-               
+
                pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
-               
+
                netnodeds().m_ptemplate_solution->request_create(pcreate);
 
                pdoc = ::user::get_document(pcreate);
@@ -177,10 +173,10 @@ void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_
       }
    }
 
-/*   void application::_001OnFileNew()
-   {
-      netnodeds()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
-   }*/
+   /*   void application::_001OnFileNew()
+      {
+         netnodeds()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
+      }*/
 
    bool application::on_install()
    {

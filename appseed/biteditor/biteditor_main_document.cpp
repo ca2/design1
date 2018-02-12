@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -7,6 +7,7 @@ namespace biteditor
 
    main_document::main_document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
       m_memfile(papp),

@@ -25,7 +25,7 @@ namespace netnodeds
 
       void install_message_routing(::message::sender * pinterface);
 
-      virtual bool initialize_thread() override;
+      virtual bool init_thread() override;
 
 
       DECL_GEN_SIGNAL(OnApp);

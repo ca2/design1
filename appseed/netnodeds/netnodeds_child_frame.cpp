@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -9,13 +9,13 @@ namespace netnodeds
       ::object(papp),
       simple_child_frame(papp)
    {
-      
+
    }
 
    void child_frame::install_message_routing(::message::sender * pinterface)
    {
       simple_child_frame::install_message_routing(pinterface);
-      IGUI_MSG_LINK(::axis::application::APPM_LANGUAGE, this, this, &child_frame::_001OnAppLanguage);
+      IGUI_MSG_LINK(::message::type_language, this, this, &child_frame::_001OnAppLanguage);
       IGUI_MSG_LINK(WM_CREATE, pinterface, this, &child_frame::_001OnCreate);
    }
 
@@ -44,7 +44,7 @@ namespace netnodeds
    }
 
 
-   void child_frame::_001OnCreate(::message::message * pobj) 
+   void child_frame::_001OnCreate(::message::message * pobj)
    {
       pobj->previous();
 
@@ -67,7 +67,7 @@ namespace netnodeds
 
    /*void child_frame::GetSelected(::fs::item_array &itema)
    {
-   sp(::filemanager::SimpleFileListInterface) plistinterface = 
+   sp(::filemanager::SimpleFileListInterface) plistinterface =
    (GetActiveView());
    if(plistinterface != NULL)
    {

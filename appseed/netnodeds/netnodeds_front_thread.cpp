@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -32,7 +32,7 @@ namespace netnodeds
    }
 
 
-   bool front_thread::initialize_thread()
+   bool front_thread::init_thread()
    {
 
       int32_t iCount = 2;
@@ -56,11 +56,11 @@ namespace netnodeds
 
       /*   STARTUPINFO startupinfo;
       memset(&startupinfo, 0, sizeof(startupinfo));
-      if(!::CreateProcess(NULL, "netnoderewrite.exe", 
+      if(!::CreateProcess(NULL, "netnoderewrite.exe",
       NULL,
       NULL,
       TRUE,
-      0, 
+      0,
       NULL,
       ".",
       &startupinfo,
@@ -157,7 +157,7 @@ namespace netnodeds
 
 void CLASS_DECL_DESIGN_NETNODEDS KickDevEdgeFront(::aura::application * papp)
 {
-   __begin_thread < ::netnodeds::front_thread > (papp);   
+   __begin_thread < ::netnodeds::front_thread > (papp);
 }
 
 

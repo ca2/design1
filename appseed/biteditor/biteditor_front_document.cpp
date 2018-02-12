@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -7,53 +7,94 @@ namespace biteditor
 
    front_document::front_document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
       m_memfile(papp),
       m_file(papp),
       html_document(papp)
    {
+
    }
 
-   bool front_document::on_command(::user::command * pcommand)
-   {
-      if(id == "start")
-      {
-         OnStart();
-         return true;
-      }
-      else if(id == "edit::undo")
-      {
-         OnEditUndo();
-         return true;
-      }
-      else if(id == "edit::redo")
-      {
-         OnEditRedo();
-         return true;
-      }
-      return html_document::on_command(id);
-   }
 
-   bool front_document::on_command_probe(::user::command * pcommand)
+   void front_document::on_command(::user::command * pcommand)
    {
+
       if(pcommand->m_id == "start")
       {
+
+         OnStart();
+
+         pcommand->m_bRet = true;
+
+         return;
+
+      }
+      else if (pcommand->m_id == "edit::undo")
+      {
+
+         OnEditUndo();
+
+         pcommand->m_bRet = true;
+
+         return;
+
+      }
+      else if(pcommand->m_id == "edit::redo")
+      {
+
+         OnEditRedo();
+
+         pcommand->m_bRet = true;
+
+         return;
+
+      }
+
+      html_document::on_command(pcommand);
+
+   }
+
+
+   void front_document::on_command_probe(::user::command * pcommand)
+   {
+
+      if(pcommand->m_id == "start")
+      {
+
          OnUpdateStart(pcommand);
-         return TRUE;
+
+         pcommand->m_bRet = true;
+
+         return;
+
       }
       else if(pcommand->m_id == "edit::undo")
       {
+
          OnUpdateEditUndo(pcommand);
-         return TRUE;
+
+         pcommand->m_bRet = true;
+
+         return;
+
       }
       else if(pcommand->m_id == "edit::redor")
       {
+
          OnUpdateEditRedo(pcommand);
-         return TRUE;
+
+         pcommand->m_bRet = true;
+
+         return;
+
       }
-      return html_document::on_command_probe(pcommand);
+
+      html_document::on_command_probe(pcommand);
+
    }
+
 
    bool front_document::on_new_document()
    {

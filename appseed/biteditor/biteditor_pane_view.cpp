@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -8,13 +8,13 @@ namespace biteditor
    pane_view::pane_view(::aura::application * papp) :
       ::object(papp),
       ::user::tab(papp),
-      
+
       ::user::tab_view(papp),
       ::userex::pane_tab_view(papp),
       place_holder_container(papp)
    {
 
-      
+
 
       m_pviewdata              = NULL;
       m_pviewdataOld              = NULL;
@@ -55,7 +55,7 @@ namespace biteditor
    {
       ::userex::pane_tab_view::install_message_routing(pinterface);
       IGUI_MSG_LINK(WM_CREATE, pinterface, this, &pane_view::_001OnCreate);
-      IGUI_MSG_LINK(WM_USER + 1122  , pinterface, this, &pane_view::_001OnMenuMessage);
+      IGUI_MSG_LINK(WM_USER + 1122, pinterface, this, &pane_view::_001OnMenuMessage);
    }
 
 
@@ -72,10 +72,17 @@ namespace biteditor
    }
 #endif //DEBUG
 
-
-   void pane_view::_001OnCreate(::message::message * pobj) 
+   void pane_view::_001OnMenuMessage(::message::message * pobj)
    {
-      
+
+      UNREFERENCED_PARAMETER(pobj);
+
+   }
+
+
+   void pane_view::_001OnCreate(::message::message * pobj)
+   {
+
       if(pobj->previous())
          return;
 
@@ -95,55 +102,55 @@ namespace biteditor
       switch(pcreatordata->m_id)
       {
       case pane_view_context_menu:
-         {
-            sp(::create) cc(allocer());
-            cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
-            cc->m_puiParent = pcreatordata->m_pholder;
-
-            Application.::biteditor::application::m_ptemplateFront->request_create(cc);
-
-            sp(front_document) pdoc = ::user::get_document(cc);
-
-            if(pdoc != NULL)
-            {
-               sp(::user::impact) pview = pdoc->get_view();
-               if(pview != NULL)
-               {
-                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                  if(pframe != NULL)
-                  {
-                     pcreatordata->m_pdoc = pdoc;
-                  }
-               }
-            }
-         }
-         break;
-      case pane_view_bit_editor:
-         {
-            
+      {
          sp(::create) cc(allocer());
-            
-            cc->m_puiParent = pcreatordata->m_pholder;
-            
-            Application.m_ptemplate_devedge->request_create(cc);
+         cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
+         cc->m_puiParent = pcreatordata->m_pholder;
 
-            sp(::user::document) pdoc = ::user::get_document(cc);
+         Application.::biteditor::application::m_ptemplateFront->request_create(cc);
 
-            if(pdoc != NULL)
+         sp(front_document) pdoc = ::user::get_document(cc);
+
+         if(pdoc != NULL)
+         {
+            sp(::user::impact) pview = pdoc->get_view();
+            if(pview != NULL)
             {
-               sp(::user::impact) pview = pdoc->get_view();
-               if(pview != NULL)
+               sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+               if(pframe != NULL)
                {
-                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                  if(pframe != NULL)
-                  {
-                     pcreatordata->m_pdoc = pdoc;
-                     pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
-                  }
+                  pcreatordata->m_pdoc = pdoc;
                }
             }
          }
-         break;
+      }
+      break;
+      case pane_view_bit_editor:
+      {
+
+         sp(::create) cc(allocer());
+
+         cc->m_puiParent = pcreatordata->m_pholder;
+
+         Application.m_ptemplate_devedge->request_create(cc);
+
+         sp(::user::document) pdoc = ::user::get_document(cc);
+
+         if(pdoc != NULL)
+         {
+            sp(::user::impact) pview = pdoc->get_view();
+            if(pview != NULL)
+            {
+               sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+               if(pframe != NULL)
+               {
+                  pcreatordata->m_pdoc = pdoc;
+                  pcreatordata->m_eflag.signalize(::user::view_creator_data::flag_hide_all_others_on_show);
+               }
+            }
+         }
+      }
+      break;
       default:
          break;
       }

@@ -7,10 +7,11 @@ namespace netnodeds
 
    html_stage_document::html_stage_document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
       m_memfile(papp),
-      m_file(papp), 
+      m_file(papp),
       html_document(papp)
    {
 

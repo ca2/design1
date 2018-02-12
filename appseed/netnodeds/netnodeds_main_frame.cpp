@@ -1,7 +1,7 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
-namespace netnodeds 
+namespace netnodeds
 {
 
 
@@ -10,7 +10,7 @@ namespace netnodeds
       simple_frame_window(papp)
    {
 
-      
+
 
       WfiEnableFullScreen();
 
@@ -35,16 +35,21 @@ namespace netnodeds
    void main_frame::install_message_routing(::message::sender * pinterface)
    {
       simple_frame_window::install_message_routing(pinterface);
+      IGUI_MSG_LINK(WM_CREATE, pinterface, this, &main_frame::_001OnClose);
       IGUI_MSG_LINK(WM_CLOSE,          pinterface, this, &main_frame::_001OnClose);
    }
 
+   void main_frame::_001OnClose(::message::message * pobj)
+   {
+
+   }
 
    bool main_frame::pre_create_window(::user::create_struct& cs)
    {
-      
+
       if( !simple_frame_window::pre_create_window(cs) )
          return FALSE;
-      
+
       cs.dwExStyle &= ~WS_EX_WINDOWEDGE;
 
       return TRUE;
@@ -64,44 +69,14 @@ namespace netnodeds
    }
 
 
-   #endif //DEBUG
+#endif //DEBUG
 
-   
-   void main_frame::OnTimer(uint32_t nIDEvent) 
+
+   void main_frame::_001OnTimer(::timer * ptimer)
    {
-      static float theta;
-      if(nIDEvent == 3)
-      {
-        
-      }
-      else if(nIDEvent == 8913)
-      {
-      }
-      else if(nIDEvent == 4033)
-      {
-   // OpenGL animation code goes here
-            
-            //glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-            //glClear( GL_COLOR_BUFFER_BIT );
-            
-            /*glPushMatrix();
-            glRotatef( theta, 0.0f, 1.0f, 1.0f );
-            glBegin( GL_TRIANGLES );
-            glColor3f( 1.0f, 0.0f, 0.0f ); glVertgenf( 0.0f, 1.0f );
-            glColor3f( 0.0f, 1.0f, 0.0f ); glVertgenf( 0.87f, -0.5f );
-            glColor3f( 0.0f, 0.0f, 1.0f ); glVertgenf( -0.87f, -0.5f );
-            glEnd();
-            glPopMatrix();*/
-            
-            //SwapBuffers( m_hdcOpenGL );
-            
-            theta += 2.0f;
-         
-      }
-      //simple_frame_window::OnTimer(nIDEvent);
+      simple_frame_window::_001OnTimer(ptimer);
+
    }
-
-
 
 
    void main_frame::ShowControlBars(bool bShow)
@@ -116,15 +91,15 @@ namespace netnodeds
          nShow = SW_HIDE;
       }
 
-   /*   m_toolbar.ShowWindow(nShow);
-      m_toolbarView.ShowWindow(nShow);
-   //   m_statusbar.ShowWindow(nShow);
-      m_menubar.ShowWindow(nShow);
-      m_dialogbar.ShowWindow(nShow);*/
+      /*   m_toolbar.ShowWindow(nShow);
+         m_toolbarView.ShowWindow(nShow);
+      //   m_statusbar.ShowWindow(nShow);
+         m_menubar.ShowWindow(nShow);
+         m_dialogbar.ShowWindow(nShow);*/
 
    }
 
-   
+
    bool main_frame::is_application_main_window()
    {
       return true;

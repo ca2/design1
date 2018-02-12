@@ -8,6 +8,7 @@ namespace biteditor
    document::document(::aura::application * papp) :
       ::object(papp),
       ::data::data(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
       m_memfile(papp),
@@ -51,7 +52,8 @@ though it is not a valid cursor handle.\n\
 
    }
 
-   bool document::_001OnCmdMsg(::user::command * pcommand)
+
+   void document::_001OnCmdMsg(::user::command * pcommand)
    {
       /*   sp(::aura::application) papp = ::ca2::get_app();
       CommandIdSpace idspace;
@@ -112,7 +114,9 @@ though it is not a valid cursor handle.\n\
       }
       }
       }*/
-      return ::user::document::_001OnCmdMsg(pcommand);
+
+      ::user::document::_001OnCmdMsg(pcommand);
+
    }
 
 
@@ -194,7 +198,7 @@ though it is not a valid cursor handle.\n\
          if(m_pfile->IsOpened())
             m_pfile->close();
          if(!m_pfile->open(get_file_path(), ::file::type_binary | ::file::mode_read_write |
-            ::file::share_deny_none))
+                           ::file::share_deny_none))
             return;
       }
       m_peditfile->SetFile(m_pfile);
@@ -212,43 +216,43 @@ though it is not a valid cursor handle.\n\
    void document::_001OnUpdateFileSave(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateFilePut(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditUndo(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(m_peditfile->CanUndo());
+      pcommand->Enable(m_peditfile->CanUndo());
    }
 
    void document::_001OnUpdateEditRedo(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(m_peditfile->GetRedoBranchCount() > 0);
+      pcommand->Enable(m_peditfile->GetRedoBranchCount() > 0);
    }
 
    void document::_001OnUpdateEditCut(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditCopy(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    void document::_001OnUpdateEditPaste(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    void document::_001OnFileSave(::message::message * pobj)
@@ -331,8 +335,8 @@ though it is not a valid cursor handle.\n\
    int32_t document::GetRedoBranchCount()
    {
       return (int32_t) (m_ptreeitem->get_expandable_children_count()
-         + (m_ptreeitem->get_next() != NULL ? 1 : 0)
-         + (m_ptreeitem->first_child() != NULL ? 1 : 0));
+                        + (m_ptreeitem->get_next() != NULL ? 1 : 0)
+                        + (m_ptreeitem->first_child() != NULL ? 1 : 0));
    }
 
    bool document::Undo()
@@ -349,7 +353,7 @@ though it is not a valid cursor handle.\n\
    bool document::Redo()
    {
       if(m_iBranch < 0
-         || m_iBranch >= GetRedoBranchCount())
+            || m_iBranch >= GetRedoBranchCount())
       {
          return false;
       }
@@ -443,7 +447,7 @@ though it is not a valid cursor handle.\n\
    {
 
       ::file::path strFolder = System.dir().install();
-      
+
       string strCommon;
 
       string strRemote;

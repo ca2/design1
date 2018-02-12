@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -7,9 +7,10 @@ namespace netnodeds
 
    front_document::front_document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
-      m_memfile(papp), 
+      m_memfile(papp),
       m_file(papp),
       m_memfileBody(papp),
       html_document(papp)

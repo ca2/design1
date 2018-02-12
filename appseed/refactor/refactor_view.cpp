@@ -365,7 +365,7 @@ namespace refactor
 //               strExtent2 = strLine.Mid(x, len);
 //               class size size1;
 //               visual::graphics_extension(get_app()).GetTextExtent(pgraphics, strExtent1, size1);
-//               pgraphics->TextOutA(left + size1.cx, y, strExtent2);
+//               pgraphics->text_out(left + size1.cx, y, strExtent2);
 //
 //            }
 //         }

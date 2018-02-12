@@ -52,10 +52,10 @@ namespace refactor
       return true;
    }
 
-   int application::exit_application()
+   void application::term_instance()
    {
       
-      return ::core::application::exit_application();
+      ::core::application::term_instance();
 
    }
 

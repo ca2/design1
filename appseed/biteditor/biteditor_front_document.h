@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 
 namespace biteditor
@@ -15,15 +15,15 @@ namespace biteditor
       ::file::file_sp                m_file;
 
 
-      front_document(::aura::application * papp);   
+      front_document(::aura::application * papp);
       virtual ~front_document();
 
       virtual bool on_open_document(var varFile);
       virtual bool on_save_document(const char * lpszPathName);
 
 
-      void on_simple_command(::message::simple_command * psimplecommand); 
-      void on_simple_command_probe(::user::command * pcommand); 
+      virtual void on_command(::user::command * pcommand) override;
+      virtual void on_command_probe(::user::command * pcommand) override;
 
       void OnUpdateStart(::user::command *pcommand);
       void OnUpdateEditUndo(::user::command *pcommand);

@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -7,6 +7,7 @@ namespace netnodeds
 
    main_document::main_document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp)
    {
@@ -48,11 +49,11 @@ namespace netnodeds
    {
 
       ::netnodeds::netnodeds & netnodeds = Application.netnodeds();
-      
+
       sp(::create) cc(get_app());
-      
+
       cc->m_spCommandLine->m_varFile = varFile;
-      
+
       netnodeds.m_ptemplate_netnodeds->request_create(cc);
 
       return ::user::get_document(cc) != NULL;
@@ -62,7 +63,7 @@ namespace netnodeds
 
    bool main_document::on_save_document(const char * lpszPathName)
    {
-      
+
       UNREFERENCED_PARAMETER(lpszPathName);
 
       return true;
