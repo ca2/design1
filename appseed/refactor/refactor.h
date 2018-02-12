@@ -1,16 +1,15 @@
-#pragma once
+﻿#pragma once
 
 
 #include "core/core/core.h"
-//#include "core/user/user/user.h"
 #include "core/user/userex/userex.h"
-//#include "core/filesystem/filemanager/filemanager.h"
+#include "sphere/sphere/sphere.h"
 
 
 #ifdef _CA2_FONTOPUS_REFACTOR_DLL
-    #define CLASS_DECL_CA2_REFACTOR  CLASS_DECL_EXPORT
+#define CLASS_DECL_CA2_REFACTOR  CLASS_DECL_EXPORT
 #else
-    #define CLASS_DECL_CA2_REFACTOR  CLASS_DECL_IMPORT
+#define CLASS_DECL_CA2_REFACTOR  CLASS_DECL_IMPORT
 #endif
 
 namespace refactor

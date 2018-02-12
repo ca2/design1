@@ -1,22 +1,22 @@
 ﻿#include "framework.h"
-#include "aura/user/colorertake5/colorertake5.h"
-#include <math.h>
+#include "sphere/colorertake5/colorertake5.h"
 
-   string str_block(char ch, int iSize)
+
+string str_block(char ch, int iSize)
+{
+   string str;
+   for(int i = 0; i < iSize; i++)
    {
-      string str;
-      for(int i = 0; i < iSize; i++)
-      {
-         str += ch;
-      }
-      return str;
+      str += ch;
    }
+   return str;
+}
 
 
-   void str_fill(string & str, char ch)
-   {
-      str = str_block(ch, (int) str.get_length());
-   }
+void str_fill(string & str, char ch)
+{
+   str = str_block(ch, (int) str.get_length());
+}
 
 namespace refactor
 {
@@ -54,12 +54,12 @@ namespace refactor
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif 
+#endif
 
 
    void view::_001OnUserMessage(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::base, pbase, pobj);
 
       if(pbase->m_wparam == 11)
@@ -73,9 +73,9 @@ namespace refactor
 
    }
 
-   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint)
    {
-      
+
       ::user::plain_edit_view::on_update(pSender, lHint, phint);
 
       if(lHint == 1001)
@@ -133,7 +133,7 @@ namespace refactor
             }
          }
       }*/
-      
+
    }
 
 
@@ -405,7 +405,7 @@ namespace refactor
 //
 //            if(i1 >= 0 && i1 <= iEnd)
 //            {
-//               
+//
 //               pgraphics->setColor(ARGB(255, 0, 255, 0));
 //
 //               for(int i = 0; i < straAutoComplete.get_size(); i++)
@@ -414,7 +414,7 @@ namespace refactor
 //                  pgraphics->text_out(left + size1.cx, y + (iLineHeight * (i + 1)), straAutoComplete[i]);
 //
 //               }
-//               
+//
 //               break;
 //
 //            }
@@ -431,7 +431,7 @@ namespace refactor
 //    //           pgraphics->text_out(left + size1.cx, y, strExtent2);
 //            }
 //            pgraphics->set_color(cr);
-//            
+//
 //            pgraphics->SetBkMode(TRANSPARENT);
 //  //          pgraphics->text_out(left + size1.cx + size2.cx, y, strExtent3);
 //            //maxcy = max(size1.cy, size2.cy);
@@ -462,9 +462,9 @@ namespace refactor
 
    void view::on_auto_complete(index iSel, stringa & stra)
    {
-      
+
       int iLine = SelToLine(iSel);
-      
+
       int iCol = SelToColumn(iSel);
 
       if(iLine < 0 || iCol < 0)
@@ -476,7 +476,7 @@ namespace refactor
       straSource.add("replace_regexp");
 
       straSource.get_begins_ci(stra, m_plines->getLine(iLine).substr(0, iCol));
-      
+
    }
 
 
@@ -487,7 +487,7 @@ namespace refactor
       ::user::plain_edit_view::install_message_routing(pinterface);
 
       //IGUI_MSG_LINK(WM_CONTEXTMENU    , pinterface, this, &view::_001OnContextMenu);
-      IGUI_MSG_LINK(WM_USER           , pinterface, this, &view::_001OnUserMessage);
+      IGUI_MSG_LINK(WM_USER, pinterface, this, &view::_001OnUserMessage);
 
 
    }

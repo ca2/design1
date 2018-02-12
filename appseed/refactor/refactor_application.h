@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 namespace refactor
 {
@@ -7,8 +7,8 @@ namespace refactor
       public ::core::application
    {
    public:
-      
-      
+
+
       ::user::single_document_template *  m_ptemplateRefactorMain;
       ::user::single_document_template *  m_ptemplateRefactor;
 
@@ -17,8 +17,8 @@ namespace refactor
       virtual ~application();
 
 
-      virtual bool init_instance();
-      virtual int  exit_application() override;
+      virtual bool init_instance() override;
+      virtual void term_instance() override;
 
       virtual void on_request(::create * pcreate);
 

@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace refactor
@@ -7,6 +7,7 @@ namespace refactor
 
    document::document(::aura::application * papp) :
       ::object(papp),
+      ::user::controller(papp),
       ::data::data_container_base(papp),
       ::user::document(papp),
       m_file(papp)
@@ -21,12 +22,12 @@ namespace refactor
 #ifdef DEBUG
    void document::assert_valid() const
    {
-	   ::user::document::assert_valid();
+      ::user::document::assert_valid();
    }
 
    void document::dump(dump_context & dumpcontext) const
    {
-	   ::user::document::dump(dumpcontext);
+      ::user::document::dump(dumpcontext);
    }
 #endif //DEBUG
 

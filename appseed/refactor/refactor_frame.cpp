@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include <math.h>
 
 
@@ -10,7 +10,6 @@ namespace refactor
       ::object(papp),
       simple_frame_window(papp)
    {
-      m_dataid = "ca2::refactor::frame";
 
       WfiEnableFullScreen();
 
@@ -25,12 +24,12 @@ namespace refactor
 #ifdef DEBUG
    void frame::assert_valid() const
    {
-	   simple_frame_window::assert_valid();
+      simple_frame_window::assert_valid();
    }
 
    void frame::dump(dump_context & dumpcontext) const
    {
-	   simple_frame_window::dump(dumpcontext);
+      simple_frame_window::dump(dumpcontext);
    }
 #endif //DEBUG
 
@@ -44,10 +43,10 @@ namespace refactor
 //      pschema->m_typeinfoControlBoxButton = System.template type_info < MetaButton > ();
       return pschema;
 
-/*      frame::FrameSchemaHardCoded005 * pschema = new frame::FrameSchemaHardCoded005(get_app());
-      pschema->m_typeinfoControlBoxButton = typeid(MetaButton);
-      pschema->SetStyle(frame::FrameSchemaHardCoded005::StyleTranslucidWarmGray);
-      return pschema;*/
+      /*      frame::FrameSchemaHardCoded005 * pschema = new frame::FrameSchemaHardCoded005(get_app());
+            pschema->m_typeinfoControlBoxButton = typeid(MetaButton);
+            pschema->SetStyle(frame::FrameSchemaHardCoded005::StyleTranslucidWarmGray);
+            return pschema;*/
    }
 
 
