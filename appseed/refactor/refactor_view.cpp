@@ -475,7 +475,9 @@ namespace refactor
       straSource.add("replace");
       straSource.add("replace_regexp");
 
-      straSource.get_begins_ci(stra, m_plines->getLine(iLine).substr(0, iCol));
+      throw todo(get_app());
+      // xxx
+//      straSource.get_begins_ci(stra, m_plines->getLine(iLine).substr(0, iCol));
 
    }
 
