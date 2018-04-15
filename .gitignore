@@ -1,0 +1,16 @@
+**/.vs
+**/.DS_Store
+**/.git
+**/.svn
+**/cvs
+.DS_Store
+._.DS_Store
+*.suo
+*.ipch
+browse.vc.db
+solution.vc.db*
+*.h.gch
+*.layout
+*.depend
+*.expand_fileset
+*.expand_fileset.spa
