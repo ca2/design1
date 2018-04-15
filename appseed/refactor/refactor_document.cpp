@@ -19,7 +19,6 @@ namespace refactor
    }
 
 
-#ifdef DEBUG
    void document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -29,7 +28,6 @@ namespace refactor
    {
       ::user::document::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
    bool document::on_open_document(var varFile)

@@ -32,10 +32,10 @@ namespace devedge
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &front_view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &front_view::_001OnSetCursor);
       ////IGUI_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
-      IGUI_MSG_LINK(WM_USER + 101     , this, this, &front_view::_001OnPost);
+      IGUI_MSG_LINK(WM_USER + 101, this, this, &front_view::_001OnPost);
 
       //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &front_view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119      , this, this, &front_view::_001OnWavePlayerEvent);
+      IGUI_MSG_LINK(WM_APP + 119, this, this, &front_view::_001OnWavePlayerEvent);
       //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &front_view::_001OnChar);
       //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &front_view::_001OnSysChar);
       //connect_command(ID_FILE_PRINT, html_view::OnFilePrint)
@@ -43,22 +43,22 @@ namespace devedge
       //connect_command(ID_FILE_PRINT_PREVIEW, html_view::OnFilePrintPreview)
 
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
-         this,
-         this,
-         &front_view::_001OnLButtonDown);
+                    this,
+                    this,
+                    &front_view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP,
-         this,
-         this,
-         &front_view::_001OnLButtonUp);
+                    this,
+                    this,
+                    &front_view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_MOUSEMOVE,
-         this,
-         this,
-         &front_view::_001OnMouseMove);
+                    this,
+                    this,
+                    &front_view::_001OnMouseMove);
 
    }
 
 
-#ifdef DEBUG
+
    void front_view::assert_valid() const
    {
       html_view::assert_valid();
@@ -68,7 +68,6 @@ namespace devedge
    {
       html_view::dump(dumpcontext);
    }
-#endif //DEBUG
 
    /////////////////////////////////////////////////////////////////////////////
    // front_view message handlers
@@ -130,10 +129,10 @@ namespace devedge
       //   sp(::user::document) pdoc = get_document();
    }
 
-   
+
    void front_view::_001OnPaint(::message::message * pobj)
    {
-      
+
       UNREFERENCED_PARAMETER(pobj);
 
    }
@@ -142,7 +141,7 @@ namespace devedge
    void front_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
+
 
       pgraphics->OffsetViewportOrg(-2, -2);
 
@@ -177,7 +176,7 @@ namespace devedge
    void front_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
 
    }
 
@@ -213,19 +212,19 @@ namespace devedge
    void front_view::_001OnLButtonDown(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnMouseMove(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    sp(::user::document) front_view::get_document() const
@@ -242,19 +241,19 @@ namespace devedge
    void front_view::_001OnTimer(::timer * ptimer)
    {
       html_view::_001OnTimer(ptimer);
-         if(ptimer->m_nIDEvent >= 100
+      if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
+      {
+      }
+      else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
+      {
+         if(ptimer->m_nIDEvent == 500)
          {
+            KillTimer(500);
+            SetTimer(501, 300, NULL);
          }
-         else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
-         {
-            if(ptimer->m_nIDEvent == 500)
-            {
-               KillTimer(500);
-               SetTimer(501, 300, NULL);
-            }
-            //      key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
-         }
+         //      key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+      }
 
    }
 
@@ -280,13 +279,13 @@ namespace devedge
    void front_view::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         if(pkey->m_ekey == ::user::key_s)
+      if(pkey->m_ekey == ::user::key_s)
+      {
+         if(Session.is_key_pressed(::user::key_control))
          {
-            if(Session.is_key_pressed(::user::key_control))
-            {
-               return;
-            }
+            return;
          }
+      }
    }
 
 
@@ -307,8 +306,8 @@ namespace devedge
       ::message::key key(get_app());
 
       if(wparam == VK_LSHIFT || wparam == VK_RSHIFT
-         || wparam == VK_LCONTROL || wparam == VK_RCONTROL
-         || wparam == VK_LMENU || wparam == VK_RMENU)
+            || wparam == VK_LCONTROL || wparam == VK_RCONTROL
+            || wparam == VK_LMENU || wparam == VK_RMENU)
       {
          return;
       }
@@ -330,14 +329,14 @@ namespace devedge
    void front_view::_001OnPost(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
-         if(pbase->m_wparam == 100)
-         {
-            post_message(WM_USER + 101, 101);
+      if(pbase->m_wparam == 100)
+      {
+         post_message(WM_USER + 101, 101);
 
-         }
-         else if (pbase->m_wparam == 101)
-         {
-         }
+      }
+      else if (pbase->m_wparam == 101)
+      {
+      }
    }
 
    void front_view::OnDocumentComplete(const char * lpszURL)

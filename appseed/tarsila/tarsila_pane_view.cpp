@@ -31,7 +31,6 @@ namespace tarsila
 
 
 
-#ifdef DEBUG
    void pane_view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -41,7 +40,6 @@ namespace tarsila
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
    void pane_view::_001OnCreate(::message::message * pobj)

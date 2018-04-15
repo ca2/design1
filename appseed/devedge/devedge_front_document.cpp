@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace devedge
@@ -10,7 +10,7 @@ namespace devedge
       ::data::data_container_base(papp),
       ::user::controller(papp),
       ::user::document(papp),
-      m_memfile(papp), 
+      m_memfile(papp),
       m_file(papp),
       m_memfileBody(papp),
       html_document(papp)
@@ -82,8 +82,6 @@ namespace devedge
    }
 
 
-
-#ifdef DEBUG
    void front_document::assert_valid() const
    {
       html_document::assert_valid();
@@ -93,7 +91,6 @@ namespace devedge
    {
       html_document::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
    bool front_document::on_open_document(var varFile)

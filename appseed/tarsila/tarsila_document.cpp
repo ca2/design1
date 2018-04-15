@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace tarsila
@@ -36,7 +36,6 @@ namespace tarsila
 
 
 
-   #ifdef DEBUG
    void document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -46,7 +45,6 @@ namespace tarsila
    {
       ::user::document::dump(dumpcontext);
    }
-   #endif //DEBUG
 
 
    bool document::on_open_document(var varFile)
@@ -74,7 +72,7 @@ namespace tarsila
 
       pdata->xml_import(xmlif);
 
-      
+
       //::data::lock writing(get_typed_data < ::user::plain_text_tree >());
 
       //if(m_file.is_set() && m_file->IsOpened())

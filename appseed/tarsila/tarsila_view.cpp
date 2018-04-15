@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace tarsila
@@ -48,7 +48,6 @@ namespace tarsila
 
    }
 
-#ifdef DEBUG
    void view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -58,7 +57,6 @@ namespace tarsila
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif
 
    bool view::pre_create_window(::user::create_struct& cs)
    {

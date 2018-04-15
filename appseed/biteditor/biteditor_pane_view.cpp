@@ -60,7 +60,6 @@ namespace biteditor
 
 
 
-#ifdef DEBUG
    void pane_view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -70,7 +69,6 @@ namespace biteditor
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif //DEBUG
 
    void pane_view::_001OnMenuMessage(::message::message * pobj)
    {

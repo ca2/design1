@@ -83,7 +83,7 @@ namespace netnodeds
 
 
 
-#ifdef DEBUG
+
    void html_edit_document::assert_valid() const
    {
       html_document::assert_valid();
@@ -93,7 +93,7 @@ namespace netnodeds
    {
       html_document::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
    /////////////////////////////////////////////////////////////////////////////
    // html_edit_document serialization

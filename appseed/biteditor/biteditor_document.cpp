@@ -136,7 +136,6 @@ though it is not a valid cursor handle.\n\
 
 
 
-#ifdef DEBUG
    void document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -146,7 +145,6 @@ though it is not a valid cursor handle.\n\
    {
       ::user::document::dump(dumpcontext);
    }
-#endif //DEBUG
 
    /////////////////////////////////////////////////////////////////////////////
    // document serialization

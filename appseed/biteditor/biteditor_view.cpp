@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -42,32 +42,30 @@ namespace biteditor
       IGUI_MSG_LINK(WM_CREATE, pinterface, this, &view::_001OnCreate);
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
-      
+
       IGUI_MSG_LINK(WM_HSCROLL, pinterface, this, &view::_001OnHScroll);
 
-      IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
+      IGUI_MSG_LINK(WM_APP + 119, this, this, &view::_001OnWavePlayerEvent);
 
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
-         this,
-         this,
-         &view::_001OnLButtonDown);
+                    this,
+                    this,
+                    &view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP,
-         this,
-         this,
-         &view::_001OnLButtonUp);
+                    this,
+                    this,
+                    &view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_MOUSEMOVE,
-         this,
-         this,
-         &view::_001OnMouseMove);
+                    this,
+                    this,
+                    &view::_001OnMouseMove);
       IGUI_MSG_LINK(WM_RBUTTONUP,
-         this,
-         this,
-         &view::_001OnRButtonUp);
+                    this,
+                    this,
+                    &view::_001OnRButtonUp);
 
    }
 
-#ifdef DEBUG
-   
    void view::assert_valid() const
    {
 
@@ -75,17 +73,13 @@ namespace biteditor
 
    }
 
-   
+
    void view::dump(dump_context & dumpcontext) const
    {
-      
+
       ::user::impact::dump(dumpcontext);
 
    }
-
-#endif //DEBUG
-
-
 
    bool view::pre_create_window(::user::create_struct& cs)
    {
@@ -302,7 +296,7 @@ namespace biteditor
    void view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
 
    }
 
@@ -348,14 +342,14 @@ namespace biteditor
    void view::_001OnLButtonDown(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
    }
 
    void view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
       if(Session.user()->get_mouse_focus_LButtonDown() != NULL)
       {
@@ -373,12 +367,12 @@ namespace biteditor
    void view::_001OnMouseMove(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
       //ScreenToClient(&pt);
 
    }
 
-   
+
    sp(::biteditor::document) view::get_document() const
    {
 
@@ -387,30 +381,30 @@ namespace biteditor
    }
 
 
-   void view::_001OnTimer(::timer * ptimer) 
+   void view::_001OnTimer(::timer * ptimer)
    {
       ::user::impact::_001OnTimer(ptimer);
-         if(ptimer->m_nIDEvent >= 100
+      if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
+      {
+         if(Session.get_keyboard_focus() == m_pasciibox)
          {
-            if(Session.get_keyboard_focus() == m_pasciibox)
-            {
-               m_pasciibox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
-            }
-            else if(Session.get_keyboard_focus() == m_phexbox)
-            {
-               m_phexbox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
-            }
+            m_pasciibox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
          }
-         else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
+         else if(Session.get_keyboard_focus() == m_phexbox)
          {
-            if(ptimer->m_nIDEvent == 500)
-            {
-               KillTimer(500);
-               SetTimer(501, 300, NULL);
-            }
-            key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+            m_phexbox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
          }
+      }
+      else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
+      {
+         if(ptimer->m_nIDEvent == 500)
+         {
+            KillTimer(500);
+            SetTimer(501, 300, NULL);
+         }
+         key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+      }
 
    }
 
@@ -418,66 +412,66 @@ namespace biteditor
    {
       SCAST_PTR(::message::key, pkey, pobj);
 
-         if(pkey->m_ekey == ::user::key_return)
-         {
-            if(Session.is_key_pressed(::user::key_control)
+      if(pkey->m_ekey == ::user::key_return)
+      {
+         if(Session.is_key_pressed(::user::key_control)
                && Session.is_key_pressed(::user::key_alt))
-            {
-               pkey->m_bRet = false;
-               return;
-            }
-         }
-         else if(pkey->m_nChar == ::user::key_alt)
          {
             pkey->m_bRet = false;
             return;
          }
+      }
+      else if(pkey->m_nChar == ::user::key_alt)
+      {
+         pkey->m_bRet = false;
+         return;
+      }
 
-         m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
-         m_dwLastKeyLparam = (uint32_t) pkey->m_lparam;
-         key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
-         SetTimer(500, 500, NULL);
+      m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
+      m_dwLastKeyLparam = (uint32_t) pkey->m_lparam;
+      key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+      SetTimer(500, 500, NULL);
    }
 
    void view::_001OnKeyUp(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         if(pkey->m_ekey == ::user::key_return)
-         {
-            if(Session.is_key_pressed(::user::key_control)
+      if(pkey->m_ekey == ::user::key_return)
+      {
+         if(Session.is_key_pressed(::user::key_control)
                && Session.is_key_pressed(::user::key_alt))
-            {
-               pkey->m_bRet = false;
-               return;
-            }
-         }
-         else if(pkey->m_ekey == ::user::key_return)
          {
             pkey->m_bRet = false;
+            return;
          }
-         KillTimer(500);
-         KillTimer(501);
+      }
+      else if(pkey->m_ekey == ::user::key_return)
+      {
+         pkey->m_bRet = false;
+      }
+      KillTimer(500);
+      KillTimer(501);
    }
 
 
    void view::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         if(pkey->m_ekey == ::user::key_s)
+      if(pkey->m_ekey == ::user::key_s)
+      {
+         if(Session.is_key_pressed(::user::key_control))
          {
-            if(Session.is_key_pressed(::user::key_control))
-            {
-               return;
-            }
+            return;
          }
-         if(Session.get_keyboard_focus() == m_pasciibox)
-         {
-            //m_pasciibox->_001OnChar(this, pobj);
-         }
-         else if(Session.get_keyboard_focus() == m_phexbox)
-         {
-            //m_phexbox->_001OnChar(this, pobj);
-         }
+      }
+      if(Session.get_keyboard_focus() == m_pasciibox)
+      {
+         //m_pasciibox->_001OnChar(this, pobj);
+      }
+      else if(Session.get_keyboard_focus() == m_phexbox)
+      {
+         //m_phexbox->_001OnChar(this, pobj);
+      }
    }
 
 
@@ -534,16 +528,16 @@ namespace biteditor
       key.m_nChar = wparam;
 
       if(wparam == VK_LSHIFT || wparam == VK_RSHIFT
-         || wparam == VK_LCONTROL || wparam == VK_RCONTROL
-         || wparam == VK_LMENU || wparam == VK_RMENU
-         || wparam == VK_SHIFT || wparam == VK_CONTROL
-         || wparam == VK_MENU)
+            || wparam == VK_LCONTROL || wparam == VK_RCONTROL
+            || wparam == VK_LMENU || wparam == VK_RMENU
+            || wparam == VK_SHIFT || wparam == VK_CONTROL
+            || wparam == VK_MENU)
       {
          return;
       }
 
       if(wparam == VK_RIGHT || wparam == VK_UP
-         || wparam == VK_LEFT || wparam == VK_DOWN)
+            || wparam == VK_LEFT || wparam == VK_DOWN)
       {
          _001OnChar(&key);
          return;
@@ -597,7 +591,7 @@ namespace biteditor
 
    void view::get_view_lines(stringa & straLines)
    {
-      
+
       file_offset_t iOffset = (m_iViewOffset / m_iLineSize * m_iLineSize);
 
       get_document()->m_memfile.seek(iOffset, ::file::seek_begin);
@@ -613,23 +607,23 @@ namespace biteditor
       for(int32_t i = 0; i < iLineCount; i++)
       {
          //      int32_t iCount;
-         
+
          strLine.Empty();
 
          iRead = get_document()->m_memfile.read(sz, 16);
 
          for(memory_size_t i = 0; i < iRead; i++)
          {
-            
+
             if(sz[i] == '\0')
             {
-            
+
                strLine += '\xff';
 
             }
             else
             {
-               
+
                strLine += sz[i];
 
             }
@@ -720,7 +714,7 @@ namespace biteditor
       {
          iOffset += m_iLineSize;
       }
-            if(iColumn < 0)
+      if(iColumn < 0)
          iColumn = (int32_t) (iColumn + 1 + m_iLineSize);
       if(iColumn > m_iLineSize)
          iColumn = (int32_t)m_iLineSize;
@@ -742,13 +736,13 @@ namespace biteditor
 
       if(get_viewport_offset().y < 0)
       {
-      
+
          set_viewport_offset_y(0);
 
       }
 
       int32_t iHeight = 0;
-   //   char flag;
+      //   char flag;
       m_iViewOffset = 0;
       int64_t iLineSize;
       int64_t i = 0;
@@ -769,7 +763,7 @@ namespace biteditor
 
    }
 
-   
+
    size view::get_total_size()
    {
 

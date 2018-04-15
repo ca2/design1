@@ -32,7 +32,7 @@ namespace netnodeds
    }
 
 
-#ifdef DEBUG
+
    void main_document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -42,7 +42,7 @@ namespace netnodeds
    {
       ::user::document::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
 
    bool main_document::on_open_document(var varFile)

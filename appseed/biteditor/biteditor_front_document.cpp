@@ -112,7 +112,6 @@ namespace biteditor
 
 
 
-#ifdef DEBUG
    void front_document::assert_valid() const
    {
       html_document::assert_valid();
@@ -122,7 +121,7 @@ namespace biteditor
    {
       html_document::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
    bool front_document::on_open_document(var varFile)
    {

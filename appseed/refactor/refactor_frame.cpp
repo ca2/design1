@@ -21,7 +21,6 @@ namespace refactor
    {
    }
 
-#ifdef DEBUG
    void frame::assert_valid() const
    {
       simple_frame_window::assert_valid();
@@ -31,7 +30,6 @@ namespace refactor
    {
       simple_frame_window::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
 

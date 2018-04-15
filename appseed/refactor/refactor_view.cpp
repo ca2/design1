@@ -44,7 +44,6 @@ namespace refactor
    {
    }
 
-#ifdef DEBUG
    void view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -54,7 +53,6 @@ namespace refactor
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif
 
 
    void view::_001OnUserMessage(::message::message * pobj)

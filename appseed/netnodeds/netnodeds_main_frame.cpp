@@ -57,7 +57,7 @@ namespace netnodeds
    }
 
 
-#ifdef DEBUG
+
    void main_frame::assert_valid() const
    {
       simple_frame_window::assert_valid();
@@ -69,7 +69,7 @@ namespace netnodeds
    }
 
 
-#endif //DEBUG
+
 
 
    void main_frame::_001OnTimer(::timer * ptimer)

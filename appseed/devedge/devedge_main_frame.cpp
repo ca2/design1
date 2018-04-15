@@ -1,7 +1,7 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
-namespace devedge 
+namespace devedge
 {
 
 
@@ -9,8 +9,8 @@ namespace devedge
       ::object(papp),
       simple_frame_window(papp)
    {
-      
-      
+
+
 
       WfiEnableFullScreen();
 
@@ -43,10 +43,10 @@ namespace devedge
 
    bool main_frame::pre_create_window(::user::create_struct& cs)
    {
-      
+
       if( !simple_frame_window::pre_create_window(cs) )
          return FALSE;
-      
+
       cs.dwExStyle &= ~WS_EX_WINDOWEDGE;
 
       return TRUE;
@@ -54,7 +54,7 @@ namespace devedge
    }
 
 
-#ifdef DEBUG
+
    void main_frame::assert_valid() const
    {
       simple_frame_window::assert_valid();
@@ -66,39 +66,37 @@ namespace devedge
    }
 
 
-   #endif //DEBUG
 
-   
-   void main_frame::OnTimer(uint32_t nIDEvent) 
+   void main_frame::OnTimer(uint32_t nIDEvent)
    {
       static float theta;
       if(nIDEvent == 3)
       {
-      
+
       }
       else if(nIDEvent == 8913)
       {
       }
       else if(nIDEvent == 4033)
       {
-   // OpenGL animation code goes here
-            
-            //glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-            //glClear( GL_COLOR_BUFFER_BIT );
-            
-            /*glPushMatrix();
-            glRotatef( theta, 0.0f, 1.0f, 1.0f );
-            glBegin( GL_TRIANGLES );
-            glColor3f( 1.0f, 0.0f, 0.0f ); glVertgenf( 0.0f, 1.0f );
-            glColor3f( 0.0f, 1.0f, 0.0f ); glVertgenf( 0.87f, -0.5f );
-            glColor3f( 0.0f, 0.0f, 1.0f ); glVertgenf( -0.87f, -0.5f );
-            glEnd();
-            glPopMatrix();*/
-            
-            //SwapBuffers( m_hdcOpenGL );
-            
-            theta += 2.0f;
-         
+         // OpenGL animation code goes here
+
+         //glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+         //glClear( GL_COLOR_BUFFER_BIT );
+
+         /*glPushMatrix();
+         glRotatef( theta, 0.0f, 1.0f, 1.0f );
+         glBegin( GL_TRIANGLES );
+         glColor3f( 1.0f, 0.0f, 0.0f ); glVertgenf( 0.0f, 1.0f );
+         glColor3f( 0.0f, 1.0f, 0.0f ); glVertgenf( 0.87f, -0.5f );
+         glColor3f( 0.0f, 0.0f, 1.0f ); glVertgenf( -0.87f, -0.5f );
+         glEnd();
+         glPopMatrix();*/
+
+         //SwapBuffers( m_hdcOpenGL );
+
+         theta += 2.0f;
+
       }
       //simple_frame_window::OnTimer(nIDEvent);
    }
@@ -116,15 +114,15 @@ namespace devedge
          nShow = SW_HIDE;
       }
 
-   /*   m_toolbar.ShowWindow(nShow);
-      m_toolbarView.ShowWindow(nShow);
-   //   m_statusbar.ShowWindow(nShow);
-      m_menubar.ShowWindow(nShow);
-      m_dialogbar.ShowWindow(nShow);*/
+      /*   m_toolbar.ShowWindow(nShow);
+         m_toolbarView.ShowWindow(nShow);
+      //   m_statusbar.ShowWindow(nShow);
+         m_menubar.ShowWindow(nShow);
+         m_dialogbar.ShowWindow(nShow);*/
 
    }
 
-   
+
    bool main_frame::is_application_main_window()
    {
       return true;

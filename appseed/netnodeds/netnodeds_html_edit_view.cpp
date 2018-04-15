@@ -32,10 +32,10 @@ namespace netnodeds
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &html_edit_view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &html_edit_view::_001OnSetCursor);
       //IGUI_MSG_LINK(WM_TIMER, pinterface, this, &html_edit_view::_001OnTimer);
-      IGUI_MSG_LINK(WM_USER + 101     , this, this, &html_edit_view::_001OnPost);
+      IGUI_MSG_LINK(WM_USER + 101, this, this, &html_edit_view::_001OnPost);
 
       //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &html_edit_view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119      , this, this, &html_edit_view::_001OnWavePlayerEvent);
+      IGUI_MSG_LINK(WM_APP + 119, this, this, &html_edit_view::_001OnWavePlayerEvent);
       IGUI_MSG_LINK(WM_USER, pinterface, this, &html_edit_view::_001OnUser);
       //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &html_edit_view::_001OnChar);
       //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &html_edit_view::_001OnSysChar);
@@ -44,21 +44,21 @@ namespace netnodeds
       //connect_command(ID_FILE_PRINT_PREVIEW, html_view::OnFilePrintPreview)
 
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
-         this,
-         this,
-         &html_edit_view::_001OnLButtonDown);
+                    this,
+                    this,
+                    &html_edit_view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP,
-         this,
-         this,
-         &html_edit_view::_001OnLButtonUp);
+                    this,
+                    this,
+                    &html_edit_view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_MOUSEMOVE,
-         this,
-         this,
-         &html_edit_view::_001OnMouseMove);
+                    this,
+                    this,
+                    &html_edit_view::_001OnMouseMove);
 
    }
 
-#ifdef DEBUG
+
    void html_edit_view::assert_valid() const
    {
       html_view::assert_valid();
@@ -68,7 +68,7 @@ namespace netnodeds
    {
       html_view::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
    /////////////////////////////////////////////////////////////////////////////
    // html_edit_view message handlers
@@ -118,7 +118,7 @@ namespace netnodeds
       {
       if(base < main_document >::bases(phint))
       {
-     sp(main_document) puh = (sp( main_document) ) phint;
+      sp(main_document) puh = (sp( main_document) ) phint;
       if(puh->is_type_of(main_document::TypeOnShowKaraoke))
       {
       ( (GetTopLevelFrame()))->SetActiveView(this);
@@ -177,7 +177,7 @@ namespace netnodeds
 
    void html_edit_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
-      
+
       html_view::_001OnDraw(pgraphics);
 
    }
@@ -211,7 +211,7 @@ namespace netnodeds
    void html_edit_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
 
    }
 
@@ -247,19 +247,19 @@ namespace netnodeds
    void html_edit_view::_001OnLButtonDown(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void html_edit_view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void html_edit_view::_001OnMouseMove(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    sp(::user::document) html_edit_view::get_document() const
@@ -275,29 +275,29 @@ namespace netnodeds
       return NULL;
    }
 
-   void html_edit_view::_001OnTimer(::timer * ptimer) 
+   void html_edit_view::_001OnTimer(::timer * ptimer)
    {
       html_view::_001OnTimer(ptimer);
-         if(ptimer->m_nIDEvent >= 100
+      if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
+      {
+      }
+      else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
+      {
+         if(ptimer->m_nIDEvent == 500)
          {
+            KillTimer(500);
+            SetTimer(501, 300, NULL);
          }
-         else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
-         {
-            if(ptimer->m_nIDEvent == 500)
-            {
-               KillTimer(500);
-               SetTimer(501, 300, NULL);
-            }
-            key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
-         }
+         key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+      }
 
    }
 
    void html_edit_view::_001OnKeyDown(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
+      m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
       m_dwLastKeyLparam = (uint32_t) pkey->m_lparam;
       key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
       SetTimer(500, 500, NULL);
@@ -315,13 +315,13 @@ namespace netnodeds
    void html_edit_view::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         if(pkey->m_ekey == ::user::key_s)
+      if(pkey->m_ekey == ::user::key_s)
+      {
+         if(Session.is_key_pressed(::user::key_control))
          {
-            if(Session.is_key_pressed(::user::key_control))
-            {
-               return;
-            }
+            return;
          }
+      }
    }
 
 
@@ -348,8 +348,8 @@ namespace netnodeds
       ::message::key key(get_app());
 
       if(wparam == VK_LSHIFT || wparam == VK_RSHIFT
-         || wparam == VK_LCONTROL || wparam == VK_RCONTROL
-         || wparam == VK_LMENU || wparam == VK_RMENU)
+            || wparam == VK_LCONTROL || wparam == VK_RCONTROL
+            || wparam == VK_LMENU || wparam == VK_RMENU)
       {
          return;
       }
@@ -370,13 +370,13 @@ namespace netnodeds
    void html_edit_view::_001OnPost(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
-         if(pbase->m_wparam == 100)
-         {
-            post_message(WM_APP + 80, 101);
-         }
-         else if (pbase->m_wparam == 101)
-         {
-         }
+      if(pbase->m_wparam == 100)
+      {
+         post_message(WM_APP + 80, 101);
+      }
+      else if (pbase->m_wparam == 101)
+      {
+      }
    }
 
    void html_edit_view::transform()
@@ -433,9 +433,9 @@ namespace netnodeds
    void html_edit_view::_001OnUser(::message::message * pobj)
    {
       SCAST_PTR(::message::base, pbase, pobj);
-         if(pbase->m_wparam == MessageUserCheckChange)
-         {
-         }
+      if(pbase->m_wparam == MessageUserCheckChange)
+      {
+      }
    }
 
 

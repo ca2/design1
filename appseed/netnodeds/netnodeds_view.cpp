@@ -28,9 +28,6 @@ namespace netnodeds
    }
 
 
-#ifdef DEBUG
-
-
    void view::assert_valid() const
    {
       ::user::plain_edit_view::assert_valid();
@@ -40,7 +37,7 @@ namespace netnodeds
    {
       ::user::plain_edit_view::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
    void view::on_update(::user::impact * pSender, LPARAM lHint, ::object * phint)
    {

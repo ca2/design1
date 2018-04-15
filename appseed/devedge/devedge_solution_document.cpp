@@ -60,7 +60,7 @@ namespace devedge
       if(m_file->IsOpened())
          m_file->close();
       if(!m_file->open(get_file_path(), ::file::type_binary | ::file::mode_read_write |
-         ::file::share_deny_none))
+                       ::file::share_deny_none))
          return FALSE;
 
       update_all_views(NULL, 11);
@@ -68,8 +68,7 @@ namespace devedge
       return TRUE;
    }
 
- 
-   #ifdef DEBUG
+
    void solution_document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -79,13 +78,12 @@ namespace devedge
    {
       ::user::document::dump(dumpcontext);
    }
-   #endif //DEBUG
 
 
    bool solution_document::on_open_document(var varFile)
    {
       //if(!::user::document::on_open_document(varFile))
-        // return FALSE;
+      // return FALSE;
 
       m_psolution = new ::devedge::solution(this);
 
@@ -98,14 +96,14 @@ namespace devedge
 
       if(!m_psolution->load(varFile, m_pview))
       {
-         
+
          delete_contents();
 
          return false;
 
       }
 
-      
+
 
       return true;
 
@@ -117,7 +115,7 @@ namespace devedge
       if(m_file->IsOpened())
          m_file->close();
       if(!m_file->open(get_file_path(), ::file::type_binary | ::file::mode_read_write |
-         ::file::share_deny_none))
+                       ::file::share_deny_none))
          return;
       update_all_views(NULL, 123);
    }
@@ -225,35 +223,35 @@ namespace devedge
       UNREFERENCED_PARAMETER(lpcszLocal);
       UNREFERENCED_PARAMETER(lpcszRemote);
       _throw(not_implemented(get_app()));
-   /*   CInternetSession sess("MyProgram/1.0");
+      /*   CInternetSession sess("MyProgram/1.0");
 
-      CFtpConnection* pConnect = NULL;
+         CFtpConnection* pConnect = NULL;
 
-       try
-       {
-           // Request a connection to ftp.microsoft.com. Default
-           // parameters mean that we'll try with username = ANONYMOUS
-           // and password set to the machine name @ domain name
-           pConnect = sess.GetFtpConnection(file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_host.txt"),file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_user.txt"), file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_pass.txt"));
+          try
+          {
+              // Request a connection to ftp.microsoft.com. Default
+              // parameters mean that we'll try with username = ANONYMOUS
+              // and password set to the machine name @ domain name
+              pConnect = sess.GetFtpConnection(file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_host.txt"),file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_user.txt"), file_contents_dup("C:\\archive\\root\\x\\sensitive\\sensitive\\seed\\netnodeds_pass.txt"));
 
-           pConnect->PutFile(lpcszLocal, lpcszRemote);
+              pConnect->PutFile(lpcszLocal, lpcszRemote);
 
-       }
-       catch (CInternetException* pEx)
-       {
-           string str;
-           pEx->get_error_message(str);
-           printf_s("ERROR!  %s\n", str);
-           pEx->Delete();
-        }
+          }
+          catch (CInternetException* pEx)
+          {
+              string str;
+              pEx->get_error_message(str);
+              printf_s("ERROR!  %s\n", str);
+              pEx->Delete();
+           }
 
-       // if the connection is open, close it
-       if (pConnect != NULL) 
-       {
-           pConnect->close();
-           delete pConnect;
-       }
-   */
+          // if the connection is open, close it
+          if (pConnect != NULL)
+          {
+              pConnect->close();
+              delete pConnect;
+          }
+      */
 
 
    }

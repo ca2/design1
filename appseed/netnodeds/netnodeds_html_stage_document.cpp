@@ -84,7 +84,7 @@ namespace netnodeds
       return TRUE;
    }
 
-#ifdef DEBUG
+
    void html_stage_document::assert_valid() const
    {
       html_document::assert_valid();
@@ -94,7 +94,7 @@ namespace netnodeds
    {
       html_document::dump(dumpcontext);
    }
-#endif //DEBUG
+
 
 
    bool html_stage_document::on_open_document(var varFile)

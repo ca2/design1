@@ -11,7 +11,7 @@ namespace devedge
       ::user::controller(papp),
       ::user::document(papp),
       m_memfile(papp),
-      m_file(papp), 
+      m_file(papp),
       html_document(papp)
    {
 
@@ -83,7 +83,7 @@ namespace devedge
       return TRUE;
    }
 
-#ifdef DEBUG
+
    void html_stage_document::assert_valid() const
    {
       html_document::assert_valid();
@@ -93,7 +93,6 @@ namespace devedge
    {
       html_document::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
    bool html_stage_document::on_open_document(var varFile)

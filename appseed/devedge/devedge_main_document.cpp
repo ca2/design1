@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace devedge
@@ -32,7 +32,7 @@ namespace devedge
    }
 
 
-#ifdef DEBUG
+
    void main_document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -42,7 +42,6 @@ namespace devedge
    {
       ::user::document::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
    bool main_document::on_open_document(var varFile)
@@ -51,7 +50,7 @@ namespace devedge
       ::devedge::devedge & devedge = Application.devedge();
       sp(::create) cc(get_app());
       cc->m_spCommandLine->m_varFile = varFile;
-      
+
       devedge.m_ptemplate_devedge->request_create(cc);
 
       return ::user::get_document(cc) != NULL;

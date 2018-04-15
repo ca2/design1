@@ -32,10 +32,10 @@ namespace biteditor
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &front_view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &front_view::_001OnSetCursor);
       //IGUI_MSG_LINK(WM_TIMER, pinterface, this, &front_view::_001OnTimer);
-      IGUI_MSG_LINK(WM_USER + 101     , pinterface, this, &front_view::_001OnPost);
+      IGUI_MSG_LINK(WM_USER + 101, pinterface, this, &front_view::_001OnPost);
 
       //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &front_view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119      , pinterface, this, &front_view::_001OnWavePlayerEvent);
+      IGUI_MSG_LINK(WM_APP + 119, pinterface, this, &front_view::_001OnWavePlayerEvent);
       //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &front_view::_001OnChar);
       //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &front_view::_001OnSysChar);
       //connect_command(ID_FILE_PRINT, html_view::OnFilePrint)
@@ -43,29 +43,28 @@ namespace biteditor
       //connect_command(ID_FILE_PRINT_PREVIEW, html_view::OnFilePrintPreview)
 
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
-         pinterface,
-         this,
-         &front_view::_001OnLButtonDown);
+                    pinterface,
+                    this,
+                    &front_view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP,
-         pinterface,
-         this,
-         &front_view::_001OnLButtonUp);
+                    pinterface,
+                    this,
+                    &front_view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_MOUSEMOVE,
-         pinterface,
-         this,
-         &front_view::_001OnMouseMove);
+                    pinterface,
+                    this,
+                    &front_view::_001OnMouseMove);
       IGUI_MSG_LINK(WM_KEYDOWN,
-         pinterface,
-         this,
-         &front_view::_001OnKeyDown);
+                    pinterface,
+                    this,
+                    &front_view::_001OnKeyDown);
       IGUI_MSG_LINK(WM_KEYUP,
-         pinterface,
-         this,
-         &front_view::_001OnKeyUp);
+                    pinterface,
+                    this,
+                    &front_view::_001OnKeyUp);
 
    }
 
-#ifdef DEBUG
    void front_view::assert_valid() const
    {
       html_view::assert_valid();
@@ -75,7 +74,6 @@ namespace biteditor
    {
       html_view::dump(dumpcontext);
    }
-#endif //DEBUG
 
    /////////////////////////////////////////////////////////////////////////////
    // front_view message handlers
@@ -177,7 +175,7 @@ namespace biteditor
    void front_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
 
    }
 
@@ -212,19 +210,19 @@ namespace biteditor
    void front_view::_001OnLButtonDown(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
    void front_view::_001OnMouseMove(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
    }
 
 
@@ -244,29 +242,29 @@ namespace biteditor
       return NULL;
    }
 
-   void front_view::_001OnTimer(::timer * ptimer) 
+   void front_view::_001OnTimer(::timer * ptimer)
    {
       html_view::_001OnTimer(ptimer);
-         if(ptimer->m_nIDEvent >= 100
+      if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
+      {
+      }
+      else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
+      {
+         if(ptimer->m_nIDEvent == 500)
          {
+            KillTimer(500);
+            SetTimer(501, 300, NULL);
          }
-         else if(ptimer->m_nIDEvent == 500 || ptimer->m_nIDEvent == 501 )
-         {
-            if(ptimer->m_nIDEvent == 500)
-            {
-               KillTimer(500);
-               SetTimer(501, 300, NULL);
-            }
-            key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
-         }
+         key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
+      }
 
    }
 
    void front_view::_001OnKeyDown(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
+      m_dwLastKeyWparam = (uint32_t) pkey->m_wparam;
       m_dwLastKeyLparam = (uint32_t) pkey->m_lparam;
       key_to_char(m_dwLastKeyWparam, m_dwLastKeyLparam);
       SetTimer(500, 500, NULL);
@@ -284,13 +282,13 @@ namespace biteditor
    void front_view::_001OnChar(::message::message * pobj)
    {
       SCAST_PTR(::message::key, pkey, pobj);
-         if(pkey->m_ekey == ::user::key_s)
+      if(pkey->m_ekey == ::user::key_s)
+      {
+         if(Session.is_key_pressed(::user::key_control))
          {
-            if(Session.is_key_pressed(::user::key_control))
-            {
-               return;
-            }
+            return;
          }
+      }
    }
 
 
@@ -334,8 +332,8 @@ namespace biteditor
       ::message::key key(get_app());
 
       if(wparam == VK_LSHIFT || wparam == VK_RSHIFT
-         || wparam == VK_LCONTROL || wparam == VK_RCONTROL
-         || wparam == VK_LMENU || wparam == VK_RMENU)
+            || wparam == VK_LCONTROL || wparam == VK_RCONTROL
+            || wparam == VK_LMENU || wparam == VK_RMENU)
       {
          return;
       }

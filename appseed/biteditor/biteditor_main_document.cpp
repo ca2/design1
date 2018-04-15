@@ -45,7 +45,6 @@ namespace biteditor
 
 
 
-#ifdef DEBUG
    void main_document::assert_valid() const
    {
       ::user::document::assert_valid();
@@ -55,7 +54,6 @@ namespace biteditor
    {
       ::user::document::dump(dumpcontext);
    }
-#endif //DEBUG
 
 
 

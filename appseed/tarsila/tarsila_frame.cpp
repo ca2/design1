@@ -1,7 +1,7 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
-namespace tarsila 
+namespace tarsila
 {
 
 
@@ -10,7 +10,7 @@ namespace tarsila
       simple_frame_window(papp)
    {
 
-      
+
 
       WfiEnableFullScreen();
 
@@ -19,9 +19,6 @@ namespace tarsila
    frame::~frame()
    {
    }
-
-
-#ifdef DEBUG
 
 
    void frame::assert_valid() const
@@ -35,13 +32,12 @@ namespace tarsila
    }
 
 
-#endif //DEBUG
    void frame::install_message_routing(::message::sender * pinterface)
    {
       simple_frame_window::install_message_routing(pinterface);
 
       IGUI_MSG_LINK(WM_CREATE, pinterface, this, &frame::_001OnCreate);
-//      
+//
 
    }
 
@@ -70,7 +66,7 @@ namespace tarsila
 
    bool frame::get_translucency(::user::e_translucency  & etranslucency)
    {
-      
+
       etranslucency = ::user::translucency_present;
 
       return true;
@@ -79,7 +75,7 @@ namespace tarsila
 
 
 
-} // namespace tarsila 
+} // namespace tarsila
 
 
 

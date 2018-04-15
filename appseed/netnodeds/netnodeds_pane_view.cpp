@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace netnodeds
@@ -25,7 +25,7 @@ namespace netnodeds
    }
 
 
-   #ifdef DEBUG
+
    void pane_view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -35,10 +35,10 @@ namespace netnodeds
    {
       ::user::impact::dump(dumpcontext);
    }
-   #endif //DEBUG
 
 
-   void pane_view::_001OnCreate(::message::message * pobj) 
+
+   void pane_view::_001OnCreate(::message::message * pobj)
    {
 
       if(pobj->previous())
@@ -61,7 +61,7 @@ namespace netnodeds
    }
 
 
-   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint) 
+   void pane_view::on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint)
    {
 
       sp(::netnodeds::application) papp =  (( (GetParentFrame()))->get_app());
@@ -83,7 +83,7 @@ namespace netnodeds
             }
          }
       }
-         if(pHint != NULL)
+      if(pHint != NULL)
       {
          if(base_class < main_document >::bases(pHint))
          {
@@ -119,13 +119,13 @@ namespace netnodeds
          }
          else if(::str::begins_eat_ci(strPath, "netnodeds://"))
          {
-            
+
             sp(::create) cc(get_app());
-            
+
             cc->m_spCommandLine->m_varFile = strPath;
-            
+
             cc->m_puiParent = this;
-            
+
             app.netnodeds().m_ptemplate_netnodeds->request_create(cc);
 
             sp(::user::document) pdoc = ::user::get_document(cc);
@@ -163,123 +163,123 @@ namespace netnodeds
          switch(pcreatordata->m_id)
          {
          case PaneViewContextMenu:
+         {
+            sp(::create) cc(get_app());
+            cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
+            cc->m_puiParent = pcreatordata->m_pholder;
+
+            Application.netnodeds().m_ptemplateFront->request_create(cc);
+
+            sp(front_document) pdoc = ::user::get_document(cc);
+
+            if(pdoc != NULL)
             {
-               sp(::create) cc(get_app());
-               cc->m_spCommandLine->m_varFile = "http://localhost:10011/";
-               cc->m_puiParent = pcreatordata->m_pholder;
-               
-               Application.netnodeds().m_ptemplateFront->request_create(cc);
-
-               sp(front_document) pdoc = ::user::get_document(cc);
-
-               if(pdoc != NULL)
+               sp(::user::impact) pview = pdoc->get_view();
+               if(pview != NULL)
                {
-                  sp(::user::impact) pview = pdoc->get_view();
-                  if(pview != NULL)
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+                  if(pframe != NULL)
                   {
-                     sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                     if(pframe != NULL)
-                     {
-                        pcreatordata->m_pdoc = pdoc;
-                     }
+                     pcreatordata->m_pdoc = pdoc;
                   }
                }
             }
-            break;
+         }
+         break;
          case PaneViewDevEdge:
+         {
+            sp(::user::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(NULL, true, pcreatordata->m_pholder));
+            pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
+            if(pdoc != NULL)
             {
-               sp(::user::document) pdoc =  (app.netnodeds().m_ptemplate_netnodeds->open_document_file(NULL, true, pcreatordata->m_pholder));
-               pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
-               if(pdoc != NULL)
+               sp(::user::impact) pview = pdoc->get_view(0);
+               if(pview != NULL)
                {
-                  sp(::user::impact) pview = pdoc->get_view(0);
-                  if(pview != NULL)
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+                  if(pframe != NULL)
                   {
-                     sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                     if(pframe != NULL)
-                     {
-                        pcreatordata->m_pdoc = pdoc;
-                        pcreatordata->m_pwnd = pframe;
+                     pcreatordata->m_pdoc = pdoc;
+                     pcreatordata->m_pwnd = pframe;
 
 
-                     }
                   }
                }
             }
-            break;
+         }
+         break;
          case PaneViewHtmlEdit:
-            {
-               
+         {
+
             sp(::create) cc(get_app());
-               
-               cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
-               
-               cc->m_puiParent = this;
-               
-               Application.netnodeds().m_ptemplateHtmlEdit->request_create(cc);
 
-               sp(::user::document) pdoc = ::user::get_document(cc);
+            cc->m_spCommandLine->m_varFile = "E:\\temp\\html.html";
 
-               if(pdoc != NULL)
+            cc->m_puiParent = this;
+
+            Application.netnodeds().m_ptemplateHtmlEdit->request_create(cc);
+
+            sp(::user::document) pdoc = ::user::get_document(cc);
+
+            if(pdoc != NULL)
+            {
+               sp(::user::impact) pview = pdoc->get_view();
+               if(pview != NULL)
                {
-                  sp(::user::impact) pview = pdoc->get_view();
-                  if(pview != NULL)
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+                  if(pframe != NULL)
                   {
-                     sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                     if(pframe != NULL)
-                     {
-                        pcreatordata->m_pdoc = pdoc;
-                        pcreatordata->m_pwnd = pframe;
-                     }
+                     pcreatordata->m_pdoc = pdoc;
+                     pcreatordata->m_pwnd = pframe;
                   }
                }
             }
-            break;
+         }
+         break;
          case PaneViewHtmlStage:
+         {
+            sp(html_stage_document) pdoc =  (app.netnodeds().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
+            if(pdoc != NULL)
             {
-               sp(html_stage_document) pdoc =  (app.netnodeds().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
-               if(pdoc != NULL)
+               sp(::user::impact) pview = pdoc->get_view();
+               if(pview != NULL)
                {
-                  sp(::user::impact) pview = pdoc->get_view();
-                  if(pview != NULL)
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+                  if(pframe != NULL)
                   {
-                     sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                     if(pframe != NULL)
-                     {
-                        pcreatordata->m_pdoc = pdoc;
-                     }
+                     pcreatordata->m_pdoc = pdoc;
                   }
                }
             }
-            break;
+         }
+         break;
          case PaneViewSolution:
-            {
-               
+         {
+
             sp(::create) cc(get_app());
-               
-               cc->m_puiParent = this;
-               
-               app.netnodeds().m_ptemplate_solution->request_create(cc);
 
-               sp(::netnodeds::solution_document) pdoc = ::user::get_document(cc);
+            cc->m_puiParent = this;
 
-               if(pdoc != NULL)
+            app.netnodeds().m_ptemplate_solution->request_create(cc);
+
+            sp(::netnodeds::solution_document) pdoc = ::user::get_document(cc);
+
+            if(pdoc != NULL)
+            {
+               sp(::user::impact) pview = pdoc->get_view();
+               if(pview != NULL)
                {
-                  sp(::user::impact) pview = pdoc->get_view();
-                  if(pview != NULL)
+                  sp(::user::frame_window) pframe =  (pview->GetParentFrame());
+                  if(pframe != NULL)
                   {
-                     sp(::user::frame_window) pframe =  (pview->GetParentFrame());
-                     if(pframe != NULL)
-                     {
-                        pcreatordata->m_pdoc = pdoc;
-                        pcreatordata->m_pwnd = pframe;
+                     pcreatordata->m_pdoc = pdoc;
+                     pcreatordata->m_pwnd = pframe;
 
 
-                     }
                   }
                }
             }
-            break;
+         }
+         break;
 
          default:
             break;
@@ -313,7 +313,7 @@ namespace netnodeds
 
       }
       ::userex::pane_tab_view::on_show_view();
-      /*if(m_pviewdata->m_id == PaneViewDevEdge 
+      /*if(m_pviewdata->m_id == PaneViewDevEdge
       && !m_pviewdata->m_idSplit.has_char())
       {
          if(!m_bShowDevEdge)
