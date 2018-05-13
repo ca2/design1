@@ -102,13 +102,13 @@ namespace tarsila
                   if(bSelected)
                   {
 
-                     draw.m_pgraphics->FillSolidRect(rect,ARGB(255,0,0,0));
+                     draw.m_pgraphics->fill_solid_rect(rect,ARGB(255,0,0,0));
 
                   }
                   else
                   {
 
-                     draw.m_pgraphics->Draw3dRect(rect,ARGB(255,0,0,0),ARGB(255,0,0,0));
+                     draw.m_pgraphics->draw3d_rect(rect,ARGB(255,0,0,0),ARGB(255,0,0,0));
 
                   }
 

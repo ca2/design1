@@ -123,7 +123,7 @@ namespace tarsila
 
       GetClientRect(rectClient);
 
-      pgraphics->FillSolidRect(rectClient,ARGB(184 - 66,184,184,177));
+      pgraphics->fill_solid_rect(rectClient,ARGB(184 - 66,184,184,177));
 
       data * pdata = get_document()->get_typed_data < data>();
 
@@ -159,7 +159,7 @@ namespace tarsila
 
       pgraphics->SelectObject(br);
 
-      pgraphics->Polygon(pta.get_data(), pta.get_size());
+      pgraphics->polygon(pta);
 
       br->create_solid(ARGB(184,255,255,255));
 
