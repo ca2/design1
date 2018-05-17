@@ -111,7 +111,7 @@ namespace devedge
    //   return true;
    //}
 
-   void front_child_frame::_001OnCmdMsg(::user::command * pcommand)
+   void front_child_frame::route_command_message(::user::command * pcommand)
    {
 
       //   FileManagerFileListCallback * pcallback = GetFileManager()->get_filemanager_data()->m_ptemplate->m_pfilelistcallback;
@@ -146,7 +146,7 @@ namespace devedge
       }
       }*/
 
-      simple_child_frame::_001OnCmdMsg(pcommand);
+      simple_child_frame::route_command_message(pcommand);
 
    }
 

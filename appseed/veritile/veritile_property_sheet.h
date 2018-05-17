@@ -99,7 +99,7 @@ namespace veritile
       
       virtual bool validate(::user::interaction * pui, index iItem, bool bInteract);
 
-      bool BaseOnControlEvent(::user::control_event * pevent);
+      void on_control_event(::user::control_event * pevent);
 
       
    };

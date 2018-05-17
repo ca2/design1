@@ -23,7 +23,7 @@ namespace biteditor
 
       virtual bool on_create_bars();
 
-      virtual void _001OnCmdMsg(::user::command * pcommand); 
+      virtual void route_command_message(::user::command * pcommand); 
 
       DECL_GEN_SIGNAL(_001OnCreate);
 

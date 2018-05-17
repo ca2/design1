@@ -49,7 +49,7 @@ namespace devedge
 
       virtual void on_request(::create * pcreate);
 
-      virtual void _001OnCmdMsg(::user::command * pcommand) override;
+      virtual void route_command_message(::user::command * pcommand) override;
 
       virtual bool on_install();
 

@@ -42,7 +42,7 @@ namespace netnodeds
          return TRUE;
       }
       // xyzxyz
-      //return html_document::_001OnCmdMsg(pcommand);
+      //return html_document::route_command_message(pcommand);
       return false;
    }
 

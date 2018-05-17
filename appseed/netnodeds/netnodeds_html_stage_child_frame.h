@@ -23,7 +23,7 @@ namespace netnodeds
       
       bool pre_create_window(::user::create_struct& cs);
 
-      virtual void _001OnCmdMsg(::user::command * pcommand); 
+      virtual void route_command_message(::user::command * pcommand); 
 
       
 

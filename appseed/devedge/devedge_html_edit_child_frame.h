@@ -21,7 +21,7 @@ namespace devedge
       sp(::filemanager::manager) GetFileManager();
       virtual bool on_create_bars() override;
       
-      virtual void _001OnCmdMsg(::user::command * pcommand) override; 
+      virtual void route_command_message(::user::command * pcommand) override; 
 
       bool pre_create_window(::user::create_struct& cs);
 

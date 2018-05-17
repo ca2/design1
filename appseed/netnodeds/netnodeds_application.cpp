@@ -93,10 +93,10 @@ namespace netnodeds
       ::core::application::pre_translate_message(pobj);
    }
 
-   void application::_001OnCmdMsg(::user::command * pcommand)
+   void application::route_command_message(::user::command * pcommand)
 
    {
-      ::core::application::_001OnCmdMsg(pcommand);
+      ::core::application::route_command_message(pcommand);
    }
    /*
    void application::OnFileManagerOpenFile(::filemanager::data * pdata, ::fs::item_array & itema)

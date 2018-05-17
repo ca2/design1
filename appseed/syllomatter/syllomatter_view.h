@@ -51,7 +51,7 @@ namespace syllomatter
       virtual void _001OnInitialUpdate();
          virtual void on_update(::user::impact * pSender, LPARAM lHint, ::object* pHint);
 
-      bool BaseOnControlEvent(::user::control_event * pevent);
+      void on_control_event(::user::control_event * pevent);
 
       void start_syllomatter_extract(const char * pszCopy, const char * pszCheck);
       static uint32_t c_cdecl ThreadProc_syllomatter_extract(LPVOID lpParam);

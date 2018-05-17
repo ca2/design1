@@ -235,7 +235,7 @@ namespace syllomatter
    }
 
 
-   bool view::BaseOnControlEvent(::user::control_event * pevent)
+   void view::on_control_event(::user::control_event * pevent)
    {
       if(pevent->m_eevent == ::user::event_button_clicked)
       {

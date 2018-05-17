@@ -24,7 +24,7 @@ namespace devedge
       virtual bool on_create_bars() override;
       
 
-      virtual void _001OnCmdMsg(::user::command * pcommand) override; 
+      virtual void route_command_message(::user::command * pcommand) override; 
 
 
       DECL_GEN_SIGNAL(_001OnCreate);

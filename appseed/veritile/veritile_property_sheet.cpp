@@ -824,7 +824,7 @@ namespace veritile
    }
 
 
-   bool property_sheet::BaseOnControlEvent(::user::control_event * pevent)
+   void property_sheet::on_control_event(::user::control_event * pevent)
    {
 
       if(pevent->m_eevent == ::user::event_after_change_text)
@@ -856,7 +856,7 @@ namespace veritile
 
       }
 
-      return base_form_list_view::BaseOnControlEvent(pevent);
+      return base_form_list_view::on_control_event(pevent);
 
    }
 
