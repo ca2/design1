@@ -17,7 +17,7 @@ namespace devedge
    {
 
       sp(solution_document) pdoc = get_document();
-      
+
       m_psolution = pdoc->m_psolution;
 
       ::data::tree * ptree = m_treeptra[0];
@@ -29,7 +29,9 @@ namespace devedge
 
       m_psolution->m_strName = pdoc->get_file_path().name();
       m_psolution->m_strName += ", ";
-      ::file::patha straAscendants;
+
+      stringa straAscendants;
+
       pdoc->get_file_path().ascendants_name(straAscendants);
 
       if(straAscendants.get_count() >= 4)
@@ -56,7 +58,7 @@ namespace devedge
 
                ptree->insert_item(&pproject->m_headers,::data::RelativeLastChild,pproject);
                pproject->m_headers.m_strName = "Header Files";
-               
+
                for(int32_t j = 0; j < pproject->m_headers.get_count(); j++)
                {
                   ptree->insert_item(pproject->m_headers[j],::data::RelativeLastChild,&pproject->m_headers);
@@ -67,7 +69,7 @@ namespace devedge
 
                ptree->insert_item(&pproject->m_source, ::data::RelativeLastChild, pproject);
                pproject->m_source.m_strName = "Source Files";
-               
+
                for(int32_t j = 0; j < pproject->m_source.get_count(); j++)
                {
                   ptree->insert_item(pproject->m_source[j],::data::RelativeLastChild,&pproject->m_source);
@@ -110,12 +112,12 @@ namespace devedge
 
    void solution_view::_001OnOpenItem(sp(::data::tree_item) pitem)
    {
-      
+
       sp(file) pfile =  pitem;
-      
+
       if(pfile != NULL)
       {
-         
+
          sp(pane_view) pview = Application.::devedge::application::m_ppaneview;
          pview->create_pane_by_id("devedgefile://" + pfile->m_strPath);
 
@@ -127,17 +129,17 @@ namespace devedge
 
          puieParent->on_layout();
 
-/*         ::user::split_layout * psplit = dynamic_cast < ::user::split_layout * > (puieParent);
-         if(psplit != NULL)
-         {
-            psplit->get_pane_window(1)->ShowWindow(SW_HIDE);
-            psplit->SetPane(1, pfile->m_pdocument->get_edit_view()->GetParentFrame(), false);
-            psplit->on_layout();
-         }*/
+         /*         ::user::split_layout * psplit = dynamic_cast < ::user::split_layout * > (puieParent);
+                  if(psplit != NULL)
+                  {
+                     psplit->get_pane_window(1)->ShowWindow(SW_HIDE);
+                     psplit->SetPane(1, pfile->m_pdocument->get_edit_view()->GetParentFrame(), false);
+                     psplit->on_layout();
+                  }*/
 
       }
 
-   }   
+   }
 
 
 } // namespace devedge
