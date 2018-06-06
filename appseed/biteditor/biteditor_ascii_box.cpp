@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -26,11 +26,11 @@ namespace biteditor
 
       ::user::interaction::install_message_routing(psender);
 
-      IGUI_MSG_LINK(WM_LBUTTONDOWN , psender, this, &::biteditor::ascii_box::_001OnLButtonDown);
-      IGUI_MSG_LINK(WM_LBUTTONUP   , psender, this, &::biteditor::ascii_box::_001OnLButtonUp);
-      IGUI_MSG_LINK(WM_MOUSEMOVE   , psender, this, &::biteditor::ascii_box::_001OnMouseMove);
-      IGUI_MSG_LINK(WM_CHAR        , psender, this, &::biteditor::ascii_box::_001OnChar);
-      IGUI_MSG_LINK(WM_SYSCHAR     , psender, this, &::biteditor::ascii_box::_001OnSysChar);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN, psender, this, &::biteditor::ascii_box::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP, psender, this, &::biteditor::ascii_box::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_MOUSEMOVE, psender, this, &::biteditor::ascii_box::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_CHAR, psender, this, &::biteditor::ascii_box::_001OnChar);
+      IGUI_MSG_LINK(WM_SYSCHAR, psender, this, &::biteditor::ascii_box::_001OnSysChar);
 
    }
 
@@ -49,7 +49,7 @@ namespace biteditor
    void ascii_box::_001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
+
 
       if(m_pview == NULL || m_pview->get_document() == NULL)
          return;
@@ -61,9 +61,9 @@ namespace biteditor
       m_pview->m_iViewOffset = (ptOffset.y * m_pview->m_iLineSize / m_pview->m_iLineHeight);
 
       //if(m_pview->get_document()->get_data()->is_in_use())
-        // return;
+      // return;
 
-            rect rectClient;
+      rect rectClient;
 
       GetClientRect(rectClient);
       m_pt.x = 0;
@@ -74,7 +74,7 @@ namespace biteditor
       COLORREF crSel = ARGB(255, 10, 30, 20);
       COLORREF cr = ARGB(255, 0, 0, 0);
 
-      pgraphics->FillSolidRect(rectClient, ARGB(255, 240, 255, 240));
+      pgraphics->fill_solid_rect(rectClient, ARGB(255, 240, 255, 240));
 
       ::draw2d::region_sp rgn(allocer());
 
@@ -162,7 +162,7 @@ namespace biteditor
          size size1 = pgraphics->GetTextExtent(strExtent1);
 //         pgraphics->SetBkMode(OPAQUE);
          size size2 = pgraphics->GetTextExtent(strExtent2);
-         pgraphics->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, m_pview->m_iLineHeight,crBkSel);
+         pgraphics->fill_solid_rect_dim(rectClient.left + size1.cx, y, size2.cx, m_pview->m_iLineHeight,crBkSel);
          pgraphics->set_text_color(crSel);
          pgraphics->text_out(m_pt.x + size1.cx, y, strExtent2);
          pgraphics->set_text_color(cr);
@@ -173,16 +173,19 @@ namespace biteditor
          maxcy = m_pview->m_iLineHeight;
          if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
          {
-            pgraphics->MoveTo(m_pt.x + size1.cx, y);
-            pgraphics->LineTo(m_pt.x + size1.cx, y + maxcy);
+            pgraphics->move_to(m_pt.x + size1.cx, y);
+            pgraphics->line_to(m_pt.x + size1.cx, y + maxcy);
          }
          if(m_bFocus && m_bCaretOn && i3 == (str1.get_length() + str2.get_length()))
          {
-            pgraphics->MoveTo(m_pt.x + size1.cx + size2.cx, y);
-            pgraphics->LineTo(m_pt.x + size1.cx + size2.cx, y + maxcy);
+            pgraphics->move_to(m_pt.x + size1.cx + size2.cx, y);
+            pgraphics->line_to(m_pt.x + size1.cx + size2.cx, y + maxcy);
          }
+
          y += m_pview->m_iLineHeight;
+
          lim += m_pview->m_iLineSize;
+
       }
    }
 
@@ -249,9 +252,9 @@ namespace biteditor
       pgraphics->SelectObject(m_spfont);
       int64_t y = 0;
       //int32_t i = 1;
-   //   char buf[4096 + 1];
-   ///   uint32_t uiRead;
-   //   LPTSTR lpsz;
+      //   char buf[4096 + 1];
+      ///   uint32_t uiRead;
+      //   LPTSTR lpsz;
       ::file::edit_file * peditfile = get_document()->m_peditfile;
       peditfile->seek(0, ::file::seek_begin);
       if(m_size.cx <= 0)
@@ -277,10 +280,10 @@ namespace biteditor
       file_position_t iSelStart;
       file_position_t iSelEnd;
       _001GetViewSel(iSelStart, iSelEnd);
-   //   int32_t lim = 0;
+      //   int32_t lim = 0;
       int32_t maxcy;
       int32_t y = 0;
-   //   bool bFound = false;
+      //   bool bFound = false;
       string strLine;
       size size3 = pgraphics->GetTextExtent("gqYAL�WM");
       size size;
@@ -374,7 +377,7 @@ namespace biteditor
          ::draw2d::memory_graphics pgraphics(allocer());
 
          point pt = pmouse->m_pt;
-         
+
          ScreenToClient(&pt);
 
          m_pview->m_iSelEnd = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
@@ -388,9 +391,9 @@ namespace biteditor
 
    void ascii_box::read_line(string & str, int64_t iLine)
    {
-      
+
       str.Empty();
-      
+
       m_pview->get_document()->m_peditfile->seek(iLine * m_pview->m_iLineSize, ::file::seek_begin);
 
       memory_size_t iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (memory_size_t) m_pview->m_iLineSize);
@@ -408,22 +411,22 @@ namespace biteditor
          {
             WCHAR table[] =
             {
-              0x20AC,0x0081,0x201A,0x0192,0x201E,0x2026,0x2020,0x2021, //128-135
-              0x02C6,0x2030,0x0160,0x2039,0x0152,0x008D,0x017D,0x008F,//135-143
-              0x0090,0x2018,0x2019,0x201C,0x201D,0x2022,0x2013,0x2014,//144-151
-              0x02DC,0x2122,0x0161,0x203A,0x0153,0x009D,0x017E,0x0178,//152-159
-              0x00A0,0x00A1,0x00A2,0x00A3,0x00A4,0x00A5,0x00A6,0x00A7,//160-167
-              0x00A8,0x00A9,0x00AA,0x00AB,0x00AC,0x00AD,0x00AE,0x00AF,//168-175
-              0x00B0,0x00B1,0x00B2,0x00B3,0x00B4,0x00B5,0x00B6,0x00B7,//176-183
-              0x00B8,0x00B9,0x00BA,0x00BB,0x00BC,0x00BD,0x00BE,0x00BF,//184-191
-              0x00C0,0x00C1,0x00C2,0x00C3,0x00C4,0x00C5,0x00C6,0x00C7,//192-199
-              0x00C8,0x00C9,0x00CA,0x00CB,0x00CC,0x00CD,0x00CE,0x00CF,//200-207
-              0x00D0,0x00D1,0x00D2,0x00D3,0x00D4,0x00D5,0x00D6,0x00D7,//208-215
-              0x00D8,0x00D9,0x00DA,0x00DB,0x00DC,0x00DD,0x00DE,0x00DF,//216-223
-              0x00E0,0x00E1,0x00E2,0x00E3,0x00E4,0x00E5,0x00E6,0x00E7,//224
-              0x00E8,0x00E9,0x00EA,0x00EB,0x00EC,0x00ED,0x00EE,0x00EF,
-              0x00F0,0x00F1,0x00F2,0x00F3,0x00F4,0x00F5,0x00F6,0x00F7,
-              0x00F8,0x00F9,0x00FA,0x00FB,0x00FC,0x00FD,0x00FE,0x00FF
+               0x20AC,0x0081,0x201A,0x0192,0x201E,0x2026,0x2020,0x2021, //128-135
+               0x02C6,0x2030,0x0160,0x2039,0x0152,0x008D,0x017D,0x008F,//135-143
+               0x0090,0x2018,0x2019,0x201C,0x201D,0x2022,0x2013,0x2014,//144-151
+               0x02DC,0x2122,0x0161,0x203A,0x0153,0x009D,0x017E,0x0178,//152-159
+               0x00A0,0x00A1,0x00A2,0x00A3,0x00A4,0x00A5,0x00A6,0x00A7,//160-167
+               0x00A8,0x00A9,0x00AA,0x00AB,0x00AC,0x00AD,0x00AE,0x00AF,//168-175
+               0x00B0,0x00B1,0x00B2,0x00B3,0x00B4,0x00B5,0x00B6,0x00B7,//176-183
+               0x00B8,0x00B9,0x00BA,0x00BB,0x00BC,0x00BD,0x00BE,0x00BF,//184-191
+               0x00C0,0x00C1,0x00C2,0x00C3,0x00C4,0x00C5,0x00C6,0x00C7,//192-199
+               0x00C8,0x00C9,0x00CA,0x00CB,0x00CC,0x00CD,0x00CE,0x00CF,//200-207
+               0x00D0,0x00D1,0x00D2,0x00D3,0x00D4,0x00D5,0x00D6,0x00D7,//208-215
+               0x00D8,0x00D9,0x00DA,0x00DB,0x00DC,0x00DD,0x00DE,0x00DF,//216-223
+               0x00E0,0x00E1,0x00E2,0x00E3,0x00E4,0x00E5,0x00E6,0x00E7,//224
+               0x00E8,0x00E9,0x00EA,0x00EB,0x00EC,0x00ED,0x00EE,0x00EF,
+               0x00F0,0x00F1,0x00F2,0x00F3,0x00F4,0x00F5,0x00F6,0x00F7,
+               0x00F8,0x00F9,0x00FA,0x00FB,0x00FC,0x00FD,0x00FE,0x00FF
             };
 
             sz[0] = table[ch + 0x80];
@@ -555,9 +558,9 @@ namespace biteditor
          }
          else if(m_pview->m_iSelEnd < m_pview->get_document()->m_peditfile->get_length())
          {
-            
+
             char buf[2];
-            
+
             m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
 
             memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
@@ -596,9 +599,9 @@ namespace biteditor
          {
             if(m_pview->m_iSelEnd > 2)
             {
-               
+
                char buf[2];
-               
+
                m_pview->get_document()->m_peditfile->seek(m_pview->m_iSelEnd - 2, ::file::seek_begin);
 
                memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
@@ -691,7 +694,7 @@ namespace biteditor
          on_update();
       }
       if(pkey->m_ekey != ::user::key_up
-      && pkey->m_ekey != ::user::key_down)
+            && pkey->m_ekey != ::user::key_down)
       {
          m_pview->m_iColumn = m_pview->SelToColumn(m_pview->m_iSelEnd);
       }

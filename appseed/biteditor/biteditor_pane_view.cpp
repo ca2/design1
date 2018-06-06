@@ -7,14 +7,10 @@ namespace biteditor
 
    pane_view::pane_view(::aura::application * papp) :
       ::object(papp),
-      ::user::tab(papp),
-
       ::user::tab_view(papp),
       ::userex::pane_tab_view(papp),
       place_holder_container(papp)
    {
-
-
 
       m_pviewdata              = NULL;
       m_pviewdataOld              = NULL;
@@ -44,11 +40,12 @@ namespace biteditor
 
       m_pdoctemplateAudioControl = pdoctemplate;*/
 
-
    }
+
 
    pane_view::~pane_view()
    {
+
    }
 
    void pane_view::install_message_routing(::message::sender * pinterface)

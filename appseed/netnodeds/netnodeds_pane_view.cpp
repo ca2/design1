@@ -7,13 +7,11 @@ namespace netnodeds
 
    pane_view::pane_view(::aura::application * papp) :
       ::object(papp),
-      ::user::tab(papp),
       ::user::tab_view(papp),
       ::userex::pane_tab_view(papp),
       place_holder_container(papp)
    {
 
-//      m_etranslucency      = translucency_present;
       m_bShowDevEdge       = false;
 
    }

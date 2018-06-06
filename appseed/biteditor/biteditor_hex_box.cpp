@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 
 
 namespace biteditor
@@ -41,9 +41,9 @@ namespace biteditor
 
       ::user::interaction::install_message_routing(psender);
 
-      IGUI_MSG_LINK(WM_LBUTTONDOWN    , psender, this, &hex_box::_001OnLButtonDown);
-      IGUI_MSG_LINK(WM_LBUTTONUP      , psender, this, &hex_box::_001OnLButtonUp);
-      IGUI_MSG_LINK(WM_MOUSEMOVE      , psender, this, &hex_box::_001OnMouseMove);
+      IGUI_MSG_LINK(WM_LBUTTONDOWN, psender, this, &hex_box::_001OnLButtonDown);
+      IGUI_MSG_LINK(WM_LBUTTONUP, psender, this, &hex_box::_001OnLButtonUp);
+      IGUI_MSG_LINK(WM_MOUSEMOVE, psender, this, &hex_box::_001OnMouseMove);
 
    }
 
@@ -51,7 +51,7 @@ namespace biteditor
    void hex_box::_001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
+
 
       if(Session.get_keyboard_focus() == this)
       {
@@ -75,7 +75,7 @@ namespace biteditor
 
       rect rectClient;
       GetClientRect(rectClient);
-      pgraphics->FillSolidRect(rectClient, ARGB(255, 240, 255, 240));
+      pgraphics->fill_solid_rect(rectClient, ARGB(255, 240, 255, 240));
 
       ::draw2d::region_sp rgn(allocer());
 
@@ -154,7 +154,7 @@ namespace biteditor
          size size1 = pgraphics->GetTextExtent(strExtent1);
 //         pgraphics->SetBkMode(OPAQUE);
          size size2 = pgraphics->GetTextExtent(strExtent2);
-         pgraphics->FillSolidRect(rectClient.left + size1.cx, y, size2.cx, size2.cy,crBkSel);
+         pgraphics->fill_solid_rect_dim(rectClient.left + size1.cx, y, size2.cx, size2.cy,crBkSel);
          pgraphics->set_text_color(crSel);
          pgraphics->text_out(rectClient.left + size1.cx, y, strExtent2);
          pgraphics->set_text_color(cr);
@@ -166,13 +166,13 @@ namespace biteditor
          maxcy = MAX(maxcy, size3.cy);
          if(m_bFocus && m_bCaretOn && i3 == str1.get_length())
          {
-            pgraphics->MoveTo(rectClient.left + size1.cx, y);
-            pgraphics->LineTo(rectClient.left + size1.cx, y + maxcy);
+            pgraphics->move_to(rectClient.left + size1.cx, y);
+            pgraphics->line_to(rectClient.left + size1.cx, y + maxcy);
          }
          if(m_bFocus && m_bCaretOn && i3 == (str1.get_length() + str2.get_length()))
          {
-            pgraphics->MoveTo(rectClient.left + size1.cx + size2.cx, y);
-            pgraphics->LineTo(rectClient.left + size1.cx + size2.cx, y + maxcy);
+            pgraphics->move_to(rectClient.left + size1.cx + size2.cx, y);
+            pgraphics->line_to(rectClient.left + size1.cx + size2.cx, y + maxcy);
          }
          y += maxcy;
          lim += m_pview->m_iLineSize * 3;
@@ -219,9 +219,9 @@ namespace biteditor
 
    void hex_box::_001OnLButtonDown(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::mouse, pmouse, pobj);
-      
+
       m_bMouseDown = true;
 
       ::draw2d::memory_graphics pgraphics(allocer());
@@ -240,9 +240,9 @@ namespace biteditor
    }
    void hex_box::_001OnLButtonUp(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::mouse, pmouse, pobj);
-      
+
       ::draw2d::memory_graphics pgraphics(allocer());
 
       point pt = pmouse->m_pt;
@@ -291,10 +291,10 @@ namespace biteditor
       file_position_t iSelStart;
       file_position_t iSelEnd;
       _001GetViewSel(iSelStart, iSelEnd);
-//      int32_t lim = 0;
+      //      int32_t lim = 0;
       int32_t maxcy;
       int32_t y = 0;
-//      bool bFound = false;
+      //      bool bFound = false;
       string strLine;
       size size3 = pgraphics->GetTextExtent("gqYAL�WM");
       size size;
@@ -316,7 +316,7 @@ namespace biteditor
 
    file_position_t hex_box::char_hit_test(sp(view) pview, ::draw2d::graphics * pgraphics, int32_t px, int32_t py, bool bSelBeg)
    {
-      
+
       pgraphics->SelectObject(m_spfont);
 
       point ptOffset = m_pview->get_viewport_offset();
@@ -414,9 +414,9 @@ namespace biteditor
 
    void hex_box::read_line(string & str, file_position_t iLine)
    {
-      
+
       str.Empty();
-      
+
       m_pview->get_document()->m_peditfile->seek(iLine * m_pview->m_iLineSize, ::file::seek_begin);
 
       memory_size_t iRead = m_pview->get_document()->m_peditfile->read(m_pchLineBuffer, (memory_size_t) m_pview->m_iLineSize);
@@ -432,7 +432,7 @@ namespace biteditor
 
       for(memory_size_t i = 1; i < iRead; i++)
       {
-         
+
          dw = m_pchLineBuffer[i] & 0x000000ff;
 
          strHex.Format(" %02x", dw);
@@ -474,17 +474,17 @@ namespace biteditor
          file_position_t i2 = m_pview->m_iSelEnd;
          if(i1 != i2)
          {
-            
+
             sp(::biteditor::document) pdoc = m_pview->get_document();
-            
+
             document::SetSelCommand * psetsel = new document::SetSelCommand;
-            
+
             psetsel->m_iPreviousSelStart = m_pview->m_iSelStart;
-            
+
             psetsel->m_iPreviousSelEnd = m_pview->m_iSelEnd;
-            
+
             Sort(i1, i2);
-            
+
             m_pview->get_document()->m_peditfile->seek((file_offset_t) i1, ::file::seek_begin);
 
             m_pview->get_document()->m_peditfile->Delete((memory_size_t) (i2 - i1));
@@ -555,9 +555,9 @@ namespace biteditor
          }
          else if(natural(m_pview->m_iSelEnd) < m_pview->get_document()->m_peditfile->get_length())
          {
-            
+
             char buf[2];
-            
+
             m_pview->get_document()->m_peditfile->seek((file_offset_t) m_pview->m_iSelEnd, ::file::seek_begin);
 
             memory_size_t uiRead = m_pview->get_document()->m_peditfile->read(buf, 2);
@@ -591,7 +591,7 @@ namespace biteditor
          {
             if(m_pview->m_iSelEnd > 2)
             {
-               
+
                char buf[2];
 
                m_pview->get_document()->m_peditfile->seek(m_pview->m_iSelEnd - 2, ::file::seek_begin);
@@ -686,7 +686,7 @@ namespace biteditor
          on_update();
       }
       if(pkey->m_ekey != ::user::key_up
-      && pkey->m_ekey != ::user::key_down)
+            && pkey->m_ekey != ::user::key_down)
       {
          m_pview->m_iColumn = m_pview->SelToColumn(m_pview->m_iSelEnd);
       }
