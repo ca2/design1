@@ -20,44 +20,44 @@ static char THIS_FILE[] = __FILE__;
 // IMPLEMENT_DYNCREATE(netnodedsFrame, SimpleFrameWindow)
 
 BEGIN_MESSAGE_MAP(netnodedsFrame, SimpleFrameWindow)
-	//{{AFX_MSG_MAP(netnodedsFrame)
-/* xxx	ON_WM_CREATE()
-	ON_WM_GETMINMAXINFO()
-	ON_WM_MOVE()
-	ON_WM_CLOSE()
-	ON_WM_SYSCOMMAND()
-	ON_WM_TIMER()
-	ON_WM_SHOWWINDOW()
-	ON_WM_NCPAINT()
-	ON_WM_INITMENUPOPUP()
-	ON_WM_INITMENU()
-	ON_WM_ACTIVATE()
-	//}}AFX_MSG_MAP
-	// Global help commands
-	ON_COMMAND(ID_HELP_FINDER, SimpleFrameWindow::OnHelpFinder)
-	ON_COMMAND(ID_HELP, SimpleFrameWindow::OnHelp)
-	ON_COMMAND(ID_CONTEXT_HELP, SimpleFrameWindow::OnContextHelp)
-	ON_COMMAND(ID_DEFAULT_HELP, SimpleFrameWindow::OnHelpFinder)
-	ON_WM_COPYDATA() */
+   //{{AFX_MSG_MAP(netnodedsFrame)
+   /* xxx	ON_WM_CREATE()
+   	ON_WM_GETMINMAXINFO()
+   	ON_WM_MOVE()
+   	ON_WM_CLOSE()
+   	ON_WM_SYSCOMMAND()
+   	ON_WM_TIMER()
+
+   	ON_WM_NCPAINT()
+   	ON_WM_INITMENUPOPUP()
+   	ON_WM_INITMENU()
+   	ON_WM_ACTIVATE()
+   	//}}AFX_MSG_MAP
+   	// Global help commands
+   	ON_COMMAND(ID_HELP_FINDER, SimpleFrameWindow::OnHelpFinder)
+   	ON_COMMAND(ID_HELP, SimpleFrameWindow::OnHelp)
+   	ON_COMMAND(ID_CONTEXT_HELP, SimpleFrameWindow::OnContextHelp)
+   	ON_COMMAND(ID_DEFAULT_HELP, SimpleFrameWindow::OnHelpFinder)
+   	ON_WM_COPYDATA() */
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-	ID_SEPARATOR,           // status line indicator
-	ID_INDICATOR_CAPS,
-	ID_INDICATOR_NUM,
-	ID_INDICATOR_SCRL,
+   ID_SEPARATOR,           // status line indicator
+   ID_INDICATOR_CAPS,
+   ID_INDICATOR_NUM,
+   ID_INDICATOR_SCRL,
 };
 
 /////////////////////////////////////////////////////////////////////////////
 // netnodedsFrame construction/destruction
 
 netnodedsFrame::netnodedsFrame(::ca::application * papp)
-: SimpleFrameWindow(papp)
+   : SimpleFrameWindow(papp)
 {
-   
+
    DISetSection("MusicalPlayerscreencaptureFrame");
-   
+
    AfxGetApp()->m_pMainWnd = this;
 
    WfiEnableFullScreen();
@@ -71,20 +71,20 @@ netnodedsFrame::~netnodedsFrame()
 
 int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	if (SimpleFrameWindow::OnCreate(lpCreateStruct) == -1)
-		return -1;
+   if (SimpleFrameWindow::OnCreate(lpCreateStruct) == -1)
+      return -1;
 
    SetTimer(8913, 5000, 0);
    SetTimer(4033, 100, 0);
    ModifyStyleEx(WS_EX_OVERLAPPEDWINDOW, 0);
 
-   
+
 
    //m_menuhook.Initialize(
-     // BaseMenuCentral::GetMenuCentral()->MenuV033GetImageList(),
-      //BaseMenuCentral::GetMenuCentral()->MenuV033GetImageListDisabled(),
-      //NULL,
-      //FontCentral::AppGetFontCentral()->GetMenuFont());
+   // BaseMenuCentral::GetMenuCentral()->MenuV033GetImageList(),
+   //BaseMenuCentral::GetMenuCentral()->MenuV033GetImageListDisabled(),
+   //NULL,
+   //FontCentral::AppGetFontCentral()->GetMenuFont());
 
    //m_menuhook.Install(this);
 
@@ -92,89 +92,89 @@ int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
    //m_hMenuDefault = NULL;
 
-/* 	if (!m_menubar.CreateEx(this))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
+   /* 	if (!m_menubar.CreateEx(this))
+   	{
+   		TRACE0("Failed to create toolbar\n");
+   		return -1;      // fail to create
+   	}
 
-   if(!m_menubar.Initialize(
-      BaseMenuCentral::GetMenuCentral()->MenuV033GetImageList(),
-      BaseMenuCentral::GetMenuCentral()->MenuV033GetImageListDisabled(),
-      NULL,
-      FontCentral::AppGetFontCentral()->GetMenuFont()) ||
-		VMS_FAILED(m_menubar.LoadMenuBar(IDR_MAINFRAME)))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}*/
+      if(!m_menubar.Initialize(
+         BaseMenuCentral::GetMenuCentral()->MenuV033GetImageList(),
+         BaseMenuCentral::GetMenuCentral()->MenuV033GetImageListDisabled(),
+         NULL,
+         FontCentral::AppGetFontCentral()->GetMenuFont()) ||
+   		VMS_FAILED(m_menubar.LoadMenuBar(IDR_MAINFRAME)))
+   	{
+   		TRACE0("Failed to create toolbar\n");
+   		return -1;      // fail to create
+   	}*/
 
-/*   m_imagelist.Create(16, 16, 0, 10, 10);
-   m_imagelist.Add(
-      (HICON)
-      ::LoadImage(
-         AfxGetApp()->m_hInstance,
-         MAKEINTRESOURCE(IDI_LANGUAGE_CHANGE),
-         IMAGE_ICON,
-         16, 16, 0));*/
+   /*   m_imagelist.Create(16, 16, 0, 10, 10);
+      m_imagelist.Add(
+         (HICON)
+         ::LoadImage(
+            AfxGetApp()->m_hInstance,
+            MAKEINTRESOURCE(IDI_LANGUAGE_CHANGE),
+            IMAGE_ICON,
+            16, 16, 0));*/
 
    /*m_menubar._001SetImageList(&m_imagelist);
    m_menubar.SetItemImage(m_menubar._001GetItemCount() - 1, 0);
 
-	if (!m_toolbar.CreateEx(this, TBSTYLE_FLAT,
-		WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
+   if (!m_toolbar.CreateEx(this, TBSTYLE_FLAT,
+   	WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
       | CBRS_DRAGMOVE,
-		rect(0, 0, 0, 0),
-		AFX_IDW_TOOLBAR) ||
-		!m_toolbar.LoadToolBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
+   	rect(0, 0, 0, 0),
+   	AFX_IDW_TOOLBAR) ||
+   	!m_toolbar.LoadToolBar(IDR_MAINFRAME))
+   {
+   	TRACE0("Failed to create toolbar\n");
+   	return -1;      // fail to create
+   }
 
-	if (!m_toolbarView.CreateEx(this, TBSTYLE_FLAT,
-		WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
+   if (!m_toolbarView.CreateEx(this, TBSTYLE_FLAT,
+   	WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
       | CBRS_DRAGMOVE,
       rect(0, 0, 0, 0),
-		AFX_IDW_TOOLBAR + 1) ||
-		!m_toolbarView.LoadToolBar(IDR_VIEW))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
-   
-   
-	if (!m_dialogbar.Create(this, IDR_MAINFRAME, 
-		WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
+   	AFX_IDW_TOOLBAR + 1) ||
+   	!m_toolbarView.LoadToolBar(IDR_VIEW))
+   {
+   	TRACE0("Failed to create toolbar\n");
+   	return -1;      // fail to create
+   }
+
+
+   if (!m_dialogbar.Create(this, IDR_MAINFRAME,
+   	WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP | CBRS_GRIPPER | CBRS_SIZE_DYNAMIC
       | CBRS_DRAGMOVE, AFX_IDW_DIALOGBAR))
-	{
-		TRACE0("Failed to create dialogbar\n");
-		return -1;		// fail to create
-	}*/
+   {
+   	TRACE0("Failed to create dialogbar\n");
+   	return -1;		// fail to create
+   }*/
 
-/*	if (!m_wndReBar.Create(this) ||
-      !m_wndReBar.AddBar(&m_menubar) ||
-		!m_wndReBar.AddBar(&m_wndToolBar) ||
-      !m_wndReBar.AddBar(&m_toolbarView) ||
-		!m_wndReBar.AddBar(&m_wndDlgBar))
-	{
-		TRACE0("Failed to create rebar\n");
-		return -1;      // fail to create
-	}*/
+   /*	if (!m_wndReBar.Create(this) ||
+         !m_wndReBar.AddBar(&m_menubar) ||
+   		!m_wndReBar.AddBar(&m_wndToolBar) ||
+         !m_wndReBar.AddBar(&m_toolbarView) ||
+   		!m_wndReBar.AddBar(&m_wndDlgBar))
+   	{
+   		TRACE0("Failed to create rebar\n");
+   		return -1;      // fail to create
+   	}*/
 
-/*	if (!m_statusbar.Create(this) ||
-		!m_statusbar.SetIndicators(indicators,
-		  sizeof(indicators)/sizeof(UINT)))
-	{
-		TRACE0("Failed to create status bar\n");
-		return -1;      // fail to create
-	}*/
+   /*	if (!m_statusbar.Create(this) ||
+   		!m_statusbar.SetIndicators(indicators,
+   		  sizeof(indicators)/sizeof(UINT)))
+   	{
+   		TRACE0("Failed to create status bar\n");
+   		return -1;      // fail to create
+   	}*/
 
-	// TODO: Remove this if you don't want tool tips
-	/*m_toolbar.SetBarStyle(m_toolbar.GetBarStyle() |
-		CBRS_TOOLTIPS | CBRS_FLYBY);
-	m_dialogbar.SetBarStyle(m_dialogbar.GetBarStyle() |
-		CBRS_TOOLTIPS | CBRS_FLYBY);
+   // TODO: Remove this if you don't want tool tips
+   /*m_toolbar.SetBarStyle(m_toolbar.GetBarStyle() |
+   	CBRS_TOOLTIPS | CBRS_FLYBY);
+   m_dialogbar.SetBarStyle(m_dialogbar.GetBarStyle() |
+   	CBRS_TOOLTIPS | CBRS_FLYBY);
 
    EnableDocking(CBRS_ALIGN_ANY);
 
@@ -192,20 +192,20 @@ int netnodedsFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
    WindowDataEnableSaveWindowRect(true);
 
 
-	return 0;
+   return 0;
 }
 
 void netnodedsFrame::_001InstallMessageHandling(igui::win::message::sender * pinterface)
 {
-	SimpleFrameWindow::_001InstallMessageHandling(pinterface);
+   SimpleFrameWindow::_001InstallMessageHandling(pinterface);
    IGUI_MSG_LINK(WM_CLOSE,          pinterface, this, &netnodedsFrame::_001OnClose);
 }
 
 
 BOOL netnodedsFrame::PreCreateWindow(::user::create_struct& cs)
 {
-	if( !SimpleFrameWindow::PreCreateWindow(cs) )
-		return FALSE;
+   if( !SimpleFrameWindow::PreCreateWindow(cs) )
+      return FALSE;
    cs.dwExStyle &= ~WS_EX_WINDOWEDGE;
    ::DestroyMenu(cs.hMenu);
    cs.hMenu = NULL;
@@ -228,7 +228,7 @@ BOOL netnodedsFrame::PreCreateWindow(::user::create_struct& cs)
          cs.hwndParent = AfxGetApp()->m_pMainWnd->GetSafeHwnd();
       }
    }
-	return TRUE;
+   return TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -237,12 +237,12 @@ BOOL netnodedsFrame::PreCreateWindow(::user::create_struct& cs)
 #ifdef _DEBUG
 void netnodedsFrame::AssertValid() const
 {
-	SimpleFrameWindow::AssertValid();
+   SimpleFrameWindow::AssertValid();
 }
 
 void netnodedsFrame::Dump(CDumpContext& dc) const
 {
-	SimpleFrameWindow::Dump(dc);
+   SimpleFrameWindow::Dump(dc);
 }
 
 
@@ -257,36 +257,36 @@ void netnodedsFrame::WfiOnFullScreen(bool bFullScreen)
    if(bFullScreen)
    {
       ModifyStyle(
-         WS_BORDER |
-         WS_CAPTION |
-         WS_THICKFRAME,
-         0,
-         0);
+      WS_BORDER |
+      WS_CAPTION |
+      WS_THICKFRAME,
+      0,
+      0);
 
       ShowControlBars(false);
 
-		DWORD dwStyle = GetStyle();
+      DWORD dwStyle = GetStyle();
 
       DWORD dwStyleEx = GetExStyle();
 
       rect rectDesktop;
-		
+
       ::GetWindowRect ( ::GetDesktopWindow(), &rectDesktop );
 
-		::AdjustWindowRectEx(
-			&rectDesktop,
-			dwStyle,
-			FALSE,
-			dwStyleEx);
+      ::AdjustWindowRectEx(
+      &rectDesktop,
+      dwStyle,
+      FALSE,
+      dwStyleEx);
 
       m_FullScreenWindowRect = rectDesktop;
-      
+
       SetWindowPos(
-         &wndTop,
-         rectDesktop.left, rectDesktop.top,
-         rectDesktop.Width(), rectDesktop.Height(),
-         SWP_FRAMECHANGED |
-         SWP_SHOWWINDOW);
+      &wndTop,
+      rectDesktop.left, rectDesktop.top,
+      rectDesktop.Width(), rectDesktop.Height(),
+      SWP_FRAMECHANGED |
+      SWP_SHOWWINDOW);
       RecalcLayout();
    }
    else
@@ -295,31 +295,31 @@ void netnodedsFrame::WfiOnFullScreen(bool bFullScreen)
       if(!m_bCustomFrame)
       {
          ModifyStyle(
-            0,
-            WS_BORDER |
-            WS_CAPTION |
-            WS_THICKFRAME,
-            SWP_FRAMECHANGED);
+         0,
+         WS_BORDER |
+         WS_CAPTION |
+         WS_THICKFRAME,
+         SWP_FRAMECHANGED);
       }
       RecalcLayout();
    }
    if(GetActiveView() != NULL)
    {
    }
-   
+
    DISave("FullScreen", bFullScreen);
 
 }
 
-void netnodedsFrame::OnViewFullScreen() 
+void netnodedsFrame::OnViewFullScreen()
 {
-	ToggleFullScreen();
+   ToggleFullScreen();
 }
 
-void netnodedsFrame::OnUpdateViewFullScreen(CCmdUI* pCmdUI) 
+void netnodedsFrame::OnUpdateViewFullScreen(CCmdUI* pCmdUI)
 {
-   pCmdUI->Enable();	
-   pCmdUI->SetCheck(WfiIsFullScreen() ? 1 : 0);	
+   pCmdUI->Enable();
+   pCmdUI->SetCheck(WfiIsFullScreen() ? 1 : 0);
 }
 
 void netnodedsFrame::ToggleFullScreen()
@@ -327,19 +327,19 @@ void netnodedsFrame::ToggleFullScreen()
    WfiFullScreen(!WfiIsFullScreen(), true);
 }
 
-void netnodedsFrame::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI) 
+void netnodedsFrame::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)
 {
-	if (IsFullScreen())
-	{
-		lpMMI->ptMaxSize.y = m_FullScreenWindowRect.Height();
-		lpMMI->ptMaxTrackSize.y = lpMMI->ptMaxSize.y;
-		lpMMI->ptMaxSize.x = m_FullScreenWindowRect.Width();
-		lpMMI->ptMaxTrackSize.x = lpMMI->ptMaxSize.x;
-	}
-	else
-	{
-   	SimpleFrameWindow::OnGetMinMaxInfo(lpMMI);
-	}
+   if (IsFullScreen())
+   {
+      lpMMI->ptMaxSize.y = m_FullScreenWindowRect.Height();
+      lpMMI->ptMaxTrackSize.y = lpMMI->ptMaxSize.y;
+      lpMMI->ptMaxSize.x = m_FullScreenWindowRect.Width();
+      lpMMI->ptMaxTrackSize.x = lpMMI->ptMaxSize.x;
+   }
+   else
+   {
+      SimpleFrameWindow::OnGetMinMaxInfo(lpMMI);
+   }
 }
 
 bool netnodedsFrame::IsFullScreen()
@@ -348,36 +348,36 @@ bool netnodedsFrame::IsFullScreen()
 }
 
 
-void netnodedsFrame::OnMove(int x, int y) 
+void netnodedsFrame::OnMove(int x, int y)
 {
-	SimpleFrameWindow::OnMove(x, y);
+   SimpleFrameWindow::OnMove(x, y);
 }
 
-void netnodedsFrame::OnClose() 
+void netnodedsFrame::OnClose()
 {
-	SimpleFrameWindow::OnClose();
+   SimpleFrameWindow::OnClose();
 }
 
-void netnodedsFrame::OnSysCommand(UINT nID, LPARAM lParam) 
+void netnodedsFrame::OnSysCommand(UINT nID, LPARAM lParam)
 {
 
    if(nID == SC_SCREENSAVE)
    {
    }
-	
-	SimpleFrameWindow::OnSysCommand(nID, lParam);
+
+   SimpleFrameWindow::OnSysCommand(nID, lParam);
 }
 
 
 
 
 
-void netnodedsFrame::OnTimer(UINT nIDEvent) 
+void netnodedsFrame::OnTimer(UINT nIDEvent)
 {
    static float theta;
    if(nIDEvent == 3)
    {
-     
+
    }
    else if(nIDEvent == 8913)
    {
@@ -385,25 +385,25 @@ void netnodedsFrame::OnTimer(UINT nIDEvent)
    else if(nIDEvent == 4033)
    {
 // OpenGL animation code goes here
-			
-			//glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
-			//glClear( GL_COLOR_BUFFER_BIT );
-			
-			/*glPushMatrix();
-			glRotatef( theta, 0.0f, 1.0f, 1.0f );
-			glBegin( GL_TRIANGLES );
-			glColor3f( 1.0f, 0.0f, 0.0f ); glVertex2f( 0.0f, 1.0f );
-			glColor3f( 0.0f, 1.0f, 0.0f ); glVertex2f( 0.87f, -0.5f );
-			glColor3f( 0.0f, 0.0f, 1.0f ); glVertex2f( -0.87f, -0.5f );
-			glEnd();
-			glPopMatrix();*/
-			
-			//SwapBuffers( m_hdcOpenGL );
-			
-			theta += 2.0f;
-		
+
+      //glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+      //glClear( GL_COLOR_BUFFER_BIT );
+
+      /*glPushMatrix();
+      glRotatef( theta, 0.0f, 1.0f, 1.0f );
+      glBegin( GL_TRIANGLES );
+      glColor3f( 1.0f, 0.0f, 0.0f ); glVertex2f( 0.0f, 1.0f );
+      glColor3f( 0.0f, 1.0f, 0.0f ); glVertex2f( 0.87f, -0.5f );
+      glColor3f( 0.0f, 0.0f, 1.0f ); glVertex2f( -0.87f, -0.5f );
+      glEnd();
+      glPopMatrix();*/
+
+      //SwapBuffers( m_hdcOpenGL );
+
+      theta += 2.0f;
+
    }
-	SimpleFrameWindow::OnTimer(nIDEvent);
+   SimpleFrameWindow::OnTimer(nIDEvent);
 }
 
 
@@ -419,36 +419,36 @@ void netnodedsFrame::ShowControlBars(bool bShow)
       nShow = SW_HIDE;
    }
 
-/*   m_toolbar.ShowWindow(nShow);
-   m_toolbarView.ShowWindow(nShow);
-//   m_statusbar.ShowWindow(nShow);
-   m_menubar.ShowWindow(nShow);
-   m_dialogbar.ShowWindow(nShow);*/
+   /*   m_toolbar.ShowWindow(nShow);
+      m_toolbarView.ShowWindow(nShow);
+   //   m_statusbar.ShowWindow(nShow);
+      m_menubar.ShowWindow(nShow);
+      m_dialogbar.ShowWindow(nShow);*/
 
 }
 
-void netnodedsFrame::OnShowWindow(BOOL bShow, UINT nStatus) 
+void netnodedsFrame::OnShowWindow(BOOL bShow, UINT nStatus)
 {
-	SimpleFrameWindow::OnShowWindow(bShow, nStatus);
-	
-	// TODO: Add your message handler code here
-	
+   SimpleFrameWindow::OnShowWindow(bShow, nStatus);
+
+   // TODO: Add your message handler code here
+
 }
 
-void netnodedsFrame::OnNcPaint() 
+void netnodedsFrame::OnNcPaint()
 {
-	// TODO: Add your message handler code here
-	
-	// Do not call SimpleFrameWindow::OnNcPaint() for painting messages
+   // TODO: Add your message handler code here
+
+   // Do not call SimpleFrameWindow::OnNcPaint() for painting messages
 }
 
-void netnodedsFrame::OnTogglecustomframe() 
+void netnodedsFrame::OnTogglecustomframe()
 {
-	SetCustomFrame(!GetCustomFrame());
-	
+   SetCustomFrame(!GetCustomFrame());
+
 }
 
-void netnodedsFrame::OnUpdateTogglecustomframe(CCmdUI* pCmdUI) 
+void netnodedsFrame::OnUpdateTogglecustomframe(CCmdUI* pCmdUI)
 {
    pCmdUI->Enable();
    pCmdUI->SetCheck(m_bCustomFrame ? 1 : 0);
@@ -462,35 +462,35 @@ BOOL netnodedsFrame::OnCopyData(base_wnd * pwnd, COPYDATASTRUCT* pcds)
 }
 
 
-BOOL netnodedsFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo) 
+BOOL netnodedsFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, CAFX_CMDHANDLERINFO* pHandlerInfo)
 {
-	// TODO: Add your specialized code here and/or call the base class
-	
-	return SimpleFrameWindow::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
+   // TODO: Add your specialized code here and/or call the base class
+
+   return SimpleFrameWindow::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
-void netnodedsFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu) 
+void netnodedsFrame::OnInitMenuPopup(CMenu* pPopupMenu, UINT nIndex, BOOL bSysMenu)
 {
-	SimpleFrameWindow::OnInitMenuPopup(pPopupMenu, nIndex, bSysMenu);
-	
-	// TODO: Add your message handler code here
-	
+   SimpleFrameWindow::OnInitMenuPopup(pPopupMenu, nIndex, bSysMenu);
+
+   // TODO: Add your message handler code here
+
 }
 
-void netnodedsFrame::OnInitMenu(CMenu* pMenu) 
+void netnodedsFrame::OnInitMenu(CMenu* pMenu)
 {
-	SimpleFrameWindow::OnInitMenu(pMenu);
-	
-	// TODO: Add your message handler code here
-	
+   SimpleFrameWindow::OnInitMenu(pMenu);
+
+   // TODO: Add your message handler code here
+
 }
 
-void netnodedsFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized) 
+void netnodedsFrame::OnActivate(UINT nState, base_wnd* pWndOther, BOOL bMinimized)
 {
-	SimpleFrameWindow::OnActivate(nState, pWndOther, bMinimized);
-	
-	// TODO: Add your message handler code here
-	
+   SimpleFrameWindow::OnActivate(nState, pWndOther, bMinimized);
+
+   // TODO: Add your message handler code here
+
 }
 
 
