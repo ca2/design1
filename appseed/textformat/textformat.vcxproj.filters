@@ -85,9 +85,6 @@
     <ClCompile Include="userex_image_list_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="aura_serialize.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="textformat.h">
@@ -169,9 +166,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="userex_image_list_view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="aura_serialize.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -711,7 +711,6 @@
     <ClCompile Include=".\textformat_application.cpp" />
     <ClCompile Include=".\textformat_document.cpp" />
     <ClCompile Include=".\textformat_frame.cpp" />
-    <ClCompile Include="aura_serialize.cpp" />
     <ClCompile Include="composite_view.cpp" />
     <ClCompile Include="textformat.cpp" />
     <ClCompile Include=".\textformat_pane_view.cpp" />
@@ -743,7 +742,6 @@
     <ClCompile Include="user_tool_window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aura_serialize.h" />
     <ClInclude Include="textformat_application.h" />
     <ClInclude Include="textformat_document.h" />
     <ClInclude Include="textformat_frame.h" />
