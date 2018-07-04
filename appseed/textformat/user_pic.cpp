@@ -799,7 +799,7 @@ namespace user
    }
 
    
-   void pic::pic_impl::operator()(serialize & serialize)
+   void pic::pic_impl::stream(serialize & serialize)
    {
 
       if (serialize.is_version(FIRST_VERSION))
@@ -811,9 +811,9 @@ namespace user
          serialize(m_bDrag);
          serialize(m_dRotate);
          serialize(m_rectBounding);
-         serialize.serialize_array(m_pta);
-         serialize.serialize_array(m_ptaDrawing);
-         serialize.serialize_array(m_ptaCursor);
+         serialize.stream_array(m_pta);
+         serialize.stream_array(m_ptaDrawing);
+         serialize.stream_array(m_ptaCursor);
          serialize(m_dZoom);
          serialize(m_ptDrag);
 
@@ -822,13 +822,13 @@ namespace user
    }
 
 
-   void pic::operator()(serialize & serialize)
+   void pic::stream(serialize & serialize)
    {
 
       if (serialize.is_version(FIRST_VERSION))
       {
 
-         serialize(*m_ppic);
+         serialize.stream(*m_ppic);
 
       }
 

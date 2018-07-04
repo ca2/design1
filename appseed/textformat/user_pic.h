@@ -32,7 +32,7 @@ namespace user
 
          pic_impl();
 
-         virtual void operator()(serialize & serialize) override;
+         virtual void stream(serialize & serialize) override;
 
       };
 
@@ -87,7 +87,7 @@ namespace user
 
       virtual void move_to(pointd pt, ::sized sizePage, ::sized sizeClient, LPCRECTD lpcrectMargin);
 
-      virtual void operator()(serialize & serialize) override;
+      virtual void stream(serialize & serialize) override;
 
 
    };
