@@ -155,6 +155,30 @@ namespace userex
    }
 
 
+   ::file::path group_image_list_view::get_link_path(string strLink)
+   {
+
+      ::file::path path;
+
+      for (auto & group : m_groupa)
+      {
+
+         path = group->m_plist->get_link_path(strLink);
+
+         if (path.has_char())
+         {
+
+            break;
+
+         }
+
+      }
+
+      return path;
+
+   }
+
+
    ::userex::image_list_view * group_image_list_view::get_group_list(string strGroup)
    {
 

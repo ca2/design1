@@ -43,6 +43,29 @@ namespace userex
    }
 
 
+   string image_list_view::get_link_prefix()
+   {
+      
+      return string(m_pathFolder.name()) + "/";
+
+   }
+
+
+   ::file::path image_list_view::get_link_path(string strLink)
+   {
+
+      if (::str::begins_eat_ci(strLink, get_link_prefix()))
+      {
+
+         return m_pathFolder / strLink;
+
+      }
+
+      return "";
+      
+   }
+
+
    bool image_list_view::update_data(bool bSaveAndValidate)
    {
 
@@ -82,7 +105,9 @@ namespace userex
 
                ::visual::dib_sp dib(allocer());
 
-               if (dib.load_from_file(m_listing[i], false))
+               ::file::path path = m_listing[i];
+
+               if (dib.load_from_file(path, false))
                {
 
                   i++;
@@ -102,7 +127,14 @@ namespace userex
 
                   }
 
-                  m_diba.add(dib);
+                  if (dib.is_set())
+                  {
+                   
+                     dib->oprop("read_only_link") = get_link_prefix() + path.name();
+
+                     m_diba.add(dib);
+
+                  }
 
                   set_need_layout();
 

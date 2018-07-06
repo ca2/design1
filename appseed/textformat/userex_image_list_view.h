@@ -43,6 +43,9 @@ namespace userex
 
       virtual void on_update(::user::impact * pSender, LPARAM lHint, object* pHint);
 
+      virtual string get_link_prefix();
+
+      virtual ::file::path get_link_path(string strLink);
 
       virtual void on_layout();
 

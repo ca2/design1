@@ -44,6 +44,7 @@ namespace userex
 
       virtual ::userex::image_list_view * get_group_list(string strGroup);
 
+      virtual ::file::path get_link_path(string strLink);
 
       virtual void install_message_routing(::message::sender * psender) override;
 

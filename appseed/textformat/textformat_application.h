@@ -12,7 +12,7 @@ namespace textformat
    public:
 
 
-
+      ::composite::view *                    m_pcompositeviewCurrent;
       string                                 m_strTextFormat;
       string                                 m_strTextFormatDefault;
       string                                 m_strAlternateTextFormat;

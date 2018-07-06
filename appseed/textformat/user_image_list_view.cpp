@@ -70,7 +70,6 @@ namespace user
 
    }
 
-
    ::draw2d::dib * image_list::get_current_dib()
    {
 
@@ -86,6 +85,21 @@ namespace user
       return m_diba[m_iaSel[0]];
 
    }
+
+   string image_list::get_current_dib_link()
+   {
+
+      if (get_current_dib() == NULL)
+      {
+
+         return "";
+
+      }
+
+      return get_current_dib()->oprop("read_only_link");
+
+   }
+
 
    void image_list::install_message_routing(::message::sender * psender)
    {

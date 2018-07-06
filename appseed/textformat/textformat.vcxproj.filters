@@ -85,6 +85,9 @@
     <ClCompile Include="userex_image_list_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="composite_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="textformat.h">
@@ -166,6 +169,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="userex_image_list_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="composite_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

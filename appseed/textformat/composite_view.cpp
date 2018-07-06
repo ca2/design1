@@ -25,7 +25,7 @@ namespace composite
 
    view::view(::aura::application * papp) :
       object(papp),
-      m_sizePagePrev(0, 0)
+      ::serialize(papp)
    {
 
       m_sizeMaxPicAdjust.set(256);
@@ -36,9 +36,6 @@ namespace composite
 
       m_eelementDrag = ::user::element_none;
 
-      m_rectMargin.set(0);
-      m_rectMaxMarginDrawing.set(0);
-      m_rectMarginDrawing.set(0);
 
       m_dAspect = 3.0 / 4.0;
 
@@ -55,28 +52,9 @@ namespace composite
 
       m_b001LayoutIgnoreEmpty = false;
 
-      m_pictool = canew(pic_tool);
+      m_pdata = canew(data(get_app()));
 
-      m_pictool->m_map[pic_tool::tool_rotate].m_dib = Application.get_matter_dib("pictool/rotation24.png");
-      m_pictool->m_map[pic_tool::tool_crop].m_dib = Application.get_matter_dib("pictool/crop-icon24.png");
-      m_pictool->m_map[pic_tool::tool_close].m_dib = Application.get_matter_dib("pictool/close-button24.png");
-      m_pictool->m_map[pic_tool::tool_stack_up].m_dib = Application.get_matter_dib("pictool/stackup24.png");
-      m_pictool->m_map[pic_tool::tool_special_effect].m_dib = Application.get_matter_dib("pictool/fx24.png");
-      m_pictool->m_map[pic_tool::tool_stack_down].m_dib = Application.get_matter_dib("pictool/stackdown24.png");
-      m_pictool->m_map[pic_tool::tool_resize].m_dib = Application.get_matter_dib("pictool/resize20.png");
-
-      m_pictool->m_map[pic_tool::tool_zoom_out].m_dib = Application.get_matter_dib("pictool/zoomout24.png");
-      m_pictool->m_map[pic_tool::tool_zoom_in].m_dib = Application.get_matter_dib("pictool/zoomin24.png");
-      m_pictool->m_map[pic_tool::tool_move].m_dib = Application.get_matter_dib("pictool/drag24.png");
-      m_pictool->m_map[pic_tool::tool_apply].m_dib = Application.get_matter_dib("pictool/apply24.png");
-
-      m_pictool->m_map[pic_tool::tool_resize].m_ecursor = visual::cursor_size_bottom_right;
-
-      m_pictool->m_penBorder.alloc(allocer());
-      m_pictool->m_penBorder->create_solid(1.0, ARGB(190, 80, 120, 200));
-      m_pictool->m_penBorder->m_etype = ::draw2d::pen::type_dash;
-
-      m_pictool->m_pview = this;
+      m_pdata->m_pictool->m_pview = this;
 
    }
 
@@ -164,10 +142,10 @@ namespace composite
 
          KillTimer(timer_drag);
 
-         if (m_picCurrent.is_set())
+         if (m_pdata->m_picCurrent.is_set())
          {
 
-            m_picCurrent->m_ppic->m_bDrag = true;
+            m_pdata->m_picCurrent->m_ppic->m_bDrag = true;
 
          }
 
@@ -268,7 +246,7 @@ namespace composite
 
       }
 
-      m_pictool->m_etoolMode = pic_tool::tool_none;
+      m_pdata->m_pictool->m_etoolMode = pic_tool::tool_none;
 
 
    }
@@ -314,37 +292,37 @@ namespace composite
 
       int iHit = -1;
 
-      if (m_picCurrent.is_set() && m_picCurrent->is_dragging())
+      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
       {
 
          pmouse->m_bRet = true;
 
       }
-      else if (m_picCurrent.is_set() && (iHit = m_picCurrent->hit_test_cursor(pt)) >= 0)
+      else if (m_pdata->m_picCurrent.is_set() && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0)
       {
 
-         m_pictool->hit_test(m_etoolDown, pt);
+         m_pdata->m_pictool->hit_test(m_pdata->m_etoolDown, pt);
 
-         if (m_etoolDown == pic_tool::tool_none && iHit == 0)
+         if (m_pdata->m_etoolDown == pic_tool::tool_none && iHit == 0)
          {
 
-            m_picCurrent->m_ppic->m_bDrag = true;
+            m_pdata->m_picCurrent->m_ppic->m_bDrag = true;
 
-            ::rectd r(m_picCurrent->m_ppic->m_rect);
+            ::rectd r(m_pdata->m_picCurrent->m_ppic->m_rect);
 
             ClientToScreen(r);
 
             m_ptEditCursorOffset = pointd(pmouse->m_pt);
 
-            if (m_pictool->m_etoolMode == pic_tool::tool_move)
+            if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
             {
 
                ScreenToClient(m_ptEditCursorOffset);
 
-               m_picCurrent->drag_rtransform_point(m_ptEditCursorOffset);
+               m_pdata->m_picCurrent->drag_rtransform_point(m_ptEditCursorOffset);
 
-               m_ptEditCursorOffset = m_ptEditCursorOffset - sized(m_picCurrent->m_ppic->m_ptDrag.x * m_picCurrent->m_ppic->m_rect.width(),
-                                      m_picCurrent->m_ppic->m_ptDrag.y * m_picCurrent->m_ppic->m_rect.height());
+               m_ptEditCursorOffset = m_ptEditCursorOffset - sized(m_pdata->m_picCurrent->m_ppic->m_ptDrag.x * m_pdata->m_picCurrent->m_ppic->m_rect.width(),
+                                      m_pdata->m_picCurrent->m_ppic->m_ptDrag.y * m_pdata->m_picCurrent->m_ppic->m_rect.height());
 
             }
             else
@@ -360,26 +338,26 @@ namespace composite
          else
          {
 
-            m_pictool->m_map[m_etoolDown].m_bDrag = true;
+            m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag = true;
 
-            m_pictool->m_ptCenter = m_picCurrent->m_ppic->m_rect.center();
+            m_pdata->m_pictool->m_ptCenter = m_pdata->m_picCurrent->m_ppic->m_rect.center();
 
-            pmouse->m_ecursor = m_pictool->m_map[m_etoolDown].m_ecursor;
+            pmouse->m_ecursor = m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_ecursor;
 
             pmouse->m_bRet = true;
 
-            if (m_etoolDown == pic_tool::tool_rotate)
+            if (m_pdata->m_etoolDown == pic_tool::tool_rotate)
             {
 
-               m_dStartAngle = atan2((double)(m_pictool->m_ptCenter.y - pt.y), (double)(m_pictool->m_ptCenter.x - pt.x)) - m_picCurrent->m_ppic->m_dRotate;
+               m_dStartAngle = atan2((double)(m_pdata->m_pictool->m_ptCenter.y - pt.y), (double)(m_pdata->m_pictool->m_ptCenter.x - pt.x)) - m_pdata->m_picCurrent->m_ppic->m_dRotate;
 
             }
-            else if (m_etoolDown == pic_tool::tool_resize)
+            else if (m_pdata->m_etoolDown == pic_tool::tool_resize)
             {
 
-               m_pictool->m_ptResizeOrigin = m_picCurrent->m_ppic->m_rect.top_left();
+               m_pdata->m_pictool->m_ptResizeOrigin = m_pdata->m_picCurrent->m_ppic->m_rect.top_left();
 
-               m_picCurrent->_transform_point(m_pictool->m_ptResizeOrigin);
+               m_pdata->m_picCurrent->_transform_point(m_pdata->m_pictool->m_ptResizeOrigin);
 
             }
 
@@ -392,7 +370,7 @@ namespace composite
          {
 
 
-            for (auto & pic : m_pica)
+            for (auto & pic : m_pdata->m_pica)
             {
 
                if (pic->hit_test(pt) >= 0)
@@ -402,11 +380,11 @@ namespace composite
 
                   m_ptEditCursorOffset = pt - pic->m_ppic->m_rect.top_left();
 
-                  m_picCurrent = pic;
+                  m_pdata->m_picCurrent = pic;
 
                   on_pic_update();
 
-                  m_picCurrent->m_ppic->m_bDrag = true;
+                  m_pdata->m_picCurrent->m_ppic->m_bDrag = true;
 
                   goto selected;
 
@@ -431,10 +409,10 @@ namespace composite
 
                bool bNewTextBox = true;
 
-               if (m_picCurrent.is_set())
+               if (m_pdata->m_picCurrent.is_set())
                {
 
-                  m_picCurrent.release();
+                  m_pdata->m_picCurrent.release();
 
                   bNewTextBox = false;
 
@@ -461,7 +439,7 @@ namespace composite
                   pedit->create_color(::user::color_background, ARGB(0, 0, 0, 0));
                   pedit->create_color(::user::color_border, ARGB(0, 0, 0, 0));
 
-                  pedit->create_window(rect(pt, ::size(128, 128)), this, string("edit_") + ::str::from(m_pica.get_count()));
+                  pedit->create_window(rect(pt, ::size(128, 128)), this, string("edit_") + ::str::from(m_pdata->m_pica.get_count()));
 
                   place_pic(pt, pedit);
 
@@ -495,43 +473,49 @@ selected:;
       if (m_eelementDrag == ::user::element_margin_top)
       {
 
-         m_rectMargin.top = pt.y;
+         m_pdata->m_rectMargin.top = pt.y;
 
          set_need_layout();
 
          set_need_redraw();
 
          pmouse->m_bRet = true;
+
+         save();
 
       }
       else if (m_eelementDrag == ::user::element_margin_left)
       {
 
-         m_rectMargin.left = pt.x;
+         m_pdata->m_rectMargin.left = pt.x;
 
          set_need_layout();
 
          set_need_redraw();
 
          pmouse->m_bRet = true;
+
+         save();
 
       }
       else if (m_eelementDrag == ::user::element_margin_right)
       {
 
-         m_rectMargin.right = pt.x;
+         m_pdata->m_rectMargin.right = pt.x;
 
          set_need_layout();
 
          set_need_redraw();
 
          pmouse->m_bRet = true;
+
+         save();
 
       }
       else if (m_eelementDrag == ::user::element_margin_bottom)
       {
 
-         m_rectMargin.bottom = pt.y;
+         m_pdata->m_rectMargin.bottom = pt.y;
 
          set_need_layout();
 
@@ -539,32 +523,34 @@ selected:;
 
          pmouse->m_bRet = true;
 
-      }
-
-      if (m_pictool.is_set() && m_etoolDown != pic_tool::tool_none)
-      {
-
-         m_pictool->m_map[m_etoolDown].m_bDrag = false;
+         save();
 
       }
 
-      if (m_picCurrent.is_set() && m_picCurrent->is_dragging())
+      if (m_pdata->m_pictool.is_set() && m_pdata->m_etoolDown != pic_tool::tool_none)
       {
 
-         if (m_pictool->m_etoolMode == pic_tool::tool_move)
+         m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag = false;
+
+      }
+
+      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
+      {
+
+         if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
          {
 
             pointd pt = pmouse->m_pt;
 
             ScreenToClient(&pt);
 
-            m_picCurrent->drag_rtransform_point(pt);
+            m_pdata->m_picCurrent->drag_rtransform_point(pt);
 
             pt -= m_ptEditCursorOffset;
 
-            m_picCurrent->m_ppic->m_ptDrag = pointd(pt.x / m_picCurrent->m_ppic->m_rect.width(), pt.y / m_picCurrent->m_ppic->m_rect.height());
+            m_pdata->m_picCurrent->m_ppic->m_ptDrag = pointd(pt.x / m_pdata->m_picCurrent->m_ppic->m_rect.width(), pt.y / m_pdata->m_picCurrent->m_ppic->m_rect.height());
 
-            m_pictool->m_etoolMode = pic_tool::tool_crop;
+            m_pdata->m_pictool->m_etoolMode = pic_tool::tool_crop;
 
          }
          else
@@ -576,11 +562,11 @@ selected:;
 
             ScreenToClient(&pt);
 
-            m_picCurrent->move_to(pt, m_sizePage, get_size(), m_rectClient);
+            m_pdata->m_picCurrent->move_to(pt, m_pdata->m_sizePage, get_size(), m_pdata->m_rectClient);
 
          }
 
-         m_picCurrent->m_ppic->m_bDrag = false;
+         m_pdata->m_picCurrent->m_ppic->m_bDrag = false;
 
          pmouse->m_bRet = true;
 
@@ -588,15 +574,19 @@ selected:;
 
          set_need_redraw();
 
+         save();
+
+
+
       }
-      else if (m_picCurrent.is_set() && m_picCurrent->hit_test_cursor(pt) >= 0)
+      else if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->hit_test_cursor(pt) >= 0)
       {
 
          pic_tool::e_tool etool;
 
-         m_pictool->hit_test(etool, pt);
+         m_pdata->m_pictool->hit_test(etool, pt);
 
-         if (etool == m_etoolDown && etool != pic_tool::tool_none)
+         if (etool == m_pdata->m_etoolDown && etool != pic_tool::tool_none)
          {
 
             switch (etool)
@@ -604,29 +594,29 @@ selected:;
             case pic_tool::tool_crop:
             {
 
-               m_pictool->m_etoolMode = pic_tool::tool_crop;
+               m_pdata->m_pictool->m_etoolMode = pic_tool::tool_crop;
 
             }
             break;
             case pic_tool::tool_move:
             {
 
-               ASSERT(m_pictool->m_etoolMode == pic_tool::tool_crop || m_pictool->m_etoolMode == pic_tool::tool_move);
+               ASSERT(m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop || m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move);
 
-               m_pictool->m_etoolMode = pic_tool::tool_move;
+               m_pdata->m_pictool->m_etoolMode = pic_tool::tool_move;
 
             }
             break;
             case pic_tool::tool_apply:
             {
 
-               ASSERT(m_pictool->m_etoolMode == pic_tool::tool_crop || m_pictool->m_etoolMode == pic_tool::tool_move);
+               ASSERT(m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop || m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move);
 
-               if (m_pictool->m_etoolMode == pic_tool::tool_crop
-                     || m_pictool->m_etoolMode == pic_tool::tool_move)
+               if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop
+                     || m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
                {
 
-                  m_pictool->m_etoolMode = pic_tool::tool_none;
+                  m_pdata->m_pictool->m_etoolMode = pic_tool::tool_none;
 
                }
 
@@ -635,39 +625,47 @@ selected:;
             case pic_tool::tool_zoom_in:
             {
 
-               ASSERT(m_pictool->m_etoolMode == pic_tool::tool_crop || m_pictool->m_etoolMode == pic_tool::tool_move);
+               ASSERT(m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop || m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move);
 
-               if (m_pictool->m_etoolMode == pic_tool::tool_move)
+               if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
                {
 
-                  m_pictool->m_etoolMode = pic_tool::tool_crop;
+                  m_pdata->m_pictool->m_etoolMode = pic_tool::tool_crop;
 
                }
 
-               m_picCurrent->m_ppic->m_dZoom *= 1.1;
+               m_pdata->m_picCurrent->m_ppic->m_dZoom *= 1.1;
+
+               save();
+
+
 
             }
             break;
             case pic_tool::tool_zoom_out:
             {
 
-               if (m_pictool->m_etoolMode == pic_tool::tool_move)
+               if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
                {
 
-                  m_pictool->m_etoolMode = pic_tool::tool_crop;
+                  m_pdata->m_pictool->m_etoolMode = pic_tool::tool_crop;
 
                }
 
-               ASSERT(m_pictool->m_etoolMode == pic_tool::tool_crop);
+               ASSERT(m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop);
 
-               m_picCurrent->m_ppic->m_dZoom /= 1.1;
+               m_pdata->m_picCurrent->m_ppic->m_dZoom /= 1.1;
+
+               save();
+
+
 
             }
             break;
             case pic_tool::tool_close:
             {
 
-               sp(::user::rich_text::edit) pedit = m_picCurrent;
+               sp(::user::rich_text::edit) pedit = m_pdata->m_picCurrent;
 
                if (pedit.is_set())
                {
@@ -676,20 +674,24 @@ selected:;
 
                }
 
-               if (m_pictool->m_etoolMode == pic_tool::tool_crop)
+               if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_crop)
                {
 
-                  m_pictool->m_etoolMode = pic_tool::tool_none;
+                  m_pdata->m_pictool->m_etoolMode = pic_tool::tool_none;
 
                }
                else
                {
 
-                  m_pica.remove(m_picCurrent);
+                  m_pdata->m_pica.remove(m_pdata->m_picCurrent);
 
-                  m_picCurrent.release();
+                  m_pdata->m_picCurrent.release();
 
                   set_need_redraw();
+
+                  save();
+
+
 
                }
 
@@ -700,7 +702,7 @@ selected:;
             case pic_tool::tool_stack_up:
             {
 
-               index iFind = m_pica.find_first(m_picCurrent);
+               index iFind = m_pdata->m_pica.find_first(m_pdata->m_picCurrent);
 
                if (iFind >= 0)
                {
@@ -709,10 +711,10 @@ selected:;
 
                   index iFound = -1;
 
-                  for (index i = iFind + 1; i < m_pica.get_count(); i++)
+                  for (index i = iFind + 1; i < m_pdata->m_pica.get_count(); i++)
                   {
 
-                     if (rIntersect.intersect(m_picCurrent->m_ppic->m_rect, m_pica[i]->m_ppic->m_rect))
+                     if (rIntersect.intersect(m_pdata->m_picCurrent->m_ppic->m_rect, m_pdata->m_pica[i]->m_ppic->m_rect))
                      {
 
                         iFound = i;
@@ -730,16 +732,20 @@ selected:;
 
                   }
 
-                  if (iFound < m_pica.get_count())
+                  if (iFound < m_pdata->m_pica.get_count())
                   {
 
-                     m_pica.remove_at(iFind);
+                     m_pdata->m_pica.remove_at(iFind);
 
-                     m_pica.insert_at(iFound, m_picCurrent);
+                     m_pdata->m_pica.insert_at(iFound, m_pdata->m_picCurrent);
 
                   }
 
                   on_pic_update();
+
+                  save();
+
+
 
                }
 
@@ -749,7 +755,7 @@ selected:;
             case pic_tool::tool_stack_down:
             {
 
-               index iFind = m_pica.find_first(m_picCurrent);
+               index iFind = m_pdata->m_pica.find_first(m_pdata->m_picCurrent);
 
                if (iFind >= 0)
                {
@@ -761,7 +767,7 @@ selected:;
                   for (index i = iFind - 1; i >= 0; i--)
                   {
 
-                     if (rIntersect.intersect(m_picCurrent->m_ppic->m_rect, m_pica[i]->m_ppic->m_rect))
+                     if (rIntersect.intersect(m_pdata->m_picCurrent->m_ppic->m_rect, m_pdata->m_pica[i]->m_ppic->m_rect))
                      {
 
                         iFound = i;
@@ -782,13 +788,17 @@ selected:;
                   if (iFound >= 0)
                   {
 
-                     m_pica.remove_at(iFind);
+                     m_pdata->m_pica.remove_at(iFind);
 
-                     m_pica.insert_at(iFound, m_picCurrent);
+                     m_pdata->m_pica.insert_at(iFound, m_pdata->m_picCurrent);
 
                   }
 
                   on_pic_update();
+
+                  save();
+
+
 
                }
 
@@ -826,7 +836,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_top;
 
-         m_rectMargin.top = pt.y;
+         m_pdata->m_rectMargin.top = pt.y;
 
          set_need_layout();
 
@@ -840,7 +850,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_left;
 
-         m_rectMargin.left = pt.x;
+         m_pdata->m_rectMargin.left = pt.x;
 
          set_need_layout();
 
@@ -854,7 +864,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_right;
 
-         m_rectMargin.right = pt.x;
+         m_pdata->m_rectMargin.right = pt.x;
 
          set_need_layout();
 
@@ -868,7 +878,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_bottom;
 
-         m_rectMargin.bottom = pt.y;
+         m_pdata->m_rectMargin.bottom = pt.y;
 
          set_need_layout();
 
@@ -877,38 +887,38 @@ selected:;
          pmouse->m_bRet = true;
 
       }
-      else if (m_picCurrent.is_set()
-               && m_picCurrent->is_valid()
-               && m_pictool.is_set() && m_etoolDown != pic_tool::tool_none
-               && m_pictool->m_map[m_etoolDown].m_bDrag)
+      else if (m_pdata->m_picCurrent.is_set()
+               && m_pdata->m_picCurrent->is_valid()
+               && m_pdata->m_pictool.is_set() && m_pdata->m_etoolDown != pic_tool::tool_none
+               && m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag)
       {
 
-         pmouse->m_ecursor = m_pictool->m_map[m_etoolDown].m_ecursor;
+         pmouse->m_ecursor = m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_ecursor;
 
-         if (m_etoolDown == pic_tool::tool_rotate)
+         if (m_pdata->m_etoolDown == pic_tool::tool_rotate)
          {
 
-            m_picCurrent->m_ppic->m_dRotate = atan2(
-                                              (double)(m_pictool->m_ptCenter.y - pt.y),
-                                              (double)(m_pictool->m_ptCenter.x - pt.x)) - m_dStartAngle;
+            m_pdata->m_picCurrent->m_ppic->m_dRotate = atan2(
+                  (double)(m_pdata->m_pictool->m_ptCenter.y - pt.y),
+                  (double)(m_pdata->m_pictool->m_ptCenter.x - pt.x)) - m_dStartAngle;
 
-            m_picCurrent->update_region();
+            m_pdata->m_picCurrent->update_region();
 
             set_need_layout();
 
             set_need_redraw();
 
          }
-         else if (m_etoolDown == pic_tool::tool_resize)
+         else if (m_pdata->m_etoolDown == pic_tool::tool_resize)
          {
 
-            double a = sin(m_picCurrent->m_ppic->m_dRotate);
+            double a = sin(m_pdata->m_picCurrent->m_ppic->m_dRotate);
 
-            double b = cos(m_picCurrent->m_ppic->m_dRotate);
+            double b = cos(m_pdata->m_picCurrent->m_ppic->m_dRotate);
 
-            double x1 = m_pictool->m_ptResizeOrigin.x;
+            double x1 = m_pdata->m_pictool->m_ptResizeOrigin.x;
 
-            double y1 = m_pictool->m_ptResizeOrigin.y;
+            double y1 = m_pdata->m_pictool->m_ptResizeOrigin.y;
 
             double x2 = pt.x;
 
@@ -958,32 +968,32 @@ selected:;
                y = (y1 + y2) / 2.0;
 
             }
-         
+
 
             double dy = h / 2.0;
 
             double dx = w / 2.0;
 
-            m_picCurrent->m_ppic->m_rect.left = x - dx;
+            m_pdata->m_picCurrent->m_ppic->m_rect.left = x - dx;
 
-            m_picCurrent->m_ppic->m_rect.top = y - dy;
+            m_pdata->m_picCurrent->m_ppic->m_rect.top = y - dy;
 
-            m_picCurrent->m_ppic->m_rect.right = x + dx;
+            m_pdata->m_picCurrent->m_ppic->m_rect.right = x + dx;
 
-            m_picCurrent->m_ppic->m_rect.bottom = y + dy;
+            m_pdata->m_picCurrent->m_ppic->m_rect.bottom = y + dy;
 
 
             //sizeNew.cx = MAX(sizeMin.cx, sizeNew.cx);
 
             //sizeNew.cy = MAX(sizeMin.cy, sizeNew.cy);
 
-            //m_picCurrent->m_ppic->m_rect.set_size(sizeNew);
+            //m_pdata->m_picCurrent->m_ppic->m_rect.set_size(sizeNew);
 
-            m_picCurrent->update_drawing_rect(m_sizePage, get_size());
+            m_pdata->m_picCurrent->update_drawing_rect(m_pdata->m_sizePage, get_size());
 
-            m_picCurrent->update_region();
+            m_pdata->m_picCurrent->update_region();
 
-            m_picCurrent->update_placement();
+            m_pdata->m_picCurrent->update_placement();
 
             set_need_layout();
 
@@ -992,21 +1002,21 @@ selected:;
          }
 
       }
-      else if (m_picCurrent.is_set() && m_picCurrent->is_dragging())
+      else if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
       {
 
-         if (m_pictool->m_etoolMode == pic_tool::tool_move)
+         if (m_pdata->m_pictool->m_etoolMode == pic_tool::tool_move)
          {
 
             pointd pt = pmouse->m_pt;
 
             ScreenToClient(&pt);
 
-            m_picCurrent->drag_rtransform_point(pt);
+            m_pdata->m_picCurrent->drag_rtransform_point(pt);
 
             pt -= m_ptEditCursorOffset;
 
-            m_picCurrent->m_ppic->m_ptDrag = pointd(pt.x / m_picCurrent->m_ppic->m_rect.width(), pt.y / m_picCurrent->m_ppic->m_rect.height());
+            m_pdata->m_picCurrent->m_ppic->m_ptDrag = pointd(pt.x / m_pdata->m_picCurrent->m_ppic->m_rect.width(), pt.y / m_pdata->m_picCurrent->m_ppic->m_rect.height());
 
          }
          else
@@ -1018,7 +1028,7 @@ selected:;
 
             ScreenToClient(&pt);
 
-            m_picCurrent->move_to(pt, m_sizePage, get_size(), m_rectClient);
+            m_pdata->m_picCurrent->move_to(pt, m_pdata->m_sizePage, get_size(), m_pdata->m_rectClient);
 
             pica_to_margin();
 
@@ -1036,20 +1046,20 @@ selected:;
       else
       {
 
-         for (auto & pic : m_pica)
+         for (auto & pic : m_pdata->m_pica)
          {
 
-            if (pic == m_picCurrent)
+            if (pic == m_pdata->m_picCurrent)
             {
 
-               int iHit = m_picCurrent->hit_test_cursor(pt);
+               int iHit = m_pdata->m_picCurrent->hit_test_cursor(pt);
 
                if (iHit >= 0)
                {
 
                   pic_tool::e_tool etool;
 
-                  m_pictool->hit_test(etool, pt);
+                  m_pdata->m_pictool->hit_test(etool, pt);
 
                   if (etool == pic_tool::tool_none && iHit == 0)
                   {
@@ -1064,7 +1074,7 @@ selected:;
                   else
                   {
 
-                     pmouse->m_ecursor = m_pictool->m_map[etool].m_ecursor;
+                     pmouse->m_ecursor = m_pdata->m_pictool->m_map[etool].m_ecursor;
 
                      pmouse->m_bRet = true;
 
@@ -1171,12 +1181,42 @@ selected:;
    }
 
 
+   void view::stream_link(string strLink, serializable & serializable)
+   {
+
+      ::serializable * pserializable = &serializable;
+
+      ::draw2d::dib_sp pdib = pserializable;
+
+      ::file::path path = get_link_path(strLink);
+
+      if (pdib.is_set())
+      {
+
+         ::visual::dib_sp dib(allocer());
+
+         dib.load_from_file(path);
+
+         pdib->from(dib);
+
+      }
+      else
+      {
+
+         ::serialize::stream_link(strLink, serializable);
+
+      }
+
+   }
+
+
+
    void view::_001OnDrawPic(::draw2d::graphics * pgraphics)
    {
 
       pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
 
-      for (auto & pic : m_pica)
+      for (auto & pic : m_pdata->m_pica)
       {
 
          if (pic.is_set() && pic->is_valid())
@@ -1188,7 +1228,7 @@ selected:;
 
       }
 
-      if (m_picCurrent.is_set() && m_picCurrent->is_valid())
+      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_valid())
       {
 
          {
@@ -1197,27 +1237,27 @@ selected:;
 
             ::draw2d::matrix mRot;
 
-            mRot.append(::draw2d::matrix::rotation(m_picCurrent->m_ppic->m_dRotate));
+            mRot.append(::draw2d::matrix::rotation(m_pdata->m_picCurrent->m_ppic->m_dRotate));
 
             pgraphics->prepend(mRot);
 
             ::draw2d::matrix mTrans;
 
-            mTrans.append(::draw2d::matrix::translation(m_picCurrent->m_ppic->m_rect.center().x, m_picCurrent->m_ppic->m_rect.center().y));
+            mTrans.append(::draw2d::matrix::translation(m_pdata->m_picCurrent->m_ppic->m_rect.center().x, m_pdata->m_picCurrent->m_ppic->m_rect.center().y));
 
             pgraphics->append(mTrans);
 
-            //pgraphics->draw(m_picCurrent->m_ppic->m_rect, m_picCurrent->m_ppic->m_dib->g(), rect(m_picCurrent->m_ppic->m_dib->m_size));
+            //pgraphics->draw(m_pdata->m_picCurrent->m_ppic->m_rect, m_pdata->m_picCurrent->m_ppic->m_dib->g(), rect(m_pdata->m_picCurrent->m_ppic->m_dib->m_size));
 
-            m_pictool->draw(pgraphics);
+            m_pdata->m_pictool->draw(pgraphics);
 
          }
 
-         m_picCurrent->m_ppic->m_rectCursor.offset(m_picCurrent->m_ppic->m_rect.center());
+         m_pdata->m_picCurrent->m_ppic->m_rectCursor.offset(m_pdata->m_picCurrent->m_ppic->m_rect.center());
 
       }
 
-      pgraphics->draw_rect(m_rectMargin, m_pictool->m_penBorder);
+      pgraphics->draw_rect(m_pdata->m_rectMargin, m_pdata->m_pictool->m_penBorder);
 
    }
 
@@ -1293,62 +1333,62 @@ selected:;
 
       }
 
-      double dx = (double)m_sizePage.cx / (double)width();
+      double dx = (double)m_pdata->m_sizePage.cx / (double)::user::interaction::width();
 
-      double dy = (double)m_sizePage.cy / (double)height();
+      double dy = (double)m_pdata->m_sizePage.cy / (double)height();
 
-      m_rectClient = rectClient;
+      m_pdata->m_rectClient = rectClient;
 
-      if (m_sizePagePrev.area() <= 0 || m_rectMargin.is_null())
+      if (m_pdata->m_sizePagePrev.area() <= 0 || m_pdata->m_rectMargin.is_null())
       {
 
-         m_rectMarginDrawing.set(null_pointd(), pointd(m_sizePage));
+         m_pdata->m_rectMarginDrawing.set(null_pointd(), pointd(m_pdata->m_sizePage));
 
       }
 
-      if (m_sizePagePrev != m_sizePage)
+      if (m_pdata->m_sizePagePrev != m_pdata->m_sizePage)
       {
 
-         if (m_sizePagePrev.area() > 0)
+         if (m_pdata->m_sizePagePrev.area() > 0)
          {
 
-            double dxRate = (double)m_sizePage.cx / (double)m_sizePagePrev.cx;
-            double dyRate = (double)m_sizePage.cy / (double)m_sizePagePrev.cy;
+            double dxRate = (double)m_pdata->m_sizePage.cx / (double)m_pdata->m_sizePagePrev.cx;
+            double dyRate = (double)m_pdata->m_sizePage.cy / (double)m_pdata->m_sizePagePrev.cy;
 
-            m_rectMarginDrawing.left *= dxRate;
-            m_rectMarginDrawing.top *= dyRate;
-            m_rectMarginDrawing.right *= dxRate;
-            m_rectMarginDrawing.bottom *= dyRate;
+            m_pdata->m_rectMarginDrawing.left *= dxRate;
+            m_pdata->m_rectMarginDrawing.top *= dyRate;
+            m_pdata->m_rectMarginDrawing.right *= dxRate;
+            m_pdata->m_rectMarginDrawing.bottom *= dyRate;
 
          }
 
-         m_rectMaxMarginDrawing.left = m_sizePage.cx / 70;
-         m_rectMaxMarginDrawing.top = m_sizePage.cy / 70;
-         m_rectMaxMarginDrawing.right = m_sizePage.cx - m_sizePage.cx / 70;
-         m_rectMaxMarginDrawing.bottom = m_sizePage.cy - m_sizePage.cy / 70;
+         m_pdata->m_rectMaxMarginDrawing.left = m_pdata->m_sizePage.cx / 70;
+         m_pdata->m_rectMaxMarginDrawing.top = m_pdata->m_sizePage.cy / 70;
+         m_pdata->m_rectMaxMarginDrawing.right = m_pdata->m_sizePage.cx - m_pdata->m_sizePage.cx / 70;
+         m_pdata->m_rectMaxMarginDrawing.bottom = m_pdata->m_sizePage.cy - m_pdata->m_sizePage.cy / 70;
 
-         m_sizePagePrev = m_sizePage;
+         m_pdata->m_sizePagePrev = m_pdata->m_sizePage;
 
       }
 
-      if (m_rectMarginPrev != m_rectMargin)
+      if (m_pdata->m_rectMarginPrev != m_pdata->m_rectMargin)
       {
 
-         m_rectMarginDrawing.left = m_rectMargin.left * dx;
-         m_rectMarginDrawing.top = m_rectMargin.top * dy;
-         m_rectMarginDrawing.right = m_rectMargin.right * dx;
-         m_rectMarginDrawing.bottom = m_rectMargin.bottom * dy;
+         m_pdata->m_rectMarginDrawing.left = m_pdata->m_rectMargin.left * dx;
+         m_pdata->m_rectMarginDrawing.top = m_pdata->m_rectMargin.top * dy;
+         m_pdata->m_rectMarginDrawing.right = m_pdata->m_rectMargin.right * dx;
+         m_pdata->m_rectMarginDrawing.bottom = m_pdata->m_rectMargin.bottom * dy;
 
       }
 
-      m_rectMarginDrawing.intersect(m_rectMaxMarginDrawing);
+      m_pdata->m_rectMarginDrawing.intersect(m_pdata->m_rectMaxMarginDrawing);
 
-      m_rectMargin.left = m_rectMarginDrawing.left / dx;
-      m_rectMargin.top = m_rectMarginDrawing.top / dy;
-      m_rectMargin.right = m_rectMarginDrawing.right / dx;
-      m_rectMargin.bottom = m_rectMarginDrawing.bottom / dy;
+      m_pdata->m_rectMargin.left = m_pdata->m_rectMarginDrawing.left / dx;
+      m_pdata->m_rectMargin.top = m_pdata->m_rectMarginDrawing.top / dy;
+      m_pdata->m_rectMargin.right = m_pdata->m_rectMarginDrawing.right / dx;
+      m_pdata->m_rectMargin.bottom = m_pdata->m_rectMarginDrawing.bottom / dy;
 
-      m_rectMarginPrev = m_rectMargin;
+      m_pdata->m_rectMarginPrev = m_pdata->m_rectMargin;
 
    }
 
@@ -1367,7 +1407,7 @@ selected:;
       if (dib.load_from_file(path, false))
       {
 
-         m_dibBackground = dib;
+         m_pdata->m_dibBackground = dib;
 
          set_need_redraw();
 
@@ -1449,9 +1489,9 @@ selected:;
 
       }
 
-      m_picCurrent = ppic;
+      m_pdata->m_picCurrent = ppic;
 
-      m_pica.add(m_picCurrent);
+      m_pdata->m_pica.add(m_pdata->m_picCurrent);
 
       on_pic_update();
 
@@ -1465,7 +1505,7 @@ selected:;
 
 #endif
 
-      m_picCurrent->m_ppic->m_bDrag = true;
+      m_pdata->m_picCurrent->m_ppic->m_bDrag = true;
 
    }
 
@@ -1477,12 +1517,35 @@ selected:;
    }
 
 
-
-
-   bool view::pic_tool::get_tool_rect(LPRECTD lprect, e_tool etool)
+   pic_tool::pic_tool(::aura::application * papp)
    {
 
-      ::user::pic * pic = m_pview->m_picCurrent;
+   }
+
+
+   pic_tool::~pic_tool()
+   {
+
+
+   }
+
+
+   void view::load()
+   {
+
+   }
+
+
+   void view::save()
+   {
+
+   }
+
+
+   bool pic_tool::get_tool_rect(LPRECTD lprect, e_tool etool)
+   {
+
+      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
 
       rectd rPic = pic->m_ppic->m_rect;
 
@@ -1535,12 +1598,12 @@ selected:;
    }
 
 
-   bool view::pic_tool::hit_test(e_tool & etool, pointd pt)
+   bool pic_tool::hit_test(e_tool & etool, pointd pt)
    {
 
       rectd r;
 
-      ::user::pic * pic = m_pview->m_picCurrent;
+      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
 
       pic->_rtransform_point(pt);
 
@@ -1571,54 +1634,54 @@ selected:;
    void view::on_pic_update()
    {
 
-      sp(view::pic) ppic = m_picCurrent;
+      sp(pic) ppic = m_pdata->m_picCurrent;
 
       if (ppic.is_set())
       {
 
-         m_pictool->m_map[pic_tool::tool_rotate].m_ptAlign.SetPoint(-1.0, -1.0);
-         m_pictool->m_map[pic_tool::tool_crop].m_ptAlign.SetPoint(0.0, -1.0);
-         m_pictool->m_map[pic_tool::tool_close].m_ptAlign.SetPoint(1.0, -1.0);
-         m_pictool->m_map[pic_tool::tool_stack_up].m_ptAlign.SetPoint(-0.75, 1.0);
-         m_pictool->m_map[pic_tool::tool_special_effect].m_ptAlign.SetPoint(0.0, 1.0);
-         m_pictool->m_map[pic_tool::tool_resize].m_ptAlign.SetPoint(1.0, 1.0);
-         m_pictool->m_map[pic_tool::tool_stack_down].m_ptAlign.SetPoint(0.75, 1.0);
-         m_pictool->m_map[pic_tool::tool_zoom_out].m_ptAlign.SetPoint(-1.0, -1.0);
-         m_pictool->m_map[pic_tool::tool_move].m_ptAlign.SetPoint(-0.33, -1.0);
-         m_pictool->m_map[pic_tool::tool_zoom_in].m_ptAlign.SetPoint(0.33, -1.0);
-         m_pictool->m_map[pic_tool::tool_apply].m_ptAlign.SetPoint(0.0, -0.5);
+         m_pdata->m_pictool->m_map[pic_tool::tool_rotate].m_ptAlign.SetPoint(-1.0, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_crop].m_ptAlign.SetPoint(0.0, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_close].m_ptAlign.SetPoint(1.0, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_up].m_ptAlign.SetPoint(-0.75, 1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_special_effect].m_ptAlign.SetPoint(0.0, 1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_resize].m_ptAlign.SetPoint(1.0, 1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_down].m_ptAlign.SetPoint(0.75, 1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_zoom_out].m_ptAlign.SetPoint(-1.0, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_move].m_ptAlign.SetPoint(-0.33, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_zoom_in].m_ptAlign.SetPoint(0.33, -1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_apply].m_ptAlign.SetPoint(0.0, -0.5);
 
       }
       else
       {
 
-         m_pictool->m_map[pic_tool::tool_rotate].m_ptAlign.SetPoint(-1000.0, -1000.0);
-         m_pictool->m_map[pic_tool::tool_crop].m_ptAlign.SetPoint(0.0, -1000.0);
-         m_pictool->m_map[pic_tool::tool_close].m_ptAlign.SetPoint(1000.0, -1000.0);
-         m_pictool->m_map[pic_tool::tool_stack_up].m_ptAlign.SetPoint(-1000.0, 1000.0);
-         m_pictool->m_map[pic_tool::tool_special_effect].m_ptAlign.SetPoint(0.0, 1000.0);
-         m_pictool->m_map[pic_tool::tool_resize].m_ptAlign.SetPoint(1.0, 1.0);
-         m_pictool->m_map[pic_tool::tool_stack_down].m_ptAlign.SetPoint(1000.0, 1000.0);
-         m_pictool->m_map[pic_tool::tool_zoom_out].m_ptAlign.SetPoint(-1000.0, -1000.0);
-         m_pictool->m_map[pic_tool::tool_move].m_ptAlign.SetPoint(-0.75, -1001.0);
-         m_pictool->m_map[pic_tool::tool_zoom_in].m_ptAlign.SetPoint(0.5, -1001.0);
-         m_pictool->m_map[pic_tool::tool_apply].m_ptAlign.SetPoint(0.0, -1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_rotate].m_ptAlign.SetPoint(-1000.0, -1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_crop].m_ptAlign.SetPoint(0.0, -1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_close].m_ptAlign.SetPoint(1000.0, -1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_up].m_ptAlign.SetPoint(-1000.0, 1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_special_effect].m_ptAlign.SetPoint(0.0, 1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_resize].m_ptAlign.SetPoint(1.0, 1.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_down].m_ptAlign.SetPoint(1000.0, 1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_zoom_out].m_ptAlign.SetPoint(-1000.0, -1000.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_move].m_ptAlign.SetPoint(-0.75, -1001.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_zoom_in].m_ptAlign.SetPoint(0.5, -1001.0);
+         m_pdata->m_pictool->m_map[pic_tool::tool_apply].m_ptAlign.SetPoint(0.0, -1000.0);
 
       }
 
-      index i = m_pica.find_first(m_picCurrent);
+      index i = m_pdata->m_pica.find_first(m_pdata->m_picCurrent);
 
       if (i >= 0)
       {
 
-         m_pictool->m_map[pic_tool::tool_stack_down].m_bEnable = i > 0;
-         m_pictool->m_map[pic_tool::tool_stack_up].m_bEnable = i < m_pica.get_upper_bound();
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_down].m_bEnable = i > 0;
+         m_pdata->m_pictool->m_map[pic_tool::tool_stack_up].m_bEnable = i < m_pdata->m_pica.get_upper_bound();
 
       }
 
       pica_to_margin();
 
-      for (auto & pic : m_pica)
+      for (auto & pic : m_pdata->m_pica)
       {
 
          pic->update_region();
@@ -1628,7 +1691,7 @@ selected:;
    }
 
 
-   view::pic_tool::tool::tool()
+   pic_tool::tool::tool()
    {
 
       m_bEnable = true;
@@ -1640,10 +1703,10 @@ selected:;
    }
 
 
-   void view::pic_tool::draw(::draw2d::graphics * pgraphics)
+   void pic_tool::draw(::draw2d::graphics * pgraphics)
    {
 
-      ::user::pic * pic = m_pview->m_picCurrent;
+      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
 
       rect rPic(pic->m_ppic->m_rect);
 
@@ -1685,7 +1748,7 @@ selected:;
 
    }
 
-   void view::pic_tool::draw_tool(::draw2d::graphics * pgraphics, e_tool etool)
+   void pic_tool::draw_tool(::draw2d::graphics * pgraphics, e_tool etool)
    {
 
       rectd r;
@@ -1694,7 +1757,7 @@ selected:;
 
       tool & tool = m_map[etool];
 
-      ::user::pic * pic = m_pview->m_picCurrent;
+      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
 
       rectd rPic(pic->m_ppic->m_rect);
 
@@ -1741,15 +1804,15 @@ selected:;
    void view::pica_to_margin()
    {
 
-      for (auto & pic : m_pica)
+      for (auto & pic : m_pdata->m_pica)
       {
 
-         if (pic->m_ppic->m_rectBounding.intersects(m_rectClient))
+         if (pic->m_ppic->m_rectBounding.intersects(m_pdata->m_rectClient))
          {
 
-            pic->m_ppic->m_rect._001Constraint(m_rectClient, pic->m_ppic->m_rectBounding);
+            pic->m_ppic->m_rect._001Constraint(m_pdata->m_rectClient, pic->m_ppic->m_rectBounding);
 
-            pic->update_drawing_rect(m_sizePage, get_size());
+            pic->update_drawing_rect(m_pdata->m_sizePage, get_size());
 
             pic->update_region();
 
@@ -1760,77 +1823,6 @@ selected:;
       }
 
    }
-
-   view::pic::pic(::aura::application * papp) :
-      ::object(papp),
-      ::user::pic(papp)
-   {
-
-
-   }
-
-
-   bool view::pic::pic::is_valid()
-   {
-
-      return m_dib.is_set() && m_dib->area() > 0;
-
-   }
-
-
-   ::sized view::pic::pic::get_size()
-   {
-
-      return m_dib->m_size;
-
-   }
-
-
-   void view::pic::pic::draw(::draw2d::graphics * pgraphics)
-   {
-
-      ::draw2d::savedc savedc(pgraphics);
-
-      ::draw2d::matrix mRot;
-
-      rectd rClip(m_ppic->m_rect);
-
-      pointd_array pta;
-
-      pta.set_size(4);
-
-      pta[0] = _transform(rClip.top_left());
-      pta[1] = _transform(rClip.top_right());
-      pta[2] = _transform(rClip.bottom_right());
-      pta[3] = _transform(rClip.bottom_left());
-
-      ::draw2d::region_sp rgn(allocer());
-
-      rgn->create_polygon(pta.get_data(), (int) pta.get_count(), ::draw2d::fill_mode_winding);
-
-      pgraphics->SelectClipRgn(rgn, RGN_AND);
-
-      mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
-      
-      pgraphics->prepend(mRot);
-
-      pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
-
-      ::draw2d::matrix mTrans;
-
-      mTrans.append(::draw2d::matrix::translation(m_ppic->m_rect.center().x, m_ppic->m_rect.center().y));
-
-      pgraphics->append(mTrans);
-
-      rect r(-point(m_ppic->m_rect.get_size() / 2.0) +
-             point(m_ppic->m_ptDrag.x * m_ppic->m_rect.width(),
-                   m_ppic->m_ptDrag.y * m_ppic->m_rect.height()), ::size(m_ppic->m_rect.get_size()));
-
-      pgraphics->draw(r, m_dib->g(), rect(m_dib->m_size));
-
-   }
-
-
 
 
 } // namespace composite

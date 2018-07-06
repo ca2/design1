@@ -798,7 +798,7 @@ namespace user
 
    }
 
-   
+
    void pic::pic_impl::stream(serialize & serialize)
    {
 
@@ -828,7 +828,30 @@ namespace user
       if (serialize.is_version(FIRST_VERSION))
       {
 
-         serialize.stream(*m_ppic);
+         bool bEnable;
+
+         if (serialize.is_storing())
+         {
+
+            bEnable = m_ppic != NULL;
+
+         }
+
+         serialize(bEnable);
+
+         if (!serialize.is_storing())
+         {
+
+            enable_pic(bEnable);
+
+         }
+
+         if (bEnable)
+         {
+
+            serialize.stream_object(*m_ppic);
+
+         }
 
       }
 

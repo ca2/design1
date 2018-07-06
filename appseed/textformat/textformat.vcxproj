@@ -711,6 +711,7 @@
     <ClCompile Include=".\textformat_application.cpp" />
     <ClCompile Include=".\textformat_document.cpp" />
     <ClCompile Include=".\textformat_frame.cpp" />
+    <ClCompile Include="composite_data.cpp" />
     <ClCompile Include="composite_view.cpp" />
     <ClCompile Include="textformat.cpp" />
     <ClCompile Include=".\textformat_pane_view.cpp" />
@@ -742,6 +743,7 @@
     <ClCompile Include="user_tool_window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="composite_data.h" />
     <ClInclude Include="textformat_application.h" />
     <ClInclude Include="textformat_document.h" />
     <ClInclude Include="textformat_frame.h" />

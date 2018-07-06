@@ -42,6 +42,7 @@ namespace textformat
 #include "userex_font_format_tool.h"
 #include "user_rich_text_edit.h"
 #include "user_text_format_object.h"
+#include "composite_data.h"
 #include "composite_view.h"
 
 

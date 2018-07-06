@@ -59,6 +59,8 @@ namespace user
 
       virtual ::draw2d::dib * get_current_dib();
 
+      virtual string get_current_dib_link();
+
       virtual void on_layout() override;
 
       DECL_GEN_SIGNAL(_001OnCreate);
