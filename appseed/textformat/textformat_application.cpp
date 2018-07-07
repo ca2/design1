@@ -11,8 +11,8 @@ namespace textformat
       m_ptemplateTextFormatMain = NULL;
       m_ptemplateTextFormatView = NULL;
 
-      m_strAppId = "app-core/textformat";
-      m_strAppName = "app-core/textformat";
+      m_strAppId = "design/textformat";
+      m_strAppName = "design/textformat";
       m_strBaseSupportId = "ca2_flag";
       m_bLicense = false;
 
@@ -186,14 +186,14 @@ namespace textformat
 
 
 extern "C"
-::aura::library * app_core_textformat_get_new_library(::aura::application * papp)
+::aura::library * design_textformat_get_new_library(::aura::application * papp)
 {
 
-   return new ::aura::single_application_library < ::textformat::application >(papp, "app-core/textformat");
+   return new ::aura::single_application_library < ::textformat::application >(papp, "design/textformat");
 
 }
 
 
-aura_app aura_app_core_textformat("app-core/textformat", &app_core_textformat_get_new_library);
+aura_app design_core_textformat("design/textformat", &design_textformat_get_new_library);
 
 
