@@ -9,9 +9,8 @@ namespace user
    {
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT box :
-         virtual public ::xml::exportable,
-         virtual public ::xml::importable
+      class CLASS_DECL_DESIGN_TEXTFORMAT box :
+         virtual public ::serializable
       {
       public:
 
@@ -36,8 +35,9 @@ namespace user
          box(::aura::application * papp, e_align ealign);
          virtual ~box();
 
-         virtual void xml_export(::xml::output_tree & xmlo) override;
-         virtual void xml_import(::xml::input_tree & xmli) override;
+
+         virtual void stream(serialize & serialize) override;
+
 
       };
 

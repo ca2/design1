@@ -9,7 +9,7 @@ namespace user
    {
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT layout :
+      class CLASS_DECL_DESIGN_TEXTFORMAT layout :
          virtual public simple_object
       {
       public:

@@ -8,8 +8,13 @@ namespace composite
    data::data(::aura::application * papp) :
       ::object(papp),
       ::data::data(papp),
-      m_sizePagePrev(0, 0)
+      m_sizePagePrev(0, 0),
+      m_dibBackground(allocer()),
+      m_dibAlphaMask(allocer())
    {
+
+      m_dibBackground->oprop("read_only_link") = "";
+      m_dibAlphaMask->oprop("read_only_link") = "";
 
       m_rectMargin.set(0);
       m_rectMaxMarginDrawing.set(0);
@@ -17,20 +22,20 @@ namespace composite
 
       m_pictool = canew(pic_tool(get_app()));
 
-      m_pictool->m_map[pic_tool::tool_rotate].m_dib = Application.get_matter_dib("pictool/rotation24.png");
-      m_pictool->m_map[pic_tool::tool_crop].m_dib = Application.get_matter_dib("pictool/crop-icon24.png");
-      m_pictool->m_map[pic_tool::tool_close].m_dib = Application.get_matter_dib("pictool/close-button24.png");
-      m_pictool->m_map[pic_tool::tool_stack_up].m_dib = Application.get_matter_dib("pictool/stackup24.png");
-      m_pictool->m_map[pic_tool::tool_special_effect].m_dib = Application.get_matter_dib("pictool/fx24.png");
-      m_pictool->m_map[pic_tool::tool_stack_down].m_dib = Application.get_matter_dib("pictool/stackdown24.png");
-      m_pictool->m_map[pic_tool::tool_resize].m_dib = Application.get_matter_dib("pictool/resize20.png");
+      m_pictool->m_map[::composite::tool_rotate].m_dib = Application.get_matter_dib("pictool/rotation24.png");
+      m_pictool->m_map[::composite::tool_crop].m_dib = Application.get_matter_dib("pictool/crop-icon24.png");
+      m_pictool->m_map[::composite::tool_close].m_dib = Application.get_matter_dib("pictool/close-button24.png");
+      m_pictool->m_map[::composite::tool_stack_up].m_dib = Application.get_matter_dib("pictool/stackup24.png");
+      m_pictool->m_map[::composite::tool_special_effect].m_dib = Application.get_matter_dib("pictool/fx24.png");
+      m_pictool->m_map[::composite::tool_stack_down].m_dib = Application.get_matter_dib("pictool/stackdown24.png");
+      m_pictool->m_map[::composite::tool_resize].m_dib = Application.get_matter_dib("pictool/resize20.png");
 
-      m_pictool->m_map[pic_tool::tool_zoom_out].m_dib = Application.get_matter_dib("pictool/zoomout24.png");
-      m_pictool->m_map[pic_tool::tool_zoom_in].m_dib = Application.get_matter_dib("pictool/zoomin24.png");
-      m_pictool->m_map[pic_tool::tool_move].m_dib = Application.get_matter_dib("pictool/drag24.png");
-      m_pictool->m_map[pic_tool::tool_apply].m_dib = Application.get_matter_dib("pictool/apply24.png");
+      m_pictool->m_map[::composite::tool_zoom_out].m_dib = Application.get_matter_dib("pictool/zoomout24.png");
+      m_pictool->m_map[::composite::tool_zoom_in].m_dib = Application.get_matter_dib("pictool/zoomin24.png");
+      m_pictool->m_map[::composite::tool_move].m_dib = Application.get_matter_dib("pictool/drag24.png");
+      m_pictool->m_map[::composite::tool_apply].m_dib = Application.get_matter_dib("pictool/apply24.png");
 
-      m_pictool->m_map[pic_tool::tool_resize].m_ecursor = visual::cursor_size_bottom_right;
+      m_pictool->m_map[::composite::tool_resize].m_ecursor = visual::cursor_size_bottom_right;
 
       m_pictool->m_penBorder.alloc(allocer());
       m_pictool->m_penBorder->create_solid(1.0, ARGB(190, 80, 120, 200));
@@ -50,9 +55,29 @@ namespace composite
    void data::stream(::serialize & serialize)
    {
 
-      serialize.stream_array(m_pica);
+      try
+      {
+
+         serialize(*m_dibBackground);
+
+         serialize(*m_dibAlphaMask);
+
+         serialize(m_sizePage);
+         serialize(m_sizePagePrev);
+         serialize(m_rectMarginDrawing);
+         serialize(m_rectMaxMarginDrawing);
+         serialize(m_rectMargin);
+         serialize(m_rectMarginPrev);
+
+         serialize.stream_array(m_pica);
+
+      }
+      catch (...)
+      {
+      }
 
    }
+
 
    pic::pic(::aura::application * papp) :
       ::object(papp),
@@ -107,9 +132,12 @@ namespace composite
 
          m_dib.alloc(allocer());
 
-         System.imaging().load_from_file(m_dib, m_pview->get_link_path(strLink));
+         if (System.imaging().load_from_file(m_dib, serialize.get_link_path(strLink)))
+         {
 
-         m_dib->oprop("read_only_link") = strLink;
+            m_dib->oprop("read_only_link") = strLink;
+
+         }
 
       }
 
@@ -118,47 +146,10 @@ namespace composite
    }
 
 
-   void pic::pic::draw(::draw2d::graphics * pgraphics)
+   void pic::pic::draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect)
    {
 
-      ::draw2d::savedc savedc(pgraphics);
-
-      ::draw2d::matrix mRot;
-
-      rectd rClip(m_ppic->m_rect);
-
-      pointd_array pta;
-
-      pta.set_size(4);
-
-      pta[0] = _transform(rClip.top_left());
-      pta[1] = _transform(rClip.top_right());
-      pta[2] = _transform(rClip.bottom_right());
-      pta[3] = _transform(rClip.bottom_left());
-
-      ::draw2d::region_sp rgn(allocer());
-
-      rgn->create_polygon(pta.get_data(), (int)pta.get_count(), ::draw2d::fill_mode_winding);
-
-      pgraphics->SelectClipRgn(rgn, RGN_AND);
-
-      mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
-
-      pgraphics->prepend(mRot);
-
-      pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
-
-      ::draw2d::matrix mTrans;
-
-      mTrans.append(::draw2d::matrix::translation(m_ppic->m_rect.center().x, m_ppic->m_rect.center().y));
-
-      pgraphics->append(mTrans);
-
-      rect r(-point(m_ppic->m_rect.get_size() / 2.0) +
-             point(m_ppic->m_ptDrag.x * m_ppic->m_rect.width(),
-                   m_ppic->m_ptDrag.y * m_ppic->m_rect.height()), ::size(m_ppic->m_rect.get_size()));
-
-      pgraphics->draw(r, m_dib->g(), rect(m_dib->m_size));
+      pgraphics->draw(lpcrect, m_dib->g(), rect(m_dib->m_size));
 
    }
 

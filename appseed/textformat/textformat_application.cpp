@@ -45,8 +45,13 @@ namespace textformat
       System.factory().creatable_small < ::textformat::view >();
       System.factory().creatable_small < ::textformat::pane_view >();
       System.factory().creatable_small < ::composite::view >();
-      System.factory().creatable_small < ::composite::pic >(System.type_info < ::user::pic >());
+      System.factory().creatable_small < ::composite::pic >();
+      System.factory().creatable_small < ::user::pic >();
+      System.factory().creatable_small < ::user::rich_text::edit >();
       System.factory().creatable_small < ::composite::pic_tool >();
+
+      System.factory().creatable_small < ::user::rich_text::format >();
+      System.factory().creatable_small < ::user::rich_text::box >();
 
 
       System.factory().creatable_small < ::userex::group_image_list_view >();

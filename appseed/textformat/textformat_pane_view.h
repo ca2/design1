@@ -5,7 +5,7 @@ namespace textformat
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT pane_view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT pane_view :
       virtual public ::userex::pane_tab_view,
       virtual public ::user::form_callback
    {

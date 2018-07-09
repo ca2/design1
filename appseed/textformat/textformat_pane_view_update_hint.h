@@ -14,7 +14,7 @@ namespace textformat
    };
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT pane_view_update_hint :
+   class CLASS_DECL_DESIGN_TEXTFORMAT pane_view_update_hint :
       public object
    {
    public:

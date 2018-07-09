@@ -5,7 +5,7 @@ namespace userex
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT image_list_view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT image_list_view :
       virtual public user::image_list_view
    {
    public:
@@ -15,7 +15,7 @@ namespace userex
       ::file::listing      m_listing;
       stringa              m_straPattern;
       stringa              m_straPatternNames;
-
+      string               m_strLinkPrefix;
 
       image_list_view(::aura::application * papp);
       virtual ~image_list_view();

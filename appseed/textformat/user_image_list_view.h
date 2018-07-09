@@ -5,7 +5,7 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT image_list :
+   class CLASS_DECL_DESIGN_TEXTFORMAT image_list :
       virtual public ::user::box
    {
    public:
@@ -74,7 +74,7 @@ namespace user
    };
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT image_list_view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT image_list_view :
       virtual public show < margin < image_list > >
    {
    public:

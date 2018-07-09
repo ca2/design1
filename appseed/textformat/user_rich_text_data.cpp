@@ -758,6 +758,15 @@ namespace user
 
          optimize_data();
 
+         sp(rich_text::edit) pedit = m_pui;
+
+         if (pedit.is_set())
+         {
+
+            pedit->on_after_change(::user::event_after_change_text_format);
+
+         }
+
       }
 
 
@@ -1561,24 +1570,6 @@ restart2:
       }
 
 
-      void data::xml_export(::xml::output_tree & xmlo)
-      {
-
-         m_boxa.xml_export(xmlo);
-         m_formata.xml_export(xmlo);
-
-      }
-
-
-      void data::xml_import(::xml::input_tree & xmli)
-      {
-
-         m_boxa.xml_import(xmli);
-         m_formata.xml_import(xmli);
-
-      }
-
-
       void data::optimize_data()
       {
 
@@ -1707,6 +1698,17 @@ restart2:
          m_iSelCharBeg = sel_char2(m_layouta, m_iSelBeg3);
 
          m_iSelCharEnd = sel_char2(m_layouta, m_iSelEnd3);
+
+      }
+
+
+      void data::stream(serialize & serialize)
+      {
+
+         serialize.stream_array(m_boxa);
+
+         serialize.stream_array(m_formata);
+
 
       }
 

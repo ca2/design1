@@ -5,7 +5,7 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT menu_view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT menu_view :
       virtual public ::user::impact
    {
    public:

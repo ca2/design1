@@ -5,7 +5,7 @@ namespace textformat
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT main_frame :
+   class CLASS_DECL_DESIGN_TEXTFORMAT main_frame :
       virtual public simple_frame_window
    {
    public:

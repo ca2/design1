@@ -45,7 +45,14 @@ namespace userex
 
    string image_list_view::get_link_prefix()
    {
-      
+
+      if (m_strLinkPrefix.has_char())
+      {
+
+         return m_strLinkPrefix;
+
+      }
+
       return string(m_pathFolder.name()) + "/";
 
    }
@@ -62,7 +69,7 @@ namespace userex
       }
 
       return "";
-      
+
    }
 
 
@@ -129,7 +136,7 @@ namespace userex
 
                   if (dib.is_set())
                   {
-                   
+
                      dib->oprop("read_only_link") = get_link_prefix() + path.name();
 
                      m_diba.add(dib);

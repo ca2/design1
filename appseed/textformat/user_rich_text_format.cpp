@@ -2,6 +2,9 @@
 #include "user_rich_text_global.h"
 
 
+
+
+
 namespace user
 {
 
@@ -91,21 +94,21 @@ namespace user
 
          }
 
-         if (eattributea.contains(attribute_size) > 0)
+         if (eattributea.contains(attribute_size))
          {
 
             m_dFontSize = pformat->m_dFontSize;
 
          }
 
-         if (eattributea.contains(attribute_script) > 0)
+         if (eattributea.contains(attribute_script))
          {
 
             m_escript = pformat->m_escript;
 
          }
 
-         if (eattributea.contains(attribute_foreground) > 0)
+         if (eattributea.contains(attribute_foreground))
          {
 
             m_crForeground = pformat->m_crForeground;
@@ -216,35 +219,31 @@ namespace user
       }
 
 
-      void format::xml_export(::xml::output_tree & xmlo)
+      void format::stream(serialize & serialize)
       {
 
-         xmlo.set_bool_attr("bold", m_bBold);
-         xmlo.set_bool_attr("italic", m_bItalic);
-         xmlo.set_bool_attr("underline", m_bUnderline);
-         xmlo.set_attr("family", m_strFontFamily);
-         xmlo.set_attr("size", m_dFontSize);
-         xmlo.set_attr("foreground", m_crForeground);
-         xmlo.set_attr("background", m_crBackground);
-         xmlo.set_attr("script", (i32)m_escript);
-         xmlo.set_attr("lineheight", (i32)m_elineheight);
+         property_set set;
 
-      }
+         serialize.prop_start(set);
 
+         serialize.prop_serial("bold", m_bBold);
+         serialize.prop_serial("italic", m_bItalic);
+         serialize.prop_serial("underline", m_bUnderline);
+         serialize.prop_serial("family", m_strFontFamily);
+         serialize.prop_serial("size", m_dFontSize);
+         serialize.prop_serial("foreground", (u32&) m_crForeground);
+         serialize.prop_serial("background", (u32&)m_crBackground);
+         serialize.prop_serial("script", (i32&)m_escript);
+         serialize.prop_serial("lineheight", (i32&)m_elineheight);
 
-      void format::xml_import(::xml::input_tree & xmli)
-      {
+         serialize.prop_end();
 
-         xmli.get_attr("bold", m_bBold);
-         xmli.get_attr("italic", m_bItalic);
-         xmli.get_attr("underline", m_bUnderline);
-         xmli.get_attr("family", m_strFontFamily, FONT_SANS);
-         xmli.get_attr("size", m_dFontSize, 12.0);
-         xmli.get_attr("foreground", m_dFontSize, ARGB(255, 0, 0, 0));
-         xmli.get_attr("background", m_dFontSize, ARGB(255, 0, 0, 0));
-         xmli.get_attr("script", (int &)m_escript);
-         xmli.get_attr("lineheight", (int &)m_elineheight);
-         m_bUpdated = false;
+         if (!serialize.is_storing())
+         {
+
+            m_bUpdated = false;
+
+         }
 
       }
 

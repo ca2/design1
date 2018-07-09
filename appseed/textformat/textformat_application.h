@@ -6,7 +6,7 @@ namespace textformat
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT application :
+   class CLASS_DECL_DESIGN_TEXTFORMAT application :
       virtual public ::core::application
    {
    public:

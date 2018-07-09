@@ -5,7 +5,7 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT text_format_object :
+   class CLASS_DECL_DESIGN_TEXTFORMAT text_format_object :
       virtual public object
    {
    public:

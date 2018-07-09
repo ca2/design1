@@ -1,6 +1,6 @@
-; app_textformat.def
+; design_textformat.def
 
-LIBRARY  "app_core_textformat"
+LIBRARY  "design_textformat"
 ; For Win32 DLLs, only EXPORTs really required.
 
 EXPORTS

@@ -147,7 +147,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -243,7 +243,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -339,7 +339,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -448,7 +448,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -533,7 +533,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -620,7 +620,7 @@
       <AdditionalOptions>/bigobj -Zm512</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/thirdparty/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/$(PlatformName)/$(Configuration)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../include;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>

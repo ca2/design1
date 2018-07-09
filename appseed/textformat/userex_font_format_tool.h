@@ -5,7 +5,7 @@ namespace userex
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT font_format_tool :
+   class CLASS_DECL_DESIGN_TEXTFORMAT font_format_tool :
       virtual public ::user::tool_window
    {
    public:

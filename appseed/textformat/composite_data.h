@@ -7,8 +7,26 @@ namespace composite
 
    class view;
 
+   enum e_tool
+   {
+      tool_none,
+      tool_rotate,
+      tool_crop,
+      tool_close,
+      tool_stack_up,
+      tool_stack_down,
+      tool_special_effect,
+      tool_resize,
+      tool_zoom_out,
+      tool_move,
+      tool_zoom_in,
+      tool_apply,
+      tool_count,
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT pic :
+   };
+
+
+   class CLASS_DECL_DESIGN_TEXTFORMAT pic :
       virtual public ::user::pic
    {
    public:
@@ -22,36 +40,18 @@ namespace composite
       virtual bool is_valid() override;
       virtual ::sized get_size() override;
 
-      virtual void draw(::draw2d::graphics * pgraphics) override;
+      virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect) override;
 
       virtual void stream(serialize & serialize) override;
 
    };
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT pic_tool :
+   class CLASS_DECL_DESIGN_TEXTFORMAT pic_tool :
       virtual public object
    {
    public:
 
-      enum e_tool
-      {
-         tool_none,
-         tool_rotate,
-         tool_crop,
-         tool_close,
-         tool_stack_up,
-         tool_stack_down,
-         tool_special_effect,
-         tool_resize,
-         tool_zoom_out,
-         tool_move,
-         tool_zoom_in,
-         tool_apply,
-         tool_count,
-
-      };
-
-      class CLASS_DECL_APP_CORE_TEXTFORMAT tool
+      class CLASS_DECL_DESIGN_TEXTFORMAT tool
       {
       public:
 
@@ -91,7 +91,7 @@ namespace composite
    };
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT data :
+   class CLASS_DECL_DESIGN_TEXTFORMAT data :
       public ::data::data
    {
    public:
@@ -102,7 +102,7 @@ namespace composite
 
 
 
-      pic_tool::e_tool        m_etoolDown;
+      e_tool        m_etoolDown;
 
 
       spa(::user::pic)        m_pica;

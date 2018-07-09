@@ -5,7 +5,7 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT font_combo_box :
+   class CLASS_DECL_DESIGN_TEXTFORMAT font_combo_box :
       virtual public ::user::combo_box
    {
    public:

@@ -5,7 +5,7 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT tool_window :
+   class CLASS_DECL_DESIGN_TEXTFORMAT tool_window :
       virtual public ::user::box
    {
    public:

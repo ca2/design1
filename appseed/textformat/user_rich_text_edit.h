@@ -9,7 +9,7 @@ namespace user
    {
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT edit :
+      class CLASS_DECL_DESIGN_TEXTFORMAT edit :
          virtual public ::user::control,
          virtual public ::user::pic
       {
@@ -26,7 +26,7 @@ namespace user
          edit(::aura::application * papp);
          virtual ~edit();
 
-
+         virtual void on_after_change(::user::e_event eevent);
          virtual double get_rotate() override;
 
          virtual index hit_test(point point, ::user::e_element & eelement) override;
@@ -60,6 +60,8 @@ namespace user
          virtual void install_message_routing(::message::sender * psender) override;
 
          virtual void _001OnDraw(::draw2d::graphics * pgraphics) override;
+
+         virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect) override;
 
          ::userex::font_format_tool * get_sys_format_tool();
 
@@ -96,6 +98,7 @@ namespace user
 
          virtual strsize _001GetTextLength() const override;
 
+         virtual void stream(serialize & serialize) override;
 
       };
 

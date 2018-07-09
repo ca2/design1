@@ -398,61 +398,75 @@ namespace user
       void edit::_001OnDraw(::draw2d::graphics * pgraphics)
       {
 
-         ::draw2d::savedc savedc(pgraphics);
-
-         rect rClient;
-
-         GetClientRect(rClient);
-
-         rectd rectClient(rClient);
-
-         if (is_pic_enabled())
+         if (!is_pic_enabled())
          {
 
-            //::draw2d::matrix mRot;
-
-            //mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
-
-            //pgraphics->prepend(mRot);
-
-            //::draw2d::matrix mTrans;
-
-            //rect rectWindow;
-
-            //GetWindowRect(rectWindow);
-
-            //GetParent()->ScreenToClient(rectWindow);
-
-            //mTrans.append(::draw2d::matrix::translation(get_size() / 2));
-
-            //pgraphics->append(mTrans);
-
-            //::draw2d::savedc savedc(pgraphics);
-
-            pgraphics->IntersectClipRect(rClient);
-
-            ::draw2d::matrix mRot;
-
-            pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
-
-            mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
-
-            pgraphics->prepend(mRot);
-
-            ::draw2d::matrix mTrans;
-
-            mTrans.append(::draw2d::matrix::translation(get_size() / 2));
-
-            mTrans.append(::draw2d::matrix::translation((m_ppic->m_ptDrag.x) * m_ppic->m_rect.width(), (m_ppic->m_ptDrag.y)  * m_ppic->m_rect.height()));
-
-            pgraphics->append(mTrans);
-            rect r;
-
-            rectClient.offset(-m_ppic->m_rect.get_size() / 2.0);
+            draw(pgraphics);
 
          }
 
-         pgraphics->selectFont(_001GetFont(::user::font_default));
+      }
+
+      void edit::draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect)
+      {
+
+         //::draw2d::savedc savedc(pgraphics);
+
+         //rect rClient;
+
+         //GetClientRect(rClient);
+
+         //rectd rectClient(rClient);
+
+         //if (is_pic_enabled())
+         //{
+
+         //   //::draw2d::matrix mRot;
+
+         //   //mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
+
+         //   //pgraphics->prepend(mRot);
+
+         //   //::draw2d::matrix mTrans;
+
+         //   //rect rectWindow;
+
+         //   //GetWindowRect(rectWindow);
+
+         //   //GetParent()->ScreenToClient(rectWindow);
+
+         //   //mTrans.append(::draw2d::matrix::translation(get_size() / 2));
+
+         //   //pgraphics->append(mTrans);
+
+         //   //::draw2d::savedc savedc(pgraphics);
+
+         //   pgraphics->IntersectClipRect(rClient);
+
+         //   ::draw2d::matrix mRot;
+
+         //   pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
+
+         //   mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
+
+         //   pgraphics->prepend(mRot);
+
+         //   ::draw2d::matrix mTrans;
+
+         //   mTrans.append(::draw2d::matrix::translation(get_size() / 2));
+
+         //   mTrans.append(::draw2d::matrix::translation((m_ppic->m_ptDrag.x) * m_ppic->m_rect.width(), (m_ppic->m_ptDrag.y)  * m_ppic->m_rect.height()));
+
+         //   pgraphics->append(mTrans);
+         //   rect r;
+
+         //   rectClient.offset(-m_ppic->m_rect.get_size() / 2.0);
+
+         //}
+
+         rectd rectClient(lpcrect);
+
+         //pgraphics->selectFont(_001GetFont(::user::font_default));
 
          rectClient.offset(sized(m_ptScrollPassword1));
 
@@ -460,15 +474,16 @@ namespace user
 
          //pgraphics->draw3d_rect(rectClient, ARGB(255, 192, 192, 192));
 
-         pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
+         //pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
 
-         pgraphics->set_text_color(ARGB(255, 255, 255, 180));
+         //pgraphics->set_text_color(ARGB(255, 255, 255, 180));
 
          //pgraphics->SelectClipRgn(NULL);
 
          m_data._001OnDraw(pgraphics, rectClient);
 
       }
+
 
 
       bool edit::_001IsPointInside(point64 p)
@@ -1101,6 +1116,9 @@ namespace user
                               m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
                                                      min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
 
+
+                              on_after_change(::user::event_after_change_text);
+
                               set_need_redraw();
 
                            }
@@ -1120,6 +1138,8 @@ namespace user
                               m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
                                                      min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd)
                                                      - iDecLen;
+
+                              on_after_change(::user::event_after_change_text);
 
                               set_need_redraw();
 
@@ -1171,6 +1191,8 @@ namespace user
 
                            }
 
+                           on_after_change(::user::event_after_change_text);
+
                            set_need_redraw();
 
                         }
@@ -1202,6 +1224,8 @@ namespace user
                                                      min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
 
                            }
+
+                           on_after_change(::user::event_after_change_text);
 
                            set_need_redraw();
 
@@ -1528,6 +1552,8 @@ namespace user
 
                      m_data._001InsertText(str);
 
+                     on_after_change(::user::event_after_change_text);
+
                      set_need_redraw();
 
                      bUpdate = false;
@@ -1563,6 +1589,21 @@ namespace user
 
       }
 
+      void edit::on_after_change(::user::e_event eevent)
+      {
+
+
+         ::user::control_event ev;
+
+         ev.m_eevent = eevent;
+
+         ev.m_id = m_id;
+
+         ev.m_puie = this;
+
+         on_control_event(&ev);
+
+      }
 
       strsize edit::_001GetTextLength() const
       {
@@ -1583,6 +1624,44 @@ namespace user
          }
 
          SetWindowPos(0, rect(m_ppic->m_rect), SWP_NOZORDER);
+
+      }
+
+
+      void edit::stream(serialize & serialize)
+      {
+
+         ::user::pic::stream(serialize);
+
+         m_data.stream(serialize);
+
+         rect rectWindow;
+
+         if (serialize.is_storing())
+         {
+
+            GetWindowRect(rectWindow);
+
+            if (GetParent() != NULL)
+            {
+
+               GetParent()->ScreenToClient(rectWindow);
+
+            }
+
+            serialize(rectWindow);
+
+         }
+         else
+         {
+
+            serialize(rectWindow);
+
+            SetWindowPos(0, rectWindow, SWP_NOZORDER | SWP_SHOWWINDOW);
+
+            set_need_layout();
+
+         }
 
       }
 

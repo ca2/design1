@@ -5,7 +5,7 @@ namespace textformat
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT view :
       virtual public ::user::impact
    {
    public:

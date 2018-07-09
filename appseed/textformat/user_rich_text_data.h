@@ -9,16 +9,14 @@ namespace user
    {
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT data :
-         virtual public ::data::data,
-         virtual public ::xml::exportable,
-         virtual public ::xml::importable
+      class CLASS_DECL_DESIGN_TEXTFORMAT data :
+         virtual public ::data::data
       {
       public:
 
 
-         ::xml::array < 1, box >       m_boxa;
-         ::xml::array < 2, format >    m_formata;
+         spa(box)                      m_boxa;
+         spa(format)                   m_formata;
 
          spa(spa(layout))              m_layouta;
 
@@ -37,8 +35,6 @@ namespace user
 
          virtual void _001OnDraw(::draw2d::graphics * pgraphics, LPCRECTD lpcrect);
 
-         virtual void xml_export(::xml::output_tree & xmlo) override;
-         virtual void xml_import(::xml::input_tree & xmli) override;
 
          virtual int hit_test(pointd pt);
          virtual int hit_test_line_x(index iLine, double x);
@@ -65,6 +61,8 @@ namespace user
 
          virtual strsize _001GetTextLength() const;
          virtual strsize _001GetLayoutTextLength() const;
+
+         virtual void stream(serialize & serialize) override;
 
       };
 

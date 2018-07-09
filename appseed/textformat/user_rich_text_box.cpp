@@ -36,53 +36,61 @@ namespace user
       }
 
 
-      void box::xml_export(::xml::output_tree & xmlo)
+      void box::stream(serialize & serialize)
       {
 
-         if (m_bParagraph)
+         property_set set;
+
+         if (serialize.is_storing())
          {
 
-            xmlo.set_attr("type", "paragraph");
-            xmlo.set_attr("align", (i32)m_ealign);
+            if(m_bParagraph)
+            {
+
+               set["type"] = "paragraph";
+               set["align"] = (i32)m_ealign;
+
+            }
+            else
+            {
+
+               set["type"] = "text";
+               set["value"] = m_str;
+               set["align"] = (i32)m_iFormat;
+
+            }
+
+            serialize(set);
 
          }
          else
          {
 
-            xmlo.set_value(m_str);
-            xmlo.set_attr("type", "text");
-            xmlo.set_attr("format", m_iFormat);
+            serialize(set);
+
+            string strType = set["type"];
+
+            if (strType.contains_ci("paragraph"))
+            {
+
+               m_bParagraph = true;
+               m_ealign = (e_align) set["align"].i32();
+
+            }
+            else
+            {
+
+               m_bParagraph = false;
+
+               m_str = set["value"];
+               m_iFormat = set["format"];
+
+            }
 
          }
 
       }
 
-
-      void box::xml_import(::xml::input_tree & xmli)
-      {
-
-         string str;
-
-         xmli.get_attr("type", str);
-
-         if (str.contains_ci("paragraph"))
-         {
-
-            m_bParagraph = true;
-            xmli.get_attr("align", (i32 &)m_ealign);
-
-         }
-         else
-         {
-
-            m_bParagraph = false;
-
-            xmli.get_value(m_str);
-            xmli.get_attr("format", m_iFormat);
-
-         }
-
-      }
 
 
    } // namespace rich_text

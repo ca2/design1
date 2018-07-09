@@ -9,9 +9,8 @@ namespace user
    {
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT format :
-         virtual public ::xml::exportable,
-         virtual public ::xml::importable
+      class CLASS_DECL_DESIGN_TEXTFORMAT format :
+         virtual public serializable
       {
       public:
 
@@ -38,8 +37,8 @@ namespace user
          format(const format & format);
          virtual ~format();
 
-         virtual void xml_export(::xml::output_tree & xmlo) override;
-         virtual void xml_import(::xml::input_tree & xmli) override;
+
+         virtual void stream(serialize & serialize) override;
 
 
          void apply(format * pformat, attribute_flags & eattributea);

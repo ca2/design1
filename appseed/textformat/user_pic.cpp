@@ -772,8 +772,54 @@ namespace user
    }
 
 
+   void pic::draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect)
+   {
+
+
+   }
+
+
    void pic::draw(::draw2d::graphics * pgraphics)
    {
+
+      ::draw2d::savedc savedc(pgraphics);
+
+      ::draw2d::matrix mRot;
+
+      rectd rClip(m_ppic->m_rect);
+
+      pointd_array pta;
+
+      pta.set_size(4);
+
+      pta[0] = _transform(rClip.top_left());
+      pta[1] = _transform(rClip.top_right());
+      pta[2] = _transform(rClip.bottom_right());
+      pta[3] = _transform(rClip.bottom_left());
+
+      ::draw2d::region_sp rgn(allocer());
+
+      rgn->create_polygon(pta.get_data(), (int)pta.get_count(), ::draw2d::fill_mode_winding);
+
+      pgraphics->SelectClipRgn(rgn, RGN_AND);
+
+      mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
+
+      pgraphics->prepend(mRot);
+
+      pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
+
+      ::draw2d::matrix mTrans;
+
+      mTrans.append(::draw2d::matrix::translation(m_ppic->m_rect.center().x, m_ppic->m_rect.center().y));
+
+      pgraphics->append(mTrans);
+
+      rect r(-point(m_ppic->m_rect.get_size() / 2.0) +
+             point(m_ppic->m_ptDrag.x * m_ppic->m_rect.width(),
+                   m_ppic->m_ptDrag.y * m_ppic->m_rect.height()), ::size(m_ppic->m_rect.get_size()));
+
+      draw_impl(pgraphics, r);
 
 
    }

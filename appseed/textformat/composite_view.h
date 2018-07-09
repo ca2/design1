@@ -5,7 +5,7 @@ namespace composite
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT view :
       virtual public ::user::impact,
       virtual public ::serialize
    {
@@ -124,6 +124,10 @@ namespace composite
       virtual index hit_test(pointd point, ::user::e_element & eelement);
 
       virtual void stream_link(string strLink, serializable & serializable);
+
+      virtual ::user::rich_text::edit * create_rich_text_edit(point pt = null_point());
+
+      virtual void on_control_event(::user::control_event * pevent);
 
 
    };

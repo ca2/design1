@@ -5,7 +5,7 @@ namespace userex
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT group_image_list_view :
+   class CLASS_DECL_DESIGN_TEXTFORMAT group_image_list_view :
       virtual public ::user::impact
    {
    public:

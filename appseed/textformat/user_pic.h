@@ -5,13 +5,13 @@ namespace user
 {
 
 
-   class CLASS_DECL_APP_CORE_TEXTFORMAT pic :
+   class CLASS_DECL_DESIGN_TEXTFORMAT pic :
       virtual public serializable
    {
    public:
 
 
-      class CLASS_DECL_APP_CORE_TEXTFORMAT pic_impl :
+      class CLASS_DECL_DESIGN_TEXTFORMAT pic_impl :
          virtual public serializable
       {
       public:
@@ -83,6 +83,7 @@ namespace user
 
 
       virtual void draw(::draw2d::graphics * pgraphics);
+      virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect);
 
 
       virtual void move_to(pointd pt, ::sized sizePage, ::sized sizeClient, LPCRECTD lpcrectMargin);
