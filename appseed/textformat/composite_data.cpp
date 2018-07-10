@@ -84,7 +84,7 @@ namespace composite
       ::user::pic(papp)
    {
 
-      m_pview = Application.m_pcompositeviewCurrent;
+//      m_pview = Application.m_pcompositeviewCurrent;
 
    }
 
