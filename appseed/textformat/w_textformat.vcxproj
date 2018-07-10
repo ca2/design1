@@ -27,22 +27,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="composite_data.h" />
+    <ClInclude Include="composite_view.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="textformat.h" />
     <ClInclude Include="textformat_application.h" />
     <ClInclude Include="textformat_document.h" />
     <ClInclude Include="textformat_frame.h" />
-    <ClInclude Include="textformat_gcom.h" />
     <ClInclude Include="textformat_main_frame.h" />
-    <ClInclude Include="textformat_main_view.h" />
     <ClInclude Include="textformat_pane_view.h" />
     <ClInclude Include="textformat_pane_view_update_hint.h" />
-    <ClInclude Include="textformat_render.h" />
-    <ClInclude Include="textformat_switcher_view.h" />
     <ClInclude Include="textformat_view.h" />
-    <ClInclude Include="textformat_view_base.h" />
+    <ClInclude Include="userex_font_format_tool.h" />
+    <ClInclude Include="userex_group_image_list_view.h" />
+    <ClInclude Include="userex_image_list_view.h" />
+    <ClInclude Include="user_font_combo_box.h" />
+    <ClInclude Include="user_image_list_view.h" />
+    <ClInclude Include="user_menu_view.h" />
+    <ClInclude Include="user_object.h" />
+    <ClInclude Include="user_pic.h" />
+    <ClInclude Include="user_rich_text.h" />
+    <ClInclude Include="user_rich_text_box.h" />
+    <ClInclude Include="user_rich_text_data.h" />
+    <ClInclude Include="user_rich_text_edit.h" />
+    <ClInclude Include="user_rich_text_format.h" />
+    <ClInclude Include="user_rich_text_global.h" />
+    <ClInclude Include="user_rich_text_layout.h" />
+    <ClInclude Include="user_text_format_object.h" />
+    <ClInclude Include="user_tool_window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="composite_data.cpp" />
+    <ClCompile Include="composite_view.cpp" />
     <ClCompile Include="framework.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='basis|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='basis|ARM'">Create</PrecompiledHeader>
@@ -55,18 +71,25 @@
     <ClCompile Include="textformat_application.cpp" />
     <ClCompile Include="textformat_document.cpp" />
     <ClCompile Include="textformat_frame.cpp" />
-    <ClCompile Include="textformat_gcom.cpp" />
     <ClCompile Include="textformat_main_frame.cpp" />
-    <ClCompile Include="textformat_main_view.cpp" />
     <ClCompile Include="textformat_pane_view.cpp" />
     <ClCompile Include="textformat_pane_view_update_hint.cpp" />
-    <ClCompile Include="textformat_render.cpp" />
-    <ClCompile Include="textformat_switcher_view.cpp" />
     <ClCompile Include="textformat_view.cpp" />
-    <ClCompile Include="textformat_view_base.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app_core_textformat.def" />
+    <ClCompile Include="userex_font_format_tool.cpp" />
+    <ClCompile Include="userex_group_image_list_view.cpp" />
+    <ClCompile Include="userex_image_list_view.cpp" />
+    <ClCompile Include="user_font_combo_box.cpp" />
+    <ClCompile Include="user_image_list_view.cpp" />
+    <ClCompile Include="user_menu_view.cpp" />
+    <ClCompile Include="user_object.cpp" />
+    <ClCompile Include="user_pic.cpp" />
+    <ClCompile Include="user_rich_text_box.cpp" />
+    <ClCompile Include="user_rich_text_data.cpp" />
+    <ClCompile Include="user_rich_text_edit.cpp" />
+    <ClCompile Include="user_rich_text_format.cpp" />
+    <ClCompile Include="user_rich_text_global.cpp" />
+    <ClCompile Include="user_text_format_object.cpp" />
+    <ClCompile Include="user_tool_window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\app\appseed\ace\w_ace.vcxproj">
@@ -87,24 +110,21 @@
     <ProjectReference Include="..\..\..\app\appseed\core\w_core.vcxproj">
       <Project>{b000ffaf-392f-4e32-bf51-fd7ed638991f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\app\appseed\sphere\w_sphere.vcxproj">
-      <Project>{f20dcbae-5e9b-4a38-a236-b7fbcfe0fa44}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\gcom\w_gcom.vcxproj">
-      <Project>{b7afcefa-8451-7723-8f97-4543bb980265}</Project>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="w_design_textformat.def" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B7AFCEFA-3079-4B23-8F97-4543BB980265}</ProjectGuid>
+    <ProjectGuid>{4DAE2BBE-54A8-4014-9798-FB173036BD45}</ProjectGuid>
     <Keyword>DynamicLibrary</Keyword>
-    <ProjectName>app_core_textformat</ProjectName>
-    <RootNamespace>app_core_textformat</RootNamespace>
+    <ProjectName>design_textformat</ProjectName>
+    <RootNamespace>design_textformat</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformMinVersion>10.0.16299.0</WindowsTargetPlatformMinVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17134.0</WindowsTargetPlatformMinVersion>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -206,7 +226,7 @@
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)../../../include;$(SolutionDir)../../../nodeapp/$(PlatformName)/include;$(SolutionDir)../../../nodeapp/include;$(SolutionDir)../../../app/include;.;$(ProjectDir)framework;$(IntDir);$(SolutionDir)../../../;$(SolutionDir)../../../app;$(SolutionDir)../../../app/appseed;$(SolutionDir)../../../app/appseed/core;$(SolutionDir)../../../app/appseed/base;$(SolutionDir)../../../app/appseed/axis;$(SolutionDir)../../../app/appseed/aura;$(SolutionDir)../../;$(ProjectDir)../../appseed;$(ProjectDir)../../;$(ProjectDir)../;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
@@ -235,7 +255,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)framework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAsManaged>false</CompileAsManaged>
       <ObjectFileName>$(IntDir)%(Directory)</ObjectFileName>
     </ClCompile>
@@ -268,7 +288,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)framework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(Directory)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -289,7 +309,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)framework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAsManaged>false</CompileAsManaged>
       <ObjectFileName>$(IntDir)%(Directory)</ObjectFileName>
     </ClCompile>
@@ -312,7 +332,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)framework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)%(Directory)</ObjectFileName>
     </ClCompile>
     <Link>
@@ -333,7 +353,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)framework.pch</PrecompiledHeaderOutputFile>
-      <PreprocessorDefinitions>_APP_CORE_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DESIGN_TEXTFORMAT_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <CompileAsManaged>false</CompileAsManaged>
       <ObjectFileName>$(IntDir)%(Directory)</ObjectFileName>
     </ClCompile>

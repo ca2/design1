@@ -18,28 +18,13 @@
     <ClInclude Include="textformat_frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="textformat_main_view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="textformat_pane_view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textformat_pane_view_update_hint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="textformat_switcher_view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="textformat_view.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textformat_render.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textformat_gcom.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textformat_view_base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textformat_main_frame.h">
@@ -49,6 +34,63 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textformat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="composite_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="composite_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_font_combo_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_image_list_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_menu_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_pic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_edit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_format.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_rich_text_layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_text_format_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_tool_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="userex_font_format_tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="userex_group_image_list_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="userex_image_list_view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,36 +110,72 @@
     <ClCompile Include="textformat_frame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="textformat_main_view.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="textformat_pane_view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="textformat_pane_view_update_hint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="textformat_switcher_view.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="textformat_view.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textformat_render.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textformat_gcom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textformat_view_base.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="textformat_main_frame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="composite_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="composite_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_font_combo_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_image_list_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_menu_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_pic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_rich_text_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_rich_text_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_rich_text_edit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_rich_text_format.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_rich_text_global.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_text_format_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_tool_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="userex_font_format_tool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="userex_group_image_list_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="userex_image_list_view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app_core_textformat.def">
+    <None Include="w_design_textformat.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

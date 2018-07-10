@@ -1,0 +1,8 @@
+; design_textformat.def
+
+LIBRARY  "design_textformat"
+; For Win32 DLLs, only EXPORTs really required.
+
+EXPORTS
+design_textformat_get_new_library
+

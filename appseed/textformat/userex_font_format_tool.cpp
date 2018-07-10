@@ -415,7 +415,7 @@ namespace userex
                fork([&]()
                {
 
-#ifdef WINDOWS
+#ifdef WINDOWSEX
                   CHOOSECOLOR cc;
                   COLORREF crCustColors[16];
 
