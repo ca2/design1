@@ -123,7 +123,7 @@ namespace composite
 
       virtual index hit_test(pointd point, ::user::e_element & eelement);
 
-      virtual void stream_link(string strLink, serializable & serializable);
+      virtual void stream_link(string strLink, object & object);
 
       virtual ::user::rich_text::edit * create_rich_text_edit(point pt = null_point());
 

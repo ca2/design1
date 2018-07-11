@@ -6,13 +6,13 @@ namespace user
 
 
    class CLASS_DECL_DESIGN_TEXTFORMAT pic :
-      virtual public serializable
+      virtual public object
    {
    public:
 
 
       class CLASS_DECL_DESIGN_TEXTFORMAT pic_impl :
-         virtual public serializable
+         virtual public object
       {
       public:
 

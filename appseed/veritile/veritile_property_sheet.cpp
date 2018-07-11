@@ -132,7 +132,7 @@ namespace veritile
       else if(lHint == ::user::impact::hint_save_to_ostream)
       {
 
-         //::file::ostream & ostream = dynamic_cast < ::file::ostream & > (*phint);
+         //serialize & ostream = dynamic_cast < serialize & > (*phint);
 
          //m_ptree->m_editfile.SaveTo(ostream);
 

@@ -1189,10 +1189,10 @@ selected:;
    }
 
 
-   void view::stream_link(string strLink, serializable & serializable)
+   void view::stream_link(string strLink, object & object)
    {
 
-      ::serializable * pserializable = &serializable;
+      ::object * pserializable = &object;
 
       ::draw2d::dib_sp pdib = pserializable;
 
@@ -1232,7 +1232,7 @@ selected:;
       else
       {
 
-         ::serialize::stream_link(strLink, serializable);
+         ::serialize::stream_link(strLink, object);
 
       }
 

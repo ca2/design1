@@ -10,7 +10,7 @@ namespace user
 
 
       class CLASS_DECL_DESIGN_TEXTFORMAT box :
-         virtual public ::serializable
+         virtual public ::object
       {
       public:
 

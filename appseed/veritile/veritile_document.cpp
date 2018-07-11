@@ -278,7 +278,7 @@ namespace veritile
 
    }
 
-   void document::write(::file::ostream & ostream)
+   void document::write(serialize & ostream)
    {
 
       data * pdata = get_typed_data < data >();
