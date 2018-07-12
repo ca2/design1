@@ -105,15 +105,15 @@ namespace composite
    }
 
 
-   void pic::io(stream & serialize)
+   void pic::io(stream & stream)
    {
 
-      if (serialize.is_storing())
+      if (stream.is_storing())
       {
 
          string strLink = m_dib->oprop("read_only_link");
 
-         serialize(strLink);
+         stream(strLink);
 
       }
       else
@@ -121,7 +121,7 @@ namespace composite
 
          string strLink;
 
-         serialize(strLink);
+         stream(strLink);
 
          if (strLink.is_empty())
          {
@@ -132,7 +132,7 @@ namespace composite
 
          m_dib.alloc(allocer());
 
-         if (System.imaging().load_from_file(m_dib, serialize.get_link_path(strLink)))
+         if (System.imaging().load_from_file(m_dib, stream.get_link_path(strLink)))
          {
 
             m_dib->oprop("read_only_link") = strLink;

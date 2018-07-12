@@ -1628,16 +1628,16 @@ namespace user
       }
 
 
-      void edit::io(stream & serialize)
+      void edit::io(stream & stream)
       {
 
          ::user::pic::io(stream);
 
-         m_data.stream(serialize);
+         m_data.io(stream);
 
          rect rectWindow;
 
-         if (serialize.is_storing())
+         if (stream.is_storing())
          {
 
             GetWindowRect(rectWindow);
@@ -1649,13 +1649,13 @@ namespace user
 
             }
 
-            serialize(rectWindow);
+            stream(rectWindow);
 
          }
          else
          {
 
-            serialize(rectWindow);
+            stream(rectWindow);
 
             SetWindowPos(0, rectWindow, SWP_NOZORDER | SWP_SHOWWINDOW);
 
