@@ -52,7 +52,7 @@ namespace composite
    }
 
 
-   void data::stream(::serialize & serialize)
+   void data::io(stream & serialize)
    {
 
       try
@@ -105,7 +105,7 @@ namespace composite
    }
 
 
-   void pic::stream(serialize & serialize)
+   void pic::io(stream & serialize)
    {
 
       if (serialize.is_storing())
@@ -141,7 +141,7 @@ namespace composite
 
       }
 
-      ::user::pic::stream(serialize);
+      ::user::pic::io(stream);
 
    }
 

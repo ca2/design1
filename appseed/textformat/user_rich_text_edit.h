@@ -98,7 +98,7 @@ namespace user
 
          virtual strsize _001GetTextLength() const override;
 
-         virtual void stream(serialize & serialize) override;
+         virtual void io(stream & stream) override;
 
       };
 

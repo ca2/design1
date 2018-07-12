@@ -36,7 +36,7 @@ namespace user
          virtual ~box();
 
 
-         virtual void stream(serialize & serialize) override;
+         virtual void io(stream & stream) override;
 
 
       };

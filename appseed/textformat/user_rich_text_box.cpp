@@ -36,7 +36,7 @@ namespace user
       }
 
 
-      void box::stream(serialize & serialize)
+      void box::io(stream & serialize)
       {
 
          property_set set;

@@ -1702,7 +1702,7 @@ restart2:
       }
 
 
-      void data::stream(serialize & serialize)
+      void data::io(stream & serialize)
       {
 
          serialize.stream_array(m_boxa);

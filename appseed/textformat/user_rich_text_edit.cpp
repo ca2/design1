@@ -1628,10 +1628,10 @@ namespace user
       }
 
 
-      void edit::stream(serialize & serialize)
+      void edit::io(stream & serialize)
       {
 
-         ::user::pic::stream(serialize);
+         ::user::pic::io(stream);
 
          m_data.stream(serialize);
 

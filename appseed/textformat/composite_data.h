@@ -42,7 +42,7 @@ namespace composite
 
       virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect) override;
 
-      virtual void stream(serialize & serialize) override;
+      virtual void io(stream & stream) override;
 
    };
 
@@ -119,7 +119,7 @@ namespace composite
       rectd                   m_rectMarginPrev;
       rectd                   m_rectClient;
 
-      virtual void stream(::serialize & serialize) override;
+      virtual void io(stream & serialize) override;
 
 
    };

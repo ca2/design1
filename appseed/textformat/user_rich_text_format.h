@@ -38,7 +38,7 @@ namespace user
          virtual ~format();
 
 
-         virtual void stream(serialize & serialize) override;
+         virtual void io(stream & stream) override;
 
 
          void apply(format * pformat, attribute_flags & eattributea);

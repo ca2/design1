@@ -10,13 +10,13 @@ namespace netnodeds
    {
    public:
 
-      
+
       ::file::file_sp          m_file;
       int32_t                  m_iBranch;
       sp(view)               m_pview;
 
 
-      document(::aura::application * papp);           
+      document(::aura::application * papp);
 
       virtual bool on_open_document(var varFile);
 
@@ -25,7 +25,7 @@ namespace netnodeds
       sp(view) get_edit_view();
 
       void reload();
-   
+
       DECL_GEN_SIGNAL(_001OnUpdateFileNew);
       DECL_GEN_SIGNAL(_001OnUpdateFileSave);
       DECL_GEN_SIGNAL(_001OnUpdateFilePut);
@@ -42,9 +42,9 @@ namespace netnodeds
       void Put();
       void FtpPut(const char * lpcszLocal, const char * lpcszRemote);
 
-      public:
-   //   virtual void Serialize(CArchive& ar);   
-      protected:
+   public:
+      //   virtual void Serialize(CArchive& ar);
+   protected:
       virtual bool on_new_document();
 
    public:
@@ -54,7 +54,7 @@ namespace netnodeds
       virtual void dump(dump_context & dumpcontext) const;
 
 
-      void write(::file::byte_stream & ostream);
+      void write(serialize & ostream);
 
 
    };

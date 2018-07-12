@@ -219,7 +219,7 @@ namespace user
       }
 
 
-      void format::stream(serialize & serialize)
+      void format::io(stream & serialize)
       {
 
          property_set set;

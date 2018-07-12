@@ -845,7 +845,7 @@ namespace user
    }
 
 
-   void pic::pic_impl::stream(serialize & serialize)
+   void pic::pic_impl::io(stream & serialize)
    {
 
       if (serialize.is_version(FIRST_VERSION))
@@ -868,7 +868,7 @@ namespace user
    }
 
 
-   void pic::stream(serialize & serialize)
+   void pic::io(stream & serialize)
    {
 
       if (serialize.is_version(FIRST_VERSION))

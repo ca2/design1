@@ -276,7 +276,7 @@ namespace devedge
 
    }
 
-   void document::write(::file::byte_stream & ostream)
+   void document::write(serialize & ostream)
    {
       update_all_views(NULL, 772000, &ostream);
    }
