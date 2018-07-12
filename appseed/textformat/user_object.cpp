@@ -12,7 +12,8 @@ namespace user
    }
 
 
-   object::object(::aura::application * papp)
+   object::object(::aura::application * papp) :
+      ::object(papp)
    {
 
 

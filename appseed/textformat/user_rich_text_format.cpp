@@ -14,6 +14,7 @@ namespace user
 
 
       format::format(::aura::application * papp) :
+         ::object(papp),
          object(papp)
       {
 
