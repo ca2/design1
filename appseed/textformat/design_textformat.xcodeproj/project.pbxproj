@@ -237,12 +237,12 @@
 		9ACE47D91D2041AE00A1E0AD /* libaxis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaxis.dylib; path = ../../../app/appseed/axis/build/Debug/libaxis.dylib; sourceTree = "<group>"; };
 		9ACE47DB1D2041B800A1E0AD /* libbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbase.dylib; path = ../../../app/appseed/base/build/Debug/libbase.dylib; sourceTree = "<group>"; };
 		9ACE47DD1D2041E400A1E0AD /* libpcre.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/core-mac-ekqwiewkpeyhdudtxguywfqohhby/Build/Products/Debug/libpcre.dylib"; sourceTree = "<group>"; };
-		9AE24E8A1904CFFD001AEFFB /* libapp_core_textformat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libapp_core_textformat.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE24E8A1904CFFD001AEFFB /* libapp_core_textformat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libapp_core_textformat.a; path = libdesign_textformat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE24E991904CFFD001AEFFB /* app_core_textformat_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = app_core_textformat_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE24EA41904CFFD001AEFFB /* app_core_textformat_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "app_core_textformat_iosTests-Info.plist"; sourceTree = "<group>"; };
 		9AE24EA61904CFFD001AEFFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9AE24EA81904CFFD001AEFFB /* app_core_textformat_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_core_textformat_iosTests.m; sourceTree = "<group>"; };
-		9AEB75A316F78DF10085103B /* libapp_core_textformat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libapp_core_textformat.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AEB75A316F78DF10085103B /* libdesign_textformat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libdesign_textformat.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEB75BE16F78E600085103B /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AEB75BF16F78E600085103B /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
 		9AEB75C316F78E600085103B /* textformat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat.h; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 		9AEB75A416F78DF10085103B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9AEB75A316F78DF10085103B /* libapp_core_textformat.dylib */,
+				9AEB75A316F78DF10085103B /* libdesign_textformat.dylib */,
 				9AE24E8A1904CFFD001AEFFB /* libapp_core_textformat.a */,
 				9AE24E991904CFFD001AEFFB /* app_core_textformat_iosTests.xctest */,
 			);
@@ -517,9 +517,9 @@
 			productReference = 9AE24E991904CFFD001AEFFB /* app_core_textformat_iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9AEB75A216F78DF10085103B /* app_core_textformat */ = {
+		9AEB75A216F78DF10085103B /* design_textformat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9AEB75A716F78DF10085103B /* Build configuration list for PBXNativeTarget "app_core_textformat" */;
+			buildConfigurationList = 9AEB75A716F78DF10085103B /* Build configuration list for PBXNativeTarget "design_textformat" */;
 			buildPhases = (
 				9AEB759F16F78DF10085103B /* Sources */,
 				9AEB75A016F78DF10085103B /* Frameworks */,
@@ -531,9 +531,9 @@
 				9A9578571F62219700623508 /* PBXTargetDependency */,
 				070533EE1C90B2B900F31B3F /* PBXTargetDependency */,
 			);
-			name = app_core_textformat;
+			name = design_textformat;
 			productName = app_core_textformat;
-			productReference = 9AEB75A316F78DF10085103B /* libapp_core_textformat.dylib */;
+			productReference = 9AEB75A316F78DF10085103B /* libdesign_textformat.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -550,7 +550,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9AEB759E16F78DF10085103B /* Build configuration list for PBXProject "app_core_textformat" */;
+			buildConfigurationList = 9AEB759E16F78DF10085103B /* Build configuration list for PBXProject "design_textformat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -573,7 +573,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				9AEB75A216F78DF10085103B /* app_core_textformat */,
+				9AEB75A216F78DF10085103B /* design_textformat */,
 				9AE24E891904CFFD001AEFFB /* ios_app_core_textformat */,
 				9AE24E981904CFFD001AEFFB /* app_core_textformat_iosTests */,
 			);
@@ -1004,7 +1004,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9AEB759E16F78DF10085103B /* Build configuration list for PBXProject "app_core_textformat" */ = {
+		9AEB759E16F78DF10085103B /* Build configuration list for PBXProject "design_textformat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AEB75A516F78DF10085103B /* Debug */,
@@ -1013,7 +1013,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9AEB75A716F78DF10085103B /* Build configuration list for PBXNativeTarget "app_core_textformat" */ = {
+		9AEB75A716F78DF10085103B /* Build configuration list for PBXNativeTarget "design_textformat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9AEB75A816F78DF10085103B /* Debug */,

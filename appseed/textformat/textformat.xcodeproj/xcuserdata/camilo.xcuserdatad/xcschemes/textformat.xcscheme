@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "070B8EE91B6E53F900D26137"
-            BuildableName = "textformat.app"
-            BlueprintName = "textformat"
+            BuildableName = "design_textformat.app"
+            BlueprintName = "design_textformat"
             ReferencedContainer = "container:textformat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "070B8EE91B6E53F900D26137"
-            BuildableName = "textformat.app"
-            BlueprintName = "textformat"
+            BuildableName = "design_textformat.app"
+            BlueprintName = "design_textformat"
             ReferencedContainer = "container:textformat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
