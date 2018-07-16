@@ -47,7 +47,6 @@
 		9A65450D20E8031600B5C10E /* user_pic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A65446520E8030A00B5C10E /* user_pic.cpp */; };
 		9A65450E20E8031600B5C10E /* user_font_combo_box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A65448F20E8030B00B5C10E /* user_font_combo_box.cpp */; };
 		9A65450F20E8031600B5C10E /* user_font_combo_box.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A65449320E8030C00B5C10E /* user_font_combo_box.h */; };
-		9A65451320E8031600B5C10E /* aura_serialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6544A220E8030E00B5C10E /* aura_serialize.cpp */; };
 		9A65451420E8031600B5C10E /* user_rich_text_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6544A520E8030F00B5C10E /* user_rich_text_data.h */; };
 		9A65451520E8031600B5C10E /* user_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6544A720E8031000B5C10E /* user_object.cpp */; };
 		9A65451720E8031600B5C10E /* userex_image_list_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6544A920E8031000B5C10E /* userex_image_list_view.cpp */; };
@@ -55,10 +54,11 @@
 		9A65451920E8031600B5C10E /* user_rich_text_box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6544BC20E8031200B5C10E /* user_rich_text_box.cpp */; };
 		9A65451A20E8031600B5C10E /* userex_image_list_view.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6544C220E8031200B5C10E /* userex_image_list_view.h */; };
 		9A65451B20E8031600B5C10E /* user_rich_text_format.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6544C520E8031300B5C10E /* user_rich_text_format.h */; };
-		9A65451C20E8031600B5C10E /* aura_serialize.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6544C620E8031400B5C10E /* aura_serialize.h */; };
 		9A65451E20E8031600B5C10E /* user_rich_text_global.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A6544E620E8031500B5C10E /* user_rich_text_global.cpp */; };
 		9A65451F20E8031600B5C10E /* user_tool_window.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A6544E720E8031600B5C10E /* user_tool_window.h */; };
 		9A6716B61D155B860069A961 /* textformat_main_frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A72594A1D1403E6001F56B4 /* textformat_main_frame.cpp */; };
+		9A708C3B20FC1CA400D81FB7 /* composite_data.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A708C3920FC1CA300D81FB7 /* composite_data.h */; };
+		9A708C3C20FC1CA400D81FB7 /* composite_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A708C3A20FC1CA400D81FB7 /* composite_data.cpp */; };
 		9A72594C1D1403E6001F56B4 /* textformat_main_frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A72594A1D1403E6001F56B4 /* textformat_main_frame.cpp */; };
 		9A72594D1D1403E6001F56B4 /* textformat_main_frame.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A72594B1D1403E6001F56B4 /* textformat_main_frame.h */; };
 		9A8C49451F6069A8004A5BA4 /* libace.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8C49441F6069A8004A5BA4 /* libace.dylib */; };
@@ -208,7 +208,6 @@
 		9A65446520E8030A00B5C10E /* user_pic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_pic.cpp; sourceTree = "<group>"; };
 		9A65448F20E8030B00B5C10E /* user_font_combo_box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_font_combo_box.cpp; sourceTree = "<group>"; };
 		9A65449320E8030C00B5C10E /* user_font_combo_box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_font_combo_box.h; sourceTree = "<group>"; };
-		9A6544A220E8030E00B5C10E /* aura_serialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aura_serialize.cpp; sourceTree = "<group>"; };
 		9A6544A520E8030F00B5C10E /* user_rich_text_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_rich_text_data.h; sourceTree = "<group>"; };
 		9A6544A720E8031000B5C10E /* user_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_object.cpp; sourceTree = "<group>"; };
 		9A6544A920E8031000B5C10E /* userex_image_list_view.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = userex_image_list_view.cpp; sourceTree = "<group>"; };
@@ -216,9 +215,10 @@
 		9A6544BC20E8031200B5C10E /* user_rich_text_box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_rich_text_box.cpp; sourceTree = "<group>"; };
 		9A6544C220E8031200B5C10E /* userex_image_list_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userex_image_list_view.h; sourceTree = "<group>"; };
 		9A6544C520E8031300B5C10E /* user_rich_text_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_rich_text_format.h; sourceTree = "<group>"; };
-		9A6544C620E8031400B5C10E /* aura_serialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aura_serialize.h; sourceTree = "<group>"; };
 		9A6544E620E8031500B5C10E /* user_rich_text_global.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_rich_text_global.cpp; sourceTree = "<group>"; };
 		9A6544E720E8031600B5C10E /* user_tool_window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_tool_window.h; sourceTree = "<group>"; };
+		9A708C3920FC1CA300D81FB7 /* composite_data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = composite_data.h; sourceTree = "<group>"; };
+		9A708C3A20FC1CA400D81FB7 /* composite_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = composite_data.cpp; sourceTree = "<group>"; };
 		9A72594A1D1403E6001F56B4 /* textformat_main_frame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textformat_main_frame.cpp; sourceTree = "<group>"; };
 		9A72594B1D1403E6001F56B4 /* textformat_main_frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat_main_frame.h; sourceTree = "<group>"; };
 		9A8C49441F6069A8004A5BA4 /* libace.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libace.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libace.dylib; sourceTree = "<group>"; };
@@ -381,8 +381,8 @@
 		9AEB75AA16F78E600085103B /* textformat */ = {
 			isa = PBXGroup;
 			children = (
-				9A6544A220E8030E00B5C10E /* aura_serialize.cpp */,
-				9A6544C620E8031400B5C10E /* aura_serialize.h */,
+				9A708C3A20FC1CA400D81FB7 /* composite_data.cpp */,
+				9A708C3920FC1CA300D81FB7 /* composite_data.h */,
 				9A6543EC20E8030100B5C10E /* composite_view.cpp */,
 				9A6543E020E802FF00B5C10E /* composite_view.h */,
 				9A65448F20E8030B00B5C10E /* user_font_combo_box.cpp */,
@@ -448,6 +448,7 @@
 			files = (
 				9A6544F220E8031600B5C10E /* user_rich_text_edit.h in Headers */,
 				9A65451A20E8031600B5C10E /* userex_image_list_view.h in Headers */,
+				9A708C3B20FC1CA400D81FB7 /* composite_data.h in Headers */,
 				9A6544E920E8031600B5C10E /* user_pic.h in Headers */,
 				9A6544EB20E8031600B5C10E /* userex_font_format_tool.h in Headers */,
 				9A65450F20E8031600B5C10E /* user_font_combo_box.h in Headers */,
@@ -467,7 +468,6 @@
 				9A65451B20E8031600B5C10E /* user_rich_text_format.h in Headers */,
 				07A684EF17F0E06700C41DE6 /* textformat_pane_view_update_hint.h in Headers */,
 				9A65450520E8031600B5C10E /* user_rich_text_box.h in Headers */,
-				9A65451C20E8031600B5C10E /* aura_serialize.h in Headers */,
 				07A684ED17F0E06700C41DE6 /* textformat_document.h in Headers */,
 				07A684F017F0E06700C41DE6 /* textformat_pane_view.h in Headers */,
 				9A65451820E8031600B5C10E /* user_image_list_view.h in Headers */,
@@ -678,8 +678,8 @@
 				9A6544F720E8031600B5C10E /* userex_font_format_tool.cpp in Sources */,
 				9AEB75E116F78E600085103B /* textformat_application.cpp in Sources */,
 				9A65451920E8031600B5C10E /* user_rich_text_box.cpp in Sources */,
-				9A65451320E8031600B5C10E /* aura_serialize.cpp in Sources */,
 				9AEB75E216F78E600085103B /* textformat_document.cpp in Sources */,
+				9A708C3C20FC1CA400D81FB7 /* composite_data.cpp in Sources */,
 				9A65450E20E8031600B5C10E /* user_font_combo_box.cpp in Sources */,
 				9A65450920E8031600B5C10E /* winmetro_textformat.cpp in Sources */,
 				9AEB75E316F78E600085103B /* textformat_frame.cpp in Sources */,

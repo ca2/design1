@@ -37,7 +37,7 @@ namespace textformat
 
       ::core::session * pcoression = m_pauraapp->m_pcoresession;
 
-      pcoression->use_font_sel();
+      pcoression->will_use_view_hint(::userex::view_font_sel);
 
       System.factory().creatable_small < ::textformat::document >();
       System.factory().creatable_small < ::textformat::frame >();
