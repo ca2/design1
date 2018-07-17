@@ -6,7 +6,7 @@ namespace textformat
 
 
    class CLASS_DECL_DESIGN_TEXTFORMAT document :
-      public ::user::document
+      virtual public ::user::document
    {
    public:
 

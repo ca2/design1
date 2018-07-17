@@ -27,6 +27,8 @@ namespace textformat
 #undef App
 #define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::textformat::application > ())
 
+#include "userex_dialog_frame.h"
+#include "userex_progress_view.h"
 #include "user_image_list_view.h"
 #include "user_menu_view.h"
 

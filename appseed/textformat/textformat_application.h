@@ -24,6 +24,9 @@ namespace textformat
       ::user::single_document_template *     m_ptemplateTextFormatView;
       pane_view *                            m_ppaneview;
 
+      ::user::multiple_document_template *   m_ptemplateProgress2;
+      ::userex::progress *                   m_pprogress;
+
 
       application();
       virtual ~application();
@@ -36,6 +39,10 @@ namespace textformat
 
       virtual int64_t add_ref() override;
       virtual int64_t dec_ref() override;
+
+      progress_sp create_progress(::user::interaction * puiParent, const char * pszTitle, int iProgressCount = 0);
+
+
 
    };
 

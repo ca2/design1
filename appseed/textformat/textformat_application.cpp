@@ -8,6 +8,9 @@ namespace textformat
    application::application()
    {
 
+      m_pprogress = NULL;
+      m_ptemplateProgress2 = NULL;
+
       m_ptemplateTextFormatMain = NULL;
       m_ptemplateTextFormatView = NULL;
 
@@ -59,6 +62,10 @@ namespace textformat
       System.factory().creatable_small < ::user::image_list_view >();
 
 
+      System.factory().creatable_small < ::userex::progress_view >();
+      System.factory().creatable_small < ::userex::dialog_frame >();
+
+
       if (!::core::application::init_instance())
       {
 
@@ -97,6 +104,14 @@ namespace textformat
                            System.type_info < ::composite::view >()));
       m_ptemplateTextFormatView = pDocTemplate;
       add_document_template(pDocTemplate);
+
+
+      m_ptemplateProgress2 = new ::user::multiple_document_template(
+      this,
+      "main",
+      System.type_info < ::user::document >(),
+      System.type_info < ::userex::dialog_frame >(),
+      System.type_info < ::userex::progress_view >());
 
 
       add_document_template(pDocTemplate);
@@ -181,6 +196,18 @@ namespace textformat
    {
 
       return ::object::dec_ref();
+
+   }
+
+
+   progress_sp application::create_progress(::user::interaction * puiParent, const char * pszTitle, int iProgressCount)
+   {
+
+      sp(::userex::progress) pprogress  = canew(::userex::progress(get_app(), pszTitle, iProgressCount));
+
+      pprogress->defer_show(puiParent);
+
+      return pprogress;
 
    }
 

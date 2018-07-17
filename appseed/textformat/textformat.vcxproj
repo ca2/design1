@@ -726,9 +726,11 @@
     </ClCompile>
     <ClCompile Include=".\textformat_view.cpp" />
     <ClCompile Include="textformat_main_frame.cpp" />
+    <ClCompile Include="userex_dialog_frame.cpp" />
     <ClCompile Include="userex_font_format_tool.cpp" />
     <ClCompile Include="userex_group_image_list_view.cpp" />
     <ClCompile Include="userex_image_list_view.cpp" />
+    <ClCompile Include="userex_progress_view.cpp" />
     <ClCompile Include="user_font_combo_box.cpp" />
     <ClCompile Include="user_image_list_view.cpp" />
     <ClCompile Include="user_menu_view.cpp" />
@@ -753,10 +755,12 @@
     <ClInclude Include="textformat_pane_view_update_hint.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="textformat_view.h" />
+    <ClInclude Include="userex_dialog_frame.h" />
     <ClInclude Include="userex_font_format_tool.h" />
     <ClInclude Include="composite_view.h" />
     <ClInclude Include="userex_group_image_list_view.h" />
     <ClInclude Include="userex_image_list_view.h" />
+    <ClInclude Include="userex_progress_view.h" />
     <ClInclude Include="user_font_combo_box.h" />
     <ClInclude Include="user_image_list_view.h" />
     <ClInclude Include="user_menu_view.h" />
