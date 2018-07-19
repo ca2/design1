@@ -44,7 +44,7 @@ namespace devedge
       if(!::core::application::init_instance())
          return false;
 
-      set_local_data_key_modifier();
+      set_local_data();
 
 
       KickDevEdgeFront(this);

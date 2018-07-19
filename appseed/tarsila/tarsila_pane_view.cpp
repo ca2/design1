@@ -12,8 +12,7 @@ namespace tarsila
       place_holder_container(papp)
    {
 
-
-      set_local_data_key_modifier();
+      set_local_data();
 
       get_data()->m_bVertical = true;
 

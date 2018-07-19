@@ -38,13 +38,14 @@ namespace tarsila
       System.factory().cloneable_small < main_frame >();
       System.factory().creatable_small < pane_view >();
 
+      if (!::tesseract::application::init_instance())
+      {
 
-
-
-      if(!::tesseract::application::init_instance())
          return false;
 
-      set_local_data_key_modifier();
+      }
+
+      set_local_data();
 
       SetRegistryKey("ca2core");
 
