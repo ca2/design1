@@ -298,7 +298,9 @@ namespace composite
          pmouse->m_bRet = true;
 
       }
-      else if (m_pdata->m_picCurrent.is_set() && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0)
+      else if (m_pdata->m_picCurrent.is_set()
+               && m_pdata->m_picCurrent != m_picName
+               && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0)
       {
 
          m_pdata->m_pictool->hit_test(m_pdata->m_etoolDown, pt);
@@ -1895,6 +1897,20 @@ selected:;
       ::user::impact::on_control_event(pevent);
 
    }
+
+
+   void view::_001HideEditingControls()
+   {
+
+      if (m_picName.is_set())
+      {
+
+         m_picName->ShowWindow(SW_HIDE);
+
+      }
+
+   }
+
 
 } // namespace composite
 

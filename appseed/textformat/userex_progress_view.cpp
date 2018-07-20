@@ -141,7 +141,9 @@ namespace userex
       if (m_pdoc == NULL)
       {
 
-         m_pdoc = Application.m_ptemplateProgress2->open_document_file(NULL, false, puiParent);
+         Application.m_ptemplateProgress2->m_bQueueDocumentOpening = false;
+
+         m_pdoc = Application.m_ptemplateProgress2->open_document_file(var::type_null, false, puiParent);
 
          m_pview = m_pdoc->get_typed_view<::userex::progress_view>();
 
@@ -170,6 +172,13 @@ namespace userex
 
    void progress::redraw()
    {
+
+      if (m_pview == NULL)
+      {
+
+         return;
+
+      }
 
       m_pview->set_need_redraw();
 

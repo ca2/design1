@@ -39,6 +39,8 @@ namespace composite
 
       //bool                    m_bOkPending;
 
+      sp(::user::rich_text::edit)         m_picName;
+
 
       bool                    m_bHelloLayoutOn001Layout;
       bool                    m_b001LayoutIgnoreEmpty;
@@ -49,7 +51,6 @@ namespace composite
 
       ::user::e_element       m_eelementDrag;
 
-      index                   m_iTopic;
       rectd                   m_rectTopic;
       rectd                   m_rectTopicDrawing;
       //::userex::font_format_tool       m_fonttool;
@@ -82,6 +83,8 @@ namespace composite
       void on_pic_update();
 
       virtual void do_edit_paste();
+
+      virtual void _001HideEditingControls();
 
       virtual void _001OnDraw(::draw2d::graphics * pgraphics) override;
 

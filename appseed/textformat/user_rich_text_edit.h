@@ -20,6 +20,7 @@ namespace user
          bool                          m_bSelDrag;
          ::message::key                m_keymessageLast;
          bool                          m_bKeyPressed;
+         bool                          m_bEditable;
 
 
          edit();
@@ -72,6 +73,7 @@ namespace user
 
          DECL_GEN_SIGNAL(_001OnCreate);
          DECL_GEN_SIGNAL(_001OnDestroy);
+         DECL_GEN_SIGNAL(_001OnShowWindow);
          DECL_GEN_SIGNAL(_001OnLButtonDown);
          DECL_GEN_SIGNAL(_001OnLButtonUp);
          DECL_GEN_SIGNAL(_001OnMouseMove);

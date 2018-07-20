@@ -29,12 +29,38 @@ namespace user
       }
 
 
+      box::box(const box & box)
+      {
+
+         operator = (box);
+      }
+
       box::~box()
       {
 
 
       }
 
+
+      box & box::operator=(const box & box)
+      {
+
+         m_bParagraph = box.m_bParagraph;
+         m_ealign = box.m_ealign;
+
+         m_str = box.m_str;
+         m_iFormat = box.m_iFormat;
+
+         /// temporary/cache/calculated values, not persisted
+         m_iCharBeg = box.m_iCharBeg;
+         /// temporary/cache/calculated values, not persisted
+         m_iCharEnd = box.m_iCharEnd;
+         m_iSelBeg = box.m_iSelEnd;
+         m_iSelEnd = box.m_iSelEnd;
+
+         return *this;
+
+      }
 
       void box::io(stream & serialize)
       {

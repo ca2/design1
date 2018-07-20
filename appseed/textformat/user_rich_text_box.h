@@ -33,11 +33,13 @@ namespace user
 
          box(::aura::application * papp);
          box(::aura::application * papp, e_align ealign);
+         box(const box & box);
          virtual ~box();
 
 
          virtual void io(stream & stream) override;
 
+         box & operator=(const box & box);
 
       };
 

@@ -14,6 +14,8 @@ namespace user
          edit(get_app())
       {
 
+         m_bEditable = true;
+
       }
 
 
@@ -23,6 +25,8 @@ namespace user
          m_data(papp),
          m_keymessageLast(papp)
       {
+
+         m_bEditable = true;
 
          m_data.m_pui = this;
 
@@ -84,12 +88,66 @@ namespace user
 
          IGUI_MSG_LINK(WM_CREATE, psender, this, &edit::_001OnCreate);
          IGUI_MSG_LINK(WM_DESTROY, psender, this, &edit::_001OnDestroy);
+         IGUI_MSG_LINK(WM_SHOWWINDOW, psender, this, &edit::_001OnShowWindow);
          IGUI_MSG_LINK(WM_LBUTTONDOWN, psender, this, &edit::_001OnLButtonDown);
          IGUI_MSG_LINK(WM_LBUTTONUP, psender, this, &edit::_001OnLButtonUp);
          IGUI_MSG_LINK(WM_MOUSEMOVE, psender, this, &edit::_001OnMouseMove);
          IGUI_MSG_LINK(WM_MOUSELEAVE, psender, this, &edit::_001OnMouseLeave);
          IGUI_MSG_LINK(WM_KEYDOWN, psender, this, &edit::_001OnKeyDown);
          IGUI_MSG_LINK(WM_KEYUP, psender, this, &edit::_001OnKeyUp);
+
+      }
+
+
+      void edit::_001OnCreate(::message::message * pobj)
+      {
+
+         SCAST_PTR(::message::create, pcreate, pobj);
+
+         pcreate->previous();
+
+         if (pcreate->m_bRet)
+            return;
+
+#if !defined(APPLE_IOS) && !defined(VSNORD)
+         Session.keyboard(); // trigger keyboard creationg
+#endif
+
+
+         SetTimer(100, 100, NULL);
+
+         SetTimer(250, 500, NULL); // Caret
+
+      }
+
+
+      void edit::_001OnDestroy(::message::message * pobj)
+      {
+
+      }
+
+
+      void edit::_001OnShowWindow(::message::message * pobj)
+      {
+
+         SCAST_PTR(::message::show_window, pshowwindow, pobj);
+
+         if (pshowwindow->m_bShow)
+         {
+
+
+         }
+         else
+         {
+
+            if (get_sys_format_tool() != NULL)
+            {
+
+               get_sys_format_tool()->ShowWindow(SW_HIDE);
+
+            }
+
+         }
 
       }
 
@@ -108,6 +166,13 @@ namespace user
       {
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
+
+         if (!m_bEditable)
+         {
+
+            return;
+
+         }
 
          point pt = pmouse->m_pt;
 
@@ -171,6 +236,13 @@ namespace user
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
 
+         if (!m_bEditable)
+         {
+
+            return;
+
+         }
+
          point pt = pmouse->m_pt;
 
          ScreenToClient(&pt);
@@ -206,6 +278,13 @@ namespace user
       {
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
+
+         if (!m_bEditable)
+         {
+
+            return;
+
+         }
 
          point pt = pmouse->m_pt;
 
@@ -255,33 +334,6 @@ namespace user
 
       }
 
-
-      void edit::_001OnCreate(::message::message * pobj)
-      {
-
-         SCAST_PTR(::message::create, pcreate, pobj);
-
-         pcreate->previous();
-
-         if (pcreate->m_bRet)
-            return;
-
-#if !defined(APPLE_IOS) && !defined(VSNORD)
-         Session.keyboard(); // trigger keyboard creationg
-#endif
-
-
-         SetTimer(100, 100, NULL);
-
-         SetTimer(250, 500, NULL); // Caret
-
-      }
-
-
-      void edit::_001OnDestroy(::message::message * pobj)
-      {
-
-      }
 
       bool edit::get_element_rect(LPRECT lprect, index i, e_element eelement)
       {
@@ -406,6 +458,7 @@ namespace user
          }
 
       }
+
 
       void edit::draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect)
       {
@@ -566,9 +619,9 @@ namespace user
 
                get_sys_format_tool()->m_eattributea.remove_all();
 
-               pevent->Ret();
+               //pevent->Ret();
 
-               return;
+               //return;
 
             }
 
@@ -593,9 +646,14 @@ namespace user
 
             //ptool->create_window(null_rect(), NULL, "textformat_sys_format_tool");
 
-            ::user::create_struct cs(WS_EX_TOOLWINDOW);
+            ui_post([this, ptool]()
+            {
 
-            ptool->create_window_ex(cs,  NULL, "textformat_sys_format_tool");
+               ::user::create_struct cs(WS_EX_TOOLWINDOW);
+
+               ptool->create_window_ex(cs, NULL, "textformat_sys_format_tool");
+
+            });
 
          }
 
@@ -607,13 +665,20 @@ namespace user
       bool edit::keyboard_focus_is_focusable()
       {
 
-         return IsWindowVisible();
+         return IsWindowVisible() && m_bEditable;
 
       }
 
 
       void edit::keyboard_focus_OnChar(::message::message * pobj)
       {
+
+         if (!m_bEditable)
+         {
+
+            return;
+
+         }
 
          _001OnChar(pobj);
 
