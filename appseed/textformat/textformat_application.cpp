@@ -36,11 +36,11 @@ namespace textformat
    bool application::init_instance()
    {
 
-      set_local_data_key_modifier();
+      set_local_data();
 
       ::core::session * pcoression = m_pauraapp->m_pcoresession;
 
-      pcoression->will_use_view_hint(::userex::view_font_sel);
+      pcoression->will_use_view_hint("color_sel");
 
       System.factory().creatable_small < ::textformat::document >();
       System.factory().creatable_small < ::textformat::frame >();
