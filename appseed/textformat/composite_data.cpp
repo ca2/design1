@@ -24,6 +24,7 @@ namespace composite
 
       m_pictool->m_map[::composite::tool_rotate].m_dib = Application.get_matter_dib("pictool/rotation24.png");
       m_pictool->m_map[::composite::tool_crop].m_dib = Application.get_matter_dib("pictool/crop-icon24.png");
+      m_pictool->m_map[::composite::tool_edit_text].m_dib = Application.get_matter_dib("pictool/text-icon24.png");
       m_pictool->m_map[::composite::tool_close].m_dib = Application.get_matter_dib("pictool/close-button24.png");
       m_pictool->m_map[::composite::tool_stack_up].m_dib = Application.get_matter_dib("pictool/stackup24.png");
       m_pictool->m_map[::composite::tool_special_effect].m_dib = Application.get_matter_dib("pictool/fx24.png");

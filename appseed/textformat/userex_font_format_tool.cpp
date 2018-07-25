@@ -33,6 +33,8 @@ namespace userex
       m_format(papp)
    {
 
+      set_pro_devian();
+
    }
 
 
@@ -114,9 +116,6 @@ namespace userex
       m_comboSize.AddString("64", "64");
       m_comboSize.AddString("72", "72");
       m_comboSize.AddString("144", "144");
-
-
-
 
       m_buttonForeground.create_window(null_rect(), this, "font_foreground");
       m_buttonForeground.LoadBitmaps("matter://fontformat/font-foreground12.png");
@@ -216,6 +215,14 @@ namespace userex
       //m_buttonSuperscript;
       //m_buttonLineHeight
 
+
+   }
+
+
+   bool font_format_tool::is_showing_for_ui(::user::interaction * pui)
+   {
+
+      return GetOwner() == pui;
 
    }
 

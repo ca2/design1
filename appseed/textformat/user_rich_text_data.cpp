@@ -2,12 +2,66 @@
 #include "user_rich_text_global.h"
 
 
+
 namespace user
 {
 
 
    namespace rich_text
    {
+
+
+      int get_vars(int_array & ia1, int_array & ia2, string str)
+      {
+
+         strsize i1 = 0;
+
+         strsize i2 = 0;
+
+         while (true)
+         {
+
+            i1 = str.find('%', i1);
+
+            if (i1 < 0)
+            {
+
+               break;
+
+            }
+
+            i2 = str.find('%', i1 + 1);
+
+            if (i2 < 0)
+            {
+
+               break;
+
+            }
+
+            if (i2 == i1 + 1)
+            {
+
+               i1 = i2 + 1;
+
+               continue;
+
+            }
+
+            ia1.add(i1);
+
+            ia2.add(i2);
+
+            i1 = i2 + 1;
+
+         }
+
+         ASSERT(ia1.get_size() == ia2.get_size());
+
+         return ia1.get_size();
+
+      }
+
 
 
       data::data(::aura::application * papp) :
@@ -103,14 +157,14 @@ namespace user
             for (auto & range : *line)
             {
 
-               if (range->m_rectHitTest.contains(pt))
+               if (range->m_rectHitTest2.contains(pt))
                {
 
                   int iPos = 0;
 
-                  double xLeft = range->m_rect2.left;
+                  double xLeft = range->m_rectDevice.left;
 
-                  double xLast = range->m_rectHitTest.left;
+                  double xLast = range->m_rectHitTest2.left;
 
                   double xRight;
 
@@ -119,7 +173,7 @@ namespace user
                   for (; iChar < range->m_iSelEnd; iChar++, iPos++)
                   {
 
-                     xRight = (range->m_xa[iPos] - xLeft) / 2.0 + xLeft;
+                     xRight = (range->m_xaDevice[iPos] - xLeft) / 2.0 + xLeft;
 
                      if (ceil(xLast) < pt.x && pt.x <= ceil(xRight))
                      {
@@ -128,7 +182,7 @@ namespace user
 
                      }
 
-                     xLeft = range->m_xa[iPos];
+                     xLeft = range->m_xaDevice[iPos];
 
                      xLast = xRight;
 
@@ -164,14 +218,14 @@ namespace user
          for (auto & range : *line)
          {
 
-            if (range->m_rectHitTest.left <= x && x <= range->m_rectHitTest.right)
+            if (range->m_rectHitTest2.left <= x && x <= range->m_rectHitTest2.right)
             {
 
                int iPos = 0;
 
-               double xLeft = range->m_rect2.left;
+               double xLeft = range->m_rect22.left;
 
-               double xLast = range->m_rectHitTest.left;
+               double xLast = range->m_rectHitTest2.left;
 
                double xRight;
 
@@ -180,7 +234,7 @@ namespace user
                for (; iChar < range->m_iSelEnd; iChar++, iPos++)
                {
 
-                  xRight = (range->m_xa[iPos] - xLeft) / 2.0 + xLeft;
+                  xRight = (range->m_xa2[iPos] - xLeft) / 2.0 + xLeft;
 
                   if (ceil(xLast) < x && x <= ceil(xRight))
                   {
@@ -189,7 +243,7 @@ namespace user
 
                   }
 
-                  xLeft = range->m_xa[iPos];
+                  xLeft = range->m_xa2[iPos];
 
                   xLast = xRight;
 
@@ -758,14 +812,7 @@ namespace user
 
          optimize_data();
 
-         sp(rich_text::edit) pedit = m_pui;
-
-         if (pedit.is_set())
-         {
-
-            pedit->on_after_change(::user::event_after_change_text_format);
-
-         }
+         m_pedit->on_after_change(::user::event_after_change_text_format);
 
       }
 
@@ -793,7 +840,7 @@ namespace user
 
          bool bHasFocus = false;
 
-         if (Session.get_keyboard_focus() == m_pui)
+         if (Session.get_keyboard_focus() == m_pedit)
          {
 
             bHasFocus = true;
@@ -802,10 +849,10 @@ namespace user
 
          bool bCaretOn = false;
 
-         if (bHasFocus)
+         if (bHasFocus && m_pedit->is_text_editable())
          {
 
-            bCaretOn = ((get_tick_count() - m_pui->m_dwFocusStartTick) % (m_dwCaretTime * 2)) < m_dwCaretTime;
+            bCaretOn = ((get_tick_count() - m_pedit->m_dwFocusStartTick) % (m_dwCaretTime * 2)) < m_dwCaretTime;
 
          }
 
@@ -846,8 +893,9 @@ namespace user
             if (pbox->m_bParagraph)
             {
 
-               if (pline.is_set())
+               if (pline.is_set() && pline->has_elements())
                {
+
 
                   pline->last().m_iSelEnd++;
 
@@ -902,8 +950,9 @@ namespace user
 
                playout->m_str = "";
 
-               playout->m_rect2.set(x, 0, x, 0);
-               playout->m_rectHitTest.set(x, 0, x, 0);
+               playout->m_rect22.set(x, 0, x, 0);
+
+               playout->m_rectHitTest2.set(x, 0, x, 0);
 
                playout->m_size.set_size(s);
 
@@ -913,8 +962,9 @@ namespace user
 
                iCharBeg2 = playout->m_iCharEnd + 1;
 
-               playout->m_xa.add(x);
-               playout->m_xa.add(x);
+               playout->m_xa2.add(x);
+
+               playout->m_xa2.add(x);
 
                playout->m_iSelBeg = iCharBegLayout;
 
@@ -1035,8 +1085,8 @@ restart1:
 
                      sp(layout) playout = canew(layout);
                      playout->m_ealign = ealign;
-                     playout->m_rect2.left = x;
-                     playout->m_rect2.right = x + ceil(s.cx);
+                     playout->m_rect22.left = x;
+                     playout->m_rect22.right = x + ceil(s.cx);
                      playout->m_size = s;
                      playout->m_iFormat = pbox->m_iFormat;
                      playout->m_str = straWords.implode("", 0, c);
@@ -1047,24 +1097,24 @@ restart1:
                      for (auto & size : sizea)
                      {
                         pos = x + size.cx;
-                        playout->m_xa.add(pos);
+                        playout->m_xa2.add(pos);
 
                      }
-                     playout->m_rectHitTest.left = xLast;
+                     playout->m_rectHitTest2.left = xLast;
                      int iLastCharW = 0;
-                     if (playout->m_xa.get_count() > 0)
+                     if (playout->m_xa2.get_count() > 0)
                      {
-                        if (playout->m_xa.get_count() > 1)
+                        if (playout->m_xa2.get_count() > 1)
                         {
-                           iLastCharW = playout->m_xa.last() - playout->m_xa.last(-2);
+                           iLastCharW = playout->m_xa2.last() - playout->m_xa2.last(-2);
                         }
                         else
                         {
-                           iLastCharW = playout->m_xa.last() - x;
+                           iLastCharW = playout->m_xa2.last() - x;
                         }
                      }
-                     playout->m_rectHitTest.right = x + ceil(s.cx) - iLastCharW / 2;
-                     xLast = playout->m_rectHitTest.right;
+                     playout->m_rectHitTest2.right = x + ceil(s.cx) - iLastCharW / 2;
+                     xLast = playout->m_rectHitTest2.right;
 
                      iCharEnd2 = iCharBeg2 + playout->m_str.get_length() - 1;
                      playout->m_iCharBeg = iCharBeg2;
@@ -1166,8 +1216,8 @@ restart2:
 
                            sp(layout) playout = canew(layout);
                            playout->m_ealign = ealign;
-                           playout->m_rect2.left = x;
-                           playout->m_rect2.right = x + ceil(s.cx);
+                           playout->m_rect22.left = x;
+                           playout->m_rect22.right = x + ceil(s.cx);
                            playout->m_size = s;
                            playout->m_iFormat = pbox->m_iFormat;
                            playout->m_str = strWord.Left(c);
@@ -1180,20 +1230,20 @@ restart2:
                            for (auto & size : sizea)
                            {
                               pos = x + size.cx;
-                              playout->m_xa.add(pos);
+                              playout->m_xa2.add(pos);
 
                            }
-                           playout->m_rectHitTest.left = xLast;
+                           playout->m_rectHitTest2.left = xLast;
                            int iLastCharW = 0;
-                           if (playout->m_xa.get_count() > 0)
+                           if (playout->m_xa2.get_count() > 0)
                            {
-                              if (playout->m_xa.get_count() > 1)
+                              if (playout->m_xa2.get_count() > 1)
                               {
-                                 iLastCharW = playout->m_xa.last() - playout->m_xa.last(-2);
+                                 iLastCharW = playout->m_xa2.last() - playout->m_xa2.last(-2);
                               }
                               else
                               {
-                                 iLastCharW = playout->m_xa.last() - x;
+                                 iLastCharW = playout->m_xa2.last() - x;
                               }
                            }
 
@@ -1208,10 +1258,10 @@ restart2:
                            playout->m_iSelEnd = iCharEndLayout;
                            iCharBegLayout = iCharEndLayout + 1;
 
-                           playout->m_rectHitTest.left = xLast;
+                           playout->m_rectHitTest2.left = xLast;
                            iLastCharW = s.cx - s2.cx;
-                           playout->m_rectHitTest.right = x + ceil(s.cx) - iLastCharW / 2;
-                           xLast = playout->m_rectHitTest.right;
+                           playout->m_rectHitTest2.right = x + ceil(s.cx) - iLastCharW / 2;
+                           xLast = playout->m_rectHitTest2.right;
 
                            pline->add(playout);
 
@@ -1294,9 +1344,9 @@ restart2:
             if (line->has_elements())
             {
 
-               line->first().m_rectHitTest.left = lpcrect->left;
+               line->first().m_rectHitTest2.left = lpcrect->left;
 
-               line->last().m_rectHitTest.right = lpcrect->right;
+               line->last().m_rectHitTest2.right = lpcrect->right;
 
             }
 
@@ -1361,8 +1411,8 @@ restart2:
 
                iMaxCy = MAX(iMaxCy, range->m_size.cy);
 
-               range->m_rect2.top = y;
-               range->m_rectHitTest.top = y;
+               range->m_rect22.top = y;
+               range->m_rectHitTest2.top = y;
 
             }
 
@@ -1371,11 +1421,11 @@ restart2:
             for (auto & range : *line)
             {
 
-               range->m_rect2.bottom = nexty;
+               range->m_rect22.bottom = nexty;
 
-               range->m_rectHitTest.bottom = nexty;
+               range->m_rectHitTest2.bottom = nexty;
 
-               range->m_rect2.right += 2;
+               range->m_rect22.right += 2;
 
             }
 
@@ -1385,7 +1435,7 @@ restart2:
 
          // Draw Select Rectangle
 
-         if (bHasFocus)
+         if (bHasFocus && m_pedit->is_text_editable())
          {
 
             for (auto & line : m_layouta)
@@ -1438,13 +1488,13 @@ restart2:
                            if (iCharBeg == playoutBeg->m_iSelBeg)
                            {
 
-                              l = playoutBeg->m_rect2.left;
+                              l = playoutBeg->m_rect22.left;
 
                            }
                            else
                            {
 
-                              l = playoutBeg->m_xa[iCharBeg - playoutBeg->m_iSelBeg - 1];
+                              l = playoutBeg->m_xa2[iCharBeg - playoutBeg->m_iSelBeg - 1];
 
                            }
 
@@ -1453,19 +1503,19 @@ restart2:
                            if (iCharEnd == playoutEnd->m_iSelBeg)
                            {
 
-                              r = playoutEnd->m_rect2.left;
+                              r = playoutEnd->m_rect22.left;
 
                            }
                            else
                            {
 
-                              r = (int)ceil(playoutEnd->m_xa[iCharEnd - playoutEnd->m_iSelBeg - 1]);
+                              r = (int)ceil(playoutEnd->m_xa2[iCharEnd - playoutEnd->m_iSelBeg - 1]);
                            }
 
                            pgraphics->fill_solid_rect_coord(l,
-                                                            playoutBeg->m_rect2.top,
+                                                            playoutBeg->m_rect22.top,
                                                             r,
-                                                            playoutEnd->m_rect2.bottom,
+                                                            playoutEnd->m_rect22.bottom,
                                                             ARGB(127, 128, 128, 128));
 
 
@@ -1511,7 +1561,7 @@ restart2:
 
                pgraphics->set_text_color(pformat->m_crForeground);
 
-               rect r = range->m_rect2;
+               rect r = range->m_rect22;
 
                if (pformat->m_escript == script_subscript)
                {
@@ -1534,7 +1584,7 @@ restart2:
 
          // Draw Caret
 
-         if(bCaretOn)
+         if(bCaretOn &&  m_pedit->is_text_editable())
          {
 
             sp(layout) playout = find_range(m_layouta, m_iSelEnd3);
@@ -1547,25 +1597,59 @@ restart2:
                if (m_iSelEnd3 == playout->m_iSelBeg)
                {
 
-                  r = playout->m_rect2.left;
+                  r = playout->m_rect22.left;
 
                }
                else
                {
 
-                  r = (int)ceil(playout->m_xa[m_iSelEnd3 - playout->m_iSelBeg - 1]);
+                  r = (int)ceil(playout->m_xa2[m_iSelEnd3 - playout->m_iSelBeg - 1]);
 
                }
 
                pgraphics->fill_solid_rect_coord(r,
-                                                playout->m_rect2.top,
+                                                playout->m_rect22.top,
                                                 r+1.0,
-                                                playout->m_rect2.bottom,
+                                                playout->m_rect22.bottom,
                                                 ARGB(255, 0, 0, 0));
 
             }
 
          }
+
+         ::draw2d::matrix m;
+
+         pgraphics->get_viewport_scale(m);
+
+         //m.invert();
+
+         for (auto & line : m_layouta)
+         {
+
+            for (auto & range : *line)
+            {
+
+               range->m_rectDevice = range->m_rect22;
+
+               m.transform(range->m_rectHitTest2.top_left());
+               m.transform(range->m_rectHitTest2.bottom_right());
+
+               m.transform(range->m_rectDevice.top_left());
+               m.transform(range->m_rectDevice.bottom_right());
+
+               range->m_xaDevice.remove_all();
+
+               for (auto & x : range->m_xa2)
+               {
+
+                  range->m_xaDevice.add(x * m.a1);
+
+               }
+
+            }
+
+         }
+
 
       }
 
@@ -1695,9 +1779,70 @@ restart2:
 
          //m_iSelCharEnd = sel_char(m_layouta, m_iSelEnd3, m_ebiasEnd);
 
-         m_iSelCharBeg = sel_char2(m_layouta, m_iSelBeg3);
+         bool bNeedRedraw = false;
 
-         m_iSelCharEnd = sel_char2(m_layouta, m_iSelEnd3);
+         strsize iCharBeg = sel_char2(m_layouta, m_iSelBeg3);
+
+         strsize iCharEnd = sel_char2(m_layouta, m_iSelEnd3);
+
+         string str;
+
+         _001GetText(str);
+
+         int_array ia1;
+
+         int_array ia2;
+
+         get_vars(ia1, ia2, str);
+
+         bool bCharEndMoved = false;
+
+         for (index i = 0; i < ia1.get_count(); i++)
+         {
+
+            if (iCharBeg >= ia1[i] && iCharBeg <= ia2[i])
+            {
+
+               iCharBeg = ia1[i];
+
+            }
+            if (iCharEnd >= ia1[i] && iCharEnd <= ia2[i])
+            {
+
+               iCharEnd = ia2[i];
+
+               bCharEndMoved = true;
+
+            }
+
+         }
+
+         if (bCharEndMoved)
+         {
+
+            iCharEnd++;
+
+         }
+
+         if (iCharBeg != m_iSelCharBeg)
+         {
+
+            m_iSelCharBeg = iCharBeg;
+
+            bNeedRedraw = true;
+
+         }
+
+         if (iCharEnd != m_iSelCharEnd)
+         {
+
+            m_iSelCharEnd = iCharEnd;
+
+            bNeedRedraw = true;
+
+         }
+
+         m_pedit->set_need_redraw();
 
       }
 

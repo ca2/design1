@@ -14,10 +14,12 @@ namespace user
       {
       public:
 
+
          bool           m_bParagraph = false;
          e_align        m_ealign;
-         rectd          m_rect2;
-         rectd          m_rectHitTest;
+         rectd          m_rect22;
+         rectd          m_rectDevice;
+         rectd          m_rectHitTest2;
          string         m_str;
          int            m_iFormat;
          sized          m_size;
@@ -25,7 +27,9 @@ namespace user
          int            m_iCharEnd;
          int            m_iSelBeg;
          int            m_iSelEnd;
-         double_array   m_xa;
+         double_array   m_xa2;
+         double_array   m_xaDevice;
+
 
       };
 

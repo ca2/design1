@@ -11,6 +11,7 @@ namespace composite
    {
       tool_none,
       tool_rotate,
+      tool_edit_text,
       tool_crop,
       tool_close,
       tool_stack_up,
@@ -82,7 +83,7 @@ namespace composite
       virtual ~pic_tool();
 
 
-      bool get_tool_rect(LPRECTD lprect, e_tool etool);
+      bool get_tool_rect(LPRECTD lprect, e_tool etool, bool bDrawing = false);
       bool hit_test(e_tool & etool, pointd pt);
 
       void draw(::draw2d::graphics * pgraphics);

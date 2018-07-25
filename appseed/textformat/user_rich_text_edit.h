@@ -20,12 +20,16 @@ namespace user
          bool                          m_bSelDrag;
          ::message::key                m_keymessageLast;
          bool                          m_bKeyPressed;
-         bool                          m_bEditable;
+         bool                          m_bEditable2;
+         /// If true, mouse events over empty
+         /// areas of text continue through message routing.
+         bool                          m_bClickThrough;
 
 
          edit();
          edit(::aura::application * papp);
          virtual ~edit();
+
 
          virtual void on_after_change(::user::e_event eevent);
          virtual double get_rotate() override;
@@ -55,6 +59,13 @@ namespace user
             return ::object::dec_ref();
          }
 
+         virtual bool set_text_editable(bool bEditable = true) override;
+
+         virtual bool is_text_editable() override;
+
+         virtual bool is_text_editor() override;
+
+
 
          virtual void on_selection_change();
 
@@ -64,7 +75,7 @@ namespace user
 
          virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect) override;
 
-         ::userex::font_format_tool * get_sys_format_tool();
+         ::userex::font_format_tool * get_sys_format_tool(bool bCreate);
 
          virtual void _001GetText(string & str) const override;
          virtual void _001GetLayoutText(string & str) const;
@@ -74,6 +85,7 @@ namespace user
          DECL_GEN_SIGNAL(_001OnCreate);
          DECL_GEN_SIGNAL(_001OnDestroy);
          DECL_GEN_SIGNAL(_001OnShowWindow);
+         DECL_GEN_SIGNAL(_001OnKillFocus);
          DECL_GEN_SIGNAL(_001OnLButtonDown);
          DECL_GEN_SIGNAL(_001OnLButtonUp);
          DECL_GEN_SIGNAL(_001OnMouseMove);

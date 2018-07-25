@@ -9,6 +9,9 @@ namespace user
    {
 
 
+      class edit;
+
+
       class CLASS_DECL_DESIGN_TEXTFORMAT data :
          virtual public ::data::data
       {
@@ -26,7 +29,7 @@ namespace user
          e_bias                        m_ebiasBeg;
          strsize                       m_iSelCharEnd;
          e_bias                        m_ebiasEnd;
-         ::user::interaction *         m_pui;
+         rich_text::edit *             m_pedit;
          DWORD                         m_dwCaretTime;
 
 

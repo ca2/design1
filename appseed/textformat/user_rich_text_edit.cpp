@@ -14,7 +14,8 @@ namespace user
          edit(get_app())
       {
 
-         m_bEditable = true;
+         m_bEditable2 = true;
+         m_bClickThrough = false;
 
       }
 
@@ -26,13 +27,15 @@ namespace user
          m_keymessageLast(papp)
       {
 
-         m_bEditable = true;
+         m_bEditable2 = true;
 
-         m_data.m_pui = this;
+         m_data.m_pedit = this;
 
          m_bKeyPressed = false;
 
          m_bSelDrag = false;
+
+         m_bClickThrough = false;
 
 
       }
@@ -95,6 +98,7 @@ namespace user
          IGUI_MSG_LINK(WM_MOUSELEAVE, psender, this, &edit::_001OnMouseLeave);
          IGUI_MSG_LINK(WM_KEYDOWN, psender, this, &edit::_001OnKeyDown);
          IGUI_MSG_LINK(WM_KEYUP, psender, this, &edit::_001OnKeyUp);
+         IGUI_MSG_LINK(WM_KILLFOCUS, psender, this, &edit::_001OnKillFocus);
 
       }
 
@@ -140,12 +144,27 @@ namespace user
          else
          {
 
-            if (get_sys_format_tool() != NULL)
+            if (get_sys_format_tool(false) != NULL && get_sys_format_tool(false)->is_showing_for_ui(this))
             {
 
-               get_sys_format_tool()->ShowWindow(SW_HIDE);
+               get_sys_format_tool(false)->ShowWindow(SW_HIDE);
 
             }
+
+         }
+
+      }
+
+
+      void edit::_001OnKillFocus(::message::message * pobj)
+      {
+
+         //SCAST_PTR(::message::killfocus, pkillfocus, pobj);
+
+         if (get_sys_format_tool(false) != NULL && get_sys_format_tool(false)->is_showing_for_ui(this))
+         {
+
+            get_sys_format_tool(false)->ShowWindow(SW_HIDE);
 
          }
 
@@ -155,9 +174,16 @@ namespace user
       void edit::on_selection_change()
       {
 
-         m_data.on_selection_change(&get_sys_format_tool()->m_format);
+         sp(::userex::font_format_tool) ptool = get_sys_format_tool(false);
 
-         get_sys_format_tool()->update_data(false);
+         if (ptool.is_set())
+         {
+
+            m_data.on_selection_change(&ptool->m_format);
+
+            ptool->update_data(false);
+
+         }
 
       }
 
@@ -167,7 +193,7 @@ namespace user
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
 
-         if (!m_bEditable)
+         if (!is_text_editable())
          {
 
             return;
@@ -187,7 +213,7 @@ namespace user
          if (iHit >= 0)
          {
 
-            get_sys_format_tool()->show_for_ui(this);
+            get_sys_format_tool(true)->show_for_ui(this);
 
             m_bSelDrag = true;
 
@@ -204,15 +230,21 @@ namespace user
             pmouse->m_bRet = true;
 
          }
+         else if(m_bClickThrough)
+         {
+
+            if (get_sys_format_tool(false)->IsWindowVisible())
+            {
+
+               get_sys_format_tool(false)->ShowWindow(SW_HIDE);
+
+            }
+
+         }
          else
          {
 
-            if (get_sys_format_tool()->IsWindowVisible())
-            {
-
-               get_sys_format_tool()->ShowWindow(SW_HIDE);
-
-            }
+            pmouse->m_bRet = true;
 
          }
 
@@ -236,7 +268,7 @@ namespace user
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
 
-         if (!m_bEditable)
+         if (!is_text_editable())
          {
 
             return;
@@ -269,6 +301,12 @@ namespace user
             pmouse->m_bRet = true;
 
          }
+         else if (!m_bClickThrough)
+         {
+
+            pmouse->m_bRet = true;
+
+         }
 
 
       }
@@ -279,7 +317,7 @@ namespace user
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
 
-         if (!m_bEditable)
+         if (!is_text_editable())
          {
 
             return;
@@ -318,6 +356,16 @@ namespace user
                pmouse->m_bRet = true;
 
             }
+
+         }
+
+         if (!m_bClickThrough)
+         {
+
+            pmouse->m_ecursor = ::visual::cursor_text_select;
+
+
+            pmouse->m_bRet = true;
 
          }
 
@@ -538,6 +586,69 @@ namespace user
       }
 
 
+      bool edit::set_text_editable(bool bEditable)
+      {
+
+         m_bEditable2 = bEditable;
+
+         if (bEditable)
+         {
+
+            if (is_text_editable() && IsWindowVisible())
+            {
+
+               sp(::userex::font_format_tool) ptool = get_sys_format_tool(true);
+
+               if (!ptool->IsWindowVisible() || !ptool->is_showing_for_ui(this))
+               {
+
+                  ptool->show_for_ui(this);
+
+               }
+
+            }
+
+         }
+         else
+         {
+
+            if (get_sys_format_tool(false) != NULL && get_sys_format_tool(false)->is_showing_for_ui(this))
+            {
+
+               get_sys_format_tool(false)->ShowWindow(SW_HIDE);
+
+            }
+
+            if(this == Session.get_keyboard_focus())
+            {
+
+               keyboard_set_focus_next();
+
+            }
+
+         }
+
+         return m_bEditable2;
+
+      }
+
+
+      bool edit::is_text_editable()
+      {
+
+         return is_window_enabled() && m_bEditable2;
+
+      }
+
+
+      bool edit::is_text_editor()
+      {
+
+         return true;
+
+      }
+
+
 
       bool edit::_001IsPointInside(point64 p)
       {
@@ -605,19 +716,23 @@ namespace user
          if (pevent->m_eevent == ::user::event_after_change_cur_sel)
          {
 
-            if (pevent->m_puie == get_sys_format_tool())
+            sp(::userex::font_format_tool) ptool = get_sys_format_tool(false);
+
+            if (pevent->m_puie == ptool)
             {
 
-               m_data._001SetSelFontFormat(&get_sys_format_tool()->m_format, get_sys_format_tool()->m_eattributea);
+               m_data._001SetSelFontFormat(&ptool->m_format, ptool->m_eattributea);
 
-               if (get_sys_format_tool()->m_eattributea.contains(attribute_align))
+               if (ptool->m_eattributea.contains(attribute_align))
                {
 
-                  box_align(m_data.m_boxa, find_box(m_data.m_boxa, m_data.m_iSelEnd3), get_sys_format_tool()->m_format.m_ealign);
+                  box_align(m_data.m_boxa, find_box(m_data.m_boxa, m_data.m_iSelEnd3), ptool->m_format.m_ealign);
 
                }
 
-               get_sys_format_tool()->m_eattributea.remove_all();
+               ptool->m_eattributea.remove_all();
+
+               set_need_redraw();
 
                //pevent->Ret();
 
@@ -632,12 +747,12 @@ namespace user
       }
 
 
-      ::userex::font_format_tool * edit::get_sys_format_tool()
+      ::userex::font_format_tool * edit::get_sys_format_tool(bool bCreate)
       {
 
          sp(::userex::font_format_tool) ptool = System.oprop("textformat_sys_format_tool").cast < ::userex::font_format_tool > ();
 
-         if (ptool.is_null())
+         if (ptool.is_null() && bCreate)
          {
 
             ptool = canew(::userex::font_format_tool(get_app()));
@@ -665,7 +780,7 @@ namespace user
       bool edit::keyboard_focus_is_focusable()
       {
 
-         return IsWindowVisible() && m_bEditable;
+         return IsWindowVisible() && is_text_editable();
 
       }
 
@@ -673,7 +788,7 @@ namespace user
       void edit::keyboard_focus_OnChar(::message::message * pobj)
       {
 
-         if (!m_bEditable)
+         if (!is_text_editable())
          {
 
             return;
@@ -947,7 +1062,23 @@ namespace user
          else if (ptimer->m_nIDEvent == 250)
          {
 
-            set_need_redraw();
+            // Caret
+
+            if (IsWindowVisible())
+            {
+
+               set_need_redraw();
+
+            }
+
+            if (!is_text_editable())
+            {
+
+               KillTimer(ptimer->m_nIDEvent);
+
+               keyboard_set_focus_next();
+
+            }
 
          }
 

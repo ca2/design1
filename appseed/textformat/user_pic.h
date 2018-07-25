@@ -82,6 +82,13 @@ namespace user
       virtual ::sized get_size();
 
 
+      virtual bool set_text_editable(bool bEditable = true);
+
+      virtual bool is_text_editable();
+
+      virtual bool is_text_editor();
+
+
       virtual void draw(::draw2d::graphics * pgraphics);
       virtual void draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect);
 

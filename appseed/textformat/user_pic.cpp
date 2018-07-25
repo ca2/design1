@@ -610,12 +610,6 @@ namespace user
 
       }
 
-      //::draw2d::region_sp r(allocer());
-
-      //r->create_polygon(pta.get_data(), pta.get_count(), ::draw2d::fill_mode_winding);
-
-      //m_region = r;
-
    }
 
 
@@ -704,6 +698,30 @@ namespace user
    }
 
 
+   bool pic::set_text_editable(bool bEditable)
+   {
+
+      return false;
+
+   }
+
+
+   bool pic::is_text_editable()
+   {
+
+      return false;
+
+   }
+
+
+   bool pic::is_text_editor()
+   {
+
+      return false;
+
+   }
+
+
    void pic::reset_cursor_rect()
    {
 
@@ -760,13 +778,6 @@ namespace user
 
       }
 
-      if (m_ppic->m_rectCursor.contains(pt))
-      {
-
-         return 1;
-
-      }
-
       return -1;
 
    }
@@ -786,16 +797,16 @@ namespace user
 
       ::draw2d::matrix mRot;
 
-      rectd rClip(m_ppic->m_rect);
+      rectd rClip(m_ppic->m_rectDrawing);
 
       pointd_array pta;
 
       pta.set_size(4);
 
-      pta[0] = _transform(rClip.top_left());
-      pta[1] = _transform(rClip.top_right());
-      pta[2] = _transform(rClip.bottom_right());
-      pta[3] = _transform(rClip.bottom_left());
+      pta[0] = _transform_drawing(rClip.top_left());
+      pta[1] = _transform_drawing(rClip.top_right());
+      pta[2] = _transform_drawing(rClip.bottom_right());
+      pta[3] = _transform_drawing(rClip.bottom_left());
 
       ::draw2d::region_sp rgn(allocer());
 
@@ -805,19 +816,27 @@ namespace user
 
       mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
 
+      ::draw2d::matrix mG;
+
+      pgraphics->get_viewport_scale(mG);
+
       pgraphics->prepend(mRot);
 
       pgraphics->prepend(::draw2d::matrix::scaling(m_ppic->m_dZoom, m_ppic->m_dZoom));
 
       ::draw2d::matrix mTrans;
 
-      mTrans.append(::draw2d::matrix::translation(m_ppic->m_rect.center().x, m_ppic->m_rect.center().y));
+      point ptD = m_ppic->m_rectDrawing.center();
+
+      mG.transform(ptD);
+
+      mTrans.append(::draw2d::matrix::translation(ptD));
 
       pgraphics->append(mTrans);
 
-      rect r(-point(m_ppic->m_rect.get_size() / 2.0) +
-             point(m_ppic->m_ptDrag.x * m_ppic->m_rect.width(),
-                   m_ppic->m_ptDrag.y * m_ppic->m_rect.height()), ::size(m_ppic->m_rect.get_size()));
+      rect r(-point(m_ppic->m_rectDrawing.get_size() / 2.0) +
+             point(m_ppic->m_ptDrag.x * m_ppic->m_rectDrawing.width(),
+                   m_ppic->m_ptDrag.y * m_ppic->m_rectDrawing.height()), ::size(m_ppic->m_rectDrawing.get_size()));
 
       draw_impl(pgraphics, r);
 

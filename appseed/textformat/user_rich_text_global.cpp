@@ -142,26 +142,26 @@ namespace user
                   if (iChar <= 0)
                   {
 
-                     xLeft = range->m_rect2.left;
+                     xLeft = range->m_rect22.left;
 
                   }
-                  else if((iChar - 1) >= range->m_xa.get_count())
+                  else if((iChar - 1) >= range->m_xa2.get_count())
                   {
 
-                     xLeft = range->m_xa[iChar-1];
+                     xLeft = range->m_xa2[iChar-1];
 
                   }
                   else
                   {
 
-                     xLeft = range->m_rect2.left;
+                     xLeft = range->m_rect22.left;
 
                   }
 
-                  if (iChar >= 0 && iChar < range->m_xa.get_count())
+                  if (iChar >= 0 && iChar < range->m_xa2.get_count())
                   {
 
-                     xRight = range->m_xa[iChar];
+                     xRight = range->m_xa2[iChar];
 
                   }
                   else
@@ -638,7 +638,7 @@ namespace user
          else
          {
 
-            int iWidth = line.last().m_rect2.right;
+            int iWidth = line.last().m_rect22.right;
 
             int iOffset = lpcrect->right - iWidth;
 
@@ -652,10 +652,10 @@ namespace user
             for (auto & range : line)
             {
 
-               range->m_rect2.offset(iOffset, 0);
-               range->m_rectHitTest.offset(iOffset, 0);
+               range->m_rect22.offset(iOffset, 0);
+               range->m_rectHitTest2.offset(iOffset, 0);
 
-               for (auto & d : range->m_xa)
+               for (auto & d : range->m_xa2)
                {
 
                   d += (double)iOffset;

@@ -42,6 +42,7 @@ namespace userex
 
       virtual void _001OnDraw(::draw2d::graphics * pgraphics) override;
 
+      virtual bool is_showing_for_ui(::user::interaction * pui);
 
       virtual void on_layout() override;
 

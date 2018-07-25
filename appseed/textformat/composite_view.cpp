@@ -134,6 +134,18 @@ namespace composite
    }
 
 
+   void view::load()
+   {
+
+   }
+
+
+   void view::save()
+   {
+
+   }
+
+
    void view::_001OnTimer(::timer * ptimer)
    {
 
@@ -292,7 +304,16 @@ namespace composite
 
       int iHit = -1;
 
-      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
+      m_pdata->m_etoolDown = tool_none;
+
+      if (m_pdata->m_pictool.is_set())
+      {
+
+         m_pdata->m_pictool->hit_test(m_pdata->m_etoolDown, pt);
+
+      }
+
+      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging() && !is_tool_editing_text())
       {
 
          pmouse->m_bRet = true;
@@ -300,12 +321,11 @@ namespace composite
       }
       else if (m_pdata->m_picCurrent.is_set()
                && m_pdata->m_picCurrent != m_picName
-               && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0)
+               && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0
+               || m_pdata->m_etoolDown != tool_none)
       {
 
-         m_pdata->m_pictool->hit_test(m_pdata->m_etoolDown, pt);
-
-         if (m_pdata->m_etoolDown == ::composite::tool_none && iHit == 0)
+         if (m_pdata->m_etoolDown == ::composite::tool_none && iHit == 0 && !is_tool_editing_text())
          {
 
             m_pdata->m_picCurrent->m_ppic->m_bDrag = true;
@@ -522,6 +542,16 @@ selected:;
 
       }
 
+      ::composite::e_tool etool = tool_none;
+
+      if (m_pdata->m_pictool != NULL)
+      {
+
+         m_pdata->m_pictool->hit_test(etool, pt);
+
+      }
+
+
       if (m_pdata->m_pictool.is_set() && m_pdata->m_etoolDown != ::composite::tool_none)
       {
          if (m_pdata->m_etoolDown == ::composite::tool_rotate)
@@ -534,7 +564,7 @@ selected:;
 
       }
 
-      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
+      if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging() && !is_tool_editing_text())
       {
 
          if (m_pdata->m_pictool->m_etoolMode == ::composite::tool_move)
@@ -589,12 +619,9 @@ selected:;
 
 
       }
-      else if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->hit_test_cursor(pt) >= 0)
+      else if (m_pdata->m_picCurrent.is_set() && etool != tool_none)
       {
 
-         ::composite::e_tool etool;
-
-         m_pdata->m_pictool->hit_test(etool, pt);
 
          if (etool == m_pdata->m_etoolDown && etool != ::composite::tool_none)
          {
@@ -605,6 +632,42 @@ selected:;
             {
 
                m_pdata->m_pictool->m_etoolMode = ::composite::tool_crop;
+
+            }
+            break;
+            case ::composite::tool_edit_text:
+            {
+
+               sp(::user::rich_text::edit) pedit = m_pdata->m_picCurrent;
+
+               if (is_tool_editing_text())
+               {
+
+                  if (pedit.is_set())
+                  {
+
+                     pedit->set_text_editable(false);
+
+                  }
+
+                  m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
+
+               }
+               else
+               {
+
+                  m_pdata->m_pictool->m_etoolMode = ::composite::tool_edit_text;
+
+                  if (pedit.is_set())
+                  {
+
+                     pedit->set_text_editable(true);
+
+                     pedit->keyboard_set_focus();
+
+                  }
+
+               }
 
             }
             break;
@@ -821,9 +884,14 @@ selected:;
 
          }
 
-         set_need_redraw();
+         if (!is_tool_editing_text())
+         {
 
-         pmouse->m_bRet = true;
+            set_need_redraw();
+
+            pmouse->m_bRet = true;
+
+         }
 
       }
 
@@ -900,7 +968,8 @@ selected:;
       else if (m_pdata->m_picCurrent.is_set()
                && m_pdata->m_picCurrent->is_valid()
                && m_pdata->m_pictool.is_set() && m_pdata->m_etoolDown != ::composite::tool_none
-               && m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag)
+               && m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag
+               && !is_tool_editing_text())
       {
 
          pmouse->m_ecursor = m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_ecursor;
@@ -1012,7 +1081,7 @@ selected:;
          }
 
       }
-      else if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging())
+      else if (m_pdata->m_picCurrent.is_set() && m_pdata->m_picCurrent->is_dragging() && !is_tool_editing_text())
       {
 
          if (m_pdata->m_pictool->m_etoolMode == ::composite::tool_move)
@@ -1096,7 +1165,7 @@ selected:;
 
 
             }
-            else if (pic->hit_test(pt) >= 0)
+            else if (pic != NULL && pic->hit_test(pt) >= 0)
             {
 
                pmouse->m_ecursor = ::visual::cursor_move;
@@ -1548,119 +1617,6 @@ selected:;
    }
 
 
-   pic_tool::pic_tool(::aura::application * papp)
-   {
-
-   }
-
-
-   pic_tool::~pic_tool()
-   {
-
-
-   }
-
-
-   void view::load()
-   {
-
-   }
-
-
-   void view::save()
-   {
-
-   }
-
-
-   bool pic_tool::get_tool_rect(LPRECTD lprect, e_tool etool)
-   {
-
-      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
-
-      rectd rPic = pic->m_ppic->m_rect;
-
-      rectd rectDib;
-
-      if ((int)etool <= 0 || (int)etool >= tool_count)
-      {
-
-         return false;
-
-      }
-      else
-      {
-
-         if (etool >= tool_zoom_out && etool <= tool_apply)
-         {
-
-            if (m_etoolMode != tool_crop && m_etoolMode != tool_move)
-            {
-
-               return false;
-
-            }
-
-         }
-         else if (etool != tool_close)
-         {
-
-            if (m_etoolMode == tool_crop || m_etoolMode == tool_move)
-            {
-
-               return false;
-
-            }
-
-         }
-
-         tool & tool = m_map[etool];
-
-         rectDib = sized(tool.m_dib->m_size);
-
-         rectDib._001Align(tool.m_ptAlign.x, tool.m_ptAlign.y, rPic);
-
-         *lprect = rectDib;
-
-         return true;
-
-      }
-
-   }
-
-
-   bool pic_tool::hit_test(e_tool & etool, pointd pt)
-   {
-
-      rectd r;
-
-      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
-
-      pic->_rtransform_point(pt);
-
-      for (etool = (e_tool)1; etool < tool_count; ((int &)etool)++)
-      {
-
-         if (get_tool_rect(r, etool))
-         {
-
-            if (r.contains(pt))
-            {
-
-               return true;
-
-            }
-
-         }
-
-      }
-
-      etool = tool_none;
-
-      return false;
-
-   }
-
 
    void view::on_pic_update()
    {
@@ -1672,6 +1628,7 @@ selected:;
 
          m_pdata->m_pictool->m_map[::composite::tool_rotate].m_ptAlign.SetPoint(-1.0, -1.0);
          m_pdata->m_pictool->m_map[::composite::tool_crop].m_ptAlign.SetPoint(0.0, -1.0);
+         m_pdata->m_pictool->m_map[::composite::tool_edit_text].m_ptAlign.SetPoint(0.0, -1.0);
          m_pdata->m_pictool->m_map[::composite::tool_close].m_ptAlign.SetPoint(1.0, -1.0);
          m_pdata->m_pictool->m_map[::composite::tool_stack_up].m_ptAlign.SetPoint(-0.75, 1.0);
          m_pdata->m_pictool->m_map[::composite::tool_special_effect].m_ptAlign.SetPoint(0.0, 1.0);
@@ -1688,6 +1645,7 @@ selected:;
 
          m_pdata->m_pictool->m_map[::composite::tool_rotate].m_ptAlign.SetPoint(-1000.0, -1000.0);
          m_pdata->m_pictool->m_map[::composite::tool_crop].m_ptAlign.SetPoint(0.0, -1000.0);
+         m_pdata->m_pictool->m_map[::composite::tool_edit_text].m_ptAlign.SetPoint(0.0, -1000.0);
          m_pdata->m_pictool->m_map[::composite::tool_close].m_ptAlign.SetPoint(1000.0, -1000.0);
          m_pdata->m_pictool->m_map[::composite::tool_stack_up].m_ptAlign.SetPoint(-1000.0, 1000.0);
          m_pdata->m_pictool->m_map[::composite::tool_special_effect].m_ptAlign.SetPoint(0.0, 1000.0);
@@ -1733,103 +1691,6 @@ selected:;
 
    }
 
-
-   void pic_tool::draw(::draw2d::graphics * pgraphics)
-   {
-
-      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
-
-      rect rPic(pic->m_ppic->m_rect);
-
-      rect r;
-
-      pic->reset_cursor_rect();
-
-      if (m_etoolMode == tool_crop || m_etoolMode == tool_move)
-      {
-
-         draw_tool(pgraphics, tool_zoom_out);
-         draw_tool(pgraphics, tool_move);
-         draw_tool(pgraphics, tool_zoom_in);
-         draw_tool(pgraphics, tool_apply);
-         draw_tool(pgraphics, tool_close);
-
-      }
-      else
-      {
-
-         draw_tool(pgraphics, tool_rotate);
-         draw_tool(pgraphics, tool_crop);
-         draw_tool(pgraphics, tool_close);
-         draw_tool(pgraphics, tool_stack_up);
-         draw_tool(pgraphics, tool_special_effect);
-         draw_tool(pgraphics, tool_stack_down);
-         draw_tool(pgraphics, tool_resize);
-
-      }
-
-      rect rSel(rPic);
-
-      rSel.inflate(2, 2);
-
-      rSel.offset(-rPic.top_left() - rPic.get_size() / 2);
-
-      pgraphics->draw_rect(rSel, m_penBorder);
-
-
-   }
-
-   void pic_tool::draw_tool(::draw2d::graphics * pgraphics, e_tool etool)
-   {
-
-      rectd r;
-
-      get_tool_rect(r, etool);
-
-      tool & tool = m_map[etool];
-
-      ::user::pic * pic = m_pview->m_pdata->m_picCurrent;
-
-      rectd rPic(pic->m_ppic->m_rect);
-
-      r.offset(-rPic.top_left() - rPic.get_size() / 2.0);
-
-      if (!tool.m_bEnable)
-      {
-
-         if (tool.m_dibDisable.is_null() || tool.m_dibDisable->area() <= 0)
-         {
-
-            tool.m_dibDisable = tool.m_dib->clone();
-
-            tool.m_dibDisable->saturation(0.0);
-
-         }
-
-         pgraphics->draw(rect(r), tool.m_dibDisable->g(), rect(tool.m_dibDisable->m_size));
-
-      }
-      else
-      {
-
-         pgraphics->draw(rect(r), tool.m_dib->g(), rect(tool.m_dib->m_size));
-
-      }
-
-      if (pic->m_ppic->m_rectCursor.area() < 0)
-      {
-
-         pic->m_ppic->m_rectCursor = r;
-
-      }
-      else
-      {
-
-         pic->m_ppic->m_rectCursor.unite(pic->m_ppic->m_rectCursor, r);
-
-      }
-
-   }
 
 
    void view::pica_to_margin()
@@ -1908,6 +1769,57 @@ selected:;
          m_picName->ShowWindow(SW_HIDE);
 
       }
+
+   }
+
+
+   bool view::is_tool_editing_text()
+   {
+
+      if (m_picName == m_pdata->m_picCurrent)
+      {
+
+         return false;
+
+      }
+
+      if (m_pdata->m_picCurrent.is_set() && !m_pdata->m_picCurrent->is_text_editor())
+      {
+
+         if (m_pdata->m_pictool->m_etoolMode == ::composite::tool_edit_text)
+         {
+
+            m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
+
+         }
+
+      }
+
+      bool bEditable = m_pdata->m_pictool->m_etoolMode == ::composite::tool_edit_text;
+
+      if (m_pdata->m_picCurrent.is_set()
+            && is_different(bEditable, m_pdata->m_picCurrent->is_text_editable()))
+      {
+
+         sp(user::rich_text::edit) pedit = m_pdata->m_picCurrent;
+
+         if (pedit.is_set())
+         {
+
+            pedit->set_text_editable(bEditable);
+
+            if (bEditable)
+            {
+
+               SetFocus();
+
+            }
+
+         }
+
+      }
+
+      return bEditable;
 
    }
 

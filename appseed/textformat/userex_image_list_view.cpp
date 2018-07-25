@@ -317,9 +317,6 @@ namespace userex
    }
 
 
-
-
-
    void image_list_view::on_layout()
    {
 

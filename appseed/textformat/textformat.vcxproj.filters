@@ -94,6 +94,9 @@
     <ClCompile Include="userex_dialog_frame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="user_pic_tool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="textformat.h">

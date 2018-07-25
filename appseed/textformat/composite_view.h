@@ -132,6 +132,7 @@ namespace composite
 
       virtual void on_control_event(::user::control_event * pevent);
 
+      virtual bool is_tool_editing_text();
 
    };
 

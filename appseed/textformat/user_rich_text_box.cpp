@@ -82,7 +82,7 @@ namespace user
 
                set["type"] = "text";
                set["value"] = m_str;
-               set["align"] = (i32)m_iFormat;
+               set["format"] = (i32)m_iFormat;
 
             }
 
@@ -109,7 +109,7 @@ namespace user
                m_bParagraph = false;
 
                m_str = set["value"];
-               m_iFormat = set["format"];
+               m_iFormat = set["format"].i32();
 
             }
 

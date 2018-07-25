@@ -736,6 +736,7 @@
     <ClCompile Include="user_menu_view.cpp" />
     <ClCompile Include="user_object.cpp" />
     <ClCompile Include="user_pic.cpp" />
+    <ClCompile Include="user_pic_tool.cpp" />
     <ClCompile Include="user_rich_text_edit.cpp" />
     <ClCompile Include="user_rich_text_box.cpp" />
     <ClCompile Include="user_rich_text_data.cpp" />
