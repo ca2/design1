@@ -10,6 +10,7 @@ namespace user
    {
    public:
 
+
       int                     m_iTextHeight;
       bool                    m_bNoName;
       int                     m_iPad;
@@ -26,6 +27,7 @@ namespace user
       size                    m_size;
       bool                    m_bMultiSel;
       size                    m_sizeImage;
+
 
       image_list();
       virtual ~image_list();
@@ -69,6 +71,15 @@ namespace user
       DECL_GEN_SIGNAL(_001OnLButtonUp);
       DECL_GEN_SIGNAL(_001OnMouseMove);
       DECL_GEN_SIGNAL(_001OnMouseLeave);
+
+
+      index _001GetCurSel();
+
+      index_array _001GetSelection();
+
+      void _001SetCurSel(index iFind, ::action::context actioncontext);
+
+      void _001SetSelection(const index_array & ia, ::action::context actioncontext);
 
 
    };

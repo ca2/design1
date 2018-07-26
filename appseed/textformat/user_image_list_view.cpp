@@ -162,13 +162,15 @@ namespace user
 
       int iHit = hit_test(pt, eelement);
 
+      index_array iaSel = m_iaSel;
+
       if (iHit >= 0 && iHit == m_iHitLButtonDown)
       {
 
          if (!(pmouse->m_nFlags & MK_CONTROL) || !m_bMultiSel)
          {
 
-            m_iaSel.remove_all();
+            iaSel.remove_all();
 
          }
 
@@ -182,7 +184,7 @@ namespace user
                for (index i = m_iHitLast; i < iHit; i++)
                {
 
-                  m_iaSel.add_unique(i);
+                  iaSel.add_unique(i);
 
                }
 
@@ -192,21 +194,11 @@ namespace user
          else
          {
 
-            m_iaSel.add_unique(iHit);
+            iaSel.add_unique(iHit);
 
          }
 
-         ::user::control_event ev;
-
-         ev.m_puie = this;
-
-         ev.m_iItem = iHit;
-
-         ev.m_id = m_id;
-
-         ev.m_eevent = event_item_clicked;
-
-         on_control_event(&ev);
+         _001SetSelection(iaSel, ::action::source_user);
 
          m_iHitLast = iHit;
 
@@ -791,6 +783,69 @@ namespace user
             }
 
          }
+
+      }
+
+   }
+
+
+   index image_list::_001GetCurSel()
+   {
+
+      synch_lock sl(m_pmutex);
+
+      if (m_iaSel.get_count() == 1)
+      {
+
+         return m_iaSel[0];
+
+      }
+
+      return -1;
+
+   }
+
+
+   index_array image_list::_001GetSelection()
+   {
+
+      synch_lock sl(m_pmutex);
+
+      return m_iaSel;
+
+   }
+
+
+   void image_list::_001SetCurSel(index iFind, ::action::context actioncontext)
+   {
+
+      synch_lock sl(m_pmutex);
+
+      m_iaSel.remove_all();
+
+      m_iaSel.add(iFind);
+
+   }
+
+   void image_list::_001SetSelection(const index_array & ia, ::action::context actioncontext)
+   {
+
+      synch_lock sl(m_pmutex);
+
+      if (::lemon::array::equals_non_unique_unordered(ia, m_iaSel))
+      {
+
+         m_iaSel = ia;
+
+         ::user::control_event ev;
+
+         ev.m_puie = this;
+
+         ev.m_id = m_id;
+
+         ev.m_eevent = ::user::event_after_change_cur_sel;
+
+         on_control_event(&ev);
 
       }
 
