@@ -832,7 +832,7 @@ namespace user
 
       synch_lock sl(m_pmutex);
 
-      if (::lemon::array::equals_non_unique_unordered(ia, m_iaSel))
+      if (!::lemon::array::equals_non_unique_unordered(ia, m_iaSel))
       {
 
          m_iaSel = ia;
