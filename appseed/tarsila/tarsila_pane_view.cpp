@@ -106,7 +106,7 @@ namespace tarsila
 
          try
          {
-            pdoc =  (Application.m_pdoctemplate->open_document_file(strPath, true, pcreatordata->m_pholder));
+            pdoc =  (Application.m_pdoctemplate->open_document_file(get_app(), strPath, true, pcreatordata->m_pholder));
          }
          catch(::file::exception & e)
          {

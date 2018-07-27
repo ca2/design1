@@ -148,14 +148,21 @@ namespace devedge
          {
             if(strExtension.compare_ci("ca2solution") == 0)
             {
+
                pview->set_cur_tab_by_id(PaneViewDevEdge, pcreate);
+
                sp(::user::single_document_template) ptemplate = (devedge().m_ptemplateEdge);
+
                if(ptemplate != NULL)
                {
+
                   if(ptemplate->get_document_count() == NULL)
                   {
-                     ptemplate->open_new_document();
+
+                     ptemplate->open_new_document(this);
+
                   }
+
                }
 
                pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
