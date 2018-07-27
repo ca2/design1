@@ -10,7 +10,7 @@
 #include "wndfrm/FrameSchema.h"
 
 
-	IMPLEMENT_DYNAMIC(paint_application, app )
+IMPLEMENT_DYNAMIC(paint_application, app )
 
 paint_application::paint_application(void)
 {
@@ -28,20 +28,19 @@ BOOL paint_application::InitInstance()
    set_locale("pt-br");
    set_style("pt-br");
 
-   if(!base_support())
-      return FALSE;
+   if (!base_support())
+   {
 
-	window_frame::FrameSchema::ButtonIdSpace idspace;
-/*	SetResourceId(idspace, window_frame::FrameSchema::ButtonClose, ID_VMSGUI_CLOSE);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonUp, ID_VMSGUI_WINDOW_UP);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonDown, ID_VMSGUI_WINDOW_DOWN);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonMinimize, ID_VMSGUI_WINDOW_MINIMIZE);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonMaximize, ID_VMSGUI_WINDOW_MAXIMIZE);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonRestore, ID_VMSGUI_WINDOW_RESTORE);
-	SetResourceId(idspace, window_frame::FrameSchema::ButtonNotifyIcon, ID_VMSGUI_NOTIFY_ICON);*/
+      return false;
 
-   if(!app::InitInstance())
-      return FALSE;
+   }
+
+   if (!app::InitInstance())
+   {
+
+      return false;
+
+   }
 
    Ex1AppInitialize();
 
@@ -61,13 +60,13 @@ BOOL paint_application::InitInstance()
 
    SetRegistryKey("ca2core");
 
-	SingleDocTemplate* pDocTemplate;
-	pDocTemplate = new SingleDocTemplate(
-      this,
-		IDR_MAINFRAME,
-		RUNTIME_CLASS(html_document),
-		RUNTIME_CLASS(html_frame),       // main SDI frame window
-		RUNTIME_CLASS(pane_view));
+   SingleDocTemplate* pDocTemplate;
+   pDocTemplate = new SingleDocTemplate(
+   this,
+   IDR_MAINFRAME,
+   RUNTIME_CLASS(html_document),
+   RUNTIME_CLASS(html_frame),       // main SDI frame window
+   RUNTIME_CLASS(pane_view));
    guibase::AppInterface::AddDocTemplate(pDocTemplate);
    m_ptemplate_html = pDocTemplate;
 
@@ -78,8 +77,8 @@ BOOL paint_application::InitInstance()
 
 
 
-	if (!_001ProcessShellCommand(cmdInfo))
-		return FALSE;
+   if (!_001ProcessShellCommand(cmdInfo))
+      return FALSE;
 
    return TRUE;
 }
@@ -106,7 +105,7 @@ void paint_application::_001OnFileNew()
 
 
 BOOL paint_application::OnCmdMsg(UINT nID, int nCode, void* pExtra,
-		CAFX_CMDHANDLERINFO* pHandlerInfo)
+                                 CAFX_CMDHANDLERINFO* pHandlerInfo)
 {
    return gen::app::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
@@ -119,8 +118,8 @@ bergedge_app * paint_application::get_app()
 }
 
 void paint_application::OnFileManagerOpenFile(
-      FileManagerDDX & ddx, 
-      FileManagerItemArray & itema)
+FileManagerDDX & ddx,
+FileManagerItemArray & itema)
 {
    m_ptemplate_html->OpenDocumentFile(itema[0].m_strPath);
 }
