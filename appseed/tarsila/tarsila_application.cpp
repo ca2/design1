@@ -96,7 +96,7 @@ namespace tarsila
       if(m_pdoctemplateMain->get_document_count() <= 0)
       {
 
-         m_pdoctemplateMain->open_document_file(NULL, true);
+         m_pdoctemplateMain->open_document_file(this, NULL, true);
 
       }
 

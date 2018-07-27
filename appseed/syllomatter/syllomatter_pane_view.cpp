@@ -164,7 +164,7 @@ namespace syllomatter
          pview->LoadXmlMenu("main_menu.xml");
          pview->MenuFill(pview,GetParentFrame());
          /*{
-         sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < syllomattersp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file("http://localhost:10011/");
+         sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < syllomattersp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file(get_app(), "http://localhost:10011/");
          if(pdoc != NULL)
          {
          POSITION pos = pdoc->get_view_count();
@@ -209,10 +209,10 @@ namespace syllomatter
 
             /*
             sp(::user::document) pdoc =  (
-            m_pdoctemplateExtractChanges->open_document_file(
+            m_pdoctemplateExtractChanges->open_document_file(get_app(), 
             Application.dir().matter("syllomatter_extract_changes_form.xhtml")));*/
             m_pdocForm = (
-               m_pdoctemplateExtractChanges->open_document_file(NULL, true, pcreatordata->m_pholder));
+               m_pdoctemplateExtractChanges->open_document_file(get_app(), NULL, true, pcreatordata->m_pholder));
             //m_pdocForm->open_commit_message();
             sp(::syllomatter::view) pview = m_pdocForm->get_typed_view < ::syllomatter::view > ();
             m_pviewForm = pview;

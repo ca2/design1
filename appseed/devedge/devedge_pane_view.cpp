@@ -166,7 +166,7 @@ namespace devedge
          break;
          case PaneViewDevEdge:
          {
-            sp(::user::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(NULL, true, pcreatordata->m_pholder));
+            sp(::user::document) pdoc =  (app.devedge().m_ptemplate_devedge->open_document_file(get_app(), NULL, true, pcreatordata->m_pholder));
             pcreatordata->m_eflag.signalize(::user::view_creator_data::eflag::flag_hide_all_others_on_show);
             if(pdoc != NULL)
             {
@@ -216,7 +216,7 @@ namespace devedge
          break;
          case PaneViewHtmlStage:
          {
-            sp(html_stage_document) pdoc =  (app.devedge().m_ptemplateHtmlStage->open_document_file(NULL, true, pcreatordata->m_pholder));
+            sp(html_stage_document) pdoc =  (app.devedge().m_ptemplateHtmlStage->open_document_file(get_app(), NULL, true, pcreatordata->m_pholder));
             if(pdoc != NULL)
             {
                sp(::user::impact) pview = pdoc->get_view();

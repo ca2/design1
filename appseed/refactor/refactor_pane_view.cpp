@@ -61,7 +61,7 @@ namespace refactor
       {
       case PaneViewRefactor:
       {
-         sp(::refactor::document) pdoc = Application.m_ptemplateRefactor->open_document_file(NULL, true, pcreatordata->m_pholder);
+         sp(::refactor::document) pdoc = Application.m_ptemplateRefactor->open_document_file(get_app(), NULL, true, pcreatordata->m_pholder);
          if(pdoc != NULL)
          {
             sp(view) pview = pdoc->get_view(0);

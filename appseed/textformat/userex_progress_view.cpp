@@ -143,7 +143,7 @@ namespace userex
 
          Application.m_ptemplateProgress2->m_bQueueDocumentOpening = false;
 
-         m_pdoc = Application.m_ptemplateProgress2->open_document_file(var::type_null, false, puiParent);
+         m_pdoc = Application.m_ptemplateProgress2->open_document_file(get_app(), var::type_null, false, puiParent);
 
          m_pview = m_pdoc->get_typed_view<::userex::progress_view>();
 

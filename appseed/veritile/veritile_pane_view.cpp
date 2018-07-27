@@ -124,7 +124,7 @@ namespace veritile
             try
             {
 
-               pdoc =  (Application.m_pdoctemplate->open_document_file(strPath,true,pcreatordata->m_pholder));
+               pdoc =  (Application.m_pdoctemplate->open_document_file(get_app(), strPath,true,pcreatordata->m_pholder));
 
             }
             catch(::file::exception & e)
@@ -195,7 +195,7 @@ namespace veritile
       //{
       ////case veritile::PaneViewContextMenu:
       ////   /*{
-      ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file("http://localhost:10011/");
+      ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file(get_app(), "http://localhost:10011/");
       ////      if(pdoc != NULL)
       ////      {
       ////         POSITION pos = pdoc->get_view_count();
@@ -216,7 +216,7 @@ namespace veritile
       ////      break;
       ////case veritile::PaneViewEdit:
       ////   {
-      ////      sp(::user::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(NULL, true, pcreatordata->m_pholder));
+      ////      sp(::user::document) pdoc =  (papp->m_ptemplateEdit->open_document_file(get_app(), NULL, true, pcreatordata->m_pholder));
       ////      if(pdoc != NULL)
       ////      {
       ////         sp(::user::impact) pview = pdoc->get_view();

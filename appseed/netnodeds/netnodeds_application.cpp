@@ -105,7 +105,7 @@ namespace netnodeds
          string strExtension = System.file().extension(itema[0].m_strPath);
          if(strExtension.compare_ci("ca2solution") == 0)
          {
-            m_ptemplate_solution->open_document_file(itema[0].m_strPath);
+            m_ptemplate_solution->open_document_file(this, itema[0].m_strPath);
          }
          else
          {
@@ -175,7 +175,7 @@ namespace netnodeds
 
    /*   void application::_001OnFileNew()
       {
-         netnodeds()m_ptemplateEdge->open_document_file(NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
+         netnodeds()m_ptemplateEdge->open_document_file(this, NULL, TRUE, System.m_puiInitialPlaceHolderContainer);
       }*/
 
    bool application::on_install()
