@@ -647,7 +647,6 @@ namespace user
    void image_list::on_layout()
    {
 
-
       rect rClient;
 
       rect rTotal(0, 0, 0, 0);
@@ -679,6 +678,8 @@ namespace user
       {
 
          m_sizeImage = sizeImage;
+
+         m_iWheelDeltaScroll = sizeImage.cy / 3;
 
          m_dibaThumb.remove_all();
 
@@ -842,6 +843,8 @@ namespace user
          ev.m_puie = this;
 
          ev.m_id = m_id;
+
+         ev.m_iItem = _001GetCurSel();
 
          ev.m_eevent = ::user::event_after_change_cur_sel;
 
