@@ -159,10 +159,31 @@ namespace user
       void edit::_001OnKillFocus(::message::message * pobj)
       {
 
-         //SCAST_PTR(::message::killfocus, pkillfocus, pobj);
+         SCAST_PTR(::message::kill_focus, pkillfocus, pobj);
 
          if (get_sys_format_tool(false) != NULL && get_sys_format_tool(false)->is_showing_for_ui(this))
          {
+
+            ::user::interaction_impl_base * pimplNew = oswindow_get(pkillfocus->m_oswindowNew);
+
+            ::user::interaction * pui = NULL;
+
+            if (pimplNew != NULL)
+            {
+
+               pui = pimplNew->m_pui;
+
+            }
+
+            if (pkillfocus->m_oswindowNew == get_sys_format_tool(false)->get_safe_handle()
+                  || get_sys_format_tool(false)->is_ascendant_or_owner_of(pui, true))
+            {
+
+               output_debug_string("Window winning focus is own font format tool");
+
+               return;
+
+            }
 
             get_sys_format_tool(false)->ShowWindow(SW_HIDE);
 
@@ -764,7 +785,7 @@ namespace user
             ui_post([this, ptool]()
             {
 
-               ::user::create_struct cs(WS_EX_TOOLWINDOW);
+               ::user::create_struct cs(WS_EX_TOOLWINDOW | WS_EX_LAYERED);
 
                ptool->create_window_ex(cs, NULL, "textformat_sys_format_tool");
 

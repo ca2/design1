@@ -35,6 +35,8 @@ namespace userex
 
       set_pro_devian();
 
+      set_translucent();
+
    }
 
 
@@ -529,6 +531,7 @@ namespace userex
       return ::user::tool_window::on_control_event(pevent);
 
    }
+
 
    void font_format_tool::set_font_size(double dFontSize)
    {
