@@ -594,7 +594,6 @@ namespace user
       m_ppic->m_pta[2] = _transform(m_ppic->m_rect.bottom_right());
       m_ppic->m_pta[3] = _transform(m_ppic->m_rect.bottom_left());
 
-
       m_ppic->m_rectBounding.left = m_ppic->m_pta[0].x;
       m_ppic->m_rectBounding.top = m_ppic->m_pta[0].y;
       m_ppic->m_rectBounding.right = m_ppic->m_pta[0].x;

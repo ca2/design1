@@ -139,6 +139,12 @@ namespace user
          if (pshowwindow->m_bShow)
          {
 
+            if (is_text_editable() && m_bEditable2)
+            {
+
+               SetTimer(250, 500, NULL); // Caret
+
+            }
 
          }
          else
@@ -626,6 +632,8 @@ namespace user
                   ptool->show_for_ui(this);
 
                }
+
+               SetTimer(250, 500, NULL); // Caret
 
             }
 

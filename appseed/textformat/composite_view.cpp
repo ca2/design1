@@ -97,7 +97,6 @@ namespace composite
       connect_command("edit_paste", &view::_001OnEditPaste);
       connect_command_probe("edit_paste", &view::_001OnUpdateEditPaste);
 
-
    }
 
 
@@ -286,9 +285,7 @@ namespace composite
 
          }
 
-
       }
-
 
    }
 
@@ -391,7 +388,6 @@ namespace composite
 
          {
 
-
             for (auto & pic : m_pdata->m_pica)
             {
 
@@ -449,6 +445,13 @@ namespace composite
 
                   bNewTextBox = false;
 
+                  if (m_pdata->m_pictool->m_etoolMode == tool_edit_text)
+                  {
+
+                     m_pdata->m_pictool->m_etoolMode = tool_none;
+
+                  }
+
                }
 
                if (bNewTextBox)
@@ -473,6 +476,7 @@ selected:;
       }
 
    }
+
 
    void view::_001OnLButtonUp(::message::message * pobj)
    {
@@ -668,6 +672,8 @@ selected:;
                   }
 
                }
+
+               set_need_redraw();
 
             }
             break;
@@ -1433,6 +1439,83 @@ selected:;
 
       }
 
+      // Cleanup
+
+      for (index i = 0; i < m_pdata->m_pica.get_count();)
+      {
+
+         if (m_pdata->m_pica[i].is_null())
+         {
+
+            m_pdata->m_pica.remove_at(i);
+
+         }
+         else if (m_pdata->m_picCurrent != m_pdata->m_pica[i])
+         {
+
+            sp(::composite::pic) ppic = m_pdata->m_pica[i];
+
+            if (ppic.is_set())
+            {
+
+               if (ppic->m_dib.is_null() || ppic->m_dib->area() <= 256
+                     || ppic->m_ppic == NULL || ppic->m_ppic->m_rect.area() <= 256)
+               {
+
+                  m_pdata->m_pica.remove_at(i);
+
+               }
+               else
+               {
+
+                  i++;
+
+               }
+
+               continue;
+
+            }
+
+            sp(::user::rich_text::edit) pedit = m_pdata->m_pica[i];
+
+            if (pedit.is_set())
+            {
+
+               string str;
+
+               pedit->_001GetText(str);
+
+               if (str.trimmed().is_empty())
+               {
+
+                  m_pdata->m_pica.remove_at(i);
+
+               }
+               else
+               {
+
+                  i++;
+
+               }
+
+            }
+            else
+            {
+
+               i++;
+
+            }
+
+         }
+         else
+         {
+
+            i++;
+
+         }
+
+      }
+
       double dx = (double)m_pdata->m_sizePage.cx / (double)::user::interaction::width();
 
       double dy = (double)m_pdata->m_sizePage.cy / (double)height();
@@ -1521,23 +1604,24 @@ selected:;
 
       ::visual::dib_sp dib(allocer());
 
-
       var varFile;
       varFile["url"] = path;
       varFile["http_set"]["disable_common_name_cert_check"] = true;
 
-      if (dib.load_from_file(varFile, false))
+      if (!dib.load_from_file(varFile, false))
       {
 
-         ::draw2d::dib_sp dib2(allocer());
-
-         dib2->create(128, 128 * dib->m_size.cy / dib->m_size.cx);
-
-         dib2->g()->draw(rect(dib2->m_size), dib->g(), rect(dib->m_size));
+         return NULL;
 
       }
 
-      return place_pic(pt, dib);
+      ::draw2d::dib_sp dib2(allocer());
+
+      dib2->create(128, 128 * dib->m_size.cy / dib->m_size.cx);
+
+      dib2->g()->draw(rect(dib2->m_size), dib->g(), rect(dib->m_size));
+
+      return place_pic(pt, dib2);
 
    }
 
@@ -1790,6 +1874,8 @@ selected:;
          {
 
             m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
+
+            set_need_redraw();
 
          }
 

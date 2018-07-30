@@ -70,6 +70,7 @@ namespace user
 
    }
 
+
    ::draw2d::dib * image_list::get_current_dib()
    {
 
@@ -85,6 +86,7 @@ namespace user
       return m_diba[m_iaSel[0]];
 
    }
+
 
    string image_list::get_current_dib_link()
    {
@@ -174,7 +176,6 @@ namespace user
 
          }
 
-
          if (pmouse->m_nFlags & MK_SHIFT && m_bMultiSel)
          {
 
@@ -198,12 +199,21 @@ namespace user
 
          }
 
+         ::user::control_event event;
+
+         event.m_eevent = ::user::event_action;
+
+         event.m_iItem = iHit;
+
+         event.m_puie = this;
+
+         on_control_event(&event);
+
          _001SetSelection(iaSel, ::action::source_user);
 
          m_iHitLast = iHit;
 
       }
-
 
    }
 
