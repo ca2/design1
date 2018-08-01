@@ -21,7 +21,7 @@ namespace refactor
 } // namespace flag
 
 #undef App
-#define App(pcaapp) (pcaapp->cast_app < ::refactor::application > ())
+#define App(papp) (*papp->cast < ::refactor::application > ())
 
 
 #include "refactor_document.h"

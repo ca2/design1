@@ -27,7 +27,7 @@ namespace tarsila
 
 
 #undef App
-#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::tarsila::application > ())
+#define App(papp) (*papp->cast < ::tarsila::application > ())
 
 
 

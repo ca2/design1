@@ -164,7 +164,7 @@ namespace tarsila
       //{
       ////case tarsila::PaneViewContextMenu:
       ////   /*{
-      ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_pauraapp->m_pcoreapp))->m_ptemplateFront->open_document_file(get_app(), "http://localhost:10011/");
+      ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_papp->m_pcoreapp))->m_ptemplateFront->open_document_file(get_app(), "http://localhost:10011/");
       ////      if(pdoc != NULL)
       ////      {
       ////         POSITION pos = pdoc->get_view_count();

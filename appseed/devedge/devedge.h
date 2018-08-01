@@ -44,7 +44,7 @@ namespace devedge
 
 
 #undef App
-#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::devedge::application > ())
+#define App(papp) (*papp->cast < ::devedge::application > ())
 
 
 

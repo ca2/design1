@@ -24,7 +24,7 @@ namespace syllomatter
 
 
 #undef App
-#define App(pcaapp) (pcaapp->cast_app < ::syllomatter::application > ())
+#define App(papp) (*papp->cast < ::syllomatter::application > ())
 
 
 

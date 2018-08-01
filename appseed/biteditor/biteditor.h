@@ -14,7 +14,7 @@
 
 
 #undef App
-#define App(pcaapp) (pcaapp->cast_app < ::biteditor::application > ())
+#define App(papp) (*papp->cast < ::biteditor::application > ())
 
 
 

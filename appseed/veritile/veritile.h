@@ -29,7 +29,7 @@ namespace veritile
 
 
 #undef App
-#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::veritile::application > ())
+#define App(papp) (*papp->cast < ::veritile::application > ())
 
 #include "veritile_general_data.h"
 #include "veritile_property_sheet.h"

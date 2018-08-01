@@ -36,7 +36,7 @@ namespace netnodeds
 
 
 #undef App
-#define App(pbaseapp) (pbaseapp->m_pcoreapp->cast_app < ::netnodeds::application > ())
+#define App(papp) (*papp->cast < ::netnodeds::application > ())
 
 
 
