@@ -505,7 +505,16 @@ though it is not a valid cursor handle.\n\
    }
 
 
+   void document::io(stream & stream)
+   {
+
+
+
+
+   }
+
 
 } // namespace biteditor
+
 
 

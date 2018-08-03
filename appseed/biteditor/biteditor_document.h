@@ -131,6 +131,7 @@ namespace biteditor
 
       virtual sp(::data::item) on_allocate_item();
 
+      virtual void io(stream & stream) override;
 
    };
 
