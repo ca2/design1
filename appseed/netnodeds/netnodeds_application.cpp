@@ -152,10 +152,14 @@ namespace netnodeds
                sp(::user::single_document_template) ptemplate = (netnodeds().m_ptemplateEdge);
                if(ptemplate != NULL)
                {
+                  
                   if(ptemplate->get_document_count() == NULL)
                   {
-                     ptemplate->open_new_document();
+                     
+                     ptemplate->open_new_document(this);
+
                   }
+
                }
 
                pcreate->m_puiParent = pview->get_pane_by_id(PaneViewDevEdge)->m_pholder;
