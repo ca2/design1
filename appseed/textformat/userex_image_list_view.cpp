@@ -76,6 +76,8 @@ namespace userex
    bool image_list_view::update_data(bool bSaveAndValidate)
    {
 
+      synch_lock sl(m_pmutex);
+
       if (bSaveAndValidate)
       {
 
@@ -100,12 +102,17 @@ namespace userex
 
          }
 
+         m_iForkAddDib++;
+
+
          fork([this]()
          {
 
             synch_lock sl(m_pmutex);
 
-            for (index i = 0; i < m_listing.get_count();)
+            int iForkDib = m_iForkAddDib;
+
+            for (index i = 0; iForkDib == m_iForkAddDib && i < m_listing.get_count();)
             {
 
                sl.unlock();
@@ -116,10 +123,6 @@ namespace userex
 
                if (dib.load_from_file(path, false))
                {
-
-                  i++;
-
-                  sl.lock();
 
                   if (dib->m_size.cx > 256)
                   {
@@ -139,11 +142,27 @@ namespace userex
 
                      dib->oprop("read_only_link") = get_link_prefix() + path.name();
 
+
+                     sl.lock();
+
+                     i++;
+
                      m_diba.add(dib);
+
+                     set_need_layout();
+
+                  }
+                  else
+                  {
+
+                     sl.lock();
+
+                     TRACE("(2) Could not dib.load_from_file.file=" + m_listing[i]);
+
+                     m_listing.remove_at(i);
 
                   }
 
-                  set_need_layout();
 
                }
                else

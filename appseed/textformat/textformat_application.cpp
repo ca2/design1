@@ -38,9 +38,7 @@ namespace textformat
 
       set_local_data();
 
-      ::core::session * pcoression = m_papp->m_psession;
-
-      pcoression->will_use_view_hint("color_sel");
+      Session.will_use_view_hint("color_sel");
 
       System.factory().creatable_small < ::textformat::document >();
       System.factory().creatable_small < ::textformat::frame >();

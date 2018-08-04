@@ -16,6 +16,7 @@ namespace userex
       stringa              m_straPattern;
       stringa              m_straPatternNames;
       string               m_strLinkPrefix;
+      int                  m_iForkAddDib;
 
       image_list_view(::aura::application * papp);
       virtual ~image_list_view();
