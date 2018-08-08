@@ -206,6 +206,27 @@ namespace user
       m_dZoom = 1.0;
       m_ptDrag.x = 0.0;
       m_ptDrag.y = 0.0;
+
+
+      m_bBorder = false;
+      m_iBorderWidth = 7;
+      m_hlsBorder.m_dH = 0.0;
+      m_hlsBorder.m_dL = 0.0;
+      m_hlsBorder.m_dS = 0.0;
+
+      m_bDropShadow = false;
+      m_iDropShadowOffset = 12;
+      m_iDropShadowBlur = 4;
+      m_hlsDropShadow.m_dH = 0.0;
+      m_hlsDropShadow.m_dL = 0.0;
+      m_hlsDropShadow.m_dS = 0.0;
+
+      m_iBlur = 0;
+      m_bGrayscale = false;
+      m_bInvert = false;
+      m_iOpacity = 100;
+      m_iSaturation = 100;
+
    }
 
 
@@ -807,11 +828,11 @@ namespace user
       pta[2] = _transform_drawing(rClip.bottom_right());
       pta[3] = _transform_drawing(rClip.bottom_left());
 
-      ::draw2d::region_sp rgn(allocer());
+      //::draw2d::region_sp rgn(allocer());
 
-      rgn->create_polygon(pta.get_data(), (int)pta.get_count(), ::draw2d::fill_mode_winding);
+      //rgn->create_polygon(pta.get_data(), (int)pta.get_count(), ::draw2d::fill_mode_winding);
 
-      pgraphics->SelectClipRgn(rgn, RGN_AND);
+      //pgraphics->SelectClipRgn(rgn, RGN_AND);
 
       mRot.append(::draw2d::matrix::rotation(m_ppic->m_dRotate));
 
@@ -880,6 +901,22 @@ namespace user
          serialize.stream_array(m_ptaCursor);
          serialize(m_dZoom);
          serialize(m_ptDrag);
+
+
+         serialize(m_bBorder);
+         serialize(m_iBorderWidth);
+         serialize(m_hlsBorder);
+
+         serialize(m_bDropShadow);
+         serialize(m_iDropShadowOffset);
+         serialize(m_iDropShadowBlur);
+         serialize(m_hlsDropShadow);
+
+         serialize(m_iBlur);
+         serialize(m_bGrayscale);
+         serialize(m_bInvert);
+         serialize(m_iOpacity);
+         serialize(m_iSaturation);
 
       }
 

@@ -150,7 +150,96 @@ namespace composite
    void pic::pic::draw_impl(::draw2d::graphics * pgraphics, LPCRECT lpcrect)
    {
 
-      pgraphics->draw(lpcrect, m_dib->g(), rect(m_dib->m_size));
+      rect r(lpcrect);
+
+      ::draw2d::dib * pdib = m_dib;
+
+      ::visual::fastblur blur;
+
+      pdib->m_bColorMatrix = false;
+
+      pdib->m_colormatrix = ::draw2d::color_matrix();
+
+      if (m_ppic->m_iBlur > 0)
+      {
+
+         double dBlur = (double) m_ppic->m_iBlur * (double)pdib->m_size.cx / (double)r.width();
+
+         int iBlur = ceil(dBlur);
+
+         blur.alloc(allocer());
+
+         rect rDib(pdib->m_size);
+
+         int iShift = iBlur * 2;
+
+         rDib.inflate(iShift, iShift);
+
+         r.inflate(m_ppic->m_iBlur, m_ppic->m_iBlur);
+
+         blur.initialize(rDib.width(), rDib.height(), iBlur);
+
+         blur->Fill(0);
+
+         blur->g()->draw(rect(point(iShift, iShift), pdib->m_size), pdib->g());
+
+         blur.blur();
+
+         pdib = blur;
+
+      }
+
+      pdib->m_bColorMatrix = false;
+
+      pdib->m_colormatrix = ::draw2d::color_matrix();
+
+      if (m_ppic->m_bGrayscale)
+      {
+
+         pdib->m_bColorMatrix = true;
+
+         pdib->m_colormatrix.grayscale();
+
+      }
+      else if(m_ppic->m_iSaturation != 100)
+      {
+
+         pdib->m_bColorMatrix = true;
+
+         pdib->m_colormatrix.saturation(0.3333, 0.3333, 0.3333, m_ppic->m_iSaturation / 100.0);
+
+      }
+
+      if (m_ppic->m_bInvert)
+      {
+
+         pdib->m_bColorMatrix = true;
+
+         pdib->m_colormatrix.invert();
+
+      }
+
+      if (m_ppic->m_iOpacity != 100)
+      {
+
+         pgraphics->alpha_blend(r, pdib->g(), rect(pdib->m_size), m_ppic->m_iOpacity / 100.0);
+
+      }
+      else
+      {
+
+         pgraphics->draw(r, pdib->g(), rect(pdib->m_size));
+
+      }
+
+      if (m_ppic->m_bBorder)
+      {
+
+         color c(m_ppic->m_hlsBorder);
+
+         pgraphics->draw_border(r, c, m_ppic->m_iBorderWidth);
+
+      }
 
    }
 

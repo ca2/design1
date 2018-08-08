@@ -134,6 +134,9 @@ namespace composite
 
       virtual bool is_tool_editing_text();
 
+      virtual void on_tool_special_effect();
+
+
    };
 
 

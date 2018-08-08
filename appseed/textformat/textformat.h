@@ -37,7 +37,9 @@ namespace textformat
 
 #include "user_object.h"
 #include "user_pic.h"
+#include "user_plus_minus.h"
 #include "user_font_combo_box.h"
+#include "user_color_combo_box.h"
 #include "user_tool_window.h"
 #include "aura/xml/xml.h"
 #include "user_rich_text.h"

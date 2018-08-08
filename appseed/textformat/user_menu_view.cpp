@@ -244,11 +244,11 @@ namespace user
 
       m_fontTitle.alloc(allocer());
 
-      m_fontTitle->create_point_font("Tahoma", 14, 800);
+      m_fontTitle->create_point_font("Segoe UI", 14, 800);
 
       m_font.alloc(allocer());
 
-      m_font->create_point_font("Tahoma", 14, 400);
+      m_font->create_point_font("Segoe UI", 14, 400);
 
       if (GetTypedParent<::user::split_view>() != NULL)
       {

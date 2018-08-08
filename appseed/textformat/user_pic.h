@@ -29,6 +29,21 @@ namespace user
          double                  m_dZoom;
          pointd                  m_ptDrag;
 
+         bool                    m_bBorder;
+         int                     m_iBorderWidth;
+         ::color::hls            m_hlsBorder;
+
+         bool                    m_bDropShadow;
+         int                     m_iDropShadowOffset;
+         int                     m_iDropShadowBlur;
+         ::color::hls            m_hlsDropShadow;
+
+         int                     m_iBlur;
+         bool                    m_bGrayscale;
+         bool                    m_bInvert;
+         int                     m_iOpacity; // 0 - 100
+         int                     m_iSaturation; // 0 - 200
+
 
          pic_impl();
 

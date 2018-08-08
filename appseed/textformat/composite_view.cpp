@@ -883,6 +883,15 @@ selected:;
 
             }
             break;
+            case ::composite::tool_special_effect:
+            {
+
+
+               on_tool_special_effect();
+
+
+            }
+            break;
 
             default:;
 
@@ -1906,6 +1915,13 @@ selected:;
       }
 
       return bEditable;
+
+   }
+
+
+   void view::on_tool_special_effect()
+   {
+
 
    }
 

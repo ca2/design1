@@ -97,6 +97,12 @@
     <ClCompile Include="user_pic_tool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="user_color_combo_box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="user_plus_minus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="textformat.h">
@@ -187,6 +193,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="userex_progress_view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_color_combo_box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_plus_minus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
