@@ -5,26 +5,26 @@ namespace devedge
 {
 
 
-   enum EPaneView
+   enum e_pane_view
    {
-      PaneViewNone,
-      PaneViewContextMenu,
+      pane_view_none,
+      pane_view_context_menu,
       PaneViewDevEdge,
       PaneViewHtmlEdit,
       PaneViewHtmlStage,
-      PaneViewFileManager,
+      "file_manager",
       PaneViewOptions,
       PaneViewSolution,
    };
 
 
    class CLASS_DECL_DEVEDGE pane_view_update_hint :
-      public ::object  
+      public ::object
    {
    public:
       enum e_type
       {
-         TypeGetView,
+         type_get_view,
          TypeSetView,
          TypeOnBeforeShowView,
          TypeOnShowView,
@@ -37,7 +37,7 @@ namespace devedge
       pane_view_update_hint();
       virtual ~pane_view_update_hint();
 
-      EPaneView m_eview;
+      e_pane_view m_eview;
    protected:
       e_type m_etype;
 

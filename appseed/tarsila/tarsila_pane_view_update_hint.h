@@ -14,12 +14,12 @@ namespace tarsila
 
 
    class CLASS_DECL_APP_CORE_TARSILA pane_view_update_hint :
-      public ::object  
+      public ::object
    {
    public:
       enum e_type
       {
-         TypeGetView,
+         type_get_view,
          TypeSetView,
          TypeOnShowKaraoke,
          TypeOnShowView,

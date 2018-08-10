@@ -1,13 +1,13 @@
 #pragma once
 
-enum EPaneView
+enum e_pane_view
 {
-   PaneViewNone,
-   PaneViewContextMenu,
+   pane_view_none,
+   pane_view_context_menu,
    PaneViewDevEdge,
    PaneViewHtmlEdit,
    PaneViewHtml,
-   PaneViewFileManager,
+   "file_manager",
    PaneViewPlaylist,
    PaneViewMediaLibrary,
    PaneViewAudioControl,
@@ -16,12 +16,12 @@ enum EPaneView
 
 
 class CLASS_DECL_CA2_DEVEDGE PaneViewUpdateHint :
-   public base_object  
+   public base_object
 {
 public:
    enum EType
    {
-      TypeGetView,
+      type_get_view,
       TypeSetView,
       TypeOnShowKaraoke,
       TypeOnBeforeShowView,
@@ -29,13 +29,13 @@ public:
    };
    // DECLARE_DYNAMIC(PaneViewUpdateHint)
 public:
-	void SetType(EType etype);
-	bool IsTypeOf(EType etype);
+   void SetType(EType etype);
+   bool IsTypeOf(EType etype);
 
-	PaneViewUpdateHint();
-	virtual ~PaneViewUpdateHint();
+   PaneViewUpdateHint();
+   virtual ~PaneViewUpdateHint();
 
-   EPaneView m_eview;
+   e_pane_view m_eview;
 protected:
    EType m_etype;
 

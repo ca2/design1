@@ -41,7 +41,7 @@ namespace devedge
 
       papp->m_ppaneview = this;
 
-      add_tab("Front", PaneViewContextMenu);
+      add_tab("Front", pane_view_context_menu);
       add_tab("DevEdge", PaneViewDevEdge);
       add_tab("HtmlDesigner", PaneViewHtmlEdit);
       add_tab("HtmlView", PaneViewHtmlStage);
@@ -66,9 +66,9 @@ namespace devedge
          if(base_class < main_document >::bases(pHint))
          {
             ::devedge::pane_view_update_hint * puh = dynamic_cast < ::devedge::pane_view_update_hint * > (pHint);
-            if(puh->is_type_of(::devedge::pane_view_update_hint::TypeGetView))
+            if(puh->is_type_of(::devedge::pane_view_update_hint::type_get_view))
             {
-               puh->m_eview = (EPaneView) atoi(get_cur_tab_id());
+               puh->m_eview = (e_pane_view) atoi(get_cur_tab_id());
             }
             else if(puh->is_type_of(::devedge::pane_view_update_hint::TypeSetView))
             {
@@ -140,7 +140,7 @@ namespace devedge
       {
          switch(pcreatordata->m_id)
          {
-         case PaneViewContextMenu:
+         case pane_view_context_menu:
          {
             sp(::create) cc(get_app());
             cc->m_spCommandLine->m_varFile = "http://localhost:10011/";

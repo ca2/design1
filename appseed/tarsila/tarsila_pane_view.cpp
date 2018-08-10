@@ -162,7 +162,7 @@ namespace tarsila
       }
       //switch(pcreatordata->m_id)
       //{
-      ////case tarsila::PaneViewContextMenu:
+      ////case tarsila::pane_view_context_menu:
       ////   /*{
       ////      sp(front_document) pdoc = (devedgeFrontDoc *) (dynamic_cast < verieditsp(::core::application) > (((sp(::user::frame_window)) GetParentFrame())->m_papp->m_pcoreapp))->m_ptemplateFront->open_document_file(get_app(), "http://localhost:10011/");
       ////      if(pdoc != NULL)
@@ -201,7 +201,7 @@ namespace tarsila
       ////      }
       ////   }
       ////   break;
-      /////*case tarsila::PaneViewFileManager:
+      /////*case tarsila::"file_manager":
       ////   {
       ////      sp(::filemanager::manager) pdoc = Sess(papp).filemanager()->open_child(papp, false, true, pcreatordata->m_pholder);
       ////      m_pfilemanagerdoc = pdoc;
