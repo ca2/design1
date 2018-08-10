@@ -1531,56 +1531,36 @@ restart2:
 
          }
 
-         // Draw Text
+         ::visual::fastblur dibDropShadow;
 
-         pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
+         ::rect rDropShadow(m_pedit->m_ppic->m_rectDrawing);
 
-         for (auto & line : m_layouta)
+         rDropShadow.offset(-rDropShadow.center());
+
+         ::draw2d::dib_sp dib;
+
+         if (m_pedit->m_ppic != NULL && m_pedit->m_ppic->m_bGlowDropShadow)
          {
 
-            for (auto & range : *line)
-            {
+            dib.alloc(allocer());
 
-               if (range->m_iFormat < 0)
-               {
+            dib->create(m_pedit->m_ppic->m_rectDrawing.get_size());
 
-                  continue;
+            ::size sz = m_pedit->m_ppic->m_rectDrawing.get_size();
 
-               }
+            dib->g()->SetViewportOrg(sz.cx/2, sz.cy /2);
 
-               sp(format) & pformat = m_formata.element_at_grow(range->m_iFormat);
+            draw_text(dib->g());
 
-               if (pformat.is_null())
-               {
+            dib->g()->SetViewportOrg(0, 0);
 
-                  pformat = canew(format(get_app()));
+            m_pedit->defer_draw_drop_shadow_phase1(rDropShadow, dibDropShadow, dib);
 
-               }
-
-               pgraphics->set_font(pformat->get_font(pgraphics));
-
-               pgraphics->set_text_color(pformat->m_crForeground);
-
-               rect r = range->m_rect22;
-
-               if (pformat->m_escript == script_subscript)
-               {
-
-                  r.offset(0, r.height() / 6);
-
-               }
-               else if (pformat->m_escript == script_superscript)
-               {
-
-                  r.offset(0, - r.height() / 3);
-
-               }
-
-               pgraphics->draw_text(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE);
-
-            }
+            m_pedit->defer_draw_drop_shadow_phase2(pgraphics, rDropShadow, dibDropShadow);
 
          }
+
+         draw_text(pgraphics);
 
          // Draw Caret
 
@@ -1854,6 +1834,87 @@ restart2:
 
          serialize.stream_array(m_formata);
 
+
+      }
+
+      void data::draw_text(::draw2d::graphics * pgraphics)
+      {
+
+         pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
+
+         for (auto & line : m_layouta)
+         {
+
+            for (auto & range : *line)
+            {
+
+               if (range->m_iFormat < 0)
+               {
+
+                  continue;
+
+               }
+
+               sp(format) & pformat = m_formata.element_at_grow(range->m_iFormat);
+
+               if (pformat.is_null())
+               {
+
+                  pformat = canew(format(get_app()));
+
+               }
+
+               rect r = range->m_rect22;
+
+               if (pformat->m_escript == script_subscript)
+               {
+
+                  r.offset(0, r.height() / 6);
+
+               }
+               else if (pformat->m_escript == script_superscript)
+               {
+
+                  r.offset(0, -r.height() / 3);
+
+               }
+
+               if (m_pedit->m_ppic->m_bOutline)
+               {
+
+                  ::draw2d::path_sp path(allocer());
+
+                  path->add_string(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE, pformat->get_font(pgraphics), pformat->m_crForeground);
+
+                  ::draw2d::pen_sp pen(allocer());
+
+                  ::draw2d::brush_sp brush(allocer());
+
+                  pen->create_solid(m_pedit->m_ppic->m_iOutlineWidth, color(m_pedit->m_ppic->m_hlsOutline));
+
+                  brush->create_solid(pformat->m_crForeground);
+
+                  pgraphics->SelectObject(pen);
+
+                  pgraphics->SelectObject(brush);
+
+                  pgraphics->path(path);
+
+               }
+               else
+               {
+
+                  pgraphics->draw_text(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE);
+
+                  pgraphics->set_font(pformat->get_font(pgraphics));
+
+                  pgraphics->set_text_color(pformat->m_crForeground);
+
+               }
+
+            }
+
+         }
 
       }
 

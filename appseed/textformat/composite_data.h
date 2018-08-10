@@ -32,7 +32,6 @@ namespace composite
    {
    public:
 
-
       view * m_pview;
       ::draw2d::dib_sp     m_dib;
       pic(::aura::application * papp);

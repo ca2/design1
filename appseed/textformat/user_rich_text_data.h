@@ -57,6 +57,8 @@ namespace user
          virtual void _001GetText(string & str) const;
          virtual void _001GetLayoutText(string & str) const;
 
+         virtual void draw_text(::draw2d::graphics * pgraphics);
+
          virtual void optimize_data();
 
          virtual index SelToLine(strsize i);

@@ -29,14 +29,14 @@ namespace user
          double                  m_dZoom;
          pointd                  m_ptDrag;
 
-         bool                    m_bBorder;
-         int                     m_iBorderWidth;
-         ::color::hls            m_hlsBorder;
+         bool                    m_bOutline;
+         int                     m_iOutlineWidth;
+         ::color::hls            m_hlsOutline;
 
-         bool                    m_bDropShadow;
-         int                     m_iDropShadowOffset;
-         int                     m_iDropShadowBlur;
-         ::color::hls            m_hlsDropShadow;
+         bool                    m_bGlowDropShadow;
+         int                     m_iGlowDropShadowOffset;
+         int                     m_iGlowDropShadowBlur;
+         ::color::hls            m_hlsGlowDropShadow;
 
          int                     m_iBlur;
          bool                    m_bGrayscale;
@@ -96,6 +96,8 @@ namespace user
       virtual bool is_valid();
       virtual ::sized get_size();
 
+      virtual ::draw2d::dib * defer_draw_drop_shadow_phase1(rect & rectDropShadow, ::visual::fastblur & dibDropShadow, ::draw2d::dib * pdib);
+      virtual void defer_draw_drop_shadow_phase2(::draw2d::graphics * pgraphics, const rect & rectDropShadow, ::visual::fastblur & dibDropShadow);
 
       virtual bool set_text_editable(bool bEditable = true);
 

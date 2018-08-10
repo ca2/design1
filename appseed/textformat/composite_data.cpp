@@ -154,6 +154,12 @@ namespace composite
 
       ::draw2d::dib * pdib = m_dib;
 
+      ::visual::fastblur dibDropShadow;
+
+      ::rect rDropShadow(lpcrect);
+
+      pdib = defer_draw_drop_shadow_phase1(rDropShadow, dibDropShadow, pdib);
+
       ::visual::fastblur blur;
 
       pdib->m_bColorMatrix = false;
@@ -219,6 +225,10 @@ namespace composite
 
       }
 
+      pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
+
+      defer_draw_drop_shadow_phase2(pgraphics, rDropShadow, dibDropShadow);
+
       if (m_ppic->m_iOpacity != 100)
       {
 
@@ -232,12 +242,12 @@ namespace composite
 
       }
 
-      if (m_ppic->m_bBorder)
+      if (m_ppic->m_bOutline)
       {
 
-         color c(m_ppic->m_hlsBorder);
+         color c(m_ppic->m_hlsOutline);
 
-         pgraphics->draw_border(r, c, m_ppic->m_iBorderWidth);
+         pgraphics->draw_border(r, c, m_ppic->m_iOutlineWidth);
 
       }
 
