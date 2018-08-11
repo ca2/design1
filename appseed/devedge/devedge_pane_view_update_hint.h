@@ -12,7 +12,6 @@ namespace devedge
       PaneViewDevEdge,
       PaneViewHtmlEdit,
       PaneViewHtmlStage,
-      "file_manager",
       PaneViewOptions,
       PaneViewSolution,
    };
