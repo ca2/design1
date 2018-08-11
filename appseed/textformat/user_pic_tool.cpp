@@ -50,7 +50,18 @@ namespace composite
       else
       {
 
-         if (m_pview->is_tool_editing_text())
+         if (m_pview->is_tool_resize_only())
+         {
+
+            if (etool != tool_resize)
+            {
+
+               return false;
+
+            }
+
+         }
+         else if (m_pview->is_tool_editing_text())
          {
 
             if (etool != tool_edit_text)
@@ -196,6 +207,12 @@ namespace composite
          draw_tool(pgraphics, tool_zoom_in);
          draw_tool(pgraphics, tool_apply);
          draw_tool(pgraphics, tool_close);
+
+      }
+      else if (m_etoolMode == tool_resize)
+      {
+
+         draw_tool(pgraphics, tool_resize);
 
       }
       else if (m_pview->is_tool_editing_text())

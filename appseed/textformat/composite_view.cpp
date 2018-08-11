@@ -564,6 +564,30 @@ selected:;
             save();
 
          }
+         else if (m_pdata->m_etoolDown == ::composite::tool_resize)
+         {
+
+            if (is_topic_composite() && m_pdata->m_picCurrent == m_ppicTopic)
+            {
+
+               m_bDefaultTopicSize = false;
+
+               pointd p(pt);
+
+               p.x = pt.x * m_pdata->m_sizePage.cx / ::user::interaction::width();
+
+               p.y = pt.y * m_pdata->m_sizePage.cy / ::user::interaction::height();
+
+               m_ppicTopic->m_ppic->m_rectDrawing.bottom_right() = p;
+
+            }
+
+            save();
+
+         }
+
+
+
          m_pdata->m_pictool->m_map[m_pdata->m_etoolDown].m_bDrag = false;
 
       }
@@ -893,6 +917,7 @@ selected:;
             }
             break;
 
+
             default:;
 
             }
@@ -1006,88 +1031,107 @@ selected:;
          else if (m_pdata->m_etoolDown == ::composite::tool_resize)
          {
 
-            double a = sin(m_pdata->m_picCurrent->m_ppic->m_dRotate);
-
-            double b = cos(m_pdata->m_picCurrent->m_ppic->m_dRotate);
-
-            double x1 = m_pdata->m_pictool->m_ptResizeOrigin.x;
-
-            double y1 = m_pdata->m_pictool->m_ptResizeOrigin.y;
-
-            double x2 = pt.x;
-
-            double y2 = pt.y;
-
-            double x = (x1 + x2) / 2.0;
-
-            double y = (y1 + y2) / 2.0;
-
-            double h = -(a*(x2-x1)-b *(y2-y1)) ;
-
-            double w = b*(x2 - x1) + a * (y2 - y1);
-
-            bool bChanged = false;
-
-            if (h < 64)
+            if (is_topic_composite() && m_pdata->m_picCurrent == m_ppicTopic)
             {
 
-               h = 64;
+               m_bDefaultTopicSize = false;
 
-               bChanged = true;
+               pointd p(pt);
+
+               p.x = pt.x * m_pdata->m_sizePage.cx / ::user::interaction::width();
+
+               p.y = pt.y * m_pdata->m_sizePage.cy / ::user::interaction::height();
+
+               m_ppicTopic->m_ppic->m_rectDrawing.bottom_right() = p;
 
             }
-
-            if (w < 64)
+            else
             {
 
-               w = 64;
+               double a = sin(m_pdata->m_picCurrent->m_ppic->m_dRotate);
 
-               bChanged = true;
+               double b = cos(m_pdata->m_picCurrent->m_ppic->m_dRotate);
+
+               double x1 = m_pdata->m_pictool->m_ptResizeOrigin.x;
+
+               double y1 = m_pdata->m_pictool->m_ptResizeOrigin.y;
+
+               double x2 = pt.x;
+
+               double y2 = pt.y;
+
+               double x = (x1 + x2) / 2.0;
+
+               double y = (y1 + y2) / 2.0;
+
+               double h = -(a*(x2 - x1) - b * (y2 - y1));
+
+               double w = b * (x2 - x1) + a * (y2 - y1);
+
+               bool bChanged = false;
+
+               if (h < 64)
+               {
+
+                  h = 64;
+
+                  bChanged = true;
+
+               }
+
+               if (w < 64)
+               {
+
+                  w = 64;
+
+                  bChanged = true;
+
+               }
+
+               if (bChanged)
+               {
+
+                  //double f = sqrt(sq(a) + sq(b));
+
+                  //double f = 1.0;
+
+                  x2 = -a * h + sq(a)*x1 + b * w + sq(b)*x1;
+
+                  y2 = a * w + sq(a)*y1 + b * h + sq(b)*y1;
+
+                  x = (x1 + x2) / 2.0;
+
+                  y = (y1 + y2) / 2.0;
+
+               }
+
+
+               double dy = h / 2.0;
+
+               double dx = w / 2.0;
+
+               m_pdata->m_picCurrent->m_ppic->m_rect.left = x - dx;
+
+               m_pdata->m_picCurrent->m_ppic->m_rect.top = y - dy;
+
+               m_pdata->m_picCurrent->m_ppic->m_rect.right = x + dx;
+
+               m_pdata->m_picCurrent->m_ppic->m_rect.bottom = y + dy;
+
+
+               //sizeNew.cx = MAX(sizeMin.cx, sizeNew.cx);
+
+               //sizeNew.cy = MAX(sizeMin.cy, sizeNew.cy);
+
+               //m_pdata->m_picCurrent->m_ppic->m_rect.set_size(sizeNew);
+
+               m_pdata->m_picCurrent->update_drawing_rect(m_pdata->m_sizePage, get_size());
+
+               m_pdata->m_picCurrent->update_region();
+
+               m_pdata->m_picCurrent->update_placement();
 
             }
-
-            if (bChanged)
-            {
-
-               //double f = sqrt(sq(a) + sq(b));
-
-               //double f = 1.0;
-
-               x2 = - a*h + sq(a)*x1 + b*w + sq(b)*x1;
-
-               y2 = a*w + sq(a)*y1 + b*h + sq(b)*y1;
-
-               x = (x1 + x2) / 2.0;
-
-               y = (y1 + y2) / 2.0;
-
-            }
-
-
-            double dy = h / 2.0;
-
-            double dx = w / 2.0;
-
-            m_pdata->m_picCurrent->m_ppic->m_rect.left = x - dx;
-
-            m_pdata->m_picCurrent->m_ppic->m_rect.top = y - dy;
-
-            m_pdata->m_picCurrent->m_ppic->m_rect.right = x + dx;
-
-            m_pdata->m_picCurrent->m_ppic->m_rect.bottom = y + dy;
-
-
-            //sizeNew.cx = MAX(sizeMin.cx, sizeNew.cx);
-
-            //sizeNew.cy = MAX(sizeMin.cy, sizeNew.cy);
-
-            //m_pdata->m_picCurrent->m_ppic->m_rect.set_size(sizeNew);
-
-            m_pdata->m_picCurrent->update_drawing_rect(m_pdata->m_sizePage, get_size());
-
-            m_pdata->m_picCurrent->update_region();
-
-            m_pdata->m_picCurrent->update_placement();
 
             set_need_layout();
 
@@ -1140,7 +1184,16 @@ selected:;
       else
       {
 
-         for (auto & pic : m_pdata->m_pica)
+         auto pica = m_pdata->m_pica;
+
+         if (is_topic_composite())
+         {
+
+            pica.add_unique(m_ppicTopic);
+
+         }
+
+         for (auto & pic : pica)
          {
 
             if (pic == m_pdata->m_picCurrent)
@@ -1922,6 +1975,22 @@ selected:;
    void view::on_tool_special_effect()
    {
 
+
+   }
+
+
+   bool view::is_tool_resize_only()
+   {
+
+      return false;
+
+   }
+
+
+   bool view::is_topic_composite()
+   {
+
+      return false;
 
    }
 

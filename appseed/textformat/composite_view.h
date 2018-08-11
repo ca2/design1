@@ -60,6 +60,11 @@ namespace composite
       bool                    m_bAutoAdjustPicSize;
       ::size                  m_sizeMaxPicAdjust;
       double                  m_dStartAngle;
+      sp(::user::pic)         m_ppicTopic;
+
+      bool                    m_bDefaultTopicPosition;
+      bool                    m_bDefaultTopicSize;
+      bool                    m_bDragTopic;
 
 
       view(::aura::application * papp);
@@ -135,6 +140,10 @@ namespace composite
       virtual bool is_tool_editing_text();
 
       virtual void on_tool_special_effect();
+
+      virtual bool is_tool_resize_only();
+
+      virtual bool is_topic_composite();
 
 
    };
