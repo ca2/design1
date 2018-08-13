@@ -22,19 +22,19 @@ namespace composite
 
       m_pictool = canew(pic_tool(get_app()));
 
-      m_pictool->m_map[::composite::tool_rotate].m_dib = Application.get_matter_dib("pictool/rotation24.png");
-      m_pictool->m_map[::composite::tool_crop].m_dib = Application.get_matter_dib("pictool/crop-icon24.png");
-      m_pictool->m_map[::composite::tool_edit_text].m_dib = Application.get_matter_dib("pictool/text-icon24.png");
-      m_pictool->m_map[::composite::tool_close].m_dib = Application.get_matter_dib("pictool/close-button24.png");
-      m_pictool->m_map[::composite::tool_stack_up].m_dib = Application.get_matter_dib("pictool/stackup24.png");
-      m_pictool->m_map[::composite::tool_special_effect].m_dib = Application.get_matter_dib("pictool/fx24.png");
-      m_pictool->m_map[::composite::tool_stack_down].m_dib = Application.get_matter_dib("pictool/stackdown24.png");
-      m_pictool->m_map[::composite::tool_resize].m_dib = Application.get_matter_dib("pictool/resize20.png");
+      m_pictool->m_map[::composite::tool_rotate].m_dib = Application.matter_dib("pictool/rotation24.png");
+      m_pictool->m_map[::composite::tool_crop].m_dib = Application.matter_dib("pictool/crop-icon24.png");
+      m_pictool->m_map[::composite::tool_edit_text].m_dib = Application.matter_dib("pictool/text-icon24.png");
+      m_pictool->m_map[::composite::tool_close].m_dib = Application.matter_dib("pictool/close-button24.png");
+      m_pictool->m_map[::composite::tool_stack_up].m_dib = Application.matter_dib("pictool/stackup24.png");
+      m_pictool->m_map[::composite::tool_special_effect].m_dib = Application.matter_dib("pictool/fx24.png");
+      m_pictool->m_map[::composite::tool_stack_down].m_dib = Application.matter_dib("pictool/stackdown24.png");
+      m_pictool->m_map[::composite::tool_resize].m_dib = Application.matter_dib("pictool/resize20.png");
 
-      m_pictool->m_map[::composite::tool_zoom_out].m_dib = Application.get_matter_dib("pictool/zoomout24.png");
-      m_pictool->m_map[::composite::tool_zoom_in].m_dib = Application.get_matter_dib("pictool/zoomin24.png");
-      m_pictool->m_map[::composite::tool_move].m_dib = Application.get_matter_dib("pictool/drag24.png");
-      m_pictool->m_map[::composite::tool_apply].m_dib = Application.get_matter_dib("pictool/apply24.png");
+      m_pictool->m_map[::composite::tool_zoom_out].m_dib = Application.matter_dib("pictool/zoomout24.png");
+      m_pictool->m_map[::composite::tool_zoom_in].m_dib = Application.matter_dib("pictool/zoomin24.png");
+      m_pictool->m_map[::composite::tool_move].m_dib = Application.matter_dib("pictool/drag24.png");
+      m_pictool->m_map[::composite::tool_apply].m_dib = Application.matter_dib("pictool/apply24.png");
 
       m_pictool->m_map[::composite::tool_resize].m_ecursor = visual::cursor_size_bottom_right;
 

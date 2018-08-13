@@ -223,7 +223,7 @@ namespace userex
 
       auto * plist = get_group_list(strGroup);
 
-      ::draw2d::dib_sp dib = Application.get_matter_dib(pgroup->m_strIcon);
+      ::draw2d::dib_sp dib = Application.matter_dib(pgroup->m_strIcon);
 
       m_buttonMenu.set_window_text(get_group_title(pgroup));
 
