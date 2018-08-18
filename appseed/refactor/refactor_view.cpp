@@ -78,7 +78,7 @@ namespace refactor
 
       if(lHint == 1001)
       {
-         RedrawWindow();
+         set_need_redraw();
       }
       else if(lHint == 11)
       {
@@ -108,7 +108,7 @@ namespace refactor
       {
          //CreateLineIndex();
          //m_bGetTextNeedUpdate = true;
-         //RedrawWindow();
+         //set_need_redraw();
          //::ca::graphics * pgraphics = GetDC();
          //_001OnCalcLayout(pgraphics);
          //ReleaseDC(pgraphics);

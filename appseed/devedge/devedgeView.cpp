@@ -103,7 +103,7 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
 {
    if(lHint == 1001)
    {
-      RedrawWindow();
+      set_need_redraw();
    }
    else if(lHint == 123)
    {
@@ -122,7 +122,7 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
    {
       CreateLineIndex();
       m_bGetTextNeedUpdate = true;
-      RedrawWindow();
+      set_need_redraw();
       CDC * pgraphics = _001GetWnd()->GetDC();
       _001OnCalcLayout(pgraphics);
       _001GetWnd()->ReleaseDC(pgraphics);

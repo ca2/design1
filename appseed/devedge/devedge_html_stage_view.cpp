@@ -107,7 +107,7 @@ namespace devedge
       UNREFERENCED_PARAMETER(phint);
       if(lHint == 1001)
       {
-         RedrawWindow();
+         set_need_redraw();
       }
       else if(lHint == 123)
       {

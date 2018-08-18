@@ -46,7 +46,7 @@ namespace devedge
       ::user::plain_edit_view::on_update(pSender, lHint, phint);
       if(lHint == 1001)
       {
-         RedrawWindow();
+         set_need_redraw();
       }
       else if(lHint == 11)
       {
@@ -69,7 +69,7 @@ namespace devedge
       {
          //CreateLineIndex();
          //m_bGetTextNeedUpdate = true;
-         //RedrawWindow();
+         //set_need_redraw();
          //::ca::client_graphics pgraphics(this);
          //_001OnCalcLayout(pgraphics);
          //

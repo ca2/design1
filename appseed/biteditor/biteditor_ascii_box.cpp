@@ -207,7 +207,7 @@ namespace biteditor
 
       m_pview->m_iSelEnd = m_pview->m_iSelStart;
 
-      m_pview->RedrawWindow();
+      m_pview->set_need_redraw();
 
       Session.user()->set_mouse_focus_LButtonDown(this);
 
@@ -236,7 +236,7 @@ namespace biteditor
 
       m_pview->m_iSelEnd = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
       m_pview->m_iColumn = m_pview->SelToColumn(m_pview->m_iSelEnd);
-      m_pview->RedrawWindow();
+      m_pview->set_need_redraw();
       m_bMouseDown = false;
       if(m_pview->m_iSelEnd >= 0)
       {
@@ -382,7 +382,7 @@ namespace biteditor
 
          m_pview->m_iSelEnd = char_hit_test(m_pview, pgraphics, pt.x, pt.y);
 
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
 
       }
 
@@ -533,7 +533,7 @@ namespace biteditor
          {
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else if(pkey->m_ekey == ::user::key_down)
       {
@@ -544,7 +544,7 @@ namespace biteditor
          {
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else if(pkey->m_ekey == ::user::key_right)
       {
@@ -583,7 +583,7 @@ namespace biteditor
                m_pview->m_iSelStart = m_pview->m_iSelEnd;
             }
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else if(pkey->m_ekey == ::user::key_left)
       {
@@ -629,7 +629,7 @@ namespace biteditor
                m_pview->m_iSelStart = m_pview->m_iSelEnd;
             }
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else if(pkey->m_ekey == ::user::key_home)
       {
@@ -639,7 +639,7 @@ namespace biteditor
          {
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else if(pkey->m_ekey == ::user::key_end)
       {
@@ -649,7 +649,7 @@ namespace biteditor
          {
             m_pview->m_iSelStart = m_pview->m_iSelEnd;
          }
-         m_pview->RedrawWindow();
+         m_pview->set_need_redraw();
       }
       else
       {
@@ -700,7 +700,7 @@ namespace biteditor
       }
       m_dwLastCaret = ::GetTickCount();
       m_bCaretOn = true;
-      m_pview->RedrawWindow();
+      m_pview->set_need_redraw();
    }
 
    void ascii_box::_001OnSysChar(::message::message * pobj)
@@ -736,7 +736,7 @@ namespace biteditor
          {
             m_dwLastCaret = GetTickCount();
             m_bCaretOn = !m_bCaretOn;
-            m_pview->RedrawWindow();
+            m_pview->set_need_redraw();
          }
       }
    }

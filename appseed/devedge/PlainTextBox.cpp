@@ -212,7 +212,7 @@ void PlainTextBox::_001OnLButtonDown(devedgeView * pview, gen::message::sender_o
 	m_iSelStart = char_hit_test(pview, pgraphics, pmouse->m_pt.x, pmouse->m_pt.y);
 	m_iSelEnd = m_iSelStart;
 	pview->ReleaseDC(pgraphics);
-	pview->RedrawWindow();
+	pview->set_need_redraw();
 	pview->m_pelementMouseDown = this;
 	
 }
@@ -223,7 +223,7 @@ void PlainTextBox::_001OnLButtonUp(devedgeView * pview, gen::message::sender_obj
 	m_iSelEnd = char_hit_test(pview, pgraphics,pmouse->m_pt.x, pmouse->m_pt.y);
    m_iColumn = SelToColumn(pview, m_iSelEnd);
 	pview->ReleaseDC(pgraphics);
-	pview->RedrawWindow();
+	pview->set_need_redraw();
 	m_bMouseDown = false;
 	//AfxMessageBox(m_strText);
 }
@@ -453,7 +453,7 @@ void PlainTextBox::_001OnMouseMove(devedgeView * pview, gen::message::sender_obj
 		CDC * pgraphics = pview->GetDC();
 		m_iSelEnd = char_hit_test(pview, pgraphics,pmouse->m_pt.x, pmouse->m_pt.y);
 		pview->ReleaseDC(pgraphics);
-		pview->RedrawWindow();
+		pview->set_need_redraw();
 		}
 
 }
@@ -673,7 +673,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
       {
          m_iSelStart = m_iSelEnd;
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else if(pkey->m_nChar == VK_DOWN)
    {
@@ -684,7 +684,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
       {
          m_iSelStart = m_iSelEnd;
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else if(pkey->m_nChar == VK_RIGHT)
    {
@@ -716,7 +716,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
             m_iSelStart = m_iSelEnd;
          }
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else if(pkey->m_nChar == VK_LEFT)
    {
@@ -755,7 +755,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
             m_iSelStart = m_iSelEnd;
          }
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else if(pkey->m_nChar == VK_HOME)
    {
@@ -765,7 +765,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
       {
          m_iSelStart = m_iSelEnd;
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else if(pkey->m_nChar == VK_END)
    {
@@ -775,7 +775,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
       {
          m_iSelStart = m_iSelEnd;
       }
-      pview->RedrawWindow();
+      pview->set_need_redraw();
    }
    else
    {
@@ -830,7 +830,7 @@ void PlainTextBox::_001OnChar(devedgeView * pview, gen::message::sender_object *
    }
    m_dwLastCaret = ::GetTickCount();
    m_bCaretOn = true;
-   pview->RedrawWindow();
+   pview->set_need_redraw();
 }
 
 void PlainTextBox::_001OnSysChar(devedgeView * pview, gen::message::sender_object * pobj)
@@ -866,7 +866,7 @@ void PlainTextBox::_001OnKeyboardFocusTimer(devedgeView * pview, int iTimer)
       {
          m_dwLastCaret = GetTickCount();
          m_bCaretOn = !m_bCaretOn;
-         pview->RedrawWindow();
+         pview->set_need_redraw();
       }
    }
 }

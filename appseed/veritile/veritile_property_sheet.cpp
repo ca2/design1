@@ -108,7 +108,7 @@ namespace veritile
 
       if(lHint == 1001)
       {
-         RedrawWindow();
+         set_need_redraw();
       }
       else if(lHint == 123)
       {
@@ -141,7 +141,7 @@ namespace veritile
       {
          /*CreateLineIndex();
          m_bGetTextNeedUpdate = true;
-         RedrawWindow();
+         set_need_redraw();
 
          _001OnCalcLayout();
          */

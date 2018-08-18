@@ -80,7 +80,7 @@ namespace veritile
       virtual void on_simple_command(::message::simple_command * psimplecommand);
 
 
-      virtual bool keyboard_focus_OnSetFocus() override;
+      DECL_GEN_SIGNAL(_001OnSetFocus);
 
 
       virtual bool get_font(::draw2d::font_sp & spfont);

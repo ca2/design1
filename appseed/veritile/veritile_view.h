@@ -59,7 +59,7 @@ namespace veritile
 
 
       virtual bool keyboard_focus_is_focusable();
-      virtual bool keyboard_focus_OnSetFocus();
+      DECL_GEN_SIGNAL(_001OnSetFocus);
 
       virtual void on_layout();
 

@@ -111,7 +111,7 @@ namespace biteditor
       UNREFERENCED_PARAMETER(phint);
       if(lHint == 1001)
       {
-         RedrawWindow();
+         set_need_redraw();
       }
 
 
