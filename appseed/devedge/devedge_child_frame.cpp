@@ -7,9 +7,10 @@ namespace devedge
 
    child_frame::child_frame(::aura::application * papp) :
       ::object(papp),
+      simple_frame_window(papp),
       simple_child_frame(papp)
    {
-      
+
    }
 
    void child_frame::install_message_routing(::message::sender * pinterface)
@@ -44,7 +45,7 @@ namespace devedge
    }
 
 
-   void child_frame::_001OnCreate(::message::message * pobj) 
+   void child_frame::_001OnCreate(::message::message * pobj)
    {
       pobj->previous();
 
@@ -67,7 +68,7 @@ namespace devedge
 
    /*void child_frame::GetSelected(::fs::item_array &itema)
    {
-   sp(::filemanager::SimpleFileListInterface) plistinterface = 
+   sp(::filemanager::SimpleFileListInterface) plistinterface =
    (GetActiveView());
    if(plistinterface != NULL)
    {

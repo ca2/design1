@@ -7,15 +7,19 @@ namespace devedge
 
    html_stage_child_frame::html_stage_child_frame(::aura::application * papp) :
       ::object(papp),
+      simple_frame_window(papp),
       simple_child_frame(papp)
    {
+
       MSG_TYPE_LINK(::message::type_language, this, this, &html_stage_child_frame::_001OnAppLanguage);
+
    }
+
 
    html_stage_child_frame::~html_stage_child_frame()
    {
-   }
 
+   }
 
 
    bool html_stage_child_frame::on_create_bars()
