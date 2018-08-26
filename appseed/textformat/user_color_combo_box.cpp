@@ -13,6 +13,9 @@ namespace user
       color_combo_box(get_app())
    {
 
+      m_pview = NULL;
+      m_pframe = NULL;
+      m_pdoc = NULL;
       m_iHover = -1;
       m_bMouseDown = false;
 
@@ -43,6 +46,7 @@ namespace user
       IGUI_MSG_LINK(WM_LBUTTONUP, psender, this, &::user::color_combo_box::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_MOUSEMOVE, psender, this, &::user::color_combo_box::_001OnMouseMove);
       IGUI_MSG_LINK(WM_MOUSELEAVE, psender, this, &::user::color_combo_box::_001OnMouseLeave);
+      IGUI_MSG_LINK(WM_SHOWWINDOW, psender, this, &::user::color_combo_box::_001OnShowWindow);
 
    }
 
@@ -73,6 +77,8 @@ namespace user
 
    }
 
+   
+   
 
    void color_combo_box::_001OnLButtonUp(::message::message * pmessage)
    {
@@ -85,49 +91,70 @@ namespace user
       {
 
          m_bMouseDown = false;
-
-#ifdef WINDOWSEX
-         fork([this]()
+         
+         if(m_pframe != NULL && m_pframe->IsWindowVisible())
          {
-
-            CHOOSECOLOR cc;
-            COLORREF crCustColors[16];
-
-            // init-int this array did not affect the mouse problem
-            // uint idx ;
-            // for (idx=0; idx<16; idx++) {
-            // crCustColors[idx] = RGB(idx, idx, idx) ;
-            // }
-
-            ::color c(m_hls);
-
-            ZeroMemory(&cc, sizeof(cc));
-            cc.lStructSize = sizeof(CHOOSECOLOR);
-            cc.rgbResult = c.get_rgb();
-            cc.lpCustColors = crCustColors;
-            cc.Flags = CC_RGBINIT | CC_FULLOPEN;
-            cc.hwndOwner = get_safe_handle(); // this hangs parent, as well as me
-
-            if (::ChooseColor(&cc))
+            
+            m_pframe->ShowWindow(SW_HIDE);
+            
+         }
+         else
+         {
+         
+            
+            bool bNew = m_pdoc == NULL;
+            
+            if(bNew)
             {
 
-               c.set_COLORREF(cc.rgbResult | (255 << 24));
-
-               c.get_hls(m_hls);
-
-               ::user::control_event event;
-
-               event.m_eevent = ::user::event_action;
-               event.m_puie = this;
-               event.m_id = m_id;
-               event.m_actioncontext = ::action::source_user;
-
-               on_control_event(&event);
+               Session.will_use_view_hint("color_sel");
+            
+               m_pdoc = Session.userex()->m_mapimpactsystem["color_sel"]->open_document_file(get_app(), ::var::type_null, false);
+               
+               
+            
+               m_pview = m_pdoc->get_typed_view < ::userex::color_view >();
+            
+               m_pview->m_bCompact = true;
+            
+               Session.set_bound_ui("color_sel", this);
+            
+               m_pframe = m_pview->GetTopLevelFrame()->cast < ::simple_frame_window >();
+               
+               m_pframe->SetOwner(this);
+               
+               m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_dock);
+               m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_down);
+               m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_up);
+               m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_minimize);
 
             }
 
-         });
-#endif
+            m_pview->m_hls = m_hls;
+               
+            if(bNew)
+            {
+               
+               rect rectWindow;
+               
+               GetWindowRect(rectWindow);
+               
+               m_pframe->m_sizeMinimum.cx = 300;
+               
+               m_pframe->m_sizeMinimum.cy = 150;
+               
+               m_pframe->SetWindowPos(ZORDER_TOPMOST, rectWindow.left, rectWindow.bottom, 400, 200, SWP_SHOWWINDOW);
+               
+            }
+            else
+            {
+               
+               m_pframe->SetWindowPos(ZORDER_TOPMOST, 0, 0, 0, 0,
+                                      SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+
+            }
+            
+         }
 
          pmouse->m_bRet = true;
 
@@ -135,7 +162,26 @@ namespace user
 
 
    }
-
+   
+   
+   void color_combo_box::on_control_event(::user::control_event * pevent)
+   {
+      
+      if(pevent->m_puie == m_pview)
+      {
+         
+         pevent->m_puie = this;
+         
+         pevent->m_id = m_id;
+         
+         m_hls = m_pview->m_hls;
+         
+      }
+      
+      ::user::control::on_control_event(pevent);
+      
+   }
+   
 
    void color_combo_box::_001OnMouseMove(::message::message * pmessage)
    {
@@ -168,6 +214,29 @@ namespace user
 
    }
 
+   
+   void color_combo_box::_001OnShowWindow(::message::message * pmessage)
+   {
+      
+      SCAST_PTR(::message::show_window, pshowwindow, pmessage);
+
+      if(!pshowwindow->m_bShow)
+      {
+         
+         if(m_pframe && m_pframe->IsWindowVisible())
+         {
+          
+            m_pframe->ShowWindow(SW_HIDE);
+            
+         }
+         
+      }
+
+      
+   }
+   
+   
+   
 
    void color_combo_box::on_layout()
    {
