@@ -15,6 +15,9 @@ namespace user
       font_combo_box(::aura::application * papp);
       virtual ~font_combo_box();
 
+      
+      void font_combo_box_common_construct();
+      
 
       virtual void install_message_routing(::message::sender * psender);
 

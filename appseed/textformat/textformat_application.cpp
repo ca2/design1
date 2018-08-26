@@ -39,6 +39,7 @@ namespace textformat
       set_local_data();
 
       Session.will_use_view_hint("color_sel");
+      Session.will_use_view_hint("font_sel");
 
       System.factory().creatable_small < ::textformat::document >();
       System.factory().creatable_small < ::textformat::frame >();

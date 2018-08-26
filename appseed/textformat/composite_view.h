@@ -65,13 +65,14 @@ namespace composite
       bool                    m_bDefaultTopicPosition;
       bool                    m_bDefaultTopicSize;
       bool                    m_bDragTopic;
+      bool                    m_bPageFitClient;
 
 
       view(::aura::application * papp);
       virtual ~view();
 
-      virtual void load();
-      virtual void save();
+      virtual void load() override;
+      virtual void save() override;
 
       virtual void assert_valid() const override;
       virtual void dump(dump_context & dumpcontext) const override;
@@ -131,11 +132,11 @@ namespace composite
 
       virtual index hit_test(pointd point, ::user::e_element & eelement);
 
-      virtual void stream_link(string strLink, object & object);
+      virtual void stream_link(string strLink, object & object) override;
 
       virtual ::user::rich_text::edit * create_rich_text_edit(point pt = null_point());
 
-      virtual void on_control_event(::user::control_event * pevent);
+      virtual void on_control_event(::user::control_event * pevent) override;
 
       virtual bool is_tool_editing_text();
 

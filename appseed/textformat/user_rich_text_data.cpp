@@ -345,9 +345,9 @@ namespace user
 
          index iEnd = find_box(m_boxa, iSelEnd - 1);
 
-         index iCharBeg;
+         index iCharBeg = 0;
 
-         index iCharEnd;
+         index iCharEnd = 0;
 
          while (i1 >= 0 && i2 >= 0 && i1 <= _001GetLayoutTextLength() && i2 <= _001GetLayoutTextLength())
          {
@@ -1904,12 +1904,12 @@ restart2:
                else
                {
 
-                  pgraphics->draw_text(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE);
-
                   pgraphics->set_font(pformat->get_font(pgraphics));
 
                   pgraphics->set_text_color(pformat->m_crForeground);
 
+                  pgraphics->draw_text(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE);
+                  
                }
 
             }

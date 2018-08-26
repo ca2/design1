@@ -69,50 +69,99 @@ namespace user
 
          if (eattributea.contains(attribute_bold))
          {
+            
+            if(!is_equal_bool(m_bBold, pformat->m_bBold))
+            {
 
-            m_bBold = pformat->m_bBold;
+               m_bBold = pformat->m_bBold;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_italic))
          {
 
-            m_bItalic = pformat->m_bItalic;
+            if(!is_equal_bool(m_bItalic, pformat->m_bItalic))
+            {
+               
+               m_bItalic = pformat->m_bItalic;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_underline))
          {
 
-            m_bUnderline = pformat->m_bUnderline;
+            if(!is_equal_bool(m_bUnderline, pformat->m_bUnderline))
+            {
+            
+               m_bUnderline = pformat->m_bUnderline;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_family))
          {
+            
+            if(m_strFontFamily != pformat->m_strFontFamily)
+            {
 
-            m_strFontFamily = pformat->m_strFontFamily;
+               m_strFontFamily = pformat->m_strFontFamily;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_size))
          {
+            
+            if(m_dFontSize != pformat->m_dFontSize)
+            {
 
-            m_dFontSize = pformat->m_dFontSize;
+               m_dFontSize = pformat->m_dFontSize;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_script))
          {
+            
+            if(m_escript != pformat->m_escript)
+            {
 
-            m_escript = pformat->m_escript;
+               m_escript = pformat->m_escript;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 
          if (eattributea.contains(attribute_foreground))
          {
+            
+            if(m_crForeground != pformat->m_crForeground)
+            {
 
-            m_crForeground = pformat->m_crForeground;
+               m_crForeground = pformat->m_crForeground;
+               
+               m_bUpdated = false;
+               
+            }
 
          }
 

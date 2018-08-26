@@ -27,6 +27,8 @@ namespace composite
       object(papp),
       ::serialize(papp)
    {
+      
+      m_bPageFitClient = true;
 
       m_sizeMaxPicAdjust.set(256);
 
@@ -318,8 +320,8 @@ namespace composite
       }
       else if (m_pdata->m_picCurrent.is_set()
                && m_pdata->m_picCurrent != m_picName
-               && (iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0
-               || m_pdata->m_etoolDown != tool_none)
+               && ((iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0
+               || m_pdata->m_etoolDown != tool_none))
       {
 
          if (m_pdata->m_etoolDown == ::composite::tool_none && iHit == 0 && !is_tool_editing_text())
@@ -1501,6 +1503,14 @@ selected:;
 
       }
 
+      
+      if(m_bPageFitClient)
+      {
+         
+         m_pdata->m_sizePage = rectClient.get_size();
+         
+      }
+      
       // Cleanup
 
       for (index i = 0; i < m_pdata->m_pica.get_count();)

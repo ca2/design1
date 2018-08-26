@@ -29,11 +29,10 @@ namespace userex
 
 
 
-      font_format_tool();
       font_format_tool(::aura::application * papp);
       virtual ~font_format_tool();
 
-
+      
       virtual void install_message_routing(::message::sender * psender) override;
 
       DECL_GEN_SIGNAL(_001OnCreate);

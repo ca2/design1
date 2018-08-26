@@ -5,10 +5,10 @@ namespace user
 {
 
 
-   font_combo_box::font_combo_box() :
-      font_combo_box(get_app())
+   font_combo_box::font_combo_box()
    {
 
+      font_combo_box_common_construct();
 
    }
 
@@ -18,12 +18,20 @@ namespace user
       ::user::combo_box(papp)
    {
 
-      m_typeComboList = System.type_info < ::user::font_list >();
-
-      m_bEdit = false;
+      font_combo_box_common_construct();
 
    }
 
+
+   void font_combo_box::font_combo_box_common_construct()
+   {
+      
+      m_typeComboList = System.type_info < ::user::font_list >();
+      
+      m_bEdit = false;
+
+   }
+   
 
    font_combo_box::~font_combo_box()
    {

@@ -18,20 +18,20 @@ namespace userex
       virtual ~dialog_frame();
 
 
-      virtual void assert_valid() const;
-      virtual void dump(dump_context & dumpcontext) const;
+      virtual void assert_valid() const override;
+      virtual void dump(dump_context & dumpcontext) const override;
 
 
       virtual bool pre_create_window(::user::create_struct& cs) override;
 
-      virtual void install_message_routing(::message::sender * pinterface);
+      virtual void install_message_routing(::message::sender * pinterface) override;
 
 
       //using ::sphere::dialog_frame::get_translucency;
       //virtual bool get_translucency(::user::e_translucency & etranslucency, ::user::e_element eelement, ::user::style_context * pcontext) override;
-      virtual sp(::user::wndfrm::frame::frame) create_frame_schema();
+      virtual sp(::user::wndfrm::frame::frame) create_frame_schema() override;
 
-      virtual bool has_pending_graphical_update();
+      virtual bool has_pending_graphical_update() override;
 
 
       DECL_GEN_SIGNAL(_001OnCreate);

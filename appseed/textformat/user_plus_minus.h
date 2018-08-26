@@ -32,7 +32,7 @@ namespace user
       virtual ~plus_minus();
 
 
-      virtual void install_message_routing(::message::sender * psender);
+      virtual void install_message_routing(::message::sender * psender) override;
 
 
       DECL_GEN_SIGNAL(_001OnCreate);
@@ -42,7 +42,7 @@ namespace user
       //DECL_GEN_SIGNAL(_001OnMouseLeave);
 
 
-      void on_layout();
+      void on_layout() override;
 
 
       //virtual void _001OnDraw(::draw2d::graphics * pgraphics) override;
