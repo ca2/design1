@@ -424,14 +424,16 @@ namespace user
    }
 
 
-
    void menu_view::_001OnDraw(::draw2d::graphics * pgraphicsParam)
    {
+
       ::draw2d::dib_sp dib;
 
       if (m_dibMem.is_null())
       {
+         
          m_dibMem.alloc(allocer());
+         
       }
 
       dib = m_dibMem;
@@ -444,19 +446,25 @@ namespace user
       {
 
          return;
+         
       }
+      
       dib->create(rectClient.get_size());
+      
       ::draw2d::graphics * pgraphics = dib->get_graphics();
 
       if (is_window_enabled())
       {
+         
          dib->FillByte(255);
+         
       }
       else
       {
+         
          dib->Fill(255, 200, 200, 200);
+         
       }
-      //int iMenu = 0;
 
       pgraphics->set_smooth_mode(::draw2d::smooth_mode_antialias);
 
@@ -480,7 +488,7 @@ namespace user
       for (int i = 0; i < pnodeMain->get_children_count("menubar"); i++)
       {
 
-         rect rMenu(0, 0, 0, 0);
+         rect rMenu;
 
          xml::node * pnode = pnodeMain->get_child_at("menubar", i, 1);
 
@@ -488,17 +496,15 @@ namespace user
 
          pgraphics->select_font(m_fontTitle);
 
-         get_item_rect(iPos, r);
-
-         rMenu.unite(rMenu, r);
+         get_item_rect(iPos, rMenu);
 
          pgraphics->SelectObject(m_pen);
 
-         draw_header_rectangle(pgraphics, r);
+         draw_header_rectangle(pgraphics, rMenu);
 
          pgraphics->set_text_color(ARGB(255, 0, 0, 0));
 
-         pgraphics->text_out(r.left + 10, r.top + 5, strTitle);
+         pgraphics->text_out(rMenu.left + 10, rMenu.top + 5, strTitle);
 
          iPos++;
 
@@ -658,12 +664,8 @@ namespace user
 
       }
 
-
-
       for (int i = 0; i < pnodeMain->get_children_count("menubar"); i++)
       {
-
-         //xml::node * pnode = pnodeMain->get_child_at("menubar", i, 1);
 
          draw_border_rectangle(pgraphics, raMenu[i]);
 
