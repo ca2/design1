@@ -1,8 +1,6 @@
 #include "framework.h"
 
 
-
-
 namespace user
 {
 
@@ -75,8 +73,8 @@ namespace user
 
    }
 
-   
-   
+
+
 
    void color_combo_box::_001OnLButtonUp(::message::message * pmessage)
    {
@@ -89,38 +87,38 @@ namespace user
       {
 
          m_bMouseDown = false;
-         
+
          if(m_pframe != NULL && m_pframe->IsWindowVisible())
          {
-            
+
             m_pframe->ShowWindow(SW_HIDE);
-            
+
          }
          else
          {
-         
-            
+
+
             bool bNew = m_pdoc == NULL;
-            
+
             if(bNew)
             {
 
                Session.will_use_view_hint("color_sel");
-            
+
                m_pdoc = Session.userex()->m_mapimpactsystem["color_sel"]->open_document_file(get_app(), ::var::type_null, false);
-               
-               
-            
+
+
+
                m_pview = m_pdoc->get_typed_view < ::userex::color_view >();
-            
+
                m_pview->m_bCompact = true;
-            
+
                Session.set_bound_ui("color_sel", this);
-            
+
                m_pframe = m_pview->GetTopLevelFrame()->cast < ::simple_frame_window >();
-               
+
                m_pframe->SetOwner(this);
-               
+
                m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_dock);
                m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_down);
                m_pframe->m_workset.m_ebuttonaHide.add(::user::wndfrm::frame::button_up);
@@ -129,29 +127,29 @@ namespace user
             }
 
             m_pview->m_hls = m_hls;
-               
+
             if(bNew)
             {
-               
+
                rect rectWindow;
-               
+
                GetWindowRect(rectWindow);
-               
+
                m_pframe->m_sizeMinimum.cx = 300;
-               
+
                m_pframe->m_sizeMinimum.cy = 150;
-               
+
                m_pframe->SetWindowPos(ZORDER_TOPMOST, rectWindow.left, rectWindow.bottom, 400, 200, SWP_SHOWWINDOW);
-               
+
             }
             else
             {
-               
+
                m_pframe->SetWindowPos(ZORDER_TOPMOST, 0, 0, 0, 0,
                                       SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
 
             }
-            
+
          }
 
          pmouse->m_bRet = true;
@@ -160,26 +158,26 @@ namespace user
 
 
    }
-   
-   
+
+
    void color_combo_box::on_control_event(::user::control_event * pevent)
    {
-      
+
       if(pevent->m_puie == m_pview)
       {
-         
+
          pevent->m_puie = this;
-         
+
          pevent->m_id = m_id;
-         
+
          m_hls = m_pview->m_hls;
-         
+
       }
-      
+
       ::user::control::on_control_event(pevent);
-      
+
    }
-   
+
 
    void color_combo_box::_001OnMouseMove(::message::message * pmessage)
    {
@@ -212,29 +210,29 @@ namespace user
 
    }
 
-   
+
    void color_combo_box::_001OnShowWindow(::message::message * pmessage)
    {
-      
+
       SCAST_PTR(::message::show_window, pshowwindow, pmessage);
 
       if(!pshowwindow->m_bShow)
       {
-         
+
          if(m_pframe && m_pframe->IsWindowVisible())
          {
-          
+
             m_pframe->ShowWindow(SW_HIDE);
-            
+
          }
-         
+
       }
 
-      
+
    }
-   
-   
-   
+
+
+
 
    void color_combo_box::on_layout()
    {
