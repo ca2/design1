@@ -15,21 +15,18 @@ namespace user
       public:
 
 
-
-
-
          bool              m_bParagraph;
          e_align           m_ealign;
 
          string            m_str;
-         int               m_iFormat;
+         index             m_iFormat;
 
          /// temporary/cache/calculated values, not persisted
-         int               m_iCharBeg;
+         strsize           m_iCharBeg;
          /// temporary/cache/calculated values, not persisted
-         int               m_iCharEnd;
-         int               m_iSelBeg;
-         int               m_iSelEnd;
+         strsize           m_iCharEnd;
+         strsize           m_iSelBeg;
+         strsize           m_iSelEnd;
 
          box(::aura::application * papp);
          box(::aura::application * papp, e_align ealign);

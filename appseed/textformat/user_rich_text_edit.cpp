@@ -314,7 +314,7 @@ namespace user
 
          e_element eelement;
 
-         int iHit = hit_test(pt, eelement);
+         index iHit = hit_test(pt, eelement);
 
          if (iHit >= 0)
          {
@@ -359,7 +359,7 @@ namespace user
 
          e_element eelement;
 
-         int iHover = hit_test(pt, eelement);
+         index iHover = hit_test(pt, eelement);
 
          if (iHover >= 0)
          {
@@ -1354,7 +1354,7 @@ namespace user
 
                               _001GetLayoutText(str);
 
-                              int iDecLen = ::str::utf8_dec_len(str, &str[i1]);
+                              strsize iDecLen = ::str::utf8_dec_len(str, &str[i1]);
 
                               m_data._001Delete(i1, i1 - iDecLen);
 
@@ -1428,7 +1428,7 @@ namespace user
 
                            _001GetLayoutText(str);
 
-                           int iIncLen = ::str::utf8_inc_len(&str[i1]);
+                           strsize iIncLen = ::str::utf8_inc_len(&str[i1]);
 
                            m_data._001Delete(i1, i1 + iIncLen);
 

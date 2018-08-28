@@ -39,8 +39,8 @@ namespace user
          virtual void _001OnDraw(::draw2d::graphics * pgraphics, LPCRECTD lpcrect);
 
 
-         virtual int hit_test(pointd pt);
-         virtual int hit_test_line_x(index iLine, double x);
+         virtual strsize hit_test(pointd pt);
+         virtual strsize hit_test_line_x(index iLine, double x);
 
          virtual strsize get_sel_beg();
          virtual strsize get_sel_end();

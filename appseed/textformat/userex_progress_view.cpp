@@ -1,6 +1,5 @@
 #include "framework.h"
 
-#pragma once
 
 progress::progress(::aura::application * papp, const char * pszTitle) :
    object(papp)

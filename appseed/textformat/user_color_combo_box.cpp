@@ -51,7 +51,9 @@ namespace user
    {
 
       SCAST_PTR(::message::create, pcreate, pmessage);
-
+      
+      pcreate->previous();
+      
       ::rectd r(2, 2, 2, 2);
 
       create_rect(::user::rect_edit_padding, r, ::draw2d::unit_pixel);
@@ -182,8 +184,9 @@ namespace user
    void color_combo_box::_001OnMouseMove(::message::message * pmessage)
    {
 
-      SCAST_PTR(::message::mouse, pmouse, pmessage);
-
+      //SCAST_PTR(::message::mouse, pmouse, pmessage);
+      
+      UNREFERENCED_PARAMETER(pmessage);
 
       if (m_iHover != 0)
       {
@@ -202,7 +205,9 @@ namespace user
    void color_combo_box::_001OnMouseLeave(::message::message * pmessage)
    {
 
-      SCAST_PTR(::message::mouse, pmouse, pmessage);
+      //SCAST_PTR(::message::mouse, pmouse, pmessage);
+      
+      UNREFERENCED_PARAMETER(pmessage);
 
       m_iHover = -1;
 

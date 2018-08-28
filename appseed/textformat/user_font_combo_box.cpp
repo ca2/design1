@@ -53,6 +53,8 @@ namespace user
    {
 
       SCAST_PTR(::message::create, pcreate, pmessage);
+      
+      pcreate->previous();
 
       ::rectd r(2, 2, 2, 2);
 

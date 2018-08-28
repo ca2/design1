@@ -11,7 +11,7 @@ namespace user
    {
 
 
-      int get_vars(int_array & ia1, int_array & ia2, string str)
+      ::count get_vars(strsize_array & ia1, strsize_array & ia2, string str)
       {
 
          strsize i1 = 0;
@@ -146,7 +146,7 @@ namespace user
       }
 
 
-      int data::hit_test(pointd pt)
+      strsize data::hit_test(pointd pt)
       {
 
          synch_lock sl(m_pmutex);
@@ -168,7 +168,7 @@ namespace user
 
                   double xRight;
 
-                  int iChar = range->m_iSelBeg;
+                  strsize iChar = range->m_iSelBeg;
 
                   for (; iChar < range->m_iSelEnd; iChar++, iPos++)
                   {
@@ -201,7 +201,7 @@ namespace user
       }
 
 
-      int data::hit_test_line_x(index iLine, double x)
+      strsize data::hit_test_line_x(index iLine, double x)
       {
 
          synch_lock sl(m_pmutex);
@@ -229,7 +229,7 @@ namespace user
 
                double xRight;
 
-               int iChar = range->m_iSelBeg;
+               strsize iChar = range->m_iSelBeg;
 
                for (; iChar < range->m_iSelEnd; iChar++, iPos++)
                {
@@ -479,7 +479,7 @@ namespace user
 
          index iCharBeg = sel_char(m_layouta, iSelBeg);
 
-         index iCharEnd = sel_char(m_layouta, iSelEnd);
+         //index iCharEnd = sel_char(m_layouta, iSelEnd);
 
          index iSelBox = iSelBeg - 1;
 
@@ -494,7 +494,7 @@ namespace user
 
          }
 
-         int iFormat;
+         index iFormat;
 
          sp(box) pbox;
 
@@ -830,13 +830,13 @@ namespace user
 
          int x = lpcrect->left;
 
-         int iLine = 0;
+         //int iLine = 0;
 
          m_layouta.remove_all();
 
          bool bNewLine = false;
 
-         int c;
+         ::count c;
 
          bool bHasFocus = false;
 
@@ -860,13 +860,13 @@ namespace user
 
          sp(spa(layout)) pline;
 
-         int iCharBeg2 = 0;
+         strsize iCharBeg2 = 0;
 
-         int iCharEnd2 = 0;
+         strsize iCharEnd2 = 0;
 
-         int iCharBegLayout = 0;
+         strsize iCharBegLayout = 0;
 
-         int iCharEndLayout = 0;
+         strsize iCharEndLayout = 0;
 
          if (m_boxa.get_count() <= 0 || !m_boxa[0]->m_bParagraph)
          {
@@ -1010,7 +1010,7 @@ restart1:
             while (straWords.get_count() > 0)
             {
 
-               int iCount = straWords.get_count();
+               ::count iCount = straWords.get_count();
 
                for (c = iCount; c >= 1; c--)
                {
@@ -1202,7 +1202,7 @@ restart2:
                   while (strWord.length() > 0)
                   {
 
-                     int iCount = strWord.length();
+                     ::count iCount = strWord.length();
 
                      for (c = iCount; c >= 1; c--)
                      {
@@ -1448,9 +1448,9 @@ restart2:
 
                   sp(layout) playoutEnd = line->last_sp();
 
-                  int iCharBeg = playoutBeg->m_iSelBeg;
+                  strsize iCharBeg = playoutBeg->m_iSelBeg;
 
-                  int iCharEnd = playoutEnd->m_iSelEnd;
+                  strsize iCharEnd = playoutEnd->m_iSelEnd;
 
                   if (iCharBeg <= get_sel_end() && get_sel_beg() <= iCharEnd)
                   {
@@ -1641,7 +1641,7 @@ restart2:
 
          {
 
-            int_array iaFormatUsed;
+            index_array iaFormatUsed;
 
             for (index i = 0; i < m_boxa.get_count(); i++)
             {
@@ -1688,7 +1688,7 @@ restart2:
 
             }
 
-            int iFormat = m_boxa[i]->m_iFormat;
+            index iFormat = m_boxa[i]->m_iFormat;
 
             i++;
 
@@ -1769,9 +1769,9 @@ restart2:
 
          _001GetText(str);
 
-         int_array ia1;
+         strsize_array ia1;
 
-         int_array ia2;
+         strsize_array ia2;
 
          get_vars(ia1, ia2, str);
 

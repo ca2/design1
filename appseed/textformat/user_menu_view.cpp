@@ -94,9 +94,11 @@ namespace user
 
          int iCommandSel;
 
-         int iHover = hit_test(pt, iMenuSel, iCommandSel);
+         //int iHover = hit_test(pt, iMenuSel, iCommandSel);
+         
+         hit_test(pt, iMenuSel, iCommandSel);
 
-         UNUSED(iHover);
+         //UNUSED(iHover);
 
          ::id idCommand;
 

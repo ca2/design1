@@ -21,12 +21,12 @@ namespace user
          rectd          m_rectDevice;
          rectd          m_rectHitTest2;
          string         m_str;
-         int            m_iFormat;
+         index          m_iFormat;
          sized          m_size;
-         int            m_iCharBeg;
-         int            m_iCharEnd;
-         int            m_iSelBeg;
-         int            m_iSelEnd;
+         strsize        m_iCharBeg;
+         strsize        m_iCharEnd;
+         strsize        m_iSelBeg;
+         strsize        m_iSelEnd;
          double_array   m_xa2;
          double_array   m_xaDevice;
 

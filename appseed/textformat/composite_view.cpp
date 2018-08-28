@@ -1361,7 +1361,7 @@ selected:;
 
                   pdib->create(16, 16);
 
-                  pdib->FillByte(ARGB(255, 255, 0, 0));
+                  pdib->Fill(255, 255, 0, 0);
 
                }
 

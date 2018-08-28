@@ -195,7 +195,6 @@
 		9A72594B1D1403E6001F56B4 /* textformat_main_frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat_main_frame.h; sourceTree = "<group>"; };
 		9A8C49441F6069A8004A5BA4 /* libace.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libace.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libace.dylib; sourceTree = "<group>"; };
 		9A920FD71F3BF68500CD9D94 /* libcore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcore.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libcore.dylib; sourceTree = "<group>"; };
-		9A920FD91F3BF68B00CD9D94 /* libmultimedia.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmultimedia.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libmultimedia.dylib; sourceTree = "<group>"; };
 		9A920FDB1F3BF69300CD9D94 /* libsphere.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsphere.dylib; path = ../../../../Volumes/apple/archive/Xcode/DerivedData/Build/Products/Debug/libsphere.dylib; sourceTree = "<group>"; };
 		9A9578481F62217C00623508 /* sphere.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sphere.xcodeproj; path = ../../../app/appseed/sphere/sphere.xcodeproj; sourceTree = "<group>"; };
 		9A986CDE1D22629C001F4C04 /* libios_base.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libios_base.dylib; path = "../../../app/appseed/base/build/Debug-iphoneos/libios_base.dylib"; sourceTree = "<group>"; };
@@ -281,7 +280,6 @@
 				9AF75DEF1F83EBA100FDE7CC /* libios_aura.dylib */,
 				9A8C49441F6069A8004A5BA4 /* libace.dylib */,
 				9A920FDB1F3BF69300CD9D94 /* libsphere.dylib */,
-				9A920FD91F3BF68B00CD9D94 /* libmultimedia.dylib */,
 				9A920FD71F3BF68500CD9D94 /* libcore.dylib */,
 			);
 			name = Frameworks;

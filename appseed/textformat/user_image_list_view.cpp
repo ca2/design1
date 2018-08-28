@@ -131,7 +131,7 @@ namespace user
 
       e_element eelement;
 
-      int iHit = hit_test(pt, eelement);
+      index iHit = hit_test(pt, eelement);
 
       m_iHitLButtonDown = iHit;
 
@@ -162,7 +162,7 @@ namespace user
 
       e_element eelement;
 
-      int iHit = hit_test(pt, eelement);
+      index iHit = hit_test(pt, eelement);
 
       index_array iaSel = m_iaSel;
 
@@ -231,7 +231,7 @@ namespace user
 
       e_element eelement;
 
-      int iHover = hit_test(pt, eelement);
+      index iHover = hit_test(pt, eelement);
 
       if (iHover >= 0 && m_iHover < m_diba.get_count())
       {

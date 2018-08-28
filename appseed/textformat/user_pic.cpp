@@ -115,9 +115,9 @@ bool overlaps(const pointd_array & poly1, const pointd_array & poly2)
    if (poly1.get_count() >= 3 && poly2.get_count() >= 3)
    {
 
-      int c1 = poly1.get_count();
+      ::count c1 = poly1.get_count();
 
-      int c2 = poly2.get_count();
+      ::count c2 = poly2.get_count();
 
       pointd pt;
 
