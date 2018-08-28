@@ -78,7 +78,6 @@
 		9ACE47DE1D2041E400A1E0AD /* libpcre.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACE47DD1D2041E400A1E0AD /* libpcre.dylib */; };
 		9AE24EA11904CFFD001AEFFB /* libdesign_textformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE24E8A1904CFFD001AEFFB /* libdesign_textformat.a */; };
 		9AE24EA71904CFFD001AEFFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE24EA51904CFFD001AEFFB /* InfoPlist.strings */; };
-		9AE24EA91904CFFD001AEFFB /* app_core_textformat_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE24EA81904CFFD001AEFFB /* app_core_textformat_iosTests.m */; };
 		9AEB75DD16F78E600085103B /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB75BE16F78E600085103B /* framework.cpp */; };
 		9AEB75DE16F78E600085103B /* framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEB75BF16F78E600085103B /* framework.h */; };
 		9AEB75E016F78E600085103B /* textformat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEB75C316F78E600085103B /* textformat.h */; };
@@ -154,6 +153,7 @@
 		07A684E917F0E06700C41DE6 /* textformat_pane_view_update_hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat_pane_view_update_hint.h; sourceTree = "<group>"; };
 		07A684EA17F0E06700C41DE6 /* textformat_pane_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat_pane_view.h; sourceTree = "<group>"; };
 		07A684EB17F0E06700C41DE6 /* textformat_view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textformat_view.h; sourceTree = "<group>"; };
+		9A5ACB772135AB1C00CDE514 /* design_textformat_iosTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "design_textformat_iosTests-Info.plist"; sourceTree = "<group>"; };
 		9A6543CC20E802FB00B5C10E /* user_pic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user_pic.h; sourceTree = "<group>"; };
 		9A6543D520E802FC00B5C10E /* userex_font_format_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userex_font_format_tool.h; sourceTree = "<group>"; };
 		9A6543D620E802FD00B5C10E /* user_text_format_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user_text_format_object.cpp; sourceTree = "<group>"; };
@@ -219,9 +219,7 @@
 		9ACE47DD1D2041E400A1E0AD /* libpcre.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.dylib; path = "../../../../Users/camilo/Library/Developer/Xcode/DerivedData/core-mac-ekqwiewkpeyhdudtxguywfqohhby/Build/Products/Debug/libpcre.dylib"; sourceTree = "<group>"; };
 		9AE24E8A1904CFFD001AEFFB /* libdesign_textformat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdesign_textformat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE24E991904CFFD001AEFFB /* app_core_textformat_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = app_core_textformat_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AE24EA41904CFFD001AEFFB /* app_core_textformat_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "app_core_textformat_iosTests-Info.plist"; sourceTree = "<group>"; };
 		9AE24EA61904CFFD001AEFFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9AE24EA81904CFFD001AEFFB /* app_core_textformat_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_core_textformat_iosTests.m; sourceTree = "<group>"; };
 		9AEB75A316F78DF10085103B /* libdesign_textformat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libdesign_textformat.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEB75BE16F78E600085103B /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		9AEB75BF16F78E600085103B /* framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
@@ -295,22 +293,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9AE24EA21904CFFD001AEFFB /* app_core_textformat_iosTests */ = {
+		9AE24EA21904CFFD001AEFFB /* design_textformat_iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				9AE24EA81904CFFD001AEFFB /* app_core_textformat_iosTests.m */,
-				9AE24EA31904CFFD001AEFFB /* Supporting Files */,
-			);
-			path = app_core_textformat_iosTests;
-			sourceTree = "<group>";
-		};
-		9AE24EA31904CFFD001AEFFB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9AE24EA41904CFFD001AEFFB /* app_core_textformat_iosTests-Info.plist */,
+				9A5ACB772135AB1C00CDE514 /* design_textformat_iosTests-Info.plist */,
 				9AE24EA51904CFFD001AEFFB /* InfoPlist.strings */,
 			);
-			name = "Supporting Files";
+			path = design_textformat_iosTests;
 			sourceTree = "<group>";
 		};
 		9AEB759A16F78DF10085103B = {
@@ -329,7 +318,7 @@
 				9ACE47D91D2041AE00A1E0AD /* libaxis.dylib */,
 				9ACE47D51D2041A300A1E0AD /* libaura.dylib */,
 				9AEB75AA16F78E600085103B /* textformat */,
-				9AE24EA21904CFFD001AEFFB /* app_core_textformat_iosTests */,
+				9AE24EA21904CFFD001AEFFB /* design_textformat_iosTests */,
 				9AEB75A416F78DF10085103B /* Products */,
 				9A920FD61F3BF68400CD9D94 /* Frameworks */,
 			);
@@ -609,7 +598,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AE24EA91904CFFD001AEFFB /* app_core_textformat_iosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,10 +900,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/nsisExamples/Plugin/nsis",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 			};
 			name = Debug;
 		};
@@ -924,10 +909,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/nsisExamples/Plugin/nsis",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 			};
 			name = Release;
 		};

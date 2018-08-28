@@ -37,7 +37,7 @@
 			containerPortal = 070B8EE21B6E53F900D26137 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 070B8EE91B6E53F900D26137;
-			remoteInfo = "Hello Multiverse!!";
+			remoteInfo = "TextFormat";
 		};
 		076A243E1B6E772400BF6C7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -551,7 +551,7 @@
 				07C6AA261CA4F3A700B4E555 /* main.cpp */,
 			);
 			name = macos;
-			path = "Hello Multiverse!!";
+			path = "TextFormat";
 			sourceTree = "<group>";
 		};
 		070B8F001B6E53FA00D26137 /* Hello Multiverse!!Tests */ = {
@@ -560,7 +560,7 @@
 				070B8F031B6E53FA00D26137 /* Hello_Multiverse__Tests.m */,
 				070B8F011B6E53FA00D26137 /* Supporting Files */,
 			);
-			path = "Hello Multiverse!!Tests";
+			path = "DesignTextFormatTests";
 			sourceTree = "<group>";
 		};
 		070B8F011B6E53FA00D26137 /* Supporting Files */ = {
@@ -767,7 +767,7 @@
 				070B8EFF1B6E53FA00D26137 /* PBXTargetDependency */,
 			);
 			name = textformat_Tests;
-			productName = "Hello Multiverse!!Tests";
+			productName = "DesignTextFormatTests";
 			productReference = 070B8EFD1B6E53FA00D26137 /* textformat_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -1434,11 +1434,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Hello Multiverse!!Tests/Info.plist";
+				INFOPLIST_FILE = "DesignTextFormatTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ca2.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hello Multiverse!!.app/Contents/MacOS/Hello Multiverse!!";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFormat.app/Contents/MacOS/TextFormat";
 			};
 			name = Debug;
 		};
@@ -1451,11 +1451,11 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Hello Multiverse!!Tests/Info.plist";
+				INFOPLIST_FILE = "DesignTextFormatTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ca2.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hello Multiverse!!.app/Contents/MacOS/Hello Multiverse!!";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TextFormat.app/Contents/MacOS/TextFormat";
 			};
 			name = Release;
 		};

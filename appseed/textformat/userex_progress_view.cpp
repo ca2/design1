@@ -91,7 +91,7 @@ namespace userex
 {
 
 
-   progress::progress(::aura::application * papp, const char * pszTitle, int iStepCount) :
+   progress::progress(::aura::application * papp, const char * pszTitle, ::count iStepCount) :
       object(papp),
       ::progress(papp, pszTitle)
    {

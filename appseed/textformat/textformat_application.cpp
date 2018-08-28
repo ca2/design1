@@ -199,7 +199,7 @@ namespace textformat
    }
 
 
-   progress_sp application::create_progress(::user::interaction * puiParent, const char * pszTitle, int iProgressCount)
+   progress_sp application::create_progress(::user::interaction * puiParent, const char * pszTitle, ::count iProgressCount)
    {
 
       sp(::userex::progress) pprogress  = canew(::userex::progress(get_app(), pszTitle, iProgressCount));

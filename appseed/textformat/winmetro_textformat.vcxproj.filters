@@ -39,25 +39,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\HelloMultiverse30.png">
+    <Image Include="assets\DesignTextFormat30.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse50.png">
+    <Image Include="assets\DesignTextFormat50.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse70.png">
+    <Image Include="assets\DesignTextFormat70.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse150.png">
+    <Image Include="assets\DesignTextFormat150.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse310.png">
+    <Image Include="assets\DesignTextFormat310.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse310-150.png">
+    <Image Include="assets\DesignTextFormat310-150.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="assets\HelloMultiverse620-300.png">
+    <Image Include="assets\DesignTextFormat620-300.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

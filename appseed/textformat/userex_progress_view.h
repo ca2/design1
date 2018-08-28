@@ -9,8 +9,8 @@ public:
 
 
    string                  m_strStatus;
-   int                     m_iStep;
-   int                     m_iStepCount;
+   ::index                 m_iStep;
+   ::count                 m_iStepCount;
    string                  m_strTitle;
    sp(::thread)            m_pthread;
 
@@ -51,7 +51,7 @@ namespace userex
       progress_view *       m_pview;
 
 
-      progress(::aura::application * papp, const char * pszTitle, int iStepCount = 0);
+      progress(::aura::application * papp, const char * pszTitle, ::count iStepCount = 0);
       virtual ~progress();
 
 

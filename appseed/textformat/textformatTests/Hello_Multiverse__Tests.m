@@ -1,6 +1,6 @@
 //
-//  Hello_Multiverse__Tests.m
-//  Hello Multiverse!!Tests
+//  DesignTextFormatTests.m
+//  DesignTextFormatTests
 //
 //  Created by Camilo Sasuke Tsumanuma on 8/2/15.
 //  Copyright (c) 2015 ca2 Desenvolvimento de Software Ltdal. All rights reserved.
@@ -9,11 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
-@interface Hello_Multiverse__Tests : XCTestCase
+@interface DesignTextFormatTests : XCTestCase
 
 @end
 
-@implementation Hello_Multiverse__Tests
+@implementation DesignTextFormatTests
 
 - (void)setUp {
     [super setUp];

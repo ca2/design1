@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 
 
@@ -40,7 +40,7 @@ namespace textformat
       virtual int64_t add_ref() override;
       virtual int64_t dec_ref() override;
 
-      progress_sp create_progress(::user::interaction * puiParent, const char * pszTitle, int iProgressCount = 0);
+      progress_sp create_progress(::user::interaction * puiParent, const char * pszTitle, ::count iProgressCount = 0);
 
 
 
