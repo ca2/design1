@@ -26,13 +26,13 @@ namespace userex
       m_format(papp)
    {
 
-      set_pro_devian();
-      
+
+
       set_translucent();
 
    }
 
-   
+
    font_format_tool::~font_format_tool()
    {
 
@@ -53,16 +53,16 @@ namespace userex
    {
 
       SCAST_PTR(::message::create, pcreate, pmessage);
-      
+
       pcreate->previous();
-      
+
       if(pcreate->m_bRet)
       {
-       
+
          return;
-         
+
       }
-      
+
 
       m_buttonBold.create_window(null_rect(), this, "font_bold");
       m_buttonBold.LoadBitmaps("matter://fontformat/bold-text-option12.png");
