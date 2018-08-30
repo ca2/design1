@@ -983,7 +983,11 @@ namespace user
 
                pkey->m_bRet = true;
 
-//            clipboard_copy();
+               string str;
+
+               _001GetSelText(str);
+
+               Session.copydesk().set_plain_text(str);
 
                return;
 
@@ -1001,7 +1005,11 @@ namespace user
                if (is_window_enabled())
                {
 
-//               clipboard_paste();
+                  string str;
+
+                  Session.copydesk().get_plain_text(str);
+
+                  m_data._001InsertText(str);
 
                }
 
@@ -1018,12 +1026,16 @@ namespace user
 
                pkey->m_bRet = true;
 
-               //clipboard_copy();
+               string str;
+
+               _001GetSelText(str);
+
+               Session.copydesk().set_plain_text(str);
 
                if (is_window_enabled())
                {
 
-                  //_001EditDelete();
+                  _001OnDeleteText();
 
                }
 
@@ -1163,6 +1175,86 @@ namespace user
 
       }
 
+      void edit::_001OnDeleteText()
+      {
+
+         on_reset_focus_start_tick();
+
+         {
+
+            synch_lock sl(m_data.m_pmutex);
+
+            strsize i1 = m_data.get_sel_beg();
+
+            strsize i2 = m_data.get_sel_end();
+
+            if (i1 != i2)
+            {
+
+               m_data._001Delete(i1, i2);
+
+               m_data.m_iSelBeg3 = m_data.m_iSelEnd3 = i1;
+
+               index i = find_box(m_data.m_boxa, i1);
+
+               if (i >= 0 && m_data.m_boxa[i]->m_bParagraph)
+               {
+
+                  m_data.m_iSelCharBeg = m_data.m_iSelCharEnd = -1;
+
+               }
+               else
+               {
+
+                  m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
+                                         min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
+
+               }
+
+               on_after_change(::user::event_after_change_text);
+
+               set_need_redraw();
+
+            }
+            else if (i1 >= 0 && i1 < m_data._001GetLayoutTextLength())
+            {
+
+               string str;
+
+               _001GetLayoutText(str);
+
+               strsize iIncLen = ::str::utf8_inc_len(&str[i1]);
+
+               m_data._001Delete(i1, i1 + iIncLen);
+
+               m_data.m_iSelBeg3 = m_data.m_iSelEnd3 = i1;
+
+               index i = find_box(m_data.m_boxa, i1);
+
+               if (i >= 0 && m_data.m_boxa[i]->m_bParagraph)
+               {
+
+                  m_data.m_iSelCharBeg = m_data.m_iSelCharEnd = -1;
+
+               }
+               else
+               {
+
+                  m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
+                                         min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
+
+               }
+
+               on_after_change(::user::event_after_change_text);
+
+               set_need_redraw();
+
+            }
+
+         }
+
+
+      }
 
       void edit::_001OnChar(::message::message * pobj)
       {
@@ -1383,80 +1475,7 @@ namespace user
                   if (is_window_enabled())
                   {
 
-                     on_reset_focus_start_tick();
-
-                     {
-
-                        synch_lock sl(m_data.m_pmutex);
-
-                        strsize i1 = m_data.get_sel_beg();
-
-                        strsize i2 = m_data.get_sel_end();
-
-                        if (i1 != i2)
-                        {
-
-                           m_data._001Delete(i1, i2);
-
-                           m_data.m_iSelBeg3 = m_data.m_iSelEnd3 = i1;
-
-                           index i = find_box(m_data.m_boxa, i1);
-
-                           if (i >= 0 && m_data.m_boxa[i]->m_bParagraph)
-                           {
-
-                              m_data.m_iSelCharBeg = m_data.m_iSelCharEnd = -1;
-
-                           }
-                           else
-                           {
-
-                              m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
-                                                     min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
-
-                           }
-
-                           on_after_change(::user::event_after_change_text);
-
-                           set_need_redraw();
-
-                        }
-                        else if (i1 >= 0 && i1 < m_data._001GetLayoutTextLength())
-                        {
-
-                           string str;
-
-                           _001GetLayoutText(str);
-
-                           strsize iIncLen = ::str::utf8_inc_len(&str[i1]);
-
-                           m_data._001Delete(i1, i1 + iIncLen);
-
-                           m_data.m_iSelBeg3 = m_data.m_iSelEnd3 = i1;
-
-                           index i = find_box(m_data.m_boxa, i1);
-
-                           if (i >= 0 && m_data.m_boxa[i]->m_bParagraph)
-                           {
-
-                              m_data.m_iSelCharBeg = m_data.m_iSelCharEnd = -1;
-
-                           }
-                           else
-                           {
-
-                              m_data.m_iSelCharBeg = m_data.m_iSelCharEnd =
-                                                     min_non_neg(m_data.m_iSelCharBeg, m_data.m_iSelCharEnd);
-
-                           }
-
-                           on_after_change(::user::event_after_change_text);
-
-                           set_need_redraw();
-
-                        }
-
-                     }
+                     _001OnDeleteText();
 
                   }
 
@@ -1834,6 +1853,17 @@ namespace user
       {
 
          return m_data._001GetTextLength();
+
+      }
+
+
+      void edit::_001GetSel(strsize & iBeg, strsize & iEnd) const
+      {
+
+         iBeg = m_data.m_iSelBeg3;
+
+         iEnd = m_data.m_iSelEnd3;
+
 
       }
 

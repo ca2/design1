@@ -38,8 +38,11 @@ namespace composite
       //::draw2d::dib_sp        m_dibColor;
 
       //bool                    m_bOkPending;
+      index                   m_iEditItem;
 
       sp(::user::rich_text::edit)         m_picName;
+
+      bool						m_bNeedSave;
 
 
       bool                    m_bHelloLayoutOn001Layout;
@@ -111,6 +114,8 @@ namespace composite
       DECL_GEN_SIGNAL(_001OnEditPaste);
       DECL_GEN_SIGNAL(_001OnUpdateEditPaste);
 
+
+      virtual bool _001OnClickCompositeElement(index iHitItem, ::user::e_element eelement, point pt);
 
       virtual pointd pick_random_placement(double dRate);
 

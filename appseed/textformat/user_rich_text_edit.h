@@ -65,7 +65,7 @@ namespace user
 
          virtual bool is_text_editor() override;
 
-
+         virtual void _001OnDeleteText();
 
          virtual void on_selection_change();
 
@@ -113,6 +113,8 @@ namespace user
          virtual strsize _001GetTextLength() const override;
 
          virtual void io(stream & stream) override;
+
+         virtual void _001GetSel(strsize & iBeg, strsize & iEnd) const override;
 
       };
 

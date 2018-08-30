@@ -27,7 +27,7 @@ namespace composite
       object(papp),
       ::serialize(papp)
    {
-      
+
       m_bPageFitClient = true;
 
       m_sizeMaxPicAdjust.set(256);
@@ -292,6 +292,16 @@ namespace composite
    }
 
 
+   bool view::_001OnClickCompositeElement(index iHitItem, ::user::e_element eelement, point pt)
+   {
+
+      m_eelementDrag = eelement;
+
+      return true;
+
+   }
+
+
    void view::_001OnLButtonDown(::message::message * pobj)
    {
 
@@ -300,6 +310,33 @@ namespace composite
       pointd pt = pmouse->m_pt;
 
       ScreenToClient(&pt);
+
+      ::user::e_element eelement = ::user::element_none;
+
+      if (m_pdata->m_pictool.is_set())
+      {
+
+         m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
+
+      }
+
+      index iHitItem = hit_test(pt, eelement);
+
+      if (iHitItem < 0 || eelement != ::user::element_text)
+      {
+
+         if (m_picName->IsWindowVisible())
+         {
+
+            m_iEditItem = -1;
+
+            m_picName->ShowWindow(SW_HIDE);
+
+            m_picName->set_need_redraw();
+
+         }
+
+      }
 
       int iHit = -1;
 
@@ -320,8 +357,10 @@ namespace composite
       }
       else if (m_pdata->m_picCurrent.is_set()
                && m_pdata->m_picCurrent != m_picName
-               && ((iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0
-               || m_pdata->m_etoolDown != tool_none))
+               &&
+               (((iHit = m_pdata->m_picCurrent->hit_test_cursor(pt)) >= 0
+                 && !(iHitItem >= 0 && eelement == ::user::element_text))
+                || m_pdata->m_etoolDown != tool_none))
       {
 
          if (m_pdata->m_etoolDown == ::composite::tool_none && iHit == 0 && !is_tool_editing_text())
@@ -412,16 +451,10 @@ namespace composite
 
             }
 
-            ::user::e_element eelement = ::user::element_none;
-
-            index iHitItem = hit_test(pt, eelement);
-
             if ((iHitItem >= 0 || eelement != ::user::element_none) && eelement != ::user::element_client)
             {
 
-               m_eelementDrag = eelement;
-
-               pmouse->m_bRet = true;
+               pmouse->m_bRet = _001OnClickCompositeElement(iHitItem, eelement, pt);
 
             }
             else
@@ -792,11 +825,11 @@ selected:;
 
                   m_pdata->m_picCurrent.release();
 
+                  m_bNeedSave = true;
+
+                  set_need_layout();
+
                   set_need_redraw();
-
-                  save();
-
-
 
                }
 
@@ -1040,11 +1073,17 @@ selected:;
 
                pointd p(pt);
 
-               p.x = pt.x * m_pdata->m_sizePage.cx / ::user::interaction::width();
+               //p.x = pt.x * m_pdata->m_sizePage.cx / ::user::interaction::width();
 
-               p.y = pt.y * m_pdata->m_sizePage.cy / ::user::interaction::height();
+               //p.y = pt.y * m_pdata->m_sizePage.cy / ::user::interaction::height();
 
-               m_ppicTopic->m_ppic->m_rectDrawing.bottom_right() = p;
+               m_ppicTopic->m_ppic->m_rect.bottom_right() = p;
+
+               m_pdata->m_picCurrent->update_drawing_rect(m_pdata->m_sizePage, get_size());
+
+               m_pdata->m_picCurrent->update_region();
+
+               m_pdata->m_picCurrent->update_placement();
 
             }
             else
@@ -1503,14 +1542,14 @@ selected:;
 
       }
 
-      
+
       if(m_bPageFitClient)
       {
-         
+
          m_pdata->m_sizePage = rectClient.get_size();
-         
+
       }
-      
+
       // Cleanup
 
       for (index i = 0; i < m_pdata->m_pica.get_count();)

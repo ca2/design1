@@ -1788,8 +1788,15 @@ restart2:
             }
             if (iCharEnd >= ia1[i] && iCharEnd <= ia2[i])
             {
+               if (m_iSelBeg3 > iCharEnd)
+               {
+                  iCharEnd = ia1[i]-1;
+               }
+               else
+               {
+                  iCharEnd = ia2[i];
 
-               iCharEnd = ia2[i];
+               }
 
                bCharEndMoved = true;
 
@@ -1909,7 +1916,7 @@ restart2:
                   pgraphics->set_text_color(pformat->m_crForeground);
 
                   pgraphics->draw_text(range->m_str, r, DT_LEFT | DT_BOTTOM | DT_SINGLELINE);
-                  
+
                }
 
             }
