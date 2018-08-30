@@ -87,7 +87,7 @@ namespace user
       void edit::install_message_routing(::message::sender * psender)
       {
 
-         ::user::box::install_message_routing(psender);
+         ::user::control::install_message_routing(psender);
 
          IGUI_MSG_LINK(WM_CREATE, psender, this, &edit::_001OnCreate);
          IGUI_MSG_LINK(WM_DESTROY, psender, this, &edit::_001OnDestroy);
