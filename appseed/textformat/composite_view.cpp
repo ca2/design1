@@ -313,13 +313,6 @@ namespace composite
 
       ::user::e_element eelement = ::user::element_none;
 
-      if (m_pdata->m_pictool.is_set())
-      {
-
-         m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
-
-      }
-
       index iHitItem = hit_test(pt, eelement);
 
       if (iHitItem < 0 || eelement != ::user::element_text)
@@ -333,6 +326,13 @@ namespace composite
             m_picName->ShowWindow(SW_HIDE);
 
             m_picName->set_need_redraw();
+
+         }
+
+         if (m_pdata->m_pictool->m_etoolMode == ::composite::tool_resize)
+         {
+
+            m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
 
          }
 
@@ -524,6 +524,18 @@ selected:;
 
       KillTimer(timer_drag);
 
+      if (m_pdata->m_pictool.is_set() && m_pdata->m_picCurrent == m_ppicTopic)
+      {
+
+         if (m_pdata->m_pictool->m_etoolMode == ::composite::tool_resize)
+         {
+
+            m_pdata->m_pictool->m_etoolMode = ::composite::tool_none;
+
+         }
+
+      }
+
       if (m_eelementDrag == ::user::element_margin_top)
       {
 
@@ -589,7 +601,6 @@ selected:;
          m_pdata->m_pictool->hit_test(etool, pt);
 
       }
-
 
       if (m_pdata->m_pictool.is_set() && m_pdata->m_etoolDown != ::composite::tool_none)
       {
@@ -795,8 +806,6 @@ selected:;
                m_pdata->m_picCurrent->m_ppic->m_dZoom /= 1.1;
 
                save();
-
-
 
             }
             break;
