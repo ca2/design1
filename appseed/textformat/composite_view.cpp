@@ -318,7 +318,7 @@ namespace composite
       if (iHitItem < 0 || eelement != ::user::element_text)
       {
 
-         if (m_picName->IsWindowVisible())
+         if (m_picName.is_set() && m_picName->IsWindowVisible())
          {
 
             m_iEditItem = -1;

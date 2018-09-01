@@ -95,7 +95,7 @@ namespace user
          int iCommandSel;
 
          //int iHover = hit_test(pt, iMenuSel, iCommandSel);
-         
+
          hit_test(pt, iMenuSel, iCommandSel);
 
          //UNUSED(iHover);
@@ -433,9 +433,9 @@ namespace user
 
       if (m_dibMem.is_null())
       {
-         
+
          m_dibMem.alloc(allocer());
-         
+
       }
 
       dib = m_dibMem;
@@ -448,27 +448,27 @@ namespace user
       {
 
          return;
-         
+
       }
-      
+
       dib->create(rectClient.get_size());
-      
+
       ::draw2d::graphics * pgraphics = dib->get_graphics();
 
       if (is_window_enabled())
       {
-         
+
          dib->FillByte(255);
-         
+
       }
       else
       {
-         
+
          dib->Fill(255, 200, 200, 200);
-         
+
       }
 
-      pgraphics->set_smooth_mode(::draw2d::smooth_mode_antialias);
+      pgraphics->SetStretchBltMode(HALFTONE);
 
       pgraphics->draw(point(10, 10), m_dibLogo->m_size, m_dibLogo->get_graphics());
 
