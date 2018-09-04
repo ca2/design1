@@ -1797,7 +1797,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(WorkspaceDir)/../../../include $(WorkspaceDir)/../../../app/include . .. $(WorkspaceDir)/../../.. $(WorkspaceDir)/../../../app/appseed $(WorkspaceDir)/../../../app/appseed/aura $(WorkspaceDir)/../../../app/base/include $(WorkspaceDir)/../../../app/appseed/base/base $(WorkspaceDir)/../../appseed $(WorkspaceDir)/../.. $(WorkspaceDir)/../../../app/base $(WorkspaceDir)/../../../app/appseed/base/framework aura/aura $(WorkspaceDir)/../../../app $(WorkspaceDir)/../../../nodeapp/include";
-				WorkspaceDir = "$(SRCROOT)/../../../nodeapp/seed/macos";
+				WorkspaceDir = "$(SRCROOT)/../../../nodeapp/seed/metaseed";
 			};
 			name = Debug;
 		};
@@ -1844,7 +1844,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(WorkspaceDir)/../../../include $(WorkspaceDir)/../../../app/include . .. $(WorkspaceDir)/../../.. $(WorkspaceDir)/../../../app/appseed $(WorkspaceDir)/../../../app/appseed/aura $(WorkspaceDir)/../../../app/base/include $(WorkspaceDir)/../../../app/appseed/base/base $(WorkspaceDir)/../../appseed $(WorkspaceDir)/../.. $(WorkspaceDir)/../../../app/base $(WorkspaceDir)/../../../app/appseed/base/framework aura/aura $(WorkspaceDir)/../../../app $(WorkspaceDir)/../../../nodeapp/include";
-				WorkspaceDir = "$(SRCROOT)/../../../nodeapp/seed/macos";
+				WorkspaceDir = "$(SRCROOT)/../../../nodeapp/seed/metaseed";
 			};
 			name = Release;
 		};
