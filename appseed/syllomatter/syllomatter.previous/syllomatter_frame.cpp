@@ -249,7 +249,7 @@ void syllomatter_frame::WfiOnFullScreen(bool bFullScreen)
 
       rect rectDesktop;
 
-      ::GetWindowRect ( ::GetDesktopWindow(), &rectDesktop );
+      ::GetWindowRect ( ::get_desktop_window(), &rectDesktop );
 
       ::AdjustWindowRectEx(
       &rectDesktop,

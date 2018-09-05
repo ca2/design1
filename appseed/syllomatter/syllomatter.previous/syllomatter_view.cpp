@@ -241,7 +241,7 @@ void syllomatter_view:: _001OnDraw(CDC * pgraphics)
    //dc2.CreateCompatibleDC(pgraphics);
    //dc2.SelectObject(&bmp2);
 
-   //::SendMessage(::GetDesktopWindow(), WM_PRINT, (WPARAM)(HDC)dc, PRF_CHILDREN | PRF_NONCLIENT | PRF_CLIENT);
+   //::SendMessage(::get_desktop_window(), WM_PRINT, (WPARAM)(HDC)dc, PRF_CHILDREN | PRF_NONCLIENT | PRF_CLIENT);
 
    //pgraphics->BitBlt(0, 0, 1280, 1024, &dc2, 0, 0, SRCCOPY);
 //   pgraphics->text_out(20, 20, "Curitiba, 24 de fevereiro de 2008.");
