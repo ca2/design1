@@ -551,7 +551,7 @@ namespace user
 
             sp(box) pbox = m_boxa[iBox];
 
-            if (string(psz) == "\r")
+            if (string(psz) == "\r" || string(psz) == "\n")
             {
 
                string str = pbox->m_str;

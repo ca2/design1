@@ -258,6 +258,8 @@ namespace userex
       ui_post([this, rWindow]()
       {
 
+      // OMG
+      ReleaseCapture();
          SetWindowPos(ZORDER_TOPMOST, rWindow, SWP_NOACTIVATE | SWP_SHOWWINDOW);
 
       });

@@ -7,12 +7,12 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="basis">
-				<Option output="../../../time/x64/basis/libapp_core_textformat.so" prefix_auto="0" extension_auto="0" />
+				<Option output="../../../time/x64/basis/libdesign_textformat.so" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="../../../time/x64/basis/" />
-				<Option object_output="../../../time/intermediate/app/app_core_textformat" />
+				<Option object_output="../../../time/intermediate/app/design_textformat" />
 				<Option type="3" />
 				<Option compiler="gcc" />
-				<Option host_application="../../../time/x64/basis/app_core_textformat" />
+				<Option host_application="../../../time/x64/basis/design_textformat" />
 				<Option run_host_application_in_terminal="0" />
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
@@ -83,16 +83,19 @@
 			<Add option="-lfreetype" />
 			<Add option="-lbase" />
 			<Add option="-lcore" />
-			<Add option="-lgcom" />
-			<Add option="-lsphere" />
 			<Add option="-Wl,-z,defs" />
 			<Add directory="../../../time/x64/basis" />
 		</Linker>
 		<ExtraCommands>
-			<Add after='g++ -DMAINAPPID=\\\&quot;app-core/textformat\\\&quot; -std=c++14 -fexceptions -fnon-call-exceptions -fno-pie -fno-stack-protector -Wno-pointer-arith -Wno-attributes -Winvalid-pch -Wno-conversion-null -fPIC -pg -g -D_DEBUG -I../../../include -I../../../app/include -I../../../app/thirdparty/appseed -I. -I.. -I../.. -I../../../app/appseed/boot -I../../../app/appseed/core -I../../../app/appseed -I../../../app -I../../../app/thirdparty/include -I../../.. -I../../../app/appseed/base -I../../../../ca2 -I../../../app/appseed/aura -I../../../app/appseed/axis -c ../../../nodeapp/appseed/app/main.cpp -o ../../../time/intermediate/nodeapp/app/main.cpp.o' />
-			<Add after="g++ -L../../../time/x64/basis -L/usr/lib64/mysql/ -o ../../../time/x64/basis/app_core_textformat ../../../time/intermediate/nodeapp/app/main.cpp.o  -Wl,-rpath=\\$$ORIGIN -laura -Wl,-z,defs -pg" />
+			<Add after='g++ -DMAINAPPID=\\\&quot;design/textformat\\\&quot; -std=c++14 -fexceptions -fnon-call-exceptions -fno-pie -fno-stack-protector -Wno-pointer-arith -Wno-attributes -Winvalid-pch -Wno-conversion-null -fPIC -pg -g -D_DEBUG -I../../../include -I../../../app/include -I../../../app/thirdparty/appseed -I. -I.. -I../.. -I../../../app/appseed/boot -I../../../app/appseed/core -I../../../app/appseed -I../../../app -I../../../app/thirdparty/include -I../../.. -I../../../app/appseed/base -I../../../../ca2 -I../../../app/appseed/aura -I../../../app/appseed/axis -c ../../../nodeapp/appseed/app/main.cpp -o ../../../time/intermediate/nodeapp/app/main.cpp.o' />
+			<Add after="g++ -L../../../time/x64/basis -L/usr/lib64/mysql/ -o ../../../time/x64/basis/design_textformat ../../../time/intermediate/nodeapp/app/main.cpp.o  -Wl,-rpath=\\$$ORIGIN -laura -Wl,-z,defs -pg" />
 			<Mode after="always" />
 		</ExtraCommands>
+		<Unit filename="composite_data.cpp" />
+		<Unit filename="composite_data.h" />
+		<Unit filename="composite_view.cpp" />
+		<Unit filename="composite_view.h" />
+		<Unit filename="framework.cpp" />
 		<Unit filename="framework.h">
 			<Option compile="1" />
 			<Option weight="0" />
@@ -101,26 +104,58 @@
 		<Unit filename="textformat_application.cpp" />
 		<Unit filename="textformat_application.h" />
 		<Unit filename="textformat_document.cpp" />
+		<Unit filename="textformat_document.h" />
 		<Unit filename="textformat_frame.cpp" />
 		<Unit filename="textformat_frame.h" />
-		<Unit filename="textformat_gcom.cpp" />
-		<Unit filename="textformat_gcom.h" />
 		<Unit filename="textformat_main_frame.cpp" />
 		<Unit filename="textformat_main_frame.h" />
-		<Unit filename="textformat_main_view.cpp" />
-		<Unit filename="textformat_main_view.h" />
 		<Unit filename="textformat_pane_view.cpp" />
 		<Unit filename="textformat_pane_view.h" />
 		<Unit filename="textformat_pane_view_update_hint.cpp" />
 		<Unit filename="textformat_pane_view_update_hint.h" />
-		<Unit filename="textformat_render.cpp" />
-		<Unit filename="textformat_render.h" />
-		<Unit filename="textformat_switcher_view.cpp" />
-		<Unit filename="textformat_switcher_view.h" />
 		<Unit filename="textformat_view.cpp" />
 		<Unit filename="textformat_view.h" />
-		<Unit filename="textformat_view_base.cpp" />
-		<Unit filename="textformat_view_base.h" />
+		<Unit filename="user_color_combo_box.cpp" />
+		<Unit filename="user_color_combo_box.h" />
+		<Unit filename="user_font_combo_box.cpp" />
+		<Unit filename="user_font_combo_box.h" />
+		<Unit filename="user_image_list_view.cpp" />
+		<Unit filename="user_image_list_view.h" />
+		<Unit filename="user_menu_view.cpp" />
+		<Unit filename="user_menu_view.h" />
+		<Unit filename="user_object.cpp" />
+		<Unit filename="user_object.h" />
+		<Unit filename="user_pic.cpp" />
+		<Unit filename="user_pic.h" />
+		<Unit filename="user_pic_tool.cpp" />
+		<Unit filename="user_plus_minus.cpp" />
+		<Unit filename="user_plus_minus.h" />
+		<Unit filename="user_rich_text.h" />
+		<Unit filename="user_rich_text_box.cpp" />
+		<Unit filename="user_rich_text_box.h" />
+		<Unit filename="user_rich_text_data.cpp" />
+		<Unit filename="user_rich_text_data.h" />
+		<Unit filename="user_rich_text_edit.cpp" />
+		<Unit filename="user_rich_text_edit.h" />
+		<Unit filename="user_rich_text_format.cpp" />
+		<Unit filename="user_rich_text_format.h" />
+		<Unit filename="user_rich_text_global.cpp" />
+		<Unit filename="user_rich_text_global.h" />
+		<Unit filename="user_rich_text_layout.h" />
+		<Unit filename="user_text_format_object.cpp" />
+		<Unit filename="user_text_format_object.h" />
+		<Unit filename="user_tool_window.cpp" />
+		<Unit filename="user_tool_window.h" />
+		<Unit filename="userex_dialog_frame.cpp" />
+		<Unit filename="userex_dialog_frame.h" />
+		<Unit filename="userex_font_format_tool.cpp" />
+		<Unit filename="userex_font_format_tool.h" />
+		<Unit filename="userex_group_image_list_view.cpp" />
+		<Unit filename="userex_group_image_list_view.h" />
+		<Unit filename="userex_image_list_view.cpp" />
+		<Unit filename="userex_image_list_view.h" />
+		<Unit filename="userex_progress_view.cpp" />
+		<Unit filename="userex_progress_view.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
