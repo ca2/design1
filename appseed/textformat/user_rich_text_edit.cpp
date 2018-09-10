@@ -790,7 +790,7 @@ namespace user
 
             //ptool->create_window(null_rect(), NULL, "textformat_sys_format_tool");
 
-            ui_post([this, ptool]()
+            post_pred([this, ptool]()
             {
 
                ::user::create_struct cs(WS_EX_TOOLWINDOW | WS_EX_LAYERED);

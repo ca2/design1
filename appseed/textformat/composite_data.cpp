@@ -72,6 +72,7 @@ namespace composite
 
          serialize.stream_array(m_pica);
 
+
       }
       catch (...)
       {
@@ -241,6 +242,9 @@ namespace composite
          pgraphics->draw(r, pdib->g(), rect(pdib->m_size));
 
       }
+
+
+      pgraphics->SelectClipRgn(NULL);
 
       if (m_ppic->m_bOutline)
       {

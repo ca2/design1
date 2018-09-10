@@ -1120,19 +1120,19 @@ selected:;
 
                bool bChanged = false;
 
-               if (h < 64)
+               if (h < 24)
                {
 
-                  h = 64;
+                  h = 24;
 
                   bChanged = true;
 
                }
 
-               if (w < 64)
+               if (w < 24)
                {
 
-                  w = 64;
+                  w = 24;
 
                   bChanged = true;
 
@@ -1820,6 +1820,22 @@ selected:;
 
    }
 
+
+   void view::on_page_size_change()
+   {
+
+      ::sized sizeClient(m_pdata->m_rectClient.get_size());
+
+      ::sized sizePage(m_pdata->m_sizePage);
+
+      for (auto & pic : m_pdata->m_pica)
+      {
+
+         pic->update_screen_rect(sizePage, sizeClient);
+
+      }
+
+   }
 
 
    void view::on_pic_update()

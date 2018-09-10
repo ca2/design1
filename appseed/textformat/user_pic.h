@@ -68,7 +68,10 @@ namespace user
       virtual bool intersects(LPCRECTD lpcrect) const;
       virtual ::draw2d::region_sp get_region() const;
 
+      virtual rectd drawing_bounds() const;
+
       virtual void update_drawing_rect(::sized sizePage, ::sized sizeClient);
+      virtual void update_screen_rect(::sized sizePage, ::sized sizeClient);
       virtual void update_region();
       virtual void update_placement();
 

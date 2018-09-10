@@ -25,6 +25,7 @@ namespace composite
          layout_scan, // intersect in all lines
          layout_no_last_row_intersect, // intersect except last row
          layout_get_intersect_hint,
+         layout_last,
       };
 
 
@@ -151,6 +152,7 @@ namespace composite
 
       virtual bool is_topic_composite();
 
+      virtual void on_page_size_change();
 
    };
 

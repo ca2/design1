@@ -596,6 +596,29 @@ namespace user
    }
 
 
+   void pic::update_screen_rect(::sized sizePage, ::sized sizeClient)
+   {
+
+      ASSERT(is_pic_enabled());
+
+      if (sizePage.area() <= 0)
+      {
+
+         m_ppic->m_rect = m_ppic->m_rectDrawing;
+
+      }
+      else
+      {
+
+         m_ppic->m_rect.left = m_ppic->m_rectDrawing.left * sizeClient.cx / sizePage.cx;
+         m_ppic->m_rect.right = m_ppic->m_rectDrawing.right * sizeClient.cx / sizePage.cx;
+         m_ppic->m_rect.top = m_ppic->m_rectDrawing.top * sizeClient.cy / sizePage.cy;
+         m_ppic->m_rect.bottom = m_ppic->m_rectDrawing.bottom * sizeClient.cy / sizePage.cy;
+
+      }
+
+   }
+
    void pic::update_region()
    {
 
@@ -670,6 +693,63 @@ namespace user
       }
 
       return overlaps(pta, m_ppic->m_pta);
+
+   }
+
+
+   rectd pic::drawing_bounds() const
+   {
+
+      rectd r(0.0, 0.0, 0.0, 0.0);
+
+      if (m_ppic->m_ptaDrawing.get_size() <= 0)
+      {
+
+         ((pic*)this)->update_region();
+
+      }
+
+      if (m_ppic->m_ptaDrawing.get_size() > 0)
+      {
+
+         r.left = r.right = m_ppic->m_ptaDrawing[0].x;
+
+         r.top = r.bottom = m_ppic->m_ptaDrawing[0].y;
+
+         for (index i = 1; i < m_ppic->m_ptaDrawing.get_size(); i++)
+         {
+
+            if (m_ppic->m_ptaDrawing[i].x < r.left)
+            {
+
+               r.left = m_ppic->m_ptaDrawing[i].x;
+
+            }
+            else if (m_ppic->m_ptaDrawing[i].x > r.right)
+            {
+
+               r.right = m_ppic->m_ptaDrawing[i].x;
+
+            }
+
+            if (m_ppic->m_ptaDrawing[i].y < r.top)
+            {
+
+               r.top = m_ppic->m_ptaDrawing[i].y;
+
+            }
+            else if (m_ppic->m_ptaDrawing[i].y > r.bottom)
+            {
+
+               r.bottom = m_ppic->m_ptaDrawing[i].y;
+
+            }
+
+         }
+
+      }
+
+      return r;
 
    }
 

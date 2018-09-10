@@ -255,11 +255,9 @@ namespace userex
       rWindow.right = rWindow.left + 380;
       rWindow.bottom = rWindow.top + 32;
 
-      ui_post([this, rWindow]()
+      post_pred([this, rWindow]()
       {
 
-      // OMG
-      ReleaseCapture();
          SetWindowPos(ZORDER_TOPMOST, rWindow, SWP_NOACTIVATE | SWP_SHOWWINDOW);
 
       });
