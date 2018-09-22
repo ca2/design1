@@ -7,6 +7,7 @@ namespace netnodeds
 
    html_stage_child_frame::html_stage_child_frame(::aura::application * papp) :
       ::object(papp),
+	   simple_frame_window(papp),
       simple_child_frame(papp)
    {
 
