@@ -840,7 +840,7 @@ namespace user
 
          bool bHasFocus = false;
 
-         if (Session.get_keyboard_focus() == m_pedit)
+         if (m_pedit->has_focus())
          {
 
             bHasFocus = true;

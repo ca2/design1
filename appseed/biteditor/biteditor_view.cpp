@@ -387,11 +387,11 @@ namespace biteditor
       if(ptimer->m_nIDEvent >= 100
             && ptimer->m_nIDEvent <= 200)
       {
-         if(Session.get_keyboard_focus() == m_pasciibox)
+         if(m_pasciibox->has_focus())
          {
             m_pasciibox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
          }
-         else if(Session.get_keyboard_focus() == m_phexbox)
+         else if(m_phexbox->has_focus())
          {
             m_phexbox->_001OnKeyboardFocusTimer(this, ptimer->m_nIDEvent - 100);
          }
@@ -464,11 +464,11 @@ namespace biteditor
             return;
          }
       }
-      if(Session.get_keyboard_focus() == m_pasciibox)
+      if(m_pasciibox->has_focus())
       {
          //m_pasciibox->_001OnChar(this, pobj);
       }
-      else if(Session.get_keyboard_focus() == m_phexbox)
+      else if(m_phexbox->has_focus())
       {
          //m_phexbox->_001OnChar(this, pobj);
       }
@@ -478,11 +478,11 @@ namespace biteditor
    void view::_001OnSysChar(::message::message * pobj)
    {
       //   SCAST_PTR(::message::key, pkey, pobj);
-      if(Session.get_keyboard_focus() == m_pasciibox)
+      if(m_pasciibox->has_focus())
       {
          //m_pasciibox->_001OnSysChar(this, pobj);
       }
-      else if(Session.get_keyboard_focus() == m_phexbox)
+      else if(m_phexbox->has_focus())
       {
          //m_phexbox->_001OnSysChar(this, pobj);
       }

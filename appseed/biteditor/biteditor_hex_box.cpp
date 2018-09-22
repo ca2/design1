@@ -53,7 +53,7 @@ namespace biteditor
 
 
 
-      if(Session.get_keyboard_focus() == this)
+      if(has_focus())
       {
          m_bFocus = true;
       }

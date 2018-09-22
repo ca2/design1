@@ -89,7 +89,7 @@ namespace biteditor
 
 
       //pgraphics->SelectClipRgn(rgn, RGN_COPY);
-      if(Session.get_keyboard_focus() == (elemental *) this)
+      if(has_focus())
       {
          m_bFocus = true;
       }

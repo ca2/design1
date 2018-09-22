@@ -275,7 +275,7 @@ namespace refactor
 //
 //   //   pgraphics->SelectClipRgn(&rgn);
 //
-//      if(Application.get_keyboard_focus() == this)
+//      if(has_focus())
 //      {
 //         m_bFocus = keyboard_focus_is_focusable();
 //      }
