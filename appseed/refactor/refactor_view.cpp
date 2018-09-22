@@ -150,7 +150,7 @@ namespace refactor
 //      on_auto_complete(m_iSelStart, straAutoComplete);
 //
 //
-//      pgraphics->set_text_rendering(::ca::text_rendering_anti_alias);
+//      pgraphics->set_text_rendering_hint_hint(::ca::text_rendering_hint_anti_alias);
 //
 //      COLORREF crBk;
 //      COLORREF crBkSel;

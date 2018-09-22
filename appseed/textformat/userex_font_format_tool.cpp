@@ -81,13 +81,13 @@ namespace userex
 
       m_comboFamily.create_window(null_rect(), this, "combo_family");
       auto pfont = m_comboFamily.create_point_font(::user::font_plain_edit, "Segoe UI", 9.0);
-      pfont->m_etextrendering = ::draw2d::text_rendering_clear_type_grid_fit;
+      pfont->m_etextrenderinghint = ::draw2d::text_rendering_hint_clear_type_grid_fit;
       m_comboFamily.create_color(::user::color_text, ARGB(255, 80, 80, 80));
       m_comboFamily.create_color(::user::color_background, ARGB(255, 255, 255, 255));
 
       m_comboSize.create_window(null_rect(), this, "combo_size");
       pfont = m_comboSize.create_point_font(::user::font_plain_edit, "Segoe UI", 9.0);
-      pfont->m_etextrendering = ::draw2d::text_rendering_clear_type_grid_fit;
+      pfont->m_etextrenderinghint = ::draw2d::text_rendering_hint_clear_type_grid_fit;
       m_comboSize.create_color(::user::color_text, ARGB(255, 80, 80, 80));
       m_comboSize.create_color(::user::color_background, ARGB(255, 255, 255, 255));
       ::rectd r(2, 2, 2, 2);
