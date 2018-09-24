@@ -220,7 +220,7 @@
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
@@ -316,7 +316,7 @@
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
@@ -424,7 +424,7 @@
       </Command>
     </PostBuildEvent>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
@@ -515,7 +515,7 @@
       <PreserveSBR>false</PreserveSBR>
     </Bscmake>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
@@ -602,7 +602,7 @@
       <PreserveSBR>false</PreserveSBR>
     </Bscmake>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
@@ -698,7 +698,7 @@
       <PreserveSBR>false</PreserveSBR>
     </Bscmake>
     <CustomBuildStep>
-      <Command>"$(OutDir)app._.exe" "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
+      <Command>app._.exe "$(OutDir)app.exe" "$(ProjectName)" "$(OutDir)$(TargetName).exe"</Command>
     </CustomBuildStep>
     <CustomBuildStep>
       <Outputs>$(OutDir)$(TargetName).exe</Outputs>
