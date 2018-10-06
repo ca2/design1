@@ -824,7 +824,7 @@ namespace user
 
          update_box_cache(m_boxa);
 
-         pgraphics->set_text_rendering_hint_hint(::draw2d::text_rendering_hint_anti_alias);
+         pgraphics->set_text_rendering_hint(::draw2d::text_rendering_hint_anti_alias);
 
          rectd rectClient(lpcrect);
 
