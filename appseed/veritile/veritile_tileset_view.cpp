@@ -35,18 +35,11 @@ namespace veritile
       IGUI_MSG_LINK(WM_CONTEXTMENU,pinterface,this,&tileset_view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR,pinterface,this,&tileset_view::_001OnSetCursor);
       IGUI_MSG_LINK(WM_ERASEBKGND,pinterface,this,&tileset_view::_001OnEraseBkgnd);
-      //      
+      //
       IGUI_MSG_LINK(WM_MOUSEMOVE,pinterface,this,&tileset_view::_001OnMouseMove);
       IGUI_MSG_LINK(WM_LBUTTONDOWN,pinterface,this,&tileset_view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP,pinterface,this,&tileset_view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_LBUTTONDBLCLK,pinterface,this,&tileset_view::_001OnLButtonDblClk);
-
-      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &tileset_view::_001OnTabClick);
-      //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &tileset_view::_001OnWavePlayerEvent);
-      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
-
 
    }
 
@@ -60,7 +53,7 @@ namespace veritile
    {
       ::user::impact::dump(dumpcontext);
    }
-#endif 
+#endif
 
    bool tileset_view::pre_create_window(::user::create_struct& cs)
    {
@@ -140,7 +133,7 @@ namespace veritile
    void tileset_view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
+
 
       rect rectClient;
 
@@ -158,7 +151,7 @@ namespace veritile
 
       int wm = cx - 1;
       int hm = cy - 1;
-      
+
       ::draw2d::pen_sp pen(allocer());
 
       pen->create_solid(1.0,ARGB(127,255,255,255));
@@ -184,7 +177,7 @@ namespace veritile
       pgraphics->set_alpha_mode(::draw2d::alpha_mode_blend);
 
       if(m_ptileset->m_ptBeg.x >= 0 && m_ptileset->m_ptBeg.y >= 0
-         && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
+            && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
       {
 
          point_array pta;
@@ -220,7 +213,7 @@ namespace veritile
    void tileset_view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu,pcontextmenu,pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
    }
 
    void tileset_view::_001OnTabClick(int32_t iTab)
@@ -242,7 +235,7 @@ namespace veritile
    void tileset_view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd,perasebkgnd,pobj);
-         perasebkgnd->m_bRet = true;
+      perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
 
@@ -361,19 +354,19 @@ namespace veritile
          ReleaseCapture();
 
          if(m_ptileset->m_ptBeg.x >= 0 && m_ptileset->m_ptBeg.y >= 0
-         && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
+               && m_ptileset->m_ptEnd.x >= 0 && m_ptileset->m_ptEnd.y >= 0)
          {
 
             m_ptileset->m_ptaSel.add_unique_range(m_ptileset->m_ptBeg,m_ptileset->m_ptEnd);
-      
+
             m_ptileset->m_ptBeg = point(-1,-1);
             m_ptileset->m_ptEnd = point(-1,-1);
-      
+
          }
 
       }
 
-         pmouse->m_bRet = true;
+      pmouse->m_bRet = true;
 
    }
 
@@ -382,7 +375,7 @@ namespace veritile
    void tileset_view::_001OnLButtonDblClk(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse,pmouse,pobj);
-         point pt = pmouse->m_pt;
+      point pt = pmouse->m_pt;
       ScreenToClient(&pt);
 
 
@@ -401,7 +394,7 @@ namespace veritile
    void tileset_view::_001OnUpdateSelectionTool(::message::message * pobj)
    {
       SCAST_PTR(::user::command,pcommand,pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
 
@@ -413,7 +406,7 @@ namespace veritile
    void tileset_view::_001OnUpdatePolygonTool(::message::message * pobj)
    {
       SCAST_PTR(::user::command,pcommand,pobj);
-         pcommand->Enable(TRUE);
+      pcommand->Enable(TRUE);
    }
 
    bool tileset_view::keyboard_focus_is_focusable()

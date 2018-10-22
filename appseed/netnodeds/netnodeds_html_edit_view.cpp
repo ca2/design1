@@ -34,8 +34,6 @@ namespace netnodeds
       //IGUI_MSG_LINK(WM_TIMER, pinterface, this, &html_edit_view::_001OnTimer);
       IGUI_MSG_LINK(WM_USER + 101, this, this, &html_edit_view::_001OnPost);
 
-      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &html_edit_view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119, this, this, &html_edit_view::_001OnWavePlayerEvent);
       IGUI_MSG_LINK(WM_USER, pinterface, this, &html_edit_view::_001OnUser);
       //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &html_edit_view::_001OnChar);
       //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &html_edit_view::_001OnSysChar);

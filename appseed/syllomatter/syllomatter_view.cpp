@@ -46,13 +46,6 @@ namespace syllomatter
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
       IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
 
-      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
-      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
-      //   IGUI_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &::user::interaction::_001OnLButtonDown);
-      // IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &::user::interaction::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_KEYDOWN, pinterface, this, &::user::interaction::_001OnKeyDown);
       IGUI_MSG_LINK(WM_KEYUP, pinterface, this, &::user::interaction::_001OnKeyUp);
 
@@ -109,7 +102,7 @@ namespace syllomatter
 
    }
 
-   
+
    void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
 
@@ -161,7 +154,7 @@ namespace syllomatter
    void view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
-         point point = pcontextmenu->GetPoint();
+      point point = pcontextmenu->GetPoint();
 
    }
 
@@ -208,7 +201,7 @@ namespace syllomatter
    void view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
-         perasebkgnd->m_bRet = true;
+      perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
 
@@ -316,7 +309,7 @@ namespace syllomatter
 
       for(int32_t i = 0; i < straRepos.get_size(); i++)
       {
-         
+
          straPath.rls(pextract->m_strCheck / straRepos[i]);
 
       }
@@ -330,23 +323,23 @@ namespace syllomatter
          if(iSerial == 0)
          {
             strFileTitle.Format("syllomatter%04d-%02d-%02d_%02d-%02d-%02d.txt",
-               time.GetYear(),
-               time.GetMonth(),
-               time.GetDay(),
-               time.GetHour(),
-               time.GetMinute(),
-               time.GetSecond());
+                                time.GetYear(),
+                                time.GetMonth(),
+                                time.GetDay(),
+                                time.GetHour(),
+                                time.GetMinute(),
+                                time.GetSecond());
          }
          else
          {
             strFileTitle.Format("syllomatter%04d-%02d-%02d_%02d-%02d-%02d %02d.txt",
-               time.GetYear(),
-               time.GetMonth(),
-               time.GetDay(),
-               time.GetHour(),
-               time.GetMinute(),
-               time.GetSecond(),
-               iSerial);
+                                time.GetYear(),
+                                time.GetMonth(),
+                                time.GetDay(),
+                                time.GetHour(),
+                                time.GetMinute(),
+                                time.GetSecond(),
+                                iSerial);
          }
 
          strFileTitle = pextract->m_strCopy / strFileTitle;
@@ -363,9 +356,9 @@ namespace syllomatter
       }
 
       pextract->m_strLogFilePath = strFileTitle;
-      
+
       ::file::text_buffer_sp spfile(allocer());
-      
+
       Application.dir().mk(pextract->m_strLogFilePath.folder());
 
       spfile->open(pextract->m_strLogFilePath, ::file::type_text | ::file::mode_create | ::file::mode_write);
@@ -498,7 +491,7 @@ namespace syllomatter
 
    int32_t view::bin_cmp(const ::file::path & pszFilePath1,const ::file::path & pszFilePath2)
    {
-      
+
       ::file::file_sp spfile1(get_app());
 
       ::file::file_sp spfile2(get_app());

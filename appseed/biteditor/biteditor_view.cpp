@@ -45,8 +45,6 @@ namespace biteditor
 
       IGUI_MSG_LINK(WM_HSCROLL, pinterface, this, &view::_001OnHScroll);
 
-      IGUI_MSG_LINK(WM_APP + 119, this, this, &view::_001OnWavePlayerEvent);
-
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
                     this,
                     this,

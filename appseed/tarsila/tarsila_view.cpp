@@ -39,13 +39,6 @@ namespace tarsila
       IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_LBUTTONDBLCLK, pinterface, this, &view::_001OnLButtonDblClk);
 
-      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-      //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
-      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
-
-
    }
 
    void view::assert_valid() const

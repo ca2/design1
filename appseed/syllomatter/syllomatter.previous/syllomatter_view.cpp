@@ -24,24 +24,23 @@ static char THIS_FILE[]=__FILE__;
 
 IMPLEMENT_DYNCREATE(syllomatter_view, BaseView)
 
-  BEGIN_MESSAGE_MAP(syllomatter_view, BaseView)
-	//{{AFX_MSG_MAP(syllomatter_view)
-/*
-   ON_WM_DESTROY()
-	ON_WM_SIZE()
-	ON_WM_SYLLOMATTER()
-	ON_WM_CREATE()
-	ON_WM_CONTEXTMENU()
-	ON_WM_SETCURSOR()
-	ON_WM_ERASEBKGND()
-	//}}AFX_MSG_MAP
-	// Standard printing commands
-   ON_MESSAGE(WM_USER + 177, OnTabClick)
-   ON_MESSAGE(WM_APP + 119, OnWavePlayerEvent)
-	ON_COMMAND(ID_FILE_PRINT, BaseView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_DIRECT, BaseView::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_PREVIEW, BaseView::OnFilePrintPreview)
-   */
+BEGIN_MESSAGE_MAP(syllomatter_view, BaseView)
+   //{{AFX_MSG_MAP(syllomatter_view)
+   /*
+      ON_WM_DESTROY()
+   	ON_WM_SIZE()
+   	ON_WM_SYLLOMATTER()
+   	ON_WM_CREATE()
+   	ON_WM_CONTEXTMENU()
+   	ON_WM_SETCURSOR()
+   	ON_WM_ERASEBKGND()
+   	//}}AFX_MSG_MAP
+   	// Standard printing commands
+      ON_MESSAGE(WM_USER + 177, OnTabClick)
+   	ON_COMMAND(ID_FILE_PRINT, BaseView::OnFilePrint)
+   	ON_COMMAND(ID_FILE_PRINT_DIRECT, BaseView::OnFilePrint)
+   	ON_COMMAND(ID_FILE_PRINT_PREVIEW, BaseView::OnFilePrintPreview)
+      */
 END_MESSAGE_MAP()
 
 
@@ -57,23 +56,18 @@ void syllomatter_view::_001InstallMessageHandling(igui::win::message::sender * p
 {
    BaseView::_001InstallMessageHandling(this);
 
-	IGUI_MSG_LINK(WM_DESTROY        , this, this, &syllomatter_view::_001OnDestroy);
-	IGUI_MSG_LINK(WM_SIZE           , this, this, &syllomatter_view::_001OnSize);
-	IGUI_MSG_LINK(WM_PAINT          , this, this, &syllomatter_view::_001OnPaint);
-	IGUI_MSG_LINK(WM_CREATE         , this, this, &syllomatter_view::_001OnCreate);
-	IGUI_MSG_LINK(WM_CONTEXTMENU    , this, this, &syllomatter_view::_001OnContextMenu);
-	IGUI_MSG_LINK(WM_SETCURSOR      , this, this, &syllomatter_view::_001OnSetCursor);
-	IGUI_MSG_LINK(WM_ERASEBKGND     , this, this, &syllomatter_view::_001OnEraseBkgnd);
+   IGUI_MSG_LINK(WM_DESTROY, this, this, &syllomatter_view::_001OnDestroy);
+   IGUI_MSG_LINK(WM_SIZE, this, this, &syllomatter_view::_001OnSize);
+   IGUI_MSG_LINK(WM_PAINT, this, this, &syllomatter_view::_001OnPaint);
+   IGUI_MSG_LINK(WM_CREATE, this, this, &syllomatter_view::_001OnCreate);
+   IGUI_MSG_LINK(WM_CONTEXTMENU, this, this, &syllomatter_view::_001OnContextMenu);
+   IGUI_MSG_LINK(WM_SETCURSOR, this, this, &syllomatter_view::_001OnSetCursor);
+   IGUI_MSG_LINK(WM_ERASEBKGND, this, this, &syllomatter_view::_001OnEraseBkgnd);
 
-//	IGUI_MSG_LINK(WM_USER + 177     , this, this, &syllomatter_view::_001OnTabClick);
-	IGUI_MSG_LINK(WM_APP + 119      , this, this, &syllomatter_view::_001OnWavePlayerEvent);
-	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT, BaseView::OnFilePrint)
-	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT_DIRECT, BaseView::OnFilePrint)
-	//IGUI_WIN_ON_COMMAND(ID_FILE_PRINT_PREVIEW, BaseView::OnFilePrintPreview)
-   IGUI_MSG_LINK(WM_LBUTTONDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonDown);
-   IGUI_MSG_LINK(WM_LBUTTONUP    , this, this, &Ex1VirtualGuieInterface::_001OnLButtonUp);
-   IGUI_MSG_LINK(WM_KEYDOWN    , this, this, &Ex1VirtualGuieInterface::_001OnKeyDown);
-   IGUI_MSG_LINK(WM_KEYUP    , this, this, &Ex1VirtualGuieInterface::_001OnKeyUp);
+   IGUI_MSG_LINK(WM_LBUTTONDOWN, this, this, &Ex1VirtualGuieInterface::_001OnLButtonDown);
+   IGUI_MSG_LINK(WM_LBUTTONUP, this, this, &Ex1VirtualGuieInterface::_001OnLButtonUp);
+   IGUI_MSG_LINK(WM_KEYDOWN, this, this, &Ex1VirtualGuieInterface::_001OnKeyDown);
+   IGUI_MSG_LINK(WM_KEYUP, this, this, &Ex1VirtualGuieInterface::_001OnKeyUp);
    //IGUI_MSG_LINK(WM_TIMER    , this, this, &Ex1VirtualGuieInterface::_001OnTimer);
 
 
@@ -91,12 +85,12 @@ void syllomatter_view::OnDraw(CDC* pdcScreen)
 #ifdef _DEBUG
 void syllomatter_view::AssertValid() const
 {
-	BaseView::AssertValid();
+   BaseView::AssertValid();
 }
 
 void syllomatter_view::Dump(CDumpContext& dc) const
 {
-	BaseView::Dump(dc);
+   BaseView::Dump(dc);
 }
 #endif //_DEBUG
 
@@ -114,29 +108,29 @@ void syllomatter_view::Dump(CDumpContext& dc) const
 BOOL syllomatter_view::PreCreateWindow(CREATESTRUCT& cs)
 {
    cs.lpszClass = AfxRegisterWndClass(
-		CS_DBLCLKS |
-		CS_OWNDC,
-		0, 0, 0);
+                  CS_DBLCLKS |
+                  CS_OWNDC,
+                  0, 0, 0);
    cs.style &= ~WS_EX_CLIENTEDGE;
-	return BaseView::PreCreateWindow(cs);
+   return BaseView::PreCreateWindow(cs);
 }
 /////////////////////////////////////////////////////////////////////////////
 // syllomatter_view printing
 
 BOOL syllomatter_view::OnPreparePrinting(CPrintInfo* pInfo)
 {
-	// default preparation
-	return DoPreparePrinting(pInfo);
+   // default preparation
+   return DoPreparePrinting(pInfo);
 }
 
 void syllomatter_view::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo)
 {
-	// TODO: add extra initialization before printing
+   // TODO: add extra initialization before printing
 }
 
 void syllomatter_view::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo)
 {
-	// TODO: add cleanup after printing
+   // TODO: add cleanup after printing
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -152,11 +146,11 @@ void syllomatter_view::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo)
 
 /////////////////////////////////////////////////////////////////////////////
 // syllomatter_view message handlers
-void syllomatter_view::_001OnInitialUpdate(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnInitialUpdate(gen::message::sender_object * pobj)
 {
    BaseView::_001OnInitialUpdate(pobj);
 
-	
+
 }
 base_wnd * syllomatter_view::KaraokeGetWnd()
 {
@@ -168,60 +162,60 @@ base_wnd * syllomatter_view::_001GetWnd()
    return this;
 }
 
-void syllomatter_view::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint) 
+void syllomatter_view::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
 {
    if(lHint == 123)
    {
    }
-	
-	
+
+
 }
 base_wnd * syllomatter_view::BackViewGetWnd()
 {
    return this;
 }
-void syllomatter_view::_001OnDestroy(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnDestroy(gen::message::sender_object * pobj)
 {
-	BaseView::OnDestroy();
+   BaseView::OnDestroy();
 
 }
 
 
 
-void syllomatter_view::_001OnSize(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnSize(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::size, psize, pobj);
 
 
-/*   pobj->previous();
+   /*   pobj->previous();
 
-   double d = psize->m_size.cy;
-   d /= GetSystemMetrics(SM_CYSCREEN);
-   SetScale(d);
+      double d = psize->m_size.cy;
+      d /= GetSystemMetrics(SM_CYSCREEN);
+      SetScale(d);
 
-   GetClientRect(m_rectKaraokeView);
-
-
-   rect rectClient;
-   _w001GetClientRect(rectClient);
-   rect rect = rectClient;
-
-   rect.top = rect.bottom - 24;
-   m_viewlineStatus.SetPlacement(rect);
+      GetClientRect(m_rectKaraokeView);
 
 
-   m_rectKaraokeView.bottom -= 16;
+      rect rectClient;
+      _w001GetClientRect(rectClient);
+      rect rect = rectClient;
 
-   LayoutTitleLines();
-   LayoutLyricTemplateLines();
-   LayoutLyricLines();
-   LayoutKaraokeBouncingBall();*/
+      rect.top = rect.bottom - 24;
+      m_viewlineStatus.SetPlacement(rect);
+
+
+      m_rectKaraokeView.bottom -= 16;
+
+      LayoutTitleLines();
+      LayoutLyricTemplateLines();
+      LayoutLyricLines();
+      LayoutKaraokeBouncingBall();*/
 }
 
-void syllomatter_view::_001OnPaint(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnPaint(gen::message::sender_object * pobj)
 {
-	CPaintDC dc(this); // device context for syllomattering
-   
+   CPaintDC dc(this); // device context for syllomattering
+
 
    dc.text_out(20, 20, "Camilo Sasuke Tsumanuma � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
 }
@@ -245,22 +239,22 @@ void syllomatter_view:: _001OnDraw(CDC * pgraphics)
 
    //pgraphics->BitBlt(0, 0, 1280, 1024, &dc2, 0, 0, SRCCOPY);
 //   pgraphics->text_out(20, 20, "Curitiba, 24 de fevereiro de 2008.");
-  // pgraphics->text_out(20, 80, "Camilo Sasuke Tsumanuma � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
+   // pgraphics->text_out(20, 80, "Camilo Sasuke Tsumanuma � minha Vida Eterna, meu Cora��o Eterno, Todo meu tesouro eterno, meu Universo eterno, meu tudo eterno!!");
    //pgraphics->text_out(20, 110, "Assinado Camilo Sasuke Tsumanuma.");
 }
 
-void syllomatter_view::_001OnCreate(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnCreate(gen::message::sender_object * pobj)
 {
    if(pobj->previous())
       return;
-   
+
 
 }
-void syllomatter_view::_001OnContextMenu(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnContextMenu(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    point point = pcontextmenu->GetPoint();
-	
+
 }
 
 
@@ -288,13 +282,13 @@ void syllomatter_view::_001OnViewEncoding(gen::message::sender_object * pobj)
 
 
 
-void syllomatter_view::_001OnSetCursor(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnSetCursor(gen::message::sender_object * pobj)
 {
    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
-	
-	pobj->previous();
+
+   pobj->previous();
 }
-void syllomatter_view::_001OnEraseBkgnd(gen::message::sender_object * pobj) 
+void syllomatter_view::_001OnEraseBkgnd(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;

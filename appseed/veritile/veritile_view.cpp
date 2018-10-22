@@ -33,22 +33,15 @@ namespace veritile
       IGUI_MSG_LINK(WM_CONTEXTMENU, pinterface, this, &view::_001OnContextMenu);
       IGUI_MSG_LINK(WM_SETCURSOR, pinterface, this, &view::_001OnSetCursor);
       IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &view::_001OnEraseBkgnd);
-//      
+//
       IGUI_MSG_LINK(WM_MOUSEMOVE, pinterface, this, &view::_001OnMouseMove);
       IGUI_MSG_LINK(WM_LBUTTONDOWN, pinterface, this, &view::_001OnLButtonDown);
       IGUI_MSG_LINK(WM_LBUTTONUP, pinterface, this, &view::_001OnLButtonUp);
       IGUI_MSG_LINK(WM_LBUTTONDBLCLK, pinterface, this, &view::_001OnLButtonDblClk);
 
-   //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &view::_001OnTabClick);
-   //   IGUI_MSG_LINK(WM_APP + 119      , this, this, &view::_001OnWavePlayerEvent);
-      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
-
-
    }
 
-   #ifdef DEBUG
+#ifdef DEBUG
    void view::assert_valid() const
    {
       ::user::impact::assert_valid();
@@ -58,7 +51,7 @@ namespace veritile
    {
       ::user::impact::dump(dumpcontext);
    }
-   #endif 
+#endif
 
    int view::tilex()
    {
@@ -119,13 +112,13 @@ namespace veritile
    }
 
 
-   void view::_001OnInitialUpdate() 
+   void view::_001OnInitialUpdate()
    {
       ::user::impact::_001OnInitialUpdate();
 
    }
 
-   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint) 
+   void view::on_update(::user::impact * pSender, LPARAM lHint, ::object* phint)
    {
       UNREFERENCED_PARAMETER(pSender);
       UNREFERENCED_PARAMETER(lHint);
@@ -162,54 +155,54 @@ namespace veritile
       }
    }
 
-   void view::_001OnDestroy(::message::message * pobj) 
+   void view::_001OnDestroy(::message::message * pobj)
    {
       ::user::impact::_001OnDestroy(pobj);
    }
 
-   void view::on_layout() 
+   void view::on_layout()
    {
 
 
-   /*   pobj->previous();
+      /*   pobj->previous();
 
-      double d = psize->height();
-      d /= GetSystemMetrics(SM_CYSCREEN);
-      SetScale(d);
+         double d = psize->height();
+         d /= GetSystemMetrics(SM_CYSCREEN);
+         SetScale(d);
 
-      GetClientRect(m_rectKaraokeView);
-
-
-      rect rectClient;
-      GetClientRect(rectClient);
-      rect rect = rectClient;
-
-      rect.top = rect.bottom - 24;
-      m_viewlineStatus.SetPlacement(rect);
+         GetClientRect(m_rectKaraokeView);
 
 
-      m_rectKaraokeView.bottom -= 16;
+         rect rectClient;
+         GetClientRect(rectClient);
+         rect rect = rectClient;
 
-      LayoutTitleLines();
-      LayoutLyricTemplateLines();
-      LayoutLyricLines();
-      LayoutKaraokeBouncingBall();*/
+         rect.top = rect.bottom - 24;
+         m_viewlineStatus.SetPlacement(rect);
+
+
+         m_rectKaraokeView.bottom -= 16;
+
+         LayoutTitleLines();
+         LayoutLyricTemplateLines();
+         LayoutLyricLines();
+         LayoutKaraokeBouncingBall();*/
    }
 
    void view:: _001OnDraw(::draw2d::graphics * pgraphics)
    {
 
-      
-      
+
+
       rect rectClient;
 
       GetClientRect(rectClient);
 
       pgraphics->FillSolidRect(rectClient,ARGB(128,184,188,184));
-      
+
       for (auto & player : get_data()->m_spalayer)
       {
-       
+
          draw_layer(pgraphics, *player);
 
       }
@@ -228,7 +221,7 @@ namespace veritile
       int wm = cx - 1;
       int hm = cy - 1;
 
-      
+
       int iTileX = tilex();
 
       int iTileY = tiley();
@@ -236,14 +229,14 @@ namespace veritile
       for(int x = iTileX; x < cx; x+= iTileX)
       {
          pgraphics->MoveTo(x,0);
-         
+
          pgraphics->LineTo(x,hm);
 
       }
 
       for(int y = iTileY; y < cy; y+= iTileY)
       {
-         
+
          pgraphics->MoveTo(0,y);
 
          pgraphics->LineTo(wm,y);
@@ -255,19 +248,19 @@ namespace veritile
    }
 
 
-   void view::_001OnCreate(::message::message * pobj) 
+   void view::_001OnCreate(::message::message * pobj)
    {
 
       if(pobj->previous())
          return;
-      
+
       SetTimer(123, 240, NULL);
 
 
    }
 
 
-   void view::_001OnContextMenu(::message::message * pobj) 
+   void view::_001OnContextMenu(::message::message * pobj)
    {
       SCAST_PTR(::message::context_menu, pcontextmenu, pobj);
       point point = pcontextmenu->GetPoint();
@@ -277,10 +270,10 @@ namespace veritile
    {
    }
 
-   
+
    bool view::keyboard_focus_is_focusable()
    {
-   
+
       return true;
 
    }
@@ -299,26 +292,26 @@ namespace veritile
    }
 
 
-   void view::_001OnSetCursor(::message::message * pobj) 
+   void view::_001OnSetCursor(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
       pmouse->m_ecursor = ::visual::cursor_arrow;
-      
+
       pobj->previous();
 
    }
 
 
-   void view::_001OnEraseBkgnd(::message::message * pobj) 
+   void view::_001OnEraseBkgnd(::message::message * pobj)
    {
       SCAST_PTR(::message::erase_bkgnd, perasebkgnd, pobj);
       perasebkgnd->m_bRet = true;
       perasebkgnd->set_result(TRUE);
    }
 
-   void view::_001OnTimer(::timer * ptimer) 
+   void view::_001OnTimer(::timer * ptimer)
    {
 
       ::user::impact::_001OnTimer(ptimer);
@@ -337,15 +330,15 @@ namespace veritile
 
    }
 
-   void view::_001OnMouseMove(::message::message * pobj) 
+   void view::_001OnMouseMove(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::mouse, pmouse, pobj);
 
       data * pdata = get_document()->get_typed_data < data>();
-      
+
       point pt = pmouse->m_pt;
-      
+
       ScreenToClient(&pt);
 
       if(m_bMouseDown)
@@ -358,7 +351,7 @@ namespace veritile
 
             if (m_ptMove != ptLayer)
             {
-             
+
                m_ptMove = ptLayer;
 
                do_place(ptLayer, 0);
@@ -373,7 +366,7 @@ namespace veritile
    }
 
 
-   void view::_001OnLButtonDown(::message::message * pobj) 
+   void view::_001OnLButtonDown(::message::message * pobj)
    {
 
       SCAST_PTR(::message::mouse,pmouse,pobj);
@@ -404,9 +397,9 @@ namespace veritile
 
    void view::_001OnLButtonDblClk(::message::message * pobj)
    {
-      
+
       SCAST_PTR(::message::mouse, pmouse, pobj);
-      
+
       pobj->previous();
 
       point pt = pmouse->m_pt;
@@ -419,7 +412,7 @@ namespace veritile
    }
 
 
-   void view::_001OnLButtonUp(::message::message * pobj) 
+   void view::_001OnLButtonUp(::message::message * pobj)
    {
       SCAST_PTR(::message::mouse, pmouse, pobj);
       point pt = pmouse->m_pt;
@@ -439,7 +432,7 @@ namespace veritile
    void view::_001OnUpdateModePlace(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(m_emode != mode_place);
+      pcommand->Enable(m_emode != mode_place);
    }
 
 
@@ -452,7 +445,7 @@ namespace veritile
    void view::_001OnUpdateModeRandom(::message::message * pobj)
    {
       SCAST_PTR(::user::command, pcommand, pobj);
-         pcommand->Enable(m_emode != mode_random);
+      pcommand->Enable(m_emode != mode_random);
    }
 
    void view::on_property_change(property & property)
@@ -475,7 +468,7 @@ namespace veritile
 
    }
 
-   
+
 
    tileset_view * view::get_cur_tileset_view()
    {
@@ -605,9 +598,9 @@ namespace veritile
                tileset * pset = get_cur_tileset();
 
                pgraphics->BitBlt(x * iTileX,y * iTileY,MIN(iTileX,pset->tilex()),MIN(iTileY,pset->tiley()),
-                  pset->m_dib->get_graphics(),
-                  tile.m_pt.x * pset->tilex(),
-                  tile.m_pt.y * pset->tiley(),SRCCOPY);
+                                 pset->m_dib->get_graphics(),
+                                 tile.m_pt.x * pset->tilex(),
+                                 tile.m_pt.y * pset->tiley(),SRCCOPY);
 
             }
 
@@ -643,13 +636,13 @@ namespace veritile
 
          }
 
-         
+
 
          for (auto & ptSel : pset->m_ptaSel)
          {
-            
+
             point ptRel = ptSel - ptMin;
-            
+
             point ptNew = pt + ptRel;
 
             get_data()->m_spalayer[0]->m_tile2a[ptNew.y][ptNew.x].m_iTile = iTile;

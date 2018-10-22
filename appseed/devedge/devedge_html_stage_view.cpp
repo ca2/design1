@@ -33,13 +33,6 @@ namespace devedge
       IGUI_MSG_LINK(WM_ERASEBKGND, pinterface, this, &html_stage_view::_001OnEraseBkgnd);
 //      //IGUI_MSG_LINK(WM_TIMER, pinterface, this, &html_stage_view::_001OnTimer);
 
-      //   IGUI_MSG_LINK(WM_USER + 177     , this, this, &html_stage_view::_001OnTabClick);
-      IGUI_MSG_LINK(WM_APP + 119, this, this, &html_stage_view::_001OnWavePlayerEvent);
-      //  IGUI_MSG_LINK(WM_CHAR, pinterface, this, &html_stage_view::_001OnChar);
-      //IGUI_MSG_LINK(WM_SYSCHAR, pinterface, this, &html_stage_view::_001OnSysChar);
-      //connect_command(ID_FILE_PRINT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_DIRECT, ::user::impact::OnFilePrint)
-      //connect_command(ID_FILE_PRINT_PREVIEW, ::user::impact::OnFilePrintPreview)
 
       IGUI_MSG_LINK(WM_LBUTTONDOWN,
                     this,

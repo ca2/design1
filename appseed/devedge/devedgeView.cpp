@@ -9,30 +9,29 @@ static char THIS_FILE[]=__FILE__;
 
 // IMPLEMENT_DYNCREATE(devedgeView, base_edit_plain_text_view)
 
-  BEGIN_MESSAGE_MAP(devedgeView, base_edit_plain_text_view)
-	//{{AFX_MSG_MAP(devedgeView)
-/*
-   ON_WM_DESTROY()
-	ON_WM_SIZE()
-	ON_WM_PAINT()
-	ON_WM_CREATE()
-	ON_WM_CONTEXTMENU()
-	ON_WM_SETCURSOR()
-	ON_WM_ERASEBKGND()
-	//}}AFX_MSG_MAP
-	// Standard printing commands
-   ON_MESSAGE(WM_USER + 177, OnTabClick)
-   ON_MESSAGE(WM_APP + 119, OnWavePlayerEvent)
-	ON_COMMAND(ID_FILE_PRINT, base_edit_plain_text_view::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_DIRECT, base_edit_plain_text_view::OnFilePrint)
-	ON_COMMAND(ID_FILE_PRINT_PREVIEW, base_edit_plain_text_view::OnFilePrintPreview)
-   */
+BEGIN_MESSAGE_MAP(devedgeView, base_edit_plain_text_view)
+   //{{AFX_MSG_MAP(devedgeView)
+   /*
+      ON_WM_DESTROY()
+   	ON_WM_SIZE()
+   	ON_WM_PAINT()
+   	ON_WM_CREATE()
+   	ON_WM_CONTEXTMENU()
+   	ON_WM_SETCURSOR()
+   	ON_WM_ERASEBKGND()
+   	//}}AFX_MSG_MAP
+   	// Standard printing commands
+      ON_MESSAGE(WM_USER + 177, OnTabClick)
+   	ON_COMMAND(ID_FILE_PRINT, base_edit_plain_text_view::OnFilePrint)
+   	ON_COMMAND(ID_FILE_PRINT_DIRECT, base_edit_plain_text_view::OnFilePrint)
+   	ON_COMMAND(ID_FILE_PRINT_PREVIEW, base_edit_plain_text_view::OnFilePrintPreview)
+      */
 END_MESSAGE_MAP()
 
 
 devedgeView::devedgeView(::ca::application * papp)
-: base_edit_plain_text_view(papp), Ex1VirtualGuieInterface(papp), BaseVirtualGuie(papp),
-Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(papp)
+   : base_edit_plain_text_view(papp), Ex1VirtualGuieInterface(papp), BaseVirtualGuie(papp),
+     Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(papp)
 {
    m_bMultiLine = true;
    connect_command_probe("edit_undo", &devedgeView::_001OnUpdateEditUndo);
@@ -46,7 +45,7 @@ Ex1ScrollViewInterface(papp), BaseScrollView(papp), Ex1EditPlainTextInterface(pa
    memset(&lf, 0, sizeof(lf));
    lf.lfHeight = 16;
    strcpy(lf.lfFaceName, "Courier New");
-   
+
    m_font.CreateFontIndirect(&lf);
 
 }
@@ -60,29 +59,29 @@ devedgeView::~devedgeView()
 #ifdef _DEBUG
 void devedgeView::AssertValid() const
 {
-	base_edit_plain_text_view::AssertValid();
+   base_edit_plain_text_view::AssertValid();
 }
 
 void devedgeView::Dump(CDumpContext& dc) const
 {
-	base_edit_plain_text_view::Dump(dc);
+   base_edit_plain_text_view::Dump(dc);
 }
 #endif //_DEBUG
 
 BOOL devedgeView::PreCreateWindow(::user::create_struct& cs)
 {
    cs.lpszClass = AfxRegisterWndClass(
-		CS_DBLCLKS |
-		CS_OWNDC,
-		0, 0, 0);
+                  CS_DBLCLKS |
+                  CS_OWNDC,
+                  0, 0, 0);
    cs.style &= ~WS_EX_CLIENTEDGE;
    cs.style &= ~WS_BORDER;
-	return base_edit_plain_text_view::PreCreateWindow(cs);
+   return base_edit_plain_text_view::PreCreateWindow(cs);
 }
 
 BOOL devedgeView::OnPreparePrinting(CPrintInfo* pInfo)
 {
-	return DoPreparePrinting(pInfo);
+   return DoPreparePrinting(pInfo);
 }
 
 void devedgeView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo)
@@ -99,7 +98,7 @@ base_wnd * devedgeView::_001GetWnd()
    return this;
 }
 
-void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint) 
+void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
 {
    if(lHint == 1001)
    {
@@ -145,16 +144,16 @@ void devedgeView::OnUpdate(BaseView* pSender, LPARAM lHint, base_object* phint)
          }
       }
    }*/
-	
+
 }
 
-void devedgeView::_001OnDestroy(gen::message::sender_object * pobj) 
+void devedgeView::_001OnDestroy(gen::message::sender_object * pobj)
 {
-	base_edit_plain_text_view::OnDestroy();
+   base_edit_plain_text_view::OnDestroy();
 
 }
 
-void devedgeView::_001OnCreate(gen::message::sender_object * pobj) 
+void devedgeView::_001OnCreate(gen::message::sender_object * pobj)
 {
    if(pobj->previous())
       return;
@@ -162,10 +161,10 @@ void devedgeView::_001OnCreate(gen::message::sender_object * pobj)
    devedgeDoc * pdoc = GetDocument();
 
    SetTimer(100, 100, NULL);
-   
+
 }
 
-void devedgeView::_001OnContextMenu(gen::message::sender_object * pobj) 
+void devedgeView::_001OnContextMenu(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::context_menu, pcontextmenu, pobj);
    int iItem;
@@ -198,11 +197,11 @@ void devedgeView::_001OnContextMenu(gen::message::sender_object * pobj)
       //ASSERT(pPopup != NULL);
       BaseFrameWnd * pframe = dynamic_cast < BaseFrameWnd * > ( dynamic_cast < base_wnd * > (GetParentFrame()));
       //pPopup->track_popup_menu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
-        // point.x, point.y,
-         //(base_wnd *) pframe);
+      // point.x, point.y,
+      //(base_wnd *) pframe);
       menu.track_popup_menu(TPM_LEFTALIGN | TPM_RIGHTBUTTON,
-         point.x, point.y,
-         pframe->GetSafeHwnd());
+                            point.x, point.y,
+                            pframe->GetSafeHwnd());
    }
 }
 
@@ -210,13 +209,13 @@ void devedgeView::_001OnContextMenu(gen::message::sender_object * pobj)
 
 
 
-void devedgeView::_001OnSetCursor(gen::message::sender_object * pobj) 
+void devedgeView::_001OnSetCursor(gen::message::sender_object * pobj)
 {
    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
-	
-	pobj->previous();
+
+   pobj->previous();
 }
-void devedgeView::_001OnEraseBkgnd(gen::message::sender_object * pobj) 
+void devedgeView::_001OnEraseBkgnd(gen::message::sender_object * pobj)
 {
    SCAST_PTR(igui::win::message::erase_bkgnd, perasebkgnd, pobj);
    perasebkgnd->m_bRet = true;
@@ -225,7 +224,7 @@ void devedgeView::_001OnEraseBkgnd(gen::message::sender_object * pobj)
 
 devedgeDoc * devedgeView::GetDocument() const
 {
-	return (devedgeDoc *) base_edit_plain_text_view::GetDocument();
+   return (devedgeDoc *) base_edit_plain_text_view::GetDocument();
 }
 
 
@@ -236,7 +235,7 @@ base_wnd * devedgeView::VirtualGetWnd()
 
 BOOL devedgeView::PreTranslateMessage(MSG * pMsg)
 {
-  return base_edit_plain_text_view::PreTranslateMessage(pMsg);
+   return base_edit_plain_text_view::PreTranslateMessage(pMsg);
 }
 
 void devedgeView::_001OnUpdateEditUndo(gen::message::sender_object * pobj)
