@@ -279,28 +279,12 @@ namespace userex
          if (pevent->m_puie->m_id == "menu")
          {
 
-            if (get_wnd()->m_pthread == NULL)
+            post_pred([this]()
             {
 
-               fork([&]()
-               {
+               show_menu();
 
-                  show_menu();
-
-               });
-
-            }
-            else
-            {
-
-               get_wnd()->m_pthread->post_pred([&]()
-               {
-
-                  show_menu();
-
-               });
-
-            }
+            });
 
          }
 
