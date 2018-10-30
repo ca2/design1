@@ -25,13 +25,15 @@ namespace user
 
    void font_combo_box::font_combo_box_common_construct()
    {
-      
+
+      m_edatamode = data_mode_string;
+
       m_typeComboList = System.type_info < ::user::font_list >();
-      
+
       m_bEdit = false;
 
    }
-   
+
 
    font_combo_box::~font_combo_box()
    {
@@ -53,7 +55,7 @@ namespace user
    {
 
       SCAST_PTR(::message::create, pcreate, pmessage);
-      
+
       pcreate->previous();
 
       ::rectd r(2, 2, 2, 2);
@@ -64,9 +66,7 @@ namespace user
 
       sp(::user::font_list) plist = m_plist;
 
-      m_edatamode = data_mode_string;
-
-      plist->m_layout.m_elayout = ::visual::font_list::layout_single_column;
+      plist->set_layout(::visual::font_list::layout_single_column);
 
    }
 

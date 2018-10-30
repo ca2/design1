@@ -704,6 +704,8 @@ namespace user
          return;
 
    }
+
+
    bool menu_view::load_xml(var varFile)
    {
 

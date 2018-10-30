@@ -158,11 +158,17 @@ namespace userex
    void progress::close_progress()
    {
 
-      synch_lock sl(m_pmutex);
+      ::user::document * pdoc = NULL;
 
-      auto pdoc = m_pdoc;
+      {
 
-      m_pdoc = NULL;
+         synch_lock sl(m_pmutex);
+
+         pdoc = m_pdoc;
+
+         m_pdoc = NULL;
+
+      }
 
       pdoc->close_document();
 

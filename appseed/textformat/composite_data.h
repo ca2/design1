@@ -115,9 +115,12 @@ namespace composite
       sized                   m_sizePagePrev;
       rectd                   m_rectMarginDrawing;
       rectd                   m_rectMaxMarginDrawing;
+      sized                   m_sizeMinClientDrawing;
       rectd                   m_rectMargin;
       rectd                   m_rectMarginPrev;
+      sized                   m_sizeMinClient;
       rectd                   m_rectClient;
+
 
       virtual void io(stream & serialize) override;
 

@@ -13,7 +13,7 @@ namespace user
       bool is_similar_font_size(double d1, double d2);
       void update_box_cache(spa(box) & boxa);
       void update_box_cache(spa(box) & boxa, spa(spa(layout)) & layouta);
-      index find_box(spa(box) & boxa, index iSel);
+      index find_box(spa(box) & boxa, index iSel, bool bParagraph = true);
       e_align box_align(spa(box) & boxa, index iBox);
       bool box_align(spa(box) & boxa, index iBox, e_align ealign);
       index find_char_box(spa(box) & boxa, strsize iChar);

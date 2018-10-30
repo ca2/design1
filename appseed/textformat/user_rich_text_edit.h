@@ -25,6 +25,8 @@ namespace user
          /// areas of text continue through message routing.
          bool                          m_bClickThrough;
 
+         bool                          m_bPendingSelectionChange;
+
 
          edit();
          edit(::aura::application * papp);

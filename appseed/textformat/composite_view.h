@@ -54,6 +54,7 @@ namespace composite
       sp(data)                m_pdata;
 
       ::user::e_element       m_eelementDrag;
+      ::user::e_element       m_eelementDragLast;
 
       rectd                   m_rectTopic;
       rectd                   m_rectTopicDrawing;

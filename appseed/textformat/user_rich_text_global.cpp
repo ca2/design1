@@ -314,11 +314,19 @@ namespace user
             for (auto & range : *line)
             {
 
-               if ((ebias == bias_none && range->m_iCharBeg <= iChar && iChar <= range->m_iCharEnd)
-                     ||
-                     (ebias == bias_right &&
-                      range->m_bParagraph &&
-                      range->m_iCharBeg <= iChar && iChar <= range->m_iCharEnd + 1))
+               if ((ebias == bias_left && range->m_iCharBeg <= iChar-1 && iChar-1 <= range->m_iCharEnd))
+               {
+                  int i = (line == layouta.last_ptr()
+                           && range == line->last_ptr() ? 0 : 1);
+                  return MIN(range->m_iSelEnd + i,
+                             iChar - range->m_iCharBeg + range->m_iSelBeg);
+
+               }
+               else if ((ebias == bias_none && range->m_iCharBeg <= iChar && iChar <= range->m_iCharEnd)
+                        ||
+                        (ebias == bias_right &&
+                         range->m_bParagraph &&
+                         range->m_iCharBeg <= iChar && iChar <= range->m_iCharEnd + 1))
                {
 
                   if (range == line->last_ptr() && ebias == bias_right)
@@ -547,7 +555,7 @@ namespace user
 
       }
 
-      index find_box(spa(box) & boxa, index iSel)
+      index find_box(spa(box) & boxa, index iSel, bool bParagraph)
       {
 
          string str;
@@ -557,7 +565,7 @@ namespace user
 
             sp(box) & box = boxa[i];
 
-            if (box->m_bParagraph && i == 0)
+            if (box->m_bParagraph && (i == 0 || !bParagraph))
             {
 
                continue;

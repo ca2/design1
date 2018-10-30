@@ -79,6 +79,13 @@ namespace user
       data::~data()
       {
 
+         if (m_pmutex == m_pedit->m_pmutex)
+         {
+
+            m_pmutex = NULL;
+
+         }
+
       }
 
 
@@ -101,9 +108,11 @@ namespace user
       void data::on_selection_change(format * pformat)
       {
 
+         synch_lock sl(m_pmutex);
+
          index iCharBeg = get_sel_beg();
 
-         index iCharEnd = get_sel_end();
+         index iCharEnd = get_sel_end() - 1;
 
          update_box_cache(m_boxa, m_layouta);
 
@@ -117,6 +126,24 @@ namespace user
             sp(box) pboxBeg = m_boxa[iBeg];
 
             *pformat = *m_formata[pboxBeg->m_iFormat];
+
+            e_align ealign = align_left;
+
+            for (index i = iBeg; i >= 0; i--)
+            {
+
+               if (m_boxa[i]->m_bParagraph)
+               {
+
+                  ealign = m_boxa[i]->m_ealign;
+
+                  break;
+
+               }
+
+            }
+
+            pformat->m_ealign = ealign;
 
             while (true)
             {
@@ -133,9 +160,13 @@ namespace user
                if (m_boxa[iBeg]->m_bParagraph)
                {
 
+                  ealign = m_boxa[iBeg]->m_ealign;
+
                   continue;
 
                }
+
+               m_boxa[iBeg]->m_ealign = ealign;
 
                pformat->intersect(*m_formata[m_boxa[iBeg]->m_iFormat]);
 
@@ -262,6 +293,8 @@ namespace user
       void data::_001GetText(string & str) const
       {
 
+         synch_lock sl(m_pmutex);
+
          str = text(m_boxa);
 
       }
@@ -269,6 +302,8 @@ namespace user
 
       void data::_001GetLayoutText(string & str) const
       {
+
+         synch_lock sl(m_pmutex);
 
          str = layout_text(m_layouta);
 
@@ -285,6 +320,8 @@ namespace user
 
       index data::LineColumnToSel(index iLine, strsize iColumn)
       {
+
+         synch_lock sl(m_pmutex);
 
          if (iLine < 0)
          {
@@ -682,9 +719,9 @@ namespace user
 
          index iCharEnd = sel_char(m_layouta, iSelEnd);
 
-         index iBeg = find_box(m_boxa, iSelBeg);
+         index iBeg = find_box(m_boxa, iSelBeg, false);
 
-         index iEnd = find_box(m_boxa, iSelEnd);
+         index iEnd = find_box(m_boxa, iSelEnd, false);
 
          if (iBeg >= 0 && iEnd >= iBeg)
          {
@@ -797,7 +834,7 @@ namespace user
                for (index i = iBeg + 1; i < iEnd; i++)
                {
 
-                  if (m_boxa[i].is_set())
+                  if (m_boxa[i].is_set() && !m_boxa[i]->m_bParagraph)
                   {
 
                      m_boxa[i]->m_iFormat = get_format(m_formata, m_boxa[i]->m_iFormat, pformat, eattributea);
@@ -1357,14 +1394,36 @@ restart2:
          if (m_iSelCharBeg >= 0)
          {
 
-            m_iSelBeg3 = char_sel(m_layouta, m_iSelCharBeg, bias_none);
+            if (m_iSelCharBeg > m_iSelCharEnd)
+            {
+
+               m_iSelBeg3 = char_sel(m_layouta, m_iSelCharBeg, bias_left);
+
+            }
+            else
+            {
+
+               m_iSelBeg3 = char_sel(m_layouta, m_iSelCharBeg, bias_none);
+
+            }
 
          }
 
          if (m_iSelCharEnd >= 0)
          {
 
-            m_iSelEnd3 = char_sel(m_layouta, m_iSelCharEnd, bias_none);
+            if (m_iSelCharEnd > m_iSelCharBeg)
+            {
+
+               m_iSelEnd3 = char_sel(m_layouta, m_iSelCharEnd, bias_left);
+
+            }
+            else
+            {
+
+               m_iSelEnd3 = char_sel(m_layouta, m_iSelCharEnd, bias_none);
+
+            }
 
          }
 
@@ -1383,6 +1442,15 @@ restart2:
          {
 
             m_iSelEnd3 = _001GetLayoutTextLength();
+
+         }
+
+         if (m_pedit->m_bPendingSelectionChange)
+         {
+
+            m_pedit->m_bPendingSelectionChange = false;
+
+            m_pedit->on_selection_change();
 
          }
 
@@ -1755,6 +1823,8 @@ restart2:
       void data::internal_update_sel_char()
       {
 
+         synch_lock sl(m_pmutex);
+
          //m_iSelCharBeg = sel_char(m_layouta, m_iSelBeg3, m_ebiasBeg);
 
          //m_iSelCharEnd = sel_char(m_layouta, m_iSelEnd3, m_ebiasEnd);
@@ -1775,39 +1845,19 @@ restart2:
 
          get_vars(ia1, ia2, str);
 
-         bool bCharEndMoved = false;
-
          for (index i = 0; i < ia1.get_count(); i++)
          {
 
-            if (iCharBeg >= ia1[i] && iCharBeg <= ia2[i])
-            {
-
-               iCharBeg = ia1[i];
-
-            }
             if (iCharEnd >= ia1[i] && iCharEnd <= ia2[i])
             {
-               if (m_iSelBeg3 > iCharEnd)
-               {
-                  iCharEnd = ia1[i]-1;
-               }
-               else
-               {
-                  iCharEnd = ia2[i];
 
-               }
+               iCharEnd = ia1[i];
 
-               bCharEndMoved = true;
+               iCharBeg = ia2[i] + 1;
+
+               break;
 
             }
-
-         }
-
-         if (bCharEndMoved)
-         {
-
-            iCharEnd++;
 
          }
 
@@ -1837,12 +1887,15 @@ restart2:
       void data::io(stream & serialize)
       {
 
+         synch_lock sl(m_pmutex);
+
          serialize.stream_array(m_boxa);
 
          serialize.stream_array(m_formata);
 
 
       }
+
 
       void data::draw_text(::draw2d::graphics * pgraphics)
       {

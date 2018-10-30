@@ -40,7 +40,7 @@ inline bool inBoundedBox(pointd pt1, pointd pt2, pointd pt3)
    if (pt1.x < pt2.x)
    {
 
-      if (!(pt1.x <= pt3.x + dSpan && pt2.x + dSpan >= pt3.x))
+      if (!(pt1.x - dSpan <= pt3.x  && pt3.x <= pt2.x + dSpan))
       {
 
          return false;
@@ -51,7 +51,7 @@ inline bool inBoundedBox(pointd pt1, pointd pt2, pointd pt3)
    else
    {
 
-      if (!(pt1.x + dSpan >= pt3.x && pt2.x <= pt3.x + dSpan))
+      if (!(pt2.x - dSpan <= pt3.x && pt3.x <= pt1.x + dSpan))
       {
 
          return false;
@@ -63,16 +63,27 @@ inline bool inBoundedBox(pointd pt1, pointd pt2, pointd pt3)
    if (pt1.y < pt2.y)
    {
 
-      return pt1.y <= pt3.y + dSpan && pt2.y + dSpan >= pt3.y;
+      if (!(pt1.y - dSpan <= pt3.y && pt3.y <= pt2.y + dSpan))
+      {
+
+         return false;
+
+      }
 
    }
    else
    {
 
-      return pt1.y + dSpan >= pt3.y && pt2.y <=  pt3.y + dSpan;
+      if (!(pt2.y - dSpan <= pt3.y && pt3.y <= pt1.y + dSpan))
+      {
+
+         return false;
+
+      }
 
    }
 
+   return true;
 
 }
 
@@ -90,14 +101,14 @@ bool line_intersection(pointd & pt, pointd pt1, pointd pt2, pointd pt3, pointd p
    double B2 = pt3.y - pt4.y;
    double C2 = A2 * pt3.y + B2 * pt3.x;
 
-   double determinate = A1 * B2 - A2 * B1;
+   double determinant = A1 * B2 - A2 * B1;
 
-   if (determinate != 0.0)
+   if (determinant != 0.0)
    {
 
-      pt.y = (B2*C1 - B1 * C2) / determinate;
+      pt.y = (B2 * C1 - B1 * C2) / determinant;
 
-      pt.x = (A1*C2 - A2 * C1) / determinate;
+      pt.x = (A1 * C2 - A2 * C1) / determinant;
 
       return inBoundedBox(pt1, pt2, pt) && inBoundedBox(pt3, pt4, pt);
 

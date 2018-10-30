@@ -16,6 +16,7 @@ namespace user
 
          m_bEditable2 = true;
          m_bClickThrough = false;
+         m_bPendingSelectionChange = false;
 
       }
 
@@ -26,6 +27,8 @@ namespace user
          m_data(papp),
          m_keymessageLast(papp)
       {
+
+         m_bPendingSelectionChange = false;
 
          m_bEditable2 = true;
 
@@ -111,7 +114,14 @@ namespace user
          pcreate->previous();
 
          if (pcreate->m_bRet)
+         {
+
             return;
+
+         }
+
+         m_data.m_pmutex = m_pmutex;
+
 
 #if !defined(APPLE_IOS) && !defined(VSNORD)
          Session.keyboard(); // trigger keyboard creationg
@@ -295,6 +305,8 @@ namespace user
 
          SCAST_PTR(::message::mouse, pmouse, pobj);
 
+         ReleaseCapture();
+
          if (!is_text_editable())
          {
 
@@ -307,8 +319,6 @@ namespace user
          ScreenToClient(&pt);
 
          pt += m_ptScrollPassword1;
-
-         ReleaseCapture();
 
          m_bSelDrag = false;
 
@@ -323,7 +333,7 @@ namespace user
 
             m_data.internal_update_sel_char();
 
-            on_selection_change();
+            m_bPendingSelectionChange = true;
 
             pmouse->m_bRet = true;
 
@@ -626,7 +636,7 @@ namespace user
 
                sp(::userex::font_format_tool) ptool = get_sys_format_tool(true);
 
-               if (!ptool->IsWindowVisible() || !ptool->is_showing_for_ui(this))
+               //if (!ptool->IsWindowVisible() || !ptool->is_showing_for_ui(this))
                {
 
                   ptool->show_for_ui(this);

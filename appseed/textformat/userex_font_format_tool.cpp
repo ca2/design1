@@ -206,11 +206,11 @@ namespace userex
       x += 10;
 
       m_buttonAlignLeft.SetWindowPos(ZORDER_TOP, x, 5, 20, 20, SWP_SHOWWINDOW);
-      x += 25;
+      x += 20;
       m_buttonAlignCenter.SetWindowPos(ZORDER_TOP, x, 5, 20, 20, SWP_SHOWWINDOW);
-      x += 25;
+      x += 20;
       m_buttonAlignRight.SetWindowPos(ZORDER_TOP, x, 5, 20, 20, SWP_SHOWWINDOW);
-      x += 25;
+      x += 20;
 
       //m_buttonItalic;
       //m_buttonUnderline;
@@ -252,11 +252,13 @@ namespace userex
 
       rWindow.left = r.left - 32;
       rWindow.top = r.top - 32;
-      rWindow.right = rWindow.left + 380;
+      rWindow.right = rWindow.left + 400;
       rWindow.bottom = rWindow.top + 32;
 
-      post_pred([this, rWindow]()
+      fork([this, rWindow]()
       {
+
+         enable_window();
 
          SetWindowPos(ZORDER_TOPMOST, rWindow, SWP_NOACTIVATE | SWP_SHOWWINDOW);
 
@@ -670,6 +672,14 @@ namespace userex
          m_buttonBold._001SetCheck(m_format.m_bBold ? ::check::checked : ::check::unchecked, ::action::source_sync);
          m_buttonItalic._001SetCheck(m_format.m_bItalic ? ::check::checked : ::check::unchecked, ::action::source_sync);
          m_buttonUnderline._001SetCheck(m_format.m_bUnderline ? ::check::checked : ::check::unchecked, ::action::source_sync);
+
+         bool bLeft = m_format.m_ealign == ::user::rich_text::align_left;
+         bool bCenter = m_format.m_ealign == ::user::rich_text::align_center;
+         bool bRight = m_format.m_ealign == ::user::rich_text::align_right;
+
+         m_buttonAlignLeft._001SetCheck(bLeft, ::action::source_sync);
+         m_buttonAlignCenter._001SetCheck(bCenter, ::action::source_sync);
+         m_buttonAlignRight._001SetCheck(bRight, ::action::source_sync);
 
       }
 

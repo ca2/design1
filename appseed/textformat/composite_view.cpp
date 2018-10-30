@@ -297,6 +297,8 @@ namespace composite
 
       m_eelementDrag = eelement;
 
+      m_eelementDragLast = eelement;
+
       return true;
 
    }
@@ -539,7 +541,9 @@ selected:;
       if (m_eelementDrag == ::user::element_margin_top)
       {
 
-         m_pdata->m_rectMargin.top = pt.y;
+         ReleaseCapture();
+
+         m_pdata->m_rectMargin.top = MIN(pt.y, m_pdata->m_rectMargin.bottom - m_pdata->m_sizeMinClient.cy);
 
          set_need_layout();
 
@@ -553,7 +557,9 @@ selected:;
       else if (m_eelementDrag == ::user::element_margin_left)
       {
 
-         m_pdata->m_rectMargin.left = pt.x;
+         ReleaseCapture();
+
+         m_pdata->m_rectMargin.left = MIN(pt.x, m_pdata->m_rectMargin.right - m_pdata->m_sizeMinClient.cx);
 
          set_need_layout();
 
@@ -567,7 +573,9 @@ selected:;
       else if (m_eelementDrag == ::user::element_margin_right)
       {
 
-         m_pdata->m_rectMargin.right = pt.x;
+         ReleaseCapture();
+
+         m_pdata->m_rectMargin.right = MAX(pt.x, m_pdata->m_rectMargin.left + m_pdata->m_sizeMinClient.cx);
 
          set_need_layout();
 
@@ -581,7 +589,9 @@ selected:;
       else if (m_eelementDrag == ::user::element_margin_bottom)
       {
 
-         m_pdata->m_rectMargin.bottom = pt.y;
+         ReleaseCapture();
+
+         m_pdata->m_rectMargin.bottom = MAX(pt.y, m_pdata->m_rectMargin.top + m_pdata->m_sizeMinClient.cy);
 
          set_need_layout();
 
@@ -665,6 +675,11 @@ selected:;
             pt -= m_ptEditCursorOffset;
 
             ScreenToClient(&pt);
+
+            pt.x = MAX(pt.x, get_size().cx / 70.0);
+            pt.x = MIN(pt.x, get_size().cx - get_size().cx / 70.0 - m_pdata->m_picCurrent->m_ppic->m_rect.width());
+            pt.y = MAX(pt.y, get_size().cy / 70.0);
+            pt.y = MIN(pt.y, get_size().cy - get_size().cy / 70.0 - m_pdata->m_picCurrent->m_ppic->m_rect.width());
 
             m_pdata->m_picCurrent->move_to(pt, m_pdata->m_sizePage, get_size(), m_pdata->m_rectClient);
 
@@ -998,7 +1013,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_top;
 
-         m_pdata->m_rectMargin.top = pt.y;
+         m_pdata->m_rectMargin.top = MIN(pt.y, m_pdata->m_rectMargin.bottom - m_pdata->m_sizeMinClient.cy);
 
          set_need_layout();
 
@@ -1012,7 +1027,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_left;
 
-         m_pdata->m_rectMargin.left = pt.x;
+         m_pdata->m_rectMargin.left = MIN(pt.x, m_pdata->m_rectMargin.right - m_pdata->m_sizeMinClient.cx);
 
          set_need_layout();
 
@@ -1026,7 +1041,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_right;
 
-         m_pdata->m_rectMargin.right = pt.x;
+         m_pdata->m_rectMargin.right = MAX(pt.x, m_pdata->m_rectMargin.left + m_pdata->m_sizeMinClient.cx);
 
          set_need_layout();
 
@@ -1040,7 +1055,7 @@ selected:;
 
          pmouse->m_ecursor = visual::cursor_size_bottom;
 
-         m_pdata->m_rectMargin.bottom = pt.y;
+         m_pdata->m_rectMargin.bottom = MAX(pt.y, m_pdata->m_rectMargin.top + m_pdata->m_sizeMinClient.cy);
 
          set_need_layout();
 
@@ -1215,6 +1230,11 @@ selected:;
             pt -= m_ptEditCursorOffset;
 
             ScreenToClient(&pt);
+
+            pt.x = MAX(pt.x, get_size().cx / 70.0);
+            pt.x = MIN(pt.x, get_size().cx - get_size().cx / 70.0 - m_pdata->m_picCurrent->m_ppic->m_rect.width());
+            pt.y = MAX(pt.y, get_size().cy / 70.0);
+            pt.y = MIN(pt.y, get_size().cy - get_size().cy / 70.0 - m_pdata->m_picCurrent->m_ppic->m_rect.width());
 
             m_pdata->m_picCurrent->move_to(pt, m_pdata->m_sizePage, get_size(), m_pdata->m_rectClient);
 
@@ -1665,14 +1685,17 @@ selected:;
 
          }
 
-         m_pdata->m_rectMaxMarginDrawing.left = m_pdata->m_sizePage.cx / 70;
-         m_pdata->m_rectMaxMarginDrawing.top = m_pdata->m_sizePage.cy / 70;
-         m_pdata->m_rectMaxMarginDrawing.right = m_pdata->m_sizePage.cx - m_pdata->m_sizePage.cx / 70;
-         m_pdata->m_rectMaxMarginDrawing.bottom = m_pdata->m_sizePage.cy - m_pdata->m_sizePage.cy / 70;
-
          m_pdata->m_sizePagePrev = m_pdata->m_sizePage;
 
       }
+
+      m_pdata->m_rectMaxMarginDrawing.left = m_pdata->m_sizePage.cx / 70;
+      m_pdata->m_rectMaxMarginDrawing.top = m_pdata->m_sizePage.cy / 70;
+      m_pdata->m_rectMaxMarginDrawing.right = m_pdata->m_sizePage.cx - m_pdata->m_sizePage.cx / 70;
+      m_pdata->m_rectMaxMarginDrawing.bottom = m_pdata->m_sizePage.cy - m_pdata->m_sizePage.cy / 70;
+
+      m_pdata->m_sizeMinClientDrawing.cx = m_pdata->m_sizePage.cx / 15.0;
+      m_pdata->m_sizeMinClientDrawing.cy = m_pdata->m_sizePage.cy / 15.0;
 
       if (m_pdata->m_rectMarginPrev != m_pdata->m_rectMargin)
       {
@@ -1686,10 +1709,49 @@ selected:;
 
       m_pdata->m_rectMarginDrawing.intersect(m_pdata->m_rectMaxMarginDrawing);
 
+      if (m_pdata->m_rectMarginDrawing.width() < m_pdata->m_sizeMinClientDrawing.cx)
+      {
+
+         if (m_eelementDragLast == ::user::element_margin_left)
+         {
+
+            m_pdata->m_rectMarginDrawing.left = m_pdata->m_rectMarginDrawing.right - m_pdata->m_sizeMinClientDrawing.cx;
+
+         }
+         else
+         {
+
+            m_pdata->m_rectMarginDrawing.right = m_pdata->m_rectMarginDrawing.left + m_pdata->m_sizeMinClientDrawing.cx;
+
+         }
+
+      }
+
+      if (m_pdata->m_rectMarginDrawing.height() < m_pdata->m_sizeMinClientDrawing.cy)
+      {
+
+         if (m_eelementDragLast == ::user::element_margin_top)
+         {
+
+            m_pdata->m_rectMarginDrawing.top = m_pdata->m_rectMarginDrawing.bottom - m_pdata->m_sizeMinClientDrawing.cy;
+
+         }
+         else
+         {
+
+            m_pdata->m_rectMarginDrawing.bottom = m_pdata->m_rectMarginDrawing.top + m_pdata->m_sizeMinClientDrawing.cy;
+
+         }
+
+      }
+
       m_pdata->m_rectMargin.left = m_pdata->m_rectMarginDrawing.left / dx;
       m_pdata->m_rectMargin.top = m_pdata->m_rectMarginDrawing.top / dy;
       m_pdata->m_rectMargin.right = m_pdata->m_rectMarginDrawing.right / dx;
       m_pdata->m_rectMargin.bottom = m_pdata->m_rectMarginDrawing.bottom / dy;
+
+      m_pdata->m_sizeMinClient.cx = m_pdata->m_sizeMinClientDrawing.cx / dx;
+      m_pdata->m_sizeMinClient.cy = m_pdata->m_sizeMinClientDrawing.cy / dy;
 
       m_pdata->m_rectMarginPrev = m_pdata->m_rectMargin;
 
