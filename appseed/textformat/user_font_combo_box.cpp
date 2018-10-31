@@ -66,7 +66,7 @@ namespace user
 
       sp(::user::font_list) plist = m_plist;
 
-      plist->set_layout(::visual::font_list::layout_single_column);
+      plist->set_font_list_type(::visual::font_list::type_single_column);
 
    }
 

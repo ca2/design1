@@ -665,7 +665,7 @@ namespace userex
       else
       {
 
-         m_comboFamily._001SetCurSel(m_comboFamily.m_plist.cast <::user::font_list>()->m_pfontlist->find_name(m_format.m_strFontFamily, &m_comboFamily.m_plist.cast <::user::font_list>()->m_layout), ::action::source_sync);
+         m_comboFamily._001SetCurSel(m_comboFamily.m_plist.cast <::user::font_list>()->m_pfontlist->find_name(m_format.m_strFontFamily), ::action::source_sync);
 
          set_font_size(m_format.m_dFontSize);
 
