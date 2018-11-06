@@ -1115,7 +1115,7 @@ namespace user
 
             // Caret
 
-            if (IsWindowVisible())
+            if (IsWindowVisible() && has_focus())
             {
 
                set_need_redraw();
